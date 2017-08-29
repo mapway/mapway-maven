@@ -9,7 +9,6 @@
         <groupId>cn.mapway</groupId>
         <artifactId>mapway-maven</artifactId>
         <version>1.0.48-SNAPSHOT</version>
-        <relativePath>../mapway-maven</relativePath>
     </parent>
     <packaging>maven-plugin</packaging>
     <name>mapway-maven-plugin Maven Plugin</name>
@@ -98,5 +97,4 @@
             </plugins>
         </pluginManagement>
     </build>
-   
 </project>

@@ -7,9 +7,7 @@
     <parent>
         <groupId>cn.mapway</groupId>
         <artifactId>mapway-maven</artifactId>
-      
         <version>1.0.48-SNAPSHOT</version>
-        <relativePath>../mapway-maven</relativePath>
     </parent> 
     
     <name>mapway-doc-ui</name>
@@ -192,4 +190,7 @@
         </dependency>
         
     </dependencies>
+    <properties>
+        <java.version>1.7</java.version>
+    </properties>
 </project>

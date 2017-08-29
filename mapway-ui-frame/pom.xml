@@ -10,7 +10,6 @@
         <groupId>cn.mapway</groupId>
         <artifactId>mapway-maven</artifactId>
         <version>1.0.48-SNAPSHOT</version>
-        <relativePath>../mapway-maven</relativePath>
     </parent> 
     <name>mapway-ui-frame</name>
     <description>mapway's ui-frame</description>
