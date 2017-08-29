@@ -1,0 +1,17 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui" 
+	xmlns:c="urn:import:cn.mapway.ui.client.widget.common">
+	<ui:style>
+	.important {
+		font-weight: bold;
+	}
+	</ui:style>
+	<g:HTMLPanel>
+		<g:HTMLPanel styleName="gwtEx-DashBoard-item-top">
+			<c:LabelEx ui:field="title"></c:LabelEx>
+			<c:LinkLabelEx ui:field="link"></c:LinkLabelEx>
+		</g:HTMLPanel>
+		<g:HTMLPanel ui:field="center" styleName="gwtEx-DashBoard-item-center"></g:HTMLPanel>
+	</g:HTMLPanel>
+</ui:UiBinder> 

@@ -1,0 +1,57 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	<ui:style>
+		.message {
+			padding: 10px;
+			font-size: 14px;
+
+			color: red;
+		}
+		
+		.input {
+			width: 150px;
+			height: 20px;
+			line-height: 20px;
+			background-color: white;
+			border: solid 1px #a0a0a0;
+		}
+		
+		.input:HOVER {
+			 box-shadow:0px 0px 10px rgba(250, 0, 0, 0.5);
+		}
+		
+		.btn {
+			border-radius: 4px;
+			border: 1px solid #a0a0a0;
+		}
+		
+		.btn:HOVER {
+			 box-shadow:0px 0px 10px rgba(250, 0, 0, 0.5);
+		}
+	</ui:style>
+	<g:HTMLPanel>
+		<g:HTMLPanel ui:field="msg" styleName="{style.message}">
+
+		</g:HTMLPanel>
+		<table style="font-size:14px;" cellspacing="5" >
+			<tr>
+				<td>输入管理员姓名</td>
+				<td>
+					<g:TextBox ui:field="txtUserName" styleName="{style.input}"></g:TextBox>
+				</td>
+			</tr>
+			<tr>
+				<td>输入管理员密码</td>
+				<td>
+					<g:PasswordTextBox ui:field="txtPwd" styleName="{style.input}"></g:PasswordTextBox>
+				</td>
+			</tr>
+			<tr>
+				<td align="center" colspan="2">
+					<g:Button ui:field="btnOK" text="确定" styleName="{style.btn}"></g:Button>
+				</td>
+			</tr>
+		</table>
+	</g:HTMLPanel>
+</ui:UiBinder> 

@@ -1,0 +1,108 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+
+	<g:ScrollPanel styleName="site-Center" width="100%">
+		<g:HTMLPanel styleName="site-Content" width="700px">
+			<div class='site-content-padding-top'></div>
+			<g:HorizontalPanel width="100%" styleName="site-Frame-Top">
+				<g:Label styleName="site-Caption" text="站点基本信息"></g:Label>
+				<g:cell horizontalAlignment="right">
+					<g:Label ui:field="lbMessage" styleName="site-Message"></g:Label>
+				</g:cell>
+			</g:HorizontalPanel>
+
+			<table cellpadding="3px" width="100%">
+				<tr>
+					<td>
+						<g:Label text="站点名称" styleName="site-Label"></g:Label>
+					</td>
+					<td>
+						<g:TextBox ui:field="txtNAME" styleName="site-Input w200"></g:TextBox>
+					</td>
+					<td>
+						<g:Label text="ICP证" styleName="site-Label"></g:Label>
+					</td>
+					<td>
+						<g:TextBox ui:field="txtICP" styleName="site-Input w200"></g:TextBox>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<g:Label text="网站网址" styleName="site-Label"></g:Label>
+					</td>
+					<td>
+						<g:TextBox ui:field="txtSITEURL" styleName="site-Input w200"></g:TextBox>
+					</td>
+					<td>
+						<g:Label text="公安备案" styleName="site-Label"></g:Label>
+					</td>
+					<td>
+						<g:TextBox ui:field="txtSecNO" styleName="site-Input w200"></g:TextBox>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<g:Label text="站点描述" styleName="site-Label"></g:Label>
+					</td>
+					<td>
+						<g:TextBox ui:field="txtDESC" styleName="site-Input w200"></g:TextBox>
+					</td>
+					<td>
+						<g:Label text="联系邮箱" styleName="site-Label"></g:Label>
+					</td>
+					<td>
+						<g:TextBox ui:field="txtEMAIL" styleName="site-Input w200"></g:TextBox>
+					</td>
+				</tr>
+
+				<tr>
+					<td>
+						<g:Label text="拥有者" styleName="site-Label"></g:Label>
+					</td>
+					<td>
+						<g:TextBox ui:field="txtOWNER" styleName="site-Input w200"></g:TextBox>
+					</td>
+					<td>
+						<g:Label text="联系电话" styleName="site-Label"></g:Label>
+					</td>
+					<td>
+						<g:TextBox ui:field="txtTEL" styleName="site-Input w200"></g:TextBox>
+					</td>
+				</tr>
+
+				<tr>
+					<td>
+						<g:Label text="网站关键字" styleName="site-Label"></g:Label>
+					</td>
+					<td>
+						<g:TextBox ui:field="txtKEYWORD" styleName="site-Input w200"></g:TextBox>
+					</td>
+					<td>
+						<g:Label text="允许注册" styleName="site-Label"></g:Label>
+					</td>
+					<td>
+						<g:CheckBox ui:field="checkAllowReg"></g:CheckBox>
+					</td>
+				</tr>
+
+
+
+			</table>
+
+
+
+
+			<g:HorizontalPanel styleName="site-Frame-Bottom"
+				width="100%">
+				<g:Button text="更新网站底部链接" enabled="false" ui:field="btnUpdateBottom"></g:Button>
+				<g:cell horizontalAlignment="right">
+					<g:Button text="提  交" ui:field="btnSave" styleName="site-Button"></g:Button>
+				</g:cell>
+
+			</g:HorizontalPanel>
+
+
+		</g:HTMLPanel>
+	</g:ScrollPanel>
+</ui:UiBinder>

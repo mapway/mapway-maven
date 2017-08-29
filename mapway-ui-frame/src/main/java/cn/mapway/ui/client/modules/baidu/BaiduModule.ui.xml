@@ -1,0 +1,20 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder
+    xmlns:ui="urn:ui:com.google.gwt.uibinder"
+    xmlns:g="urn:import:com.google.gwt.user.client.ui">
+    <ui:style>
+    
+    </ui:style>
+    <g:HTMLPanel ui:field="root">
+            Baidu is here
+              <g:TextBox ui:field="txt"></g:TextBox>
+                <table border="1">
+                    <tr ui:field="tr">
+                    <td>zjs</td>
+                    </tr>
+                    <tr >
+                    <td>zjsewqewqewq</td>
+                    </tr>
+                </table>
+    </g:HTMLPanel>
+</ui:UiBinder>

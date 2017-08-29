@@ -1,0 +1,15 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder
+    xmlns:ui="urn:ui:com.google.gwt.uibinder"
+    xmlns:g="urn:import:com.google.gwt.user.client.ui">
+    <ui:style>
+    
+    </ui:style>
+    <g:HTMLPanel>
+            <g:HorizontalPanel ui:field="tools" spacing="2">
+                <g:TextBox ></g:TextBox>
+                <g:Button>Hit it</g:Button>
+            </g:HorizontalPanel>
+            I am a single module;
+    </g:HTMLPanel>
+</ui:UiBinder>

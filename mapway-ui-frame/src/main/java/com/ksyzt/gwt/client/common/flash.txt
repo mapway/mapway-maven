@@ -1,0 +1,6 @@
+<object style="z-index:-5000;left:-500px;top:-500px;" classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" id="{id}" width="182px" height="200px" codebase="http://fpdownload.macromedia.com/get/flashplayer/current/swflash.cab">
+		 <param name="movie" value="{movie}">
+		 <param name="quality" value="high" >
+		 <param name="allowScriptAccess" value="sameDomain">
+	<embed width="182px" height="200px"  name="{id}" type="application/x-shockwave-flash" src="{movie}" >
+</object>
