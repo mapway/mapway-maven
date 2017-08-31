@@ -359,10 +359,6 @@ table td , div , button{
     background-color: #fff;
 }
 
-.gwtEx-DashBoard-item:HOVER{
-	border: 3px solid skyblue;
-}
-
 .gwtEx-DashBoard-item-top{
 	display: flow-root;
     clear: both;
@@ -400,6 +396,113 @@ table td , div , button{
 
 .gwtEx-DashBoard-item-4{
 	width: 99%;
+}
+
+.gwt-MenuBar {
+  cursor: default;
+}
+.gwt-MenuBar .gwt-MenuItem {
+  cursor: default;
+}
+.gwt-MenuBar .gwt-MenuItem-selected {
+  background: skyblue;
+}
+.gwt-MenuBar .gwt-MenuItem-disabled {
+  color: #888888;
+}
+.gwt-MenuBar-horizontal {
+	background-color: #407Cb6;
+}
+.gwt-MenuBar-horizontal .gwt-MenuItem {
+  padding: 5px 10px;
+  vertical-align: bottom;
+  color: #fff;
+  font-size: 16px;
+}
+.gwt-MenuBar-horizontal .gwt-MenuItemSeparator {
+  width: 1px;
+  padding: 0px;
+  margin: 0px;
+  border: 0px;
+  border-left: 1px solid #888888;
+  background: white;
+}
+.gwt-MenuBar-horizontal .gwt-MenuItemSeparator .menuSeparatorInner {
+  width: 1px;
+  height: 1px;
+  background: white;
+}
+.gwt-MenuBar-vertical {
+  margin-top: 0px;
+  margin-left: 0px;
+  background: #407Cb6;
+  color:#fff;
+}
+.gwt-MenuBar-vertical table {
+  border-collapse: collapse;
+}
+.gwt-MenuBar-vertical .gwt-MenuItem {
+    color: #fff;
+    font-size: 16px;
+    padding: 5px 10px;
+    text-align: left;
+    cursor: pointer;
+}
+.gwt-MenuBar-vertical .gwt-MenuItemSeparator {
+  padding: 2px 0px;
+}
+.gwt-MenuBar-vertical .gwt-MenuItemSeparator .menuSeparatorInner {
+  height: 1px;
+  padding: 0px;
+  border: 0px;
+  overflow: hidden;
+}
+.gwt-MenuBarPopup{
+	text-align: left;
+    padding: 7px 0;
+    white-space: nowrap;
+    position: absolute !important;
+    left: 0;
+    top: 0;
+    z-index: 1000;
+    background: #407Cb6;
+    cursor: default;
+    outline: 0;
+}
+.gwt-MenuBar-vertical .subMenuIcon {
+  padding-right: 4px;
+}
+.gwt-MenuBar-vertical .subMenuIcon-selected {
+  background: skyblue;
+}
+
+.gwt-MenuBarPopup .menuPopupTop .menuPopupTopLeft, .gwt-MenuBarPopup .menuPopupTop .menuPopupTopCenter , 
+.gwt-MenuBarPopup .menuPopupTop .menuPopupTopRight , .gwt-MenuBarPopup .menuPopupCenter .menuPopupCenterLeft ,
+.gwt-MenuBarPopup .menuPopupCenter .menuPopupCenterCenter , .gwt-MenuBarPopup .menuPopupCenter .menuPopupCenterRight ,
+.gwt-MenuBarPopup .menuPopupBottom .menuPopupCenterLeft , .gwt-MenuBarPopup .menuPopupBottom .menuPopupCenterCenter,
+.gwt-MenuBarPopup .menuPopupBottom .menuPopupCenterRight{
+  background: #407Cb6;
+}
+
+.gwt-MenuBarPopup .menuPopupTopLeftInner {
+  width: 5px;
+  height: 5px;
+  zoom: 1;
+}
+.gwt-MenuBarPopup .menuPopupTopRightInner {
+  width: 8px;
+  height: 5px;
+  zoom: 1;
+}
+.gwt-MenuBarPopup .menuPopupBottomLeftInner {
+  width: 5px;
+  height: 8px;
+  zoom: 1;
+}
+.gwt-MenuBarPopup .menuPopupBottomRightInner {
+  width: 8px;
+  height: 8px;
+  zoom: 1;
 }
 
 /*---------- enn end ------------------*/
@@ -533,115 +636,6 @@ table td , div , button{
 
 .gwt-Hyperlink {
   cursor: pointer;
-}
-
-
-.gwt-MenuBar {
-  cursor: default;
-}
-.gwt-MenuBar .gwt-MenuItem {
-  cursor: default;
-}
-.gwt-MenuBar .gwt-MenuItem-selected {
-  background: #cdcdcd;
-}
-.gwt-MenuBar .gwt-MenuItem-disabled {
-  color: #cdcdcd;
-}
-.gwt-MenuBar-horizontal {
-  background: #ebebeb url(images/hborder.png) repeat-x 0px -2003px;
-  border: 1px solid #BBBBBB;
-}
-.gwt-MenuBar-horizontal .gwt-MenuItem {
-  padding: 0px 10px;
-  vertical-align: bottom;
-  color: #666666;
-  font-weight: bold;
-}
-.gwt-MenuBar-horizontal .gwt-MenuItemSeparator {
-  width: 1px;
-  padding: 0px;
-  margin: 0px;
-  border: 0px;
-  border-left: 1px solid #888888;
-  background: white;
-}
-.gwt-MenuBar-horizontal .gwt-MenuItemSeparator .menuSeparatorInner {
-  width: 1px;
-  height: 1px;
-  background: white;
-}
-.gwt-MenuBar-vertical {
-  margin-top: 0px;
-  margin-left: 0px;
-  background: white;
-}
-.gwt-MenuBar-vertical table {
-  border-collapse: collapse;
-}
-.gwt-MenuBar-vertical .gwt-MenuItem {
-  padding: 4px 14px 4px 1px;
-}
-.gwt-MenuBar-vertical .gwt-MenuItemSeparator {
-  padding: 2px 0px;
-}
-.gwt-MenuBar-vertical .gwt-MenuItemSeparator .menuSeparatorInner {
-  height: 1px;
-  padding: 0px;
-  border: 0px;
-  border-top: 1px solid #777777;
-  background: #ddddee;
-  overflow: hidden;
-}
-.gwt-MenuBar-vertical .subMenuIcon {
-  padding-right: 4px;
-}
-.gwt-MenuBar-vertical .subMenuIcon-selected {
-  background: #cdcdcd;
-}
-.gwt-MenuBarPopup .menuPopupTopCenter {
-  background: url(images/hborder.png) 0px -12px repeat-x;
-}
-.gwt-MenuBarPopup .menuPopupBottomCenter {
-  background: url(images/hborder.png) 0px -13px repeat-x;
-}
-.gwt-MenuBarPopup .menuPopupMiddleLeft {
-  background: url(images/vborder.png) -12px 0px repeat-y;
-}
-.gwt-MenuBarPopup .menuPopupMiddleRight {
-  background: url(images/vborder.png) -13px 0px repeat-y;
-}
-.gwt-MenuBarPopup .menuPopupTopLeftInner {
-  width: 5px;
-  height: 5px;
-  zoom: 1;
-}
-.gwt-MenuBarPopup .menuPopupTopRightInner {
-  width: 8px;
-  height: 5px;
-  zoom: 1;
-}
-.gwt-MenuBarPopup .menuPopupBottomLeftInner {
-  width: 5px;
-  height: 8px;
-  zoom: 1;
-}
-.gwt-MenuBarPopup .menuPopupBottomRightInner {
-  width: 8px;
-  height: 8px;
-  zoom: 1;
-}
-.gwt-MenuBarPopup .menuPopupTopLeft {
-  background: url(images/corner.png) no-repeat 0px -36px;
-}
-.gwt-MenuBarPopup .menuPopupTopRight {
-  background: url(images/corner.png) no-repeat -5px -36px;
-}
-.gwt-MenuBarPopup .menuPopupBottomLeft {
-  background: url(images/corner.png) no-repeat 0px -41px;
-}
-.gwt-MenuBarPopup .menuPopupBottomRight {
-  background: url(images/corner.png) no-repeat -5px -41px;
 }
 
 .gwt-PasswordTextBox {

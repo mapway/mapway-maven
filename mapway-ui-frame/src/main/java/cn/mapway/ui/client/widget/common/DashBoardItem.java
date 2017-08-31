@@ -41,6 +41,10 @@ public class DashBoardItem extends MessageComposite {
 	public void setLink( String link ){
 		this.link.setText(link);
 	}
+	
+	public HTMLPanel getCenter(){
+		return this.center;
+	}
 
 	public void addCenter(Widget widget) {
 		this.center.add(widget);
