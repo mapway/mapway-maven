@@ -166,10 +166,11 @@ public abstract class AbstractModule extends BaseAbstractModule implements IModu
       if (thisModule.code.equals(parameters.getSubModule())) {
         isThisModule = true;
       }
-
+      parameters.setSubModule("");
       if (isThisModule) {
         return true;
       } else {
+
         return false;
       }
     }
