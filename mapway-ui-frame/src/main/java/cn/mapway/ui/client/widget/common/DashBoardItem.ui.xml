@@ -13,7 +13,8 @@
 			<c:LinkLabelEx ui:field="link"></c:LinkLabelEx>
 		</g:HTMLPanel>
 		<g:ScrollPanel>
-			<g:HTMLPanel ui:field="center" styleName="gwtEx-DashBoard-item-center"></g:HTMLPanel>
+			<g:HTMLPanel ui:field="center" styleName="gwtEx-DashBoard-item-center">
+			</g:HTMLPanel>
 		</g:ScrollPanel>
 	</g:HTMLPanel>
 </ui:UiBinder> 

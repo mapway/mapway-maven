@@ -26,7 +26,7 @@ public class CloseCaption extends HorizontalPanel implements Caption {
   Label title;
 
   /** The btn close. */
-  PrimaryButton btnClose;
+  InfoButton btnClose;
 
   /** The close handler. */
   private ClickHandler closeHandler = new ClickHandler() {
@@ -43,7 +43,7 @@ public class CloseCaption extends HorizontalPanel implements Caption {
    */
   public CloseCaption() {
     title = new Label();
-    btnClose = new PrimaryButton();
+    btnClose = new InfoButton();
     btnClose.setText("关闭");
     this.setWidth("100%");
     this.add(title);

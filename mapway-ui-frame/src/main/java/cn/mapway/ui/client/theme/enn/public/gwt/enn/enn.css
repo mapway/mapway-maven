@@ -198,9 +198,9 @@ table td , div , button{
 .gwtEx-TextBox{
 	display: block;
     width: 100%;
-    height: 30px;
+    height: 34px;
     font-size: 14px;
-    line-height: 30px;
+    line-height: 34px;
     color: #555;
     background-color: #fff;
     background-image: none;
@@ -327,10 +327,9 @@ table td , div , button{
 }
 
 .gwtEx-DialogBox .Caption{
-	background: #ebebeb url(images/hborder.png) repeat-x 0px -2003px;
+	background: #fff;
   padding: 4px 4px 4px 8px;
   cursor: default;
-  border-bottom: 1px solid #bbbbbb;
 }
 
 .caption-title{
@@ -360,7 +359,7 @@ table td , div , button{
 }
 
 .gwtEx-DashBoard-item-top{
-	display: flow-root;
+	display: flex;
     clear: both;
 	border-bottom: 1px solid #e0e0e0;
 	padding: 6px 10px;
@@ -372,6 +371,8 @@ table td , div , button{
 
 .gwtEx-DashBoard-item-center{
 	padding: 6px 10px;
+	text-align: center;
+	height: 218px;
 }
 
 .gwtEx-DashBoard-item-1 , .gwtEx-DashBoard-item-2 , .gwtEx-DashBoard-item-3 , .gwtEx-DashBoard-item-4{
@@ -545,13 +546,13 @@ table td , div , button{
   background: white;
 }
 .gwt-DialogBox .dialogBottomCenter {
-  background: url(images/hborder.png) repeat-x 0px -4px;
+  background: white;
 }
 .gwt-DialogBox .dialogMiddleLeft {
-  background: url(images/vborder.png) repeat-y;
+  background: white;
 }
 .gwt-DialogBox .dialogMiddleRight {
-  background: url(images/vborder.png) repeat-y -4px 0px;
+  background: white;
 }
 .gwt-DialogBox .dialogTopLeftInner {
   width: 5px;
@@ -572,16 +573,16 @@ table td , div , button{
   zoom: 1;
 }
 .gwt-DialogBox .dialogTopLeft {
-  background: url(images/corner.png) no-repeat -13px 0px;
+  background: white;
 }
 .gwt-DialogBox .dialogTopRight {
-  background: url(images/corner.png) no-repeat -18px 0px;
+  background: white;
 }
 .gwt-DialogBox .dialogBottomLeft {
-  background: url(images/corner.png) no-repeat 0px -15px;
+  background: white;
 }
 .gwt-DialogBox .dialogBottomRight {
-  background: url(images/corner.png) no-repeat -5px -15px;
+  background: white;
 }
 
 .gwt-DisclosurePanel {
