@@ -123,7 +123,7 @@ public abstract class AbstractModule extends BaseAbstractModule implements IModu
         DataHolder item = (DataHolder) value;
         ModuleInfo mi = (ModuleInfo) item.getData();
         ModuleParameter mp = new ModuleParameter();
-        beforeSwitchSubModule(mi, mp);
+        beforeSwitchSubModule(getParameters(), mi, mp);
         switchModule(mi.code, mp, true);
       }
     }
@@ -156,7 +156,11 @@ public abstract class AbstractModule extends BaseAbstractModule implements IModu
   public boolean initialize(IModule parentModule, ModuleParameter parameters) {
     super.initialize(parentModule, parameters);
     if (parameters != null && parameters.getSubModule().length() > 0) {
-      switchModule(parameters.getSubModule(), null, false);
+
+      ModuleParameter mpSub = new ModuleParameter();
+      beforeSwitchSubModule(parameters, getModuleFactory()
+          .findModuleInfo(parameters.getSubModule()), mpSub);
+      switchModule(parameters.getSubModule(), mpSub, false);
       boolean isThisModule = false;
       ModuleInfo thisModule = getModuleInfo();
       if (thisModule.code.equals(parameters.getSubModule())) {
@@ -328,7 +332,8 @@ public abstract class AbstractModule extends BaseAbstractModule implements IModu
    * @param mi
    * @param mp
    */
-  public void beforeSwitchSubModule(ModuleInfo mi, ModuleParameter mp) {
+  public void beforeSwitchSubModule(ModuleParameter parentModuleParameter, ModuleInfo mi,
+      ModuleParameter mp) {
 
   }
 
