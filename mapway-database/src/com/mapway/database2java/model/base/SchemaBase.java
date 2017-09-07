@@ -820,7 +820,7 @@ public class SchemaBase implements ISchema {
    */
   @Override
   public String getCopyright() {
-    return null;
+    return "";
   }
 
   /*
@@ -1014,7 +1014,9 @@ public class SchemaBase implements ISchema {
     out(sb, "");
     // 输出表明常量
     out(sb, "  /**\r\n     * 表明. \r\n     */");
-    out(sb, "  public static final String TBL_" + table.getName() + "=\"" + table.getName() + "\";");
+    out(sb,
+        "  public static final String TBL_" + table.getName().toUpperCase() + "=\""
+            + table.getName() + "\";");
 
     out(sb, "  public " + table.getJavaName() + "() {");
     out(sb, "  }");
@@ -1026,8 +1028,8 @@ public class SchemaBase implements ISchema {
     out(sb, "    if (fieldName != null && fieldName.length() > 0) {");
     for (int i = 0; i < table.getColumns().getCount(); i++) {
       Column col = table.getColumns().getAt(i);
-      out(sb, "      if (FLD_" + col.getName() + ".equals(fieldName)) {");
-      out(sb, "        return " + col.getName() + ";");
+      out(sb, "      if (FLD_" + col.getName().toUpperCase() + ".equals(fieldName)) {");
+      out(sb, "        return " + col.getName().toUpperCase() + ";");
       out(sb, "      }");
     }
     out(sb, "    } else if (fieldIndex != null && fieldIndex >= 0 && fieldIndex < "
@@ -1036,7 +1038,7 @@ public class SchemaBase implements ISchema {
     for (int i = 0; i < table.getColumns().getCount(); i++) {
       Column col = table.getColumns().getAt(i);
       out(sb, "      if (fieldIndex == " + i + ") {");
-      out(sb, "        return " + col.getName() + ";");
+      out(sb, "        return " + col.getName().toUpperCase() + ";");
       out(sb, "      }");
     }
     out(sb, "    } else {");
@@ -1048,11 +1050,16 @@ public class SchemaBase implements ISchema {
     for (int i = 0; i < table.getColumns().getCount(); i++) {
       Column col = table.getColumns().getAt(i);
       out(sb, "  /**\r\n   * 字段" + col.getName() + "在数据中的名称.\r\n   */");
-      out(sb, "  public static final String FLD_" + col.getName() + "=\"" + col.getName() + "\";");
+      out(sb,
+          "  public static final String FLD_" + col.getName().toUpperCase() + "=\"" + col.getName()
+              + "\";");
       out(sb, "");
       out(sb, "  /**\r\n   * 获取字段" + col.getName() + "的索引值.\r\n   */");
-      out(sb, "  public static final Integer IDX_" + col.getName() + "=" + i + ";");
+      out(sb, "  public static final Integer IDX_" + col.getName().toUpperCase() + "=" + i + ";");
 
+
+
+      out(sb, " /**\r\n   * 字段" + col.getName() + ".\r\n   */");
       if (count == 1) {
         if (col.isPK()) {
           if (col.getJavaType().contains("String")) {
@@ -1064,19 +1071,21 @@ public class SchemaBase implements ISchema {
               out(sb, "\t@Id(auto = false)");
             }
           }
+        } else {
+          out(sb, "\t@Column(\"" + col.getName() + "\")");
         }
+      } else {
+        out(sb, "\t@Column(\"" + col.getName() + "\")");
       }
-      out(sb, "");
-      out(sb, " /**\r\n   * 字段" + col.getName() + ".\r\n   */");
-      out(sb, "  private " + col.getJavaType() + " " + col.getName() + ";");
+      out(sb, "  private " + col.getJavaType() + " " + col.getName().toUpperCase() + ";");
       out(sb, "");
       out(sb, "  /**");
       out(sb, "   * 返回字段" + col.getName() + "的值.");
       out(sb,
           "   * @return " + col.getName() + "  " + col.getComment() + "  " + col.getDatabaseType());
       out(sb, "  */");
-      out(sb, "  public " + col.getJavaType() + " get" + col.getName() + "() {");
-      out(sb, "    return " + col.getName() + ";");
+      out(sb, "  public " + col.getJavaType() + " get" + col.getName().toUpperCase() + "() {");
+      out(sb, "    return " + col.getName().toUpperCase() + ";");
       out(sb, "  }\r\n");
 
       out(sb, "  /**");
@@ -1085,9 +1094,9 @@ public class SchemaBase implements ISchema {
           "   * @param " + col.getName().toLowerCase() + "  " + col.getComment() + "  "
               + col.getDatabaseType());
       out(sb, "   */");
-      out(sb, "  public void set" + col.getName() + "(" + col.getJavaType() + " "
+      out(sb, "  public void set" + col.getName().toUpperCase() + "(" + col.getJavaType() + " "
           + col.getName().toLowerCase() + ") {");
-      out(sb, "    this." + col.getName() + "=" + col.getName().toLowerCase() + ";");
+      out(sb, "    this." + col.getName().toUpperCase() + "=" + col.getName().toLowerCase() + ";");
 
       out(sb, "  }\r\n");
     }
