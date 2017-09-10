@@ -7,7 +7,7 @@
     <parent>
         <groupId>cn.mapway</groupId>
         <artifactId>mapway-maven</artifactId>
-        <version>1.0.48-SNAPSHOT</version>
+        <version>1.0.56-SNAPSHOT</version>
     </parent> 
     
     <name>mapway-doc-ui</name>

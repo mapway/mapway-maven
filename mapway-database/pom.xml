@@ -49,15 +49,15 @@
                 <artifactId>maven-compiler-plugin</artifactId>
                 <configuration>
                     <source>1.8</source>
-                    <target>1.7</target>
+                    <target>1.8</target>
                 </configuration>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-jar-plugin</artifactId>
                 <configuration>
-                    <source>1.7</source>
-                    <target>1.7</target>
+                    <source>1.8</source>
+                    <target>1.8</target>
                     <archive>
                         <manifest>
                             <mainClass>com.mapway.database2java.MainApplication</mainClass>
@@ -117,14 +117,10 @@
             <artifactId>mysql-connector-java</artifactId>
             <version>5.1.6</version>
         </dependency>
-       <dependency>
-            <groupId>cn.ennwifi</groupId>
-            <artifactId>pgjdbc</artifactId>
-            <version>9.6-SNAPSHOT</version>
-        </dependency>
+       
         <dependency>
             <groupId>us.fatehi</groupId>
-            <artifactId>schemacrawler</artifactId>
+            <artifactId>schemacrawler</artifactId> 
             <version>14.16.03-java7</version>
         </dependency>
     </dependencies>
