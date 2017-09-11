@@ -38,7 +38,7 @@ table td , div , button{
 
 .gwtEx-Button {
   	display: inline-block;
-    margin-bottom: 0;
+    margin: 0 10px;
     font-weight: 400;
     text-align: center;
     vertical-align: middle;
@@ -139,6 +139,11 @@ table td , div , button{
     padding-top:7px;
 }
 
+.gwtEx-Label-Content{
+	font-weight: normal;
+	text-align: left;
+}
+
 .gwtEx-CueLabelEx{
 	color: #ff0000;
     text-align: left;
@@ -146,6 +151,10 @@ table td , div , button{
     min-height: 1px;
     padding-top: 7px;
     padding-left: 7px;
+}
+
+.gwtEx-Label-blue{
+	color: #407cb6;
 }
 
 .getEx-Label-Link{
@@ -210,6 +219,7 @@ table td , div , button{
 }
 .gwtEx-TextBox-readonly {
   color: #888;
+  background-color: #e8e8e8;
 }
 
 .gwtEx-Table{
@@ -324,6 +334,10 @@ table td , div , button{
 
 .gwtEx-DialogBox .dialogMiddle{
 	background-color: #fff;
+}
+
+.gwtEx-DialogBox{
+	border: 1px solid #777;
 }
 
 .gwtEx-DialogBox .Caption{

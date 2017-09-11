@@ -101,6 +101,7 @@ public class TestDashBoard extends AbstractModule {
 		item = new DashBoardItem();
 		item.setTitle("来个大的");
 		item.addStyleName("gwtEx-DashBoard-item-2");
+		item.getCenter().setHeight("500px");
 		two.add(item);
 		
 	}
