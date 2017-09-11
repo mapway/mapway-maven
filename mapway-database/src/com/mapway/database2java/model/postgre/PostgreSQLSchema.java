@@ -2,6 +2,7 @@ package com.mapway.database2java.model.postgre;
 
 import schemacrawler.schema.Catalog;
 import schemacrawler.schema.Schema;
+import schemacrawler.schemacrawler.ExcludeAll;
 import schemacrawler.schemacrawler.SchemaCrawlerException;
 import schemacrawler.schemacrawler.SchemaCrawlerOptions;
 import schemacrawler.schemacrawler.SchemaInfoLevelBuilder;
@@ -40,6 +41,8 @@ public class PostgreSQLSchema extends SchemaBase {
     // Set what details are required in the schema - this affects the
     // time taken to crawl the schema
     options.setSchemaInfoLevel(SchemaInfoLevelBuilder.standard());
+    options.setRoutineInclusionRule(new ExcludeAll());
+
 
     Catalog catalog = null;
     try {
