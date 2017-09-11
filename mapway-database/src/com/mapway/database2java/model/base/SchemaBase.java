@@ -13,6 +13,8 @@ import java.sql.SQLException;
 
 import javax.servlet.jsp.jstl.sql.Result;
 
+import org.nutz.lang.Strings;
+
 import com.mapway.database2java.database.AccessBase;
 import com.mapway.database2java.database.IConnectionPool;
 import com.mapway.database2java.model.itf.ISQLClause;
@@ -937,6 +939,190 @@ public class SchemaBase implements ISchema {
       writeToFile(fileName, t.getJavaName() + ".java", sb.toString());
     }
   }
+
+  @Override
+  public void exportNormalBean(Configure conf) {
+    String fileName = conf.getFilePath();
+    StringBuilder sb;
+    Tables tables = getTables();
+    for (int i = 0; i < tables.getCount(); i++) {
+      ITable t = tables.getAt(i);
+      sb = new StringBuilder();
+
+      genNormalBean(conf, t, sb);
+      writeToFile(fileName, t.getJavaName() + ".java", sb.toString());
+    }
+    Tables views = getTables();
+    for (int i = 0; i < tables.getCount(); i++) {
+      ITable t = views.getAt(i);
+      sb = new StringBuilder();
+
+      genNormalBean(conf, t, sb);
+      writeToFile(fileName, t.getJavaName() + ".java", sb.toString());
+    }
+  }
+
+  private void genNormalBean(Configure conf, ITable table, StringBuilder sb) {
+    sb.append(this.getCopyright());
+
+    out(sb, "");
+
+    out(sb, "package " + conf.getPackage() + ";\r\n");
+    out(sb, "import java.util.Date;\r\n");
+    out(sb, "import org.nutz.dao.entity.annotation.*;");
+    out(sb, "import java.math.BigDecimal;");
+    out(sb, "import cn.mapway.document.annotation.*;");
+
+    out(sb, "");
+    out(sb, "/**");
+    out(sb, " * 数据库表 " + table.getComment() + "<br/>");
+    out(sb, " * @author zhangjsf@enn.cn\r\n");
+    out(sb, " *         <b>字段列表</b><br/>\r\n");
+    for (int i = 0; i < table.getColumns().getCount(); i++) {
+      Column col = table.getColumns().getAt(i);
+      out(sb, " *         " + col.getName() + "   " + col.getComment() + " " + col.getJavaType()
+          + "<br/>");
+    }
+    out(sb, " */");
+    out(sb, "");
+
+    out(sb, "@Table(\"" + table.getName() + "\")");
+    out(sb, "@Doc(\"" + table.getName() + "(" + table.getComment() + ")\")");
+
+    // 查看是否有联合主键
+    boolean moreKey = false;
+
+    int count = 0;
+    for (int i = 0; i < table.getColumns().getCount(); i++) {
+      Column col = table.getColumns().getAt(i);
+      if (col.isPK()) {
+        count++;
+      }
+    }
+
+    if (count > 1) {
+      StringBuilder pk = new StringBuilder();
+      pk.append("@PK({");
+      for (int i = 0; i < table.getColumns().getCount(); i++) {
+        Column col = table.getColumns().getAt(i);
+        if (col.isPK()) {
+          if (pk.length() > 5) {
+            pk.append(",");
+          }
+          pk.append("\"").append(col.getName()).append("\"");
+        }
+      }
+
+      pk.append("})");
+      out(sb, pk.toString());
+    }
+
+    out(sb,
+        "public class "
+            + table.getJavaName()
+
+            + " implements java.io.Serializable,com.google.gwt.user.client.rpc.IsSerializable,\r\n    com.ksyzt.gwt.client.data.IFieldValue{");
+
+
+    // 输出序列化接口
+    out(sb, "  /**");
+    out(sb, "   * 缺省的序列化值.");
+    out(sb, "  */");
+    out(sb, "  private static final long serialVersionUID = 1L;");
+
+    out(sb, "");
+    // 输出表明常量
+    out(sb, "  /**\r\n     * 表明. \r\n     */");
+    out(sb,
+        "  public static final String TBL_" + table.getName().toUpperCase() + "=\""
+            + table.getName() + "\";");
+
+    out(sb, "  public " + table.getJavaName() + "() {");
+    out(sb, "  }");
+
+    out(sb, "  /**\r\n   * 根据字段名称获取字段的值. \r\n   */");
+    out(sb, "  @Override");
+    out(sb, "  public Object getFieldValue(String fieldName,Integer fieldIndex) {");
+
+    out(sb, "    if (fieldName != null && fieldName.length() > 0) {");
+    for (int i = 0; i < table.getColumns().getCount(); i++) {
+      Column col = table.getColumns().getAt(i);
+      out(sb, "      if (FLD_" + col.getName().toUpperCase() + ".equals(fieldName)) {");
+      out(sb, "        return " + col.getName() + ";");
+      out(sb, "      }");
+    }
+    out(sb, "    } else if (fieldIndex != null && fieldIndex >= 0 && fieldIndex < "
+        + table.getColumns().getCount() + ") {");
+
+    for (int i = 0; i < table.getColumns().getCount(); i++) {
+      Column col = table.getColumns().getAt(i);
+      out(sb, "      if (fieldIndex == " + i + ") {");
+      out(sb, "        return " + col.getName() + ";");
+      out(sb, "      }");
+    }
+    out(sb, "    } else {");
+    out(sb, "      return null;");
+    out(sb, "    }");
+    out(sb, "    return null;");
+    out(sb, "  }");
+    out(sb, "");
+    for (int i = 0; i < table.getColumns().getCount(); i++) {
+      Column col = table.getColumns().getAt(i);
+      out(sb, "  /**\r\n   * 字段" + col.getName() + "在数据中的名称.\r\n   */");
+      out(sb,
+          "  public static final String FLD_" + col.getName().toUpperCase() + "=\"" + col.getName()
+              + "\";");
+      out(sb, "");
+      out(sb, "  /**\r\n   * 获取字段" + col.getName() + "的索引值.\r\n   */");
+      out(sb, "  public static final Integer IDX_" + col.getName().toUpperCase() + "=" + i + ";");
+
+
+
+      out(sb, " /**\r\n   * 字段" + col.getName() + ".\r\n   */");
+      if (count == 1) {
+        if (col.isPK()) {
+          if (col.getJavaType().contains("String")) {
+            out(sb, "\t@Name");
+          } else {
+            if (col.isAuto()) {
+              out(sb, "\t@Id");
+            } else {
+              out(sb, "\t@Id(auto = false)");
+            }
+          }
+        } else {
+          out(sb, "\t@Column(\"" + col.getName() + "\")");
+        }
+      } else {
+        out(sb, "\t@Column(\"" + col.getName() + "\")");
+      }
+      out(sb, "@ApiField(value=\"" + col.getComment() + "\",example=\"\")");
+      out(sb, "  private " + col.getJavaType() + " " + col.getName() + ";");
+      out(sb, "");
+      out(sb, "  /**");
+      out(sb, "   * 返回字段" + col.getName() + "的值.");
+      out(sb,
+          "   * @return " + col.getName() + "  " + col.getComment() + "  " + col.getDatabaseType());
+      out(sb, "  */");
+      out(sb, "  public " + col.getJavaType() + " get" + Strings.upperFirst(col.getName()) + "() {");
+      out(sb, "    return " + col.getName() + ";");
+      out(sb, "  }\r\n");
+
+      out(sb, "  /**");
+      out(sb, "   * 设置字段" + col.getName() + "的值.");
+      out(sb,
+          "   * @param " + col.getName().toLowerCase() + "  " + col.getComment() + "  "
+              + col.getDatabaseType());
+      out(sb, "   */");
+      out(sb, "  public void set" + Strings.upperFirst(col.getName()) + "(" + col.getJavaType()
+          + " " + col.getName().toLowerCase() + ") {");
+      out(sb, "    this." + col.getName() + "=" + col.getName().toLowerCase() + ";");
+
+      out(sb, "  }\r\n");
+    }
+    out(sb, "}");
+  }
+
 
   /**
    * Gen nutz bean.

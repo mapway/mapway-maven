@@ -67,6 +67,11 @@ public class Test {
       public String getDriver() {
         return "org.postgresql.Driver";
       }
+
+      @Override
+      public String getNormalNutz() {
+        return "1";
+      }
     };
 
 
@@ -78,7 +83,7 @@ public class Test {
     System.out.println(config.getSchema());
     System.out.println(config.getUser());
     System.out.println(config.getPassword());
-
+    System.out.println(config.getNormalNutz());
 
 
     MainApplication app = new MainApplication();

@@ -85,12 +85,21 @@ public class MainApplication {
       System.out.println("Database Connected and fetch successful");
       System.out.println("Export Path:" + configure.getPath());
 
+      if (config.getNormalNutz() != null && config.getNormalNutz().equals("1")) {
+        Configure conf = configure.copy();
+        schema.exportNormalBean(conf);
+        System.out.println("gen NUTZ-NORMAL OK!");
+        return;
+      }
+
+
       if (config.getNutz().equals("1")) {
         Configure conf = configure.copy();
         schema.exportJavaBean(conf);
         System.out.println("gen NUTZ OK!");
         return;
       }
+
       Configure conf = configure.copy();
       conf.setPackage(conf.getGwtbase());
       schema.exportProcedures(conf);
@@ -139,7 +148,6 @@ public class MainApplication {
       System.out.println("Error connect to the database");
     }
   }
-
 
 
 }
