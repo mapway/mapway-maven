@@ -62,8 +62,8 @@ public class TypeMapper {
     mt1.Add("NVARCHAR2", "String");
     mt1.Add("LONGVARCHAR", "String");
     mt1.Add("NUMBER", "Integer");
-    mt1.Add("NUMERIC", "Integer");
-    mt1.Add("DECIMAL", "Integer");
+    mt1.Add("NUMERIC", "Double");
+    mt1.Add("DECIMAL", "Float");
     mt1.Add("TIMESTAMP", "java.sql.Timestamp");
     mt1.Add("TIMESTAMP(6)", "java.sql.Timestamp");
     mt1.Add("BIT", "Boolean");
