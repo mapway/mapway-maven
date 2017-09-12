@@ -71,9 +71,9 @@ public class PostgreSQLSchema extends SchemaBase {
       t.setComment(table.getRemarks());
 
       for (schemacrawler.schema.Column column : table.getColumns()) {
-        tb.addRow(schema.getName(), table.getName(), column.getName(), column.isPartOfPrimaryKey()
-            + "", column.isAutoIncremented() + "", column.isNullable() + "", column
-            .getColumnDataType().getJavaSqlType().getJavaSqlTypeName());
+        tb.addRow(schema.getName(), table.getName(), trip(column.getName()),
+            column.isPartOfPrimaryKey() + "", column.isAutoIncremented() + "", column.isNullable()
+                + "", column.getColumnDataType().getJavaSqlType().getJavaSqlTypeName());
         Column c = new Column();
         c.setAuto(column.isAutoIncremented());
         c.setPK(column.isPartOfPrimaryKey());
@@ -87,16 +87,18 @@ public class PostgreSQLSchema extends SchemaBase {
     }
   }
 
-  private String trip(String name) {
+  private static String trip(String name) {
     return name.replaceAll("\\\"", "");
   }
 
   public static void main(String[] args) {
 
+
+
     String driverName = "org.postgresql.Driver";
-    String jdbcurl = "jdbc:postgresql://localhost/hangye";
-    String username = "hangye";
-    String pwd = "hangye";
+    String jdbcurl = "jdbc:postgresql://pg.ennwifi.cn/bigdata";
+    String username = "bigdata";
+    String pwd = "bigdata";
     try {
       Class.forName(driverName);
     } catch (ClassNotFoundException e) {
@@ -106,6 +108,10 @@ public class PostgreSQLSchema extends SchemaBase {
     Configure configure = new Configure();
     PostgreSQLSchema schema = new PostgreSQLSchema(pool, configure);
     schema.fetchSchema();
+
+    String f = "\"name\"";
+
+    System.out.println(trip(f));
   }
 
 

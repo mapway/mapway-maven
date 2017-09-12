@@ -63,49 +63,68 @@ public class GenBean extends AbstractMojo {
   @Parameter(defaultValue = "1", property = "nutz", required = true)
   private String nutz;
 
+  /** The nutz. */
+  @Parameter(defaultValue = "0", property = "normalNutz", required = true)
+  private String normalNutz;
+
   /*
    * (non-Javadoc)
    * 
    * @see org.apache.maven.plugin.Mojo#execute()
    */
+  @Override
   public void execute() throws MojoExecutionException {
 
     IConfigure configure = new IConfigure() {
 
+      @Override
       public String getUser() {
         return user;
       }
 
+      @Override
       public String getSchema() {
         return schema;
       }
 
+      @Override
       public String getPath() {
         return path;
       }
 
+      @Override
       public String getPassword() {
         return pwd;
       }
 
+      @Override
       public String getPackage() {
         return packageName;
       }
 
+      @Override
       public String getNutz() {
         return nutz;
       }
 
+      @Override
       public int getMaxConnections() {
         return 10;
       }
 
+      @Override
       public String getJDBCURL() {
         return jdbcurl;
       }
 
+      @Override
       public String getDriver() {
         return driver;
+      }
+
+      @Override
+      public String getNormalNutz() {
+        return normalNutz;
       }
     };
 
@@ -117,7 +136,6 @@ public class GenBean extends AbstractMojo {
     tb.addRow("password", configure.getPassword());
     tb.addRow("path", configure.getPath());
     tb.addRow("pacakgeName", configure.getPackage());
-
 
     System.out.println(tb.toString());
 
