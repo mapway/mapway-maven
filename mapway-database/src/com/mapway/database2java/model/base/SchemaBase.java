@@ -218,7 +218,6 @@ public class SchemaBase implements ISchema {
       file.mkdirs();
     }
     try {
-      System.out.println(file.getAbsolutePath());
       OutputStreamWriter out =
           new OutputStreamWriter(new FileOutputStream(path + File.separator + fn), "UTF-8");
       out.write(s);
