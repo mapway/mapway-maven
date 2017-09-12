@@ -77,7 +77,7 @@ public class PostgreSQLSchema extends SchemaBase {
         Column c = new Column();
         c.setAuto(column.isAutoIncremented());
         c.setPK(column.isPartOfPrimaryKey());
-        c.setName(column.getName());
+        c.setName(trip(column.getName()));
         c.setComment(column.getRemarks());
         c.setDatabaseType(column.getColumnDataType().getJavaSqlType().getJavaSqlTypeName());
         t.getColumns().addColumn(c);
