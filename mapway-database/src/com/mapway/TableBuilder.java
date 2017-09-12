@@ -19,7 +19,7 @@ public class TableBuilder {
   public static String[][] ASICIITABLE = { {"+", "-", "+", "-", "+"}, {"+", "-", "+", "-", "+"},
       {"+", "-", "+", "-", "+"}, {"+", "-", "+", "-", "+"}, {"+", "-", "+", "-", "+"}};
 
-  public String[][] TABLE = ASICIITABLE;
+  public String[][] TABLE = UTF8TABLE;
 
   int padding = 1;
 
@@ -83,7 +83,7 @@ public class TableBuilder {
         buf.append(Strings.dup(' ', padding));
         buf.append(row[colNum]);
         buf.append(Strings.dup(' ', colwidth - length(row[colNum])));
-        buf.append(Strings.dup(' ', padding));
+        // buf.append(Strings.dup(' ', padding));
         if (colNum == colWidths.length - 1) {
           buf.append('│');
         } else {
