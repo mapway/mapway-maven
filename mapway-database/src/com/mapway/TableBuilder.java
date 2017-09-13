@@ -19,7 +19,7 @@ public class TableBuilder {
   public static String[][] ASICIITABLE = { {"+", "-", "+", "-", "+"}, {"+", "-", "+", "-", "+"},
       {"+", "-", "+", "-", "+"}, {"+", "-", "+", "-", "+"}, {"+", "-", "+", "-", "+"}};
 
-  public String[][] TABLE = UTF8TABLE;
+  public String[][] TABLE = ASICIITABLE;
 
   int padding = 1;
 

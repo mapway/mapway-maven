@@ -109,9 +109,6 @@ public class PostgreSQLSchema extends SchemaBase {
     PostgreSQLSchema schema = new PostgreSQLSchema(pool, configure);
     schema.fetchSchema();
 
-    String f = "\"name\"";
-
-    System.out.println(trip(f));
   }
 
 
