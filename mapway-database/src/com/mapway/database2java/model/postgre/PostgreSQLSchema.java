@@ -1,5 +1,8 @@
 package com.mapway.database2java.model.postgre;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 import schemacrawler.schema.Catalog;
 import schemacrawler.schema.Schema;
 import schemacrawler.schemacrawler.ExcludeAll;
@@ -51,7 +54,6 @@ public class PostgreSQLSchema extends SchemaBase {
       e.printStackTrace();
     }
 
-
     for (schemacrawler.schema.Schema schema : catalog.getSchemas()) {
       System.out.println(schema.getName() + "===>" + getConfigure().getSchema());
       if (schema.getName().equals(getConfigure().getSchema())) {
@@ -68,24 +70,42 @@ public class PostgreSQLSchema extends SchemaBase {
       Table t = new Table();
       getTables().addTable(t);
       t.setName(trip(table.getName()));
-      t.setComment(table.getRemarks());
+      t.setComment(compass(table.getRemarks()));
 
       for (schemacrawler.schema.Column column : table.getColumns()) {
-        tb.addRow(schema.getName(), table.getName(), trip(column.getName()),
-            column.isPartOfPrimaryKey() + "", column.isAutoIncremented() + "", column.isNullable()
-                + "", column.getColumnDataType().getJavaSqlType().getJavaSqlTypeName());
         Column c = new Column();
         c.setAuto(column.isAutoIncremented());
         c.setPK(column.isPartOfPrimaryKey());
         c.setName(trip(column.getName()));
-        c.setComment(column.getRemarks());
+        c.setComment(compass(column.getRemarks()));
         c.setDatabaseType(column.getColumnDataType().getJavaSqlType().getJavaSqlTypeName());
         t.getColumns().addColumn(c);
+
+        tb.addRow(schema.getName(), table.getName(), trip(column.getName()),
+            column.isPartOfPrimaryKey() + "", column.isAutoIncremented() + "", column.isNullable()
+                + "", column.getColumnDataType().getJavaSqlType().getJavaSqlTypeName(),
+            c.getComment());
+
 
       }
       System.out.println(tb.toString());
     }
   }
+
+  private String compass(String remarks) {
+
+    if (remarks == null) {
+      return "";
+    }
+    String dest = "";
+
+    Pattern p = Pattern.compile("\\s*|\t|\r|\n");
+    Matcher m = p.matcher(remarks);
+    dest = m.replaceAll("");
+    return dest;
+  }
+
+
 
   private static String trip(String name) {
     return name.replaceAll("\\\"", "");

@@ -24,7 +24,7 @@ public class Test {
 
       @Override
       public String getUser() {
-        return "hangye";
+        return "biguser";
       }
 
       @Override
@@ -40,7 +40,7 @@ public class Test {
       @Override
       public String getPassword() {
 
-        return "hangye";
+        return "biguser";
       }
 
       @Override
@@ -60,7 +60,7 @@ public class Test {
 
       @Override
       public String getJDBCURL() {
-        return "jdbc:postgresql://localhost/hangye";
+        return "jdbc:postgresql://pg.ennwifi.cn/bigdata";
       }
 
       @Override
