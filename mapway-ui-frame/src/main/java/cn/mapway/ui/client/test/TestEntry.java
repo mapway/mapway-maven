@@ -1,7 +1,6 @@
 package cn.mapway.ui.client.test;
 
 import cn.mapway.ui.client.history.HistoryManager;
-import cn.mapway.ui.client.modules.test.FuckTest;
 import cn.mapway.ui.client.modules.test.NoSubModule;
 import cn.mapway.ui.client.modules.test.TestSubModule;
 import cn.mapway.ui.client.mvc.IModuleDispatcher;
@@ -26,7 +25,6 @@ public class TestEntry implements EntryPoint {
 
 
     final TestSubModule test = new TestSubModule();
-    final FuckTest dingle = new FuckTest();
 
     final HorizontalPanel p = new HorizontalPanel();
     final HTMLPanel con = new HTMLPanel("");
@@ -58,10 +56,7 @@ public class TestEntry implements EntryPoint {
 
       @Override
       public void onClick(ClickEvent event) {
-        con.clear();
-        con.add(dingle);
-        dingle.setSize("800px", "600px");
-        dingle.initialize(null, null);
+
       }
     });
 
@@ -73,7 +68,7 @@ public class TestEntry implements EntryPoint {
       public void onClick(ClickEvent event) {
         con.clear();
         con.add(test);
-        dingle.setSize("800px", "600px");
+
         ModuleParameter mp = new ModuleParameter();
         mp.setSubModule(NoSubModule.MODULE_CODE);
         test.initialize(null, mp);
@@ -87,7 +82,7 @@ public class TestEntry implements EntryPoint {
       public void onClick(ClickEvent event) {
         con.clear();
         con.add(test);
-        dingle.setSize("800px", "600px");
+
         ModuleParameter mp = new ModuleParameter();
         mp.setSubModule(TestSubModule.MODULE_CODE);
         test.initialize(null, mp);
