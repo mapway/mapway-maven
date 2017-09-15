@@ -3,6 +3,8 @@ package com.mapway.database2java.model.postgre;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import org.nutz.lang.Lang;
+
 import schemacrawler.schema.Catalog;
 import schemacrawler.schema.Schema;
 import schemacrawler.schemacrawler.ExcludeAll;
@@ -11,7 +13,7 @@ import schemacrawler.schemacrawler.SchemaCrawlerOptions;
 import schemacrawler.schemacrawler.SchemaInfoLevelBuilder;
 import schemacrawler.utility.SchemaCrawlerUtility;
 
-import com.mapway.TableBuilder;
+import com.bethecoder.ascii_table.ASCIITable;
 import com.mapway.database2java.database.GeneratorPool;
 import com.mapway.database2java.database.IConnectionPool;
 import com.mapway.database2java.model.base.Configure;
@@ -65,13 +67,17 @@ public class PostgreSQLSchema extends SchemaBase {
   private void processSchema(Catalog catalog, Schema schema) {
     System.out.println("go schema " + schema.getName());
     for (schemacrawler.schema.Table table : catalog.getTables(schema)) {
-      TableBuilder tb = new TableBuilder();
-      tb.addRow("模式", "表名", "列名", "是否主键", "是否递增", "是否为空", "数据类型");
+
+      String[] headers = Lang.array("模式", "表名", "列名", "是否主键", "是否递增", "是否为空", "数据类型");
+
       Table t = new Table();
       getTables().addTable(t);
       t.setName(trip(table.getName()));
       t.setComment(compass(table.getRemarks()));
+      String[][] data;
+      data = new String[table.getColumns().size()][];
 
+      int i = 0;
       for (schemacrawler.schema.Column column : table.getColumns()) {
         Column c = new Column();
         c.setAuto(column.isAutoIncremented());
@@ -81,14 +87,14 @@ public class PostgreSQLSchema extends SchemaBase {
         c.setDatabaseType(column.getColumnDataType().getJavaSqlType().getJavaSqlTypeName());
         t.getColumns().addColumn(c);
 
-        tb.addRow(schema.getName(), table.getName(), trip(column.getName()),
-            column.isPartOfPrimaryKey() + "", column.isAutoIncremented() + "", column.isNullable()
-                + "", column.getColumnDataType().getJavaSqlType().getJavaSqlTypeName(),
-            c.getComment());
-
-
+        String[] row =
+            Lang.array(schema.getName(), table.getName(), trip(column.getName()),
+                column.isPartOfPrimaryKey() + "", column.isAutoIncremented() + "",
+                column.isNullable() + "", column.getColumnDataType().getJavaSqlType()
+                    .getJavaSqlTypeName(), c.getComment());
+        data[i++] = row;
       }
-      System.out.println(tb.toString());
+      ASCIITable.getInstance().printTable(headers, data);
     }
   }
 

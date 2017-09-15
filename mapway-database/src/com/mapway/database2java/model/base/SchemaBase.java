@@ -1147,8 +1147,9 @@ public class SchemaBase implements ISchema {
     out(sb, " *         <b>字段列表</b><br/>\r\n");
     for (int i = 0; i < table.getColumns().getCount(); i++) {
       Column col = table.getColumns().getAt(i);
-      out(sb, " *         " + col.getName() + "   " + col.getComment() + " " + col.getJavaType()
-          + "<br/>");
+      out(sb,
+          " *         " + col.getName() + "   " + col.getDatabaseType() + "  " + col.getComment()
+              + " " + col.getJavaType() + "<br/>");
     }
     out(sb, " */");
     out(sb, "");
