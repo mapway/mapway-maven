@@ -10,6 +10,8 @@ import java.io.InputStream;
 import java.io.OutputStreamWriter;
 import java.io.UnsupportedEncodingException;
 import java.sql.SQLException;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.servlet.jsp.jstl.sql.Result;
 
@@ -901,15 +903,42 @@ public class SchemaBase implements ISchema {
   @Override
   public void exportGwtModule(Configure conf) {
     // write GWT module
-    InputStream ins = getClass().getResourceAsStream("/template/gwt.txt");
+    InputStream ins = getClass().getResourceAsStream("/template/gwt.xml");
     String txt = readUTF8TextFile(ins);
-    writeToFile(conf.getFilePath(), conf.getSchema() + "Data.gwt.xml", txt);
+
+    String[] gpaths = upPath(conf.path, conf.Package);
+
+    Map<String, String> m2 = new HashMap<String, String>();
+    m2.put("GWT_SOURCE_PATH", gpaths[1]);
+    txt = replace(m2, txt);
+    System.out.println("gwt module information " + gpaths[0] + " " + conf.getSchema()
+        + "Data.gwt.xml");
+    writeToFile(gpaths[0], conf.getSchema() + "Data.gwt.xml", txt);
     try {
       ins.close();
     } catch (IOException e) {
       e.printStackTrace();
     }
 
+  }
+
+  private String[] upPath(String dataPath, String packageName) {
+    String p = packageName.replace('.', '/');
+    p = dataPath + "/src/main/java/" + p;
+
+    int index = p.lastIndexOf('/');
+
+    String[] r = new String[2];
+    r[0] = p.substring(0, index) + "/";
+    r[1] = p.substring(index + 1);
+    return r;
+  }
+
+  private String replace(Map<String, String> mapper, String template) {
+    for (String key : mapper.keySet()) {
+      template = template.replaceAll(key, mapper.get(key));
+    }
+    return template;
   }
 
   /**

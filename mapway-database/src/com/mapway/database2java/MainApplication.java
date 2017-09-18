@@ -88,6 +88,7 @@ public class MainApplication {
       if (config.getNormalNutz() != null && config.getNormalNutz().equals("1")) {
         Configure conf = configure.copy();
         schema.exportNormalBean(conf);
+        schema.exportGwtModule(conf);
         System.out.println("gen NUTZ-NORMAL OK!");
         return;
       }
