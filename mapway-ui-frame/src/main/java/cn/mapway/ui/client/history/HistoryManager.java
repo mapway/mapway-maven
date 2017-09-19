@@ -3,10 +3,12 @@ package cn.mapway.ui.client.history;
 import java.util.ArrayList;
 import java.util.List;
 
+import cn.mapway.ui.client.event.IEventHandler;
 import cn.mapway.ui.client.mvc.BaseAbstractModule;
 import cn.mapway.ui.client.mvc.IModuleDispatcher;
 import cn.mapway.ui.client.mvc.ModuleInfo;
 import cn.mapway.ui.client.mvc.SwitchModuleData;
+import cn.mapway.ui.client.tools.Clients;
 
 import com.google.gwt.core.shared.GWT;
 import com.google.gwt.event.logical.shared.ValueChangeEvent;
@@ -22,7 +24,19 @@ import com.google.gwt.user.client.History;
  */
 public class HistoryManager implements ValueChangeHandler<String> {
 
+  IEventHandler mEmptyHander;
+
+  /**
+   * 设置空的hash事件
+   * 
+   * @param handler
+   */
+  public void setEmptyHandler(IEventHandler handler) {
+    mEmptyHander = handler;
+  }
+
   public final static String SEPRATOR = ":";
+  public static final String EMPTY_HASH_EVENT = "EMPTY_HASH_EVENT";
   private IModuleDispatcher mDispatcher;
 
   public final static void push(List<SwitchModuleData> moduleDatas) {
@@ -68,7 +82,10 @@ public class HistoryManager implements ValueChangeHandler<String> {
         GWT.log("popup hash > " + moduelData.getModuleCode() + "  "
             + moduelData.getParameters().toString());
         d = d.switchModule(moduelData.getModuleCode(), moduelData.getParameters(), false);
-
+      }
+    } else {
+      if (mEmptyHander != null) {
+        mEmptyHander.onEvent(EMPTY_HASH_EVENT, 0, null);
       }
     }
   }
@@ -78,42 +95,38 @@ public class HistoryManager implements ValueChangeHandler<String> {
       return "";
     }
     String r = "";
-    String data = "";
+    // 保存参数到本地存储中.
+    Storage storage = Storage.getLocalStorageIfSupported();
+
     for (SwitchModuleData d : moduleCodes) {
       if (r.length() > 0) {
         r += ":";
-        data += "`";
       }
-      r += d.getHash();
-      data += d.getParameters().toString();
-    }
-    // 保存参数到本地存储中.
-    Storage storage = Storage.getLocalStorageIfSupported();
-    if (storage != null) {
-      storage.setItem(r, data);
-      GWT.log("push local(" + r + ">" + data);
+      String paraKey = Clients.randomString(6);
+      r += d.getHash() + "-" + paraKey;
+      storage.setItem(paraKey, d.getParameters().toString());
     }
     return r;
   }
 
   private final static List<SwitchModuleData> decode(String token) {
-    String data = "";
-    // 从本地存储恢复数据.
+
     Storage storage = Storage.getLocalStorageIfSupported();
-    if (storage != null) {
-      data = storage.getItem(token);
-    }
 
     List<SwitchModuleData> r = new ArrayList<SwitchModuleData>();
 
     if (token != null && token.length() > 0) {
       String[] hashs = token.split(":");
-      String[] paras = data.split("`");
-
       for (int i = 0; i < hashs.length; i++) {
-        ModuleInfo mi = BaseAbstractModule.getModuleFactory().findModuleInfoByHash(hashs[i]);
+        String hash = hashs[i];
+        String[] ks = hash.split("-");
+        if (ks.length != 2) {
+          break;
+        }
+
+        ModuleInfo mi = BaseAbstractModule.getModuleFactory().findModuleInfoByHash(ks[0]);
         SwitchModuleData d = new SwitchModuleData(mi.code, mi.hash);
-        d.getParameters().parse(paras[i]);
+        d.getParameters().parse(storage.getItem(ks[1]));
         r.add(d);
       }
     }
