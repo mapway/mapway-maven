@@ -41,6 +41,10 @@ public class ItemList extends HTMLPanel implements HasMessageHandlers {
   /** The m selected. */
   Item mSelected = null;
 
+  public Item getSelected() {
+    return mSelected;
+  }
+
   /**
    * Adds the item.
    *
@@ -114,5 +118,19 @@ public class ItemList extends HTMLPanel implements HasMessageHandlers {
       }
     }
 
+  }
+
+  protected void click(Item it) {
+    if (it != mSelected) {
+      String cssSelected = "item-selected";
+      if (mSelected != null) {
+        mSelected.removeStyleName(cssSelected);
+      }
+
+      it.addStyleName(cssSelected);
+      mSelected = it;
+    }
+    MessageEvent ev = new MessageEvent(MessageEvent.ITEMCLICK, it);
+    fireEvent(ev);
   }
 }
