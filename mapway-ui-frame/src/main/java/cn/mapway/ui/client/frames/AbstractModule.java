@@ -138,11 +138,19 @@ public abstract class AbstractModule extends BaseAbstractModule implements IModu
     }
   };
 
+  private Label lbHome;
+  private Anchor linkHome;
+
+
   public AbstractModule() {
     holder = new UiFieldHolder();
+    lbHome = new Label();
+    linkHome = new Anchor();
     initWidget(uiBinder.createAndBindUi(holder));
     mSubModules = new ArrayList<ModuleInfo>();
     holder.subList.addMessageHandler(subModuleClicked);
+    linkHome.addClickHandler(homeClicked);
+
   }
 
   IModule subCurrent;
@@ -177,6 +185,7 @@ public abstract class AbstractModule extends BaseAbstractModule implements IModu
     return true;
   }
 
+
   @Override
   public IModuleDispatcher switchModule(String code, ModuleParameter parameter,
       boolean saveToHistory) {
@@ -200,8 +209,8 @@ public abstract class AbstractModule extends BaseAbstractModule implements IModu
       // 本模块
       // 处理导航
       holder.tblNavi.clear();
-      Label home = new Label(thisModule.name);
-      holder.tblNavi.add(home);
+      lbHome.setText(thisModule.name);
+      holder.tblNavi.add(lbHome);
       holder.icon.setUrl(thisModule.icon);
 
       // 处理模块内容
@@ -241,10 +250,9 @@ public abstract class AbstractModule extends BaseAbstractModule implements IModu
 
       // 处理导航
       holder.tblNavi.clear();
-      Anchor home = new Anchor(thisModule.name);
+      linkHome.setText(thisModule.name);
 
-      holder.tblNavi.add(home);
-      home.addClickHandler(homeClicked);
+      holder.tblNavi.add(linkHome);
 
       holder.tblNavi.add(new HTML("&nbsp;&gt;&nbsp;"));
       holder.tblNavi.add(new Label(mi.name));
@@ -365,4 +373,13 @@ public abstract class AbstractModule extends BaseAbstractModule implements IModu
     }
   }
 
+  /**
+   * 设置模块标题
+   * 
+   * @param caption
+   */
+  public final void setCaption(String caption) {
+    lbHome.setText(caption);
+    linkHome.setText(caption);
+  }
 }

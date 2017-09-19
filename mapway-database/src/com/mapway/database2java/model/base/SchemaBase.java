@@ -924,8 +924,7 @@ public class SchemaBase implements ISchema {
 
   private String[] upPath(String dataPath, String packageName) {
     String p = packageName.replace('.', '/');
-    p = dataPath + "/src/main/java/" + p;
-
+    p = dataPath + "/" + p;
     int index = p.lastIndexOf('/');
 
     String[] r = new String[2];

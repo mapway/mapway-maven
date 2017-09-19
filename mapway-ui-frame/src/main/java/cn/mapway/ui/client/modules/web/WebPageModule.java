@@ -1,6 +1,6 @@
 package cn.mapway.ui.client.modules.web;
 
-import cn.mapway.ui.client.mvc.BaseAbstractModule;
+import cn.mapway.ui.client.frames.AbstractModule;
 import cn.mapway.ui.client.mvc.IModule;
 import cn.mapway.ui.client.mvc.ModuleMarker;
 import cn.mapway.ui.client.mvc.ModuleParameter;
@@ -16,7 +16,7 @@ import com.google.gwt.user.client.ui.Widget;
  * The Class WebPageModule.
  */
 @ModuleMarker(value = WebPageModule.MODULE_CODE, name = "网页模块")
-public class WebPageModule extends BaseAbstractModule {
+public class WebPageModule extends AbstractModule {
 
   public final static String MODULE_CODE = "MC_WEB";
 
@@ -42,6 +42,12 @@ public class WebPageModule extends BaseAbstractModule {
         frame.setUrl(GWT.getModuleBaseURL() + "../" + p);
       }
     }
+
+    String caption = (String) parameters.get("CAPTION");
+    if (caption != null && caption.length() > 0) {
+      setCaption(caption);
+    }
+
     return b;
   }
 
@@ -81,7 +87,4 @@ public class WebPageModule extends BaseAbstractModule {
     initModuleWidget(uiBinder.createAndBindUi(this));
     frame.getElement().setAttribute("frameborder", "no");
   }
-
-
-
 }
