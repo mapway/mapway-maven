@@ -18,7 +18,7 @@
             
             </g:HTMLPanel>
             <g:HorizontalPanel styleName="{style.tools}" width="100%" horizontalAlignment="center" verticalAlignment="middle">
-                 <c:InfoButton ui:field="btnCancel"  text="取消"></c:InfoButton> >
+                 <c:InfoButton ui:field="btnCancel"  text="取消"></c:InfoButton>
                 <c:PrimaryButton ui:field="btnOK"  text="确定"></c:PrimaryButton>
                  
             </g:HorizontalPanel>
