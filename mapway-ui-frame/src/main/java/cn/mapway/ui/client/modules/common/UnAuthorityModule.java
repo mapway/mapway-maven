@@ -16,7 +16,6 @@ public class UnAuthorityModule extends BaseAbstractModule {
 
   public static final String MODULE_CODE = "SYS_UNAUTHORITY_MODULE";
 
-  public static final String SYS_UNAUTHORITY_MODULE = "SYS_UNAUTHORITY_MODULE";
   private static UnAuthorityModuleUiBinder uiBinder = GWT.create(UnAuthorityModuleUiBinder.class);
 
   interface UnAuthorityModuleUiBinder extends UiBinder<Widget, UnAuthorityModule> {

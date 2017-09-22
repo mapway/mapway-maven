@@ -1,7 +1,7 @@
 <!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
 <ui:UiBinder
     xmlns:ui="urn:ui:com.google.gwt.uibinder"
-    xmlns:g="urn:import:com.google.gwt.user.client.ui">
+    xmlns:g="urn:import:com.google.gwt.user.client.ui" xmlns:c="urn:import:cn.mapway.ui.client.widget.common">
     <ui:style>
       .tools{
 	min-width:350px;
@@ -18,8 +18,9 @@
             
             </g:HTMLPanel>
             <g:HorizontalPanel styleName="{style.tools}" width="100%" horizontalAlignment="center" verticalAlignment="middle">
-                 <g:Button ui:field="btnCancel"  text="取消"></g:Button>
-                <g:Button ui:field="btnOK"  text="确定"></g:Button>
+                 <c:InfoButton ui:field="btnCancel"  text="取消"></c:InfoButton> >
+                <c:PrimaryButton ui:field="btnOK"  text="确定"></c:PrimaryButton>
+                 
             </g:HorizontalPanel>
     </g:HTMLPanel>
 </ui:UiBinder>

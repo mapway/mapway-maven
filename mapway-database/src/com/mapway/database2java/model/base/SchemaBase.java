@@ -1003,13 +1003,78 @@ public class SchemaBase implements ISchema {
     out(sb, "");
     out(sb, "/**");
     out(sb, " * 数据库表 " + table.getComment() + "<br/>");
-    out(sb, " * @author zhangjsf@enn.cn\r\n");
-    out(sb, " *         <b>字段列表</b><br/>\r\n");
+    out(sb, " * @author zhangjsf@enn.cn");
+    out(sb, " * <b>字段列表</b><br/>");
     for (int i = 0; i < table.getColumns().getCount(); i++) {
       Column col = table.getColumns().getAt(i);
-      out(sb, " *         " + col.getName() + "   " + col.getComment() + " " + col.getJavaType()
-          + "<br/>");
+      out(sb, " *  " + col.getJavaType() + " " + col.getName() + " //" + col.getComment() + "<br/>");
     }
+    out(sb, " * =========== 用于GWT模型 <br/>");
+    for (int i = 0; i < table.getColumns().getCount(); i++) {
+      Column col = table.getColumns().getAt(i);
+      String jt = col.getJavaType();
+      if (jt.endsWith("String")) {
+        out(sb, " *  {@literal @ }UiField TextBoxEx txt" + Strings.upperFirst(col.getName())
+            + ";<br/>");
+
+      }
+      if (jt.endsWith("Timestamp") || jt.endsWith("Date")) {
+        out(sb, " *  {@literal @ }UiField DateBoxEx date" + Strings.upperFirst(col.getName())
+            + ";<br/>");
+      }
+    }
+    out(sb, " * =========== 用于GWT UIBinder <br/>");
+    for (int i = 0; i < table.getColumns().getCount(); i++) {
+      Column col = table.getColumns().getAt(i);
+      String jt = col.getJavaType();
+      if (jt.endsWith("String")) {
+        out(sb, " *  &lt;tr&gt;&lt;td&gt;" + col.getComment() + "&lt;/td&gt;&lt;td&gt;"
+            + "&ltc:TextBoxEx ui:field=\"txt" + Strings.upperFirst(col.getName())
+            + "\" &gt;&lt/c:TextBoxEx&gt;" + "&lt;/td&gt; &lt;td&gt;&lt;/td&gt; &lt;/tr&gt;<br/>");
+
+      }
+      if (jt.endsWith("Timestamp") || jt.endsWith("Date")) {
+        out(sb, " *  &lt;tr&gt;&lt;td&gt;" + col.getComment() + "&lt;/td&gt;&lt;td&gt;"
+            + "&ltc:DateBoxEx ui:field=\"txt" + Strings.upperFirst(col.getName())
+            + "\" &gt;&lt/c:DateBoxEx&gt;" + "&lt;/td&gt;  &lt;td&gt;&lt;/td&gt;  &lt;/tr&gt;<br/>");
+      }
+    }
+
+    out(sb, " * =========== 用于fromUI <br/>");
+    for (int i = 0; i < table.getColumns().getCount(); i++) {
+      Column col = table.getColumns().getAt(i);
+      String jt = col.getJavaType();
+      if (jt.endsWith("String")) {
+        out(sb,
+            " * data.set" + Strings.upperFirst(col.getName()) + "(txt"
+                + Strings.upperFirst(col.getName() + ".getValue());<br/>"));
+
+      }
+      if (jt.endsWith("Timestamp") || jt.endsWith("Date")) {
+        out(sb,
+            " * data.set" + Strings.upperFirst(col.getName()) + "(date"
+                + Strings.upperFirst(col.getName() + ".getValue());<br/>"));
+      }
+    }
+
+    out(sb, " * =========== 用于toUI <br/>");
+    for (int i = 0; i < table.getColumns().getCount(); i++) {
+      Column col = table.getColumns().getAt(i);
+      String jt = col.getJavaType();
+      if (jt.endsWith("String")) {
+        out(sb,
+            " * txt" + Strings.upperFirst(col.getName()) + ".setValue(obj.get"
+                + Strings.upperFirst(col.getName() + "());<br/>"));
+
+      }
+      if (jt.endsWith("Timestamp") || jt.endsWith("Date")) {
+        out(sb,
+            " * date" + Strings.upperFirst(col.getName()) + ".setValue(obj.get"
+                + Strings.upperFirst(col.getName() + "());<br/>"));
+      }
+    }
+
+
     out(sb, " */");
     out(sb, "");
 
@@ -1059,7 +1124,7 @@ public class SchemaBase implements ISchema {
 
     out(sb, "");
     // 输出表明常量
-    out(sb, "  /**\r\n     * 表明. \r\n     */");
+    out(sb, "  /**\r\n  * 表" + table.getComment() + "名称. \r\n     */");
     out(sb,
         "  public static final String TBL_" + table.getName().toUpperCase() + "=\""
             + table.getName() + "\";");
@@ -1095,17 +1160,17 @@ public class SchemaBase implements ISchema {
     out(sb, "");
     for (int i = 0; i < table.getColumns().getCount(); i++) {
       Column col = table.getColumns().getAt(i);
-      out(sb, "  /**\r\n   * 字段" + col.getName() + "在数据中的名称.\r\n   */");
+      out(sb, "  /**\r\n   * " + col.getComment() + " " + col.getName() + "\r\n */");
       out(sb,
           "  public static final String FLD_" + col.getName().toUpperCase() + "=\"" + col.getName()
               + "\";");
       out(sb, "");
-      out(sb, "  /**\r\n   * 获取字段" + col.getName() + "的索引值.\r\n   */");
+      out(sb, "  /**\r\n * " + col.getComment() + " " + col.getName() + "\r\n */");
       out(sb, "  public static final Integer IDX_" + col.getName().toUpperCase() + "=" + i + ";");
 
 
 
-      out(sb, " /**\r\n   * 字段" + col.getName() + ".\r\n   */");
+      out(sb, " /**\r\n   * 字段" + col.getName() + " " + col.getComment() + "\r\n   */");
       if (count == 1) {
         if (col.isPK()) {
           if (col.getJavaType().contains("String")) {
@@ -1123,11 +1188,11 @@ public class SchemaBase implements ISchema {
       } else {
         out(sb, "\t@Column(\"" + col.getName() + "\")");
       }
-      out(sb, "@ApiField(value=\"" + col.getComment() + "\",example=\"\")");
+      out(sb, "  @ApiField(value=\"" + col.getComment() + "\",example=\"\")");
       out(sb, "  private " + col.getJavaType() + " " + col.getName() + ";");
       out(sb, "");
       out(sb, "  /**");
-      out(sb, "   * 返回字段" + col.getName() + "的值.");
+      out(sb, "   * 返回字段" + col.getName() + " " + col.getComment() + "的值.");
       out(sb,
           "   * @return " + col.getName() + "  " + col.getComment() + "  " + col.getDatabaseType());
       out(sb, "  */");
@@ -1136,7 +1201,7 @@ public class SchemaBase implements ISchema {
       out(sb, "  }\r\n");
 
       out(sb, "  /**");
-      out(sb, "   * 设置字段" + col.getName() + "的值.");
+      out(sb, "   * 设置字段" + col.getName() + " " + col.getComment() + "的值.");
       out(sb,
           "   * @param " + col.getName().toLowerCase() + "  " + col.getComment() + "  "
               + col.getDatabaseType());
@@ -1149,7 +1214,6 @@ public class SchemaBase implements ISchema {
     }
     out(sb, "}");
   }
-
 
   /**
    * Gen nutz bean.

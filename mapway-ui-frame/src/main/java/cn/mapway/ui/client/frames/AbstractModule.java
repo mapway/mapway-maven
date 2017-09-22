@@ -236,9 +236,9 @@ public abstract class AbstractModule extends BaseAbstractModule implements IModu
       IModule module = null;
       if (mi == null) {
         // 没有找到子模块
-        mi = getModuleFactory().findModuleInfo(UnAuthorityModule.SYS_UNAUTHORITY_MODULE);
+        mi = getModuleFactory().findModuleInfo(UnAuthorityModule.MODULE_CODE);
         parameter.put(UnAuthorityModule.PARA_MODULE_NAME, code);
-        module = getModuleFactory().createModule(UnAuthorityModule.SYS_UNAUTHORITY_MODULE, true);
+        module = getModuleFactory().createModule(UnAuthorityModule.MODULE_CODE, true);
       } else {
         module = getModuleFactory().createModule(mi.code, true);
         syncSubModuleList(mi.code);
