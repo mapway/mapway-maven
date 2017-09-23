@@ -37,7 +37,21 @@ public interface IModule {
    * 
    * @param tools
    */
-  void updateTools(Widget... tools);
+  boolean updateTools(Widget... tools);
+
+  /**
+   * 用于模块向父模块注册工具栏按钮
+   * 
+   * @param tools
+   */
+  boolean appendTools(Widget tools);
+
+  /**
+   * 用于模块向父模块注册工具栏按钮
+   * 
+   * @param tools
+   */
+  boolean appendTools(Widget[] tools);
 
   /**
    * 获取模块信息

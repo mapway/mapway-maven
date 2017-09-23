@@ -307,14 +307,43 @@ public abstract class AbstractModule extends BaseAbstractModule implements IModu
    * 更新按钮情况
    */
   @Override
-  public void updateTools(Widget... toolsWidget) {
-    super.updateTools(toolsWidget);
-    holder.tools.clear();
-    for (Widget w : toolsWidget) {
-      holder.tools.add(w);
+  public boolean updateTools(Widget... toolsWidget) {
+    boolean b = super.updateTools(toolsWidget);
+    if (b == false) {
+      holder.tools.clear();
+      for (Widget w : toolsWidget) {
+        holder.tools.add(w);
+      }
     }
+    return true;
   }
 
+
+  /**
+   * 追加按钮
+   */
+  @Override
+  public boolean appendTools(Widget tools) {
+    boolean b = super.appendTools(tools);
+    if (b == false) {
+      holder.tools.add(tools);
+    }
+    return true;
+  };
+
+  /**
+   * 追加按钮数组
+   */
+  @Override
+  public boolean appendTools(Widget[] tools) {
+    boolean b = super.appendTools(tools);
+    if (b == false) {
+      for (int i = 0; i < tools.length; i++) {
+        holder.tools.add(tools[i]);
+      }
+    }
+    return true;
+  };
 
   Widget content = null;
 
