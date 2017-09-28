@@ -19,7 +19,7 @@ public class TextBoxEx extends TextBox implements IValidator {
   }
 
   private String msg = "";
-  private RegExp regex = null;
+  protected RegExp regex = null;
   private boolean required = false;
 
   @Override
@@ -43,21 +43,65 @@ public class TextBoxEx extends TextBox implements IValidator {
 
   @Override
   public boolean isValidate() {
+    String v = getValue();
+
     if (required) {
-      String v = getValue();
+
+      if (minLength != null) {
+        if (v == null || v.length() == 0 || v.length() < minLength) {
+          return false;
+        }
+      }
+      if (maxLength != null) {
+        if (v == null || v.length() == 0 || v.length() > maxLength) {
+          return false;
+        }
+      }
+
       if (v == null || v.length() == 0) {
         return false;
       } else {
         return regex.test(v);
       }
     } else {
-      String v = getValue();
       if (v == null || v.length() == 0) {
         return true;
-      } else {
-        return regex.test(v);
       }
+
+      if (minLength != null) {
+        if (v.length() < minLength) {
+          return false;
+        }
+      }
+      if (maxLength != null) {
+        if (v.length() > maxLength) {
+          return false;
+        }
+      }
+      return true;
     }
+  }
+
+  Integer minLength = null;
+  Integer maxLength = null;
+
+
+  /**
+   * 设置最小长度
+   * @param minLength
+   */
+  void setMinLength(int minLength) {
+    this.minLength = minLength;
+
+  }
+
+  /**
+   * 设置最大长度
+   * @param maxLength
+   */
+  @Override
+  public void setMaxLength(int maxLength) {
+    this.maxLength = maxLength;
   }
 
 }

@@ -28,6 +28,25 @@ public class NumberTextBox extends TextBoxEx implements KeyUpHandler {
     setPattern("[^\\d\\.\\-]");
   }
 
+  @Override
+  public boolean isValidate() {
+    String v = getValue();
+    if (regex.test(v)) {
+      Double d = Double.valueOf(v);
+      if (this.min != null) {
+        if (d < this.min) {
+          return false;
+        }
+      }
+      if (this.max != null) {
+        if (d > this.max) {
+          return false;
+        }
+      }
+      return true;
+    }
+    return false;
+  }
 
   @Override
   public void onKeyUp(KeyUpEvent event) {
@@ -42,4 +61,22 @@ public class NumberTextBox extends TextBoxEx implements KeyUpHandler {
     return value.matches(reg);
   }
 
+  Double min = null;
+  Double max = null;
+
+  /**
+   * 设置最小值
+   * @param min
+   */
+  void setMin(double min) {
+    this.min = min;
+  }
+
+  /**
+   * 设置最大值
+   * @param max
+   */
+  void setMax(double max) {
+    this.max = max;
+  }
 }
