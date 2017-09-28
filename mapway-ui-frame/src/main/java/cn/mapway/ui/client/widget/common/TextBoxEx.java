@@ -90,7 +90,7 @@ public class TextBoxEx extends TextBox implements IValidator {
    * 设置最小长度
    * @param minLength
    */
-  void setMinLength(int minLength) {
+  public void setMinLength(int minLength) {
     this.minLength = minLength;
 
   }
@@ -102,6 +102,7 @@ public class TextBoxEx extends TextBox implements IValidator {
   @Override
   public void setMaxLength(int maxLength) {
     this.maxLength = maxLength;
+    super.setMaxLength(maxLength);
   }
 
 }
