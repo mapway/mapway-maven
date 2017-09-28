@@ -68,7 +68,7 @@ public class NumberTextBox extends TextBoxEx implements KeyUpHandler {
    * 设置最小值
    * @param min
    */
-  void setMin(double min) {
+  public void setMin(double min) {
     this.min = min;
   }
 
@@ -76,7 +76,7 @@ public class NumberTextBox extends TextBoxEx implements KeyUpHandler {
    * 设置最大值
    * @param max
    */
-  void setMax(double max) {
+  public void setMax(double max) {
     this.max = max;
   }
 }
