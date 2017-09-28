@@ -25,7 +25,7 @@ public class NumberTextBox extends TextBoxEx implements KeyUpHandler {
 
   private void init() {
     this.addKeyUpHandler(this);
-    setPattern("[^\\d\\.\\-]");
+    setPattern("^(-?\\d+)(\\.\\d+){0,1}$");
   }
 
   @Override
@@ -79,4 +79,6 @@ public class NumberTextBox extends TextBoxEx implements KeyUpHandler {
   public void setMax(double max) {
     this.max = max;
   }
+
+
 }

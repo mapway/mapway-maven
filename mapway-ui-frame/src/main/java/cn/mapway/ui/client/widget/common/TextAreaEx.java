@@ -57,7 +57,7 @@ public class TextAreaEx extends TextArea implements IValidator {
       if (v == null || v.length() == 0) {
         return false;
       } else {
-        return regex.test(v);
+        return regex == null ? true : regex.test(v);
       }
     } else {
       if (v == null || v.length() == 0) {
