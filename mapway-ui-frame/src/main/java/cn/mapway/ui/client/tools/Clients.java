@@ -126,6 +126,9 @@ public class Clients {
    * @return the date
    */
   public static Date parseDate(String value, String format) {
+    if (value == null || value.length() == 0) {
+      return new Date();
+    }
     DateTimeFormat df;
     if (format == null || format.length() == 0) {
       df = getDateTimeFormat();

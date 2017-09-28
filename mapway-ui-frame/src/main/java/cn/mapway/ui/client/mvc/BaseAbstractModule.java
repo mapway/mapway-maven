@@ -54,8 +54,7 @@ public abstract class BaseAbstractModule extends MessageComposite implements IMo
   @Override
   public boolean updateTools(Widget... tools) {
     if (mParentModule != null) {
-      mParentModule.updateTools(tools);
-      return true;
+      return mParentModule.updateTools(tools);
     }
     return false;
   }
@@ -63,8 +62,8 @@ public abstract class BaseAbstractModule extends MessageComposite implements IMo
   @Override
   public boolean appendTools(Widget tools) {
     if (mParentModule != null) {
-      mParentModule.appendTools(tools);
-      return true;
+      return mParentModule.appendTools(tools);
+
     }
     return false;
   }
@@ -72,8 +71,8 @@ public abstract class BaseAbstractModule extends MessageComposite implements IMo
   @Override
   public boolean appendTools(Widget[] tools) {
     if (mParentModule != null) {
-      mParentModule.appendTools(tools);
-      return true;
+      return mParentModule.appendTools(tools);
+
     }
     return false;
   }

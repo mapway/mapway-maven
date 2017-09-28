@@ -1,111 +1,146 @@
 package cn.mapway.ui.client.widget.common;
 
+import com.google.gwt.regexp.shared.RegExp;
 import com.google.gwt.user.client.ui.ListBox;
 
-public class ListBoxEx extends ListBox{
-	public ListBoxEx() {
-		setStyleName("gwtEx-ListBox");
-	}
-	
-	private Object data;
+public class ListBoxEx extends ListBox implements IValidator {
 
-	  public Object getData() {
-	    return data;
-	  }
+  private String msg = "";
+  private RegExp regex = null;
+  private boolean required = false;
 
-	  public void setData(Object data) {
-	    this.data = data;
-	  }
+  @Override
+  public String getMessage() {
+    return msg;
+  }
 
-	  public String getTag() {
-	    return tag;
-	  }
+  @Override
+  public void setPattern(String pattern) {
+    if (pattern != null && pattern.length() > 0) {
+      regex = RegExp.compile(pattern);
+    } else {
+      regex = null;
+    }
+  }
 
-	  public void setTag(String tag) {
-	    this.tag = tag;
-	  }
+  @Override
+  public void setRequired(boolean b) {
+    required = b;
+  }
 
-	  private String tag;
-	  private String initValue;
+  @Override
+  public boolean isValidate() {
+    return true;
+  }
 
-	  private String initName;
+  @Override
+  public void setMessage(String msg) {
+    this.msg = msg;
+  }
 
-	  /**
-	   * 选中某个值
-	   * 
-	   * @param value
-	   */
-	  public void selectValue(String value) {
-	    this.initValue = value;
-	    if (this.initValue != null) {
-	      for (int i = 0; i < this.getItemCount(); i++) {
-	        String v = this.getValue(i);
-	        if (v.equals(value)) {
-	          this.setSelectedIndex(i);
-	          break;
-	        }
-	      }
-	    }
-	  }
+  public ListBoxEx() {
+    setStyleName("gwtEx-ListBox");
+  }
 
-	  /**
-	   * 选中某个值
-	   * 
-	   * @param value
-	   */
-	  public void selectName(String name) {
-	    this.initName = name;
-	    if (this.initName != null) {
-	      for (int i = 0; i < this.getItemCount(); i++) {
-	        String v = this.getItemText(i);
-	        if (v.equals(name)) {
-	          this.setSelectedIndex(i);
-	          break;
-	        }
-	      }
-	    }
-	  }
+  private Object data;
 
-	  /**
-	   * 选中初始化名字
-	   */
-	  public boolean selectInitName() {
-	    if (getInitName() != null && getInitName().length() > 0) {
-	      selectName(getInitName());
-	      return true;
-	    }
-	    return false;
-	  }
+  public Object getData() {
+    return data;
+  }
 
-	  /**
-	   * 选中初始化值
-	   */
-	  public boolean selectInitValue() {
-	    if (getInitValue() != null && getInitValue().length() > 0) {
-	      selectValue(getInitValue());
-	      return true;
-	    }
-	    return false;
-	  }
+  public void setData(Object data) {
+    this.data = data;
+  }
 
-	  public String getInitValue() {
-	    return initValue;
-	  }
+  public String getTag() {
+    return tag;
+  }
 
-	  public void setInitValue(String initValue) {
-	    this.initValue = initValue;
-	  }
+  public void setTag(String tag) {
+    this.tag = tag;
+  }
 
-	  public void setInitName(String initName) {
-	    this.initName = initName;
-	  }
+  private String tag;
+  private String initValue;
 
-	  public String getInitName() {
-	    return this.initName;
-	  }
+  private String initName;
 
-	  public void fire() {
+  /**
+   * 选中某个值
+   * 
+   * @param value
+   */
+  public void selectValue(String value) {
+    this.initValue = value;
+    if (this.initValue != null) {
+      for (int i = 0; i < this.getItemCount(); i++) {
+        String v = this.getValue(i);
+        if (v.equals(value)) {
+          this.setSelectedIndex(i);
+          break;
+        }
+      }
+    }
+  }
 
-	  }
+  /**
+   * 选中某个值
+   * 
+   * @param value
+   */
+  public void selectName(String name) {
+    this.initName = name;
+    if (this.initName != null) {
+      for (int i = 0; i < this.getItemCount(); i++) {
+        String v = this.getItemText(i);
+        if (v.equals(name)) {
+          this.setSelectedIndex(i);
+          break;
+        }
+      }
+    }
+  }
+
+  /**
+   * 选中初始化名字
+   */
+  public boolean selectInitName() {
+    if (getInitName() != null && getInitName().length() > 0) {
+      selectName(getInitName());
+      return true;
+    }
+    return false;
+  }
+
+  /**
+   * 选中初始化值
+   */
+  public boolean selectInitValue() {
+    if (getInitValue() != null && getInitValue().length() > 0) {
+      selectValue(getInitValue());
+      return true;
+    }
+    return false;
+  }
+
+  public String getInitValue() {
+    return initValue;
+  }
+
+  public void setInitValue(String initValue) {
+    this.initValue = initValue;
+  }
+
+  public void setInitName(String initName) {
+    this.initName = initName;
+  }
+
+  public String getInitName() {
+    return this.initName;
+  }
+
+  public void fire() {
+
+  }
 
 }
