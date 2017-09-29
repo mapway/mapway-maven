@@ -123,13 +123,12 @@ public class ModuleFactoryGenerator extends Generator {
       if (item.icon.equals(DEFAULT_ICON)) {
         sbModules.append("new ModuleInfo(\"" + item.name + "\",\"" + item.code + "\",\""
             + item.summary + "\"," + (item.isPublic ? "true" : "false") + ",DEFAULT_ICON,\""
-            + item.hash + "\"," + item.isVisible + ")\r\n");
+            + item.hash + "\"," + item.isVisible + ",\"" + item.group + "\")\r\n");
       } else {
         sbModules.append("new ModuleInfo(\"" + item.name + "\",\"" + item.code + "\",\""
             + item.summary + "\"," + (item.isPublic ? "true" : "false") + ",\"" + item.icon
-            + "\",\"" + item.hash + "\"," + item.isVisible + ")\r\n");
+            + "\",\"" + item.hash + "\"," + item.isVisible + ",\"" + item.group + "\")\r\n");
       }
-
       sb.append("\r\n\t private static IModule " + item.code + "=null;\r\n");
 
       count++;
@@ -246,7 +245,7 @@ public class ModuleFactoryGenerator extends Generator {
       isPublic = marker.isPublic();
       summary = marker.summary();
       isVisible = marker.visible();
-      group = marker.group();
+      group = marker.group() == null ? "" : marker.group();
     }
     if (modulecode == null || modulecode.length() == 0) {
       modulecode = classType.getSimpleSourceName();

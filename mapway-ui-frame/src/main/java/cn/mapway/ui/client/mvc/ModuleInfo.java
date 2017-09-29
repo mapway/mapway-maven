@@ -61,6 +61,11 @@ public class ModuleInfo {
     this.isVisible = visible;
   }
 
+  public ModuleInfo(String name, String code, String summary, boolean isPublic, String icon,
+      String hash, boolean visible, String group) {
+    this(name, code, summary, isPublic, icon, hash, visible);
+    this.group = group;
+  }
 
   public ModuleInfo copy() {
     ModuleInfo n = new ModuleInfo(name, code, summary, isPublic, icon, hash, isVisible);
