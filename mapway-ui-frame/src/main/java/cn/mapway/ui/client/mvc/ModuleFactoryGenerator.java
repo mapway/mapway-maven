@@ -239,12 +239,14 @@ public class ModuleFactoryGenerator extends Generator {
     String summary = "";
     boolean isPublic = false;
     boolean isVisible = true;
+    String group = "";
     if (marker != null) {
       modulecode = marker.value();
       modulename = marker.name();
       isPublic = marker.isPublic();
       summary = marker.summary();
       isVisible = marker.visible();
+      group = marker.group();
     }
     if (modulecode == null || modulecode.length() == 0) {
       modulecode = classType.getSimpleSourceName();
@@ -263,6 +265,7 @@ public class ModuleFactoryGenerator extends Generator {
     item.name = modulename;
     item.isPublic = isPublic;
     item.summary = summary;
+    item.group = group;
     String md5 = Lang.md5(item.code);
     item.hash = md5.substring(md5.length() - 6);
     item.isVisible = isVisible;
