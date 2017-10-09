@@ -204,6 +204,11 @@ table td , div , button{
     text-indent: 12px;
 }
 
+.gwtEx-ListBox-disabled{
+	background-color: #999;
+	color:#555;	
+}
+
 .gwtEx-TextBox{
 	display: block;
     width: 100%;

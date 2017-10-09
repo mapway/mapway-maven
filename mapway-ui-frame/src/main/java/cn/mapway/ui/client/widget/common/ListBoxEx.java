@@ -143,4 +143,13 @@ public class ListBoxEx extends ListBox implements IValidator {
 
   }
 
+  public void setDisabled(boolean disabled) {
+    String disabledStyle = "disabled";
+    if (disabled) {
+      addStyleDependentName(disabledStyle);
+    } else {
+      removeStyleDependentName(disabledStyle);
+    }
+  }
+
 }
