@@ -218,8 +218,8 @@ table td , div , button{
     text-indent: 12px;
 }
 .gwtEx-TextBox-readonly {
-  color: #888;
-  background-color: #e8e8e8;
+  color: #555;
+  background-color: #999;
 }
 
 .gwtEx-Table{
@@ -241,7 +241,6 @@ table td , div , button{
 .gwtEx-Table td , .gwtEx-Table th{
 	height: 32px;
 	line-height: 32px;
-	text-indent: 10px;
 	text-align: center;
 }
 
