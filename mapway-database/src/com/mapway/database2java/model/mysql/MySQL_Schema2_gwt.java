@@ -101,13 +101,13 @@ public class MySQL_Schema2_gwt extends SchemaBase {
       if (!tn.equals(old)) {
         old = tn;
         tab = new Table();
-        tab.setName(tn.toUpperCase());
+        tab.setName(tn);
         tab.setComment(tc);
         cols = tab.getColumns();
         getTables().addTable(tab);
       }
       Column col = new Column();
-      col.setName(cn.toUpperCase());
+      col.setName(cn);
       col.setDatabaseType(ct);
       col.setComment(cc);
 
