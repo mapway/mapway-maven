@@ -154,7 +154,7 @@ public class MySQL_Schema2_gwt extends SchemaBase {
         old = tn;
 
         view = new View();
-        view.setName(tn.toUpperCase());
+        view.setName(tn);
         view.setComment(tc);
         cols = view.getColumns();
         this.getViews().addView(view);
@@ -162,7 +162,7 @@ public class MySQL_Schema2_gwt extends SchemaBase {
       }
 
       Column col = new Column();
-      col.setName(cn.toUpperCase());
+      col.setName(cn);
       col.setDatabaseType(ct);
       col.setComment(cc);
       int l = 0;
