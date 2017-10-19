@@ -78,4 +78,6 @@ public interface IConfigure {
    */
   public String getNormalNutz();
 
+  public String getSimple();
+
 }

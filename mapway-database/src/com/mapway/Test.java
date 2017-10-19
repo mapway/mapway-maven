@@ -8,6 +8,11 @@ public class Test {
   public static void main(String[] args) {
 
 
+    String USER = "mapway-wiki";
+    String SCHEMA = "mapway-wiki";
+    String PWD = "mapway-wiki";
+    String DRIVER = "org.mysql.jdbc.Driver";
+    String JDBCURL = "jdbc:mysql://10.39.0.150/mapway-wiki";
 
     // args[index++] = "driver=org.postgresql.Driver";
     // args[index++] = "jdbcurl=jdbc:postgresql://localhost/hangye";
@@ -24,12 +29,12 @@ public class Test {
 
       @Override
       public String getUser() {
-        return "biguser";
+        return USER;
       }
 
       @Override
       public String getSchema() {
-        return "public";
+        return SCHEMA;
       }
 
       @Override
@@ -40,7 +45,7 @@ public class Test {
       @Override
       public String getPassword() {
 
-        return "biguser";
+        return PWD;
       }
 
       @Override
@@ -60,16 +65,21 @@ public class Test {
 
       @Override
       public String getJDBCURL() {
-        return "jdbc:postgresql://pg.ennwifi.cn/bigdata";
+        return JDBCURL;
       }
 
       @Override
       public String getDriver() {
-        return "org.postgresql.Driver";
+        return DRIVER;
       }
 
       @Override
       public String getNormalNutz() {
+        return "1";
+      }
+
+      @Override
+      public String getSimple() {
         return "1";
       }
     };
@@ -90,5 +100,4 @@ public class Test {
     app.gen(config);
 
   }
-
 }

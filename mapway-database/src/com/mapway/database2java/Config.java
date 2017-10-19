@@ -175,4 +175,9 @@ public class Config implements IConfigure {
   public String getNormalNutz() {
     return line.getOptionValue("normalNutz", "");
   }
+
+  @Override
+  public String getSimple() {
+    return line.getOptionValue("simple", "");
+  }
 }

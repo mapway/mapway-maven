@@ -1381,6 +1381,148 @@ public class SchemaBase implements ISchema {
     out(sb, "}");
   }
 
+  public void genSimple(Configure conf, ITable table, StringBuilder sb) {
+    sb.append(this.getCopyright());
+
+    out(sb, "");
+
+    out(sb, "package " + conf.getPackage() + ";\r\n");
+    out(sb, "import java.util.Date;\r\n");
+    out(sb, "import org.nutz.dao.entity.annotation.*;");
+    out(sb, "import java.math.BigDecimal;");
+    out(sb, "import cn.mapway.document.annotation.*;");
+
+    out(sb, "");
+    out(sb, "/**");
+    out(sb, " * 数据库表 " + table.getComment() + "<br/>");
+    out(sb, " * @author zhangjsf@enn.cn");
+    out(sb, " * <b>字段列表</b><br/>");
+    for (int i = 0; i < table.getColumns().getCount(); i++) {
+      Column col = table.getColumns().getAt(i);
+      out(sb, " *  " + col.getJavaType() + " " + col.getName() + " //" + col.getComment() + "<br/>");
+    }
+    out(sb, " */");
+    out(sb, "");
+
+    out(sb, "@Table(\"" + table.getName() + "\")");
+    out(sb, "@Doc(\"" + table.getName() + "(" + table.getComment() + ")\")");
+
+    int count = 0;
+    for (int i = 0; i < table.getColumns().getCount(); i++) {
+      Column col = table.getColumns().getAt(i);
+      if (col.isPK()) {
+        count++;
+      }
+    }
+
+    if (count > 1) {
+      StringBuilder pk = new StringBuilder();
+      pk.append("@PK({");
+      for (int i = 0; i < table.getColumns().getCount(); i++) {
+        Column col = table.getColumns().getAt(i);
+        if (col.isPK()) {
+          if (pk.length() > 5) {
+            pk.append(",");
+          }
+          pk.append("\"").append(col.getName()).append("\"");
+        }
+      }
+
+      pk.append("})");
+      out(sb, pk.toString());
+    }
+
+    out(sb, "public class " + table.getJavaName() + "{");
+
+
+    out(sb, "");
+    // 输出表明常量
+    out(sb, "  /**\r\n  * 表" + table.getComment() + "名称. \r\n     */");
+    out(sb,
+        "  public static final String TBL_" + table.getName().toUpperCase() + "=\""
+            + table.getName() + "\";");
+
+    out(sb, "  public " + table.getJavaName() + "() {");
+    out(sb, "  }");
+
+
+    for (int i = 0; i < table.getColumns().getCount(); i++) {
+      Column col = table.getColumns().getAt(i);
+      out(sb, "  /**\r\n   * " + col.getComment() + " " + col.getName() + "\r\n */");
+      out(sb,
+          "  public static final String FLD_" + col.getName().toUpperCase() + "=\"" + col.getName()
+              + "\";");
+      out(sb, "");
+
+
+
+      out(sb, " /**\r\n   * 字段" + col.getName() + " " + col.getComment() + "\r\n   */");
+      if (count == 1) {
+        if (col.isPK()) {
+          if (col.getJavaType().contains("String")) {
+            out(sb, "\t@Name");
+          } else {
+            if (col.isAuto()) {
+              out(sb, "\t@Id");
+            } else {
+              out(sb, "\t@Id(auto = false)");
+            }
+          }
+        } else {
+          out(sb, "\t@Column(\"" + col.getName() + "\")");
+        }
+      } else {
+        out(sb, "\t@Column(\"" + col.getName() + "\")");
+      }
+      out(sb, "  @ApiField(value=\"" + col.getComment() + "\",example=\"\")");
+      out(sb, "  private " + col.getJavaType() + " " + col.getName() + ";");
+      out(sb, "");
+      out(sb, "  /**");
+      out(sb, "   * 返回字段" + col.getName() + " " + col.getComment() + "的值.");
+      out(sb,
+          "   * @return " + col.getName() + "  " + col.getComment() + "  " + col.getDatabaseType());
+      out(sb, "  */");
+      out(sb, "  public " + col.getJavaType() + " get" + Strings.upperFirst(col.getName()) + "() {");
+      out(sb, "    return " + col.getName() + ";");
+      out(sb, "  }\r\n");
+
+      out(sb, "  /**");
+      out(sb, "   * 设置字段" + col.getName() + " " + col.getComment() + "的值.");
+      out(sb,
+          "   * @param " + col.getName().toLowerCase() + "  " + col.getComment() + "  "
+              + col.getDatabaseType());
+      out(sb, "   */");
+      out(sb, "  public void set" + Strings.upperFirst(col.getName()) + "(" + col.getJavaType()
+          + " " + col.getName().toLowerCase() + ") {");
+      out(sb, "    this." + col.getName() + "=" + col.getName().toLowerCase() + ";");
+
+      out(sb, "  }\r\n");
+    }
+    out(sb, "}");
+
+  }
+
+  @Override
+  public void exportSimpleBean(Configure conf) {
+    String fileName = conf.getFilePath();
+    StringBuilder sb;
+    Tables tables = getTables();
+    for (int i = 0; i < tables.getCount(); i++) {
+      ITable t = tables.getAt(i);
+      sb = new StringBuilder();
+
+      genSimple(conf, t, sb);
+      writeToFile(fileName, t.getJavaName() + ".java", sb.toString());
+    }
+    Tables views = getTables();
+    for (int i = 0; i < tables.getCount(); i++) {
+      ITable t = views.getAt(i);
+      sb = new StringBuilder();
+
+      genSimple(conf, t, sb);
+      writeToFile(fileName, t.getJavaName() + ".java", sb.toString());
+    }
+  }
 
   public static void main(String[] args) {
 

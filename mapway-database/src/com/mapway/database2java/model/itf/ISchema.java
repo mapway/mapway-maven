@@ -134,4 +134,6 @@ public interface ISchema {
    * @param conf the conf
    */
   public void exportNormalBean(Configure conf);
+
+  public void exportSimpleBean(Configure conf);
 }

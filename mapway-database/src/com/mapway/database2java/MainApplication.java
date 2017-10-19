@@ -85,6 +85,13 @@ public class MainApplication {
       System.out.println("Database Connected and fetch successful");
       System.out.println("Export Path:" + configure.getPath());
 
+      if (config.getSimple() != null && config.getSimple().equals("1")) {
+        Configure conf = configure.copy();
+        schema.exportSimpleBean(conf);
+        System.out.println("gen Simple OK!");
+        return;
+      }
+
       if (config.getNormalNutz() != null && config.getNormalNutz().equals("1")) {
         Configure conf = configure.copy();
         schema.exportNormalBean(conf);

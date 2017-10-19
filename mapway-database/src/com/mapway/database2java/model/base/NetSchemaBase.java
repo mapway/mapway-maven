@@ -523,4 +523,10 @@ public class NetSchemaBase implements ISchema {
     // TODO Auto-generated method stub
 
   }
+
+  @Override
+  public void exportSimpleBean(Configure conf) {
+    // TODO Auto-generated method stub
+
+  }
 }
