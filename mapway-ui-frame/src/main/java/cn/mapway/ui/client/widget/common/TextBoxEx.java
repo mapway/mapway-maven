@@ -104,5 +104,4 @@ public class TextBoxEx extends TextBox implements IValidator {
     this.maxLength = maxLength;
     super.setMaxLength(maxLength);
   }
-
 }
