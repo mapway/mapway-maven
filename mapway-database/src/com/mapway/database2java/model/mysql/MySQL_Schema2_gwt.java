@@ -105,6 +105,7 @@ public class MySQL_Schema2_gwt extends SchemaBase {
         tab.setComment(tc);
         cols = tab.getColumns();
         getTables().addTable(tab);
+        System.out.println("table " + tn);
       }
       Column col = new Column();
       col.setName(cn);
