@@ -77,7 +77,7 @@ public class MySQL_Schema2_gwt extends SchemaBase {
    */
   @Override
   public boolean fetchSchema() {
-
+    super.fetchSchema();
     Result rs;
     try {
       rs = a.execute(this.getSQLClause().getTableSQL());

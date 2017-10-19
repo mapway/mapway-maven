@@ -67,6 +67,10 @@ public class GenBean extends AbstractMojo {
   @Parameter(defaultValue = "0", property = "normalNutz", required = true)
   private String normalNutz;
 
+  /** The nutz. */
+  @Parameter(defaultValue = "0", property = "simple", required = true)
+  private String simple;
+
   /*
    * (non-Javadoc)
    * 
@@ -126,6 +130,13 @@ public class GenBean extends AbstractMojo {
       public String getNormalNutz() {
         return normalNutz;
       }
+
+      @Override
+      public String getSimple() {
+        return simple;
+      }
+
+
     };
 
     TableBuilder tb = new TableBuilder();

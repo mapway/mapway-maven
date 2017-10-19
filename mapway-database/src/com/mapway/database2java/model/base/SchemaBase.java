@@ -72,6 +72,7 @@ public class SchemaBase implements ISchema {
     packages = new Packages();
     views = new Views();
     m_configure = configure;
+    pks = new Object[0][0];
   }
 
   /*
