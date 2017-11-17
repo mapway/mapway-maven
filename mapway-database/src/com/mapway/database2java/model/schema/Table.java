@@ -103,7 +103,7 @@ public class Table implements ITable {
    */
   @Override
   public String getJavaName() {
-    return this.name + "Obj";
+    return this.name.toUpperCase() + "Obj";
   }
 
   /*

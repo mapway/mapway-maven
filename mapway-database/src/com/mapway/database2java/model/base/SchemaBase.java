@@ -1224,9 +1224,9 @@ public class SchemaBase implements ISchema {
    * @param sb the sb
    */
   private void genNutzBean(Configure conf, ITable table, StringBuilder sb) {
-    sb.append(this.getCopyright());
+   // sb.append(this.getCopyright());
 
-    out(sb, "");
+   // out(sb, "");
 
     out(sb, "package " + conf.getPackage() + ";\r\n");
     out(sb, "import java.util.Date;\r\n");
