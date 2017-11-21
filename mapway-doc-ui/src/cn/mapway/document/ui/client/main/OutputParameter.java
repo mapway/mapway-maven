@@ -5,12 +5,11 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import cn.mapway.document.ui.client.module.GenInfo;
-import cn.mapway.document.ui.client.module.ObjectInfo;
-
 import com.google.gwt.core.client.GWT;
+import com.google.gwt.event.logical.shared.HasSelectionHandlers;
 import com.google.gwt.event.logical.shared.SelectionEvent;
 import com.google.gwt.event.logical.shared.SelectionHandler;
+import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.ui.Anchor;
@@ -19,7 +18,11 @@ import com.google.gwt.user.client.ui.HTMLPanel;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.Widget;
 
-public class OutputParameter extends Composite {
+import cn.mapway.document.ui.client.module.GenInfo;
+import cn.mapway.document.ui.client.module.ObjectInfo;
+
+public class OutputParameter extends Composite implements
+HasSelectionHandlers<ObjectInfo>  {
 
 	private static OutputParameterUiBinder uiBinder = GWT
 			.create(OutputParameterUiBinder.class);
@@ -29,6 +32,7 @@ public class OutputParameter extends Composite {
 
 	public OutputParameter() {
 		initWidget(uiBinder.createAndBindUi(this));
+		tbl.addSelectionHandler(fieldTypeSelectionHandler);
 	}
 
 	@UiField
@@ -147,4 +151,17 @@ public class OutputParameter extends Composite {
 
 	/** The gens. */
 	List<GenInfo> gens;
+
+	/* (non-Javadoc)
+	 * @see com.google.gwt.event.logical.shared.HasSelectionHandlers#addSelectionHandler(com.google.gwt.event.logical.shared.SelectionHandler)
+	 */
+	@Override
+	public HandlerRegistration addSelectionHandler(
+			SelectionHandler<ObjectInfo> arg0) {
+		return addHandler(arg0, SelectionEvent.getType());
+	}
+
+	
+	
+
 }

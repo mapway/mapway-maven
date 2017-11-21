@@ -117,6 +117,15 @@ public class ObjectInfo extends JavaScriptObject {
   public final native JsArray<ObjectInfo> fields()/*-{
 		return this.fields || [];
   }-*/;
+  
+  /**
+   * Fields.
+   *
+   * @return the js array
+   */
+  public final native JsArray<ObjectInfo> refs()/*-{
+		return this.refs || [];
+  }-*/;
 
   /**
    * Json.

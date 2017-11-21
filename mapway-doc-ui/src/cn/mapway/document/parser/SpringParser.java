@@ -6,6 +6,7 @@ import java.lang.reflect.Method;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -36,6 +37,7 @@ import cn.mapway.document.annotation.Code;
 import cn.mapway.document.annotation.Codes;
 import cn.mapway.document.annotation.DevelopmentState;
 import cn.mapway.document.annotation.Doc;
+import cn.mapway.document.annotation.RuntimeType;
 import cn.mapway.document.helper.Scans;
 import cn.mapway.document.module.ApiDoc;
 import cn.mapway.document.module.Entry;
@@ -605,7 +607,7 @@ public class SpringParser {
 					c = (Class<?>) type;
 				}
 				f.set(instance, list);
-				fi.type = "List<"+c.getSimpleName()+">";
+				fi.type = "List<" + c.getSimpleName() + ">";
 				if (!isMap(c)) {
 					Object cinstance = newInstance(c);
 					// 处理 DOc fi.summary;
@@ -645,6 +647,22 @@ public class SpringParser {
 					}
 					list.add(mdata);
 				}
+			} else if (isGeneric(f.getType())) {
+				// 是一个泛型类 处理特殊的注解
+				fi.type = "Object";
+				RuntimeType rt = f.getAnnotation(RuntimeType.class);
+				if (rt == null) {
+					// 程序员没有添加注解，需要补充完整
+					fi.summary = "请程序员添加注解 RuntimeType";
+				} else {
+					// 处理程序员添加的注解
+					for (int i = 0; i < rt.value().length; i++) {
+						Class<?> cls = rt.value()[i];
+						fi.refs.add(handleParameter(cls, ""));
+					}
+				}
+				f.set(instance, new Object());
+
 			} else {
 				// 该字段是一个对象类，循环处理此类
 				int count = deeps.getPreLevelCount(f.getType().getName(), deeps.getLevel());
@@ -680,6 +698,24 @@ public class SpringParser {
 		return null;
 	}
 
+	private Doc getClassDoc(Class<?> cls) {
+		Doc doc = cls.getAnnotation(Doc.class);
+		return doc;
+	}
+
+	/**
+	 * 是泛型
+	 * 
+	 * @param c
+	 * @return
+	 */
+	private boolean isGeneric(Class<?> c) {
+		if (c.getSimpleName().equals("Object")) {
+			return true;
+		}
+		return false;
+	}
+
 	/**
 	 * 是Map
 	 * 
@@ -687,7 +723,6 @@ public class SpringParser {
 	 * @return
 	 */
 	private boolean isMap(Class<?> c) {
-		System.out.println(c.getSimpleName());
 		if (c.isAssignableFrom(Map.class)) {
 			return true;
 		}
@@ -734,6 +769,9 @@ public class SpringParser {
 	 * @return true, if is list
 	 */
 	private boolean isList(Field f) {
+		if (f.getType().getSimpleName().equals("Object")) {
+			return false;
+		}
 		if (f.getType().isAssignableFrom(List.class)) {
 			return true;
 		}
@@ -748,8 +786,11 @@ public class SpringParser {
 	 * @return the generic type
 	 */
 	private Type getGenericType(Field f) {
-		ParameterizedType pt = (ParameterizedType) f.getGenericType();
-		return pt.getActualTypeArguments()[0];
+		if (f.getGenericType() instanceof ParameterizedType) {
+			ParameterizedType pt = (ParameterizedType) f.getGenericType();
+			return pt.getActualTypeArguments()[0];
+		}
+		return f.getType();
 	}
 
 	/**

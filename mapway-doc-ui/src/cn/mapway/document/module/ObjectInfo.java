@@ -9,55 +9,59 @@ import java.util.List;
  */
 public class ObjectInfo implements Serializable {
 
-  /**
-   * Instantiates a new object info.
-   */
-  public ObjectInfo() {}
+	/**
+	 * Instantiates a new object info.
+	 */
+	public ObjectInfo() {
+	}
 
-  /** The name. */
-  public String name;
+	/** The name. */
+	public String name;
 
-  /** The type. */
-  public String type;
+	/** The type. */
+	public String type;
 
-  /** The summary. */
-  public String summary;
+	/** The summary. */
+	public String summary;
 
-  /** The title. */
-  public String title;
+	/** The title. */
+	public String title;
 
-  /** The example. */
-  public String example;
+	/** The example. */
+	public String example;
 
-  /** The manditary. */
-  public boolean manditary;
+	/** The manditary. */
+	public boolean manditary;
 
+	/**
+	 * 最大值.
+	 */
+	public Long max = null;
 
-  /**
-   * 最大值.
-   */
-  public Long max = null;
+	/**
+	 * 最小值.
+	 */
+	public Long min = null;
 
-  /**
-   * 最小值.
-   */
-  public Long min = null;
+	/**
+	 * 字符串最小长度.
+	 */
+	public int minLength = 0;
+	/**
+	 * 字符串最大长度.
+	 */
+	public int maxLength = 0;
 
-  /**
-   * 字符串最小长度.
-   */
-  public int minLength = 0;
-  /**
-   * 字符串最大长度.
-   */
-  public int maxLength = 0;
+	/** The fields. */
+	public List<ObjectInfo> fields = new ArrayList<ObjectInfo>();
 
-  /** The fields. */
-  public List<ObjectInfo> fields = new ArrayList<ObjectInfo>();
+	/** 对象的JSON例子. */
+	public String json;
 
-  /** 对象的JSON例子. */
-  public String json;
+	/** The codes. */
+	public List<FieldCode> codes = new ArrayList<FieldCode>();
 
-  /** The codes. */
-  public List<FieldCode> codes = new ArrayList<FieldCode>();
+	/** 引用的数据类型. */
+	public List<ObjectInfo> refs = new ArrayList<ObjectInfo>();
+
 }
