@@ -167,70 +167,7 @@ public class MySQL_Schema2 extends SchemaBase {
 			cols.addColumn(col);
 
 		}
-		//		
-		// try {
-		// rs = a.execute(this.getSQLClause().getProcedureSQL());
-		// } catch (SQLException e) {
-		// e.printStackTrace();
-		// }
-		// b = rs.getRowsByIndex();
-		//
-		// String old_packname = "";
-		// String old_procname = "";
-		// String old_argument = "";
-		// int index = 0;
-		// Pack newPack = null;
-		// Procedure newProc = null;
-		// Argument newArg = null;
-		// // parse package
-		// for (int i = 0; i < b.length; i++) {
-		// Object[] c = b[i];
-		// String packagename = (String) c[0];
-		// String procname = (String) c[1];
-		// String argname = (String) c[2];
-		// BigDecimal d = (BigDecimal) c[3];
-		// int seqposition = d.intValue();
-		// String property = (String) c[4];
-		// String datatype = (String) c[5];
-		//
-		// if (!packagename.equals(old_packname)) {
-		// old_packname = packagename;
-		// newPack = new Pack();
-		// newPack.setName(packagename);
-		// this.getPackages().addPack(newPack);
-		// old_procname = "";
-		// }// end new package
-		//
-		// // parse function
-		// if (!procname.equals(old_procname)) {
-		// old_procname = procname;
-		// newProc = new Procedure();
-		// newProc.setName(procname);
-		// newProc.setPackageName(newPack.getName());
-		// newPack.getProcedures().addProcedure(newProc);
-		// old_argument = "";
-		// index = 0;
-		// }// end new function
-		//
-		// // parse arguments
-		// if (seqposition == 0) {
-		// // continue;
-		// }
-		// if (argname == null || argname.equals("")) {
-		// argname = "Return" + (index++);
-		// }
-		// if (!argname.equals(old_argument)) {
-		// old_argument = argname;
-		// newArg = new Argument();
-		// }// end argument
-		//
-		// newArg.setName(argname);
-		// newArg.setProperty(property);
-		// newArg.setPosition(seqposition);
-		// newArg.setType(datatype);
-		// newProc.getArguments().AddArguemnt(newArg);
-		//
-		// }// end package
+	
 		return true;
 	}
 

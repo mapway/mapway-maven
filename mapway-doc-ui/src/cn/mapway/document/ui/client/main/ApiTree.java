@@ -143,7 +143,6 @@ public class ApiTree extends Tree {
    * @return
    */
   private String findApiStyle(Entry e) {
-    GWT.log(e.style());
     if (e.style().equalsIgnoreCase("IMPORTANT")) {
       return css.entryImportent();
     } else {
