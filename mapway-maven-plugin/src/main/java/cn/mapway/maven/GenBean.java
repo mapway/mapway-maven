@@ -31,126 +31,135 @@ import com.mapway.database2java.MainApplication;
 @Mojo(name = "genbean")
 public class GenBean extends AbstractMojo {
 
-  /** The path. */
-  @Parameter(defaultValue = "${project.basedir}/src/main/java", property = "path", required = true)
-  private String path;
+	/** The path. */
+	@Parameter(defaultValue = "${project.basedir}/src/main/java", property = "path", required = true)
+	private String path;
 
-  /** The driver. */
-  @Parameter(defaultValue = "com.mysql.jdbc.Driver", property = "driver", required = true)
-  private String driver;
+	/** The driver. */
+	@Parameter(defaultValue = "com.mysql.jdbc.Driver", property = "driver", required = true)
+	private String driver;
 
-  /** The jdbcurl. */
-  @Parameter(defaultValue = "", property = "jdbcurl", required = true)
-  private String jdbcurl;
+	/** The jdbcurl. */
+	@Parameter(defaultValue = "", property = "jdbcurl", required = true)
+	private String jdbcurl;
 
-  /** The package name. */
-  @Parameter(defaultValue = "test", property = "packageName", required = true)
-  private String packageName;
+	/** The package name. */
+	@Parameter(defaultValue = "test", property = "packageName", required = true)
+	private String packageName;
 
-  /** The user. */
-  @Parameter(defaultValue = "root", property = "user", required = true)
-  private String user;
+	/** The user. */
+	@Parameter(defaultValue = "root", property = "user", required = true)
+	private String user;
 
-  /** The pwd. */
-  @Parameter(defaultValue = "pwd", property = "pwd", required = true)
-  private String pwd;
+	/** The pwd. */
+	@Parameter(defaultValue = "pwd", property = "pwd", required = true)
+	private String pwd;
 
-  /** The schema. */
-  @Parameter(defaultValue = "schem", property = "schema", required = true)
-  private String schema;
+	/** The schema. */
+	@Parameter(defaultValue = "schem", property = "schema", required = true)
+	private String schema;
 
-  /** The nutz. */
-  @Parameter(defaultValue = "1", property = "nutz", required = true)
-  private String nutz;
+	/** The nutz. */
+	@Parameter(defaultValue = "1", property = "nutz", required = true)
+	private String nutz;
 
-  /** The nutz. */
-  @Parameter(defaultValue = "0", property = "normalNutz", required = true)
-  private String normalNutz;
+	/** The nutz. */
+	@Parameter(defaultValue = "0", property = "normalNutz", required = true)
+	private String normalNutz;
 
-  /** The nutz. */
-  @Parameter(defaultValue = "0", property = "simple", required = true)
-  private String simple;
+	/** The nutz. */
+	@Parameter(defaultValue = "0", property = "simple", required = true)
+	private String simple;
 
-  /*
-   * (non-Javadoc)
-   * 
-   * @see org.apache.maven.plugin.Mojo#execute()
-   */
-  @Override
-  public void execute() throws MojoExecutionException {
+	/** The nutz. */
+	@Parameter(defaultValue = "0", property = "mapper", required = false)
+	private String mapper;
 
-    IConfigure configure = new IConfigure() {
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see org.apache.maven.plugin.Mojo#execute()
+	 */
+	@Override
+	public void execute() throws MojoExecutionException {
 
-      @Override
-      public String getUser() {
-        return user;
-      }
+		IConfigure configure = new IConfigure() {
 
-      @Override
-      public String getSchema() {
-        return schema;
-      }
+			@Override
+			public String getUser() {
+				return user;
+			}
 
-      @Override
-      public String getPath() {
-        return path;
-      }
+			@Override
+			public String getSchema() {
+				return schema;
+			}
 
-      @Override
-      public String getPassword() {
-        return pwd;
-      }
+			@Override
+			public String getPath() {
+				return path;
+			}
 
-      @Override
-      public String getPackage() {
-        return packageName;
-      }
+			@Override
+			public String getPassword() {
+				return pwd;
+			}
 
-      @Override
-      public String getNutz() {
-        return nutz;
-      }
+			@Override
+			public String getPackage() {
+				return packageName;
+			}
 
-      @Override
-      public int getMaxConnections() {
-        return 10;
-      }
+			@Override
+			public String getNutz() {
+				return nutz;
+			}
 
-      @Override
-      public String getJDBCURL() {
-        return jdbcurl;
-      }
+			@Override
+			public int getMaxConnections() {
+				return 10;
+			}
 
-      @Override
-      public String getDriver() {
-        return driver;
-      }
+			@Override
+			public String getJDBCURL() {
+				return jdbcurl;
+			}
 
-      @Override
-      public String getNormalNutz() {
-        return normalNutz;
-      }
+			@Override
+			public String getDriver() {
+				return driver;
+			}
 
-      @Override
-      public String getSimple() {
-        return simple;
-      }
+			@Override
+			public String getNormalNutz() {
+				return normalNutz;
+			}
 
+			@Override
+			public String getSimple() {
+				return simple;
+			}
 
-    };
+			@Override
+			public String getMapper() {
 
-    TableBuilder tb = new TableBuilder();
-    tb.addRow("parameter", "value");
-    tb.addRow("driver", configure.getDriver());
-    tb.addRow("url", configure.getJDBCURL());
-    tb.addRow("user", configure.getUser());
-    tb.addRow("password", configure.getPassword());
-    tb.addRow("path", configure.getPath());
-    tb.addRow("pacakgeName", configure.getPackage());
+				return mapper;
+			}
 
-    System.out.println(tb.toString());
+		};
 
-    MainApplication app = new MainApplication();
-    app.execute(configure);
-  }
+		TableBuilder tb = new TableBuilder();
+		tb.addRow("parameter", "value");
+		tb.addRow("driver", configure.getDriver());
+		tb.addRow("url", configure.getJDBCURL());
+		tb.addRow("user", configure.getUser());
+		tb.addRow("password", configure.getPassword());
+		tb.addRow("path", configure.getPath());
+		tb.addRow("pacakgeName", configure.getPackage());
+		tb.addRow("mapper", configure.getMapper());
+		System.out.println(tb.toString());
+
+		MainApplication app = new MainApplication();
+		app.execute(configure);
+	}
 }

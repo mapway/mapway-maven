@@ -81,5 +81,5 @@ public interface IConfigure {
   public String getSimple();
   
   public String getMapper();
-
+  
 }
