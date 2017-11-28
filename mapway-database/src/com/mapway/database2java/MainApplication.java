@@ -1,6 +1,7 @@
 package com.mapway.database2java;
 
 import org.apache.commons.cli.ParseException;
+import org.nutz.lang.Strings;
 
 import com.mapway.database2java.database.GeneratorPool;
 import com.mapway.database2java.database.IConnectionPool;
@@ -9,6 +10,7 @@ import com.mapway.database2java.model.itf.ISchema;
 import com.mapway.database2java.model.mysql.MySQL_Schema2_gwt;
 import com.mapway.database2java.model.postgre.PostgreSQLSchema;
 import com.mapway.database2java.model.schema.Tables;
+import com.mapway.database2java.model.schema.TypeMapper;
 import com.mapway.database2java.model.schema.Views;
 
 /**
@@ -18,144 +20,168 @@ import com.mapway.database2java.model.schema.Views;
  */
 public class MainApplication {
 
-  /**
-   * 
-   * @param configure
-   */
-  public void execute(IConfigure configure) {
-    gen(configure);
-  }
+	/**
+	 * 
+	 * @param configure
+	 */
+	public void execute(IConfigure configure) {
+		gen(configure);
+	}
 
-  /**
-   * The main method.
-   *
-   * @param args the arguments
-   */
-  public static void main(String[] args) {
+	/**
+	 * The main method.
+	 *
+	 * @param args
+	 *            the arguments
+	 */
+	public static void main(String[] args) {
 
-    Config config = new Config();
-    config.help();
-    try {
-      config.parse(args);
-    } catch (ParseException e) {
-      config.help();
-      System.exit(0);
-    }
+		Config config = new Config();
+		config.help();
+		try {
+			config.parse(args);
+		} catch (ParseException e) {
+			config.help();
+			System.exit(0);
+		}
 
-    System.out.println(config.getDriver());
-    System.out.println(config.getJDBCURL());
-    System.out.println(config.getMaxConnections());
-    System.out.println(config.getPackage());
-    System.out.println(config.getPath());
-    System.out.println(config.getSchema());
-    System.out.println(config.getUser());
-    System.out.println(config.getPassword());
+		System.out.println(config.getDriver());
+		System.out.println(config.getJDBCURL());
+		System.out.println(config.getMaxConnections());
+		System.out.println(config.getPackage());
+		System.out.println(config.getPath());
+		System.out.println(config.getSchema());
+		System.out.println(config.getUser());
+		System.out.println(config.getPassword());
+		System.out.println(config.getMapper());
+		MainApplication app = new MainApplication();
+		app.gen(config);
 
-    MainApplication app = new MainApplication();
-    app.gen(config);
+	}
 
-  }
+	public void gen(IConfigure config) {
+		IConnectionPool pool = new GeneratorPool(config.getDriver(), config.getJDBCURL(), config.getUser(),
+				config.getPassword(), config.getPackage(), config.getPath(), config.getMaxConnections());
+		ISchema schema = null;
 
-  public void gen(IConfigure config) {
-    IConnectionPool pool =
-        new GeneratorPool(config.getDriver(), config.getJDBCURL(), config.getUser(),
-            config.getPassword(), config.getPackage(), config.getPath(), config.getMaxConnections());
-    ISchema schema = null;
+		// Append Mapper
 
-    Configure configure = new Configure();
+		String mapper = config.getMapper();
+		if (mapper.length() > 0) {
+			TypeMapper tmap = TypeMapper.getInstance();
 
-    configure.setSchema(config.getSchema());
-    System.out.println(" out " + pool.getPath());
-    configure.setPath(pool.getPath());
-    configure.setPackage(pool.getPackage());
-    configure.setGwtbase(pool.getGwtbase());
-    if (config.getDriver().contains("mysql")) {
-      configure.setDatabase("mysql");
-      schema = new MySQL_Schema2_gwt(pool, configure);
-    }
-    if (config.getDriver().contains("postgresql")) {
-      configure.setDatabase("postgresql");
-      schema = new PostgreSQLSchema(pool, configure);
-    } else {
-      // schema = new Oracle_Schema_gwt(pool, configure);
-    }
+			String[] items = mapper.split(",");
 
-    boolean b = schema.fetchSchema();
-    if (b) {
-      System.out.println("Database Connected and fetch successful");
-      System.out.println("Export Path:" + configure.getPath());
+			for (int i = 0; i < items.length; i++) {
+				String item = items[i];
+				item = Strings.trim(item);
+				if (Strings.isBlank(item)) {
+					continue;
+				}
 
-      if (config.getSimple() != null && config.getSimple().equals("1")) {
-        Configure conf = configure.copy();
-        schema.exportSimpleBean(conf);
-        System.out.println("gen Simple OK!");
-        return;
-      }
+				String[] kv = item.split(":");
 
-      if (config.getNormalNutz() != null && config.getNormalNutz().equals("1")) {
-        Configure conf = configure.copy();
-        schema.exportNormalBean(conf);
-        schema.exportGwtModule(conf);
-        System.out.println("gen NUTZ-NORMAL OK!");
-        return;
-      }
+				if (kv.length == 2) {
+					String k = kv[0];
+					String v = kv[1];
+					tmap.getOracle2JDBC().Add(k, v);
+				}
 
+			}
+		}
 
-      if (config.getNutz().equals("1")) {
-        Configure conf = configure.copy();
-        schema.exportJavaBean(conf);
-        System.out.println("gen NUTZ OK!");
-        return;
-      }
+		Configure configure = new Configure();
 
-      Configure conf = configure.copy();
-      conf.setPackage(conf.getGwtbase());
-      schema.exportProcedures(conf);
+		configure.setSchema(config.getSchema());
+		System.out.println(" out " + pool.getPath());
+		configure.setPath(pool.getPath());
+		configure.setPackage(pool.getPackage());
+		configure.setGwtbase(pool.getGwtbase());
+		if (config.getDriver().contains("mysql")) {
+			configure.setDatabase("mysql");
+			schema = new MySQL_Schema2_gwt(pool, configure);
+		}
+		if (config.getDriver().contains("postgresql")) {
+			configure.setDatabase("postgresql");
+			schema = new PostgreSQLSchema(pool, configure);
+		} else {
+			// schema = new Oracle_Schema_gwt(pool, configure);
+		}
 
-      Configure confTable = configure.copy();
-      // confTable.setPackage(confTable.getPackage() );
+		boolean b = schema.fetchSchema();
+		if (b) {
+			System.out.println("Database Connected and fetch successful");
+			System.out.println("Export Path:" + configure.getPath());
 
-      Tables tables = schema.getTables();
-      System.out.println("Export Database tables ...");
-      for (int j = 0; j < tables.getCount(); j++) {
-        schema.exportTable(tables.getAt(j), confTable);
-        System.out.println("Export Database tables " + tables.getAt(j).getName());
-      }
+			if (config.getSimple() != null && config.getSimple().equals("1")) {
+				Configure conf = configure.copy();
+				schema.exportSimpleBean(conf);
+				System.out.println("gen Simple OK!");
+				return;
+			}
 
-      confTable = configure.copy();
-      confTable.setPackage(configure.getPackage());
+			if (config.getNormalNutz() != null && config.getNormalNutz().equals("1")) {
+				Configure conf = configure.copy();
+				schema.exportNormalBean(conf);
+				schema.exportGwtModule(conf);
+				System.out.println("gen NUTZ-NORMAL OK!");
+				return;
+			}
 
-      Views views = schema.getViews();
-      System.out.println("Export Database views ...");
-      for (int j = 0; j < views.getCount(); j++) {
-        schema.exportViews(views.getAt(j), confTable);
-        System.out.println("Export Database view" + tables.getAt(j).getName());
-      }
+			if (config.getNutz().equals("1")) {
+				Configure conf = configure.copy();
+				schema.exportJavaBean(conf);
+				System.out.println("gen NUTZ OK!");
+				return;
+			}
 
-      Configure confjson = configure.copy();
-      confjson.setPackage(confjson.getPackage() + ".shared.modle");
-      System.out.println("Export JSON Helper");
-      schema.exportJSONTools(confjson);
+			Configure conf = configure.copy();
+			conf.setPackage(conf.getGwtbase());
+			schema.exportProcedures(conf);
 
-      Configure confbase = configure.copy();
-      schema.exportGwtModule(confbase);
-      confbase.setPackage(confbase.getPackage() + ".server.database.base");
-      schema.exportPoolInterface(confbase);
+			Configure confTable = configure.copy();
+			// confTable.setPackage(confTable.getPackage() );
 
-      schema.exportAccessBase(confbase);
+			Tables tables = schema.getTables();
+			System.out.println("Export Database tables ...");
+			for (int j = 0; j < tables.getCount(); j++) {
+				schema.exportTable(tables.getAt(j), confTable);
+				System.out.println("Export Database tables " + tables.getAt(j).getName());
+			}
 
-      schema.exportExecuteResult(confbase);
+			confTable = configure.copy();
+			confTable.setPackage(configure.getPackage());
 
-      Configure confSpring = configure.copy();
+			Views views = schema.getViews();
+			System.out.println("Export Database views ...");
+			for (int j = 0; j < views.getCount(); j++) {
+				schema.exportViews(views.getAt(j), confTable);
+				System.out.println("Export Database view" + tables.getAt(j).getName());
+			}
 
-      schema.exportSpringConfigure(confSpring);
+			Configure confjson = configure.copy();
+			confjson.setPackage(confjson.getPackage() + ".shared.modle");
+			System.out.println("Export JSON Helper");
+			schema.exportJSONTools(confjson);
 
-      schema.exportDwrConfigure(confSpring);
+			Configure confbase = configure.copy();
+			schema.exportGwtModule(confbase);
+			confbase.setPackage(confbase.getPackage() + ".server.database.base");
+			schema.exportPoolInterface(confbase);
 
-    } else {
-      System.out.println("Error connect to the database");
-    }
-  }
+			schema.exportAccessBase(confbase);
 
+			schema.exportExecuteResult(confbase);
+
+			Configure confSpring = configure.copy();
+
+			schema.exportSpringConfigure(confSpring);
+
+			schema.exportDwrConfigure(confSpring);
+
+		} else {
+			System.out.println("Error connect to the database");
+		}
+	}
 
 }
