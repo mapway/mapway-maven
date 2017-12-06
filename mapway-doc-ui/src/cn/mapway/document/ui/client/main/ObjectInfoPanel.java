@@ -250,7 +250,7 @@ public class ObjectInfoPanel extends Grid implements HasSelectionHandlers<Object
 					CustomAnchor a = new CustomAnchor();
 					a.setText(simple(o1.title()));
 					a.setData(o1);
-					a.setStyleName(SysResource.INSTANCE.getCss().typeLink());
+					a.setStyleName(SysResource.INSTANCE.getCss().refLink());
 					a.addClickHandler(this);
 					fp.add(a);
 

@@ -1,15 +1,15 @@
 <project
-    xmlns="http://maven.apache.org/POM/4.0.0"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+        xmlns="http://maven.apache.org/POM/4.0.0"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>mapway-doc-ui</artifactId>
     <parent>
         <groupId>cn.mapway</groupId>
         <artifactId>mapway-maven</artifactId>
         <version>1.0.56-SNAPSHOT</version>
-    </parent> 
-    
+    </parent>
+
     <name>mapway-doc-ui</name>
     <description>auto gen doc from api with ui</description>
     <url>http://doc-ui.mapway.cn</url>
@@ -29,168 +29,212 @@
             <email>zhangjianshe@gmail.com</email>
         </developer>
     </developers>
-   
-    <build>
-       
-        <sourceDirectory>src</sourceDirectory>
-        <plugins>
-            <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>build-helper-maven-plugin</artifactId>
-                <version>1.9.1</version>
-                <executions>
-                    <execution>
-                        <id>timestamp-property</id>
-                        <goals>
-                            <goal>timestamp-property</goal>
-                        </goals>
-                        <phase>generate-sources</phase>
-                    </execution>
-                </executions>
-                <configuration>
-                    <name>current.time</name>
-                    <pattern>yyyy年MM月dd日 HH:mm:ss</pattern>
-                    <timeZone>GMT+8</timeZone>
-                </configuration>
-            </plugin>
-            
-            <plugin>
-                <groupId>cn.mapway</groupId>
-                <artifactId>mapway-maven-plugin</artifactId>
-                <version>1.0.28-SNAPSHOT</version>
-                <executions>
-                    <execution>
-                        <id>write-file</id>
-                        <phase>generate-sources</phase>
-                        <goals>
-                            <goal>write-file</goal>
-                        </goals>
+    <profiles>
+        <profile>
+            <id>dev</id>
+
+            <dependencies>
+                <dependency>
+                    <groupId>org.springframework</groupId>
+                    <artifactId>spring-web</artifactId>
+                    <version>${SpringVersion}</version>
+
+                </dependency>
+                <dependency>
+                    <groupId>com.google.gwt</groupId>
+                    <artifactId>gwt-user</artifactId>
+                    <scope>compile</scope>
+                </dependency>
+                <dependency>
+                    <groupId>cn.mapway</groupId>
+                    <artifactId>mapway-annotation</artifactId>
+                    <version>1.0.95-SNAPSHOT</version>
+                </dependency>
+                <dependency>
+                    <groupId>javax.validation</groupId>
+                    <artifactId>validation-api</artifactId>
+                    <version>1.0.0.GA</version>
+                </dependency>
+            </dependencies>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.eclipse.jetty</groupId>
+                        <artifactId>jetty-maven-plugin</artifactId>
+                        <version>9.2.8.v20150217</version>
+                    </plugin>
+                </plugins>
+
+            </build>
+        </profile>
+        <profile>
+            <id>pro</id>
+            <dependencies>
+                <dependency>
+                    <groupId>org.springframework</groupId>
+                    <artifactId>spring-web</artifactId>
+                    <version>${SpringVersion}</version>
+                    <scope>provided</scope>
+                </dependency>
+
+                <dependency>
+                    <groupId>javax.servlet</groupId>
+                    <artifactId>javax.servlet-api</artifactId>
+                    <scope>provided</scope>
+                </dependency>
+                <dependency>
+                    <groupId>com.google.gwt</groupId>
+                    <artifactId>gwt-servlet</artifactId>
+                    <scope>compile</scope>
+                </dependency>
+                <dependency>
+                    <groupId>com.google.gwt</groupId>
+                    <artifactId>gwt-user</artifactId>
+                    <scope>compile</scope>
+                </dependency>
+                <dependency>
+                    <groupId>cn.mapway</groupId>
+                    <artifactId>mapway-annotation</artifactId>
+                    <version>1.0.95-SNAPSHOT</version>
+                </dependency>
+
+            </dependencies>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.codehaus.mojo</groupId>
+                        <artifactId>build-helper-maven-plugin</artifactId>
+                        <version>1.9.1</version>
+                        <executions>
+                            <execution>
+                                <id>timestamp-property</id>
+                                <goals>
+                                    <goal>timestamp-property</goal>
+                                </goals>
+                                <phase>generate-sources</phase>
+                            </execution>
+                        </executions>
                         <configuration>
-                            <charset>UTF-8</charset>
-                            <files>
-                                <file>
-                                    <path>src/cn/mapway/document/parser/CompileVersion.java</path>
-                                    <lines>
-                                        <line>package cn.mapway.document.parser;</line>
-                                        <line>public class  CompileVersion {</line>
-                                        <line>public final static String  VERSION =   "[${project.version}]@${current.time}";</line>
-                                        <line>}</line>
-                                    </lines>
-                                </file>
-                            </files>
+                            <name>current.time</name>
+                            <pattern>yyyy年MM月dd日 HH:mm:ss</pattern>
+                            <timeZone>GMT+8</timeZone>
                         </configuration>
-                    </execution>
-                </executions>
-            </plugin>
-            <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>gwt-maven-plugin</artifactId>
-                <version>2.8.0</version>
-                <configuration>
-                    <sourceLevel>1.8</sourceLevel>
-                    <configuration>
-                        <productionMode>true</productionMode>
-                        <classifier>war</classifier>
-                        <warSourceDirectory>src/WebRoot</warSourceDirectory>
-                        <webappDirectory>src/WebRoot</webappDirectory>
-                        <module>cn.mapway.document.ui.ApiDocUi</module>
-                    </configuration>
-                </configuration>
-                <executions>
-                    <execution>
-                        <phase>generate-sources</phase>
-                        <goals>
-                            <goal>compile</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-             <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-resources-plugin</artifactId>
-              
-                <executions>
-                    <execution>
-                        <id>copy-resources</id>
-                        <phase>prepare-package</phase>
-                        <goals>
-                            <goal>copy-resources</goal>
-                        </goals>
+                    </plugin>
+
+                    <plugin>
+                        <groupId>cn.mapway</groupId>
+                        <artifactId>mapway-maven-plugin</artifactId>
+                        <version>1.0.95-SNAPSHOT</version>
+                        <executions>
+                            <execution>
+                                <id>write-file</id>
+                                <phase>generate-sources</phase>
+                                <goals>
+                                    <goal>write-file</goal>
+                                </goals>
+                                <configuration>
+                                    <charset>UTF-8</charset>
+                                    <files>
+                                        <file>
+                                            <path>src/main/java/cn/mapway/document/parser/CompileVersion.java</path>
+                                            <lines>
+                                                <line>package cn.mapway.document.parser;</line>
+                                                <line>public class CompileVersion {</line>
+                                                <line>public final static String VERSION =
+                                                    "[${project.version}]@${current.time}";
+                                                </line>
+                                                <line>}</line>
+                                            </lines>
+                                        </file>
+                                    </files>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.codehaus.mojo</groupId>
+                        <artifactId>gwt-maven-plugin</artifactId>
+                        <version>2.8.0</version>
                         <configuration>
-                            <outputDirectory>${project.build.directory}/classes/cn/mapway/document/resource</outputDirectory>
-                            <resources>
-                                <resource>
-                                    <directory>${project.build.directory}/${project.artifactId}-${project.version}/apidoc</directory>
-                                </resource>
-                            </resources>
+
+                            <sourceLevel>1.8</sourceLevel>
+
+                            <productionMode>true</productionMode>
+
+                            <warSourceDirectory>src/main/webapp</warSourceDirectory>
+                            <webappDirectory>src/main/webapp</webappDirectory>
+                            <module>cn.mapway.document.ui.ApiDocUi</module>
+
                         </configuration>
-                    </execution>
-                    <execution>
-                        <id>copy-resource-template</id>
-                        <phase>prepare-package</phase>
-                        <goals>
-                            <goal>copy-resources</goal>
-                        </goals>
-                        <configuration>
-                            <outputDirectory>${project.build.directory}/classes/cn/mapway/document/resource</outputDirectory>
-                            <resources>
-                                <resource>
-                                    <directory>src/cn/mapway/document/resource</directory>
-                                </resource>
-                            </resources>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-source-plugin</artifactId>
-                <executions>
-                    <execution>
-                        <id>attach-sources</id>
-                        <goals>
-                            <goal>jar</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-        </plugins>
-    </build>
-    <dependencies>
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-web</artifactId>
-            <version>${SpringVersion}</version>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.poi</groupId>
-            <artifactId>poi</artifactId>
-            <version>3.15-beta2</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.poi</groupId>
-            <artifactId>poi-ooxml</artifactId>
-            <version>3.15-beta2</version>
-        </dependency>
-        <dependency>
-            <groupId>javax.servlet</groupId>
-            <artifactId>javax.servlet-api</artifactId>
-            <scope>provided</scope>
-        </dependency>
-         <dependency>
-            <groupId>com.google.gwt</groupId>
-            <artifactId>gwt-servlet</artifactId>
-            <scope>compile</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.google.gwt</groupId>
-            <artifactId>gwt-user</artifactId>
-            <scope>compile</scope>
-        </dependency>
-        
-    </dependencies>
+                        <executions>
+                            <execution>
+                                <phase>generate-sources</phase>
+                                <goals>
+                                    <goal>compile</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-resources-plugin</artifactId>
+
+                        <executions>
+                            <execution>
+                                <id>copy-resources</id>
+                                <phase>prepare-package</phase>
+                                <goals>
+                                    <goal>copy-resources</goal>
+                                </goals>
+                                <configuration>
+                                    <outputDirectory>${project.build.directory}/classes/cn/mapway/document/resource
+                                    </outputDirectory>
+                                    <resources>
+                                        <resource>
+                                            <directory>
+                                                ${project.build.directory}/${project.artifactId}-${project.version}/apidoc
+                                            </directory>
+                                        </resource>
+                                    </resources>
+                                </configuration>
+                            </execution>
+                            <execution>
+                                <id>copy-resource-template</id>
+                                <phase>prepare-package</phase>
+                                <goals>
+                                    <goal>copy-resources</goal>
+                                </goals>
+                                <configuration>
+                                    <outputDirectory>${project.build.directory}/classes/cn/mapway/document/resource
+                                    </outputDirectory>
+                                    <resources>
+                                        <resource>
+                                            <directory>src/cn/mapway/document/resource</directory>
+                                        </resource>
+                                    </resources>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-source-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <id>attach-sources</id>
+                                <goals>
+                                    <goal>jar</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
+
+
     <properties>
-        <java.version>1.7</java.version>
+        <java.version>1.8</java.version>
     </properties>
 </project>
