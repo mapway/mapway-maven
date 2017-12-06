@@ -5,8 +5,8 @@ import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
+import java.lang.reflect.TypeVariable;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -268,10 +268,19 @@ public class SpringParser {
 			e.author = summary.author();
 			e.state = transState(summary.state());
 			e.apiStyle = transApiStyle(summary.style());
+			// 处理方法的标签.
+			if (summary.tags() != null) {
+				for (String tag : summary.tags()) {
+					e.tags.add(tag);
+				}
+			}
 		}
 
 		Class<?>[] ps = m.getParameterTypes();
-		Class<?> out = m.getReturnType();
+
+		Class<?> out = (Class<?>) m.getReturnType();
+		Type returnType = m.getGenericReturnType();
+		System.out.println(returnType);
 
 		int i = 0;
 		for (Class<?> clz : ps) {
@@ -482,6 +491,7 @@ public class SpringParser {
 		if (doc != null) {
 			p.summary = sum + parseRef(clz, doc.refs());
 		}
+
 		deeps = new Deeps();
 		deeps.push(clz.getName(), deeps.getLevel());
 		Object instance = null;
@@ -585,83 +595,37 @@ public class SpringParser {
 
 			// 处理字段
 			if (isPrimitive(f.getType())) {
-				// 原始数据类型 无需解析子类
-				fi.type = f.getType().getSimpleName();
-
-				if (instance != null) {
-					// 处理例子
-					if (!Strings.isBlank(wf.example())) {
-						Object obj = Castors.me().castTo(wf.example(), f.getType());
-						Mirror.me(instance).setValue(instance, f, obj);
-
-					}
-				}
+				tacklePrimitive(instance, f, wf, fi);
 			} else if (isList(f)) {
 				ArrayList list = new ArrayList();
 				Type type = getGenericType(f);
+
 				Class<?> c = null;
 				if (type instanceof ParameterizedType) {
 					ParameterizedType t = (ParameterizedType) type;
 					c = (Class<?>) t.getRawType();
+
+				} else if (type instanceof sun.reflect.generics.reflectiveObjects.TypeVariableImpl) {
+
+					c = Object.class;
 				} else {
 					c = (Class<?>) type;
 				}
+
 				f.set(instance, list);
-				fi.type = "List<" + c.getSimpleName() + ">";
-				if (!isMap(c)) {
-					Object cinstance = newInstance(c);
-					// 处理 DOc fi.summary;
+				fi.type = "List<" + type.getTypeName() + ">";
+				if (isMap(type.getClass())) {
+					tackleMap(fi, list);
 
-					// 读取List数组中对象的Doc注解
-					Doc fdoc = c.getAnnotation(Doc.class);
-					if (fdoc != null) {
-						fi.summary = fdoc.desc();
-					}
-					// 列表添加2个例子
-					list.add(cinstance);
+				} else if (isGeneric(c)) {
+					tackleListGnericType(list, f, fi);
 
-					for (Field f1 : c.getFields()) {
-						// 检查是否是循环引用
-						ObjectInfo o = handleField(cinstance, f1);
-						if (o != null) {
-							fi.fields.add(o);
-						}
-					}
 				} else {
-					if (fi.example == null || fi.example.length() == 0) {
-						fi.example = "key:345";
-					}
-					// List<Map> 对象
-					String[] items = fi.example.split(",");
-					Map<String, String> mdata = new HashMap<String, String>();
 
-					for (int i = 0; i < items.length; i++) {
-						String item = items[i];
-						item = Strings.trim(item);
-						String[] kv = item.split(":");
-						if (kv.length == 1) {
-							mdata.put(kv[0], "例子");
-						} else {
-							mdata.put(kv[0], kv[1]);
-						}
-					}
-					list.add(mdata);
+					tackleListObject(fi, list, c);
 				}
 			} else if (isGeneric(f.getType())) {
-				// 是一个泛型类 处理特殊的注解
-				fi.type = "Object";
-				RuntimeType rt = f.getAnnotation(RuntimeType.class);
-				if (rt == null) {
-					// 程序员没有添加注解，需要补充完整
-					fi.summary = "请程序员添加注解 RuntimeType";
-				} else {
-					// 处理程序员添加的注解
-					for (int i = 0; i < rt.value().length; i++) {
-						Class<?> cls = rt.value()[i];
-						fi.refs.add(handleParameter(cls, ""));
-					}
-				}
-				f.set(instance, new Object());
+				tackleGnericType(instance, f, fi);
 
 			} else {
 				// 该字段是一个对象类，循环处理此类
@@ -672,23 +636,7 @@ public class SpringParser {
 					return null;
 				}
 
-				Object cinstance = null;
-
-				cinstance = newInstance(f.getType());
-				f.set(instance, cinstance);
-
-				// 读取List数组中对象的Doc注解
-				Doc fdoc = cinstance.getClass().getAnnotation(Doc.class);
-				if (fdoc != null) {
-					fi.summary = fdoc.desc();
-				}
-
-				for (Field f1 : f.getType().getFields()) {
-					ObjectInfo o = handleField(cinstance, f1);
-					if (o != null) {
-						fi.fields.add(o);
-					}
-				}
+				tackleObject(instance, f, fi);
 			}
 
 			deeps.decLevel();
@@ -696,6 +644,158 @@ public class SpringParser {
 		}
 		deeps.decLevel();
 		return null;
+	}
+
+	/**
+	 * @param instance
+	 * @param f
+	 * @param wf
+	 * @param fi
+	 */
+	private void tacklePrimitive(Object instance, Field f, ApiField wf, ObjectInfo fi) {
+		// 原始数据类型 无需解析子类
+		fi.type = f.getType().getSimpleName();
+
+		if (instance != null) {
+			// 处理例子
+			if (!Strings.isBlank(wf.example())) {
+				Object obj = Castors.me().castTo(wf.example(), f.getType());
+				Mirror.me(instance).setValue(instance, f, obj);
+
+			}
+		}
+	}
+
+	/**
+	 * @param instance
+	 * @param f
+	 * @param fi
+	 * @throws IllegalAccessException
+	 * @throws InstantiationException
+	 */
+	private void tackleObject(Object instance, Field f, ObjectInfo fi)
+			throws IllegalAccessException, InstantiationException {
+		Object cinstance = null;
+
+		cinstance = newInstance(f.getType());
+		f.set(instance, cinstance);
+
+		// 读取List数组中对象的Doc注解
+		Doc fdoc = cinstance.getClass().getAnnotation(Doc.class);
+		if (fdoc != null) {
+			fi.summary = fdoc.desc();
+		}
+
+		for (Field f1 : f.getType().getFields()) {
+			ObjectInfo o = handleField(cinstance, f1);
+			if (o != null) {
+				fi.fields.add(o);
+			}
+		}
+	}
+
+	/**
+	 * @param instance
+	 * @param f
+	 * @param fi
+	 * @throws IllegalAccessException
+	 * @throws InstantiationException
+	 */
+	private void tackleGnericType(Object instance, Field f, ObjectInfo fi)
+			throws IllegalAccessException, InstantiationException {
+		// 是一个泛型类 处理特殊的注解
+		fi.type = "Object";
+		RuntimeType rt = f.getAnnotation(RuntimeType.class);
+		if (rt == null) {
+			// 程序员没有添加注解，需要补充完整
+			fi.summary = "请程序员添加注解 RuntimeType";
+		} else {
+			// 处理程序员添加的注解
+			for (int i = 0; i < rt.value().length; i++) {
+				Class<?> cls = rt.value()[i];
+				fi.refs.add(handleParameter(cls, ""));
+			}
+		}
+		f.set(instance, new Object());
+	}
+
+	/**
+	 * @param instance
+	 * @param f
+	 * @param fi
+	 * @throws IllegalAccessException
+	 * @throws InstantiationException
+	 */
+	private void tackleListGnericType(List instance, Field f, ObjectInfo fi)
+			throws IllegalAccessException, InstantiationException {
+		// 是一个泛型类 处理特殊的注解
+		fi.type = "List<Object>";
+		RuntimeType rt = f.getAnnotation(RuntimeType.class);
+		if (rt == null) {
+			// 程序员没有添加注解，需要补充完整
+			fi.summary = "请程序员添加注解 RuntimeType";
+		} else {
+			// 处理程序员添加的注解
+			for (int i = 0; i < rt.value().length; i++) {
+				Class<?> cls = rt.value()[i];
+				fi.refs.add(handleParameter(cls, ""));
+			}
+		}
+		instance.add(new Object());
+	}
+
+	/**
+	 * @param fi
+	 * @param list
+	 */
+	private void tackleMap(ObjectInfo fi, ArrayList list) {
+		if (fi.example == null || fi.example.length() == 0) {
+			fi.example = "key:345";
+		}
+		// List<Map> 对象
+		String[] items = fi.example.split(",");
+		Map<String, String> mdata = new HashMap<String, String>();
+
+		for (int i = 0; i < items.length; i++) {
+			String item = items[i];
+			item = Strings.trim(item);
+			String[] kv = item.split(":");
+			if (kv.length == 1) {
+				mdata.put(kv[0], "例子");
+			} else {
+				mdata.put(kv[0], kv[1]);
+			}
+		}
+		list.add(mdata);
+	}
+
+	/**
+	 * @param fi
+	 * @param list
+	 * @param c
+	 * @throws IllegalAccessException
+	 * @throws InstantiationException
+	 */
+	private void tackleListObject(ObjectInfo fi, ArrayList list, Class<?> c)
+			throws IllegalAccessException, InstantiationException {
+		Object cinstance = newInstance(c);
+		// 处理 DOc fi.summary;
+
+		// 读取List数组中对象的Doc注解
+		Doc fdoc = c.getAnnotation(Doc.class);
+		if (fdoc != null) {
+			fi.summary = fdoc.desc();
+		}
+		// 列表添加2个例子
+		list.add(cinstance);
+
+		for (Field f1 : c.getFields()) {
+			// 检查是否是循环引用
+			ObjectInfo o = handleField(cinstance, f1);
+			if (o != null) {
+				fi.fields.add(o);
+			}
+		}
 	}
 
 	private Doc getClassDoc(Class<?> cls) {
