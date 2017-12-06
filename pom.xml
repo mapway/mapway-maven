@@ -39,6 +39,7 @@
         <module>mapway-doc-ui</module>
         <module>mapway-database</module>
         <module>mapway-maven-plugin</module>
+        <module>mapway-annotation</module>
     </modules>
     <dependencyManagement>
         <dependencies>
