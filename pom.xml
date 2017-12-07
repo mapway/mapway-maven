@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>cn.mapway</groupId>
     <artifactId>mapway-maven</artifactId>
-    <version>1.0.56-SNAPSHOT</version>
+    <version>1.0.98-SNAPSHOT</version>
     <packaging>pom</packaging>
     
     <properties>
@@ -35,11 +35,11 @@
         </developer>
     </developers>
     <modules>
+        <module>mapway-annotation</module>
         <module>mapway-ui-frame</module>
         <module>mapway-doc-ui</module>
         <module>mapway-database</module>
         <module>mapway-maven-plugin</module>
-        <module>mapway-annotation</module>
     </modules>
     <dependencyManagement>
         <dependencies>

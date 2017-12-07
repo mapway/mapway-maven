@@ -9,7 +9,7 @@
     <parent>
         <groupId>cn.mapway</groupId>
         <artifactId>mapway-maven</artifactId>
-        <version>1.0.56-SNAPSHOT</version>
+        <version>1.0.98-SNAPSHOT</version>
     </parent> 
     <name>mapway-ui-frame</name>
     <description>mapway's ui-frame</description>

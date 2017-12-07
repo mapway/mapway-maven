@@ -7,7 +7,7 @@
     <parent>
         <groupId>cn.mapway</groupId>
         <artifactId>mapway-maven</artifactId>
-        <version>1.0.56-SNAPSHOT</version>
+        <version>1.0.98-SNAPSHOT</version>
     </parent>
 
     <name>mapway-doc-ui</name>
@@ -29,6 +29,14 @@
             <email>zhangjianshe@gmail.com</email>
         </developer>
     </developers>
+    <dependencies>
+        <dependency>
+            <groupId>cn.mapway</groupId>
+            <artifactId>mapway-annotation</artifactId>
+            <version>1.0.98-SNAPSHOT</version>
+        </dependency>
+    </dependencies>
+
     <profiles>
         <profile>
             <id>dev</id>
@@ -48,7 +56,7 @@
                 <dependency>
                     <groupId>cn.mapway</groupId>
                     <artifactId>mapway-annotation</artifactId>
-                    <version>1.0.95-SNAPSHOT</version>
+                    <version>1.0.98-SNAPSHOT</version>
                 </dependency>
                 <dependency>
                     <groupId>javax.validation</groupId>
@@ -68,7 +76,7 @@
             </build>
         </profile>
         <profile>
-            <id>pro</id>
+            <id>to-enncloud</id>
             <dependencies>
                 <dependency>
                     <groupId>org.springframework</groupId>
@@ -85,19 +93,18 @@
                 <dependency>
                     <groupId>com.google.gwt</groupId>
                     <artifactId>gwt-servlet</artifactId>
-                    <scope>compile</scope>
+                    <scope>provided</scope>
                 </dependency>
                 <dependency>
                     <groupId>com.google.gwt</groupId>
                     <artifactId>gwt-user</artifactId>
-                    <scope>compile</scope>
+                    <scope>provided</scope>
                 </dependency>
                 <dependency>
-                    <groupId>cn.mapway</groupId>
-                    <artifactId>mapway-annotation</artifactId>
-                    <version>1.0.95-SNAPSHOT</version>
+                    <groupId>com.google.gwt</groupId>
+                    <artifactId>gwt-dev</artifactId>
+                    <scope>provided</scope>
                 </dependency>
-
             </dependencies>
             <build>
                 <plugins>
@@ -112,13 +119,14 @@
                                     <goal>timestamp-property</goal>
                                 </goals>
                                 <phase>generate-sources</phase>
+                                <configuration>
+                                    <name>current.time</name>
+                                    <pattern>yyyy年MM月dd日 HH:mm:ss</pattern>
+                                    <timeZone>GMT+8</timeZone>
+                                </configuration>
                             </execution>
                         </executions>
-                        <configuration>
-                            <name>current.time</name>
-                            <pattern>yyyy年MM月dd日 HH:mm:ss</pattern>
-                            <timeZone>GMT+8</timeZone>
-                        </configuration>
+
                     </plugin>
 
                     <plugin>
@@ -156,29 +164,28 @@
                         <artifactId>gwt-maven-plugin</artifactId>
                         <version>2.8.0</version>
                         <configuration>
-
-                            <sourceLevel>1.8</sourceLevel>
-
                             <productionMode>true</productionMode>
-
-                            <warSourceDirectory>src/main/webapp</warSourceDirectory>
-                            <webappDirectory>src/main/webapp</webappDirectory>
-                            <module>cn.mapway.document.ui.ApiDocUi</module>
-
                         </configuration>
                         <executions>
                             <execution>
-                                <phase>generate-sources</phase>
+                                <phase>compile</phase>
                                 <goals>
                                     <goal>compile</goal>
                                 </goals>
+                                <configuration>
+                                    <sourceLevel>1.8</sourceLevel>
+                                    <warSourceDirectory>src/main/webapp</warSourceDirectory>
+                                    <webappDirectory>src/main/webapp</webappDirectory>
+                                    <module>cn.mapway.document.ui.ApiDocUi</module>
+                                    <force>true</force>
+                                </configuration>
                             </execution>
                         </executions>
                     </plugin>
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-resources-plugin</artifactId>
-
+                        <version>2.7</version>
                         <executions>
                             <execution>
                                 <id>copy-resources</id>
@@ -192,28 +199,13 @@
                                     <resources>
                                         <resource>
                                             <directory>
-                                                ${project.build.directory}/${project.artifactId}-${project.version}/apidoc
+                                                ${project.basedir}/src/main/webapp/apidoc
                                             </directory>
                                         </resource>
                                     </resources>
                                 </configuration>
                             </execution>
-                            <execution>
-                                <id>copy-resource-template</id>
-                                <phase>prepare-package</phase>
-                                <goals>
-                                    <goal>copy-resources</goal>
-                                </goals>
-                                <configuration>
-                                    <outputDirectory>${project.build.directory}/classes/cn/mapway/document/resource
-                                    </outputDirectory>
-                                    <resources>
-                                        <resource>
-                                            <directory>src/cn/mapway/document/resource</directory>
-                                        </resource>
-                                    </resources>
-                                </configuration>
-                            </execution>
+
                         </executions>
                     </plugin>
                     <plugin>
