@@ -35,8 +35,7 @@ public class Template {
 	 */
 	public final static String readTemplate(String fileName) throws IOException {
 
-        System.out.println("readTemplate> "+fileName);
-        InputStream in = Template.class.getResourceAsStream(fileName);
+		InputStream in = Template.class.getResourceAsStream(fileName);
 		ByteArrayOutputStream out = new ByteArrayOutputStream();
 		int count = 0;
 		byte[] bytes = new byte[1024];
