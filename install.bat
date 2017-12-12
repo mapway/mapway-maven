@@ -8,6 +8,6 @@ if not defined version (
   )
 
 :build
-mvn versions:set -DnewVersion=%version% && mvn versions:commit && mvn clean install
+mvn versions:set -DnewVersion=%version% && mvn versions:commit && mvn clean install -Pto-enncloud
 
 :exit

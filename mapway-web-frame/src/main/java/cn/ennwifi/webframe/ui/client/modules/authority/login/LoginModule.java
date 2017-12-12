@@ -1,0 +1,242 @@
+package cn.ennwifi.webframe.ui.client.modules.authority.login;
+
+import cn.ennwifi.webframe.ui.client.ClientContext;
+import cn.ennwifi.webframe.ui.client.event.EventTopics;
+import cn.ennwifi.webframe.ui.client.modules.BaseAbstractModuleWithEvent;
+import cn.ennwifi.webframe.ui.client.rpc.WebFrameProxy;
+import cn.ennwifi.webframe.ui.shared.module.AdminLoginResponse;
+import cn.ennwifi.webframe.ui.shared.module.UserLoginType;
+import cn.mapway.ui.client.mvc.ModuleMarker;
+import com.google.gwt.core.client.Callback;
+import com.google.gwt.core.client.GWT;
+import com.google.gwt.event.dom.client.*;
+import com.google.gwt.storage.client.Storage;
+import com.google.gwt.uibinder.client.UiBinder;
+import com.google.gwt.uibinder.client.UiField;
+import com.google.gwt.uibinder.client.UiHandler;
+import com.google.gwt.user.client.rpc.AsyncCallback;
+import com.google.gwt.user.client.ui.Label;
+import com.google.gwt.user.client.ui.PasswordTextBox;
+import com.google.gwt.user.client.ui.TextBox;
+import com.google.gwt.user.client.ui.Widget;
+
+/**
+ * 登录页面.
+ *
+ * @author zhangjianshe
+ */
+@ModuleMarker(value = LoginModule.MODULE_CODE, name = "登录模块")
+public class LoginModule extends BaseAbstractModuleWithEvent {
+    public final static String MODULE_CODE = "MC_LOING";
+
+    @Override
+    public String getModuleCode() {
+        return MODULE_CODE;
+    }
+
+    public static final String USER_TOKEN = "token";
+    public static final String USER_NAME = "userName";
+    public static final String USER_TYPE = "loginType";
+
+    /**
+     * The ui binder.
+     */
+    private static LoginModuleUiBinder uiBinder = GWT.create(LoginModuleUiBinder.class);
+
+    /**
+     * The Interface LoginModuleUiBinder.
+     */
+    interface LoginModuleUiBinder extends UiBinder<Widget, LoginModule> {
+    }
+
+    /**
+     * The txt USERNAME.
+     */
+    @UiField
+    TextBox txtUserName;
+
+    /**
+     * The txt PASSWORD.
+     */
+    @UiField
+    PasswordTextBox txtPassword;
+
+    /**
+     * Instantiates a new login page.
+     */
+    public LoginModule() {
+        initModuleWidget(uiBinder.createAndBindUi(this));
+        this.setStyleName("home-LoginPage");
+
+        initPage();
+        showUserInfo(); // 显示用户信息
+        txtUserName.addKeyDownHandler(new KeyDownHandler() {
+
+            @Override
+            public void onKeyDown(KeyDownEvent event) {
+                if (event.getNativeKeyCode() == KeyCodes.KEY_ENTER) {
+                    txtPassword.setFocus(true);
+                }
+            }
+        });
+        txtPassword.addKeyDownHandler(new KeyDownHandler() {
+
+            @Override
+            public void onKeyDown(KeyDownEvent event) {
+                if (event.getNativeKeyCode() == KeyCodes.KEY_ENTER) {
+                    checkLogin(UserLoginType.USER_LOGIN_TYPE_LDAP);
+                }
+            }
+        });
+    }
+
+    /**
+     * 初始化页面.
+     */
+    public void initPage() {
+
+    }
+
+    /**
+     * The login click handler.
+     */
+    private ClickHandler loginClickHandler = new ClickHandler() {
+
+        @Override
+        public void onClick(ClickEvent event) {
+            checkLogin(UserLoginType.USER_LOGIN_TYPE_LDAP);
+
+        }
+    };
+
+//  @UiHandler("btnLogin")
+//  void ldapLogin(ClickEvent ev) {
+//    checkLogin(UserLoginType.USER_LOGIN_TYPE_LDAP);
+//  }
+
+    @UiHandler("btnCustomLogin")
+    void customLogoin(ClickEvent ev) {
+        checkLogin(UserLoginType.USER_LOGIN_TYPE_REGISTER);
+    }
+
+    /**
+     * Check login.
+     */
+    protected void checkLogin(String type) {
+        if (txtUserName.getValue().length() == 0) {
+            msg("请输入用户名");
+            return;
+        }
+        if (txtPassword.getValue().length() == 0) {
+            msg("输入密码");
+            return;
+        }
+        msg("认证中...");
+
+        WebFrameProxy.get().adminLogin(txtUserName.getValue(), txtPassword.getValue(), type, loginResponseHandler);
+    }
+
+    /**
+     * The login response handler.
+     */
+    private AsyncCallback<AdminLoginResponse> loginResponseHandler = new AsyncCallback<AdminLoginResponse>() {
+
+        @Override
+        public void onSuccess(AdminLoginResponse result) {
+
+            ClientContext context = ClientContext.getContext();
+            context.setUser(result.user);
+            processClientContext(result, context);
+            saveUserInfo();
+            postTopic(EventTopics.LOGIN, 0);
+        }
+
+        @Override
+        public void onFailure(Throwable caught) {
+            ClientContext.getContext().processFailure(caught);
+            msg(caught.getMessage());
+        }
+    };
+
+    /**
+     * 检查TOKEN
+     *
+     * @param handler
+     */
+    public static void checkUserToken(final Callback<Boolean, String> handler) {
+        Storage localStorage = Storage.getLocalStorageIfSupported(); // 获取存储对象
+
+        if (localStorage.getItem(USER_TOKEN) == null || localStorage.getItem(USER_TOKEN).equals("")) {
+            handler.onFailure("");
+        } else {
+            WebFrameProxy.get().getUserByToken(localStorage.getItem(USER_TOKEN), new AsyncCallback<AdminLoginResponse>() {
+
+                @Override
+                public void onSuccess(AdminLoginResponse result) {
+                    if (result.user == null) {
+                        handler.onFailure("");
+                    } else {
+                        ClientContext context = ClientContext.getContext();
+                        context.setUser(result.user);
+                        processClientContext(result, context);
+                        handler.onSuccess(true);
+                    }
+                }
+
+                @Override
+                public void onFailure(Throwable caught) {
+                    ClientContext.getContext().processFailure(caught);
+                    handler.onFailure(caught.getMessage());
+                }
+            });
+        }
+    }
+
+    /**
+     * @param result
+     * @param context
+     */
+    private static void processClientContext(AdminLoginResponse result, ClientContext context) {
+        context.setConfigure(result.configure);
+        context.setUser(result.user);
+    }
+
+    private void saveUserInfo() {
+        Storage localStorage = Storage.getLocalStorageIfSupported(); // 获取存储对象
+        localStorage.setItem(USER_NAME, txtUserName.getValue()); // 存储用户名
+        localStorage.setItem(USER_TOKEN, ClientContext.getContext().getUser().getToken()); // 存储token
+        GWT.log(ClientContext.getContext().getUser().getToken());
+        localStorage.setItem(USER_TYPE, ClientContext.getContext().getUser().getAccount_type().toString()); // 存储登录类型
+
+    }
+
+    private void showUserInfo() {
+
+        Storage localStorage = Storage.getLocalStorageIfSupported(); // 获取存储对象
+        String userName = localStorage.getItem(USER_NAME);
+        if (userName != null) {
+            txtUserName.setValue(userName);
+        }
+
+    }
+
+    @UiField
+    Label lbMessage;
+
+    /**
+     * Msg.
+     *
+     * @param msg the msg
+     */
+    public void msg(String msg) {
+        lbMessage.setText(msg);
+    }
+
+    /**
+     * Clear data.
+     */
+    public void clearData() {
+        txtPassword.setValue("");
+    }
+
+}

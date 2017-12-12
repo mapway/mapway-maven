@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="mapway-annotation" />
+        <module name="mapway-database" />
+        <module name="mapway-doc-ui" />
+        <module name="mapway-maven-plugin" />
+        <module name="mapway-ui-frame" />
+        <module name="mapway-web-frame" />
+        <module name="web-frame" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="mapway-annotation" target="1.8" />
+      <module name="mapway-database" target="1.8" />
+      <module name="mapway-doc-ui" target="1.5" />
+      <module name="mapway-maven" target="1.5" />
+      <module name="mapway-maven-plugin" target="1.5" />
+      <module name="mapway-ui-frame" target="1.5" />
+      <module name="mapway-web-frame" target="1.6" />
+      <module name="web-frame" target="1.6" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

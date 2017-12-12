@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/mapway-annotation/mapway-annotation.iml" filepath="$PROJECT_DIR$/mapway-annotation/mapway-annotation.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mapway-database/mapway-database.iml" filepath="$PROJECT_DIR$/mapway-database/mapway-database.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mapway-doc-ui/mapway-doc-ui.iml" filepath="$PROJECT_DIR$/mapway-doc-ui/mapway-doc-ui.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/mapway-maven.iml" filepath="$PROJECT_DIR$/.idea/mapway-maven.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mapway-maven-plugin/mapway-maven-plugin.iml" filepath="$PROJECT_DIR$/mapway-maven-plugin/mapway-maven-plugin.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mapway-ui-frame/mapway-ui-frame.iml" filepath="$PROJECT_DIR$/mapway-ui-frame/mapway-ui-frame.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mapway-web-frame/mapway-web-frame.iml" filepath="$PROJECT_DIR$/mapway-web-frame/mapway-web-frame.iml" />
+    </modules>
+  </component>
+</project>

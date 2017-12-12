@@ -1,0 +1,23 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder" xmlns:g="urn:import:com.google.gwt.user.client.ui"
+    xmlns:m="urn:import:cn.ennwifi.webframe.ui.client.modules.meta">
+    <ui:style>
+    
+    </ui:style>
+    <g:DockLayoutPanel>
+        <g:west size="300">
+            <g:ScrollPanel styleName="border-right">
+                <m:MetaTree ui:field="tree"></m:MetaTree>
+            </g:ScrollPanel>
+        </g:west>
+        <g:east size="300">
+            <g:ScrollPanel>
+                <g:FlexTable ui:field="tbl"></g:FlexTable>
+            
+            </g:ScrollPanel>
+        </g:east>
+        <g:center>
+            <m:EditMeta ui:field="editor"></m:EditMeta>
+        </g:center>
+    </g:DockLayoutPanel>
+</ui:UiBinder>

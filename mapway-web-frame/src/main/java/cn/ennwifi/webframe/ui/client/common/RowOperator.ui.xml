@@ -1,0 +1,14 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder" xmlns:g="urn:import:com.google.gwt.user.client.ui" xmlns:c="urn:import:cn.mapway.ui.client.widget.common">
+    <ui:style>
+     .box{
+	padding: 8px 5px 0px 0px;
+	text-align: right;
+}
+    </ui:style>
+    <g:HTMLPanel styleName="{style.box}">
+         <c:PrimaryButton ui:field="btnEditor">编辑</c:PrimaryButton>
+         <c:PrimaryButton ui:field="btnDelete">删除</c:PrimaryButton>
+      
+    </g:HTMLPanel>
+</ui:UiBinder>

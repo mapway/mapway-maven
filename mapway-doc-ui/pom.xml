@@ -7,7 +7,7 @@
     <parent>
         <groupId>cn.mapway</groupId>
         <artifactId>mapway-maven</artifactId>
-        <version>1.0.98-SNAPSHOT</version>
+        <version>1.1.1-SNAPSHOT</version>
     </parent>
 
     <name>mapway-doc-ui</name>
@@ -33,7 +33,7 @@
         <dependency>
             <groupId>cn.mapway</groupId>
             <artifactId>mapway-annotation</artifactId>
-            <version>1.0.98-SNAPSHOT</version>
+            <version>1.1.1-SNAPSHOT</version>
         </dependency>
     </dependencies>
 
@@ -56,7 +56,7 @@
                 <dependency>
                     <groupId>cn.mapway</groupId>
                     <artifactId>mapway-annotation</artifactId>
-                    <version>1.0.98-SNAPSHOT</version>
+                    <version>1.1.1-SNAPSHOT</version>
                 </dependency>
                 <dependency>
                     <groupId>javax.validation</groupId>
@@ -118,7 +118,6 @@
                                 <goals>
                                     <goal>timestamp-property</goal>
                                 </goals>
-                                <phase>generate-sources</phase>
                                 <configuration>
                                     <name>current.time</name>
                                     <pattern>yyyy年MM月dd日 HH:mm:ss</pattern>

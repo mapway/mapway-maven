@@ -1,0 +1,14 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder" xmlns:g="urn:import:com.google.gwt.user.client.ui" xmlns:c="urn:import:cn.ennwifi.webframe.ui.client.common">
+    <ui:style>
+    	.pbox{
+	display: flex;
+	padding: 15px;
+}
+    </ui:style>
+    <g:HTMLPanel>
+        <g:HTMLPanel ui:field="pPictures" styleName="{style.pbox}">
+        </g:HTMLPanel>
+        <c:ImageUploader ui:field="uploader" width="200px" height="200px"></c:ImageUploader>
+    </g:HTMLPanel>
+</ui:UiBinder>

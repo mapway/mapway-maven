@@ -1,0 +1,18 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder" xmlns:g="urn:import:com.google.gwt.user.client.ui"
+    xmlns:a="urn:import:cn.ennwifi.webframe.ui.client.modules.authority.authoritydefine">
+    <ui:style>
+    
+    </ui:style>
+    <g:DockLayoutPanel>
+        <g:west size="300">
+            <g:ScrollPanel styleName="border-right">
+                <a:AuthorityTree ui:field="treeAuthority">
+                </a:AuthorityTree>
+            </g:ScrollPanel>
+        </g:west>
+        <g:center>
+            <a:EditAuthority ui:field="editAuthority"></a:EditAuthority>
+        </g:center>
+    </g:DockLayoutPanel>
+</ui:UiBinder>

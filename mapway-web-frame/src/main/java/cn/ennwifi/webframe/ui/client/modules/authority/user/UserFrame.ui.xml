@@ -1,0 +1,25 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder" xmlns:g="urn:import:com.google.gwt.user.client.ui"
+    xmlns:c="urn:import:cn.mapway.ui.client.widget.common">
+    <ui:style>
+    .center {
+    	padding: 10px;
+    }
+    
+    .btn {
+    	margin-left: 10px;
+    }
+    </ui:style>
+    
+           
+    <g:ScrollPanel styleName="{style.center}">
+        <g:VerticalPanel width="100%" horizontalAlignment="center">
+             <c:ButtonEx ui:field="btnCreate" text="新建"></c:ButtonEx>
+            <c:LabelEx ui:field="sectionHeader"></c:LabelEx>
+            <c:TableEx width="100%" ui:field="table"></c:TableEx>
+         
+        </g:VerticalPanel>
+    </g:ScrollPanel>
+               
+   
+</ui:UiBinder> 
