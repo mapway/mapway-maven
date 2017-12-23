@@ -1,9 +1,6 @@
 package cn.ennwifi.webframe.ui.client.rpc;
 
-import cn.ennwifi.webframe.ui.shared.module.AdminLoginResponse;
-import cn.ennwifi.webframe.ui.shared.module.DashboardData;
-import cn.ennwifi.webframe.ui.shared.module.PagerData;
-import cn.ennwifi.webframe.ui.shared.module.SearchReq;
+import cn.ennwifi.webframe.ui.shared.module.*;
 import cn.ennwifi.webframe.ui.shared.repository.*;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 
@@ -47,6 +44,8 @@ public interface IWebFrameServiceAsync {
     void saveAdminRole(S_ROLEObj role, AsyncCallback<S_ROLEObj> callback);
 
     void isUserOwnResource(Long resid, AsyncCallback<Boolean> callback);
+
+    void isUserOwnResource(List<ResourceNameAuthority> request, Integer rootid, AsyncCallback<List<ResourceNameAuthority>> callback);
 
     void saveAdminUser(S_USERObj user, AsyncCallback<S_USERObj> callback);
 

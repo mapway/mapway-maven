@@ -8,7 +8,7 @@ import com.google.gwt.core.client.GWT;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.user.client.ui.Widget;
 
-@ModuleMarker(value = SubWithNavi.MODULE_CODE, name = "子模块带导航")
+@ModuleMarker(value = SubWithNavi.MODULE_CODE, group = "/测试", name = "子模块带导航")
 public class SubWithNavi extends AbstractModule {
 
   public final static String MODULE_CODE = "SUB_WITH_NAVI";

@@ -4,6 +4,7 @@ import cn.ennwifi.webframe.ui.client.data.MetaDataProvider;
 import cn.ennwifi.webframe.ui.client.event.EventTopics;
 import cn.ennwifi.webframe.ui.client.main.MainFrame;
 import cn.ennwifi.webframe.ui.client.modules.authority.login.LoginModule;
+import cn.ennwifi.webframe.ui.client.modules.dashboard.DashBoardModule;
 import cn.ennwifi.webframe.ui.client.resource.SysResource;
 import cn.mapway.ui.client.event.IEventHandler;
 import cn.mapway.ui.client.mqtt.MqttJs;
@@ -23,24 +24,13 @@ import com.google.gwt.user.client.Window;
 public class WebFrameEntry implements EntryPoint, IEventHandler {
 
     /**
-     * 主页面.
+     * 可以继承重载这个方法.
+     *
+     * @return
      */
-
-    private Callback<Boolean, String> checkHandler = new Callback<Boolean, String>() {
-
-        @Override
-        public void onSuccess(Boolean result) {
-            // 检查URL中的module?
-            // 初始化元数据
-            MetaDataProvider.get();
-            ClientContext.getContext().switchModule(MainFrame.MODULE_CODE, null);
-        }
-
-        @Override
-        public void onFailure(String reason) {
-            ClientContext.getContext().switchModule(LoginModule.MODULE_CODE, null);
-        }
-    };
+    public String getDashBoardModuleCode() {
+        return DashBoardModule.MODULE_CODE;
+    }
 
     @Override
     public void onModuleLoad() {
@@ -100,8 +90,31 @@ public class WebFrameEntry implements EntryPoint, IEventHandler {
             // checkUserToken();退出后重新加载整个页面
             Window.Location.reload();
         } else if (EventTopics.LOGIN.equals(topic)) {
+            MetaDataProvider.get();
+            ClientContext.getContext().setDashboardCode(getDashBoardModuleCode());
             ClientContext.getContext().switchModule(MainFrame.MODULE_CODE, null);
         }
     }
+
+    /**
+     * 主页面.
+     */
+
+    private Callback<Boolean, String> checkHandler = new Callback<Boolean, String>() {
+
+        @Override
+        public void onSuccess(Boolean result) {
+            // 检查URL中的module?
+            // 初始化元数据
+            MetaDataProvider.get();
+            ClientContext.getContext().setDashboardCode(getDashBoardModuleCode());
+            ClientContext.getContext().switchModule(MainFrame.MODULE_CODE, null);
+        }
+
+        @Override
+        public void onFailure(String reason) {
+            ClientContext.getContext().switchModule(LoginModule.MODULE_CODE, null);
+        }
+    };
 
 }

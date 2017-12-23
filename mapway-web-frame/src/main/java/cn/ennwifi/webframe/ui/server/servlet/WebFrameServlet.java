@@ -8,8 +8,12 @@ import cn.ennwifi.webframe.tools.Times;
 import cn.ennwifi.webframe.ui.client.rpc.IWebFrameService;
 import cn.ennwifi.webframe.ui.shared.module.*;
 import cn.ennwifi.webframe.ui.shared.repository.*;
+import com.google.gwt.user.server.rpc.RPCRequest;
 import org.nutz.dao.Cnd;
 import org.nutz.dao.FieldFilter;
+import org.nutz.dao.Sqls;
+import org.nutz.dao.entity.Entity;
+import org.nutz.dao.sql.Sql;
 import org.nutz.dao.util.Daos;
 import org.nutz.json.Json;
 import org.nutz.lang.Lang;
@@ -22,7 +26,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-
 /**
  * UI Service.
  *
@@ -34,7 +37,6 @@ public abstract class WebFrameServlet extends CheckAdminTokenServlet implements 
      * 缺省的WEBFrame Server URL映射路径
      */
     public final static String DEFAULt_WEB_FRAME_SERVER_PATH = "webFrameServer";
-
 
     /*
      * (non-Javadoc)
@@ -61,7 +63,6 @@ public abstract class WebFrameServlet extends CheckAdminTokenServlet implements 
      */
     private AdminService adminService;
 
-
     /**
      * 获取 Spring容器中的 认证对象.
      *
@@ -74,11 +75,19 @@ public abstract class WebFrameServlet extends CheckAdminTokenServlet implements 
         return adminService;
     }
 
-
     private final static String MODULE_SYSTEM_ADMIN = "系统管理";
     private final static String MODULE_RESOURCE = "资源处理";
     private final static String MODULE_METADATA = "元数据";
     private final static String MODULE_ACCOUNT = "账户";
+
+    /**
+     * @param rpcRequest
+     * @return
+     */
+    @Override
+    public boolean checkToken(RPCRequest rpcRequest) {
+        return super.checkToken(rpcRequest);
+    }
 
     @Override
     public AdminLoginResponse adminLogin(String username, String pwd, String type)
@@ -109,7 +118,6 @@ public abstract class WebFrameServlet extends CheckAdminTokenServlet implements 
                         Cnd.NEW().asc(S_RESOURCEObj.FLD_PID).asc(S_RESOURCEObj.FLD_RANK));
         return l;
     }
-
 
     @Override
     public S_RESOURCEObj saveMenu(S_RESOURCEObj resource) throws ServerException {
@@ -146,7 +154,6 @@ public abstract class WebFrameServlet extends CheckAdminTokenServlet implements 
                     throw new ServerException("不能删除有子节点的目录");
                 }
 
-
                 Cnd where = Cnd.where(S_ROLE_RESOURCEObj.FLD_RES_ID, "=", resourceId);
                 getDao().clear(S_ROLE_RESOURCEObj.class, where);
                 getDao().delete(S_RESOURCEObj.class, resourceId);
@@ -170,7 +177,6 @@ public abstract class WebFrameServlet extends CheckAdminTokenServlet implements 
             if (roleS != null) {
                 throw new ServerException("服务器中已存在这个角色");
             }
-
 
             String content = "新建角色" + role.getName() + "成功";
             systemLog(admin, Actions.CREATE, content);
@@ -221,7 +227,6 @@ public abstract class WebFrameServlet extends CheckAdminTokenServlet implements 
                 String content = "对角色" + roleid + "授权" + resourceId;
                 systemLog(admin, Actions.CREATE, content);
 
-
             }
         } else {
             getDao().clear(S_ROLE_RESOURCEObj.class, where);
@@ -237,7 +242,6 @@ public abstract class WebFrameServlet extends CheckAdminTokenServlet implements 
      */
     @Override
     public S_USERObj saveAdminUser(S_USERObj user) throws ServerException {
-
 
         if (user.getId() == null) {
             // 检查是否有相同的用户名
@@ -285,7 +289,6 @@ public abstract class WebFrameServlet extends CheckAdminTokenServlet implements 
         return user;
     }
 
-
     @Override
     public boolean updateAdminUserRole(Long userid, Long roleid, Boolean addOrRemove)
             throws ServerException {
@@ -326,7 +329,6 @@ public abstract class WebFrameServlet extends CheckAdminTokenServlet implements 
         return r;
     }
 
-
     @Override
     public List<S_RESOURCEObj> adminSubMenu(int menuId) throws ServerException {
         List<S_RESOURCEObj> menus = getAdminService().subMenu(menuId);
@@ -362,6 +364,8 @@ public abstract class WebFrameServlet extends CheckAdminTokenServlet implements 
      */
     private void processLoginResult(AdminLoginResponse response) {
 
+        getAdminService().processLoginResult(response);
+
         if (response.user != null) {
             CookieTools.addCookie(getThreadLocalResponse(), "ADMIN-TOKEN", response.user.getToken(), "/",
                     -1);
@@ -373,7 +377,6 @@ public abstract class WebFrameServlet extends CheckAdminTokenServlet implements 
             CookieTools.addCookie(getThreadLocalResponse(), AdminService.USER_TOKEN, "", "/", -1);
         }
     }
-
 
     /*
      * (non-Javadoc)
@@ -425,7 +428,6 @@ public abstract class WebFrameServlet extends CheckAdminTokenServlet implements 
         return getDao().query(S_ROLE_RESOURCEObj.class, where);
     }
 
-
     /**
      * 简化版的系统模块日志
      *
@@ -436,7 +438,6 @@ public abstract class WebFrameServlet extends CheckAdminTokenServlet implements 
     private void systemLog(S_USERObj admin, Actions action, String content) {
         log(MODULE_SYSTEM_ADMIN, MODULE_RESOURCE, action, content);
     }
-
 
     /**
      * 用户是否拥有某个资源的访问权限
@@ -475,7 +476,6 @@ public abstract class WebFrameServlet extends CheckAdminTokenServlet implements 
         return getAdminService().saveOrUpdateMetaData(meta);
     }
 
-
     @Override
     public List<S_METAObj> getMetaData(String catalog, Boolean includeSub) throws ServerException {
         Cnd where = null;
@@ -505,10 +505,34 @@ public abstract class WebFrameServlet extends CheckAdminTokenServlet implements 
         String content = "对角色" + roleId + "授权" + Lang.concat(",", ids).toString();
         systemLog(admin, Actions.UPDATE, content);
 
-
         getDao().fastInsert(list);
         return true;
 
     }
 
+    /**
+     * 判断当前用户否是拥有功能点权限
+     *
+     * @param request
+     * @return
+     * @throws ServerException
+     */
+    @Override
+    public List<ResourceNameAuthority> isUserOwnResource(List<ResourceNameAuthority> request, Integer rootid) throws ServerException {
+        S_USERObj admin = requestUser();
+        if (admin == null) {
+            throw new ServerException("没有登录信息");
+        }
+        List<S_RESOURCEObj> resources = getAdminService().userMainMenu(admin.getId(), rootid);
+        for (ResourceNameAuthority a : request) {
+            a.authorized = false;
+            for (S_RESOURCEObj r : resources) {
+                if (r.getPath().equals(a.path) && r.getName().equals(a.name)) {
+                    a.authorized = true;
+                    break;
+                }
+            }
+        }
+        return request;
+    }
 }

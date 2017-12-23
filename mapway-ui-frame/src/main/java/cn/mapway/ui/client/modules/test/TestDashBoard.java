@@ -14,7 +14,7 @@ import cn.mapway.ui.client.widget.common.DangerButton;
 import cn.mapway.ui.client.widget.common.DashBoardItem;
 import cn.mapway.ui.client.widget.common.PrimaryButton;
 
-@ModuleMarker(value = TestDashBoard.MODULE_CODE, name = "主页面测试" , icon="avatar11.png")
+@ModuleMarker(value = TestDashBoard.MODULE_CODE, group = "/测试", name = "主页面测试" , icon="avatar11.png")
 public class TestDashBoard extends AbstractModule {
 
 	private static TestDashBoardUiBinder uiBinder = GWT.create(TestDashBoardUiBinder.class);

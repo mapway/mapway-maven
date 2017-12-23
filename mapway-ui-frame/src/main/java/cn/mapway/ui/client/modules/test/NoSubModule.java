@@ -9,7 +9,7 @@ import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.Widget;
 
-@ModuleMarker(value = NoSubModule.MODULE_CODE, name = "没有子模块")
+@ModuleMarker(value = NoSubModule.MODULE_CODE, group = "/测试", name = "没有子模块")
 public class NoSubModule extends AbstractModule {
 
   public final static String MODULE_CODE = "MC_NO_SUB";

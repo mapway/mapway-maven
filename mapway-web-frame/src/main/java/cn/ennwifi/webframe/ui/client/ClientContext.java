@@ -138,7 +138,6 @@ public class ClientContext implements IEventHandler, IOnPostMessage {
         this.user = user;
     }
 
-
     /**
      * The message handler.
      */
@@ -173,7 +172,6 @@ public class ClientContext implements IEventHandler, IOnPostMessage {
     }
 
     private ClientConfigure configure;
-
 
     /**
      * 向用户确认操作.
@@ -216,8 +214,11 @@ public class ClientContext implements IEventHandler, IOnPostMessage {
         if (m == null) {
             GWT.log("没有找到模块:" + moduleCode);
         }
+        GWT.log("start clear page");
         RootLayoutPanel.get().clear();
         RootLayoutPanel.get().add(m.getRootWidget());
+        GWT.log("attach module to page");
+
         m.initialize(null, parameters);
 
     }
@@ -341,4 +342,13 @@ public class ClientContext implements IEventHandler, IOnPostMessage {
 
     }
 
+    private String dashboardCode;
+
+    public String getDashboardCode() {
+        return dashboardCode;
+    }
+
+    public void setDashboardCode(String code) {
+        dashboardCode = code;
+    }
 }

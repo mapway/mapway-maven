@@ -224,7 +224,7 @@ table td , div , button{
 }
 .gwtEx-TextBox-readonly {
   color: #555;
-  background-color: #999;
+  background-color: #f0f0f0;
 }
 
 .gwtEx-Table{
@@ -1147,9 +1147,10 @@ table td , div , button{
   white-space: nowrap;
   cursor: hand;
   cursor: pointer;
+    display: block !important;
 }
 .gwt-Tree .gwt-TreeItem-selected {
-  background: #93c2f1 url(images/hborder.png) repeat-x 0px -1463px;
+
 }
 .gwt-TreeItem .gwt-RadioButton input,
 .gwt-TreeItem .gwt-CheckBox input {

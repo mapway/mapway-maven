@@ -7,7 +7,7 @@ import com.google.gwt.core.client.GWT;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.user.client.ui.Widget;
 
-@ModuleMarker(value = NoToolsModule.MODULE_CODE, name = "无tools模块")
+@ModuleMarker(value = NoToolsModule.MODULE_CODE, group = "/测试", name = "无tools模块")
 public class NoToolsModule extends BaseAbstractModule {
 
   public final static String MODULE_CODE = "MC_NO_TOOLS";

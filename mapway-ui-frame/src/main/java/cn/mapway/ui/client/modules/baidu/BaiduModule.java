@@ -17,7 +17,7 @@ import com.google.gwt.user.client.ui.HTMLPanel;
 import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.Widget;
 
-@ModuleMarker(value = BaiduModule.MODULE_CODE, name = "百度模块", summary = "XXXXXX", icon = "help.png")
+@ModuleMarker(value = BaiduModule.MODULE_CODE, group = "/测试",name = "百度模块", summary = "XXXXXX", icon = "help.png")
 public class BaiduModule extends BaseAbstractModule {
 
   public static final String MODULE_CODE = "MC_BAIDU";
@@ -38,7 +38,6 @@ public class BaiduModule extends BaseAbstractModule {
     Button btn = new Button("tets");
     btn.addClickHandler(new ClickHandler() {
 
-      @Override
       public void onClick(ClickEvent event) {
         if (b) {
           tr.getStyle().setHeight(1, Unit.PX);

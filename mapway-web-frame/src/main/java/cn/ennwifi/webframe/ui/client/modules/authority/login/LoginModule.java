@@ -145,7 +145,7 @@ public class LoginModule extends BaseAbstractModuleWithEvent {
         public void onSuccess(AdminLoginResponse result) {
 
             ClientContext context = ClientContext.getContext();
-            context.setUser(result.user);
+
             processClientContext(result, context);
             saveUserInfo();
             postTopic(EventTopics.LOGIN, 0);
@@ -173,11 +173,11 @@ public class LoginModule extends BaseAbstractModuleWithEvent {
 
                 @Override
                 public void onSuccess(AdminLoginResponse result) {
+                    GWT.log("login success ");
                     if (result.user == null) {
                         handler.onFailure("");
                     } else {
                         ClientContext context = ClientContext.getContext();
-                        context.setUser(result.user);
                         processClientContext(result, context);
                         handler.onSuccess(true);
                     }
@@ -185,6 +185,7 @@ public class LoginModule extends BaseAbstractModuleWithEvent {
 
                 @Override
                 public void onFailure(Throwable caught) {
+                    GWT.log(caught.getMessage());
                     ClientContext.getContext().processFailure(caught);
                     handler.onFailure(caught.getMessage());
                 }

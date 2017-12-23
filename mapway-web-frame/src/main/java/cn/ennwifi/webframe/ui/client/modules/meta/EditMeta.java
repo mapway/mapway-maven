@@ -1,6 +1,9 @@
 package cn.ennwifi.webframe.ui.client.modules.meta;
 
+import cn.ennwifi.webframe.ui.client.ClientContext;
+import cn.ennwifi.webframe.ui.client.common.ImageUploader;
 import cn.ennwifi.webframe.ui.client.rpc.WebFrameProxy;
+import cn.ennwifi.webframe.ui.shared.module.UploadFileReturn;
 import cn.ennwifi.webframe.ui.shared.repository.S_METAObj;
 import cn.mapway.ui.client.widget.common.ButtonEx;
 
@@ -13,16 +16,29 @@ import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.*;
 import com.ksyzt.gwt.client.common.MessageComposite;
 import com.ksyzt.gwt.client.event.MessageEvent;
+import com.ksyzt.gwt.client.event.MessageHandler;
 
 public class EditMeta extends MessageComposite {
 
     private static EditMetaUiBinder uiBinder = GWT.create(EditMetaUiBinder.class);
+    private final MessageHandler iconHandler = new MessageHandler() {
+        @Override
+        public void onMessage(Object sender, Integer message, Object value) {
+            if (message == MessageEvent.OK) {
+                UploadFileReturn r = (UploadFileReturn) value;
+                if (mMeta != null) {
+                    mMeta.setIcon(r.relPath);
+                }
+            }
+        }
+    };
 
     interface EditMetaUiBinder extends UiBinder<Widget, EditMeta> {
     }
 
     public EditMeta() {
         initWidget(uiBinder.createAndBindUi(this));
+        icon.addMessageHandler(iconHandler);
     }
 
     /**
@@ -95,6 +111,7 @@ public class EditMeta extends MessageComposite {
             meta.setRank(1);
             meta.setCatalog("");
             meta.setDescription("");
+            meta.setIcon("");
             mMeta = meta;
         } else {
             mMeta = meta;
@@ -111,6 +128,8 @@ public class EditMeta extends MessageComposite {
 
         btnDelete.setEnabled(mMeta.getId() != null);
         btnOk.setEnabled(true);
+
+        icon.setUrl(ClientContext.getContext().getConfigure().getImagePrefix() + meta.getIcon());
         msg("");
     }
 
@@ -120,6 +139,8 @@ public class EditMeta extends MessageComposite {
     @UiField
     Label lbMessage;
 
+    @UiField
+    ImageUploader icon;
     @UiField
     Label lbId;
 
@@ -186,6 +207,7 @@ public class EditMeta extends MessageComposite {
             m.setCode("");
             m.setRoot_id(mMeta.getRoot_id());
             m.setDescription("");
+            m.setIcon("");
             editMeta(m);
         } else {
             editMeta(null);

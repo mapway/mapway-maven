@@ -209,7 +209,7 @@ public class MainFrame extends BaseAbstractModuleWithEvent implements IMqttHandl
         if (hash != null && hash.length() > 0) {
             HistoryManager.get(this).popup(hash);
         } else {
-            switchModule(DashBoardModule.MODULE_CODE, null, false);
+            switchModule(ClientContext.getContext().getDashboardCode(), null, false);
         }
         return b;
     }
@@ -295,7 +295,7 @@ public class MainFrame extends BaseAbstractModuleWithEvent implements IMqttHandl
         if (context.getUser().getAvator() == null || context.getUser().getAvator() == "") {
             imgUser.setUrl(SysResource.INSTANCE.custom().getSafeUri());
         } else {
-            imgUser.setUrl(context.getUser().getAvator());
+            imgUser.setUrl(context.getConfigure().getImagePrefix() + context.getUser().getAvator());
         }
     }
 

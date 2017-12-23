@@ -56,6 +56,8 @@ public interface IWebFrameService extends RemoteService {
 
     Boolean isUserOwnResource(Long resid) throws ServerException;
 
+    List<ResourceNameAuthority> isUserOwnResource(List<ResourceNameAuthority> request,Integer rootid) throws ServerException;
+
     List<S_METAObj> fetchMetaData() throws ServerException;
 
     S_METAObj saveOrUpdateMetaData(S_METAObj meta) throws ServerException;

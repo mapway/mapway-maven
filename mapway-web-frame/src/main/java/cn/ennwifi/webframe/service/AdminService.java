@@ -98,7 +98,7 @@ public class AdminService {
      *
      * @param response
      */
-    private void processLoginResult(AdminLoginResponse response) {
+    public void processLoginResult(AdminLoginResponse response) {
 
         response.configure.imagePrefix = uiProperties.getImagePrefix();
         response.configure.imageUploadProxyUrl = uiProperties.getImageUploadProxyUrl();
@@ -238,7 +238,7 @@ public class AdminService {
         }
         if (meta.getId() == null) {
             dao.insert(meta);
-            if (meta.getRoot_id() == null) {
+            if (meta.getPid() == 0) {
                 meta.setRoot_id(meta.getId());
                 dao.update(meta);
             }
