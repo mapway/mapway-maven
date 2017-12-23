@@ -8,6 +8,7 @@ import cn.ennwifi.webframe.ui.client.tools.Jsons;
 import cn.ennwifi.webframe.ui.client.tools.XDM;
 import cn.ennwifi.webframe.ui.client.tools.XDM.IOnPostMessage;
 import cn.ennwifi.webframe.ui.shared.module.ClientConfigure;
+import cn.ennwifi.webframe.ui.shared.repository.S_RESOURCEObj;
 import cn.ennwifi.webframe.ui.shared.repository.S_USERObj;
 import cn.mapway.ui.client.event.EventBus;
 import cn.mapway.ui.client.event.IEventHandler;
@@ -27,6 +28,8 @@ import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.StatusCodeException;
 import com.google.gwt.user.client.ui.RootLayoutPanel;
 import com.ksyzt.gwt.client.event.MessageHandler;
+
+import java.util.List;
 
 /**
  * 客户端应用环境.
@@ -350,5 +353,54 @@ public class ClientContext implements IEventHandler, IOnPostMessage {
 
     public void setDashboardCode(String code) {
         dashboardCode = code;
+    }
+
+    public List<S_RESOURCEObj> getResources() {
+        return resources;
+    }
+
+    public void setResources(List<S_RESOURCEObj> resources) {
+        this.resources = resources;
+    }
+
+    List<S_RESOURCEObj> resources;
+
+    /**
+     * 用户是否对资源 resID拥有权限
+     *
+     * @param resId
+     * @return
+     */
+    public boolean isAuthorized(Long resId) {
+        Boolean authorized = false;
+        if (resources != null && resId != null) {
+            for (S_RESOURCEObj r : resources) {
+                if (r.getId().equals(resId)) {
+                    authorized = true;
+                    break;
+                }
+            }
+        }
+        return authorized;
+    }
+
+    /**
+     * 用户是否对资源 resID拥有权限
+     *
+     * @param path
+     * @param funcPoint
+     * @return
+     */
+    public boolean isAuthorized(String path, String funcPoint) {
+        Boolean authorized = false;
+        if (resources != null && path != null && funcPoint != null) {
+            for (S_RESOURCEObj r : resources) {
+                if (path.equals(r.getPath()) && funcPoint.equals(r.getName())) {
+                    authorized = true;
+                    break;
+                }
+            }
+        }
+        return authorized;
     }
 }

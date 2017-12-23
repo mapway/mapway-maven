@@ -3,11 +3,11 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>cn.ennwifi</groupId>
     <artifactId>mapway-web-frame</artifactId>
-    <version>1.1.1-SNAPSHOT</version>
+    <version>1.1.7-SNAPSHOT</version>
     <parent>
         <groupId>cn.mapway</groupId>
         <artifactId>mapway-maven</artifactId>
-        <version>1.1.1-SNAPSHOT</version>
+        <version>1.1.7-SNAPSHOT</version>
     </parent>
     <packaging>jar</packaging>
     <name>mapway-web-frame</name>
@@ -63,7 +63,7 @@
         <dependency>
             <groupId>cn.mapway</groupId>
             <artifactId>mapway-annotation</artifactId>
-            <version>1.1.1-SNAPSHOT</version>
+            <version>1.1.7-SNAPSHOT</version>
         </dependency>
     </dependencies>
     <profiles>

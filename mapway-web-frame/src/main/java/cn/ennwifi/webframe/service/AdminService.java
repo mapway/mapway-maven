@@ -89,16 +89,17 @@ public class AdminService {
 
             resp.user = user;
         }
-        processLoginResult(resp);
+        processLoginResult(req.rootResourceId, resp);
         return resp;
     }
 
     /**
      * 处理登录成功后返回的客户端配置信息
      *
+     * @param resRootId
      * @param response
      */
-    public void processLoginResult(AdminLoginResponse response) {
+    public void processLoginResult(Integer resRootId, AdminLoginResponse response) {
 
         response.configure.imagePrefix = uiProperties.getImagePrefix();
         response.configure.imageUploadProxyUrl = uiProperties.getImageUploadProxyUrl();
@@ -107,6 +108,11 @@ public class AdminService {
         response.configure.mqttPath = uiProperties.getMqttPath();
         response.configure.compileInformation = uiProperties.getCompileInformation();
         response.configure.logo = uiProperties.getLogo();
+
+        //处理权限
+        if (resRootId != null && response.user != null) {
+            response.authorities = userMainMenu(response.user.getId(), resRootId);
+        }
     }
 
     /**

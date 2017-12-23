@@ -14,7 +14,7 @@ import java.util.List;
 @RemoteServiceRelativePath(WebFrameServlet.DEFAULt_WEB_FRAME_SERVER_PATH)
 public interface IWebFrameService extends RemoteService {
 
-    AdminLoginResponse adminLogin(String username, String pwd, String type) throws ServerException;
+    AdminLoginResponse adminLogin(Integer resourceRootId, String username, String pwd, String type) throws ServerException;
 
     List<S_RESOURCEObj> getAllMenu() throws ServerException;
 
@@ -41,7 +41,7 @@ public interface IWebFrameService extends RemoteService {
 
     List<S_RESOURCEObj> adminSubMenu(int menuId) throws ServerException;
 
-    AdminLoginResponse getUserByToken(String token) throws ServerException;
+    AdminLoginResponse getUserByToken(Integer resourceRootId, String token) throws ServerException;
 
     PagerData<S_USERObj> findUserByQuery(String query, PagerData<S_USERObj> pager)
             throws ServerException;
@@ -56,7 +56,9 @@ public interface IWebFrameService extends RemoteService {
 
     Boolean isUserOwnResource(Long resid) throws ServerException;
 
-    List<ResourceNameAuthority> isUserOwnResource(List<ResourceNameAuthority> request,Integer rootid) throws ServerException;
+    List<ResourceNameAuthority> isUserOwnResource(List<ResourceNameAuthority> request, Integer rootid) throws ServerException;
+
+    List<S_RESOURCEObj> userResources(Integer rootid) throws ServerException;
 
     List<S_METAObj> fetchMetaData() throws ServerException;
 

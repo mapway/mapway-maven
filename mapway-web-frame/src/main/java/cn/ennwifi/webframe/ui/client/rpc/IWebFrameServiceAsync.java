@@ -11,7 +11,7 @@ import java.util.List;
  */
 public interface IWebFrameServiceAsync {
 
-    void adminLogin(String username, String pwd, String type,
+    void adminLogin(Integer resourceRootId, String username, String pwd, String type,
                     AsyncCallback<AdminLoginResponse> callback);
 
     void getAllMenu(AsyncCallback<List<S_RESOURCEObj>> callback);
@@ -39,7 +39,7 @@ public interface IWebFrameServiceAsync {
 
     void getRoleResource(Long roleId, AsyncCallback<List<S_ROLE_RESOURCEObj>> callback);
 
-    void getUserByToken(String token, AsyncCallback<AdminLoginResponse> callback);
+    void getUserByToken(Integer resourceRootId, String token, AsyncCallback<AdminLoginResponse> callback);
 
     void saveAdminRole(S_ROLEObj role, AsyncCallback<S_ROLEObj> callback);
 
@@ -68,5 +68,7 @@ public interface IWebFrameServiceAsync {
     void updateRoleResource(Long id, List<Long> ids, AsyncCallback<Boolean> callback);
 
     void dashboardIndex(AsyncCallback<List<DashboardData>> callback);
+
+    void userResources(Integer rootid, AsyncCallback<List<S_RESOURCEObj>> callback) throws ServerException;
 
 }

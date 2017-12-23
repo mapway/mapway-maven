@@ -9,6 +9,7 @@ import cn.ennwifi.webframe.ui.client.resource.SysResource;
 import cn.mapway.ui.client.event.IEventHandler;
 import cn.mapway.ui.client.mqtt.MqttJs;
 
+import cn.mapway.ui.client.mvc.ModuleParameter;
 import com.google.gwt.core.client.Callback;
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.core.client.GWT;
@@ -30,6 +31,15 @@ public class WebFrameEntry implements EntryPoint, IEventHandler {
      */
     public String getDashBoardModuleCode() {
         return DashBoardModule.MODULE_CODE;
+    }
+
+    /**
+     * 重载此方法提供一个资源权限的根节点ID null 不返回资源的权限
+     *
+     * @return
+     */
+    public Integer getResourceRootId() {
+        return null;
     }
 
     @Override
@@ -70,7 +80,7 @@ public class WebFrameEntry implements EntryPoint, IEventHandler {
      * 处理初始化流程.
      */
     private void checkUserToken() {
-        LoginModule.checkUserToken(checkHandler);
+        LoginModule.checkUserToken(getResourceRootId(), checkHandler);
         ClientContext.getContext().initMqtt();
     }
 
@@ -113,6 +123,8 @@ public class WebFrameEntry implements EntryPoint, IEventHandler {
 
         @Override
         public void onFailure(String reason) {
+            ModuleParameter mp = new ModuleParameter();
+            mp.put("RESOURCE_ROOT_ID", getResourceRootId() + "");
             ClientContext.getContext().switchModule(LoginModule.MODULE_CODE, null);
         }
     };

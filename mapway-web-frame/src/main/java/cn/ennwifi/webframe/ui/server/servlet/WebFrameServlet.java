@@ -11,9 +11,6 @@ import cn.ennwifi.webframe.ui.shared.repository.*;
 import com.google.gwt.user.server.rpc.RPCRequest;
 import org.nutz.dao.Cnd;
 import org.nutz.dao.FieldFilter;
-import org.nutz.dao.Sqls;
-import org.nutz.dao.entity.Entity;
-import org.nutz.dao.sql.Sql;
 import org.nutz.dao.util.Daos;
 import org.nutz.json.Json;
 import org.nutz.lang.Lang;
@@ -22,7 +19,6 @@ import org.nutz.lang.random.R;
 import org.nutz.trans.Atom;
 import org.nutz.trans.Trans;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -90,12 +86,13 @@ public abstract class WebFrameServlet extends CheckAdminTokenServlet implements 
     }
 
     @Override
-    public AdminLoginResponse adminLogin(String username, String pwd, String type)
+    public AdminLoginResponse adminLogin(Integer resourceRootId,String username, String pwd, String type)
             throws ServerException {
         LoginReqData req = new LoginReqData();
         req.username = username;
         req.password = pwd;
         req.type = type;
+        req.rootResourceId=resourceRootId;
 
         AdminLoginResponse resp = null;
         try {
@@ -107,7 +104,7 @@ public abstract class WebFrameServlet extends CheckAdminTokenServlet implements 
         }
         String content = "用户" + req.username + "登陆成功";
 
-        processLoginResult(resp);
+        processLoginResult(resourceRootId,resp);
         return resp;
     }
 
@@ -341,7 +338,7 @@ public abstract class WebFrameServlet extends CheckAdminTokenServlet implements 
      * @see cn.ennwifi.hangye.monitor.ui.client.rpc.IUiServer#getUserByToken(java. lang.String)
      */
     @Override
-    public AdminLoginResponse getUserByToken(String token) throws ServerException {
+    public AdminLoginResponse getUserByToken(Integer rootResourceId, String  token) throws ServerException {
 
         // 检查Session中是否有该用户
 
@@ -362,9 +359,9 @@ public abstract class WebFrameServlet extends CheckAdminTokenServlet implements 
      *
      * @param response
      */
-    private void processLoginResult(AdminLoginResponse response) {
+    private void processLoginResult(Integer resourceRootId,AdminLoginResponse response) {
 
-        getAdminService().processLoginResult(response);
+        getAdminService().processLoginResult(resourceRootId, response);
 
         if (response.user != null) {
             CookieTools.addCookie(getThreadLocalResponse(), "ADMIN-TOKEN", response.user.getToken(), "/",
@@ -534,5 +531,10 @@ public abstract class WebFrameServlet extends CheckAdminTokenServlet implements 
             }
         }
         return request;
+    }
+
+    @Override
+    public List<S_RESOURCEObj> userResources(Integer rootid) throws ServerException {
+        return getAdminService().userMainMenu(requestUser().getId(), rootid);
     }
 }

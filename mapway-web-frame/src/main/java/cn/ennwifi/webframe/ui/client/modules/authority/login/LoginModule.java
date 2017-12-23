@@ -6,7 +6,9 @@ import cn.ennwifi.webframe.ui.client.modules.BaseAbstractModuleWithEvent;
 import cn.ennwifi.webframe.ui.client.rpc.WebFrameProxy;
 import cn.ennwifi.webframe.ui.shared.module.AdminLoginResponse;
 import cn.ennwifi.webframe.ui.shared.module.UserLoginType;
+import cn.mapway.ui.client.mvc.IModule;
 import cn.mapway.ui.client.mvc.ModuleMarker;
+import cn.mapway.ui.client.mvc.ModuleParameter;
 import com.google.gwt.core.client.Callback;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.*;
@@ -61,6 +63,8 @@ public class LoginModule extends BaseAbstractModuleWithEvent {
     @UiField
     PasswordTextBox txtPassword;
 
+    Integer resourceRootId = null;
+
     /**
      * Instantiates a new login page.
      */
@@ -88,6 +92,17 @@ public class LoginModule extends BaseAbstractModuleWithEvent {
                 }
             }
         });
+    }
+
+    @Override
+    public boolean initialize(IModule parentModule, ModuleParameter parameter) {
+        String rrid = (String) parameter.get("RESOURCE_ROOT_ID");
+        if (rrid != null) {
+            resourceRootId = Integer.parseInt(rrid);
+        }
+        Boolean b = super.initialize(parentModule, parameter);
+
+        return b;
     }
 
     /**
@@ -133,7 +148,7 @@ public class LoginModule extends BaseAbstractModuleWithEvent {
         }
         msg("认证中...");
 
-        WebFrameProxy.get().adminLogin(txtUserName.getValue(), txtPassword.getValue(), type, loginResponseHandler);
+        WebFrameProxy.get().adminLogin(resourceRootId, txtUserName.getValue(), txtPassword.getValue(), type, loginResponseHandler);
     }
 
     /**
@@ -161,15 +176,16 @@ public class LoginModule extends BaseAbstractModuleWithEvent {
     /**
      * 检查TOKEN
      *
+     * @param resourceRootId
      * @param handler
      */
-    public static void checkUserToken(final Callback<Boolean, String> handler) {
+    public static void checkUserToken(Integer resourceRootId, final Callback<Boolean, String> handler) {
         Storage localStorage = Storage.getLocalStorageIfSupported(); // 获取存储对象
 
         if (localStorage.getItem(USER_TOKEN) == null || localStorage.getItem(USER_TOKEN).equals("")) {
             handler.onFailure("");
         } else {
-            WebFrameProxy.get().getUserByToken(localStorage.getItem(USER_TOKEN), new AsyncCallback<AdminLoginResponse>() {
+            WebFrameProxy.get().getUserByToken(resourceRootId, localStorage.getItem(USER_TOKEN), new AsyncCallback<AdminLoginResponse>() {
 
                 @Override
                 public void onSuccess(AdminLoginResponse result) {
@@ -200,6 +216,7 @@ public class LoginModule extends BaseAbstractModuleWithEvent {
     private static void processClientContext(AdminLoginResponse result, ClientContext context) {
         context.setConfigure(result.configure);
         context.setUser(result.user);
+        context.setResources(result.authorities);
     }
 
     private void saveUserInfo() {
