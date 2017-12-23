@@ -350,7 +350,7 @@ public abstract class WebFrameServlet extends CheckAdminTokenServlet implements 
 
         AdminLoginResponse r = new AdminLoginResponse();
         r.user = admin;
-        processLoginResult(r);
+        processLoginResult(rootResourceId,r);
         return r;
     }
 

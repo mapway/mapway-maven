@@ -110,7 +110,7 @@ public class AdminService {
         response.configure.logo = uiProperties.getLogo();
 
         //处理权限
-        if (resRootId != null && response.user != null) {
+        if ((resRootId != null) && (response.user != null)) {
             response.authorities = userMainMenu(response.user.getId(), resRootId);
         }
     }
