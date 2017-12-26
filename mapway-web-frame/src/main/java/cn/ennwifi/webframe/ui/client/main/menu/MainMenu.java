@@ -1,15 +1,14 @@
 package cn.ennwifi.webframe.ui.client.main.menu;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-
 import cn.ennwifi.webframe.ui.client.ClientContext;
+import cn.ennwifi.webframe.ui.shared.repository.S_RESOURCEObj;
 import com.google.gwt.safehtml.shared.SafeHtml;
 import com.google.gwt.user.client.ui.MenuBar;
 import com.google.gwt.user.client.ui.MenuItem;
 
-import cn.ennwifi.webframe.ui.shared.repository.S_RESOURCEObj;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
 /**
  * 主菜单.
@@ -115,8 +114,16 @@ public class MainMenu extends MenuBar {
      */
     private MenuItem buildSubMenu(Node n) {
         MenuBar menu = new MenuBar(true);
-        MenuItem item = genMenuItem(n);
-        item.setSubMenu(menu);
+        SafeHtml text;
+
+        if (n.data.getIcon() != null && n.data.getIcon().length() > 0) {
+            String icon = ClientContext.getContext().getConfigure().getImagePrefix() + n.data.getIcon();
+            text = MenuItemTemplate.TEMPLATE.textWithIcon(icon, n.name);
+        } else {
+            text = MenuItemTemplate.TEMPLATE.text(n.name);
+        }
+
+        MenuItem item = new MenuItem(text, menu);
 
         for (int i = 0; i < n.children.size(); i++) {
             MenuItem subItem;
