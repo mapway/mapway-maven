@@ -115,7 +115,8 @@ public class MainMenu extends MenuBar {
      */
     private MenuItem buildSubMenu(Node n) {
         MenuBar menu = new MenuBar(true);
-        MenuItem item = new MenuItem(n.name, menu);
+        MenuItem item = genMenuItem(n);
+        item.setSubMenu(menu);
 
         for (int i = 0; i < n.children.size(); i++) {
             MenuItem subItem;
