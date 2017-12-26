@@ -245,7 +245,7 @@ public class EditAuthority extends MessageComposite {
         if (mAuthority.getIcon() == null || mAuthority.getIcon().length() == 0) {
             icon.setUrl("");
         } else {
-            icon.setUrl(mAuthority.getIcon());
+            icon.setUrl(ClientContext.getContext().getConfigure().getImagePrefix() + mAuthority.getIcon());
         }
 
         btnDelete.setEnabled(mAuthority.getId() != null);
