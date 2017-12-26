@@ -1,10 +1,10 @@
 package cn.ennwifi.webframe.ui.client.modules.authority.authoritydefine;
 
-
 import cn.ennwifi.webframe.ui.client.rpc.WebFrameProxy;
 import cn.ennwifi.webframe.ui.shared.module.Pair;
 import cn.ennwifi.webframe.ui.shared.repository.S_RESOURCEObj;
 import cn.mapway.ui.client.widget.common.CheckBoxEx;
+import cn.mapway.ui.client.widget.common.IconItem;
 import com.google.gwt.dom.client.Style.Unit;
 import com.google.gwt.event.logical.shared.*;
 import com.google.gwt.user.client.rpc.AsyncCallback;
@@ -14,7 +14,6 @@ import com.ksyzt.gwt.client.event.MessageEvent;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-
 
 /**
  * 权限树.
@@ -37,7 +36,6 @@ public class AuthorityTree extends cn.ennwifi.webframe.ui.client.common.LocalTre
         }
     };
 
-
     /**
      * The close handler.
      */
@@ -51,7 +49,6 @@ public class AuthorityTree extends cn.ennwifi.webframe.ui.client.common.LocalTre
             }
         }
     };
-
 
     /**
      * The Class ValueChangedData.
@@ -237,9 +234,9 @@ public class AuthorityTree extends cn.ennwifi.webframe.ui.client.common.LocalTre
             for (int i = 0; i < mModule.size(); i++) {
 
                 S_RESOURCEObj obj = mModule.get(i);
-                TreeItem deviceType = new TreeItem();
+                TreeItem resourceItem = new TreeItem();
 
-                deviceType.setUserObject(obj);
+                resourceItem.setUserObject(obj);
 
                 if (mEnabledCheckBox) {
                     CheckBoxEx checkBox = new CheckBoxEx();
@@ -249,16 +246,19 @@ public class AuthorityTree extends cn.ennwifi.webframe.ui.client.common.LocalTre
                     checkBox.getElement().getStyle().setMargin(0, Unit.PX);
                     checkerMapper.put(obj.getId(), checkBox);
                     checkBox.setText(obj.getName());
-                    deviceType.setWidget(checkBox);
+                    resourceItem.setWidget(checkBox);
 
                 } else {
-                    deviceType.setText(obj.getName());
+                    IconItem ri = new IconItem();
+                    ri.setIcon("", 100, 100);
+                    ri.setText(obj.getName());
+                    resourceItem.setWidget(ri);
                 }
-                mapper.put(obj.getId(), deviceType);
+                mapper.put(obj.getId(), resourceItem);
 
                 TreeItem item = findParent(obj);
 
-                item.addItem(deviceType);
+                item.addItem(resourceItem);
                 // 设置状态
 
                 S_RESOURCEObj m = (S_RESOURCEObj) item.getUserObject();
@@ -309,7 +309,6 @@ public class AuthorityTree extends cn.ennwifi.webframe.ui.client.common.LocalTre
         return mapper.get(obj.getPid());
     }
 
-
     /**
      * 设置权限点的选中状态.
      *
@@ -353,7 +352,6 @@ public class AuthorityTree extends cn.ennwifi.webframe.ui.client.common.LocalTre
         }
     }
 
-
     /**
      * 返回用户打钩的资源
      *
@@ -375,6 +373,5 @@ public class AuthorityTree extends cn.ennwifi.webframe.ui.client.common.LocalTre
         }
         return r;
     }
-
 
 }

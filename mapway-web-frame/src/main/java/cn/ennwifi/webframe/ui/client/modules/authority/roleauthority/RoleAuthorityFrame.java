@@ -33,7 +33,7 @@ import java.util.List;
  *
  * @author zhangjianshe
  */
-@ModuleMarker(value = RoleAuthorityFrame.MC_ADMIN_ROLE_RESOURCE, name = "资源授权", icon = "raf.png")
+@ModuleMarker(value = RoleAuthorityFrame.MC_ADMIN_ROLE_RESOURCE, group = "/系统",name = "资源授权", icon = "raf.png")
 public class RoleAuthorityFrame extends AbstractModule {
 
   public final static String MC_ADMIN_ROLE_RESOURCE = "MC_ADMIN_ROLE_RESOURCE";

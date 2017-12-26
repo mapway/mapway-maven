@@ -19,7 +19,7 @@ import cn.mapway.ui.client.mvc.ModuleParameter;
  *
  * @author zhangjianshe
  */
-@ModuleMarker(value = AuthorityDefine.MODULE_CODE, name = "资源定义", icon = "ad.png")
+@ModuleMarker(value = AuthorityDefine.MODULE_CODE, name = "资源定义",group ="/系统", icon = "ad.png")
 public class AuthorityDefine extends AbstractModule {
   public final static String MODULE_CODE = "MC_AUTHORITY_DEFINE";
 

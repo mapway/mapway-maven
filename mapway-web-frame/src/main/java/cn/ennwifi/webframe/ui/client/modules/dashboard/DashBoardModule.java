@@ -20,7 +20,7 @@ import com.google.gwt.user.client.ui.Image;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.Widget;
 
-@ModuleMarker(value = DashBoardModule.MODULE_CODE, name = "看板")
+@ModuleMarker(value = DashBoardModule.MODULE_CODE, name = "看板",group = "/系统")
 public class DashBoardModule extends AbstractModuleWithEvent {
 
     public final static String MODULE_CODE = "MC_DASHBOARD";

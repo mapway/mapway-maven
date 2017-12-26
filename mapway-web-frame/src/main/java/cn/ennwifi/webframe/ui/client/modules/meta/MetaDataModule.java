@@ -17,7 +17,7 @@ import com.google.gwt.user.client.ui.Widget;
 import com.ksyzt.gwt.client.event.MessageEvent;
 import com.ksyzt.gwt.client.event.MessageHandler;
 
-@ModuleMarker(value = MetaDataModule.MODEULE_CODE, name = "元数据管理", icon = "meta.png")
+@ModuleMarker(value = MetaDataModule.MODEULE_CODE, group = "/系统",name = "元数据管理", icon = "meta.png")
 public class MetaDataModule extends AbstractModule {
 
   public final static String MODEULE_CODE = "MC_META_DATA";

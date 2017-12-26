@@ -9,6 +9,7 @@ import cn.mapway.ui.client.mvc.BaseAbstractModule;
 import cn.mapway.ui.client.mvc.ModuleFactory;
 import cn.mapway.ui.client.mvc.ModuleInfo;
 
+import cn.mapway.ui.client.widget.common.PrimaryButton;
 import com.google.gwt.core.client.Callback;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
@@ -44,6 +45,9 @@ public class EditAuthority extends MessageComposite {
      */
     @UiField
     TextBox txtName;
+
+    @UiField
+    Label lbID;
 
     /**
      * The txt VALUE.
@@ -85,19 +89,19 @@ public class EditAuthority extends MessageComposite {
      * The btn create.
      */
     @UiField
-    Button btnCreate;
+    PrimaryButton btnCreate;
 
     /**
      * The btn delete.
      */
     @UiField
-    Button btnDelete;
+    PrimaryButton btnDelete;
 
     /**
      * The btn OK.
      */
     @UiField
-    Button btnOk;
+    PrimaryButton btnOk;
 
     /**
      * The icon.
@@ -188,21 +192,21 @@ public class EditAuthority extends MessageComposite {
     }
 
     /**
-     * Edits the authority.
+     * Edits the resource.
      *
-     * @param authority the authority
+     * @param resource the resource
      */
-    public void editAuthority(S_RESOURCEObj authority) {
-        toUserInterface(authority);
+    public void editAuthority(S_RESOURCEObj resource) {
+        toUI(resource);
         msg("");
     }
 
     /**
      * To UI.
      *
-     * @param authority the authority
+     * @param resource the authority
      */
-    private void toUserInterface(S_RESOURCEObj resource) {
+    private void toUI(S_RESOURCEObj resource) {
         if (resource == null) {
             resource = new S_RESOURCEObj();
             if (mAuthority != null) {
@@ -228,7 +232,7 @@ public class EditAuthority extends MessageComposite {
         txtStyle.setValue(mAuthority.getStyle());
         txtSummary.setValue(mAuthority.getSummary());
         txtRank.setValue(mAuthority.getRank() + "");
-
+        lbID.setText(mAuthority.getId() == null ? "" : (mAuthority.getId() + ""));
         for (int i = 0; i < ddlModule.getItemCount(); i++) {
             if (ddlModule.getValue(i).equals(mAuthority.getCode())) {
                 ddlModule.setSelectedIndex(i);
@@ -239,7 +243,7 @@ public class EditAuthority extends MessageComposite {
         txtValue.setValue(mAuthority.getPara());
 
         if (mAuthority.getIcon() == null || mAuthority.getIcon().length() == 0) {
-            icon.setUrl(ImageUploader.EMPTY_PICTURE);
+            icon.setUrl("");
         } else {
             icon.setUrl(mAuthority.getIcon());
         }
@@ -271,7 +275,7 @@ public class EditAuthority extends MessageComposite {
      */
     @UiHandler("btnOk")
     void onSave(ClickEvent ev) {
-        fromUserInterface();
+        fromUI();
         msg("开始保存...");
         WebFrameProxy.get().saveMenu(mAuthority, new AsyncCallback<S_RESOURCEObj>() {
 
@@ -295,7 +299,7 @@ public class EditAuthority extends MessageComposite {
     /**
      * From UI.
      */
-    private void fromUserInterface() {
+    private void fromUI() {
         mAuthority.setName(txtName.getValue());
         mAuthority.setPath(txtPath.getValue());
         mAuthority.setCode(ddlModule.getSelectedValue());

@@ -27,7 +27,7 @@ import com.google.gwt.user.client.ui.Widget;
  *
  * @author zhangjianshe
  */
-@ModuleMarker(value = LoginModule.MODULE_CODE, name = "登录模块")
+@ModuleMarker(value = LoginModule.MODULE_CODE, name = "登录模块", group = "/系统")
 public class LoginModule extends BaseAbstractModuleWithEvent {
     public final static String MODULE_CODE = "MC_LOING";
 
@@ -88,7 +88,7 @@ public class LoginModule extends BaseAbstractModuleWithEvent {
             @Override
             public void onKeyDown(KeyDownEvent event) {
                 if (event.getNativeKeyCode() == KeyCodes.KEY_ENTER) {
-                    checkLogin(UserLoginType.USER_LOGIN_TYPE_LDAP);
+                    checkLogin(UserLoginType.USER_LOGIN_TYPE_REGISTER);
                 }
             }
         });
@@ -168,8 +168,7 @@ public class LoginModule extends BaseAbstractModuleWithEvent {
 
         @Override
         public void onFailure(Throwable caught) {
-            ClientContext.getContext().processFailure(caught);
-            msg(caught.getMessage());
+            msg("登录出了点问题:<");
         }
     };
 

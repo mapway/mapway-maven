@@ -10,7 +10,6 @@ import cn.mapway.ui.client.widget.common.DialogBoxEx;
 import cn.mapway.ui.client.widget.common.LabelEx;
 import cn.mapway.ui.client.widget.common.ListBoxEx;
 import cn.mapway.ui.client.widget.common.TextBoxEx;
-
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.uibinder.client.UiBinder;
@@ -49,11 +48,10 @@ public class UserEditor extends DialogBoxEx {
         public void onMessage(Object sender, Integer message, Object value) {
             if (message == MessageEvent.OK) {
                 UploadFileReturn r = (UploadFileReturn) value;
+
                 avator.setUrl(ClientContext.getContext().getConfigure().getImagePrefix() + r.relPath);
                 avator.setImageTitle(r.relPath);
-                if (mUser != null) {
-                    mUser.setAvator(r.relPath);
-                }
+                mUser.setAvator(r.relPath);
 
             } else if (message == MessageEvent.MESSAGE) {
                 msg((String) value);
@@ -161,9 +159,7 @@ public class UserEditor extends DialogBoxEx {
     }
 
     /**
-     * Edits the.
      *
-     * @param user the user
      */
     public void edit() {
         mUser = new S_USERObj();
