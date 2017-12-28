@@ -1,32 +1,41 @@
 @CHARSET "UTF-8";
 
 input, button, select, textarea {
-	outline: none
+    outline: none
 }
 
 textarea {
-	resize: none
+    resize: none
 }
 
 .gwt-PopupPanelGlass {
-	background-color: #000;
-	opacity: 0.3;
-	filter: alpha(opacity = 30);
+    background-color: #000;
+    opacity: 0.3;
+    filter: alpha(opacity=30);
 }
 
 .Caption {
-	background: #f0f0f0;
-	padding: 10px 5px;
-	cursor: default;
-	font-size: 16px;
-	font-weight: bold;
-	border-bottom: 1px solid #bbbbbb;
+    background: #f0f0f0;
+    padding: 10px 5px;
+    cursor: default;
+    font-size: 16px;
+    font-weight: bold;
+    border-bottom: 1px solid #bbbbbb;
 }
 
 .gwt-TextArea {
-	border: solid 1px #a0a0a0;
+    border: solid 1px #a0a0a0;
 }
 
 .gwt-TextArea:FOCUS {
-	border: solid 1px red;
+    border: solid 1px red;
+}
+
+.gwt-Tree .gwt-TreeItem {
+    padding: 1px 0px;
+    margin: 0px;
+    white-space: nowrap;
+    cursor: hand;
+    cursor: pointer;
+    display: block !important;
 }

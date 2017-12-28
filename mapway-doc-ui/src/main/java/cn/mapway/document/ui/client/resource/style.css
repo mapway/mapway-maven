@@ -1,201 +1,207 @@
 .treeItemImage {
-	margin-right: 8px;
-	vertical-align: middle;
+    margin-right: 8px;
+    vertical-align: middle;
 }
 
 @sprite .treeItemSelected {
-	gwt-image: "arrow_left_white";
-	color: blue;
-	cursor: default;
-	font-weight: normal;
-	background-position: right center;
-	background-repeat: no-repeat;
+    gwt-image: "arrow_left_white";
+    color: blue;
+    cursor: default;
+    font-weight: normal;
+    background-position: right center;
+    background-repeat: no-repeat;
 }
 
 .group {
-	font-weight: bold;
-	cursor: pointer;
+    font-weight: bold;
+    cursor: pointer;
+    display: block !important;
 }
 
 .title {
-	font-weight: bold;
-	color: darkblue;
+    font-weight: bold;
+    color: darkblue;
 }
 
 .entry {
-	color: #3d73d5;
-	font-weight: normal;
-	cursor: pointer;
-	line-height: 26px;
+    color: #3d73d5;
+    font-weight: normal;
+    cursor: pointer;
+    line-height: 26px;
+    display: block !important;
 }
 
 .entry:HOVER {
-	background-color: skyblue;
+    background-color: skyblue;
 }
 
 .entryImportent {
-	color: #ff0000;
-	font-weight: normal;
-	cursor: pointer;
-	line-height: 26px;
+    color: #ff0000;
+    font-weight: normal;
+    cursor: pointer;
+    line-height: 26px;
+    display: block !important;
 }
 
 .entryImportent:HOVER {
-	background-color: skyblue;
+    background-color: skyblue;
 }
 
 .entrySelected {
-	background-color: white;
+    background-color: white;
 }
 
 .entrySelected:HOVER {
-	background-color: white;
+    background-color: white;
 }
 
 .tableHeader {
-	font-weight: bold;
+    font-weight: bold;
 }
 
 .name {
-	color: red;
+    color: red;
 }
 
 .type {
-	color: darkblue;
+    color: darkblue;
 }
 
 .typeLink {
-	color: blue;
-	text-decoration: underline;
-	cursor: pointer;
+    color: blue;
+    text-decoration: underline;
+    cursor: pointer;
 }
 
+@external .gwt-TreeItem {
+    display: block !important;
+}
 .summary {
-	padding-top: 5px;
-	color: green;
+    padding-top: 5px;
+    color: green;
 }
 
 .text {
-	color: black;
+    color: black;
 }
 
 .row0 {
-	background-color: white;
+    background-color: white;
 }
 
 .row1 {
-	background-color: #f8f8f8;
+    background-color: #f8f8f8;
 }
 
 .rowh {
-	background-color: white;
+    background-color: white;
 }
 
 .cssString {
-	color: green;
+    color: green;
 }
 
 .cssNumber {
-	color: darkorange;
+    color: darkorange;
 }
 
 .cssBoolean {
-	color: blue;
+    color: blue;
 }
 
 .cssNull {
-	color: magenta;
+    color: magenta;
 }
 
 .cssKey {
-	color: red;
+    color: red;
 }
 
 .cssTable {
-	background-color: #a0a0a0;
-	margin: 10px 0px;
-	width: 100%;
-	border: 0px;
+    background-color: #a0a0a0;
+    margin: 10px 0px;
+    width: 100%;
+    border: 0px;
 }
 
 .cssTable td {
-	padding: 10px;
+    padding: 10px;
 }
 
 .pre {
-	font-family: 'Anonymous Pro', sans-serif;
+    font-family: 'Anonymous Pro', sans-serif;
 }
 
 .entryTitle {
-	color: darkblue;
-	font-weight: bold;
+    color: darkblue;
+    font-weight: bold;
 }
 
 .rowTitle {
-	background-color: #f0f0f0;
+    background-color: #f0f0f0;
 }
 
 .desc {
-	color: green;
-	line-height: 28px;
+    color: green;
+    line-height: 28px;
 }
 
 .dlg {
-	background-color: white;
-	border: solid 5px #a0a0a0;
+    background-color: white;
+    border: solid 5px #a0a0a0;
 }
 
 .btn {
-	background-color: skyblue;
-	color: black;
-	border: solid 1px darkblue;
-	padding: 10px 16px;
-	font-weight: 16px;
+    background-color: skyblue;
+    color: black;
+    border: solid 1px darkblue;
+    padding: 10px 16px;
+    font-weight: 16px;
 }
 
 .btn:HOVER {
-	background-color: darkblue;
-	color: white;
-	border: solid 1px skyblue;
-	padding: 10px 16px;
+    background-color: darkblue;
+    color: white;
+    border: solid 1px skyblue;
+    padding: 10px 16px;
 }
 
 .gwt-PopupPanelGlass {
-	background-color: #000;
-	opacity: 0.3;
-	filter: alpha(opacity = 30);
+    background-color: #000;
+    opacity: 0.3;
+    filter: alpha(opacity=30);
 }
 
 .imgButton {
-	background-color: white;
-	border: solid 1px white;
-	margin-right: 8px;
+    background-color: white;
+    border: solid 1px white;
+    margin-right: 8px;
 }
 
 .imgButton:HOVER {
-	background-color: skyblue;
-	border: solid 1px skyblue;
+    background-color: skyblue;
+    border: solid 1px skyblue;
 }
 
 .refLink {
-	padding: 0px 3px;
-	color: skyblue;
-	cursor: pointer;
+    padding: 0px 3px;
+    color: skyblue;
+    cursor: pointer;
 }
 
 .refLink:hover {
-	text-decoration: underline;
+    text-decoration: underline;
 }
 
 .tag {
-        padding: 0px 3px 2px 3px;
-        font-size: 8px;
-        color: yellow;
-        margin: 0px;
-        line-height: 26px;
-        border-radius: 3px;
-        background-color: royalblue;
-        height: 26px;
-        vertical-align: bottom;
-        margin-right: 3px;
+    padding: 0px 3px 2px 3px;
+    font-size: 8px;
+    color: yellow;
+    margin: 0px;
+    line-height: 26px;
+    border-radius: 3px;
+    background-color: royalblue;
+    height: 26px;
+    vertical-align: bottom;
+    margin-right: 3px;
 }

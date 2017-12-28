@@ -6,6 +6,8 @@ import com.google.gwt.event.logical.shared.CloseEvent;
 import com.google.gwt.event.logical.shared.CloseHandler;
 import com.google.gwt.event.logical.shared.OpenEvent;
 import com.google.gwt.event.logical.shared.OpenHandler;
+import com.google.gwt.user.client.ui.HTML;
+import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.Tree;
 import com.google.gwt.user.client.ui.TreeItem;
 import cn.mapway.document.ui.client.main.storage.LocalStorage;
@@ -98,13 +100,8 @@ public class ApiTree extends Tree {
         this.clear();
 
         Group group = data.root();
-
-        TreeItem root = new TreeItem();
-        root.setStyleName(css.group());
-        this.addItem(root);
-        root.setUserObject(group);
-        root.setText(data.title());
-        parseGroup(root, group);
+        //不显示最顶级的节点
+        parseGroup(null, group);
     }
 
     /**
@@ -114,17 +111,23 @@ public class ApiTree extends Tree {
      * @param group the group
      */
     private void parseGroup(TreeItem root, Group group) {
+
         JsArray<Group> subs = group.subGroups();
         // 处理子节点
         for (int i = 0; i < subs.length(); i++) {
             Group g = subs.get(i);
             TreeItem item = new TreeItem();
-            item.setStyleName(css.group());
-            item.setUserObject(g);
-            item.setText(g.name());
-            parseGroup(item, g);
+            Label lb = new Label(g.name());
+            lb.setStyleName(css.group());
 
-            root.addItem(item);
+            item.setUserObject(g);
+            item.setWidget(lb);
+            if (root == null) {
+                this.addItem(item);
+            } else {
+                root.addItem(item);
+            }
+            parseGroup(item, g);
         }
         // 处理方法
         JsArray<Entry> entries = group.entries();
@@ -133,15 +136,20 @@ public class ApiTree extends Tree {
             TreeItem item = new TreeItem();
             String tags = buildTags(e.tags());
 
-            String html = "<div >" + tags + ((i + 1) + ".") + e.title() + "</div>";
-            item.setStyleName(findApiStyle(e));
-            item.setHTML(html);
+            String html = "<div >" + ((i + 1) + ".") + tags + e.title() + "</div>";
+            HTML widget = new HTML(html);
+            item.setWidget(widget);
             item.setUserObject(e);
-            GWT.log(html);
             item.setTitle("实现类:" + e.parentClassName() + "\r\n方法" + e.methodName());
-            root.addItem(item);
+            if (root == null) {
+                this.addItem(item);
+            } else {
+                root.addItem(item);
+            }
         }
-        root.setState(isOpen(group.fullName()));
+        if (root != null) {
+            root.setState(isOpen(group.fullName()));
+        }
     }
 
     /**

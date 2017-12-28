@@ -6,120 +6,121 @@ import com.google.gwt.resources.client.CssResource;
 import com.google.gwt.resources.client.ImageResource;
 import com.google.gwt.resources.client.TextResource;
 
-// TODO: Auto-generated Javadoc
 /**
  * 系统资源.
  *
  * @author zhangjianshe
  */
 public interface SysResource extends ClientBundle {
-	
-	/** The Constant INSTANCE. */
-	public final static SysResource INSTANCE = GWT.create(SysResource.class);
 
-	/**
-	 * Gets the css.
-	 *
-	 * @return the css
-	 */
-	@Source("style.css")
-	@CssResource.NotStrict
-	CssStyle getCss();
+    /**
+     * The Constant INSTANCE.
+     */
+    public final static SysResource INSTANCE = GWT.create(SysResource.class);
 
-	/**
-	 * Logo.
-	 *
-	 * @return the image resource
-	 */
-	@Source("image/logo.png")
-	ImageResource logo();
+    /**
+     * Gets the css.
+     *
+     * @return the css
+     */
+    @Source("style.css")
+    @CssResource.NotStrict
+    CssStyle getCss();
 
-	/**
-	 * Loading.
-	 *
-	 * @return the image resource
-	 */
-	@Source("image/loadding.gif")
-	ImageResource loading();
+    /**
+     * Logo.
+     *
+     * @return the image resource
+     */
+    @Source("image/logo.png")
+    ImageResource logo();
 
-	/**
-	 * Arrow left white.
-	 *
-	 * @return the image resource
-	 */
-	@Source("image/arrow_left_white.png")
-	ImageResource arrow_left_white();
+    /**
+     * Loading.
+     *
+     * @return the image resource
+     */
+    @Source("image/loadding.gif")
+    ImageResource loading();
 
-	/**
-	 * Plus.
-	 *
-	 * @return the image resource
-	 */
-	@Source("image/plus.png")
-	ImageResource plus();
+    /**
+     * Arrow left white.
+     *
+     * @return the image resource
+     */
+    @Source("image/arrow_left_white.png")
+    ImageResource arrow_left_white();
 
-	/**
-	 * Minus.
-	 *
-	 * @return the image resource
-	 */
-	@Source("image/minus.png")
-	ImageResource minus();
+    /**
+     * Plus.
+     *
+     * @return the image resource
+     */
+    @Source("image/plus.png")
+    ImageResource plus();
 
-	/**
-	 * Inter.
-	 *
-	 * @return the image resource
-	 */
-	@Source("image/inter.png")
-	ImageResource inter();
+    /**
+     * Minus.
+     *
+     * @return the image resource
+     */
+    @Source("image/minus.png")
+    ImageResource minus();
 
-	/**
-	 * Tree open.
-	 *
-	 * @return the image resource
-	 */
-	@Source("image/treeOpen.png")
-	ImageResource treeOpen();
+    /**
+     * Inter.
+     *
+     * @return the image resource
+     */
+    @Source("image/inter.png")
+    ImageResource inter();
 
-	/**
-	 * Tree close.
-	 *
-	 * @return the image resource
-	 */
-	@Source("image/treeClose.png")
-	ImageResource treeClose();
+    /**
+     * Tree open.
+     *
+     * @return the image resource
+     */
+    @Source("image/treeOpen.png")
+    ImageResource treeOpen();
 
-	/**
-	 * History.
-	 *
-	 * @return the image resource
-	 */
-	@Source("image/history.png")
-	ImageResource history();
+    /**
+     * Tree close.
+     *
+     * @return the image resource
+     */
+    @Source("image/treeClose.png")
+    ImageResource treeClose();
 
-	/**
-	 * Main css.
-	 *
-	 * @return the text resource
-	 */
-	@Source("main.css")
-	TextResource mainCss();
+    /**
+     * History.
+     *
+     * @return the image resource
+     */
+    @Source("image/history.png")
+    ImageResource history();
 
-	/**
-	 * Word.
-	 *
-	 * @return the image resource
-	 */
-	@Source("image/word.png")
-	ImageResource word();
+    /**
+     * Main css.
+     *
+     * @return the text resource
+     */
+    @Source("main.css")
+    TextResource mainCss();
 
-	/**
-	 * Jsondata.
-	 *
-	 * @return the text resource
-	 */
-	@Source("data.txt")
-	TextResource jsondata();
+    /**
+     * Word.
+     *
+     * @return the image resource
+     */
+    @Source("image/word.png")
+    ImageResource word();
+
+    /**
+     * Jsondata.
+     *
+     * @return the text resource
+     */
+    @Source("data.txt")
+    TextResource jsondata();
 
 }
