@@ -27,6 +27,7 @@ import cn.mapway.document.ui.client.rpc.RpcContext;
 import java.util.Date;
 
 // TODO: Auto-generated Javadoc
+
 /**
  * 测试面板.
  *
@@ -34,252 +35,291 @@ import java.util.Date;
  */
 public class TestPanel extends Composite implements HasCloseHandlers<Void> {
 
-  public static final String GWT_USER_HEADER = "gwt_user_token";
+    public static final String GWT_USER_HEADER = "gwt_user_token";
 
-  /** The ui binder. */
-  private static TestPanelUiBinder uiBinder = GWT.create(TestPanelUiBinder.class);
+    /**
+     * The ui binder.
+     */
+    private static TestPanelUiBinder uiBinder = GWT.create(TestPanelUiBinder.class);
 
-  /**
-   * The Interface TestPanelUiBinder.
-   */
-  interface TestPanelUiBinder extends UiBinder<Widget, TestPanel> {
-  }
-
-  /**
-   * Instantiates a new test panel.
-   */
-  public TestPanel() {
-    initWidget(uiBinder.createAndBindUi(this));
-    btnExecute.setStyleName(SysResource.INSTANCE.getCss().btn());
-    btnClose.setStyleName(SysResource.INSTANCE.getCss().btn());
-    imgLoadding.setUrl(SysResource.INSTANCE.loading().getSafeUri());
-    btnHistory.setUrl(SysResource.INSTANCE.history().getSafeUri());
-    txtHeader.addBlurHandler(new BlurHandler() {
-
-      @Override
-      public void onBlur(BlurEvent event) {
-        saveHeader();
-      }
-    });
-    txtHeaderValue.addBlurHandler(new BlurHandler() {
-
-      @Override
-      public void onBlur(BlurEvent event) {
-        saveHeader();
-      }
-    });
-
-  }
-
-  protected void saveHeader() {
-    String key = txtHeader.getValue();
-    String value = txtHeaderValue.getValue();
-    if (key != null && key.length() > 0 && value != null && value.length() > 0) {
-      RpcContext context = RpcContext.get();
-      context.KEY = key;
-      context.VALUE = value;
-      LocalStorage.save(GWT_USER_HEADER, context.KEY);
-      LocalStorage.save(context.KEY, value);
-    }
-  }
-
-  /** The lb title. */
-  @UiField
-  Label lbTitle;
-
-  /** The lb url. */
-  @UiField
-  Label lbUrl;
-
-  /** The txt input. */
-  @UiField
-  TextArea txtInput;
-
-  /** The txt output. */
-  @UiField
-  JsonPanel txtOutput;
-
-  /** The m entry. */
-  Entry mEntry;
-
-  /**
-   * Invoke.
-   *
-   * @param entry the entry
-   */
-  public void invoke(Entry entry) {
-    mEntry = entry;
-    lbTitle.setText(entry.title());
-    lbUrl.setText(Clients.getHostPort() + entry.url());
-    String his = readHistory();
-    if (his.length() == 0) {
-      his = entry.input().get(0).json();
-    }
-    txtInput.setValue(his);
-    txtOutput.setString("");
-  }
-
-  /**
-   * Read history.
-   *
-   * @return the string
-   */
-  private String readHistory() {
-    String r = "";
-    String v = LocalStorage.val(mEntry.relativePath());
-    if (v == null || v.length() == 0) {
-      return "";
+    /**
+     * The Interface TestPanelUiBinder.
+     */
+    interface TestPanelUiBinder extends UiBinder<Widget, TestPanel> {
     }
 
-    String[] vs = v.split("\\|");
+    /**
+     * Instantiates a new test panel.
+     */
+    public TestPanel() {
+        initWidget(uiBinder.createAndBindUi(this));
+        btnExecute.setStyleName(SysResource.INSTANCE.getCss().btn());
+        btnClose.setStyleName(SysResource.INSTANCE.getCss().btn());
+        imgLoadding.setUrl(SysResource.INSTANCE.loading().getSafeUri());
+        btnHistory.setUrl(SysResource.INSTANCE.history().getSafeUri());
+        txtHeader.addBlurHandler(new BlurHandler() {
 
-    if (vs.length > 0) {
-      String[] itemdata = vs[0].split("`");
-      r = itemdata[1];
-      return r;
-    }
-
-    return r;
-  }
-
-  /** The btn execute. */
-  @UiField
-  Button btnExecute;
-
-  /** The btn close. */
-  @UiField
-  Button btnClose;
-
-  /** The img loadding. */
-  @UiField
-  Image imgLoadding;
-
-  /** The btn history. */
-  @UiField
-  Image btnHistory;
-
-  /**
-   * On execute.
-   *
-   * @param ev the ev
-   */
-  @UiHandler("btnExecute")
-  void onExecute(ClickEvent ev) {
-
-    // JavaScriptObject jso = JsonUtils.unsafeEval(SysResource.INSTANCE
-    // .jsondata().getText());
-    // txtOutput.setJson(JsonUtils.stringify(jso, "   "));
-    // if (false == true) {
-    imgLoadding.setVisible(true);
-    txtOutput.setText("");
-    // 保存到本地
-    String v = LocalStorage.val(mEntry.relativePath());
-    Date d = new Date();
-    String key =
-        (d.getYear() + 1900) + "-" + (d.getMonth() + 1) + "-" + d.getDate() + " " + d.getHours()
-            + ":" + d.getMinutes() + ":" + d.getSeconds();
-    String va = txtInput.getValue();
-
-    if (v == null || v.length() == 0) {
-      LocalStorage.save(mEntry.relativePath(), key + "`" + va);
-    } else {
-      LocalStorage.save(mEntry.relativePath(), key + "`" + va + "|" + v);
-    }
-    try {
-      ApiDocProxy.fetchString(mEntry.url(), txtInput.getValue(), "", mEntry.invokeMethods().get(0),
-          new IOnData<String>() {
             @Override
-            public void onError(String url, String error) {
-              txtOutput.setString(error);
-              imgLoadding.setVisible(false);
-
+            public void onBlur(BlurEvent event) {
+                saveHeader();
             }
+        });
+        txtHeaderValue.addBlurHandler(new BlurHandler() {
 
             @Override
-            public void onSuccess(String url, String data) {
-              JavaScriptObject jso = JsonUtils.unsafeEval(data);
-              txtOutput.setJson(JsonUtils.stringify(jso, "   "));
-              imgLoadding.setVisible(false);
-              processToken(url, data);
-            };
-          });
-    } catch (RequestException e) {
-      txtOutput.setString(e.getMessage());
-      imgLoadding.setVisible(false);
+            public void onBlur(BlurEvent event) {
+                saveHeader();
+            }
+        });
+
     }
-    // }
-  }
 
-  /**
-   * 处理TOKEN.
-   *
-   * @param url the url
-   * @param data the data
-   */
-  protected void processToken(String url, String data) {
-
-    if (url.endsWith("/app/custom/login")) {
+    protected void saveHeader() {
+        String key = txtHeader.getValue();
+        String value = txtHeaderValue.getValue();
+        if (key != null && key.length() > 0 && value != null && value.length() > 0) {
+            RpcContext context = RpcContext.get();
+            context.KEY = key;
+            context.VALUE = value;
+            LocalStorage.save(GWT_USER_HEADER, context.KEY);
+            LocalStorage.save(context.KEY, value);
+        }
     }
-  }
 
-  /** The txt custom token. */
-  @UiField
-  TextBox txtHeader;
+    /**
+     * 恢复请求头的数据
+     */
+    private void loadHeader() {
+        String key = LocalStorage.val(GWT_USER_HEADER);
+        if (key != null && key.length() > 0) {
+            txtHeader.setValue(key);
+            txtHeaderValue.setValue(LocalStorage.val(key));
+        }
+    }
 
-  @UiField
-  TextBox txtHeaderValue;
+    /**
+     * The lb title.
+     */
+    @UiField
+    Label lbTitle;
 
-  /**
-   * On close.
-   *
-   * @param ev the ev
-   */
-  @UiHandler("btnClose")
-  void onClose(ClickEvent ev) {
-    CloseEvent.fire(this, null);
-  }
+    /**
+     * The lb url.
+     */
+    @UiField
+    Label lbUrl;
 
-  /*
-   * (non-Javadoc)
-   * 
-   * @see com.google.gwt.event.logical.shared.HasCloseHandlers#addCloseHandler(
-   * com.google.gwt.event.logical.shared.CloseHandler)
-   */
-  @Override
-  public HandlerRegistration addCloseHandler(CloseHandler<Void> handler) {
-    return addHandler(handler, CloseEvent.getType());
-  }
+    /**
+     * The txt input.
+     */
+    @UiField
+    TextArea txtInput;
 
-  /** The pop. */
-  PopupPanel pop = null;
+    /**
+     * The txt output.
+     */
+    @UiField
+    JsonPanel txtOutput;
 
-  /** The history panel. */
-  InputHistoryPanel historyPanel;
+    /**
+     * The m entry.
+     */
+    Entry mEntry;
 
-  /** The item selected. */
-  private CloseHandler<HistoryData> itemSelected = new CloseHandler<HistoryData>() {
+    /**
+     * Invoke.
+     *
+     * @param entry the entry
+     */
+    public void invoke(Entry entry) {
+        loadHeader();
+        mEntry = entry;
+        lbTitle.setText(entry.title());
+        lbUrl.setText(Clients.getHostPort() + entry.url());
+        String his = readHistory();
+        if (his.length() == 0) {
+            his = entry.input().get(0).json();
+        }
+        txtInput.setValue(his);
+        txtOutput.setString("");
+    }
 
+    /**
+     * Read history.
+     *
+     * @return the string
+     */
+    private String readHistory() {
+        String r = "";
+        String v = LocalStorage.val(mEntry.relativePath());
+        if (v == null || v.length() == 0) {
+            return "";
+        }
+
+        String[] vs = v.split("\\|");
+
+        if (vs.length > 0) {
+            String[] itemdata = vs[0].split("`");
+            r = itemdata[1];
+            return r;
+        }
+
+        return r;
+    }
+
+    /**
+     * The btn execute.
+     */
+    @UiField
+    Button btnExecute;
+
+    /**
+     * The btn close.
+     */
+    @UiField
+    Button btnClose;
+
+    /**
+     * The img loadding.
+     */
+    @UiField
+    Image imgLoadding;
+
+    /**
+     * The btn history.
+     */
+    @UiField
+    Image btnHistory;
+
+    /**
+     * On execute.
+     *
+     * @param ev the ev
+     */
+    @UiHandler("btnExecute")
+    void onExecute(ClickEvent ev) {
+
+        ///保存请求头数据
+        //saveHeader();
+
+        imgLoadding.setVisible(true);
+        txtOutput.setText("");
+        // 保存到本地
+        String v = LocalStorage.val(mEntry.relativePath());
+        Date d = new Date();
+        String key =
+                (d.getYear() + 1900) + "-" + (d.getMonth() + 1) + "-" + d.getDate() + " " + d.getHours()
+                        + ":" + d.getMinutes() + ":" + d.getSeconds();
+        String va = txtInput.getValue();
+
+        if (v == null || v.length() == 0) {
+            LocalStorage.save(mEntry.relativePath(), key + "`" + va);
+        } else {
+            LocalStorage.save(mEntry.relativePath(), key + "`" + va + "|" + v);
+        }
+        try {
+            ApiDocProxy.fetchString(mEntry.url(), txtInput.getValue(), "", mEntry.invokeMethods().get(0),
+                    new IOnData<String>() {
+                        @Override
+                        public void onError(String url, String error) {
+                            txtOutput.setString(error);
+                            imgLoadding.setVisible(false);
+
+                        }
+
+                        @Override
+                        public void onSuccess(String url, String data) {
+                            JavaScriptObject jso = JsonUtils.unsafeEval(data);
+                            txtOutput.setJson(JsonUtils.stringify(jso, "   "));
+                            imgLoadding.setVisible(false);
+                            processToken(url, data);
+                        }
+
+                        ;
+                    });
+        } catch (RequestException e) {
+            txtOutput.setString(e.getMessage());
+            imgLoadding.setVisible(false);
+        }
+        // }
+    }
+
+    /**
+     * 处理TOKEN.
+     *
+     * @param url  the url
+     * @param data the data
+     */
+    protected void processToken(String url, String data) {
+
+    }
+
+    /**
+     * The txt custom token.
+     */
+    @UiField
+    TextBox txtHeader;
+
+    @UiField
+    TextBox txtHeaderValue;
+
+    /**
+     * On close.
+     *
+     * @param ev the ev
+     */
+    @UiHandler("btnClose")
+    void onClose(ClickEvent ev) {
+        CloseEvent.fire(this, null);
+    }
+
+    /*
+     * (non-Javadoc)
+     *
+     * @see com.google.gwt.event.logical.shared.HasCloseHandlers#addCloseHandler(
+     * com.google.gwt.event.logical.shared.CloseHandler)
+     */
     @Override
-    public void onClose(CloseEvent<HistoryData> event) {
-      txtInput.setValue(event.getTarget().value);
-      pop.hide();
+    public HandlerRegistration addCloseHandler(CloseHandler<Void> handler) {
+        return addHandler(handler, CloseEvent.getType());
     }
-  };
 
-  /**
-   * 显示历史记录.
-   *
-   * @param e the e
-   */
-  @UiHandler("btnHistory")
-  void onHistory(ClickEvent e) {
-    if (pop == null) {
-      pop = new PopupPanel(true, true);
-      historyPanel = new InputHistoryPanel();
-      historyPanel.addCloseHandler(itemSelected);
-      pop.add(historyPanel);
+    /**
+     * The pop.
+     */
+    PopupPanel pop = null;
+
+    /**
+     * The history panel.
+     */
+    InputHistoryPanel historyPanel;
+
+    /**
+     * The item selected.
+     */
+    private CloseHandler<HistoryData> itemSelected = new CloseHandler<HistoryData>() {
+
+        @Override
+        public void onClose(CloseEvent<HistoryData> event) {
+            txtInput.setValue(event.getTarget().value);
+            pop.hide();
+        }
+    };
+
+    /**
+     * 显示历史记录.
+     *
+     * @param e the e
+     */
+    @UiHandler("btnHistory")
+    void onHistory(ClickEvent e) {
+        if (pop == null) {
+            pop = new PopupPanel(true, true);
+            historyPanel = new InputHistoryPanel();
+            historyPanel.addCloseHandler(itemSelected);
+            pop.add(historyPanel);
+        }
+        pop.showRelativeTo(btnHistory);
+        historyPanel.render(mEntry.relativePath());
     }
-    pop.showRelativeTo(btnHistory);
-    historyPanel.render(mEntry.relativePath());
-  }
 }

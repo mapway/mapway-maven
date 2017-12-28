@@ -15,12 +15,22 @@
             font-weight: bold;
             olor: #404040;
         }
+
+        .tools {
+            background-color: #f0f0f0;
+        }
+
+        .message {
+            border-radius: 5px;
+            border: dotted 1px #e0e0e0;
+            background-color: linen;
+        }
     </ui:style>
-    <g:DockLayoutPanel width = "450px" height = "550px" styleName = "{style.content}">
-        <g:south size = "60">
-            <g:HorizontalPanel width = "100%" height = "60px" verticalAlignment = "middle"
-                               horizontalAlignment = "center" styleName = "ne-dialogbox-tools">
-                <c:ButtonEx ui:field = "btnSave" text = "保存"></c:ButtonEx>
+    <g:DockLayoutPanel width = "750px" height = "350px" styleName = "{style.content}">
+        <g:south size = "50">
+            <g:HorizontalPanel width = "100%" height = "50px" verticalAlignment = "middle"
+                               horizontalAlignment = "center" styleName = "{style.tools}">
+                <c:PrimaryButton ui:field = "btnSave" text = "保存"></c:PrimaryButton>
             </g:HorizontalPanel>
         </g:south>
         <g:center>
@@ -33,12 +43,17 @@
                             <td>
                                 <c:TextBoxEx ui:field = "txtName" title = "用户名称,长度>6"></c:TextBoxEx>
                             </td>
+                            <td>头像
+                            </td>
                         </tr>
                         <tr>
                             <td>真实姓名
                             </td>
                             <td>
                                 <c:TextBoxEx ui:field = "txtRealName" title = "用户真名"></c:TextBoxEx>
+                            </td>
+                            <td rowspan = "5">
+                                <common:ImageUploader ui:field = "avator"></common:ImageUploader>
                             </td>
                         </tr>
                         <tr>
@@ -73,15 +88,8 @@
                                 </c:ListBoxEx>
                             </td>
                         </tr>
-                        <tr>
-                            <td>头像
-                            </td>
-                            <td>
-                                <common:ImageUploader ui:field = "avator"></common:ImageUploader>
-                            </td>
-                        </tr>
                     </table>
-                    <c:LabelEx height = "30px" styleName = "message" ui:field = "lbMsg"></c:LabelEx>
+                    <c:LabelEx styleName = "{style.message}" ui:field = "lbMsg"></c:LabelEx>
                 </g:HTMLPanel>
             </g:ScrollPanel>
         </g:center>

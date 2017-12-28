@@ -6,10 +6,7 @@ import cn.ennwifi.webframe.ui.client.event.EventTopics;
 import cn.ennwifi.webframe.ui.client.rpc.WebFrameProxy;
 import cn.ennwifi.webframe.ui.shared.module.UploadFileReturn;
 import cn.ennwifi.webframe.ui.shared.repository.S_USERObj;
-import cn.mapway.ui.client.widget.common.DialogBoxEx;
-import cn.mapway.ui.client.widget.common.LabelEx;
-import cn.mapway.ui.client.widget.common.ListBoxEx;
-import cn.mapway.ui.client.widget.common.TextBoxEx;
+import cn.mapway.ui.client.widget.common.*;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.uibinder.client.UiBinder;
@@ -76,7 +73,7 @@ public class UserEditor extends DialogBoxEx {
      * The btn save.
      */
     @UiField
-    Button btnSave;
+    PrimaryButton btnSave;
 
     /**
      * On save click.

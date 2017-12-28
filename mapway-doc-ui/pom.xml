@@ -7,7 +7,7 @@
     <parent>
         <groupId>cn.mapway</groupId>
         <artifactId>mapway-maven</artifactId>
-        <version>1.1.1-SNAPSHOT</version>
+        <version>1.1.7-SNAPSHOT</version>
     </parent>
 
     <name>mapway-doc-ui</name>
@@ -33,7 +33,7 @@
         <dependency>
             <groupId>cn.mapway</groupId>
             <artifactId>mapway-annotation</artifactId>
-            <version>1.1.1-SNAPSHOT</version>
+            <version>1.1.7-SNAPSHOT</version>
         </dependency>
     </dependencies>
 
@@ -56,7 +56,7 @@
                 <dependency>
                     <groupId>cn.mapway</groupId>
                     <artifactId>mapway-annotation</artifactId>
-                    <version>1.1.1-SNAPSHOT</version>
+                    <version>1.1.7-SNAPSHOT</version>
                 </dependency>
                 <dependency>
                     <groupId>javax.validation</groupId>
