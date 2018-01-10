@@ -8,18 +8,7 @@
             padding: 10px 25px;
         }
 
-        .ov {
-            overflow: hidden;
-        }
 
-        .blank {
-            width: 10px;
-            overflow: hidden;
-        }
-
-        .list {
-            padding: 20px;
-        }
     </ui:style>
     <g:HTMLPanel>
         <g:HorizontalPanel ui:field = "tools">
@@ -30,7 +19,7 @@
         <div class = "{style.content}" style = "width:650px">
             <table class = "ntable">
                 <tr>
-                    <td width = "80px">
+                    <td width = "80px" align="right">
                         <g:Label>元数据ID</g:Label>
                     </td>
                     <td width = "300px">
@@ -41,7 +30,7 @@
                     </td>
                 </tr>
                 <tr>
-                    <td>
+                    <td align="right">
                         <g:Label>目录</g:Label>
                     </td>
                     <td>
@@ -52,7 +41,7 @@
                     </td>
                 </tr>
                 <tr>
-                    <td>
+                    <td align="right">
                         <g:Label>名称</g:Label>
                     </td>
                     <td>
@@ -60,7 +49,7 @@
                     </td>
                 </tr>
                 <tr>
-                    <td>
+                    <td align="right">
                         <g:Label>值</g:Label>
                     </td>
                     <td>
@@ -68,7 +57,7 @@
                     </td>
                 </tr>
                 <tr>
-                    <td>
+                    <td align="right">
                         <g:Label>排序</g:Label>
                     </td>
                     <td>
@@ -76,7 +65,7 @@
                     </td>
                 </tr>
                 <tr>
-                    <td>
+                    <td align="right">
                         <g:Label>描述</g:Label>
                     </td>
                     <td>
