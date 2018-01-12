@@ -7,7 +7,7 @@
     <parent>
         <groupId>cn.mapway</groupId>
         <artifactId>mapway-maven</artifactId>
-        <version>1.1.7-SNAPSHOT</version>
+        <version>1.1.8-SNAPSHOT</version>
     </parent>
 
     <name>mapway-doc-ui</name>
@@ -29,13 +29,7 @@
             <email>zhangjianshe@gmail.com</email>
         </developer>
     </developers>
-    <dependencies>
-        <dependency>
-            <groupId>cn.mapway</groupId>
-            <artifactId>mapway-annotation</artifactId>
-            <version>1.1.7-SNAPSHOT</version>
-        </dependency>
-    </dependencies>
+
 
     <profiles>
         <profile>
@@ -78,6 +72,11 @@
         <profile>
             <id>to-enncloud</id>
             <dependencies>
+                <dependency>
+                    <groupId>cn.mapway</groupId>
+                    <artifactId>mapway-annotation</artifactId>
+                    <version>1.1.7-SNAPSHOT</version>
+                </dependency>
                 <dependency>
                     <groupId>org.springframework</groupId>
                     <artifactId>spring-web</artifactId>
@@ -131,7 +130,7 @@
                     <plugin>
                         <groupId>cn.mapway</groupId>
                         <artifactId>mapway-maven-plugin</artifactId>
-                        <version>1.0.95-SNAPSHOT</version>
+                        <version>1.1.4-SNAPSHOT</version>
                         <executions>
                             <execution>
                                 <id>write-file</id>
@@ -184,7 +183,7 @@
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-resources-plugin</artifactId>
-                        <version>2.7</version>
+
                         <executions>
                             <execution>
                                 <id>copy-resources</id>
