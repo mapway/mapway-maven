@@ -39,3 +39,11 @@ textarea {
     cursor: pointer;
     display: block !important;
 }
+
+.gwt-SplitLayoutPanel-HDragger{
+    cursor: ew-resize;
+}
+.gwt-SplitLayoutPanel-HDragger:HOVER{
+    cursor: ew-resize;
+    background-color: #bbbbbb;
+}

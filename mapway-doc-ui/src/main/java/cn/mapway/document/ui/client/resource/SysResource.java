@@ -99,13 +99,6 @@ public interface SysResource extends ClientBundle {
     @Source("image/history.png")
     ImageResource history();
 
-    /**
-     * Main css.
-     *
-     * @return the text resource
-     */
-    @Source("main.css")
-    TextResource mainCss();
 
     /**
      * Word.
@@ -120,7 +113,7 @@ public interface SysResource extends ClientBundle {
      *
      * @return the text resource
      */
-    @Source("data.txt")
-    TextResource jsondata();
+    @Source("main.css")
+    TextResource main();
 
 }

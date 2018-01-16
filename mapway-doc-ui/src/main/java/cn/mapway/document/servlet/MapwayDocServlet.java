@@ -2,6 +2,7 @@ package cn.mapway.document.servlet;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.Enumeration;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -406,6 +407,13 @@ public class MapwayDocServlet extends HttpServlet {
     @Override
     public void init() throws ServletException {
         log.info("文档服务初始化");
+        Enumeration<String> keys;
+        keys = this.getInitParameterNames();
+        while (keys.hasMoreElements()) {
+            String key = keys.nextElement();
+            log(key + ">" + this.getInitParameter(key));
+        }
+
         context = new GenContext();
         context.setAuthor(Strings.sBlank(this.getInitParameter(PARAM_AUTHOR)));
         context.setDocTitle(Strings.sBlank(this.getInitParameter(PARAM_TITLE)));

@@ -3,29 +3,27 @@
              xmlns:g="urn:import:com.google.gwt.user.client.ui" xmlns:m="urn:import:cn.mapway.document.ui.client.main">
     <ui:style>
         .title {
-        font-weight: bold;
-        font-size: 18px;
-        margin-bottom: 25px;
-        margin-top: 15px;
+            font-weight: bold;
+            font-size: 18px;
+            margin-bottom: 25px;
+            margin-top: 15px;
         }
 
         .input {
-        line-height: 28px;
-        height: 28px;
-        color: green;
-        font-size: 16px;
+            line-height: 28px;
+            height: 28px;
+            font-size: 16px;
         }
 
-        .btn {
-        font-size: 14px;
-        padding: 4px 5px;
+        .c {
+            padding: 10px;
         }
 
         .desc {
-        padding: 10px;
+            padding: 10px;
         }
     </ui:style>
-    <g:VerticalPanel width="100%">
+    <g:VerticalPanel width="100%" styleName="{style.c}">
         <g:VerticalPanel width="100%" ui:field="entries">
             <g:HorizontalPanel width="100%" verticalAlignment="middle"
                                spacing="5">
@@ -33,7 +31,7 @@
                 <g:cell horizontalAlignment="right">
                     <g:HorizontalPanel spacing="5">
                         <g:TextBox ui:field="txtSEARCH" styleName="{style.input}"></g:TextBox>
-                        <g:Button ui:field="btnSearch" text="搜索" ></g:Button>
+                        <g:Button ui:field="btnSearch" text="搜索"></g:Button>
                     </g:HorizontalPanel>
                 </g:cell>
             </g:HorizontalPanel>
@@ -42,7 +40,6 @@
 
         <g:HTML ui:field="html" styleName="{style.desc}">
         </g:HTML>
-
 
     </g:VerticalPanel>
 </ui:UiBinder> 

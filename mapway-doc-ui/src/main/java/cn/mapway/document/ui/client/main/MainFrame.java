@@ -20,7 +20,6 @@ import cn.mapway.document.ui.client.resource.SysResource;
 import cn.mapway.document.ui.client.rpc.ApiDocProxy;
 import cn.mapway.document.ui.client.rpc.IOnData;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class MainFrame.
  */

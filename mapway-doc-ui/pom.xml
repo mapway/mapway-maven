@@ -4,6 +4,7 @@
         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>mapway-doc-ui</artifactId>
+
     <parent>
         <groupId>cn.mapway</groupId>
         <artifactId>mapway-maven</artifactId>
@@ -30,6 +31,23 @@
         </developer>
     </developers>
 
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-autoconfigure</artifactId>
+            <version>1.5.1.RELEASE</version>
+            <optional>true</optional>
+        </dependency>
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>cn.mapway</groupId>
+            <artifactId>mapway-annotation</artifactId>
+            <version>1.1.7-SNAPSHOT</version>
+        </dependency>
+    </dependencies>
 
     <profiles>
         <profile>
@@ -72,11 +90,7 @@
         <profile>
             <id>to-enncloud</id>
             <dependencies>
-                <dependency>
-                    <groupId>cn.mapway</groupId>
-                    <artifactId>mapway-annotation</artifactId>
-                    <version>1.1.7-SNAPSHOT</version>
-                </dependency>
+
                 <dependency>
                     <groupId>org.springframework</groupId>
                     <artifactId>spring-web</artifactId>

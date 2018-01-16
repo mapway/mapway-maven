@@ -73,9 +73,7 @@
     cursor: pointer;
 }
 
-@external .gwt-TreeItem {
-    display: block !important;
-}
+
 .summary {
     padding-top: 5px;
     color: green;
@@ -94,7 +92,7 @@
 }
 
 .rowh {
-    background-color: white;
+    background-color: skyblue;
 }
 
 .cssString {
@@ -133,7 +131,8 @@
 }
 
 .entryTitle {
-    color: darkblue;
+    color:black;
+    font-size: 2em;
     font-weight: bold;
 }
 
@@ -155,22 +154,19 @@
     background-color: skyblue;
     color: black;
     border: solid 1px darkblue;
-    padding: 10px 16px;
-    font-weight: 16px;
+    height: 34px;
+    line-height: 28px;
+    padding: 0px 10px;
+    font-size: large;
 }
 
 .btn:HOVER {
     background-color: darkblue;
     color: white;
     border: solid 1px skyblue;
-    padding: 10px 16px;
 }
 
-.gwt-PopupPanelGlass {
-    background-color: #000;
-    opacity: 0.3;
-    filter: alpha(opacity=30);
-}
+
 
 .imgButton {
     background-color: white;
