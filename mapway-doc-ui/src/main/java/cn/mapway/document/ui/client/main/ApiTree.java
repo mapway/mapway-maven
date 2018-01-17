@@ -18,7 +18,6 @@ import cn.mapway.document.ui.client.resource.CssStyle;
 import cn.mapway.document.ui.client.resource.SysResource;
 import cn.mapway.document.ui.client.resource.TreeResource;
 
-// TODO: Auto-generated Javadoc
 
 /**
  * API接口树 提供一个本地存储，存储各个节点的打开情况.

@@ -35,7 +35,9 @@
                     </g:HorizontalPanel>
                 </g:cell>
             </g:HorizontalPanel>
+
             <m:EntryList ui:field="list" width="100%"></m:EntryList>
+
         </g:VerticalPanel>
 
         <g:HTML ui:field="html" styleName="{style.desc}">

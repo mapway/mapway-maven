@@ -41,21 +41,35 @@
             <artifactId>gwt-servlet</artifactId>
             <scope>provided</scope>
         </dependency>
-        <dependency>
-            <groupId>com.google.gwt</groupId>
-            <artifactId>gwt-user</artifactId>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.google.gwt</groupId>
-            <artifactId>gwt-dev</artifactId>
-            <scope>provided</scope>
-        </dependency>
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-autoconfigure</artifactId>
             <version>1.5.1.RELEASE</version>
             <optional>true</optional>
+        </dependency>
+        <!-- markdown support-->
+        <dependency>
+            <groupId>com.atlassian.commonmark</groupId>
+            <artifactId>commonmark</artifactId>
+            <version>0.10.0</version>
+        </dependency>
+        <dependency>
+            <groupId>com.atlassian.commonmark</groupId>
+            <artifactId>commonmark-ext-gfm-tables</artifactId>
+            <version>0.9.0</version>
+        </dependency>
+        <!-- end markdown support -->
+
+        <dependency>
+            <groupId>cn.mapway</groupId>
+            <artifactId>mapway-annotation</artifactId>
+            <version>1.1.7-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>javax.validation</groupId>
+            <artifactId>validation-api</artifactId>
+            <version>1.0.0.GA</version>
         </dependency>
     </dependencies>
     <profiles>
@@ -63,6 +77,16 @@
             <id>dev</id>
 
             <dependencies>
+                <dependency>
+                    <groupId>com.google.gwt</groupId>
+                    <artifactId>gwt-user</artifactId>
+                    <scope>provided</scope>
+                </dependency>
+                <dependency>
+                    <groupId>com.google.gwt</groupId>
+                    <artifactId>gwt-dev</artifactId>
+                    <scope>provided</scope>
+                </dependency>
                 <dependency>
                     <groupId>org.springframework</groupId>
                     <artifactId>spring-web</artifactId>
@@ -74,16 +98,7 @@
                     <artifactId>gwt-user</artifactId>
                     <scope>compile</scope>
                 </dependency>
-                <dependency>
-                    <groupId>cn.mapway</groupId>
-                    <artifactId>mapway-annotation</artifactId>
-                    <version>1.1.7-SNAPSHOT</version>
-                </dependency>
-                <dependency>
-                    <groupId>javax.validation</groupId>
-                    <artifactId>validation-api</artifactId>
-                    <version>1.0.0.GA</version>
-                </dependency>
+
             </dependencies>
             <build>
                 <plugins>
@@ -100,18 +115,10 @@
             <id>to-enncloud</id>
             <dependencies>
                 <dependency>
-                    <groupId>cn.mapway</groupId>
-                    <artifactId>mapway-annotation</artifactId>
-                    <version>1.1.7-SNAPSHOT</version>
-                </dependency>
-                <dependency>
                     <groupId>org.springframework</groupId>
                     <artifactId>spring-web</artifactId>
                     <version>${SpringVersion}</version>
-                    <scope>provided</scope>
                 </dependency>
-
-
             </dependencies>
             <build>
                 <plugins>
@@ -155,7 +162,7 @@
                                                 <line>package cn.mapway.document.parser;</line>
                                                 <line>public class CompileVersion {</line>
                                                 <line>public final static String VERSION =
-                                                    "[${project.version}]@${current.time}";
+                                                    "[${project.version}]@${current.time} from ${env.BRANCH}";
                                                 </line>
                                                 <line>}</line>
                                             </lines>

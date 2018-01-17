@@ -73,7 +73,6 @@
     cursor: pointer;
 }
 
-
 .summary {
     padding-top: 5px;
     color: green;
@@ -131,7 +130,7 @@
 }
 
 .entryTitle {
-    color:black;
+    color: black;
     font-size: 2em;
     font-weight: bold;
 }
@@ -166,8 +165,6 @@
     border: solid 1px skyblue;
 }
 
-
-
 .imgButton {
     background-color: white;
     border: solid 1px white;
@@ -201,3 +198,4 @@
     vertical-align: bottom;
     margin-right: 3px;
 }
+

@@ -11,7 +11,7 @@ import cn.mapway.document.annotation.Doc;
  * The Class TestController.
  */
 @Doc(value = "ABCD", group = "/泛能云/APP接口/Tst", desc = "然后循环提取某个键值对的key和value，"
-    + "对于value我们可以直接使用之前的策略进行反序列化，因为这部分的结构也是固定的。")
+    + "对于value我们可以直接使用之前的策略进行反序列化，因为这部分的结构也是固定的。",refs = {"ref/hello.md"})
 @Controller
 @RequestMapping(value = "doc/123/")
 public class TestController {
