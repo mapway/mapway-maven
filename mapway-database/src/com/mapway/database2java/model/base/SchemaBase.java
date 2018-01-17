@@ -106,11 +106,12 @@ public class SchemaBase implements ISchema {
 
 	/**
 	 * Gets the header.
+	 * dont include header
 	 *
 	 * @return the header
 	 */
 	public String getHeader() {
-		return copyright;
+		return "";
 	}
 
 	/**

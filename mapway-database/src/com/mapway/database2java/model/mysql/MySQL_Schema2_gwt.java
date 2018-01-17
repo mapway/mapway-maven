@@ -28,13 +28,7 @@ import com.mapway.database2java.model.schema.Table;
 import com.mapway.database2java.model.schema.Tables;
 import com.mapway.database2java.model.schema.View;
 
-// TODO: Auto-generated Javadoc
-/*
- * ============================================================ # ____ _ _ ____ _ _ ____ _ _ ____ _
- * _ ____ _ _ ____ # # __] |__| |__| |\ | | __ | | |__| |\ | [__ |__| |___ # # [___ | | | | | \|
- * |__| _| | | | | \| ___] | | |___ # # http://hi.baidu.com/zhangjianshe #
- * ============================================================
- */
+
 
 /**
  * The Class MySQL_Schema2_gwt.
@@ -50,7 +44,7 @@ public class MySQL_Schema2_gwt extends SchemaBase {
 	public String getCopyright() {
 		java.util.Date d = new java.util.Date();
 		String s = "/*******************************************************************************\r\n"
-				+ " 数据库持久化层(For MySQL5.1 Java)\r\n" + " 创建日期  " + d.toString() + "\r\n" + " 创建程序 Program 版本(3.0)\r\n"
+				+ " 数据库Bean\r\n" + " 创建程序 Program 版本(3.0)\r\n"
 				+ " 程序设计 张建设 EMAIL:zhangjianshe@gmail.com PHONE:15910868680\r\n";
 		s += super.getHeader();
 		s += "/******************************************************************************/\r\n";
