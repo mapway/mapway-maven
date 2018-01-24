@@ -1,0 +1,92 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui" 
+	xmlns:c="urn:import:cn.mapway.ui.client.widget.common">
+	<ui:style>
+	.important {
+		font-weight: bold;
+	}
+	</ui:style>
+	<g:ScrollPanel>
+		<g:HTMLPanel width="100%">
+			<g:HTMLPanel styleName="gwtEx-group">
+				<c:LabelEx styleName="gwtEx-Label gwtEx-width-2" ui:field="label">请输入</c:LabelEx>
+				<g:HTMLPanel styleName="gwtEx-width-7">
+					<c:TextBoxEx ui:field="shuru"></c:TextBoxEx>
+				</g:HTMLPanel>
+				<g:HTMLPanel styleName="gwtEx-width-3">
+					<c:CueLabelEx text="*请注意输入格式" ></c:CueLabelEx>
+				</g:HTMLPanel>
+			</g:HTMLPanel>
+			<g:HTMLPanel styleName="gwtEx-group">
+				<c:LabelEx styleName="gwtEx-Label gwtEx-width-2" text="数字输入框" ></c:LabelEx>
+				<g:HTMLPanel styleName="gwtEx-width-7">
+					<c:NumberTextBox ui:field="numText"></c:NumberTextBox>
+				</g:HTMLPanel>
+			</g:HTMLPanel>
+			<g:HTMLPanel styleName="gwtEx-group">
+				<g:HTMLPanel styleName="gwtEx-width-12">
+					<c:ButtonEx text="测试" ui:field="btn"></c:ButtonEx>
+					<c:PrimaryButton text="蓝色按钮指定一个名称很长的名字，看能不能扩展" ui:field="primaryBtn"></c:PrimaryButton>
+					<c:InfoButton text="Info按钮"></c:InfoButton>
+					<c:SuccessButton text="绿色按钮"></c:SuccessButton>
+					<c:DangerButton text="很是危险的按钮" ui:field="dangerBtn"></c:DangerButton>
+					<c:WarningButton text="警告！警告！它在发出黄光"></c:WarningButton>
+				</g:HTMLPanel>
+			</g:HTMLPanel>
+			<g:HTMLPanel styleName="gwtEx-group">
+				<c:LabelEx styleName="gwtEx-Label gwtEx-width-3" >请选择你最想做的事</c:LabelEx>
+				<g:HTMLPanel styleName="gwtEx-width-8" ui:field="checkList">
+					<c:CheckBoxEx text="吃饭"></c:CheckBoxEx>
+					<c:CheckBoxEx text="睡觉睡到自然醒"></c:CheckBoxEx>
+					<c:CheckBoxEx text="数钱数到手抽筋"></c:CheckBoxEx>
+					<c:CheckBoxEx text="打豆豆"></c:CheckBoxEx>
+					<c:CheckBoxEx text="天天过周末"></c:CheckBoxEx>
+					<c:CheckBoxEx text="瘦瘦瘦！！！"></c:CheckBoxEx>
+					<c:CheckBoxEx text="我想去云南"></c:CheckBoxEx>
+					<c:CheckBoxEx text="还想去成都"></c:CheckBoxEx>
+					<c:CheckBoxEx text="更想回家"></c:CheckBoxEx>
+				</g:HTMLPanel>
+			</g:HTMLPanel>
+			
+			<g:HTMLPanel styleName="gwtEx-group">
+				<c:LabelEx styleName="gwtEx-Label gwtEx-width-3" >是否完成梦想</c:LabelEx>
+				<g:HTMLPanel styleName="gwtEx-width-8" ui:field="radioList">
+					<c:RadioButtonEx checked="true" name="enabled" text="是"></c:RadioButtonEx>
+					<c:RadioButtonEx name="enabled" text="否"></c:RadioButtonEx>
+				</g:HTMLPanel>
+			</g:HTMLPanel>
+			
+			<g:HTMLPanel styleName="gwtEx-group">
+				<c:LabelEx styleName="gwtEx-Label gwtEx-width-3" >请选择一起旅行的伙伴</c:LabelEx>
+				<g:HTMLPanel styleName="gwtEx-width-8">
+					<c:ListBoxEx ui:field="listBox"></c:ListBoxEx>
+				</g:HTMLPanel>
+			</g:HTMLPanel>
+			
+			<g:HTMLPanel styleName="gwtEx-group">
+				<c:LabelEx styleName="gwtEx-Label gwtEx-width-2">请选择日期</c:LabelEx>
+				<g:HTMLPanel styleName="gwtEx-width-4">
+					<c:DateBoxEx></c:DateBoxEx>
+				</g:HTMLPanel>
+			</g:HTMLPanel>
+			
+			<g:HTMLPanel styleName="gwtEx-group">
+				<g:HTMLPanel styleName="gwtEx-width-12">
+					<c:TableEx ui:field="table"></c:TableEx>
+				</g:HTMLPanel>
+			</g:HTMLPanel>
+			
+			<c:TabBarEx ui:field="tab" width="100%"></c:TabBarEx>
+			<g:HTMLPanel ui:field="tabContent"></g:HTMLPanel>
+			
+			<g:HTMLPanel styleName="gwtEx-group">
+				<g:HTMLPanel styleName="gwtEx-width-12">
+					<c:GridEx ui:field="grid"></c:GridEx>
+				</g:HTMLPanel>
+			</g:HTMLPanel>
+			
+			<c:ImageEx ui:field="image"></c:ImageEx>
+		</g:HTMLPanel>
+	</g:ScrollPanel>
+</ui:UiBinder> 

@@ -1,0 +1,6 @@
+MySQL_driver=com.mysql.jdbc.Driver
+MySQL_dataurl=jdbc:mysql://localhost:3306/$database?useUnicode=true&characterEncoding=utf8
+MySQL_database=ksite2
+MySQL_user=ksite2
+MySQL_password=ksite2
+MySQL_maxconnections=20

@@ -1,0 +1,54 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder" xmlns:g="urn:import:com.google.gwt.user.client.ui">
+    <ui:style>
+    .imgbox {
+        margin: 5px;
+        position: relative;
+        background-color: #f0f0f0;
+        height: 42 px;
+        overflow: hidden;
+    }
+    
+    .lb {
+        line-height: 30px;
+        height: 30px;
+        font-weight: normal;
+        overflow: hidden;
+    }
+    
+    .uploader {
+        position: absolute;
+        right: 0px;
+        top: 0px;
+        width: 42;
+        height: 42px;
+        filter: alpha(opacity = 0);
+        opacity: 0;
+        z-index: 3002;
+        cursor: pointer;
+        background: transparent;
+    }
+    
+    .btnuploader {
+        position: absolute;
+        right: 0px;
+        top: 0px;
+        height: 42px;
+        width: 42px;
+        line-height: 42px;
+        z-index: 3001;
+        cursor: pointer;
+        padding: 0px 10px;
+        background-color: skyblue;
+    }
+    </ui:style>
+    <g:HTMLPanel styleName="{style.imgbox}">
+        <g:Label ui:field="lbTitle" styleName="{style.lb}"></g:Label>
+        <g:FormPanel encoding="multipart/form-data" ui:field="form" method="POST">
+            <g:HTMLPanel>
+                <g:FileUpload ui:field="uploader" name="upfile" styleName="{style.uploader}"></g:FileUpload>
+                <g:Anchor ui:field="btnUploader" text="上传" styleName="{style.btnuploader}"></g:Anchor>
+            </g:HTMLPanel>
+        </g:FormPanel>
+    </g:HTMLPanel>
+</ui:UiBinder> 

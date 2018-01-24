@@ -1,0 +1,41 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder" xmlns:g="urn:import:com.google.gwt.user.client.ui">
+    <ui:style>
+    .box {
+    	padding: 25px;
+    	text-align: left;
+    }
+    
+    .b {
+    	text-align: center;
+    }
+    
+    .img {
+    	margin-top: 25px;
+    }
+    
+    .info {
+    	margin-bottom: 20px !important;
+    	padding: 14px 24px !important;
+    	line-height: 20px;
+    	color: #1a7db6;
+    	font-size: 14px !important;
+    	background-color: #d9edf6;
+    	border: 1px dashed #85d7fd !important;
+    	border-radius: 6px;
+    	margin: 10px;
+    }
+    </ui:style>
+    <g:ScrollPanel>
+        <g:HTMLPanel>
+            <g:HTMLPanel styleName="{style.b}">
+                <g:Image styleName="{style.img}" ui:field="loading" visible="false"></g:Image>
+                <g:HTMLPanel ui:field="root" styleName="{style.box}">
+                </g:HTMLPanel>
+                <g:HTMLPanel styleName="{style.info}">
+                    <g:Label ui:field="lbVersion"></g:Label>
+                </g:HTMLPanel>
+            </g:HTMLPanel>
+        </g:HTMLPanel>
+    </g:ScrollPanel>
+</ui:UiBinder>

@@ -1,0 +1,112 @@
+.treeItemImage {
+    margin-right: 8px;
+    vertical-align: middle;
+}
+
+ .treeItemSelected {
+    gwt-sprite: "arrow_left_white";
+    color: blue;
+    cursor: default;
+    font-weight: normal;
+    background-position: right center;
+    background-repeat: no-repeat;
+}
+
+.cssTable {
+    background-color: #a0a0a0;
+    margin: 10px 0px;
+    width: 100%;
+    border: 0px;
+}
+
+.cssTable td {
+    padding: 5px;
+}
+
+.row0 {
+    background-color: white;
+    cursor: default;
+}
+
+.row0:HOVER {
+    background-color: skyblue;
+}
+
+.row1 {
+    background-color: #f8f8f8;
+    cursor: default;
+}
+
+.row1:HOVER {
+    background-color: skyblue;
+}
+
+.rowh {
+    background-color: #c0c0c0;
+    font-weight: bold;
+    font-size: 16px;
+    height: 40px;
+    vertical-align: middle;
+}
+
+.rowh .gwt-Label {
+    font-weight: bold;
+}
+
+.rowh td {
+    font-weight: bold;
+}
+
+
+.rowSelect:HOVER {
+    background-color: #1679b9;
+    color: white;
+}
+
+.title {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.lbOn {
+    font-weight: normal;
+    font-size: 24px;
+    color: blue;
+}
+
+.lbOff {
+    font-weight: normal;
+    font-size: 24px;
+    color: grey;
+}
+
+.pagebtnOn {
+    color: skyblue;
+    cursor: pointer;
+}
+
+.pagebtnOff {
+    color: #000000;
+    cursor: pointer;
+}
+
+.mqttText {
+    background: white;
+    color: green;
+    font-size: 14px;
+    font-family: 微软雅黑, tahoma;
+    padding: 0px 9px;
+    border-radius: 9px;
+    line-height: 18px;
+    height: 18px;
+    overflow: hidden;
+    margin-left: 10px;
+    float: left;
+    margin-top: 3px;
+}
+
+.lageContent
+{
+	max-height: 50px;
+	overflow: hidden;
+}

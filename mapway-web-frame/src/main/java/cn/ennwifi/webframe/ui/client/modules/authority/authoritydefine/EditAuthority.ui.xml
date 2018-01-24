@@ -1,0 +1,79 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui = "urn:ui:com.google.gwt.uibinder" xmlns:g = "urn:import:com.google.gwt.user.client.ui"
+             xmlns:c = "urn:import:cn.ennwifi.webframe.ui.client.common"
+             xmlns:common = "urn:import:cn.mapway.ui.client.widget.common">
+    <ui:style>
+        .content {
+            padding: 10px 25px;
+        }
+
+        .ov {
+            overflow: hidden;
+        }
+    </ui:style>
+    <g:HTMLPanel>
+        <g:HorizontalPanel verticalAlignment = "middle" ui:field = "tools">
+            <common:PrimaryButton ui:field = "btnCreate" text = "新建"></common:PrimaryButton>
+            <common:PrimaryButton ui:field = "btnDelete" text = "删除"></common:PrimaryButton>
+            <common:PrimaryButton ui:field = "btnOk" text = "保存"></common:PrimaryButton>
+        </g:HorizontalPanel>
+        <div class = "{style.content}">
+            <table cellpadding = "2px" class = "enn-table-edit">
+                <tr>
+                    <td>权限ID</td>
+                    <td colspan="2">
+                        <g:Label ui:field="lbID"></g:Label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>权限点目录</td>
+                    <td>
+                        <g:TextBox ui:field = "txtPath" width = "300px"></g:TextBox>
+                    </td>
+                    <td rowspan = "5" valign = "top">
+                        <c:ImageUploader ui:field = "icon"></c:ImageUploader>
+                    </td>
+                </tr>
+                <tr>
+                    <td>名称</td>
+                    <td>
+                        <g:TextBox ui:field = "txtName" width = "300px"></g:TextBox>
+                    </td>
+                </tr>
+                <tr>
+                    <td>介绍</td>
+                    <td>
+                        <g:TextArea ui:field = "txtSummary" width = "300px" height = "100px"></g:TextArea>
+                    </td>
+                </tr>
+                <tr>
+                    <td>系统模块
+                    </td>
+                    <td>
+                        <g:ListBox ui:field = "ddlModule">
+                        </g:ListBox>
+                    </td>
+                </tr>
+                <tr>
+                    <td>模块参数</td>
+                    <td>
+                        <g:TextBox ui:field = "txtValue" width = "300px"></g:TextBox>
+                    </td>
+                </tr>
+                <tr>
+                    <td>样式名称</td>
+                    <td>
+                        <g:TextBox ui:field = "txtStyle" width = "300px"></g:TextBox>
+                    </td>
+                </tr>
+                <tr>
+                    <td>排序</td>
+                    <td>
+                        <g:TextBox ui:field = "txtRank" width = "300px" title = "请填入整数 1,2,3,..."></g:TextBox>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <g:Label ui:field = "lbMessage" styleName = "message"></g:Label>
+    </g:HTMLPanel>
+</ui:UiBinder>

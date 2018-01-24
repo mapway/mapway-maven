@@ -1,0 +1,42 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder" xmlns:g="urn:import:com.google.gwt.user.client.ui"
+    xmlns:a="urn:import:cn.ennwifi.webframe.ui.client.modules.authority.authoritydefine" xmlns:c="urn:import:cn.mapway.ui.client.widget.common"
+    xmlns:r="urn:import:cn.ennwifi.webframe.ui.client.modules.authority.role">
+    <ui:style>
+    .left {
+    	border-right: 1px solid #f0f0f0;
+    }
+    
+    .list {
+    	padding: 5px 10px 5px 5px;
+    }
+    
+    .title {
+    	text-align: center;
+    	font-weight: bold;
+    	padding: 5px;
+    }
+    </ui:style>
+    <g:DockLayoutPanel>
+        <g:west size="300">
+             <g:ScrollPanel>
+               <r:RoleList ui:field="list" width="100%"></r:RoleList>
+        
+             </g:ScrollPanel>
+        </g:west>
+        <g:center>
+            <g:ScrollPanel styleName="frame-content">
+                <g:HTMLPanel>
+                    <g:HorizontalPanel ui:field="tools">
+                        <c:PrimaryButton ui:field="btnAddRole">添加角色</c:PrimaryButton> 
+                        <c:PrimaryButton ui:field="btnModifyRole">修改角色</c:PrimaryButton>
+                        <c:PrimaryButton ui:field="btnDeleteRole">删除角色</c:PrimaryButton>
+                        <c:PrimaryButton ui:field="btnSaveRoleResource" >保存角色授权资源</c:PrimaryButton>
+                    </g:HorizontalPanel>
+                    <a:AuthorityTree ui:field="tree"></a:AuthorityTree>
+                </g:HTMLPanel>
+            </g:ScrollPanel>
+        </g:center>
+
+    </g:DockLayoutPanel>
+</ui:UiBinder>

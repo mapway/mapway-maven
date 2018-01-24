@@ -1,0 +1,37 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder" xmlns:g="urn:import:com.google.gwt.user.client.ui">
+    <ui:style>
+    .box {
+    	padding: 20px;
+    	border: solid 1px #f0f0f0;
+    	width: 250px;
+    	margin:10px;
+    	display: inline-block;
+    }
+    .box:HOVER {
+	background-color: #f0f0f0;	
+	}
+    .count {
+    	font-size: 34px;
+    	font-family: Impact;
+    	color: #0099cc;
+    }
+    
+    .img {
+    	margin-right:5px;
+    }
+    
+    .t {
+    	font-weight: bold;
+    }
+    </ui:style>
+    <g:HorizontalPanel styleName="{style.box}">
+        <g:Image ui:field="img" styleName="{style.img}"></g:Image>
+        <g:cell horizontalAlignment="left">
+            <g:HTMLPanel>
+                <g:Label ui:field="lbTitle" styleName="{style.t}"></g:Label>
+                <g:Label ui:field="lbCount" styleName="{style.count}"></g:Label>
+            </g:HTMLPanel>
+        </g:cell>
+    </g:HorizontalPanel>
+</ui:UiBinder>

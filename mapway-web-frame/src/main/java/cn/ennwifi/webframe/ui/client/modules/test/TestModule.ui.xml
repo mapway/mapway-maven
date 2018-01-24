@@ -1,0 +1,12 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder" xmlns:g="urn:import:com.google.gwt.user.client.ui" xmlns:x="urn:import:cn.mapway.ui.client.widget.editor.xeditor" xmlns:c="urn:import:cn.mapway.ui.client.widget.common">
+    <ui:style>
+     .t{
+	padding: 20px;
+}
+    </ui:style>
+    <g:HTMLPanel styleName="{style.t}">
+        <x:RichEditorBox ui:field="editor"></x:RichEditorBox>
+        <c:PrimaryButton ui:field="btn">获取文本内容</c:PrimaryButton>
+    </g:HTMLPanel>
+</ui:UiBinder>

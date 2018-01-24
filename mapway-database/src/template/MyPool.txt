@@ -1,0 +1,384 @@
+package ${package};
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.util.Enumeration;
+import java.util.Locale;
+import java.util.ResourceBundle;
+import java.util.Vector;
+/**
+ * 数据库线程池
+ * @author zhangjianshe@gmail.com
+ *
+ */
+public class MyPool implements IConnectionPool
+{
+    private int checkedOut;
+    private Vector freeConnections = new Vector();
+    private String driverName;
+    private String passwd;
+    private String username;
+    private String jdbcURL;
+    private String database;
+    private int maxConnections;
+
+    private static MyPool m_poolOracle;
+    private static MyPool m_poolMySQL;
+
+    public static synchronized MyPool getInstance(String database)
+    {
+	return getInstance(database, "database");
+    }
+
+    public static synchronized MyPool getInstance()
+    {
+	return m_poolMySQL;
+    }
+
+    public static synchronized MyPool getInstance(String database,
+	    String configurefile)
+    {
+	if (database == null || database.equals(""))
+	{
+	    database = "Oracle";
+	}
+	if (database.equals("Oracle"))
+	{
+	    if (m_poolOracle == null)
+	    {
+		m_poolOracle = new MyPool("Oracle", configurefile);
+	    }
+	    return m_poolOracle;
+	} else if (database.equals("MySQL"))
+	{
+	    if (m_poolMySQL == null)
+	    {
+		m_poolMySQL = new MyPool("MySQL", configurefile);
+	    }
+	} else if (database.equals("MySQL2"))
+	{
+	    if (m_poolMySQL == null)
+	    {
+		m_poolMySQL = new MyPool("MySQL2", configurefile);
+	    }
+	}
+	return m_poolMySQL;
+
+    }
+    public final static String DT_MYSQL = "MySQL";
+    public final static String DT_ORACLE = "Oracle";
+
+    /**
+     * 根据配置文件
+     * 
+     * @param databaseType
+     *            数据库类型，可用的参数类型有 MySQL ，Oracle
+     * @param rb
+     *            数据库配置参数属性文件
+     */
+    public MyPool(String databaseType, ResourceBundle rb)
+    {
+	init(databaseType, rb);
+    }
+
+    public MyPool(String database, String configurefile)
+    {
+	if (database == null)
+	{
+	    database = "Oracle";
+	}
+	Locale locale = Locale.getDefault();
+	ResourceBundle rb = ResourceBundle.getBundle(configurefile, locale);
+	init(database, rb);
+    }
+
+    private void init(String databaseType, ResourceBundle rb)
+    {
+	this.driverName = rb.getString(databaseType + "_driver");
+	this.jdbcURL = rb.getString(databaseType + "_dataurl");
+	this.username = rb.getString(databaseType + "_user");
+	this.passwd = rb.getString(databaseType + "_password");
+	this.database = rb.getString(databaseType + "_database");
+	
+	this.maxConnections = Integer.valueOf(rb.getString(databaseType
+		+ "_maxconnections"));
+	try
+	{
+	    Class.forName(driverName);
+	} catch (ClassNotFoundException e)
+	{
+	    e.printStackTrace();
+	}
+    }
+   
+    public void log(String msg)
+    {
+	System.out.println(msg);
+    }
+
+   
+    @SuppressWarnings("unchecked")
+    public synchronized void releaseConnection(Connection con)
+    {
+	
+	freeConnections.addElement(con);
+	checkedOut--;
+	notifyAll();
+    }
+
+   
+    public synchronized Connection getConnection()
+    {
+	Connection con = null;
+	if (freeConnections.size() > 0)
+	{
+	   
+	    con = (Connection) freeConnections.firstElement();
+	    freeConnections.removeElementAt(0);
+	    try
+	    {
+		if (con.isClosed())
+		{
+		    con = getConnection();
+		}
+	    } catch (SQLException e)
+	    {
+		
+		con = getConnection();
+	    }
+	} else if (this.maxConnections == 0
+		|| this.checkedOut < this.maxConnections)
+	{
+	    con = createConnection();
+	}
+	if (con != null)
+	{
+	    checkedOut++;
+	}
+	return con;
+    }
+
+    
+    public synchronized Connection getConnection(long timeout)
+    {
+	long startTime = new java.util.Date().getTime();
+	Connection con;
+	while ((con = getConnection()) == null)
+	{
+	    try
+	    {
+		wait(timeout);
+	    } catch (InterruptedException e)
+	    {
+	    }
+	    if ((new java.util.Date().getTime() - startTime) >= timeout)
+	    {
+		
+		return null;
+	    }
+	}
+	return con;
+    }
+
+   
+    public synchronized void close()
+    {
+	Enumeration allConnections = freeConnections.elements();
+	while (allConnections.hasMoreElements())
+	{
+	    Connection con = (Connection) allConnections.nextElement();
+	    try
+	    {
+		con.close();
+		
+	    } catch (SQLException e)
+	    {
+		
+	    }
+	}
+	freeConnections.removeAllElements();
+    }
+
+ 
+    private Connection createConnection()
+    {
+	Connection con = null;
+	try
+	{
+	    if (this.username == null)
+	    {
+		con = DriverManager.getConnection(this.jdbcURL.replace(
+			"$database", this.database));
+	    } else
+	    {
+		con = DriverManager.getConnection(
+			this.jdbcURL.replace("$database", this.database),
+			this.username, this.passwd);
+	    }
+	   
+	} catch (SQLException e)
+	{
+	  
+	    log(e.getMessage());
+	    return null;
+	}
+	return con;
+    }
+
+    /**
+     * @return the driverName
+     */
+    public String getDriverName()
+    {
+	return driverName;
+    }
+
+    /**
+     * @param driverName
+     *            the driverName to set
+     */
+    public void setDriverName(String driverName)
+    {
+	this.driverName = driverName;
+    }
+
+    /**
+     * @return the jdbcURL
+     */
+    public String getJdbcURL()
+    {
+	return jdbcURL;
+    }
+
+    /**
+     * @param jdbcURL
+     *            the jdbcURL to set
+     */
+    public void setJdbcURL(String jdbcURL)
+    {
+	this.jdbcURL = jdbcURL;
+    }
+
+    /**
+     * @return the passwd
+     */
+    public String getPasswd()
+    {
+	return passwd;
+    }
+
+    /**
+     * @param passwd
+     *            the passwd to set
+     */
+    public void setPasswd(String passwd)
+    {
+	this.passwd = passwd;
+    }
+
+    /**
+     * @return the username
+     */
+    public String getUsername()
+    {
+	return username;
+    }
+
+    /**
+     * @param username
+     *            the username to set
+     */
+    public void setUsername(String username)
+    {
+	this.username = username;
+    }
+
+    /**
+     * @param driverName
+     * @param passwd
+     * @param username
+     * @param jdbcURL
+     */
+    public MyPool(String driverName, String passwd, String username,
+	    String jdbcURL)
+    {
+	super();
+	this.driverName = driverName;
+	this.passwd = passwd;
+	this.username = username;
+	this.jdbcURL = jdbcURL;
+    }
+
+    /**
+     * @return the maxConnections
+     */
+    public int getMaxConnections()
+    {
+	return maxConnections;
+    }
+
+    /**
+     * @param maxConnections
+     *            the maxConnections to set
+     */
+    public void setMaxConnections(int maxConnections)
+    {
+	this.maxConnections = maxConnections;
+    }
+
+   public void setPackage(String pack)
+    {
+	this.pack = pack;
+    }
+
+    String netPath;
+
+    public String getNetPath()
+    {
+	return netPath;
+    }
+
+    public void setNetPath(String netPath)
+    {
+	this.netPath = netPath;
+    }
+
+    public String getPath()
+    {
+	return path;
+    }
+
+    public void setPath(String path)
+    {
+	this.path = path;
+    }
+
+    public String getPackage()
+    {
+	return this.pack;
+    }
+
+    public String getDatabase()
+    {
+	return database;
+    }
+
+    public void setDatabase(String database)
+    {
+	this.database = database;
+    }
+
+    public String getGwtbase()
+    {
+	return this.gwt_base;
+    }
+    
+     private String path;
+    private String pack;
+    private String gwt_modle;
+    private String gwt_dao;
+    private String gwt_base;
+ 
+
+}

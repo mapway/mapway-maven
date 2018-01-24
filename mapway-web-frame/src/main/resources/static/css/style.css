@@ -1,0 +1,182 @@
+@CHARSET "UTF-8";
+
+* {
+	padding: 0;
+	margin: 0;
+}
+
+html, body {
+	height: 100%;
+}
+
+input {
+	line-height: 25px;
+	height: 25px;
+}
+
+button {
+	line-height: 30px;
+	height: 30px;
+	padding: 0px 10px;
+}
+
+#div_msg {
+	line-height: 30px;
+	height: 30px;
+	color: red;
+	overflow: hidden;
+}
+
+.page_top {
+	height: 60px;
+	background-color: #404040;
+	overflow: hidden;
+}
+
+.page_left {
+	width: 250px;
+	border-right: solid 1px grey;
+	background-color: #f0f0f0;
+}
+
+.page_center {
+	margin-left: 250px;
+	margin-top: 50px;
+}
+
+#page_logo {
+	width: 50px;
+	height: 50px;
+	float: left;
+}
+
+div#page_title {
+	font-size: 22px;
+	color: white;
+	margin-left: 60px;
+	font-weight: bold;
+}
+
+div#page_exit {
+	text-align: right;
+}
+
+div#page_exit a {
+	color: #f0f0f0;
+	text-decoration: none;
+}
+
+div#page_exit a:HOVER {
+	color: white;
+	text-decoration: none;
+}
+
+.content_title {
+	font-weight: bold;
+	font-size: 16px;
+	padding: 5px 0px 5px 0px;
+}
+
+.info_box {
+	padding: 20px;
+}
+
+.info_item {
+	line-height: 30px;
+	height: 30px;
+}
+
+#page_menu {
+	width: 70px;
+	text-align: center;
+}
+
+.btn_menu_button {
+	width: 50px;
+	height: 50px;
+	background-image: url("../img/menu.png");
+	background-position: 0px 50px;
+	overflow: hidden;
+}
+
+.btn_menu_button:HOVER {
+	width: 50px;
+	height: 50px;
+	background-image: url("../img/menu.png");
+	background-position: 0px 0px;
+	overflow: hidden;
+}
+
+.main_menu_box {
+	position: absolute !important;
+	left: -300px;
+	top: 60px;
+	width: 300px;
+	height: 600px;
+	padding: 0px;
+	z-index: 5000;
+	display: block;
+	background-color: #fff;
+	cursor: default;
+	outline: 0px;
+	text-align: left;
+	white-space: nowrap;
+	border-right: 1px solid rgba(187, 187, 187, 0.6);
+	border-left: 0px solid #bbb;
+	border-top: 0px solid #bbb;
+	border-bottom: 0px solid #bbb;
+	box-shadow: 5px 0px 5px rgba(0, 0, 0, .1);
+	text-align: left;
+	overflow: auto;
+}
+
+.main_menu_box>div {
+	margin: 0px;
+	padding: 0px;
+}
+
+.main_menu_box div {
+	margin-left: 15px;
+}
+
+.main_menu_box span {
+	line-height: 30px;
+	height: 30px;
+	font-size: 16px;
+}
+
+.item_clickable {
+	color: darkblue;
+}
+
+.item_clickable:HOVER {
+	color: green;
+	background-color: #f0f0f0;
+}
+
+.item_unclickable {
+	color: black;
+}
+
+.node_leaf {
+	font-weight: normal;
+}
+
+.node_path {
+	font-weight: bold;
+}
+
+#page_msg {
+	color: skyblue;
+	font-size: 14px;
+	font-weight: normal;
+	margin-left: 60px;
+	overflow: hidden;
+	height: 20px;
+}
+
+.frame-title {
+	font-size:20px;
+	font-weight:blod;
+	color:black;
+}

@@ -1,0 +1,31 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui = "urn:ui:com.google.gwt.uibinder"
+             xmlns:g = "urn:import:com.google.gwt.user.client.ui">
+    <ui:style>
+        .tools {
+            background-color: #f0f0f0;
+        }
+
+        .title {
+            font-weight: bold;
+            padding: 10px 4px;
+        }
+
+        .summary {
+            font-weight: normal;
+            padding: 5px 4px;
+            color: #404040;
+        }
+    </ui:style>
+    <g:DockLayoutPanel>
+        <g:south size = "24">
+            <g:Label ui:field = "lbMessage" styleName = "message"></g:Label>
+        </g:south>
+        <g:center>
+            <g:ScrollPanel styleName = "frame-content">
+                <g:FlowPanel ui:field = "content">
+                </g:FlowPanel>
+            </g:ScrollPanel>
+        </g:center>
+    </g:DockLayoutPanel>
+</ui:UiBinder> 

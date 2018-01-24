@@ -1,0 +1,92 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	<ui:style>
+		.frm {
+			width: 1px;
+			height: 1px;
+			overflow: hidden;
+		}
+		
+		.input1 {
+			width: 130px;
+		}
+		
+		.input2 {
+			width: 40px;
+		}
+		
+		.hide {
+			display: none;
+		}
+		
+		.message {
+			color: red;
+			font-style: italic;
+		}
+	</ui:style>
+	<g:HTMLPanel width="270">
+		<table>
+			
+			<tr>
+				<td>
+					<g:TextBox width="180px" ui:field="txtURL"></g:TextBox>
+					<g:FormPanel ui:field="frmPanel" >
+						<g:FileUpload ui:field="upload" width="180px"></g:FileUpload>
+					</g:FormPanel>
+				</td>
+				<td>
+					<g:Button text="上传" ui:field="btnUpload" width="50px"></g:Button>
+				</td>
+			</tr>
+		</table>
+		<table cellpadding="2" cellspacing="0">
+			<tr>
+				<td>替换文本</td>
+				<td colspan="3">
+					<g:TextBox styleName="{style.input1}" ui:field="txtReplaceText"></g:TextBox>
+				</td>
+			</tr>
+			<tr>
+				<td>宽度</td>
+				<td>
+					<g:TextBox ui:field="txtWidth" styleName="{style.input2}"></g:TextBox>
+				</td>
+				<td>高度</td>
+				<td>
+					<g:TextBox ui:field="txtHeight" styleName="{style.input2}"></g:TextBox>
+				</td>
+			</tr>
+			<tr>
+				<td>水平间距</td>
+				<td>
+					<g:TextBox ui:field="txtHSpace" styleName="{style.input2}"></g:TextBox>
+				</td>
+				<td>垂直间距</td>
+				<td>
+					<g:TextBox ui:field="txtVSpace" styleName="{style.input2}"></g:TextBox>
+				</td>
+			</tr>
+			<tr>
+				<td>边框</td>
+				<td>
+					<g:TextBox ui:field="txtBorder" styleName="{style.input2}"></g:TextBox>
+				</td>
+				<td>对齐</td>
+				<td>
+					<g:ListBox ui:field="ddlAlign"></g:ListBox>
+				</td>
+			</tr>
+			<tr>
+				<td colspan="3" align="center">
+					<g:Label ui:field="lbMessage" styleName="{style.message}"></g:Label>
+				</td>
+				<td align="center">
+					<g:Button text="确定" ui:field="btnOK"></g:Button>
+					<g:Button text="取消" ui:field="btnCancel"></g:Button>
+				</td>
+			</tr>
+		</table>
+	</g:HTMLPanel>
+
+</ui:UiBinder> 
