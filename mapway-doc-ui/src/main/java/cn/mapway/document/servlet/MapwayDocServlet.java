@@ -174,7 +174,8 @@ public class MapwayDocServlet extends HttpServlet {
 
         if (htmlFile.exists()) {
             try {
-                Streams.write(response.getWriter(), Streams.fileInr(htmlFile));
+                Streams.writeAndClose(response.getWriter(), Streams.fileInr(htmlFile));
+                return ;
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -447,6 +448,7 @@ public class MapwayDocServlet extends HttpServlet {
      */
     public String getTempFolder() {
         String folder = System.getProperty("java.io.tmpdir");
+        System.out.printf("temporary fold >"+folder);
         return folder;
     }
 }
