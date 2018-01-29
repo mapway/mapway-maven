@@ -1049,7 +1049,7 @@ public class SchemaBase implements ISchema {
 
         // is use gwt integration
         if (needGwt) {
-            String i1 = "com.google.gwt.user.client.rpc.IsSerializabl";
+            String i1 = "com.google.gwt.user.client.rpc.IsSerializable";
             String i2 = "com.ksyzt.gwt.client.data.IFieldValue";
             writer.beginType(conf.getPackage() + "." + table.getJavaName(), "class", EnumSet.of(PUBLIC, FINAL), null, i1, i2);
         } else {
