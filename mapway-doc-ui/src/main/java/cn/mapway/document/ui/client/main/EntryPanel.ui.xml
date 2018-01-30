@@ -1,84 +1,77 @@
 <!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
 <ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
-	xmlns:g="urn:import:com.google.gwt.user.client.ui" xmlns:m="urn:import:cn.mapway.document.ui.client.main">
-	<ui:style>
-	.title {
-		font-weight: bold;
-		font-size: 16px;
-		padding: 10px 0px;
-	}
-	
-	.summary {
-		padding: 10px 0px;
-		color: green;
-		line-height: 28px;
-	}
-	
-	.tb {
-		
-	}
-	
-	.header {
-		background-color: #f0f0f0;
-		padding: 10px;
-		margin-bottom: 10px;
-	}
-	
-	.invoke {
-		color: brown;
-		padding: 10px 0px;
-	}
-	
-	.box {
-		padding: 10px;
-	}
-	
-	.source {
-		padding: 20px 0px;
-		margin-top: 50px;
-		border-left: solid 3px green;
-		padding-left: 10px;
-	}
-	
-	.partin {
-		margin-top: 50px;
-		border-left: solid 3px red;
-		padding-left: 10px;
-	}
-	
-	.partout {
-		margin-top: 50px;
-		border-left: solid 3px skyblue;
-		padding-left: 10px;
-	}
-	</ui:style>
-	<g:HTMLPanel styleName="{style.box}">
-		<g:HorizontalPanel styleName="{style.title}" width="100%">
-			<g:Label ui:field="lbTITLE" ></g:Label>
-			<g:cell horizontalAlignment="right">
-				<g:Button ui:field="btnTest" text="测试"></g:Button>
-			</g:cell>
-		</g:HorizontalPanel>
-		<div class="{style.header}">
-			<g:HTML ui:field="lbSUMMARY" styleName="{style.summary}"></g:HTML>
-		</div>
+             xmlns:g="urn:import:com.google.gwt.user.client.ui" xmlns:m="urn:import:cn.mapway.document.ui.client.main">
+    <ui:style>
+        .title {
+            font-weight: bold;
+            font-size: 16px;
+            padding: 10px 0px;
+        }
 
-		<g:HorizontalPanel width="100%" styleName="{style.tb}">
-			<g:Label ui:field="lbURL"></g:Label>
-			<g:cell horizontalAlignment="right">
-				<g:Label ui:field="lbAUTHOR"></g:Label>
-			</g:cell>
-		</g:HorizontalPanel>
+        .tb {
 
-		<g:Label ui:field="lbINVOKE" styleName="{style.invoke}">
-		</g:Label>
+        }
+
+        .header {
+
+            margin-bottom: 10px;
+        }
+
+        .invoke {
+            color: brown;
+            padding: 10px 0px;
+        }
+
+        .box {
+            padding: 10px;
+        }
+
+        .source {
+            padding: 20px 0px;
+            margin-top: 50px;
+            border-left: solid 3px green;
+            padding-left: 10px;
+        }
+
+        .partin {
+            margin-top: 50px;
+            border-left: solid 3px red;
+            padding-left: 10px;
+        }
+
+        .partout {
+            margin-top: 50px;
+            border-left: solid 3px skyblue;
+            padding-left: 10px;
+        }
+    </ui:style>
+    <g:HTMLPanel styleName="{style.box}">
+        <g:HorizontalPanel styleName="{style.title}" width="100%">
+            <g:Label ui:field="lbTITLE"></g:Label>
+            <g:cell horizontalAlignment="right">
+                <g:Button ui:field="btnTest" text="测试"></g:Button>
+            </g:cell>
+        </g:HorizontalPanel>
+        <div class="{style.header}">
+            <g:HTML ui:field="lbSUMMARY"></g:HTML>
+        </div>
+
+        <g:HorizontalPanel width="100%" styleName="{style.tb}">
+            <g:Label ui:field="lbURL"></g:Label>
+            <g:cell horizontalAlignment="right">
+                <g:Label ui:field="lbAUTHOR"></g:Label>
+            </g:cell>
+        </g:HorizontalPanel>
+
+        <g:Label ui:field="lbINVOKE" styleName="{style.invoke}">
+        </g:Label>
 
 
-		<m:InputParameterPanel ui:field="paraIn" styleName="{style.partin}"></m:InputParameterPanel>
+        <m:InputParameterPanel ui:field="paraIn" styleName="{style.partin}"></m:InputParameterPanel>
 
-		<m:OutputParameter ui:field="paraOut" styleName="{style.partout}"></m:OutputParameter>
-		
-		<g:HTML ui:field="javaSource" styleName="{style.source}" visible="true">
-		</g:HTML>
-	</g:HTMLPanel>
+        <m:OutputParameter ui:field="paraOut" styleName="{style.partout}"></m:OutputParameter>
+
+        <g:HTML ui:field="javaSource" styleName="{style.source}" visible="true">
+        </g:HTML>
+    </g:HTMLPanel>
 </ui:UiBinder> 

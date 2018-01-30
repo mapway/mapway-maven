@@ -1,17 +1,6 @@
 package cn.mapway.document.servlet;
 
-import java.io.File;
-import java.io.IOException;
-import java.util.Enumeration;
-import java.util.List;
-
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
 import cn.mapway.document.helper.DocHelper;
-import cn.mapway.document.helper.JarInfo;
 import cn.mapway.document.helper.ParseType;
 import cn.mapway.document.helper.Scans;
 import cn.mapway.document.module.ApiDoc;
@@ -24,6 +13,15 @@ import org.nutz.lang.Streams;
 import org.nutz.lang.Strings;
 import org.nutz.log.Log;
 import org.nutz.log.Logs;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.util.Enumeration;
 
 
 /**
@@ -172,45 +170,32 @@ public class MapwayDocServlet extends HttpServlet {
 
         File htmlFile = getCacheFileName();
 
-        if (htmlFile.exists()) {
-            try {
-                Streams.writeAndClose(response.getWriter(), Streams.fileInr(htmlFile));
-                return ;
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+        if (!htmlFile.exists()) {
+            writeToLocal(htmlFile);
         }
 
+        try {
+            response.setCharacterEncoding("UTF-8");
+            Streams.writeAndClose(response.getWriter(), Streams.utf8r(Streams.fileIn(htmlFile)));
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void writeToLocal(File htmlFile) {
         DocHelper helper = new DocHelper();
         helper.setAntHome(antHome);
 
         ApiDoc api = helper.toDoc(ParseType.PT_SPRING, context, packageNames);
 
-        String docroot = getDocRoot(request);
-
-        if (context.getEnableJavaConnector()) {
-            List<JarInfo> jars =
-                    helper.jar(api, docroot, connectorPackageName, connectorClassName, helper.getClass()
-                            .getClassLoader().getResource("").getPath()
-                            + "/../lib");
-
-            for (JarInfo jar : jars) {// 设定下载的路径
-                String localfile = jar.path + "/" + jar.fileName;
-                String target = getDownloadLocal(request) + "/" + jar.fileName;
-                try {
-                    Files.copyFile(new File(localfile), new File(target));
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-                jar.link = getBasePath(request) + "download/jar/" + jar.fileName;
-            }
-            api.getDownloads().addAll(jars);
-        }
 
         // 设置下载目录
 
         String html = helper.genHTML(api);
-        html(response, html);
+        //save to local for reload
+
+        Files.write(htmlFile, Streams.utf8r(Lang.ins(html)));
     }
 
     /**
@@ -448,7 +433,7 @@ public class MapwayDocServlet extends HttpServlet {
      */
     public String getTempFolder() {
         String folder = System.getProperty("java.io.tmpdir");
-        System.out.printf("temporary fold >"+folder);
+        System.out.printf("temporary fold >" + folder);
         return folder;
     }
 }
