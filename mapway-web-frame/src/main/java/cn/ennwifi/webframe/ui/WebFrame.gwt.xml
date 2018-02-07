@@ -9,7 +9,7 @@
     <inherits name="com.ksyzt.gwt.Site" />
     <inherits name="cn.mapway.ui.MapwayFrame" />
     <generate-with
-        class="cn.mapway.ui.client.mvc.ModuleFactoryGenerator">
+        class="cn.mapway.ui.server.mvc.ModuleFactoryGenerator">
         <when-type-assignable
             class="cn.mapway.ui.client.mvc.ModuleFactory" />
     </generate-with>
