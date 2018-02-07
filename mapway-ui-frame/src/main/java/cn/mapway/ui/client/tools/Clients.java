@@ -49,7 +49,7 @@ public class Clients {
   /**
    * Format timestamp.
    *
-   * @param t the t
+   * @param time the time
    * @param format the format
    * @return the string
    */
@@ -191,18 +191,16 @@ public class Clients {
 
   /**
    * @param value
-   * @param dATE_TIME_FORMAT
+   * @param format
    * @return
    */
-  public static String formatDate(Date value, String dATE_TIME_FORMAT) {
+  public static String formatDate(Date value, String format) {
     if (value == null) {
       return "";
     }
-    if (dATE_TIME_FORMAT == null || dATE_TIME_FORMAT.length() == 0)
+    if (format == null || format.length() == 0)
       return getDateFormat().format(value);
     else
-      return getDateTimeFormat(dATE_TIME_FORMAT).format(value);
+      return getDateTimeFormat(format).format(value);
   }
-
-
 }
