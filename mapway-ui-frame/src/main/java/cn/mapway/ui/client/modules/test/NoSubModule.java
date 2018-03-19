@@ -9,23 +9,38 @@ import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.Widget;
 
+/**
+ * The type No sub module.
+ */
 @ModuleMarker(value = NoSubModule.MODULE_CODE, group = "/测试", name = "没有子模块")
 public class NoSubModule extends AbstractModule {
 
-  public final static String MODULE_CODE = "MC_NO_SUB";
+    /**
+     * The constant MODULE_CODE.
+     */
+    public final static String MODULE_CODE = "MC_NO_SUB";
 
   private static NoSubModuleUiBinder uiBinder = GWT.create(NoSubModuleUiBinder.class);
 
-  interface NoSubModuleUiBinder extends UiBinder<Widget, NoSubModule> {
+    /**
+     * The interface No sub module ui binder.
+     */
+    interface NoSubModuleUiBinder extends UiBinder<Widget, NoSubModule> {
   }
 
-  public NoSubModule() {
+    /**
+     * Instantiates a new No sub module.
+     */
+    public NoSubModule() {
     initModuleWidget(uiBinder.createAndBindUi(this));
     updateTools(tools);
   }
 
 
-  @UiField
+    /**
+     * The Tools.
+     */
+    @UiField
   HorizontalPanel tools;
 
   @Override

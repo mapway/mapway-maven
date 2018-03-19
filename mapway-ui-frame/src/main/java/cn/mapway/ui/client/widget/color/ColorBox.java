@@ -42,10 +42,10 @@ public class ColorBox extends TextBox implements HasMessageHandlers {
     return style.getBackgroundColor();
   }
 
-  /**
-   * Instantiates a new color label.
-   */
-  public ColorBox() {
+    /**
+     * Instantiates a new color label.
+     */
+    public ColorBox() {
     this.popup = new ColorPopup();
     setValue("#ffffff");
 

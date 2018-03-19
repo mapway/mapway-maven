@@ -27,7 +27,7 @@ public class WebFrameEntry implements EntryPoint, IEventHandler {
     /**
      * 可以继承重载这个方法.
      *
-     * @return
+     * @return dash board module code
      */
     public String getDashBoardModuleCode() {
         return DashBoardModule.MODULE_CODE;
@@ -36,7 +36,7 @@ public class WebFrameEntry implements EntryPoint, IEventHandler {
     /**
      * 重载此方法提供一个资源权限的根节点ID null 不返回资源的权限
      *
-     * @return
+     * @return resource root id
      */
     public Integer getResourceRootId() {
         return null;

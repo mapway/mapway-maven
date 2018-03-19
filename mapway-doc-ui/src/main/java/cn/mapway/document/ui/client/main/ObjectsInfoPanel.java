@@ -15,6 +15,7 @@ import cn.mapway.document.ui.client.resource.SysResource;
 
 
 // TODO: Auto-generated Javadoc
+
 /**
  * The Class ObjectInfoPanel.
  */
@@ -41,18 +42,18 @@ public class ObjectsInfoPanel extends Grid implements HasSelectionHandlers<Objec
     SelectionEvent.fire(this, info);
   }
 
-  /**
-   * Instantiates a new object info panel.
-   */
-  public ObjectsInfoPanel() {
+    /**
+     * Instantiates a new object info panel.
+     */
+    public ObjectsInfoPanel() {
     init();
     this.setStyleName(SysResource.INSTANCE.getCss().cssTable());
   }
 
-  /**
-   * Inits the.
-   */
-  void init() {
+    /**
+     * Inits the.
+     */
+    void init() {
     Element e = getElement();
     e.setAttribute("borderCollapse", "collapse");
     e.setAttribute("cellPadding", "10px");
@@ -117,13 +118,14 @@ public class ObjectsInfoPanel extends Grid implements HasSelectionHandlers<Objec
     cf.setWidth(row, 4, "100px");
   }
 
-  /**
-   * Parses the.
-   *
-   * @param objs the objs
-   * @param title the title
-   */
-  public void parse(JsArray<ObjectInfo> objs, String title, String html) {
+    /**
+     * Parses the.
+     *
+     * @param objs  the objs
+     * @param title the title
+     * @param html  the html
+     */
+    public void parse(JsArray<ObjectInfo> objs, String title, String html) {
 
 
     lbTitle.setText(title);

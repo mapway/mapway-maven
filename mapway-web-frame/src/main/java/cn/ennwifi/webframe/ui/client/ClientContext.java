@@ -166,10 +166,20 @@ public class ClientContext implements IEventHandler, IOnPostMessage {
      */
     private MainFrame frame;
 
+    /**
+     * Gets configure.
+     *
+     * @return the configure
+     */
     public ClientConfigure getConfigure() {
         return configure;
     }
 
+    /**
+     * Sets configure.
+     *
+     * @param configure the configure
+     */
     public void setConfigure(ClientConfigure configure) {
         this.configure = configure;
     }
@@ -189,7 +199,7 @@ public class ClientContext implements IEventHandler, IOnPostMessage {
     /**
      * 向总线发送一个文本消息
      *
-     * @param message
+     * @param message the message
      */
     public void postMessage(String message) {
         postTopic(EventTopics.MESSAGE, 0, message);
@@ -198,9 +208,9 @@ public class ClientContext implements IEventHandler, IOnPostMessage {
     /**
      * 向总线发送一个文本消息
      *
-     * @param topic
-     * @param type
-     * @param data
+     * @param topic the topic
+     * @param type  the type
+     * @param data  the data
      */
     public void postTopic(String topic, int type, Object data) {
         getEventBus().fire(topic, type, data);
@@ -209,8 +219,8 @@ public class ClientContext implements IEventHandler, IOnPostMessage {
     /**
      * ss
      *
-     * @param moduleCode
-     * @param parameters
+     * @param moduleCode the module code
+     * @param parameters the parameters
      */
     public void switchModule(String moduleCode, ModuleParameter parameters) {
         IModule m = BaseAbstractModule.getModuleFactory().createModule(moduleCode, true);
@@ -246,10 +256,20 @@ public class ClientContext implements IEventHandler, IOnPostMessage {
         }
     }
 
+    /**
+     * Gets image upload action.
+     *
+     * @return the image upload action
+     */
     public String getImageUploadAction() {
         return imageUploadAction;
     }
 
+    /**
+     * Sets image upload action.
+     *
+     * @param imageUploadAction the image upload action
+     */
     public void setImageUploadAction(String imageUploadAction) {
         this.imageUploadAction = imageUploadAction;
     }
@@ -260,8 +280,9 @@ public class ClientContext implements IEventHandler, IOnPostMessage {
     /**
      * 显示消息对话框
      *
-     * @param title
-     * @param html
+     * @param title    the title
+     * @param html     the html
+     * @param callback the callback
      */
     public void confirm(String title, String html, Callback<Void, Void> callback) {
         if (confirm == null) {
@@ -294,6 +315,9 @@ public class ClientContext implements IEventHandler, IOnPostMessage {
         appEventhandler = frame;
     }
 
+    /**
+     * The Mqtt js.
+     */
     MqttJs mqttJs;
 
     /**
@@ -325,16 +349,28 @@ public class ClientContext implements IEventHandler, IOnPostMessage {
 
     private String mqttTopicPrefix;
 
+    /**
+     * Gets mqtt topic prefix.
+     *
+     * @return the mqtt topic prefix
+     */
     public String getMqttTopicPrefix() {
         return mqttTopicPrefix;
     }
 
+    /**
+     * Sets mqtt topic prefix.
+     *
+     * @param mqttTopicPrefix the mqtt topic prefix
+     */
     public void setMqttTopicPrefix(String mqttTopicPrefix) {
         this.mqttTopicPrefix = mqttTopicPrefix;
     }
 
     /**
-     * @param caught
+     * Process failure.
+     *
+     * @param caught the caught
      */
     public void processFailure(Throwable caught) {
 
@@ -347,29 +383,52 @@ public class ClientContext implements IEventHandler, IOnPostMessage {
 
     private String dashboardCode;
 
+    /**
+     * Gets dashboard code.
+     *
+     * @return the dashboard code
+     */
     public String getDashboardCode() {
         return dashboardCode;
     }
 
+    /**
+     * Sets dashboard code.
+     *
+     * @param code the code
+     */
     public void setDashboardCode(String code) {
         dashboardCode = code;
     }
 
+    /**
+     * Gets resources.
+     *
+     * @return the resources
+     */
     public List<S_RESOURCEObj> getResources() {
         return resources;
     }
 
+    /**
+     * Sets resources.
+     *
+     * @param resources the resources
+     */
     public void setResources(List<S_RESOURCEObj> resources) {
         this.resources = resources;
     }
 
+    /**
+     * The Resources.
+     */
     List<S_RESOURCEObj> resources;
 
     /**
      * 用户是否对资源 resID拥有权限
      *
-     * @param resId
-     * @return
+     * @param resId the res id
+     * @return boolean
      */
     public boolean isAuthorized(Long resId) {
         Boolean authorized = false;
@@ -387,9 +446,9 @@ public class ClientContext implements IEventHandler, IOnPostMessage {
     /**
      * 用户是否对资源 resID拥有权限
      *
-     * @param path
-     * @param funcPoint
-     * @return
+     * @param path      the path
+     * @param funcPoint the func point
+     * @return boolean
      */
     public boolean isAuthorized(String path, String funcPoint) {
         Boolean authorized = false;

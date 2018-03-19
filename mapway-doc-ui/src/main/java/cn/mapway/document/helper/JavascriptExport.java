@@ -10,7 +10,7 @@ import java.io.IOException;
 /**
  * The Class JavascriptHelper.
  *
- * @author zhangjianshe@navinfo.com
+ * @author zhangjianshe @navinfo.com
  */
 public class JavascriptExport {
 
@@ -48,8 +48,9 @@ public class JavascriptExport {
     /**
      * To javascript.
      *
-     * @param api      the api
-     * @param basepath the basepath
+     * @param api        the api
+     * @param basepath   the basepath
+     * @param exportName the export name
      * @return the string
      */
     public final String toJavascript(ApiDoc api, String basepath, String exportName) {

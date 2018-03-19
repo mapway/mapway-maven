@@ -34,38 +34,69 @@ import com.ksyzt.gwt.client.event.MessageHandler;
 
 /**
  * 简单的模块调度器.
- * 
- * @author zhangjianshe
  *
+ * @author zhangjianshe
  */
 public abstract class AbstractModule extends BaseAbstractModule implements IModuleDispatcher {
 
-  class UiFieldHolder {
-    @UiField
+    /**
+     * The type Ui field holder.
+     */
+    class UiFieldHolder {
+        /**
+         * The Root.
+         */
+        @UiField
     DockLayoutPanel root;
-    @UiField
+        /**
+         * The Sub list.
+         */
+        @UiField
     ItemList subList;
-    @UiField
+        /**
+         * The Sub modules.
+         */
+        @UiField
     ScrollPanel subModules;
 
 
-    @UiField
+        /**
+         * The Tbl navi.
+         */
+        @UiField
     HorizontalPanel tblNavi;
 
 
-    @UiField
+        /**
+         * The Tools.
+         */
+        @UiField
     HorizontalPanel tools;
 
-    @UiField
+        /**
+         * The Icon.
+         */
+        @UiField
     Image icon;
 
-    @UiField
+        /**
+         * The Lb expand.
+         */
+        @UiField
     Label lbExpand;
 
-    @UiField
+        /**
+         * The Bar.
+         */
+        @UiField
     HorizontalPanel bar;
 
-    @UiHandler("lbExpand")
+        /**
+         * On expand.
+         *
+         * @param ev the ev
+         */
+        @UiHandler("lbExpand")
     void onExpand(ClickEvent ev) {
       double width = root.getWidgetSize(subModules);
       if (width < 1) {
@@ -86,12 +117,13 @@ public abstract class AbstractModule extends BaseAbstractModule implements IModu
    */
   private List<ModuleInfo> mSubModules;
 
-  /**
-   * 注册子模块代码.
-   * 
-   * @param moduleCode
-   */
-  final public void registerSubModule(String moduleCode, boolean single) {
+    /**
+     * 注册子模块代码.
+     *
+     * @param moduleCode the module code
+     * @param single     the single
+     */
+    final public void registerSubModule(String moduleCode, boolean single) {
     ModuleInfo item = getModuleFactory().findModuleInfo(moduleCode);
     if (item != null) {
       boolean find = false;
@@ -112,7 +144,10 @@ public abstract class AbstractModule extends BaseAbstractModule implements IModu
 
   private static AbstractModuleUiBinder uiBinder = GWT.create(AbstractModuleUiBinder.class);
 
-  interface AbstractModuleUiBinder extends UiBinder<Widget, AbstractModule.UiFieldHolder> {
+    /**
+     * The interface Abstract module ui binder.
+     */
+    interface AbstractModuleUiBinder extends UiBinder<Widget, AbstractModule.UiFieldHolder> {
   }
 
   private MessageHandler subModuleClicked = new MessageHandler() {
@@ -142,7 +177,10 @@ public abstract class AbstractModule extends BaseAbstractModule implements IModu
   private Anchor linkHome;
 
 
-  public AbstractModule() {
+    /**
+     * Instantiates a new Abstract module.
+     */
+    public AbstractModule() {
     holder = new UiFieldHolder();
     lbHome = new Label();
     linkHome = new Anchor();
@@ -153,11 +191,20 @@ public abstract class AbstractModule extends BaseAbstractModule implements IModu
 
   }
 
-  IModule subCurrent;
-  Widget currentWidget = null;
+    /**
+     * The Sub current.
+     */
+    IModule subCurrent;
+    /**
+     * The Current widget.
+     */
+    Widget currentWidget = null;
 
 
-  IModule current;
+    /**
+     * The Current.
+     */
+    IModule current;
 
 
   @Override
@@ -345,12 +392,15 @@ public abstract class AbstractModule extends BaseAbstractModule implements IModu
     return true;
   };
 
-  Widget content = null;
+    /**
+     * The Content.
+     */
+    Widget content = null;
 
   /**
    * 初始化模块的界面
    * 
-   * @param widget
+   * @param widget ddd
    */
   @Override
   public void initModuleWidget(Widget widget) {
@@ -364,13 +414,14 @@ public abstract class AbstractModule extends BaseAbstractModule implements IModu
     return this;
   }
 
-  /**
-   * 子类需要重载这个方法，提供子模块切换的参数
-   * 
-   * @param mi
-   * @param mp
-   */
-  public void beforeSwitchSubModule(ModuleParameter parentModuleParameter, ModuleInfo mi,
+    /**
+     * 子类需要重载这个方法，提供子模块切换的参数
+     *
+     * @param parentModuleParameter the parent module parameter
+     * @param mi                    the mi
+     * @param mp                    the mp
+     */
+    public void beforeSwitchSubModule(ModuleParameter parentModuleParameter, ModuleInfo mi,
       ModuleParameter mp) {
 
   }
@@ -402,12 +453,12 @@ public abstract class AbstractModule extends BaseAbstractModule implements IModu
     }
   }
 
-  /**
-   * 设置模块标题
-   * 
-   * @param caption
-   */
-  public final void setCaption(String caption) {
+    /**
+     * 设置模块标题
+     *
+     * @param caption the caption
+     */
+    public final void setCaption(String caption) {
     lbHome.setText(caption);
     linkHome.setText(caption);
   }

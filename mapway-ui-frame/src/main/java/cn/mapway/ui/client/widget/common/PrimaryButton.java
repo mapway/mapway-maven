@@ -1,8 +1,14 @@
 package cn.mapway.ui.client.widget.common;
 
+/**
+ * The type Primary button.
+ */
 public class PrimaryButton extends ButtonEx{
-	
-	public PrimaryButton() {
+
+    /**
+     * Instantiates a new Primary button.
+     */
+    public PrimaryButton() {
 		setStyleName("gwtEx-Button gwtEx-PrimayButton");
 	}
 	

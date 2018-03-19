@@ -7,6 +7,7 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 // TODO: Auto-generated Javadoc
+
 /**
  * 注解.
  *
@@ -16,18 +17,18 @@ import java.lang.annotation.Target;
 @Retention(RetentionPolicy.RUNTIME)
 @Target({ ElementType.FIELD })
 public @interface Codes {
-	
-	/**
-	 * Code list.
-	 *
-	 * @return the code[]
-	 */
-	public Code[] value();
 
-	/**
-	 * scope.
-	 *
-	 * @return the string
-	 */
-	public String scope() default "";
+    /**
+     * Code list.
+     *
+     * @return the code[]
+     */
+    Code[] value();
+
+    /**
+     * scope.
+     *
+     * @return the string
+     */
+    String scope() default "";
 }

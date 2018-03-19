@@ -10,67 +10,67 @@ import com.google.gwt.user.client.ui.TextArea;
  */
 public class XhEditor extends TextArea {
 
-  /**
-   * Instantiates a new xh editor.
-   */
-  @UiConstructor
+    /**
+     * Instantiates a new xh editor.
+     */
+    @UiConstructor
   public XhEditor() {
 
   }
 
-  /**
-   * Instantiates a new xh editor.
-   *
-   * @param element the element
-   */
-  public XhEditor(Element element) {
+    /**
+     * Instantiates a new xh editor.
+     *
+     * @param element the element
+     */
+    public XhEditor(Element element) {
     super(element);
   }
 
   /** The proxy. */
   private RichBox proxy;
 
-  /**
-   * Inits the control.
-   *
-   * @param option the option
-   */
-  public void initControl(EditOption option) {
+    /**
+     * Inits the control.
+     *
+     * @param option the option
+     */
+    public void initControl(EditOption option) {
     if (option == null) {
       option = EditOption.getSimpleOption();
     }
     proxy = RichBox.initialize(getElement(), option);
   }
 
-  /**
-   * 设置HTML内容.
-   *
-   * @param html the new source
-   */
-  public void setSource(String html) {
+    /**
+     * 设置HTML内容.
+     *
+     * @param html the new source
+     */
+    public void setSource(String html) {
     proxy.html(html);
   }
 
-  /**
-   * 获取HTML内容.
-   *
-   * @return the source
-   */
-  public String getSource() {
+    /**
+     * 获取HTML内容.
+     *
+     * @return the source
+     */
+    public String getSource() {
     return proxy.html();
   }
 
-  /**
-   * 卸载组件.
-   */
-  public void unload() {
+    /**
+     * 卸载组件.
+     */
+    public void unload() {
     proxy.unLoad();
   }
 
-  /**
-   * Focus.
-   */
-  public void focus() {
+    /**
+     * Focus.
+     */
+    public void focus() {
     proxy.focus();
   }
 

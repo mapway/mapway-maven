@@ -17,7 +17,6 @@ import com.ksyzt.gwt.client.event.MessageEvent;
 import com.ksyzt.gwt.client.event.MessageHandler;
 
 
-
 /**
  * 自定义表格.
  *
@@ -26,8 +25,10 @@ import com.ksyzt.gwt.client.event.MessageHandler;
 public class NeTable extends TableEx implements HasMessageHandlers, HasSelectionHandlers<Cell> {
 
 
-  /** The current row. */
-  int currentRow = -1;
+    /**
+     * The current row.
+     */
+    int currentRow = -1;
 
   /**
    * Sets the selection row.
@@ -53,12 +54,12 @@ public class NeTable extends TableEx implements HasMessageHandlers, HasSelection
     }
   }
 
-  /**
-   * Gets the select row.
-   *
-   * @return the select row
-   */
-  public int getSelectRow() {
+    /**
+     * Gets the select row.
+     *
+     * @return the select row
+     */
+    public int getSelectRow() {
     return currentRow;
   }
 
@@ -99,13 +100,15 @@ public class NeTable extends TableEx implements HasMessageHandlers, HasSelection
     }
   };
 
-  /** The rf. */
-  RowFormatter rf;
+    /**
+     * The rf.
+     */
+    RowFormatter rf;
 
-  /**
-   * Instantiates a new ne table.
-   */
-  public NeTable() {
+    /**
+     * Instantiates a new ne table.
+     */
+    public NeTable() {
     Element ele = this.getElement();
     ele.setAttribute("cellSpacing", "0px");
     ele.setAttribute("cellPadding", "4px");
@@ -125,12 +128,12 @@ public class NeTable extends TableEx implements HasMessageHandlers, HasSelection
     return addHandler(handler, MessageEvent.TYPE);
   }
 
-  /**
-   * 报告消息.
-   *
-   * @param msg the msg
-   */
-  public void message(String msg) {
+    /**
+     * 报告消息.
+     *
+     * @param msg the msg
+     */
+    public void message(String msg) {
     MessageEvent ev = new MessageEvent(MessageEvent.MESSAGE, msg);
     fireEvent(ev);
   }

@@ -18,16 +18,16 @@ import cn.ennwifi.webframe.ui.client.resource.SysResource;
  */
 public class OrderLabel extends Label implements ClickHandler, HasValueChangeHandlers<String> {
 
-  /**
-   * Instantiates a new order label.
-   *
-   * @param name the name
-   * @param fieldName the field name
-   * @param order the order
-   * @param safeUri the safe uri
-   * @param colShow the col show
-   */
-  public OrderLabel(String name, String fieldName, int order, SafeUri safeUri, boolean colShow) {
+    /**
+     * Instantiates a new order label.
+     *
+     * @param name      the name
+     * @param fieldName the field name
+     * @param order     the order
+     * @param safeUri   the safe uri
+     * @param colShow   the col show
+     */
+    public OrderLabel(String name, String fieldName, int order, SafeUri safeUri, boolean colShow) {
     super(name);
     this.name = name;
     this.fieldName = fieldName;
@@ -40,36 +40,36 @@ public class OrderLabel extends Label implements ClickHandler, HasValueChangeHan
     changeName();
   }
 
-  /**
-   * Instantiates a new order label.
-   *
-   * @param name the name
-   * @param fieldName the field name
-   * @param order the order
-   * @param safeUri the safe uri
-   */
-  public OrderLabel(String name, String fieldName, int order, SafeUri safeUri) {
+    /**
+     * Instantiates a new order label.
+     *
+     * @param name      the name
+     * @param fieldName the field name
+     * @param order     the order
+     * @param safeUri   the safe uri
+     */
+    public OrderLabel(String name, String fieldName, int order, SafeUri safeUri) {
     this(name, fieldName, order, safeUri, true);
   }
 
-  /**
-   * Instantiates a new order label.
-   *
-   * @param name the name
-   * @param fieldName the field name
-   * @param order the order
-   */
-  public OrderLabel(String name, String fieldName, int order) {
+    /**
+     * Instantiates a new order label.
+     *
+     * @param name      the name
+     * @param fieldName the field name
+     * @param order     the order
+     */
+    public OrderLabel(String name, String fieldName, int order) {
     this(name, fieldName, order, SysResource.INSTANCE.checkTrue().getSafeUri(), true);
   }
 
-  /**
-   * Instantiates a new order label.
-   *
-   * @param name the name
-   * @param fieldName the field name
-   */
-  public OrderLabel(String name, String fieldName) {
+    /**
+     * Instantiates a new order label.
+     *
+     * @param name      the name
+     * @param fieldName the field name
+     */
+    public OrderLabel(String name, String fieldName) {
     this(name, fieldName, HeaderInfo.ORDER_NULL, SysResource.INSTANCE.checkTrue().getSafeUri(), true);
   }
 
@@ -94,30 +94,40 @@ public class OrderLabel extends Label implements ClickHandler, HasValueChangeHan
     }
   }
 
-  /** The field name. */
-  public String fieldName;
+    /**
+     * The field name.
+     */
+    public String fieldName;
 
-  /** The order. */
-  public int order = HeaderInfo.ORDER_NULL;
+    /**
+     * The order.
+     */
+    public int order = HeaderInfo.ORDER_NULL;
 
-  /** The name. */
-  public String name;
+    /**
+     * The name.
+     */
+    public String name;
 
-  /** The Img. */
-  public String Img;
+    /**
+     * The Img.
+     */
+    public String Img;
 
   /** The safe uri. */
   private SafeUri safeUri;
 
-  /** The col show. */
-  public boolean colShow = true;
+    /**
+     * The col show.
+     */
+    public boolean colShow = true;
 
-  /**
-   * Gets the order sql.
-   *
-   * @return the order sql
-   */
-  public String getOrderSql() {
+    /**
+     * Gets the order sql.
+     *
+     * @return the order sql
+     */
+    public String getOrderSql() {
     if (fieldName == null || fieldName.length() == 0) {
       return "";
     }

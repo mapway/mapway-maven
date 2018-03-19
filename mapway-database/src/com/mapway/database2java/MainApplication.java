@@ -19,12 +19,14 @@ import java.io.IOException;
 /**
  * 输出应用程序.
  *
- * @author zhangjianshe@gmail.com
+ * @author zhangjianshe @gmail.com
  */
 public class MainApplication {
 
     /**
-     * @param configure
+     * Execute.
+     *
+     * @param configure the configure
      */
     public void execute(IConfigure configure) {
         gen(configure);
@@ -53,6 +55,11 @@ public class MainApplication {
 
     }
 
+    /**
+     * Gen.
+     *
+     * @param config the config
+     */
     public void gen(IConfigure config) {
         IConnectionPool pool = new GeneratorPool(config.getDriver(), config.getJDBCURL(), config.getUser(),
                 config.getPassword(), config.getPackage(), config.getPath(), config.getMaxConnections());

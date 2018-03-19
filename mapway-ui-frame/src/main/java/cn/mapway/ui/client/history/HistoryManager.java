@@ -18,28 +18,41 @@ import com.google.gwt.user.client.History;
 
 /**
  * 历史回退管理器
- * 
- * @author zhangjianshe
  *
+ * @author zhangjianshe
  */
 public class HistoryManager implements ValueChangeHandler<String> {
 
-  IEventHandler mEmptyHander;
+    /**
+     * The M empty hander.
+     */
+    IEventHandler mEmptyHander;
 
-  /**
-   * 设置空的hash事件
-   * 
-   * @param handler
-   */
-  public void setEmptyHandler(IEventHandler handler) {
+    /**
+     * 设置空的hash事件
+     *
+     * @param handler the handler
+     */
+    public void setEmptyHandler(IEventHandler handler) {
     mEmptyHander = handler;
   }
 
-  public final static String SEPRATOR = ":";
-  public static final String EMPTY_HASH_EVENT = "EMPTY_HASH_EVENT";
+    /**
+     * The constant SEPRATOR.
+     */
+    public final static String SEPRATOR = ":";
+    /**
+     * The constant EMPTY_HASH_EVENT.
+     */
+    public static final String EMPTY_HASH_EVENT = "EMPTY_HASH_EVENT";
   private IModuleDispatcher mDispatcher;
 
-  public final static void push(List<SwitchModuleData> moduleDatas) {
+    /**
+     * Push.
+     *
+     * @param moduleDatas the module datas
+     */
+    public final static void push(List<SwitchModuleData> moduleDatas) {
     String r = encode(moduleDatas);
     if (r.length() > 0) {
       History.newItem(r, false);
@@ -47,7 +60,12 @@ public class HistoryManager implements ValueChangeHandler<String> {
   }
 
 
-  public final static void pushParameters(List<SwitchModuleData> moduleDatas) {
+    /**
+     * Push parameters.
+     *
+     * @param moduleDatas the module datas
+     */
+    public final static void pushParameters(List<SwitchModuleData> moduleDatas) {
     encode(moduleDatas);
   }
 
@@ -55,7 +73,13 @@ public class HistoryManager implements ValueChangeHandler<String> {
 
   private static HistoryManager historyManager = null;
 
-  public final static HistoryManager get(IModuleDispatcher dispatcher) {
+    /**
+     * Get history manager.
+     *
+     * @param dispatcher the dispatcher
+     * @return the history manager
+     */
+    public final static HistoryManager get(IModuleDispatcher dispatcher) {
     if (historyManager == null) {
       historyManager = new HistoryManager(dispatcher);
       History.addValueChangeHandler(historyManager);
@@ -63,11 +87,21 @@ public class HistoryManager implements ValueChangeHandler<String> {
     return historyManager;
   }
 
-  protected HistoryManager(IModuleDispatcher dispatcher) {
+    /**
+     * Instantiates a new History manager.
+     *
+     * @param dispatcher the dispatcher
+     */
+    protected HistoryManager(IModuleDispatcher dispatcher) {
     mDispatcher = dispatcher;
   }
 
-  public void popup(String token) {
+    /**
+     * Popup.
+     *
+     * @param token the token
+     */
+    public void popup(String token) {
     List<SwitchModuleData> modules = decode(token);
     IModuleDispatcher d = mDispatcher;
 

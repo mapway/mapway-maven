@@ -9,22 +9,30 @@ import com.google.gwt.user.client.ui.Widget;
 
 /**
  * 主面板
- * 
- * @author zhangjianshe
  *
+ * @author zhangjianshe
  */
 public class MainPanel extends Composite {
 
   private static MainPanelUiBinder uiBinder = GWT.create(MainPanelUiBinder.class);
 
-  interface MainPanelUiBinder extends UiBinder<Widget, MainPanel> {
+    /**
+     * The interface Main panel ui binder.
+     */
+    interface MainPanelUiBinder extends UiBinder<Widget, MainPanel> {
   }
 
-  public MainPanel() {
+    /**
+     * Instantiates a new Main panel.
+     */
+    public MainPanel() {
     initWidget(uiBinder.createAndBindUi(this));
   }
 
-  @UiField
+    /**
+     * The Root.
+     */
+    @UiField
   DockLayoutPanel root;
 
 

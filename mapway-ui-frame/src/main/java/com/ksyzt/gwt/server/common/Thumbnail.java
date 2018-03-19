@@ -7,25 +7,9 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 
-// TODO: Auto-generated Javadoc
+
 /**
- * 
- * <p>
- * Title: Thumbnail
- * </p>
- * 
- * <p>
- * Description: Picture Thumbnail
- * </p>
- * 
- * <p>
- * Copyright: Copyright (c) 54powerman@163.com 2005
- * </p>
- * 
- * <p>
- * Company: http://blog.sina.com.cn/u1055000490
- * </p>
- * 
+ *  thumbnail
  * @author 54powerman
  * @version 1.0
  */
@@ -46,24 +30,24 @@ public class Thumbnail {
 	/** The img. */
 	private Image img;
 
-	/**
-	 * The main method.
-	 *
-	 * @param args the arguments
-	 * @throws Exception the exception
-	 */
-	public static void main(String[] args) throws Exception {
+    /**
+     * The main method.
+     *
+     * @param args the arguments
+     * @throws Exception the exception
+     */
+    public static void main(String[] args) throws Exception {
 
 	}
 
-	/**
-	 * 构造函数.
-	 *
-	 * @param fileName            String
-	 * @param dest the dest
-	 * @throws IOException Signals that an I/O exception has occurred.
-	 */
-	public Thumbnail(String fileName, String dest) throws IOException {
+    /**
+     * 构造函数.
+     *
+     * @param fileName String
+     * @param dest     the dest
+     * @throws IOException Signals that an I/O exception has occurred.
+     */
+    public Thumbnail(String fileName, String dest) throws IOException {
 		File _file = new File(fileName); // 读入文件
 		this.srcFile = _file.getName();
 		this.destFile = dest;
@@ -72,14 +56,14 @@ public class Thumbnail {
 		height = img.getHeight(null); // 得到源图长
 	}
 
-	/**
-	 * 强制压缩/放大图片到固定的大小.
-	 *
-	 * @param w            int 新宽度
-	 * @param h            int 新高度
-	 * @throws IOException Signals that an I/O exception has occurred.
-	 */
-	public void resize(int w, int h) throws IOException {
+    /**
+     * 强制压缩/放大图片到固定的大小.
+     *
+     * @param w int 新宽度
+     * @param h int 新高度
+     * @throws IOException Signals that an I/O exception has occurred.
+     */
+    public void resize(int w, int h) throws IOException {
 		BufferedImage _image = new BufferedImage(w, h,
 				BufferedImage.TYPE_INT_RGB);
 
@@ -93,14 +77,14 @@ public class Thumbnail {
 		// out.close();
 	}
 
-	/**
-	 * Save image.
-	 *
-	 * @param dstImage the dst image
-	 * @param dstName the dst name
-	 * @throws IOException Signals that an I/O exception has occurred.
-	 */
-	static void saveImage(BufferedImage dstImage, String dstName)
+    /**
+     * Save image.
+     *
+     * @param dstImage the dst image
+     * @param dstName  the dst name
+     * @throws IOException Signals that an I/O exception has occurred.
+     */
+    static void saveImage(BufferedImage dstImage, String dstName)
 			throws IOException {
 		String formatName = dstName.substring(dstName.lastIndexOf(".") + 1);
 		// FileOutputStream out = new FileOutputStream(dstName);
@@ -110,48 +94,48 @@ public class Thumbnail {
 				new File(dstName) /* target */);
 	}
 
-	/**
-	 * 按照固定的比例缩放图片.
-	 *
-	 * @param t            double 比例
-	 * @throws IOException Signals that an I/O exception has occurred.
-	 */
-	public void resize(double t) throws IOException {
+    /**
+     * 按照固定的比例缩放图片.
+     *
+     * @param t double 比例
+     * @throws IOException Signals that an I/O exception has occurred.
+     */
+    public void resize(double t) throws IOException {
 		int w = (int) (width * t);
 		int h = (int) (height * t);
 		resize(w, h);
 	}
 
-	/**
-	 * 以宽度为基准，等比例放缩图片.
-	 *
-	 * @param w            int 新宽度
-	 * @throws IOException Signals that an I/O exception has occurred.
-	 */
-	public void resizeByWidth(int w) throws IOException {
+    /**
+     * 以宽度为基准，等比例放缩图片.
+     *
+     * @param w int 新宽度
+     * @throws IOException Signals that an I/O exception has occurred.
+     */
+    public void resizeByWidth(int w) throws IOException {
 		int h = (int) (height * w / width);
 		resize(w, h);
 	}
 
-	/**
-	 * 以高度为基准，等比例缩放图片.
-	 *
-	 * @param h            int 新高度
-	 * @throws IOException Signals that an I/O exception has occurred.
-	 */
-	public void resizeByHeight(int h) throws IOException {
+    /**
+     * 以高度为基准，等比例缩放图片.
+     *
+     * @param h int 新高度
+     * @throws IOException Signals that an I/O exception has occurred.
+     */
+    public void resizeByHeight(int h) throws IOException {
 		int w = (int) (width * h / height);
 		resize(w, h);
 	}
 
-	/**
-	 * 按照最大高度限制，生成最大的等比例缩略图.
-	 *
-	 * @param w            int 最大宽度
-	 * @param h            int 最大高度
-	 * @throws IOException Signals that an I/O exception has occurred.
-	 */
-	public void resizeFix(int w, int h) throws IOException {
+    /**
+     * 按照最大高度限制，生成最大的等比例缩略图.
+     *
+     * @param w int 最大宽度
+     * @param h int 最大高度
+     * @throws IOException Signals that an I/O exception has occurred.
+     */
+    public void resizeFix(int w, int h) throws IOException {
 		if (width / height > w / h) {
 			resizeByWidth(w);
 		} else {
@@ -159,43 +143,43 @@ public class Thumbnail {
 		}
 	}
 
-	/**
-	 * 设置目标文件名 setDestFile.
-	 *
-	 * @param fileName            String 文件名字符串
-	 * @throws Exception the exception
-	 */
-	public void setDestFile(String fileName) throws Exception {
+    /**
+     * 设置目标文件名 setDestFile.
+     *
+     * @param fileName String 文件名字符串
+     * @throws Exception the exception
+     */
+    public void setDestFile(String fileName) throws Exception {
 		if (!fileName.endsWith(".jpg")) {
 			throw new Exception("Dest File Must end with \".jpg\".");
 		}
 		destFile = fileName;
 	}
 
-	/**
-	 * 获取目标文件名 getDestFile.
-	 *
-	 * @return the dest file
-	 */
-	public String getDestFile() {
+    /**
+     * 获取目标文件名 getDestFile.
+     *
+     * @return the dest file
+     */
+    public String getDestFile() {
 		return destFile;
 	}
 
-	/**
-	 * 获取图片原始宽度 getSrcWidth.
-	 *
-	 * @return the src width
-	 */
-	public int getSrcWidth() {
+    /**
+     * 获取图片原始宽度 getSrcWidth.
+     *
+     * @return the src width
+     */
+    public int getSrcWidth() {
 		return width;
 	}
 
-	/**
-	 * 获取图片原始高度 getSrcHeight.
-	 *
-	 * @return the src height
-	 */
-	public int getSrcHeight() {
+    /**
+     * 获取图片原始高度 getSrcHeight.
+     *
+     * @return the src height
+     */
+    public int getSrcHeight() {
 		return height;
 	}
 }

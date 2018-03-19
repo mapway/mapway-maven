@@ -17,28 +17,43 @@ import com.ksyzt.gwt.client.event.MessageEvent;
 
 /**
  * 内容滚动器
- * @author zhangjianshe
  *
+ * @author zhangjianshe
  */
 public class ContentScroller extends MessageComposite {
 
   private static ContentScrollerUiBinder uiBinder = GWT.create(ContentScrollerUiBinder.class);
 
-  interface ContentScrollerUiBinder extends UiBinder<Widget, ContentScroller> {
+    /**
+     * The interface Content scroller ui binder.
+     */
+    interface ContentScrollerUiBinder extends UiBinder<Widget, ContentScroller> {
   }
 
-  public ContentScroller() {
+    /**
+     * Instantiates a new Content scroller.
+     */
+    public ContentScroller() {
     initWidget(uiBinder.createAndBindUi(this));
     mapper = new HashMap<LabelEx, Widget>();
   }
 
-  @UiField
+    /**
+     * The Navi.
+     */
+    @UiField
   HTMLPanel navi;
 
-  @UiField
+    /**
+     * The List.
+     */
+    @UiField
   HTMLPanel list;
 
-  LabelEx current = null;
+    /**
+     * The Current.
+     */
+    LabelEx current = null;
   private ClickHandler linkHandler = new ClickHandler() {
 
     @Override
@@ -69,14 +84,25 @@ public class ContentScroller extends MessageComposite {
     fireEvent(ev);
   }
 
-  public void clear() {
+    /**
+     * Clear.
+     */
+    public void clear() {
     navi.clear();
     list.clear();
   }
 
-  Map<LabelEx, Widget> mapper;
+    /**
+     * The Mapper.
+     */
+    Map<LabelEx, Widget> mapper;
 
-  public void add(Widget widget) {
+    /**
+     * Add.
+     *
+     * @param widget the widget
+     */
+    public void add(Widget widget) {
     LabelEx l = new LabelEx();
     l.setText(widget.getTitle());
     l.setStyleName("content-scroller");
@@ -86,7 +112,12 @@ public class ContentScroller extends MessageComposite {
     mapper.put(l, widget);
   }
 
-  public void showIndex(int index) {
+    /**
+     * Show index.
+     *
+     * @param index the index
+     */
+    public void showIndex(int index) {
     GWT.log("show index " + index);
     if (index >= 0 && index < navi.getWidgetCount()) {
       LabelEx l = (LabelEx) navi.getWidget(index);

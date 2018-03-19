@@ -3,6 +3,7 @@ package cn.mapway.document.helper;
 import java.io.Serializable;
 
 // TODO: Auto-generated Javadoc
+
 /**
  * The Class JarInfo.
  *
@@ -10,18 +11,28 @@ import java.io.Serializable;
  */
 public class JarInfo implements Serializable {
 
-	/** The file name. */
-	public String fileName;
+    /**
+     * The file name.
+     */
+    public String fileName;
 
-	/** The path. */
-	public String path;
+    /**
+     * The path.
+     */
+    public String path;
 
-	/** The size. */
-	public long size;
+    /**
+     * The size.
+     */
+    public long size;
 
-	/** The summary. */
-	public String summary;
+    /**
+     * The summary.
+     */
+    public String summary;
 
-	/** link. */
-	public String link;
+    /**
+     * link.
+     */
+    public String link;
 }

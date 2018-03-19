@@ -9,8 +9,14 @@ import com.google.gwt.event.dom.client.DragStartEvent;
 import com.google.gwt.event.dom.client.DragStartHandler;
 import com.google.gwt.user.client.ui.Image;
 
+/**
+ * The type Drag image.
+ */
 public class DragImage extends Image implements DragStartHandler, DragHandler {
-  public DragImage() {
+    /**
+     * Instantiates a new Drag image.
+     */
+    public DragImage() {
     initDnd();
   }
 

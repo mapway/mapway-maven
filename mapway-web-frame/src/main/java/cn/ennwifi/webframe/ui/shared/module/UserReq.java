@@ -11,6 +11,9 @@ import cn.mapway.document.annotation.Doc;
 @Doc("验证合法用户的请求")
 public class UserReq {
 
+    /**
+     * The Token.
+     */
     @ApiField("token")
     public String token;
 }

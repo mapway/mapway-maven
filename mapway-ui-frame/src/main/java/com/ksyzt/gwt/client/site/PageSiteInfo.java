@@ -18,69 +18,92 @@ import com.ksyzt.gwt.client.event.MessageEvent;
 import com.ksyzt.gwt.shared.module.SiteInformation;
 
 // TODO: Auto-generated Javadoc
+
 /**
  * The Class PageSiteInfo.
  */
 public class PageSiteInfo extends MessageComposite {
 
-	/** The m siteinfo. */
-	SiteInformation m_siteinfo;
+    /**
+     * The m siteinfo.
+     */
+    SiteInformation m_siteinfo;
 
 	/** The ui binder. */
 	private static PageSiteInfoUiBinder uiBinder = GWT
 			.create(PageSiteInfoUiBinder.class);
 
-	/**
-	 * The Interface PageSiteInfoUiBinder.
-	 */
-	interface PageSiteInfoUiBinder extends UiBinder<Widget, PageSiteInfo> {
+    /**
+     * The Interface PageSiteInfoUiBinder.
+     */
+    interface PageSiteInfoUiBinder extends UiBinder<Widget, PageSiteInfo> {
 	}
 
-	/**
-	 * Instantiates a new page site info.
-	 */
-	public PageSiteInfo() {
+    /**
+     * Instantiates a new page site info.
+     */
+    public PageSiteInfo() {
 		initWidget(uiBinder.createAndBindUi(this));
 	}
 
-	/** The txt NAME. */
-	@UiField
+    /**
+     * The txt NAME.
+     */
+    @UiField
 	TextBox txtNAME;
-	
-	/** The txt DESC. */
-	@UiField
+
+    /**
+     * The txt DESC.
+     */
+    @UiField
 	TextBox txtDESC;
-	
-	/** The txt ICP. */
-	@UiField
+
+    /**
+     * The txt ICP.
+     */
+    @UiField
 	TextBox txtICP;
-	
-	/** The txt sec NO. */
-	@UiField
+
+    /**
+     * The txt sec NO.
+     */
+    @UiField
 	TextBox txtSecNO;
-	
-	/** The txt TEL. */
-	@UiField
+
+    /**
+     * The txt TEL.
+     */
+    @UiField
 	TextBox txtTEL;
-	
-	/** The txt EMAIL. */
-	@UiField
+
+    /**
+     * The txt EMAIL.
+     */
+    @UiField
 	TextBox txtEMAIL;
-	
-	/** The txt OWNER. */
-	@UiField
+
+    /**
+     * The txt OWNER.
+     */
+    @UiField
 	TextBox txtOWNER;
-	
-	/** The txt KEYWORD. */
-	@UiField
+
+    /**
+     * The txt KEYWORD.
+     */
+    @UiField
 	TextBox txtKEYWORD;
-	
-	/** The check allow reg. */
-	@UiField
+
+    /**
+     * The check allow reg.
+     */
+    @UiField
 	CheckBox checkAllowReg;
-	
-	/** The txt SITEURL. */
-	@UiField
+
+    /**
+     * The txt SITEURL.
+     */
+    @UiField
 	TextBox txtSITEURL;
 
 	/** The m on site info. */
@@ -109,12 +132,12 @@ public class PageSiteInfo extends MessageComposite {
 		}
 	};
 
-	/**
-	 * On save.
-	 *
-	 * @param e the e
-	 */
-	@UiHandler("btnSave")
+    /**
+     * On save.
+     *
+     * @param e the e
+     */
+    @UiHandler("btnSave")
 	void onSave(ClickEvent e) {
 		if (m_siteinfo == null) {
 			m_siteinfo = new SiteInformation();
@@ -134,16 +157,18 @@ public class PageSiteInfo extends MessageComposite {
 		}
 	}
 
-	/**
-	 * Refresh.
-	 */
-	public void refresh() {
+    /**
+     * Refresh.
+     */
+    public void refresh() {
 		CommonServerProxy.SITE_MANAGER.getSiteInformation(m_on_site_info);
 
 	}
 
-	/** The btn update bottom. */
-	@UiField
+    /**
+     * The btn update bottom.
+     */
+    @UiField
 	Button btnUpdateBottom;
 	
 	/** The on update template handler. */
@@ -160,18 +185,20 @@ public class PageSiteInfo extends MessageComposite {
 		}
 	};
 
-	/**
-	 * On update bottom.
-	 *
-	 * @param event the event
-	 */
-	@UiHandler("btnUpdateBottom")
+    /**
+     * On update bottom.
+     *
+     * @param event the event
+     */
+    @UiHandler("btnUpdateBottom")
 	void onUpdateBottom(ClickEvent event) {
 		// CommonServerProxy.SITE_MANAGER.updateTemplate(on_update_template_handler);
 	}
 
-	/** The lb message. */
-	@UiField
+    /**
+     * The lb message.
+     */
+    @UiField
 	Label lbMessage;
 
 	/* (non-Javadoc)

@@ -15,6 +15,7 @@ import com.ksyzt.gwt.client.event.MessageEvent;
 import com.ksyzt.gwt.client.event.MessageHandler;
 
 // TODO: Auto-generated Javadoc
+
 /**
  * The Class AppTopbar.
  */
@@ -24,10 +25,10 @@ public class AppTopbar extends MessageComposite {
 	private static AppTopbarUiBinder uiBinder = GWT
 			.create(AppTopbarUiBinder.class);
 
-	/**
-	 * The Interface AppTopbarUiBinder.
-	 */
-	interface AppTopbarUiBinder extends UiBinder<Widget, AppTopbar> {
+    /**
+     * The Interface AppTopbarUiBinder.
+     */
+    interface AppTopbarUiBinder extends UiBinder<Widget, AppTopbar> {
 	}
 
 	/** The m tabs handler. */
@@ -44,74 +45,80 @@ public class AppTopbar extends MessageComposite {
 		}
 	};
 
-	/**
-	 * On exit.
-	 *
-	 * @param e the e
-	 */
-	@UiHandler("linkQuit")
+    /**
+     * On exit.
+     *
+     * @param e the e
+     */
+    @UiHandler("linkQuit")
 	void onExit(ClickEvent e) {
 		MessageEvent ev = new MessageEvent(MessageEvent.QUIT, 0);
 		fireEvent(ev);
 	}
 
-	/**
-	 * Instantiates a new app topbar.
-	 */
-	@UiConstructor
+    /**
+     * Instantiates a new app topbar.
+     */
+    @UiConstructor
 	public AppTopbar() {
 		initWidget(uiBinder.createAndBindUi(this));
 		tabs.addMessageHandler(m_tabs_handler);
 		tabs.setTabAlign(HasHorizontalAlignment.ALIGN_RIGHT);
 	}
 
-	/** The tabs. */
-	@UiField
+    /**
+     * The tabs.
+     */
+    @UiField
 	CustomTab tabs;
 
-	/** The lb user name. */
-	@UiField
+    /**
+     * The lb user name.
+     */
+    @UiField
 	Label lbUserName;
-	
-	/** The m uid. */
-	int m_uid;
 
-	/**
-	 * Inits the top.
-	 *
-	 * @param username the username
-	 * @param uid the uid
-	 */
-	public void initTop(String username, int uid) {
+    /**
+     * The m uid.
+     */
+    int m_uid;
+
+    /**
+     * Inits the top.
+     *
+     * @param username the username
+     * @param uid      the uid
+     */
+    public void initTop(String username, int uid) {
 		lbUserName.setText(username);
 		m_uid = uid;
 	}
 
-	/**
-	 * Adds the tab.
-	 *
-	 * @param caption the caption
-	 * @param id the id
-	 */
-	public void addTab(String caption, Integer id) {
+    /**
+     * Adds the tab.
+     *
+     * @param caption the caption
+     * @param id      the id
+     */
+    public void addTab(String caption, Integer id) {
 		tabs.addItem(caption, id);
 	}
 
-	/**
-	 * Adds the tab.
-	 *
-	 * @param d the d
-	 */
-	public void addTab(ModuleData d) {
+    /**
+     * Adds the tab.
+     *
+     * @param d the d
+     */
+    public void addTab(ModuleData d) {
 		tabs.addItem(d.getCaption(), d);
 	}
 
-	/**
-	 * Sets the selected.
-	 *
-	 * @param index the new selected
-	 */
-	public void setSelected(int index) {
+    /**
+     * Sets the selected.
+     *
+     * @param index the new selected
+     */
+    public void setSelected(int index) {
 		tabs.setSelectIndex(index);
 	}
 }

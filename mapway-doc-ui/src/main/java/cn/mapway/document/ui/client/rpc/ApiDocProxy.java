@@ -10,17 +10,17 @@ import com.google.gwt.http.client.*;
  */
 public class ApiDocProxy {
 
-  /**
-   * 向服务器请求接口调用.
-   *
-   * @param url the url
-   * @param jsonData the json data
-   * @param contextType the context type
-   * @param method the method
-   * @param handler the handler
-   * @throws RequestException the request exception
-   */
-  public static void fetchString(final String url, String jsonData, String contextType,
+    /**
+     * 向服务器请求接口调用.
+     *
+     * @param url         the url
+     * @param jsonData    the json data
+     * @param contextType the context type
+     * @param method      the method
+     * @param handler     the handler
+     * @throws RequestException the request exception
+     */
+    public static void fetchString(final String url, String jsonData, String contextType,
       String method, final IOnData<String> handler) throws RequestException {
 
     RequestBuilder builder =
@@ -52,17 +52,17 @@ public class ApiDocProxy {
     });
   }
 
-  /**
-   * 向服务器请求接口调用.
-   *
-   * @param <T> the generic type
-   * @param url the url
-   * @param jsonData the json data
-   * @param method the method
-   * @param handler the handler
-   * @throws RequestException the request exception
-   */
-  public static <T extends JavaScriptObject> void fetch(final String url, String jsonData,
+    /**
+     * 向服务器请求接口调用.
+     *
+     * @param <T>      the generic type
+     * @param url      the url
+     * @param jsonData the json data
+     * @param method   the method
+     * @param handler  the handler
+     * @throws RequestException the request exception
+     */
+    public static <T extends JavaScriptObject> void fetch(final String url, String jsonData,
       String method, final IOnData<T> handler) throws RequestException {
 
     RequestBuilder builder =
@@ -91,14 +91,14 @@ public class ApiDocProxy {
     });
   }
 
-  /**
-   * Fetch data.
-   *
-   * @param <T> the generic type
-   * @param target the target
-   * @param handler the handler
-   */
-  public static <T extends JavaScriptObject> void fetchData(final String target,
+    /**
+     * Fetch data.
+     *
+     * @param <T>     the generic type
+     * @param target  the target
+     * @param handler the handler
+     */
+    public static <T extends JavaScriptObject> void fetchData(final String target,
       final IOnData<T> handler) {
 
     RequestBuilder builder = new RequestBuilder(RequestBuilder.GET, URL.encode(target));

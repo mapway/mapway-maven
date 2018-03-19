@@ -6,13 +6,19 @@ import java.sql.Timestamp;
 import java.util.TimeZone;
 import java.util.logging.Logger;
 
+/**
+ * The type System property defaults initializer.
+ */
 public class SystemPropertyDefaultsInitializer {
 
   private static final Logger logger = Logger.getLogger(SystemPropertyDefaultsInitializer.class
       .getName());
 
 
-  public void initialize() {
+    /**
+     * Initialize.
+     */
+    public void initialize() {
     logger.info("SystemPropertyWebApplicationInitializer onStartup called");
 
     printTimes();

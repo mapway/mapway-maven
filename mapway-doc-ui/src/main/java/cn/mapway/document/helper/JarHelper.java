@@ -23,26 +23,26 @@ public class JarHelper {
   /** The ant home. */
   private String antHome = "";
 
-  /**
-   * Sets the ant home.
-   *
-   * @param home the new ant home
-   */
-  public void setAntHome(String home) {
+    /**
+     * Sets the ant home.
+     *
+     * @param home the new ant home
+     */
+    public void setAntHome(String home) {
     antHome = home;
   }
 
-  /**
-   * 输出Jar包到指定的目录.
-   *
-   * @param api the api
-   * @param path the path
-   * @param packageName the package name
-   * @param className the class name
-   * @param libPath the lib path
-   * @return the list
-   */
-  public List<JarInfo> jar(ApiDoc api, String path, String packageName, String className,
+    /**
+     * 输出Jar包到指定的目录.
+     *
+     * @param api         the api
+     * @param path        the path
+     * @param packageName the package name
+     * @param className   the class name
+     * @param libPath     the lib path
+     * @return the list
+     */
+    public List<JarInfo> jar(ApiDoc api, String path, String packageName, String className,
       String libPath) {
     List<JarInfo> jars = new ArrayList<JarInfo>();
 
@@ -69,17 +69,17 @@ public class JarHelper {
     return jars;
   }
 
-  /**
-   * 输出GWT连接器 Jar包.
-   *
-   * @param api the api
-   * @param path the path
-   * @param packageName the package name
-   * @param className the class name
-   * @param libPath the lib path
-   * @return the jar info
-   */
-  public JarInfo exportGwtConnector(ApiDoc api, String path, String packageName, String className,
+    /**
+     * 输出GWT连接器 Jar包.
+     *
+     * @param api         the api
+     * @param path        the path
+     * @param packageName the package name
+     * @param className   the class name
+     * @param libPath     the lib path
+     * @return the jar info
+     */
+    public JarInfo exportGwtConnector(ApiDoc api, String path, String packageName, String className,
       String libPath) {
 
     packageName = packageName + ".client";
@@ -225,15 +225,15 @@ public class JarHelper {
     return javaConnectorSourcePath + "/" + p + "/" + className + ".gwt.xml";
   }
 
-  /**
-   * Make path file.
-   *
-   * @param javaConnectorSourcePath the java connector source path
-   * @param packageName the package name
-   * @param className the class name
-   * @return the string
-   */
-  public static String makePathFile(String javaConnectorSourcePath, String packageName,
+    /**
+     * Make path file.
+     *
+     * @param javaConnectorSourcePath the java connector source path
+     * @param packageName             the package name
+     * @param className               the class name
+     * @return the string
+     */
+    public static String makePathFile(String javaConnectorSourcePath, String packageName,
       String className) {
     String p = packageName.replace(".", File.separator);
 

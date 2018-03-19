@@ -3,9 +3,15 @@ package cn.mapway.ui.client.widget.common;
 import com.google.gwt.regexp.shared.RegExp;
 import com.google.gwt.user.client.ui.TextArea;
 
+/**
+ * The type Text area ex.
+ */
 public class TextAreaEx extends TextArea implements IValidator {
 
-  public TextAreaEx() {
+    /**
+     * Instantiates a new Text area ex.
+     */
+    public TextAreaEx() {
     setStyleName("gwtEx-TextBox");
   }
 
@@ -78,24 +84,32 @@ public class TextAreaEx extends TextArea implements IValidator {
     }
   }
 
-  Integer minLength = null;
-  Integer maxLength = null;
+    /**
+     * The Min length.
+     */
+    Integer minLength = null;
+    /**
+     * The Max length.
+     */
+    Integer maxLength = null;
 
 
-  /**
-   * 设置最小长度
-   * @param minLength
-   */
-  public void setMinLength(int minLength) {
+    /**
+     * 设置最小长度
+     *
+     * @param minLength the min length
+     */
+    public void setMinLength(int minLength) {
     this.minLength = minLength;
 
   }
 
-  /**
-   * 设置最大长度
-   * @param maxLength
-   */
-  public void setMaxLength(int maxLength) {
+    /**
+     * 设置最大长度
+     *
+     * @param maxLength the max length
+     */
+    public void setMaxLength(int maxLength) {
     this.maxLength = maxLength;
   }
 

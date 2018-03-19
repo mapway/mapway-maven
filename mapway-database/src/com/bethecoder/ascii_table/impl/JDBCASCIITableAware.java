@@ -7,10 +7,19 @@ import java.util.*;
 import java.math.*;
 import java.text.*;
 
+/**
+ * The type Jdbcascii table aware.
+ */
 public class JDBCASCIITableAware implements IASCIITableAware {
     private List<ASCIITableHeader> headers;
     private List<List<Object>> data;
-    
+
+    /**
+     * Instantiates a new Jdbcascii table aware.
+     *
+     * @param connection the connection
+     * @param sql        the sql
+     */
     public JDBCASCIITableAware(final Connection connection, final String sql) {
         this.headers = null;
         this.data = null;
@@ -23,7 +32,12 @@ public class JDBCASCIITableAware implements IASCIITableAware {
             throw new RuntimeException("Unable to get table data : " + e);
         }
     }
-    
+
+    /**
+     * Instantiates a new Jdbcascii table aware.
+     *
+     * @param resultSet the result set
+     */
     public JDBCASCIITableAware(final ResultSet resultSet) {
         this.headers = null;
         this.data = null;

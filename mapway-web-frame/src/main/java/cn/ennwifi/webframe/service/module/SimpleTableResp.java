@@ -9,17 +9,29 @@ import java.util.List;
 import org.nutz.dao.entity.Record;
 
 /**
+ * The type Simple table resp.
+ *
  * @author ShaoRuolin
  */
 public class SimpleTableResp {
 
   private List<Record> data = new ArrayList<Record>();// 返回前端数据
 
-  public List<Record> getData() {
+    /**
+     * Gets data.
+     *
+     * @return the data
+     */
+    public List<Record> getData() {
     return data;
   }
 
-  public void setData(List<Record> data) {
+    /**
+     * Sets data.
+     *
+     * @param data the data
+     */
+    public void setData(List<Record> data) {
     this.data = data;
   }
 

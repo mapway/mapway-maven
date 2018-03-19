@@ -5,8 +5,9 @@ import cn.mapway.ui.client.widget.menu.IMenuItem;
 import com.google.gwt.user.client.ui.Widget;
 
 /**
- * @author zhangjianshe
+ * The type Vertical menu render.
  *
+ * @author zhangjianshe
  */
 public class VerticalMenuRender implements IMenuRender {
   @Override

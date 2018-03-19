@@ -7,16 +7,28 @@ import com.google.gwt.core.client.GWT;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.user.client.ui.Widget;
 
+/**
+ * The type No tools module.
+ */
 @ModuleMarker(value = NoToolsModule.MODULE_CODE, group = "/测试", name = "无tools模块")
 public class NoToolsModule extends BaseAbstractModule {
 
-  public final static String MODULE_CODE = "MC_NO_TOOLS";
+    /**
+     * The constant MODULE_CODE.
+     */
+    public final static String MODULE_CODE = "MC_NO_TOOLS";
   private static NoToolsModuleUiBinder uiBinder = GWT.create(NoToolsModuleUiBinder.class);
 
-  interface NoToolsModuleUiBinder extends UiBinder<Widget, NoToolsModule> {
+    /**
+     * The interface No tools module ui binder.
+     */
+    interface NoToolsModuleUiBinder extends UiBinder<Widget, NoToolsModule> {
   }
 
-  public NoToolsModule() {
+    /**
+     * Instantiates a new No tools module.
+     */
+    public NoToolsModule() {
     initModuleWidget(uiBinder.createAndBindUi(this));
   }
 

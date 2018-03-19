@@ -178,11 +178,11 @@ public class DocHelper {
     /**
      * 输出JAvascript 脚本
      *
-     * @param ptSpring
-     * @param context
-     * @param packageNames
-     * @param exportName
-     * @return
+     * @param ptSpring     the pt spring
+     * @param context      the context
+     * @param packageNames the package names
+     * @param exportName   the export name
+     * @return string
      */
     public String toJavascript(ParseType ptSpring, GenContext context, String packageNames, String exportName) {
         ApiDoc doc = toDoc(ptSpring, context, packageNames);

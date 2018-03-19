@@ -22,6 +22,9 @@ import org.nutz.log.Log;
 import org.nutz.log.Logs;
 import org.nutz.resource.NutResource;
 
+/**
+ * The type Scans.
+ */
 public class Scans {
 
     private static Log log = Logs.getLog(Scans.class);
@@ -29,9 +32,9 @@ public class Scans {
     /**
      * 读取二进制资源
      *
-     * @param packageName
-     * @param resName
-     * @return
+     * @param packageName the package name
+     * @param resName     the res name
+     * @return byte [ ]
      */
     public static byte[] readBinResource(String packageName, String resName) {
         String src = packageName.replace('.', '/');
@@ -72,9 +75,9 @@ public class Scans {
     /**
      * 读取资源内容
      *
-     * @param packageName
-     * @param resName
-     * @return
+     * @param packageName the package name
+     * @param resName     the res name
+     * @return string
      */
     public static String readResource(String packageName, String resName) {
         String src = packageName.replace('.', '/');
@@ -170,8 +173,8 @@ public class Scans {
     /**
      * 从包package中获取所有的Class
      *
-     * @param pack
-     * @return
+     * @param pack the pack
+     * @return classes
      */
     public static Set<Class<?>> getClasses(String pack) {
 
@@ -259,10 +262,10 @@ public class Scans {
     /**
      * 以文件的形式来获取包下的所有Class
      *
-     * @param packageName
-     * @param packagePath
-     * @param recursive
-     * @param classes
+     * @param packageName the package name
+     * @param packagePath the package path
+     * @param recursive   the recursive
+     * @param classes     the classes
      */
     public static void findAndAddClassesInPackageByFile(String packageName, String packagePath,
                                                         final boolean recursive, Set<Class<?>> classes) {

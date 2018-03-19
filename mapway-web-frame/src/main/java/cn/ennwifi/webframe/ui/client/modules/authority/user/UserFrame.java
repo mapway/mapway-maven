@@ -32,6 +32,9 @@ import java.util.List;
 @ModuleMarker(value = UserFrame.MODULE_CODE,group = "/系统", name = "用户管理", icon = "uf.png")
 public class UserFrame extends AbstractModuleWithEvent {
 
+    /**
+     * The Data provider.
+     */
     UserDataProvider dataProvider;
     private MessageHandler dataProviderHandler = new MessageHandler() {
 
@@ -62,6 +65,9 @@ public class UserFrame extends AbstractModuleWithEvent {
             }
         }
     };
+    /**
+     * The constant MODULE_CODE.
+     */
     public final static String MODULE_CODE = "MC_USER_MANAGER";
 
     @Override

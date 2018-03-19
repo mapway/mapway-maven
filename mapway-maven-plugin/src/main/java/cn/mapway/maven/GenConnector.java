@@ -22,7 +22,7 @@ import cn.mapway.document.module.ApiDoc;
 
 /**
  * 生成连接器的GOal.
- * */
+ */
 @Mojo(name = "genconnector", defaultPhase = LifecyclePhase.GENERATE_SOURCES)
 public class GenConnector extends AbstractMojo {
 
@@ -128,15 +128,15 @@ public class GenConnector extends AbstractMojo {
     }
   }
 
-  /**
-   * 构造文件路径.
-   *
-   * @param javaConnectorSourcePath the java connector source path
-   * @param packageName the package name
-   * @param className the class name
-   * @return the string
-   */
-  public static String makePathFile(String javaConnectorSourcePath, String packageName,
+    /**
+     * 构造文件路径.
+     *
+     * @param javaConnectorSourcePath the java connector source path
+     * @param packageName             the package name
+     * @param className               the class name
+     * @return the string
+     */
+    public static String makePathFile(String javaConnectorSourcePath, String packageName,
       String className) {
     String p = packageName.replace(".", File.separator);
 

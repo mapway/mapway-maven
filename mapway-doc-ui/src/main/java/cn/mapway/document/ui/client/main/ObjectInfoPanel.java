@@ -19,6 +19,7 @@ import java.util.List;
 import java.util.Map;
 
 // TODO: Auto-generated Javadoc
+
 /**
  * The Class ObjectInfoPanel.
  */
@@ -45,18 +46,18 @@ public class ObjectInfoPanel extends Grid implements HasSelectionHandlers<Object
 		SelectionEvent.fire(this, info);
 	}
 
-	/**
-	 * Instantiates a new object info panel.
-	 */
-	public ObjectInfoPanel() {
+    /**
+     * Instantiates a new object info panel.
+     */
+    public ObjectInfoPanel() {
 		init();
 		this.setStyleName(SysResource.INSTANCE.getCss().cssTable());
 	}
 
-	/**
-	 * Inits the.
-	 */
-	void init() {
+    /**
+     * Inits the.
+     */
+    void init() {
 		Element e = getElement();
 		e.setAttribute("borderCollapse", "collapse");
 		e.setAttribute("cellPadding", "10px");
@@ -117,17 +118,14 @@ public class ObjectInfoPanel extends Grid implements HasSelectionHandlers<Object
 		cf.setWidth(row, 3, "80px");
 	}
 
-	/**
-	 * 级联操作.
-	 *
-	 * @param obj
-	 *            the obj
-	 * @param objList
-	 *            the obj list
-	 * @param mapper
-	 *            the mapper
-	 */
-	public void parse(ObjectInfo obj, List<GenInfo> objList, Map<String, Anchor> mapper) {
+    /**
+     * 级联操作.
+     *
+     * @param obj     the obj
+     * @param objList the obj list
+     * @param mapper  the mapper
+     */
+    public void parse(ObjectInfo obj, List<GenInfo> objList, Map<String, Anchor> mapper) {
 
 		lbTitle.setText((obj.title() == null ? "" : obj.title() + "(" + obj.type() + ")"));
 		lbSummary.setHTML(obj.summary() == null ? "" : obj.summary());
@@ -259,7 +257,13 @@ public class ObjectInfoPanel extends Grid implements HasSelectionHandlers<Object
 		}
 	}
 
-	public static String simple(String type) {
+    /**
+     * Simple string.
+     *
+     * @param type the type
+     * @return the string
+     */
+    public static String simple(String type) {
 		if (type == null) {
 			return "";
 		}
@@ -277,13 +281,13 @@ public class ObjectInfoPanel extends Grid implements HasSelectionHandlers<Object
 			return type;
 	}
 
-	/**
-	 * 处理长度约束.
-	 * 
-	 * @param o
-	 * @return
-	 */
-	static Label handleLengthConstrain(ObjectInfo o) {
+    /**
+     * 处理长度约束.
+     *
+     * @param o the o
+     * @return label
+     */
+    static Label handleLengthConstrain(ObjectInfo o) {
 		Label l;
 		if (isString(o)) {
 			if (o.minLength() == 0 && o.maxLength() == 0) {
@@ -353,14 +357,13 @@ public class ObjectInfoPanel extends Grid implements HasSelectionHandlers<Object
 	private static String[] ps = { "int", "Integer", "float", "FLoat", "Double", "double", "long", "Long", "Date",
 			"DateTime", "String", "boolean", "Boolean", "char", "short", "byte", "Timestamp" };
 
-	/**
-	 * Checks if is primitive.
-	 *
-	 * @param type
-	 *            the type
-	 * @return true, if is primitive
-	 */
-	public boolean isPrimitive(String type) {
+    /**
+     * Checks if is primitive.
+     *
+     * @param type the type
+     * @return true, if is primitive
+     */
+    public boolean isPrimitive(String type) {
 
 		for (String s : ps) {
 			if (type.contains(s)) {

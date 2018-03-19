@@ -17,54 +17,54 @@ import java.lang.annotation.Target;
 @Target({ElementType.TYPE})
 public @interface ModuleMarker {
 
-  /**
-   * 模块代码.
-   *
-   * @return the string
-   */
-  public String value() default "";
+    /**
+     * 模块代码.
+     *
+     * @return the string
+     */
+    public String value() default "";
 
-  /**
-   * 模块名称.
-   *
-   * @return the string
-   */
-  public String name() default "";
+    /**
+     * 模块名称.
+     *
+     * @return the string
+     */
+    public String name() default "";
 
-  /**
-   * 是否是公共模块，无需认证
-   * 
-   * @return
-   */
-  public boolean isPublic() default false;
+    /**
+     * 是否是公共模块，无需认证
+     *
+     * @return boolean
+     */
+    public boolean isPublic() default false;
 
-  /**
-   * 模块图表
-   * 
-   * @return
-   */
-  public String icon() default "icon.png";
+    /**
+     * 模块图表
+     *
+     * @return string
+     */
+    public String icon() default "icon.png";
 
-  /**
-   * 说明.
-   * 
-   * @return
-   */
-  public String summary() default "";
+    /**
+     * 说明.
+     *
+     * @return string
+     */
+    public String summary() default "";
 
 
-  /**
-   * 是否可以显示在界面上.
-   * 
-   * @return
-   */
-  public boolean visible() default true;
+    /**
+     * 是否可以显示在界面上.
+     *
+     * @return boolean
+     */
+    public boolean visible() default true;
 
-  /**
-   * 模块分组信息.
-   * 
-   * @return
-   */
-  public String group() default "/";
+    /**
+     * 模块分组信息.
+     *
+     * @return string
+     */
+    public String group() default "/";
 
 }

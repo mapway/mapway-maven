@@ -15,14 +15,14 @@ import java.util.Date;
 public class Times {
 
 
-  /**
-   * 解析时间数据.
-   *
-   * @param data the data
-   * @param format the format
-   * @return the timestamp
-   */
-  public static final Timestamp parseTime(String data, String format) {
+    /**
+     * 解析时间数据.
+     *
+     * @param data   the data
+     * @param format the format
+     * @return the timestamp
+     */
+    public static final Timestamp parseTime(String data, String format) {
     if (format == null || format.length() == 0) {
       format = "yyyy-MM-dd HH:mm:ss";
     }
@@ -35,34 +35,34 @@ public class Times {
     }
   }
 
-  /**
-   * Parses the time.
-   *
-   * @param data the data
-   * @return the timestamp
-   */
-  public static final Timestamp parseTime(String data) {
+    /**
+     * Parses the time.
+     *
+     * @param data the data
+     * @return the timestamp
+     */
+    public static final Timestamp parseTime(String data) {
     return parseTime(data, null);
   }
 
-  /**
-   * Parses the time.
-   *
-   * @param appStartTime the app start time
-   * @return the timestamp
-   */
-  public static Timestamp parseTime(Long appStartTime) {
+    /**
+     * Parses the time.
+     *
+     * @param appStartTime the app start time
+     * @return the timestamp
+     */
+    public static Timestamp parseTime(Long appStartTime) {
     return new Timestamp(appStartTime);
   }
 
-  /**
-   * Format time.
-   *
-   * @param time the time
-   * @param format the format
-   * @return the string
-   */
-  public static final String formatTime(long time, String format) {
+    /**
+     * Format time.
+     *
+     * @param time   the time
+     * @param format the format
+     * @return the string
+     */
+    public static final String formatTime(long time, String format) {
 
     if (format == null || format.length() == 0) {
       format = "yyyy-MM-dd HH:mm:ss";
@@ -72,14 +72,14 @@ public class Times {
     return df.format(new Date(time));
   }
 
-  /**
-   * Format time.
-   *
-   * @param time the time
-   * @param format the format
-   * @return the string
-   */
-  public static final String formatTime(Date time, String format) {
+    /**
+     * Format time.
+     *
+     * @param time   the time
+     * @param format the format
+     * @return the string
+     */
+    public static final String formatTime(Date time, String format) {
 
     if (format == null || format.length() == 0) {
       format = "yyyy-MM-dd HH:mm:ss";
@@ -91,59 +91,59 @@ public class Times {
     return df.format(time);
   }
 
-  /**
-   * Format time.
-   *
-   * @param time the time
-   * @return the string
-   */
-  public static final String formatTime(long time) {
+    /**
+     * Format time.
+     *
+     * @param time the time
+     * @return the string
+     */
+    public static final String formatTime(long time) {
     return formatTime(time, "");
   }
 
-  /**
-   * Format time.
-   *
-   * @param time the time
-   * @return the string
-   */
-  public static final String formatTime(Timestamp time) {
+    /**
+     * Format time.
+     *
+     * @param time the time
+     * @return the string
+     */
+    public static final String formatTime(Timestamp time) {
     if (time == null) {
       return "";
     }
     return formatTime(time.getTime(), "");
   }
 
-  /**
-   * Format time.
-   *
-   * @param time the time
-   * @param format the format
-   * @return the string
-   */
-  public static final String formatTime(Timestamp time, String format) {
+    /**
+     * Format time.
+     *
+     * @param time   the time
+     * @param format the format
+     * @return the string
+     */
+    public static final String formatTime(Timestamp time, String format) {
     if (time == null) {
       return "";
     }
     return formatTime(time.getTime(), format);
   }
 
-  /**
-   * 当前的时间.
-   *
-   * @return the timestamp
-   */
-  public static Timestamp now() {
+    /**
+     * 当前的时间.
+     *
+     * @return the timestamp
+     */
+    public static Timestamp now() {
     return new Timestamp(System.currentTimeMillis());
   }
 
-  /**
-   * Format date.
-   *
-   * @param date the date
-   * @return the string
-   */
-  public static String formatDate(java.sql.Date date) {
+    /**
+     * Format date.
+     *
+     * @param date the date
+     * @return the string
+     */
+    public static String formatDate(java.sql.Date date) {
     if (date == null) {
       return "";
     } else {
@@ -151,26 +151,26 @@ public class Times {
     }
   }
 
-  /**
-   * 解析时间格式为 Calendar 对象.
-   * 
-   * @param datetime 时间字符串
-   * @return Calendar
-   */
-  public static Calendar parseTimeCalendar(String datetime) {
+    /**
+     * 解析时间格式为 Calendar 对象.
+     *
+     * @param datetime 时间字符串
+     * @return Calendar calendar
+     */
+    public static Calendar parseTimeCalendar(String datetime) {
     Calendar calendar = Calendar.getInstance();
     calendar.setTimeInMillis(parseTime(datetime).getTime());
     return calendar;
   }
 
-  /**
-   * 解析时间格式为 Calendar 对象.
-   * 
-   * @param datetime 时间字符串
-   * @param format 时间格式字符串
-   * @return Calendar
-   */
-  public static Calendar parseTimeCalendar(String datetime, String format) {
+    /**
+     * 解析时间格式为 Calendar 对象.
+     *
+     * @param datetime 时间字符串
+     * @param format   时间格式字符串
+     * @return Calendar calendar
+     */
+    public static Calendar parseTimeCalendar(String datetime, String format) {
     Calendar calendar = Calendar.getInstance();
     calendar.setTimeInMillis(parseTime(datetime, format).getTime());
     return calendar;
@@ -178,13 +178,13 @@ public class Times {
   /**
    * 将日期转换为8760小时中的小时忽略闰年
    */
-   /**
-    * 获取某日期的天数.
-    * 
-    * @param time
-    * @return
-    */
-   public static Integer getDayByDate(String time) {
+    /**
+     * 获取某日期的天数.
+     *
+     * @param time the time
+     * @return day by date
+     */
+    public static Integer getDayByDate(String time) {
      Integer nData = 0;
      try {
        DateFormat fm = new SimpleDateFormat("MM-dd");
@@ -196,16 +196,16 @@ public class Times {
      }
      return nData;
    }
-   
-   /**
-    * 获取2个日期间隔天数。
-    * 
-    * @param dateStart
-    * @param dateEnd
-    * @return
-    * @throws ParseException
-    */
-   public static Integer getSpaceDayByDate(String dateStart, String dateEnd) throws ParseException {
+
+    /**
+     * 获取2个日期间隔天数。
+     *
+     * @param dateStart the date start
+     * @param dateEnd   the date end
+     * @return space day by date
+     * @throws ParseException the parse exception
+     */
+    public static Integer getSpaceDayByDate(String dateStart, String dateEnd) throws ParseException {
 
      SimpleDateFormat sdf = new SimpleDateFormat("MM-dd");
      Date startDate = sdf.parse(dateStart);
@@ -219,7 +219,15 @@ public class Times {
 
      return between_days;
    }
-   public static String addDatehours(String day, int x)//返回的是字符串型的时间，输入的
+
+    /**
+     * Add datehours string.
+     *
+     * @param day the day
+     * @param x   the x
+     * @return the string
+     */
+    public static String addDatehours(String day, int x)//返回的是字符串型的时间，输入的
  //是String day, int x
   {   
          SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH");// 24小时制  

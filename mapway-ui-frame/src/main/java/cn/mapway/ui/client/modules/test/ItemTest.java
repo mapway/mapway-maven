@@ -26,17 +26,29 @@ import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.HTMLPanel;
 import com.google.gwt.user.client.ui.Widget;
 
+/**
+ * The type Item test.
+ */
 @ModuleMarker(value = ItemTest.MODULE_CODE, name = "組件測試", icon = "avatar11.png")
 public class ItemTest extends AbstractModule {
 
   private static ItemTestUiBinder uiBinder = GWT.create(ItemTestUiBinder.class);
 
-  public static final String MODULE_CODE = "ITEM_TEST";
+    /**
+     * The constant MODULE_CODE.
+     */
+    public static final String MODULE_CODE = "ITEM_TEST";
 
-  interface ItemTestUiBinder extends UiBinder<Widget, ItemTest> {
+    /**
+     * The interface Item test ui binder.
+     */
+    interface ItemTestUiBinder extends UiBinder<Widget, ItemTest> {
   }
 
-  public ItemTest() {
+    /**
+     * Instantiates a new Item test.
+     */
+    public ItemTest() {
     initModuleWidget(uiBinder.createAndBindUi(this));
 
     shuru.setPlaceHolder("请输入你的梦想");
@@ -70,48 +82,95 @@ public class ItemTest extends AbstractModule {
   }
 
 
-  @UiField
+    /**
+     * The Shuru.
+     */
+    @UiField
   TextBoxEx shuru;
 
-  @UiField
+    /**
+     * The Btn.
+     */
+    @UiField
   ButtonEx btn;
 
-  @UiField
+    /**
+     * The Primary btn.
+     */
+    @UiField
   PrimaryButton primaryBtn;
 
-  @UiField
+    /**
+     * The Check list.
+     */
+    @UiField
   HTMLPanel checkList;
 
-  @UiField
+    /**
+     * The List box.
+     */
+    @UiField
   ListBoxEx listBox;
 
-  @UiField
+    /**
+     * The Radio list.
+     */
+    @UiField
   HTMLPanel radioList;
 
-  @UiField
+    /**
+     * The Table.
+     */
+    @UiField
   TableEx table;
 
-  @UiField
+    /**
+     * The Num text.
+     */
+    @UiField
   NumberTextBox numText;
 
-  @UiField
+    /**
+     * The Tab.
+     */
+    @UiField
   TabBarEx tab;
 
-  @UiField
+    /**
+     * The Tab content.
+     */
+    @UiField
   HTMLPanel tabContent;
 
-  @UiField
+    /**
+     * The Danger btn.
+     */
+    @UiField
   DangerButton dangerBtn;
 
-  TestDialogBox dialog;
+    /**
+     * The Dialog.
+     */
+    TestDialogBox dialog;
 
-  @UiField
+    /**
+     * The Grid.
+     */
+    @UiField
   GridEx grid;
 
-  @UiField
+    /**
+     * The Image.
+     */
+    @UiField
   ImageEx image;
 
-  @UiHandler("dangerBtn")
+    /**
+     * On click.
+     *
+     * @param event the event
+     */
+    @UiHandler("dangerBtn")
   void onClick(ClickEvent event) {
     dialog = new TestDialogBox();
     dialog.setGlassEnabled(true);
@@ -121,7 +180,10 @@ public class ItemTest extends AbstractModule {
   }
 
 
-  ClickHandler btnHandler = new ClickHandler() {
+    /**
+     * The Btn handler.
+     */
+    ClickHandler btnHandler = new ClickHandler() {
 
     @Override
     public void onClick(ClickEvent event) {
@@ -141,7 +203,10 @@ public class ItemTest extends AbstractModule {
     }
   };
 
-  ClickHandler primaryBtnHandler = new ClickHandler() {
+    /**
+     * The Primary btn handler.
+     */
+    ClickHandler primaryBtnHandler = new ClickHandler() {
 
     @Override
     public void onClick(ClickEvent event) {
@@ -159,7 +224,10 @@ public class ItemTest extends AbstractModule {
     }
   };
 
-  ClickHandler checkHandler = new ClickHandler() {
+    /**
+     * The Check handler.
+     */
+    ClickHandler checkHandler = new ClickHandler() {
 
     @Override
     public void onClick(ClickEvent event) {
@@ -172,7 +240,10 @@ public class ItemTest extends AbstractModule {
 
   };
 
-  void initTable() {
+    /**
+     * Init table.
+     */
+    void initTable() {
     table.removeAllRows();
     int column = 0;
     int row = 0;
@@ -190,7 +261,10 @@ public class ItemTest extends AbstractModule {
     table.format(true);
   }
 
-  void initTab() {
+    /**
+     * Init tab.
+     */
+    void initTab() {
     tab.addTab("tab1");
     tab.addTab("tab2");
     tab.addTab("tab3");
@@ -198,7 +272,10 @@ public class ItemTest extends AbstractModule {
     tab.selectTab(0);
   }
 
-  SelectionHandler<Integer> selectedHandler = new SelectionHandler<Integer>() {
+    /**
+     * The Selected handler.
+     */
+    SelectionHandler<Integer> selectedHandler = new SelectionHandler<Integer>() {
 
     @Override
     public void onSelection(SelectionEvent<Integer> event) {
@@ -211,7 +288,10 @@ public class ItemTest extends AbstractModule {
     }
   };
 
-  void initGrid() {
+    /**
+     * Init grid.
+     */
+    void initGrid() {
     // int row = 0;
     // int cloumn = 0;
     // grid.setText(row, cloumn++, "测试id");

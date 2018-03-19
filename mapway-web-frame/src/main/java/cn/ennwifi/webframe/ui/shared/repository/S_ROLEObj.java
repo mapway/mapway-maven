@@ -25,26 +25,8 @@ import java.math.BigDecimal;
 import cn.mapway.document.annotation.*;
 
 /**
- * 数据库表 角色表<br/>
- * @author zhangjsf@enn.cn
- * <b>字段列表</b><br/>
- *  Long id //角色ID<br/>
- *  String name //角色名称<br/>
- *  String summary //角色说明<br/>
- * =========== 用于GWT模型 <br/>
- *  {@literal @ }UiField TextBoxEx txtName;<br/>
- *  {@literal @ }UiField TextBoxEx txtSummary;<br/>
- * =========== 用于GWT UIBinder <br/>
- *  &lt;tr&gt;&lt;td&gt;角色名称&lt;/td&gt;&lt;td&gt;&ltc:TextBoxEx ui:field="txtName" &gt;&lt/c:TextBoxEx&gt;&lt;/td&gt; &lt;td&gt;&lt;/td&gt; &lt;/tr&gt;<br/>
- *  &lt;tr&gt;&lt;td&gt;角色说明&lt;/td&gt;&lt;td&gt;&ltc:TextBoxEx ui:field="txtSummary" &gt;&lt/c:TextBoxEx&gt;&lt;/td&gt; &lt;td&gt;&lt;/td&gt; &lt;/tr&gt;<br/>
- * =========== 用于fromUI <br/>
- * data.setName(txtName.getValue());<br/>
- * data.setSummary(txtSummary.getValue());<br/>
- * =========== 用于toUI <br/>
- * txtName.setValue(obj.getName());<br/>
- * txtSummary.setValue(obj.getSummary());<br/>
+ * 数据库表 角色表
  */
-
 @Table("s_role")
 @Doc("s_role(角色表)")
 public class S_ROLEObj implements java.io.Serializable,com.google.gwt.user.client.rpc.IsSerializable,
@@ -54,11 +36,15 @@ public class S_ROLEObj implements java.io.Serializable,com.google.gwt.user.clien
   */
   private static final long serialVersionUID = 1L;
 
-  /**
-  * 表角色表名称. 
+    /**
+     * 表角色表名称.
      */
-  public static final String TBL_S_ROLE="s_role";
-  public S_ROLEObj() {
+    public static final String TBL_S_ROLE="s_role";
+
+    /**
+     * Instantiates a new S role obj.
+     */
+    public S_ROLEObj() {
   }
   /**
    * 根据字段名称获取字段的值. 
@@ -91,15 +77,15 @@ public class S_ROLEObj implements java.io.Serializable,com.google.gwt.user.clien
     return null;
   }
 
-  /**
-   * 角色ID id
- */
-  public static final String FLD_ID="id";
+    /**
+     * 角色ID id
+     */
+    public static final String FLD_ID="id";
 
-  /**
- * 角色ID id
- */
-  public static final Integer IDX_ID=0;
+    /**
+     * 角色ID id
+     */
+    public static final Integer IDX_ID=0;
  /**
    * 字段id 角色ID
    */
@@ -107,31 +93,33 @@ public class S_ROLEObj implements java.io.Serializable,com.google.gwt.user.clien
   @ApiField(value="角色ID",example="")
   private Long id;
 
-  /**
-   * 返回字段id 角色ID的值.
-   * @return id  角色ID  bigint
-  */
-  public Long getId() {
+    /**
+     * 返回字段id 角色ID的值.
+     *
+     * @return id 角色ID  bigint
+     */
+    public Long getId() {
     return id;
   }
 
-  /**
-   * 设置字段id 角色ID的值.
-   * @param id  角色ID  bigint
-   */
-  public void setId(Long id) {
+    /**
+     * 设置字段id 角色ID的值.
+     *
+     * @param id 角色ID  bigint
+     */
+    public void setId(Long id) {
     this.id=id;
   }
 
-  /**
-   * 角色名称 name
- */
-  public static final String FLD_NAME="name";
+    /**
+     * 角色名称 name
+     */
+    public static final String FLD_NAME="name";
 
-  /**
- * 角色名称 name
- */
-  public static final Integer IDX_NAME=1;
+    /**
+     * 角色名称 name
+     */
+    public static final Integer IDX_NAME=1;
  /**
    * 字段name 角色名称
    */
@@ -139,31 +127,33 @@ public class S_ROLEObj implements java.io.Serializable,com.google.gwt.user.clien
   @ApiField(value="角色名称",example="")
   private String name;
 
-  /**
-   * 返回字段name 角色名称的值.
-   * @return name  角色名称  varchar
-  */
-  public String getName() {
+    /**
+     * 返回字段name 角色名称的值.
+     *
+     * @return name 角色名称  varchar
+     */
+    public String getName() {
     return name;
   }
 
-  /**
-   * 设置字段name 角色名称的值.
-   * @param name  角色名称  varchar
-   */
-  public void setName(String name) {
+    /**
+     * 设置字段name 角色名称的值.
+     *
+     * @param name 角色名称  varchar
+     */
+    public void setName(String name) {
     this.name=name;
   }
 
-  /**
-   * 角色说明 summary
- */
-  public static final String FLD_SUMMARY="summary";
+    /**
+     * 角色说明 summary
+     */
+    public static final String FLD_SUMMARY="summary";
 
-  /**
- * 角色说明 summary
- */
-  public static final Integer IDX_SUMMARY=2;
+    /**
+     * 角色说明 summary
+     */
+    public static final Integer IDX_SUMMARY=2;
  /**
    * 字段summary 角色说明
    */
@@ -171,19 +161,21 @@ public class S_ROLEObj implements java.io.Serializable,com.google.gwt.user.clien
   @ApiField(value="角色说明",example="")
   private String summary;
 
-  /**
-   * 返回字段summary 角色说明的值.
-   * @return summary  角色说明  varchar
-  */
-  public String getSummary() {
+    /**
+     * 返回字段summary 角色说明的值.
+     *
+     * @return summary 角色说明  varchar
+     */
+    public String getSummary() {
     return summary;
   }
 
-  /**
-   * 设置字段summary 角色说明的值.
-   * @param summary  角色说明  varchar
-   */
-  public void setSummary(String summary) {
+    /**
+     * 设置字段summary 角色说明的值.
+     *
+     * @param summary 角色说明  varchar
+     */
+    public void setSummary(String summary) {
     this.summary=summary;
   }
 

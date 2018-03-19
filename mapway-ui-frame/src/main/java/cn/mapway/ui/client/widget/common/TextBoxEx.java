@@ -3,12 +3,23 @@ package cn.mapway.ui.client.widget.common;
 import com.google.gwt.regexp.shared.RegExp;
 import com.google.gwt.user.client.ui.TextBox;
 
+/**
+ * The type Text box ex.
+ */
 public class TextBoxEx extends TextBox implements IValidator {
 
+  /**
+   * Instantiates a new Text box ex.
+   */
   public TextBoxEx() {
     setStyleName("gwtEx-TextBox");
   }
 
+  /**
+   * Sets place holder.
+   *
+   * @param placeholder the placeholder
+   */
   public void setPlaceHolder(String placeholder) {
     this.getElement().setAttribute("placeholder", placeholder);
   }
@@ -19,6 +30,9 @@ public class TextBoxEx extends TextBox implements IValidator {
   }
 
   private String msg = "";
+  /**
+   * The Regex.
+   */
   protected RegExp regex = null;
   private boolean required = false;
 
@@ -82,23 +96,30 @@ public class TextBoxEx extends TextBox implements IValidator {
     }
   }
 
+  /**
+   * The Min length.
+   */
   Integer minLength = null;
+  /**
+   * The Max length.
+   */
   Integer maxLength = null;
 
 
   /**
    * 设置最小长度
-   * @param minLength
+   *
+   * @param minLength the min length
    */
   public void setMinLength(int minLength) {
     this.minLength = minLength;
 
   }
 
-  /**
-   * 设置最大长度
-   * @param maxLength
-   */
+    /**
+     * maxLength
+     * @param maxLength  the maxLength
+     */
   @Override
   public void setMaxLength(int maxLength) {
     this.maxLength = maxLength;

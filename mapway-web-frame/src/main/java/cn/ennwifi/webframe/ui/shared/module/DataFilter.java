@@ -2,16 +2,38 @@ package cn.ennwifi.webframe.ui.shared.module;
 
 import com.google.gwt.user.client.rpc.IsSerializable;
 
+/**
+ * The type Data filter.
+ */
 public class DataFilter implements IsSerializable {
-  public String name;
-  public String op;
-  public String value;
+    /**
+     * The Name.
+     */
+    public String name;
+    /**
+     * The Op.
+     */
+    public String op;
+    /**
+     * The Value.
+     */
+    public String value;
 
-  public DataFilter() {
+    /**
+     * Instantiates a new Data filter.
+     */
+    public DataFilter() {
 
   }
 
-  public DataFilter(String n, String o, String v) {
+    /**
+     * Instantiates a new Data filter.
+     *
+     * @param n the n
+     * @param o the o
+     * @param v the v
+     */
+    public DataFilter(String n, String o, String v) {
     name = n;
     op = o;
     value = v;

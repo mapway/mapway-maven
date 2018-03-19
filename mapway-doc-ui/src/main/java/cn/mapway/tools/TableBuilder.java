@@ -8,44 +8,66 @@ import org.nutz.lang.random.R;
 
 /**
  * 打印表格
- * 
- * @author zhangjianshe
  *
+ * @author zhangjianshe
  */
 public class TableBuilder {
-	
-	public static String[][] UTF8TABLE={
+
+    /**
+     * The Utf 8 table.
+     */
+    public static String[][] UTF8TABLE={
 		{"┌","─","┬","─","┐"},
 		{"│"," ","┼"," ","│"},
 		{"├","─","┼","─","┤"},
 		{"│"," ","┼"," ","│"},
 		{"└","─","┴","─","┘"}
 	};
-	public static String[][] ASICIITABLE={
+    /**
+     * The Asiciitable.
+     */
+    public static String[][] ASICIITABLE={
 		{"+","-","+","-","+"},
 		{"+","-","+","-","+"},
 		{"+","-","+","-","+"},
 		{"+","-","+","-","+"},
 		{"+","-","+","-","+"}
 	};
-	
-	public String[][] TABLE=ASICIITABLE;
-	
-	int padding = 1;
 
-	public void setPadding(int padding) {
+    /**
+     * The Table.
+     */
+    public String[][] TABLE=ASICIITABLE;
+
+    /**
+     * The Padding.
+     */
+    int padding = 1;
+
+    /**
+     * Sets padding.
+     *
+     * @param padding the padding
+     */
+    public void setPadding(int padding) {
 		this.padding = padding;
 	}
 
-	List<String[]> rows = new LinkedList<String[]>();
-	int columns = 0;
+    /**
+     * The Rows.
+     */
+    List<String[]> rows = new LinkedList<String[]>();
+    /**
+     * The Columns.
+     */
+    int columns = 0;
 
-	/**
-	 * 添加一行
-	 * 
-	 * @param cols
-	 */
-	public void addRow(String... cols) {
+    /**
+     * 添加一行
+     *
+     * @param cols the cols
+     */
+    public void addRow(String... cols) {
 		rows.add(cols);
 	}
 
@@ -173,7 +195,12 @@ public class TableBuilder {
 		buf.append('\n');
 	}
 
-	public static void main(String[] args) {
+    /**
+     * The entry point of application.
+     *
+     * @param args the input arguments
+     */
+    public static void main(String[] args) {
 		TableBuilder tb = new TableBuilder();
 		tb.addRow("title", "url", "special");
 		for (int i = 0; i < 10; i++) {

@@ -12,8 +12,6 @@ import com.ksyzt.gwt.client.event.MessageHandler;
 import cn.mapway.ui.client.widget.common.AnchorEx;
 
 
-
-
 /**
  * 工具条 链接形式.
  *
@@ -21,23 +19,23 @@ import cn.mapway.ui.client.widget.common.AnchorEx;
  */
 public class Links extends HorizontalPanel implements HasMessageHandlers, ClickHandler {
 
-  /**
-   * Instantiates a new links.
-   */
-  public Links() {
+    /**
+     * Instantiates a new links.
+     */
+    public Links() {
     super();
     this.setSpacing(3);
     this.setStyleName("home-Links");
   }
 
-  /**
-   * 添加命令.
-   *
-   * @param command the command
-   * @param text the text
-   * @param data the data
-   */
-  public void addCommand(Integer command, String text, Object data) {
+    /**
+     * 添加命令.
+     *
+     * @param command the command
+     * @param text    the text
+     * @param data    the data
+     */
+    public void addCommand(Integer command, String text, Object data) {
     AnchorEx AnchorEx = new AnchorEx();
     AnchorEx.setText(text);
     AnchorEx.setData(data);
@@ -49,14 +47,14 @@ public class Links extends HorizontalPanel implements HasMessageHandlers, ClickH
     this.add(AnchorEx);
   }
 
-  /**
-   * 加入一个链接.
-   *
-   * @param text 链接名字
-   * @param url 链接地址
-   * @param target 目标窗口
-   */
-  public void addLink(String text, String url, String target) {
+    /**
+     * 加入一个链接.
+     *
+     * @param text   链接名字
+     * @param url    链接地址
+     * @param target 目标窗口
+     */
+    public void addLink(String text, String url, String target) {
     AnchorEx AnchorEx = new AnchorEx();
     AnchorEx.setText(text);
     AnchorEx.setHref(url);

@@ -14,6 +14,7 @@ import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
 
 // TODO: Auto-generated Javadoc
+
 /**
  * ZIP压缩工具.
  *
@@ -22,8 +23,10 @@ import java.util.zip.ZipInputStream;
  */
 public class ZipUtility {
 
-	/** The Constant EXT. */
-	public static final String EXT = ".zip";
+    /**
+     * The Constant EXT.
+     */
+    public static final String EXT = ".zip";
 	
 	/** The Constant BASE_DIR. */
 	private static final String BASE_DIR = "";
@@ -34,13 +37,13 @@ public class ZipUtility {
 	/** The Constant BUFFER. */
 	private static final int BUFFER = 1024;
 
-	/**
-	 * Gets the class file.
-	 *
-	 * @param clazz the clazz
-	 * @return the class file
-	 */
-	public static String getClassFile(Class clazz) {
+    /**
+     * Gets the class file.
+     *
+     * @param clazz the clazz
+     * @return the class file
+     */
+    public static String getClassFile(Class clazz) {
 		String url;
 		try {
 			url = getClassPath(clazz);
@@ -58,14 +61,14 @@ public class ZipUtility {
 
 	}
 
-	/**
-	 * 得到类的路径，例如E:/workspace/JavaGUI/bin/com/util.
-	 *
-	 * @param clazz the clazz
-	 * @return the class path
-	 * @throws Exception the exception
-	 */
-	public static String getClassPath(Class clazz) throws Exception {
+    /**
+     * 得到类的路径，例如E:/workspace/JavaGUI/bin/com/util.
+     *
+     * @param clazz the clazz
+     * @return the class path
+     * @throws Exception the exception
+     */
+    public static String getClassPath(Class clazz) throws Exception {
 		try {
 			String strClassName = clazz.getName();
 			String strPackageName = "";
@@ -96,45 +99,45 @@ public class ZipUtility {
 		}
 	}
 
-	/**
-	 * 文件 解压缩.
-	 *
-	 * @param srcPath            源文件路径
-	 * @param sourcepath the sourcepath
-	 * @param replacepath the replacepath
-	 * @throws Exception the exception
-	 */
-	public static void decompress(String srcPath, String sourcepath,
+    /**
+     * 文件 解压缩.
+     *
+     * @param srcPath     源文件路径
+     * @param sourcepath  the sourcepath
+     * @param replacepath the replacepath
+     * @throws Exception the exception
+     */
+    public static void decompress(String srcPath, String sourcepath,
 			String replacepath) throws Exception {
 		File srcFile = new File(srcPath);
 
 		decompress(srcFile, sourcepath, replacepath);
 	}
 
-	/**
-	 * 解压缩.
-	 *
-	 * @param srcFile the src file
-	 * @param sourcepath the sourcepath
-	 * @param replacepath the replacepath
-	 * @throws Exception the exception
-	 */
-	public static void decompress(File srcFile, String sourcepath,
+    /**
+     * 解压缩.
+     *
+     * @param srcFile     the src file
+     * @param sourcepath  the sourcepath
+     * @param replacepath the replacepath
+     * @throws Exception the exception
+     */
+    public static void decompress(File srcFile, String sourcepath,
 			String replacepath) throws Exception {
 		String basePath = srcFile.getParent();
 		decompress(srcFile, basePath, sourcepath, replacepath);
 	}
 
-	/**
-	 * 解压缩.
-	 *
-	 * @param srcFile the src file
-	 * @param destFile the dest file
-	 * @param sourcepath the sourcepath
-	 * @param replacepath the replacepath
-	 * @throws Exception the exception
-	 */
-	public static void decompress(File srcFile, File destFile,
+    /**
+     * 解压缩.
+     *
+     * @param srcFile     the src file
+     * @param destFile    the dest file
+     * @param sourcepath  the sourcepath
+     * @param replacepath the replacepath
+     * @throws Exception the exception
+     */
+    public static void decompress(File srcFile, File destFile,
 			String sourcepath, String replacepath) throws Exception {
 
 		CheckedInputStream cis = new CheckedInputStream(new FileInputStream(
@@ -148,31 +151,31 @@ public class ZipUtility {
 
 	}
 
-	/**
-	 * 解压缩.
-	 *
-	 * @param srcFile the src file
-	 * @param destPath the dest path
-	 * @param sourcepath the sourcepath
-	 * @param replacepath the replacepath
-	 * @throws Exception the exception
-	 */
-	public static void decompress(File srcFile, String destPath,
+    /**
+     * 解压缩.
+     *
+     * @param srcFile     the src file
+     * @param destPath    the dest path
+     * @param sourcepath  the sourcepath
+     * @param replacepath the replacepath
+     * @throws Exception the exception
+     */
+    public static void decompress(File srcFile, String destPath,
 			String sourcepath, String replacepath) throws Exception {
 		decompress(srcFile, new File(destPath), sourcepath, replacepath);
 
 	}
 
-	/**
-	 * 文件 解压缩.
-	 *
-	 * @param srcPath            源文件路径
-	 * @param destPath            目标文件路径
-	 * @param sourcePath the source path
-	 * @param replacepath the replacepath
-	 * @throws Exception the exception
-	 */
-	public static void decompress(String srcPath, String destPath,
+    /**
+     * 文件 解压缩.
+     *
+     * @param srcPath     源文件路径
+     * @param destPath    目标文件路径
+     * @param sourcePath  the source path
+     * @param replacepath the replacepath
+     * @throws Exception the exception
+     */
+    public static void decompress(String srcPath, String destPath,
 			String sourcePath, String replacepath) throws Exception {
 
 		File srcFile = new File(srcPath);

@@ -270,6 +270,11 @@ public class AuthorityTree extends cn.ennwifi.webframe.ui.client.common.LocalTre
         }
     }
 
+    /**
+     * Add all children.
+     *
+     * @param treeItem the tree item
+     */
     protected void addAllChildren(TreeItem treeItem) {
         for (int i = 0; i < treeItem.getChildCount(); i++) {
             TreeItem item = treeItem.getChild(i);
@@ -282,6 +287,11 @@ public class AuthorityTree extends cn.ennwifi.webframe.ui.client.common.LocalTre
 
     }
 
+    /**
+     * Cancel all children.
+     *
+     * @param treeItem the tree item
+     */
     protected void cancelAllChildren(TreeItem treeItem) {
         for (int i = 0; i < treeItem.getChildCount(); i++) {
             TreeItem item = treeItem.getChild(i);
@@ -355,7 +365,7 @@ public class AuthorityTree extends cn.ennwifi.webframe.ui.client.common.LocalTre
     /**
      * 返回用户打钩的资源
      *
-     * @return
+     * @return checked item
      */
     public List<Pair<Long, String>> getCheckedItem() {
 

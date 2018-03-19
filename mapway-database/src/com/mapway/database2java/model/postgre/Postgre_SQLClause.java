@@ -9,17 +9,18 @@ import com.mapway.database2java.database.MyPool;
 import com.mapway.database2java.model.itf.ISQLClause;
 
 // TODO: Auto-generated Javadoc
+
 /**
  * The Class Oracle_SQLClause.
  */
 public class Postgre_SQLClause implements ISQLClause {
 
-	/**
-	 * Instantiates a new oracle SQL clause.
-	 *
-	 * @param database the database
-	 */
-	public Postgre_SQLClause(String database) {
+    /**
+     * Instantiates a new oracle SQL clause.
+     *
+     * @param database the database
+     */
+    public Postgre_SQLClause(String database) {
 		// TODO Auto-generated constructor stub
 	}
 
@@ -37,12 +38,12 @@ public class Postgre_SQLClause implements ISQLClause {
 				+ " where d.table_name=a.table_name and a.table_name=b.table_name and a.column_name=b.column_name and a.table_name=c.table_name";
 	}
 
-	/**
-	 * The main method.
-	 *
-	 * @param args the arguments
-	 */
-	public static void main(String[] args) {
+    /**
+     * The main method.
+     *
+     * @param args the arguments
+     */
+    public static void main(String[] args) {
 		Postgre_SQLClause app = new Postgre_SQLClause("");
 		MyPool pool = MyPool.getInstance("Oracle");
 		AccessBase a = new AccessBase(pool);

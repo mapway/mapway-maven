@@ -13,23 +13,24 @@ import com.google.gwt.core.shared.GWT;
  */
 public class MqttJsClient extends JavaScriptObject {
 
-  /**
-   * Instantiates a new mqtt js client.
-   */
-  protected MqttJsClient() {
+    /**
+     * Instantiates a new mqtt js client.
+     */
+    protected MqttJsClient() {
 
   }
 
 
-  /**
-   * 创建MQTT客户端.
-   *
-   * @param host the host
-   * @param port the port
-   * @param id the id
-   * @return the mqtt js client
-   */
-  public static final native MqttJsClient create(String host, int port, String id, String path)/*-{
+    /**
+     * 创建MQTT客户端.
+     *
+     * @param host the host
+     * @param port the port
+     * @param id   the id
+     * @param path the path
+     * @return the mqtt js client
+     */
+    public static final native MqttJsClient create(String host, int port, String id, String path)/*-{
 		console.log("init mqtt client" + host + ":" + port + "@" + id);
 		client = new Paho.MQTT.Client(host, Number(port), path, id);
 		console.log(client);
@@ -37,12 +38,12 @@ public class MqttJsClient extends JavaScriptObject {
 		return client;
   }-*/;
 
-  /**
-   * 添加事件处理器.
-   *
-   * @param h the h
-   */
-  public final native void addHandler(IMqttHandler h)/*-{
+    /**
+     * 添加事件处理器.
+     *
+     * @param h the h
+     */
+    public final native void addHandler(IMqttHandler h)/*-{
         this.handler = h;
         var _this = this;
         if (this.handler != null) {
@@ -58,11 +59,13 @@ public class MqttJsClient extends JavaScriptObject {
   }-*/;
 
 
-
-  /**
-   * 连接MQTT.
-   */
-  public final void connect(String userId, String token) {
+    /**
+     * 连接MQTT.
+     *
+     * @param userId the user id
+     * @param token  the token
+     */
+    public final void connect(String userId, String token) {
     GWT.log("connect as " + getId() + " " + userId + " " + token);
     innerconnect(userId, token);
   }
@@ -94,68 +97,68 @@ public class MqttJsClient extends JavaScriptObject {
 		}
   }-*/;
 
-  /**
-   * Close.
-   */
-  public final native void close()/*-{
+    /**
+     * Close.
+     */
+    public final native void close()/*-{
 		this.disconnect();
   }-*/;
 
-  /**
-   * Sets the id.
-   *
-   * @param id the new id
-   */
-  public final native void setId(String id)/*-{
+    /**
+     * Sets the id.
+     *
+     * @param id the new id
+     */
+    public final native void setId(String id)/*-{
 		this.clientId = id;
   }-*/;
 
-  /**
-   * Gets the id.
-   *
-   * @return the id
-   */
-  public final native String getId()/*-{
+    /**
+     * Gets the id.
+     *
+     * @return the id
+     */
+    public final native String getId()/*-{
 		return this.clientId;
   }-*/;
 
-  /**
-   * Sub.
-   *
-   * @param topic the topic
-   */
-  public final native void sub(String topic)
+    /**
+     * Sub.
+     *
+     * @param topic the topic
+     */
+    public final native void sub(String topic)
   /*-{
 		this.subscribe(topic);
 		console.log("subscribe to " + topic);
   }-*/;
 
-  /**
-   * Unsub.
-   *
-   * @param topic the topic
-   */
-  public final native void unsub(String topic)
+    /**
+     * Unsub.
+     *
+     * @param topic the topic
+     */
+    public final native void unsub(String topic)
   /*-{
 		this.unsubscribe(topic);
 		console.log("unsubscribe to " + topic);
   }-*/;
 
-  /**
-   * Pub.
-   *
-   * @param msg the msg
-   */
-  public final native void pub(MqttMessage msg)/*-{
+    /**
+     * Pub.
+     *
+     * @param msg the msg
+     */
+    public final native void pub(MqttMessage msg)/*-{
 		this.send(msg);
   }-*/;
 
-  /**
-   * Checks if is connect.
-   *
-   * @return true, if is connect
-   */
-  public final native boolean isConnect()/*-{
+    /**
+     * Checks if is connect.
+     *
+     * @return true, if is connect
+     */
+    public final native boolean isConnect()/*-{
 		return this.isConnected;
   }-*/;
 

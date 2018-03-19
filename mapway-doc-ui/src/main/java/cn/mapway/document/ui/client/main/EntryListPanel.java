@@ -12,6 +12,7 @@ import cn.mapway.document.ui.client.module.Group;
 import static cn.mapway.document.ui.client.resource.SysResource.INSTANCE;
 
 // TODO: Auto-generated Javadoc
+
 /**
  * The Class EntryListPanel.
  */
@@ -21,16 +22,16 @@ public class EntryListPanel extends Composite {
 	private static EntryListPanelUiBinder uiBinder = GWT
 			.create(EntryListPanelUiBinder.class);
 
-	/**
-	 * The Interface EntryListPanelUiBinder.
-	 */
-	interface EntryListPanelUiBinder extends UiBinder<Widget, EntryListPanel> {
+    /**
+     * The Interface EntryListPanelUiBinder.
+     */
+    interface EntryListPanelUiBinder extends UiBinder<Widget, EntryListPanel> {
 	}
 
-	/**
-	 * Instantiates a new entry list panel.
-	 */
-	public EntryListPanel() {
+    /**
+     * Instantiates a new entry list panel.
+     */
+    public EntryListPanel() {
 		initWidget(uiBinder.createAndBindUi(this));
 		btnSearch.setStyleName(SysResource.INSTANCE.getCss().btn());
 
@@ -53,34 +54,47 @@ public class EntryListPanel extends Composite {
 		});
 	}
 
-	/** The lb title. */
-	@UiField
+    /**
+     * The lb title.
+     */
+    @UiField
 	Label lbTitle;
 
-	/** The list. */
-	@UiField
+    /**
+     * The list.
+     */
+    @UiField
 	EntryList list;
 
-	@UiField
+    /**
+     * The Btn search.
+     */
+    @UiField
 	Button btnSearch;
-	
-	/** The m group. */
-	Group mGroup;
-	
-	/** The search text. */
-	String searchText;
-	
-	/** The html. */
-	@UiField
+
+    /**
+     * The m group.
+     */
+    Group mGroup;
+
+    /**
+     * The search text.
+     */
+    String searchText;
+
+    /**
+     * The html.
+     */
+    @UiField
 	HTML html;
 
-	/**
-	 * Parses the.
-	 *
-	 * @param group the group
-	 * @param searchText the search text
-	 */
-	public void parse(Group group, String searchText) {
+    /**
+     * Parses the.
+     *
+     * @param group      the group
+     * @param searchText the search text
+     */
+    public void parse(Group group, String searchText) {
 		if (group == null) {
 			return;
 		}
@@ -99,20 +113,24 @@ public class EntryListPanel extends Composite {
 		html.setHTML(h);
 	}
 
-	/** The entries. */
-	@UiField
+    /**
+     * The entries.
+     */
+    @UiField
 	VerticalPanel entries;
 
-	/** The txt SEARCH. */
-	@UiField
+    /**
+     * The txt SEARCH.
+     */
+    @UiField
 	TextBox txtSEARCH;
 
-	/**
-	 * On search.
-	 *
-	 * @param e the e
-	 */
-	@UiHandler("btnSearch")
+    /**
+     * On search.
+     *
+     * @param e the e
+     */
+    @UiHandler("btnSearch")
 	void onSearch(ClickEvent e) {
 		search();
 	}

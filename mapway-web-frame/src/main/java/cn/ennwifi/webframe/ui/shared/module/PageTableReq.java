@@ -5,6 +5,9 @@ import cn.mapway.document.annotation.Doc;
 
 import com.google.gwt.user.client.rpc.IsSerializable;
 
+/**
+ * The type Page table req.
+ */
 @Doc("查询基础用户数据")
 public class PageTableReq implements IsSerializable {
 
@@ -23,43 +26,93 @@ public class PageTableReq implements IsSerializable {
   @ApiField("查询条件")
   private String cnd;
 
-  public int getPage() {
+    /**
+     * Gets page.
+     *
+     * @return the page
+     */
+    public int getPage() {
     return page;
   }
 
-  public void setPage(int page) {
+    /**
+     * Sets page.
+     *
+     * @param page the page
+     */
+    public void setPage(int page) {
     this.page = page;
   }
 
-  public int getSize() {
+    /**
+     * Gets size.
+     *
+     * @return the size
+     */
+    public int getSize() {
     return size;
   }
 
-  public void setSize(int size) {
+    /**
+     * Sets size.
+     *
+     * @param size the size
+     */
+    public void setSize(int size) {
     this.size = size;
   }
 
-  public String getOrderField() {
+    /**
+     * Gets order field.
+     *
+     * @return the order field
+     */
+    public String getOrderField() {
     return orderField;
   }
 
-  public void setOrderField(String orderField) {
+    /**
+     * Sets order field.
+     *
+     * @param orderField the order field
+     */
+    public void setOrderField(String orderField) {
     this.orderField = orderField;
   }
 
-  public String getOrder() {
+    /**
+     * Gets order.
+     *
+     * @return the order
+     */
+    public String getOrder() {
     return order;
   }
 
-  public void setOrder(String order) {
+    /**
+     * Sets order.
+     *
+     * @param order the order
+     */
+    public void setOrder(String order) {
     this.order = order;
   }
 
-  public String getCnd() {
+    /**
+     * Gets cnd.
+     *
+     * @return the cnd
+     */
+    public String getCnd() {
     return cnd;
   }
 
-  public void setCnd(String cnd) {
+    /**
+     * Sets cnd.
+     *
+     * @param cnd the cnd
+     */
+    public void setCnd(String cnd) {
     this.cnd = cnd;
   }
 

@@ -14,80 +14,90 @@ import java.util.List;
  */
 public class Group implements Serializable {
 
-	/**
-	 * Instantiates a new group.
-	 */
-	public Group() {
+    /**
+     * Instantiates a new group.
+     */
+    public Group() {
 		entries = new ArrayList<Entry>();
 		subGroups = new ArrayList<Group>();
 
 		setParent(null);
 	}
 
-	/** The order. */
-	public Integer order = 1;
+    /**
+     * The order.
+     */
+    public Integer order = 1;
 
-	/** 节点名称. */
-	public String name = "";
+    /**
+     * 节点名称.
+     */
+    public String name = "";
 
-	/** 节点说明. */
-	public String summary;
+    /**
+     * 节点说明.
+     */
+    public String summary;
 
 	/** 父节点. */
 	private Group parent;
 
-	/** 节点全路径名称. */
-	public String fullName = "/";
+    /**
+     * 节点全路径名称.
+     */
+    public String fullName = "/";
 
-	/** 子节点. */
-	public List<Entry> entries;
+    /**
+     * 子节点.
+     */
+    public List<Entry> entries;
 
-	/** 子分组. */
-	public List<Group> subGroups;
+    /**
+     * 子分组.
+     */
+    public List<Group> subGroups;
 
-	/**
-	 * 添加子節點.
-	 *
-	 * @param g
-	 *            the g
-	 */
-	public void addChildGroup(Group g) {
+    /**
+     * 添加子節點.
+     *
+     * @param g the g
+     */
+    public void addChildGroup(Group g) {
 		g.setParent(this);
 		subGroups.add(g);
 	}
 
-	/**
-	 * 清空子節點.
-	 */
-	public void clearChildGroup() {
+    /**
+     * 清空子節點.
+     */
+    public void clearChildGroup() {
 		subGroups.clear();
 	}
 
-	/**
-	 * 移除子节点.
-	 *
-	 * @param g
-	 *            the g
-	 */
-	public void removeChildGroup(Group g) {
+    /**
+     * 移除子节点.
+     *
+     * @param g the g
+     */
+    public void removeChildGroup(Group g) {
 		subGroups.remove(g);
 	}
 
-	/**
-	 * Gets the child groups.
-	 *
-	 * @return the child groups
-	 */
-	public List<Group> getChildGroups() {
+    /**
+     * Gets the child groups.
+     *
+     * @return the child groups
+     */
+    public List<Group> getChildGroups() {
 		return subGroups;
 	}
 
-	/**
-	 * 获取节点的全路径.
-	 *
-	 * @return the path
-	 */
-	public String getPath() {
+    /**
+     * 获取节点的全路径.
+     *
+     * @return the path
+     */
+    public String getPath() {
 		ArrayList<String> strArray = new ArrayList<String>();
 
 		Group g = getParent();
@@ -108,28 +118,28 @@ public class Group implements Serializable {
 		return sb.toString();
 	}
 
-	/**
-	 * Gets the parent.
-	 *
-	 * @return the parent
-	 */
-	public Group getParent() {
+    /**
+     * Gets the parent.
+     *
+     * @return the parent
+     */
+    public Group getParent() {
 		return parent;
 	}
 
-	/**
-	 * Sets the parent.
-	 *
-	 * @param parent the new parent
-	 */
-	public void setParent(Group parent) {
+    /**
+     * Sets the parent.
+     *
+     * @param parent the new parent
+     */
+    public void setParent(Group parent) {
 		this.parent = parent;
 	}
 
-	/**
-	 * 排序.
-	 */
-	public void sort() {
+    /**
+     * 排序.
+     */
+    public void sort() {
 
 		Collections.sort(subGroups, new Comparator<Group>() {
 			@Override

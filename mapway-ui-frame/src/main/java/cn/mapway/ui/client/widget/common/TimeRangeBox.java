@@ -9,34 +9,36 @@ import com.google.gwt.user.client.ui.Label;
 
 /**
  * 日期时间范围选择器
- * 
- * @author zhangjianshe
  *
+ * @author zhangjianshe
  */
 public class TimeRangeBox extends AbsolutePanel {
 
 
-  /**
-   * 左边安钮
-   */
-  DragImage btnLeftHandler;
+    /**
+     * 左边安钮
+     */
+    DragImage btnLeftHandler;
 
-  /**
-   * 右边安钮
-   */
-  DragImage btnRightHandler;
+    /**
+     * 右边安钮
+     */
+    DragImage btnRightHandler;
 
-  /**
-   * 信息提示
-   */
-  Label lbInfo;
+    /**
+     * 信息提示
+     */
+    Label lbInfo;
 
-  /**
-   * 背景
-   */
-  Label lbBackground;
+    /**
+     * 背景
+     */
+    Label lbBackground;
 
-  public TimeRangeBox() {
+    /**
+     * Instantiates a new Time range box.
+     */
+    public TimeRangeBox() {
     btnLeftHandler = new DragImage();
     btnRightHandler = new DragImage();
     btnLeftHandler.setUrl(SysResource.INSTANCE.dragger().getSafeUri());

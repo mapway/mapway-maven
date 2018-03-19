@@ -13,54 +13,59 @@ import javax.servlet.jsp.jstl.sql.Result;
 import javax.servlet.jsp.jstl.sql.ResultSupport;
 
 // TODO: Auto-generated Javadoc
+
 /**
  * The Class AccessBase.
  */
 public class AccessBase {
 
-  /** The Connection pool. */
-  protected IConnectionPool ConnectionPool;
+    /**
+     * The Connection pool.
+     */
+    protected IConnectionPool ConnectionPool;
 
-  /** The Constant ERROR_DATABASE. */
-  public final static String ERROR_DATABASE = "Database Access Error";
+    /**
+     * The Constant ERROR_DATABASE.
+     */
+    public final static String ERROR_DATABASE = "Database Access Error";
 
 
-  /**
-   * Gets the connection pool.
-   *
-   * @return the connection pool
-   */
-  public IConnectionPool getConnectionPool() {
+    /**
+     * Gets the connection pool.
+     *
+     * @return the connection pool
+     */
+    public IConnectionPool getConnectionPool() {
     return this.ConnectionPool;
   }
 
 
-  /**
-   * Sets the connection pool.
-   *
-   * @param pool the new connection pool
-   */
-  public void setConnectionPool(IConnectionPool pool) {
+    /**
+     * Sets the connection pool.
+     *
+     * @param pool the new connection pool
+     */
+    public void setConnectionPool(IConnectionPool pool) {
     this.ConnectionPool = pool;
   }
 
-  /**
-   * Instantiates a new access base.
-   *
-   * @param pool the pool
-   */
-  public AccessBase(IConnectionPool pool) {
+    /**
+     * Instantiates a new access base.
+     *
+     * @param pool the pool
+     */
+    public AccessBase(IConnectionPool pool) {
     this.ConnectionPool = pool;
   }
 
-  /**
-   * Execute.
-   *
-   * @param sql the sql
-   * @return the result
-   * @throws SQLException the SQL exception
-   */
-  public Result execute(String sql) throws SQLException {
+    /**
+     * Execute.
+     *
+     * @param sql the sql
+     * @return the result
+     * @throws SQLException the SQL exception
+     */
+    public Result execute(String sql) throws SQLException {
     Result r = null;
     Connection con = this.ConnectionPool.getConnection();
     if (con == null)
@@ -82,14 +87,14 @@ public class AccessBase {
     return r;
   }
 
-  /**
-   * Find count.
-   *
-   * @param src the src
-   * @param match the match
-   * @return the int
-   */
-  public int findCount(String src, char match) {
+    /**
+     * Find count.
+     *
+     * @param src   the src
+     * @param match the match
+     * @return the int
+     */
+    public int findCount(String src, char match) {
 
     int count = 0;
     for (int index = 0; index < src.length(); index++) {
@@ -101,23 +106,23 @@ public class AccessBase {
     return count;
   }
 
-  /**
-   * Log.
-   *
-   * @param info the info
-   */
-  public void log(String info) {
+    /**
+     * Log.
+     *
+     * @param info the info
+     */
+    public void log(String info) {
     System.out.println(info);
   }
 
-  /**
-   * String from clob.
-   *
-   * @param clob the clob
-   * @return the string
-   * @throws SQLException the SQL exception
-   */
-  public String stringFromClob(Clob clob) throws SQLException {
+    /**
+     * String from clob.
+     *
+     * @param clob the clob
+     * @return the string
+     * @throws SQLException the SQL exception
+     */
+    public String stringFromClob(Clob clob) throws SQLException {
     if (clob == null)
       return "";
     Reader clobStream = null;
@@ -150,15 +155,17 @@ public class AccessBase {
     return suggestions.toString();
   }
 
-  /** The m SQ ls. */
-  public ArrayList<String> m_SQLs;
+    /**
+     * The m SQ ls.
+     */
+    public ArrayList<String> m_SQLs;
 
-  /**
-   * Adds the SQL.
-   *
-   * @param sql the sql
-   */
-  /*
+    /**
+     * Adds the SQL.
+     *
+     * @param sql the sql
+     */
+    /*
 	 * 
 	 */
   public void addSQL(String sql) {
@@ -169,13 +176,13 @@ public class AccessBase {
     m_SQLs.add(sql);
   }
 
-  /**
-   * Execute batch.
-   *
-   * @return the int[]
-   * @throws SQLException the SQL exception
-   */
-  /*
+    /**
+     * Execute batch.
+     *
+     * @return the int[]
+     * @throws SQLException the SQL exception
+     */
+    /*
 	 * 
 	 */
   public int[] executeBatch() throws SQLException {
@@ -219,10 +226,10 @@ public class AccessBase {
     return rs;
   }
 
-  /**
-   * Alear SQL.
-   */
-  /*
+    /**
+     * Alear SQL.
+     */
+    /*
 	 * 
 	 */
   public void alearSQL() {
@@ -232,13 +239,13 @@ public class AccessBase {
       m_SQLs.clear();
   }
 
-  /**
-   * Result to string.
-   *
-   * @param rs the rs
-   * @return the string
-   */
-  public String resultToString(Result rs) {
+    /**
+     * Result to string.
+     *
+     * @param rs the rs
+     * @return the string
+     */
+    public String resultToString(Result rs) {
     StringBuilder sb = new StringBuilder();
     String[] cns = rs.getColumnNames();
 
@@ -262,13 +269,13 @@ public class AccessBase {
     return sb.toString();
   }
 
-  /**
-   * Object to string.
-   *
-   * @param o the o
-   * @return the string
-   */
-  public String objectToString(Object o) {
+    /**
+     * Object to string.
+     *
+     * @param o the o
+     * @return the string
+     */
+    public String objectToString(Object o) {
     if (o == null) {
       return "----";
     } else {

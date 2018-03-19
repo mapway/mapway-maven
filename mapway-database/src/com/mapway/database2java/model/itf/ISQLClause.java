@@ -1,12 +1,13 @@
 package com.mapway.database2java.model.itf;
 
 // TODO: Auto-generated Javadoc
+
 /**
  * The Interface ISQLClause.
  */
 public interface ISQLClause {
 
-   
+
     /**
      * Gets the table SQL.
      *

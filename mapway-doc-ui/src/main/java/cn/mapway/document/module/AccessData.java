@@ -1,6 +1,7 @@
 package cn.mapway.document.module;
 
 // TODO: Auto-generated Javadoc
+
 /**
  * 记录访问次数.
  *
@@ -8,11 +9,15 @@ package cn.mapway.document.module;
  */
 public class AccessData {
 
-	/** The count. */
-	public Long count;
-	
-	/** The last. */
-	public Long last;
+    /**
+     * The count.
+     */
+    public Long count;
+
+    /**
+     * The last.
+     */
+    public Long last;
 
 	/**
 	 * Instantiates a new access data.
@@ -21,15 +26,17 @@ public class AccessData {
 
 	}
 
-	/** The g access data. */
-	public static AccessData gAccessData;
+    /**
+     * The g access data.
+     */
+    public static AccessData gAccessData;
 
-	/**
-	 * Gets the.
-	 *
-	 * @return the access data
-	 */
-	public final static AccessData get() {
+    /**
+     * Gets the.
+     *
+     * @return the access data
+     */
+    public final static AccessData get() {
 		if (gAccessData == null) {
 			gAccessData = new AccessData();
 		}

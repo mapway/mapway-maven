@@ -21,13 +21,15 @@ import com.ksyzt.gwt.client.event.MessageHandler;
  */
 public abstract class AbstractDataProvider implements IDataProvider<IFieldValue>, HasMessageHandlers {
 
-  /** The listners. */
-  ArrayList<IListener> listners;
+    /**
+     * The listners.
+     */
+    ArrayList<IListener> listners;
 
-  /**
-   * Instantiates a new abstract data provider.
-   */
-  public AbstractDataProvider() {
+    /**
+     * Instantiates a new abstract data provider.
+     */
+    public AbstractDataProvider() {
     listners = new ArrayList<IListener>();
   }
 
@@ -133,34 +135,34 @@ public abstract class AbstractDataProvider implements IDataProvider<IFieldValue>
     }
   }
 
-  /**
-   * Creates the {@link HandlerManager} used by this Widget. You can override this method to create
-   * a custom {@link HandlerManager}.
-   *
-   * @return the {@link HandlerManager} you want to use
-   */
-  protected HandlerManager createHandlerManager() {
+    /**
+     * Creates the {@link HandlerManager} used by this Widget. You can override this method to create
+     * a custom {@link HandlerManager}.
+     *
+     * @return the {@link HandlerManager} you want to use
+     */
+    protected HandlerManager createHandlerManager() {
     return new HandlerManager(this);
   }
 
-  /**
-   * Adds this handler to the widget.
-   *
-   * @param <H> the type of handler to add
-   * @param handler the handler
-   * @param type the event type
-   * @return {@link HandlerRegistration} used to remove the handler
-   */
-  public final <H extends EventHandler> HandlerRegistration addHandler(final H handler, GwtEvent.Type<H> type) {
+    /**
+     * Adds this handler to the widget.
+     *
+     * @param <H>     the type of handler to add
+     * @param handler the handler
+     * @param type    the event type
+     * @return {@link HandlerRegistration} used to remove the handler
+     */
+    public final <H extends EventHandler> HandlerRegistration addHandler(final H handler, GwtEvent.Type<H> type) {
     return ensureHandlers().addHandler(type, handler);
   }
 
-  /**
-   * Ensures the existence of the handler manager.
-   *
-   * @return the handler manager
-   */
-  HandlerManager ensureHandlers() {
+    /**
+     * Ensures the existence of the handler manager.
+     *
+     * @return the handler manager
+     */
+    HandlerManager ensureHandlers() {
     return handlerManager == null ? handlerManager = createHandlerManager() : handlerManager;
   }
 

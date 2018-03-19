@@ -18,6 +18,7 @@ import com.ksyzt.gwt.shared.module.AdminUser;
 import com.ksyzt.gwt.shared.module.SystemConst;
 
 // TODO: Auto-generated Javadoc
+
 /**
  * The Class EntryConfigure.
  */
@@ -54,8 +55,10 @@ public class EntryConfigure implements EntryPoint {
 		}
 	};
 
-	/** The dlg. */
-	DialogBox dlg;
+    /**
+     * The dlg.
+     */
+    DialogBox dlg;
 	
 	/** 检查是否登录. */
 	private AsyncCallback<AdminUser> check_login_handler = new AsyncCallback<AdminUser>() {
@@ -153,14 +156,16 @@ public class EntryConfigure implements EntryPoint {
 		SysResource.INSTANCE.getCss().ensureInjected();
 		CommonServerProxy.SITE_MANAGER.checkAdminLogin(check_login_handler);
 	}
-	
-	/** The frame. */
-	SiteFrame frame;
-	
-	/**
-	 * Show frame.
-	 */
-	protected void showFrame() {
+
+    /**
+     * The frame.
+     */
+    SiteFrame frame;
+
+    /**
+     * Show frame.
+     */
+    protected void showFrame() {
 
 		if(frame==null)
 			{
@@ -170,12 +175,12 @@ public class EntryConfigure implements EntryPoint {
 		RootLayoutPanel.get().add(frame);
 	}
 
-	/**
-	 * Show login.
-	 *
-	 * @param msg the msg
-	 */
-	public void showLogin(String msg) {
+    /**
+     * Show login.
+     *
+     * @param msg the msg
+     */
+    public void showLogin(String msg) {
 		sureDialog();
 		dlg.setModal(true);
 		AdminUserConfigure configure = new AdminUserConfigure();

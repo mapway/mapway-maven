@@ -1,11 +1,15 @@
 package com.mapway.database2java;
 
 /**
+ * The interface Configure.
+ *
  * @author zhangjianshe
  */
 public interface IConfigure {
 
     /**
+     * Gets driver.
+     *
      * @return the driver
      */
     String getDriver();
@@ -60,39 +64,45 @@ public interface IConfigure {
     String getPath();
 
 
+    /**
+     * Gets mapper.
+     *
+     * @return the mapper
+     */
     String getMapper();
 
     /**
      * 是否使用字段全部大写
      *
-     * @return
+     * @return use field style
      */
     String getUseFieldStyle();
 
     /**
      * 是否关联GWT
      *
-     * @return
+     * @return use gwt
      */
     String getUseGwt();
 
     /**
      * 是否关联注解
      *
-     * @return
+     * @return use document
      */
     String getUseDocument();
 
     /**
      * 是否关联数据Nutz注解
      *
-     * @return
+     * @return use nutz
      */
     String getUseNutz();
 
     /**
      * 是否使用字段索引
-     * @return
+     *
+     * @return use field index
      */
     String getUseFieldIndex();
 }

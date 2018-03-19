@@ -3076,6 +3076,11 @@ public class MySQL_Schema2_gwt extends SchemaBase {
 
     }
 
+    /**
+     * The entry point of application.
+     *
+     * @param args the input arguments
+     */
     public static void main(String[] args) {
 
         String driverName = "com.mysql.jdbc.Driver";
@@ -3095,6 +3100,12 @@ public class MySQL_Schema2_gwt extends SchemaBase {
         schema.fetchSchema();
     }
 
+    /**
+     * Trans string.
+     *
+     * @param schema the schema
+     * @return the string
+     */
     static String trans(String schema) {
         if (schema.contains("-")) {
             return "`" + schema + "`";

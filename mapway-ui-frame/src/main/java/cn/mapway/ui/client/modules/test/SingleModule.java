@@ -8,20 +8,35 @@ import com.google.gwt.user.client.ui.Widget;
 import com.ksyzt.gwt.client.common.MessageComposite;
 
 
+/**
+ * The type Single module.
+ */
 public class SingleModule extends MessageComposite {
 
   private static SingleModuleUiBinder uiBinder = GWT.create(SingleModuleUiBinder.class);
 
-  interface SingleModuleUiBinder extends UiBinder<Widget, SingleModule> {
+    /**
+     * The interface Single module ui binder.
+     */
+    interface SingleModuleUiBinder extends UiBinder<Widget, SingleModule> {
   }
 
-  Widget content;
+    /**
+     * The Content.
+     */
+    Widget content;
 
-  public SingleModule() {
+    /**
+     * Instantiates a new Single module.
+     */
+    public SingleModule() {
     initWidget(uiBinder.createAndBindUi(this));
   }
 
-  @UiField
+    /**
+     * The Tools.
+     */
+    @UiField
   HorizontalPanel tools;
 
 

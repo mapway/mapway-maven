@@ -2,16 +2,32 @@ package cn.mapway.document.ui.client.main;
 
 import com.google.gwt.core.client.JavaScriptObject;
 
+/**
+ * The type Field code.
+ */
 public class FieldCode extends JavaScriptObject {
 
-	protected FieldCode() {
+    /**
+     * Instantiates a new Field code.
+     */
+    protected FieldCode() {
 	}
 
-	public final native String value()/*-{
+    /**
+     * Value string.
+     *
+     * @return the string
+     */
+    public final native String value()/*-{
 		return this.value;
 	}-*/;
 
-	public final native String desc()/*-{
+    /**
+     * Desc string.
+     *
+     * @return the string
+     */
+    public final native String desc()/*-{
 		return this.desc;
 	}-*/;
 }

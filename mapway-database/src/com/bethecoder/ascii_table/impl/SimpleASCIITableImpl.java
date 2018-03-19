@@ -4,6 +4,9 @@ import com.bethecoder.ascii_table.*;
 import com.bethecoder.ascii_table.spec.*;
 import java.util.*;
 
+/**
+ * The type Simple ascii table.
+ */
 public class SimpleASCIITableImpl implements IASCIITable {
 
     @Override

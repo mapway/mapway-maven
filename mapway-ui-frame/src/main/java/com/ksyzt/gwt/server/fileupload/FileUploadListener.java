@@ -7,10 +7,11 @@ import org.apache.commons.fileupload.ProgressListener;
 
 
 // TODO: Auto-generated Javadoc
+
 /**
  * 上传监听器.
  *
- * @author zhangjianshe@gmail.com
+ * @author zhangjianshe @gmail.com
  */
 public class FileUploadListener implements ProgressListener {
 
@@ -20,12 +21,12 @@ public class FileUploadListener implements ProgressListener {
 	/** The mega bytes. */
 	private long megaBytes = -1;
 
-	/**
-	 * Instantiates a new file upload listener.
-	 *
-	 * @param request the request
-	 */
-	public FileUploadListener(HttpServletRequest request) {
+    /**
+     * Instantiates a new file upload listener.
+     *
+     * @param request the request
+     */
+    public FileUploadListener(HttpServletRequest request) {
 		session = request.getSession();
 		FileUploadStatus newUploadStatus = new FileUploadStatus();
 		session.setAttribute("upladeStatus", newUploadStatus);

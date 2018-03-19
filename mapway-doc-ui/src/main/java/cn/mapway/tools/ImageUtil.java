@@ -18,35 +18,37 @@ import javax.imageio.ImageIO;
 
 /**
  * 图像工具
- * 
- * @author zhangjianshe
  *
+ * @author zhangjianshe
  */
 public class ImageUtil {
 
-  // 使用到Algerian字体，系统里没有的话需要安装字体，字体只显示大写，去掉了1,0,i,o几个容易混淆的字符
+    /**
+     * The constant VERIFY_CODES.
+     */
+// 使用到Algerian字体，系统里没有的话需要安装字体，字体只显示大写，去掉了1,0,i,o几个容易混淆的字符
   public static final String VERIFY_CODES = "23456789ABCDEFGHJKLMNPQRSTUVWXYZ";
   private static Random random = new Random();
 
 
-  /**
-   * 使用系统默认字符源生成验证码
-   * 
-   * @param verifySize 验证码长度
-   * @return
-   */
-  public static String genCode(int verifySize) {
+    /**
+     * 使用系统默认字符源生成验证码
+     *
+     * @param verifySize 验证码长度
+     * @return string
+     */
+    public static String genCode(int verifySize) {
     return genCode(verifySize, VERIFY_CODES);
   }
 
-  /**
-   * 使用指定源生成验证码
-   * 
-   * @param verifySize 验证码长度
-   * @param sources 验证码字符源
-   * @return
-   */
-  public static String genCode(int verifySize, String sources) {
+    /**
+     * 使用指定源生成验证码
+     *
+     * @param verifySize 验证码长度
+     * @param sources    验证码字符源
+     * @return string
+     */
+    public static String genCode(int verifySize, String sources) {
     if (sources == null || sources.length() == 0) {
       sources = VERIFY_CODES;
     }
@@ -59,50 +61,50 @@ public class ImageUtil {
     return verifyCode.toString();
   }
 
-  /**
-   * 生成随机验证码文件,并返回验证码值
-   * 
-   * @param w
-   * @param h
-   * @param outputFile
-   * @param verifySize
-   * @return
-   * @throws IOException
-   */
-  public static String outputVerifyImage(int w, int h, File outputFile, int verifySize)
+    /**
+     * 生成随机验证码文件,并返回验证码值
+     *
+     * @param w          the w
+     * @param h          the h
+     * @param outputFile the output file
+     * @param verifySize the verify size
+     * @return string
+     * @throws IOException the io exception
+     */
+    public static String outputVerifyImage(int w, int h, File outputFile, int verifySize)
       throws IOException {
     String verifyCode = genCode(verifySize);
     outputImage(w, h, outputFile, verifyCode);
     return verifyCode;
   }
 
-  /**
-   * 输出随机验证码图片流,并返回验证码值
-   * 
-   * @param w
-   * @param h
-   * @param os
-   * @param verifySize
-   * @return
-   * @throws IOException
-   */
-  public static String outputVerifyImage(int w, int h, OutputStream os, int verifySize)
+    /**
+     * 输出随机验证码图片流,并返回验证码值
+     *
+     * @param w          the w
+     * @param h          the h
+     * @param os         the os
+     * @param verifySize the verify size
+     * @return string
+     * @throws IOException the io exception
+     */
+    public static String outputVerifyImage(int w, int h, OutputStream os, int verifySize)
       throws IOException {
     String verifyCode = genCode(verifySize);
     outputImage(w, h, os, verifyCode);
     return verifyCode;
   }
 
-  /**
-   * 生成指定验证码图像文件
-   * 
-   * @param w
-   * @param h
-   * @param outputFile
-   * @param code
-   * @throws IOException
-   */
-  public static void outputImage(int w, int h, File outputFile, String code) throws IOException {
+    /**
+     * 生成指定验证码图像文件
+     *
+     * @param w          the w
+     * @param h          the h
+     * @param outputFile the output file
+     * @param code       the code
+     * @throws IOException the io exception
+     */
+    public static void outputImage(int w, int h, File outputFile, String code) throws IOException {
     if (outputFile == null) {
       return;
     }
@@ -120,16 +122,16 @@ public class ImageUtil {
     }
   }
 
-  /**
-   * 输出指定验证码图片流
-   * 
-   * @param w
-   * @param h
-   * @param os
-   * @param code
-   * @throws IOException
-   */
-  public static void outputImage(int w, int h, OutputStream os, String code) throws IOException {
+    /**
+     * 输出指定验证码图片流
+     *
+     * @param w    the w
+     * @param h    the h
+     * @param os   the os
+     * @param code the code
+     * @throws IOException the io exception
+     */
+    public static void outputImage(int w, int h, OutputStream os, String code) throws IOException {
     int verifySize = code.length();
     BufferedImage image = new BufferedImage(w, h, BufferedImage.TYPE_INT_RGB);
     Random rand = new Random();
@@ -271,7 +273,13 @@ public class ImageUtil {
 
   }
 
-  public static void main(String[] args) throws IOException {
+    /**
+     * The entry point of application.
+     *
+     * @param args the input arguments
+     * @throws IOException the io exception
+     */
+    public static void main(String[] args) throws IOException {
     File dir = new File("F:/verifies");
     int w = 200, h = 80;
     for (int i = 0; i < 50; i++) {

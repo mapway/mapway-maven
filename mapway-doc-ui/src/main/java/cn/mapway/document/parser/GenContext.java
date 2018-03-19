@@ -307,12 +307,17 @@ public class GenContext extends Properties {
     /**
      * home url
      *
-     * @param s
+     * @param s the s
      */
     public void setHomeUrl(String s) {
         put(HOMEURL, s);
     }
 
+    /**
+     * Gets home url.
+     *
+     * @return the home url
+     */
     public String getHomeUrl() {
         return getProperty(HOMEURL);
     }
@@ -320,12 +325,17 @@ public class GenContext extends Properties {
     /**
      * 设置样式
      *
-     * @param s
+     * @param s the s
      */
     public void setCssStyle(String s) {
         put(CSSSTYLE, s);
     }
 
+    /**
+     * Gets css style.
+     *
+     * @return the css style
+     */
     public String getCssStyle() {
         return getProperty(CSSSTYLE);
     }

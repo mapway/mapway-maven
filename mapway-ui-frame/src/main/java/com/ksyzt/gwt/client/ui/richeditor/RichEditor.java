@@ -5,16 +5,17 @@ import com.google.gwt.user.client.ui.RichTextArea;
 import com.google.gwt.user.client.ui.VerticalPanel;
 
 // TODO: Auto-generated Javadoc
+
 /**
  * The Class RichEditor.
  */
 public class RichEditor extends VerticalPanel {
 
 
-  /**
-   * Instantiates a new rich editor.
-   */
-  @UiConstructor
+    /**
+     * Instantiates a new rich editor.
+     */
+    @UiConstructor
   public RichEditor() {
     super();
     m_editor = new RichTextArea();
@@ -32,21 +33,21 @@ public class RichEditor extends VerticalPanel {
   private RichTextArea m_editor;
 
 
-  /**
-   * Sets the html.
-   *
-   * @param html the new html
-   */
-  public void setValue(String html) {
+    /**
+     * Sets the html.
+     *
+     * @param html the new html
+     */
+    public void setValue(String html) {
     m_editor.setHTML(html);
   }
 
-  /**
-   * Gets the html.
-   *
-   * @return the html
-   */
-  public String getValue() {
+    /**
+     * Gets the html.
+     *
+     * @return the html
+     */
+    public String getValue() {
     return m_editor.getHTML();
   }
 

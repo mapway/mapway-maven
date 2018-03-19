@@ -1,54 +1,81 @@
 package com.ksyzt.gwt.client.ui.richeditor;
 
 // TODO: Auto-generated Javadoc
+
 /**
  * The Class Color.
  */
-public class Color 
+public class Color
 {
 
-    /** The Constant WHITE. */
+    /**
+     * The Constant WHITE.
+     */
     public final static Color WHITE = new Color(255, 255, 255);
-    
-    /** The Constant LIGHT_GRAY. */
+
+    /**
+     * The Constant LIGHT_GRAY.
+     */
     public final static Color LIGHT_GRAY = new Color(192, 192, 192);
-    
-    /** The Constant GRAY. */
+
+    /**
+     * The Constant GRAY.
+     */
     public final static Color GRAY = new Color(128, 128, 128);
-    
-    /** The Constant DARK_GRAY. */
+
+    /**
+     * The Constant DARK_GRAY.
+     */
     public final static Color DARK_GRAY = new Color(64, 64, 64);
-    
-    /** The Constant BLACK. */
+
+    /**
+     * The Constant BLACK.
+     */
     public final static Color BLACK = new Color(0, 0, 0);
-    
-    /** The Constant RED. */
+
+    /**
+     * The Constant RED.
+     */
     public final static Color RED = new Color(255, 0, 0);
-    
-    /** The Constant PINK. */
+
+    /**
+     * The Constant PINK.
+     */
     public final static Color PINK = new Color(255, 175, 175);
-    
-    /** The Constant ORANGE. */
+
+    /**
+     * The Constant ORANGE.
+     */
     public final static Color ORANGE = new Color(255, 200, 0);
-    
-    /** The Constant YELLOW. */
+
+    /**
+     * The Constant YELLOW.
+     */
     public final static Color YELLOW = new Color(255, 255, 0);
-    
-    /** The Constant GREEN. */
+
+    /**
+     * The Constant GREEN.
+     */
     public final static Color GREEN = new Color(0, 255, 0);
-    
-    /** The Constant MAGENTA. */
+
+    /**
+     * The Constant MAGENTA.
+     */
     public final static Color MAGENTA = new Color(255, 0, 255);
-    
-    /** The Constant CYAN. */
+
+    /**
+     * The Constant CYAN.
+     */
     public final static Color CYAN = new Color(0, 255, 255);
-    
-    /** The Constant BLUE. */
+
+    /**
+     * The Constant BLUE.
+     */
     public final static Color BLUE = new Color(0, 0, 255);
     
     /** The b. */
     private int r, g, b;
-    
+
     /**
      * Instantiates a new color.
      *
@@ -60,7 +87,7 @@ public class Color
         g = (rgb & 0x00ff00) >> 8;
         b =  rgb & 0x0000ff;
     }
-    
+
     /**
      * Instantiates a new color.
      *
@@ -74,7 +101,7 @@ public class Color
         this.g = g;
         this.b = b;
     }
-    
+
     /**
      * Instantiates a new color.
      *
@@ -126,7 +153,7 @@ public class Color
         
         return tc;
     }
-    
+
     /**
      * Gets the red.
      *
@@ -156,7 +183,7 @@ public class Color
     {
         return b;
     }
-    
+
     /**
      * Gets the hue.
      *
@@ -182,7 +209,7 @@ public class Color
             return 0;
         }
     }
-    
+
     /**
      * Gets the saturation.
      *
@@ -207,7 +234,7 @@ public class Color
             return 0;
         }
     }
-    
+
     /**
      * Gets the lightness.
      *

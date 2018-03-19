@@ -15,21 +15,32 @@ import com.ksyzt.gwt.client.event.MessageHandler;
 
 /**
  * 分页数据提供器
- * @author zhangjianshe
  *
- * @param <T>
+ * @param <T> the type parameter
+ * @author zhangjianshe
  */
 public class PagerDataProvider<T extends IFieldValue> extends AbstractDataProvider {
 
-  public PagerData<T> mData = new PagerData<T>();
+    /**
+     * The M data.
+     */
+    public PagerData<T> mData = new PagerData<T>();
 
-  public List<HeaderInfo> headers;
+    /**
+     * The Headers.
+     */
+    public List<HeaderInfo> headers;
 
-  protected SearchReq mReq;
+    /**
+     * The M req.
+     */
+    protected SearchReq mReq;
 
 
-
-  public PagerDataProvider() {
+    /**
+     * Instantiates a new Pager data provider.
+     */
+    public PagerDataProvider() {
     mReq = new SearchReq();
     headers = new ArrayList<HeaderInfo>();
 
@@ -73,7 +84,12 @@ public class PagerDataProvider<T extends IFieldValue> extends AbstractDataProvid
   }
 
 
-  public void load(SearchReq req) {
+    /**
+     * Load.
+     *
+     * @param req the req
+     */
+    public void load(SearchReq req) {
     mReq = req;
 
   }
@@ -104,11 +120,13 @@ public class PagerDataProvider<T extends IFieldValue> extends AbstractDataProvid
     }
   };
 
-  /**
-   * @param row
-   * @return
-   */
-  protected RowOperator getOperator(int row) {
+    /**
+     * Gets operator.
+     *
+     * @param row the row
+     * @return operator
+     */
+    protected RowOperator getOperator(int row) {
     RowOperator operator = new RowOperator();
     operator.addMessageHandler(operatorHandler);
     T data = mData.getData().get(row);
@@ -116,11 +134,21 @@ public class PagerDataProvider<T extends IFieldValue> extends AbstractDataProvid
     return operator;
   }
 
-  protected void editData(T data) {
+    /**
+     * Edit data.
+     *
+     * @param data the data
+     */
+    protected void editData(T data) {
 
   }
 
-  protected void deleteData(T data) {
+    /**
+     * Delete data.
+     *
+     * @param data the data
+     */
+    protected void deleteData(T data) {
 
   }
 }

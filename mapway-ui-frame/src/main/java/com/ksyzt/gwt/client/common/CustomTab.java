@@ -15,6 +15,7 @@ import com.google.gwt.user.client.ui.Widget;
 import com.ksyzt.gwt.client.event.MessageEvent;
 
 // TODO: Auto-generated Javadoc
+
 /**
  * The Class CustomTab.
  */
@@ -24,16 +25,16 @@ public class CustomTab extends MessageComposite {
 	private static CustomTabUiBinder uiBinder = GWT
 			.create(CustomTabUiBinder.class);
 
-	/**
-	 * The Interface CustomTabUiBinder.
-	 */
-	interface CustomTabUiBinder extends UiBinder<Widget, CustomTab> {
+    /**
+     * The Interface CustomTabUiBinder.
+     */
+    interface CustomTabUiBinder extends UiBinder<Widget, CustomTab> {
 	}
 
-	/**
-	 * Instantiates a new custom tab.
-	 */
-	@UiConstructor
+    /**
+     * Instantiates a new custom tab.
+     */
+    @UiConstructor
 	public CustomTab() {
 		initWidget(uiBinder.createAndBindUi(this));
 		this.setStylePrimaryName("KSYZT");
@@ -54,12 +55,12 @@ public class CustomTab extends MessageComposite {
 		}
 	}
 
-	/**
-	 * Sets the tab align.
-	 *
-	 * @param align the new tab align
-	 */
-	public void setTabAlign(HorizontalAlignmentConstant align) {
+    /**
+     * Sets the tab align.
+     *
+     * @param align the new tab align
+     */
+    public void setTabAlign(HorizontalAlignmentConstant align) {
 		if (HasHorizontalAlignment.ALIGN_RIGHT.getTextAlignString().equals(
 				align.getTextAlignString())) {
 			box.remove(lbCaption);
@@ -78,65 +79,71 @@ public class CustomTab extends MessageComposite {
 		}
 	}
 
-	/** The box. */
-	@UiField
+    /**
+     * The box.
+     */
+    @UiField
 	HorizontalPanel box;
-	
-	/** The btns. */
-	@UiField
+
+    /**
+     * The btns.
+     */
+    @UiField
 	HorizontalPanel btns;
-	
-	/** The lb caption. */
-	@UiField
+
+    /**
+     * The lb caption.
+     */
+    @UiField
 	Label lbCaption;
 
-	/**
-	 * Sets the caption.
-	 *
-	 * @param text the new caption
-	 */
-	public void setCaption(String text) {
+    /**
+     * Sets the caption.
+     *
+     * @param text the new caption
+     */
+    public void setCaption(String text) {
 		lbCaption.setText(text);
 	}
 
-	/**
-	 * Sets the select index.
-	 *
-	 * @param index the new select index
-	 */
-	public void setSelectIndex(int index) {
+    /**
+     * Sets the select index.
+     *
+     * @param index the new select index
+     */
+    public void setSelectIndex(int index) {
 		setSelectIndex(index, false);
 	}
 
-	/**
-	 * Sets the select index.
-	 *
-	 * @param data the new select index
-	 */
-	public void setSelectIndex(Object data) {
+    /**
+     * Sets the select index.
+     *
+     * @param data the new select index
+     */
+    public void setSelectIndex(Object data) {
 		setSelectIndex(data, false);
 	}
 
-	/**
-	 * Sets the select index.
-	 *
-	 * @param index the index
-	 * @param fireEvent the fire event
-	 */
-	public void setSelectIndex(int index, boolean fireEvent) {
+    /**
+     * Sets the select index.
+     *
+     * @param index     the index
+     * @param fireEvent the fire event
+     */
+    public void setSelectIndex(int index, boolean fireEvent) {
 		if (index >= 0 && index < btns.getWidgetCount()) {
 			Widget a = (Widget) btns.getWidget(index);
 			makeAnchorSelected(a, fireEvent);
 		}
 	}
 
-	/**
-	 * Sets the select index.
-	 *
-	 * @param data the data
-	 * @param fireEvent the fire event
-	 */
-	public void setSelectIndex(Object data, boolean fireEvent) {
+    /**
+     * Sets the select index.
+     *
+     * @param data      the data
+     * @param fireEvent the fire event
+     */
+    public void setSelectIndex(Object data, boolean fireEvent) {
 		for (int i = 0; i < btns.getWidgetCount(); i++) {
 			Widget a = (Widget) btns.getWidget(i);
 			if (a.getElement().getPropertyObject("v").equals(data)) {
@@ -172,13 +179,13 @@ public class CustomTab extends MessageComposite {
 		}
 	}
 
-	/**
-	 * Adds the item.
-	 *
-	 * @param text the text
-	 * @param value the value
-	 */
-	public void addItem(String text, Object value) {
+    /**
+     * Adds the item.
+     *
+     * @param text  the text
+     * @param value the value
+     */
+    public void addItem(String text, Object value) {
 		Label a = new Label(text);
 		a.addClickHandler(m_click);
 		a.setStyleName(this.getStylePrimaryName() + "-BUTTON");

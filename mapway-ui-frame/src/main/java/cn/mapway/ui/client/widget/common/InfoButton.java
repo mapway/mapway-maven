@@ -1,7 +1,13 @@
 package cn.mapway.ui.client.widget.common;
 
+/**
+ * The type Info button.
+ */
 public class InfoButton extends ButtonEx{
-	public InfoButton() {
+    /**
+     * Instantiates a new Info button.
+     */
+    public InfoButton() {
 		setStyleName("gwtEx-Button gwtEx-InfoButton");
 	}
 	

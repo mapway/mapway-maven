@@ -9,9 +9,15 @@ import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.user.client.ui.FlexTable;
 import com.google.gwt.user.client.ui.HTMLTable.Cell;
 
+/**
+ * The type Table ex.
+ */
 public class TableEx extends FlexTable implements HasSelectionHandlers<Cell>{
 
-	public TableEx() {
+    /**
+     * Instantiates a new Table ex.
+     */
+    public TableEx() {
 		setStyleName("gwtEx-Table");
 		rf = getRowFormatter();
 		this.addClickHandler(tableClickTable);
@@ -23,11 +29,22 @@ public class TableEx extends FlexTable implements HasSelectionHandlers<Cell>{
 
 	private static final String TABLE_TR_CLICK_CSS = "gwtEx-Table-click";
 
-	RowFormatter rf;
-	
-	int currentRow = -1;
+    /**
+     * The Rf.
+     */
+    RowFormatter rf;
 
-	public void format(boolean format) {
+    /**
+     * The Current row.
+     */
+    int currentRow = -1;
+
+    /**
+     * Format.
+     *
+     * @param format the format
+     */
+    public void format(boolean format) {
 		if (format) {
 			int rowCount = this.getRowCount();
 			if (rowCount > 0) {
@@ -45,7 +62,10 @@ public class TableEx extends FlexTable implements HasSelectionHandlers<Cell>{
 		return addHandler(handler, SelectionEvent.getType());
 	}
 
-	ClickHandler tableClickTable = new ClickHandler() {
+    /**
+     * The Table click table.
+     */
+    ClickHandler tableClickTable = new ClickHandler() {
 
 		@Override
 		public void onClick(ClickEvent event) {
@@ -58,8 +78,13 @@ public class TableEx extends FlexTable implements HasSelectionHandlers<Cell>{
 			}
 		}
 	};
-	
-	public void setSelectionRow(int row) {
+
+    /**
+     * Sets selection row.
+     *
+     * @param row the row
+     */
+    public void setSelectionRow(int row) {
 	    cancelRowSelect();
 	    if (row > 0 && row < this.getRowCount()) {
 	      rf.setStyleName(row, TABLE_TR_CLICK_CSS);

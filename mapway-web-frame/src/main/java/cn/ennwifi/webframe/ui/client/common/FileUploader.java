@@ -32,15 +32,15 @@ public class FileUploader extends MessageComposite {
   /** The ui binder. */
   private static FileUploaderUiBinder uiBinder = GWT.create(FileUploaderUiBinder.class);
 
-  /**
-   * The Interface FileUploaderUiBinder.
-   */
-  interface FileUploaderUiBinder extends UiBinder<Widget, FileUploader> {}
+    /**
+     * The Interface FileUploaderUiBinder.
+     */
+    interface FileUploaderUiBinder extends UiBinder<Widget, FileUploader> {}
 
-  /**
-   * Instantiates a new file uploader.
-   */
-  public FileUploader() {
+    /**
+     * Instantiates a new file uploader.
+     */
+    public FileUploader() {
     initWidget(uiBinder.createAndBindUi(this));
 
     this.setAction(DEFAULT_ACTION, "default");
@@ -48,17 +48,23 @@ public class FileUploader extends MessageComposite {
     form.addSubmitCompleteHandler(completeHandler);
   }
 
-  /** The Constant DEFAULT_ACTION. */
-  public static final String DEFAULT_ACTION = GWT.getModuleBaseURL() + "../fileupload";
+    /**
+     * The Constant DEFAULT_ACTION.
+     */
+    public static final String DEFAULT_ACTION = GWT.getModuleBaseURL() + "../fileupload";
 
   /** The action. */
   private String action = "";
 
-  /** The extra. */
-  String extra = "";
+    /**
+     * The extra.
+     */
+    String extra = "";
 
-  /** The relpath. */
-  String relpath = "";
+    /**
+     * The relpath.
+     */
+    String relpath = "";
 
   /** The file change. */
   private ChangeHandler fileChange = new ChangeHandler() {
@@ -120,13 +126,13 @@ public class FileUploader extends MessageComposite {
     }
   };
 
-  /**
-   * 设置上传的参数.
-   *
-   * @param action 远程接受文件的URL
-   * @param relative 服务器保存的相对路径
-   */
-  public void setAction(String action, String relative) {
+    /**
+     * 设置上传的参数.
+     *
+     * @param action   远程接受文件的URL
+     * @param relative 服务器保存的相对路径
+     */
+    public void setAction(String action, String relative) {
     this.action = action;
     if (relative == null || relative.length() == 0) {
       relative = "upload";
@@ -134,13 +140,13 @@ public class FileUploader extends MessageComposite {
     relpath = relative;
   }
 
-  /**
-   * 判断文件是否可以被接受.
-   *
-   * @param filename the filename
-   * @return the string
-   */
-  protected String isFileAcceptable(String filename) {
+    /**
+     * 判断文件是否可以被接受.
+     *
+     * @param filename the filename
+     * @return the string
+     */
+    protected String isFileAcceptable(String filename) {
     int index = 0;
     index = filename.lastIndexOf('.');
     if (index <= 0) {
@@ -155,80 +161,88 @@ public class FileUploader extends MessageComposite {
     return "不能上传文件格式" + fileext;
   }
 
-  /** The lb title. */
-  @UiField
+    /**
+     * The lb title.
+     */
+    @UiField
   Label lbTitle;
 
-  /** The uploader. */
-  @UiField
+    /**
+     * The uploader.
+     */
+    @UiField
   FileUpload uploader;
 
-  /** The form. */
-  @UiField
+    /**
+     * The form.
+     */
+    @UiField
   FormPanel form;
 
-  /**
-   * Clean.
-   */
-  public void clean() {
+    /**
+     * Clean.
+     */
+    public void clean() {
     lbTitle.setText("");
   }
 
-  /**
-   * Sets the file title.
-   *
-   * @param string the new file title
-   */
-  public void setFileTitle(String string) {
+    /**
+     * Sets the file title.
+     *
+     * @param string the new file title
+     */
+    public void setFileTitle(String string) {
     lbTitle.setText(string);
   }
 
-  /**
-   * Sets the extra.
-   *
-   * @param value the new extra
-   */
-  public void setExtra(String value) {
+    /**
+     * Sets the extra.
+     *
+     * @param value the new extra
+     */
+    public void setExtra(String value) {
     extra = (value);
   }
 
-  /**
-   * Gets the file title.
-   *
-   * @return the file title
-   */
-  public String getFileTitle() {
+    /**
+     * Gets the file title.
+     *
+     * @return the file title
+     */
+    public String getFileTitle() {
     return lbTitle.getText();
   }
 
-  /** The acceptable files. */
-  ArrayList<String> acceptableFiles = new ArrayList<String>();
+    /**
+     * The acceptable files.
+     */
+    ArrayList<String> acceptableFiles = new ArrayList<String>();
 
-  /**
-   * 清楚可接受的文件格式.
-   */
-  public void clearAcceptFileExtension() {
+    /**
+     * 清楚可接受的文件格式.
+     */
+    public void clearAcceptFileExtension() {
     acceptableFiles.clear();
   }
 
-  /**
-   * 添加可以接受的上传文件格式.
-   *
-   * @param ext 可以接受的上传文件后缀 不需要添加 . 如 pdf png apk etc..
-   */
-  public void addAcceptFileExtension(String ext) {
+    /**
+     * 添加可以接受的上传文件格式.
+     *
+     * @param ext 可以接受的上传文件后缀 不需要添加 . 如 pdf png apk etc..
+     */
+    public void addAcceptFileExtension(String ext) {
     acceptableFiles.add(ext);
   }
 
   /** The m enabled random name. */
   private Boolean mEnabledRandomName = true;
 
-  /**
-   * Enable random name.
-   *
-   * @param enable the enable
-   */
-  public void enableRandomName(Boolean enable) {
+    /**
+     * Enable random name.
+     *
+     * @param enable the enable
+     */
+    public void enableRandomName(Boolean enable) {
     mEnabledRandomName = enable;
   }
 }

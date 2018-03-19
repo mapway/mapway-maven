@@ -14,17 +14,29 @@ import cn.mapway.ui.client.widget.common.DangerButton;
 import cn.mapway.ui.client.widget.common.DashBoardItem;
 import cn.mapway.ui.client.widget.common.PrimaryButton;
 
+/**
+ * The type Test dash board.
+ */
 @ModuleMarker(value = TestDashBoard.MODULE_CODE, group = "/测试", name = "主页面测试" , icon="avatar11.png")
 public class TestDashBoard extends AbstractModule {
 
 	private static TestDashBoardUiBinder uiBinder = GWT.create(TestDashBoardUiBinder.class);
-	
-	public static final String MODULE_CODE = "dashBoard";
 
-	interface TestDashBoardUiBinder extends UiBinder<Widget, TestDashBoard> {
+    /**
+     * The constant MODULE_CODE.
+     */
+    public static final String MODULE_CODE = "dashBoard";
+
+    /**
+     * The interface Test dash board ui binder.
+     */
+    interface TestDashBoardUiBinder extends UiBinder<Widget, TestDashBoard> {
 	}
 
-	public TestDashBoard() {
+    /**
+     * Instantiates a new Test dash board.
+     */
+    public TestDashBoard() {
 		initModuleWidget(uiBinder.createAndBindUi(this));
 		
 		init1();
@@ -33,30 +45,51 @@ public class TestDashBoard extends AbstractModule {
 		
 		init3();
 	}
-	
-	@UiField
+
+    /**
+     * The One.
+     */
+    @UiField
 	HTMLPanel one;
-	
-	@UiField
+
+    /**
+     * The Two.
+     */
+    @UiField
 	HTMLPanel two;
-	
-	@UiField
+
+    /**
+     * The T 1.
+     */
+    @UiField
 	HTMLPanel t1;
-	
-	@UiField
+
+    /**
+     * The T 2.
+     */
+    @UiField
 	HTMLPanel t2;
-	
-	@UiField
+
+    /**
+     * The T 3.
+     */
+    @UiField
 	HTMLPanel t3;
-	
-	DashBoardItem item;
+
+    /**
+     * The Item.
+     */
+    DashBoardItem item;
 	
 	@Override
 	public String getModuleCode() {
 		return MODULE_CODE;
 	}
-	
-	void init1(){
+
+    /**
+     * Init 1.
+     */
+    void init1(){
 		item = new DashBoardItem();
 		DangerButton btn = new DangerButton();
 		btn.setText("我是按钮");
@@ -90,8 +123,11 @@ public class TestDashBoard extends AbstractModule {
 		item.addStyleName("gwtEx-DashBoard-item-1");
 		one.add(item);
 	}
-	
-	void init2(){
+
+    /**
+     * Init 2.
+     */
+    void init2(){
 		item = new DashBoardItem();
 		item.setTitle("换行啦！！");
 		item.setLink("查看更多>>");
@@ -105,8 +141,11 @@ public class TestDashBoard extends AbstractModule {
 		two.add(item);
 		
 	}
-	
-	void init3(){
+
+    /**
+     * Init 3.
+     */
+    void init3(){
 		
 		item = new DashBoardItem();
 		item.setTitle("第一个");

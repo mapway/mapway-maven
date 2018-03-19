@@ -14,10 +14,16 @@ import com.google.gwt.user.client.ui.HTMLPanel;
 import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.RootPanel;
 
+/**
+ * The type Test entry.
+ */
 public class TestEntry implements EntryPoint {
 
 
-  IModuleDispatcher d;
+    /**
+     * The D.
+     */
+    IModuleDispatcher d;
 
   @Override
   public void onModuleLoad() {

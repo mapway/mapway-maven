@@ -10,19 +10,21 @@ import com.google.gwt.user.client.ui.Widget;
 
 
 /**
- * 缺省的菜单渲染项. Menu-->Subs-->render?-->Default Render -->None Subs->Executor?
- * 
- * @author zhangjianshe
+ * 缺省的菜单渲染项.
  *
+ * @author zhangjianshe
  */
 public class HorizontalMenuRender implements IMenuRender {
 
-  /**
-   * 全局实例
-   */
-  public static final HorizontalMenuRender HORIZONTAL_MENU_RENDER = new HorizontalMenuRender();
+    /**
+     * 全局实例
+     */
+    public static final HorizontalMenuRender HORIZONTAL_MENU_RENDER = new HorizontalMenuRender();
 
-  protected HorizontalMenuRender() {}
+    /**
+     * Instantiates a new Horizontal menu render.
+     */
+    protected HorizontalMenuRender() {}
 
   /*
    * (non-Javadoc)

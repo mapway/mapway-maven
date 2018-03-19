@@ -13,10 +13,10 @@ import com.google.gwt.user.client.ui.VerticalPanel;
 public class RichEditorBox extends VerticalPanel implements IValidator {
 
 
-  /**
-   * Instantiates a new rich editor.
-   */
-  @UiConstructor
+    /**
+     * Instantiates a new rich editor.
+     */
+    @UiConstructor
   public RichEditorBox() {
     super();
     m_editor = new RichTextArea();
@@ -28,7 +28,12 @@ public class RichEditorBox extends VerticalPanel implements IValidator {
   }
 
 
-  public void setUploadAction(String action) {
+    /**
+     * Sets upload action.
+     *
+     * @param action the action
+     */
+    public void setUploadAction(String action) {
     toolbar.setAction(action);
   }
 
@@ -39,21 +44,21 @@ public class RichEditorBox extends VerticalPanel implements IValidator {
   private RichTextArea m_editor;
 
 
-  /**
-   * Sets the html.
-   *
-   * @param html the new html
-   */
-  public void setValue(String html) {
+    /**
+     * Sets the html.
+     *
+     * @param html the new html
+     */
+    public void setValue(String html) {
     m_editor.setHTML(html);
   }
 
-  /**
-   * Gets the html.
-   *
-   * @return the html
-   */
-  public String getValue() {
+    /**
+     * Gets the html.
+     *
+     * @return the html
+     */
+    public String getValue() {
     return m_editor.getHTML();
   }
 
@@ -74,7 +79,10 @@ public class RichEditorBox extends VerticalPanel implements IValidator {
   }
 
   private String msg = "";
-  protected RegExp regex = null;
+    /**
+     * The Regex.
+     */
+    protected RegExp regex = null;
   private boolean required = false;
 
   @Override
@@ -133,29 +141,42 @@ public class RichEditorBox extends VerticalPanel implements IValidator {
     }
   }
 
-  Integer minLength = null;
-  Integer maxLength = null;
+    /**
+     * The Min length.
+     */
+    Integer minLength = null;
+    /**
+     * The Max length.
+     */
+    Integer maxLength = null;
 
 
-  /**
-   * 设置最小长度
-   * @param minLength
-   */
-  public void setMinLength(int minLength) {
+    /**
+     * 设置最小长度
+     *
+     * @param minLength the min length
+     */
+    public void setMinLength(int minLength) {
     this.minLength = minLength;
 
   }
 
-  /**
-   * 设置最大长度
-   * @param maxLength
-   */
-  public void setMaxLength(int maxLength) {
+    /**
+     * 设置最大长度
+     *
+     * @param maxLength the max length
+     */
+    public void setMaxLength(int maxLength) {
     this.maxLength = maxLength;
   }
 
 
-  public void setImagePrefix(String prefix) {
+    /**
+     * Sets image prefix.
+     *
+     * @param prefix the prefix
+     */
+    public void setImagePrefix(String prefix) {
     toolbar.setImagePrefix(prefix);
   }
 }

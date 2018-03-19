@@ -2,8 +2,8 @@ package cn.ennwifi.webframe.service.module;
 
 /**
  * dataTable列表查询返回数据
- * @author admin
  *
+ * @author admin
  */
 public class DataTableResp {
 	
@@ -15,35 +15,75 @@ public class DataTableResp {
 	
 	private Object data ;//返回前端数据
 
-	public int getStart() {
+    /**
+     * Gets start.
+     *
+     * @return the start
+     */
+    public int getStart() {
 		return start;
 	}
 
-	public void setStart(int start) {
+    /**
+     * Sets start.
+     *
+     * @param start the start
+     */
+    public void setStart(int start) {
 		this.start = start;
 	}
 
-	public int getLength() {
+    /**
+     * Gets length.
+     *
+     * @return the length
+     */
+    public int getLength() {
 		return length;
 	}
 
-	public void setLength(int length) {
+    /**
+     * Sets length.
+     *
+     * @param length the length
+     */
+    public void setLength(int length) {
 		this.length = length;
 	}
 
-	public long getRecordsFiltered() {
+    /**
+     * Gets records filtered.
+     *
+     * @return the records filtered
+     */
+    public long getRecordsFiltered() {
 		return recordsFiltered;
 	}
 
-	public void setRecordsFiltered(long recordsFiltered) {
+    /**
+     * Sets records filtered.
+     *
+     * @param recordsFiltered the records filtered
+     */
+    public void setRecordsFiltered(long recordsFiltered) {
 		this.recordsFiltered = recordsFiltered;
 	}
 
-	public Object getData() {
+    /**
+     * Gets data.
+     *
+     * @return the data
+     */
+    public Object getData() {
 		return data;
 	}
 
-	public void setData(Object data) {
+    /**
+     * Sets data.
+     *
+     * @param data the data
+     */
+    public void setData(Object data) {
 		this.data = data;
 	}
 

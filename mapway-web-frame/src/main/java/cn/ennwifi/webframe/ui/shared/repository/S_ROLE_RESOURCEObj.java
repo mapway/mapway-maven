@@ -25,17 +25,8 @@ import java.math.BigDecimal;
 import cn.mapway.document.annotation.*;
 
 /**
- * 数据库表 角色资源ID<br/>
- * @author zhangjsf@enn.cn
- * <b>字段列表</b><br/>
- *  Long role_id //角色ID<br/>
- *  Long res_id //资源ID<br/>
- * =========== 用于GWT模型 <br/>
- * =========== 用于GWT UIBinder <br/>
- * =========== 用于fromUI <br/>
- * =========== 用于toUI <br/>
+ * 数据库表 角色资源ID
  */
-
 @Table("s_role_resource")
 @Doc("s_role_resource(角色资源ID)")
 @PK({"role_id","res_id"})
@@ -46,11 +37,15 @@ public class S_ROLE_RESOURCEObj implements java.io.Serializable,com.google.gwt.u
   */
   private static final long serialVersionUID = 1L;
 
-  /**
-  * 表角色资源ID名称. 
+    /**
+     * 表角色资源ID名称.
      */
-  public static final String TBL_S_ROLE_RESOURCE="s_role_resource";
-  public S_ROLE_RESOURCEObj() {
+    public static final String TBL_S_ROLE_RESOURCE="s_role_resource";
+
+    /**
+     * Instantiates a new S role resource obj.
+     */
+    public S_ROLE_RESOURCEObj() {
   }
   /**
    * 根据字段名称获取字段的值. 
@@ -77,15 +72,15 @@ public class S_ROLE_RESOURCEObj implements java.io.Serializable,com.google.gwt.u
     return null;
   }
 
-  /**
-   * 角色ID role_id
- */
-  public static final String FLD_ROLE_ID="role_id";
+    /**
+     * 角色ID role_id
+     */
+    public static final String FLD_ROLE_ID="role_id";
 
-  /**
- * 角色ID role_id
- */
-  public static final Integer IDX_ROLE_ID=0;
+    /**
+     * 角色ID role_id
+     */
+    public static final Integer IDX_ROLE_ID=0;
  /**
    * 字段role_id 角色ID
    */
@@ -93,31 +88,33 @@ public class S_ROLE_RESOURCEObj implements java.io.Serializable,com.google.gwt.u
   @ApiField(value="角色ID",example="")
   private Long role_id;
 
-  /**
-   * 返回字段role_id 角色ID的值.
-   * @return role_id  角色ID  bigint
-  */
-  public Long getRole_id() {
+    /**
+     * 返回字段role_id 角色ID的值.
+     *
+     * @return role_id 角色ID  bigint
+     */
+    public Long getRole_id() {
     return role_id;
   }
 
-  /**
-   * 设置字段role_id 角色ID的值.
-   * @param role_id  角色ID  bigint
-   */
-  public void setRole_id(Long role_id) {
+    /**
+     * 设置字段role_id 角色ID的值.
+     *
+     * @param role_id 角色ID  bigint
+     */
+    public void setRole_id(Long role_id) {
     this.role_id=role_id;
   }
 
-  /**
-   * 资源ID res_id
- */
-  public static final String FLD_RES_ID="res_id";
+    /**
+     * 资源ID res_id
+     */
+    public static final String FLD_RES_ID="res_id";
 
-  /**
- * 资源ID res_id
- */
-  public static final Integer IDX_RES_ID=1;
+    /**
+     * 资源ID res_id
+     */
+    public static final Integer IDX_RES_ID=1;
  /**
    * 字段res_id 资源ID
    */
@@ -125,19 +122,21 @@ public class S_ROLE_RESOURCEObj implements java.io.Serializable,com.google.gwt.u
   @ApiField(value="资源ID",example="")
   private Long res_id;
 
-  /**
-   * 返回字段res_id 资源ID的值.
-   * @return res_id  资源ID  bigint
-  */
-  public Long getRes_id() {
+    /**
+     * 返回字段res_id 资源ID的值.
+     *
+     * @return res_id 资源ID  bigint
+     */
+    public Long getRes_id() {
     return res_id;
   }
 
-  /**
-   * 设置字段res_id 资源ID的值.
-   * @param res_id  资源ID  bigint
-   */
-  public void setRes_id(Long res_id) {
+    /**
+     * 设置字段res_id 资源ID的值.
+     *
+     * @param res_id 资源ID  bigint
+     */
+    public void setRes_id(Long res_id) {
     this.res_id=res_id;
   }
 

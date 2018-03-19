@@ -16,7 +16,13 @@ import com.google.gwt.user.client.ui.Label;
  */
 public class IconItem extends HorizontalPanel implements HasClickHandlers {
 
+    /**
+     * The Icon.
+     */
     public Image icon;
+    /**
+     * The Lb text.
+     */
     public Label lbText;
 
     /**
@@ -32,6 +38,13 @@ public class IconItem extends HorizontalPanel implements HasClickHandlers {
         this.icon.setVisible(false);
     }
 
+    /**
+     * Sets icon.
+     *
+     * @param res    the res
+     * @param width  the width
+     * @param height the height
+     */
     public void setIcon(ImageResource res, int width, int height) {
         if (res == null) {
             icon.setVisible(false);
@@ -42,6 +55,13 @@ public class IconItem extends HorizontalPanel implements HasClickHandlers {
         }
     }
 
+    /**
+     * Sets icon.
+     *
+     * @param url    the url
+     * @param width  the width
+     * @param height the height
+     */
     public void setIcon(SafeUri url, int width, int height) {
         if (url == null) {
             icon.setVisible(false);
@@ -54,6 +74,13 @@ public class IconItem extends HorizontalPanel implements HasClickHandlers {
         }
     }
 
+    /**
+     * Sets icon.
+     *
+     * @param url    the url
+     * @param width  the width
+     * @param height the height
+     */
     public void setIcon(String url, int width, int height) {
         if (url == null || url.length() == 0) {
             icon.setVisible(false);
@@ -64,18 +91,36 @@ public class IconItem extends HorizontalPanel implements HasClickHandlers {
         }
     }
 
+    /**
+     * Sets text.
+     *
+     * @param text the text
+     */
     public void setText(String text) {
         lbText.setText(text);
     }
 
+    /**
+     * Gets data.
+     *
+     * @return the data
+     */
     public Object getData() {
         return data;
     }
 
+    /**
+     * Sets data.
+     *
+     * @param data the data
+     */
     public void setData(Object data) {
         this.data = data;
     }
 
+    /**
+     * The Data.
+     */
     Object data;
 
     /**

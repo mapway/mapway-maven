@@ -30,15 +30,15 @@ import java.util.HashMap;
  * 文件上传代理,解决跨域调用问题
  *
  * @author zhangjianshe
- *
  */
 public class FileUploadProxy extends HttpServlet {
 
     /**
      * 获取客户端配置信息.需要自定义。
-     * @return
+     *
+     * @return client configure
      */
-  public ClientConfigure getClientConfigure()
+    public ClientConfigure getClientConfigure()
   {
      return  new DefaultClientConfigure();
   }
@@ -93,13 +93,13 @@ public class FileUploadProxy extends HttpServlet {
 
   }
 
-  /**
-   * Origion name.
-   *
-   * @param fileName the file name
-   * @return the string
-   */
-  public String origionName(String fileName) {
+    /**
+     * Origion name.
+     *
+     * @param fileName the file name
+     * @return the string
+     */
+    public String origionName(String fileName) {
     if (Strings.isBlank(fileName)) {
       return R.UU16();
     }

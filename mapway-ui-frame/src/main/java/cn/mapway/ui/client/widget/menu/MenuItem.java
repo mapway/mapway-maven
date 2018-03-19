@@ -14,9 +14,8 @@ import com.google.gwt.resources.client.ImageResource;
 
 /**
  * 菜单项.
- * 
- * @author zhangjianshe
  *
+ * @author zhangjianshe
  */
 public class MenuItem implements IMenuItem {
 
@@ -32,7 +31,10 @@ public class MenuItem implements IMenuItem {
   private IMenuRender render;
 
 
-  public MenuItem() {
+    /**
+     * Instantiates a new Menu item.
+     */
+    public MenuItem() {
     name = "菜单项";
     title = name;
     icon = null;
@@ -44,19 +46,43 @@ public class MenuItem implements IMenuItem {
     handler = null;
   }
 
-  public MenuItem(String name) {
+    /**
+     * Instantiates a new Menu item.
+     *
+     * @param name the name
+     */
+    public MenuItem(String name) {
     this(name, DefaultMenuHandler.INSTANCE);
   }
 
-  public MenuItem(String name, MenuExecutor handler) {
+    /**
+     * Instantiates a new Menu item.
+     *
+     * @param name    the name
+     * @param handler the handler
+     */
+    public MenuItem(String name, MenuExecutor handler) {
     this(name, HorizontalMenuRender.HORIZONTAL_MENU_RENDER, handler);
   }
 
-  public MenuItem(String name, IMenuRender render) {
+    /**
+     * Instantiates a new Menu item.
+     *
+     * @param name   the name
+     * @param render the render
+     */
+    public MenuItem(String name, IMenuRender render) {
     this(name, render, DefaultMenuHandler.INSTANCE);
   }
 
-  public MenuItem(String name, IMenuRender render, MenuExecutor handler) {
+    /**
+     * Instantiates a new Menu item.
+     *
+     * @param name    the name
+     * @param render  the render
+     * @param handler the handler
+     */
+    public MenuItem(String name, IMenuRender render, MenuExecutor handler) {
     this();
     this.name = name;
     this.render = render;

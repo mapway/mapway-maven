@@ -17,10 +17,10 @@ import com.ksyzt.gwt.client.event.MessageHandler;
  */
 public class ItemList extends HTMLPanel implements HasMessageHandlers {
 
-  /**
-   * Instantiates a new item list.
-   */
-  @UiConstructor
+    /**
+     * Instantiates a new item list.
+     */
+    @UiConstructor
   public ItemList() {
     super("");
   }
@@ -38,21 +38,29 @@ public class ItemList extends HTMLPanel implements HasMessageHandlers {
     return addHandler(handler, MessageEvent.TYPE);
   }
 
-  /** The m selected. */
-  Item mSelected = null;
+    /**
+     * The m selected.
+     */
+    Item mSelected = null;
 
-  public Item getSelected() {
+    /**
+     * Gets selected.
+     *
+     * @return the selected
+     */
+    public Item getSelected() {
     return mSelected;
   }
 
-  /**
-   * Adds the item.
-   *
-   * @param title the title
-   * @param summary the summary
-   * @param data the data
-   */
-  public void addItem(String title, String summary, String img, Object data) {
+    /**
+     * Adds the item.
+     *
+     * @param title   the title
+     * @param summary the summary
+     * @param img     the img
+     * @param data    the data
+     */
+    public void addItem(String title, String summary, String img, Object data) {
     Item item = new Item();
     item.setData(data);
     item.lbName.setText(title);
@@ -100,7 +108,14 @@ public class ItemList extends HTMLPanel implements HasMessageHandlers {
   }
 
 
-  public void setSelected(int index, Boolean selected, Boolean fired) {
+    /**
+     * Sets selected.
+     *
+     * @param index    the index
+     * @param selected the selected
+     * @param fired    the fired
+     */
+    public void setSelected(int index, Boolean selected, Boolean fired) {
     if (index >= 0 && index < this.getWidgetCount()) {
       Item item = (Item) this.getWidget(index);
 
@@ -120,7 +135,12 @@ public class ItemList extends HTMLPanel implements HasMessageHandlers {
 
   }
 
-  protected void click(Item it) {
+    /**
+     * Click.
+     *
+     * @param it the it
+     */
+    protected void click(Item it) {
     if (it != mSelected) {
       String cssSelected = "item-selected";
       if (mSelected != null) {

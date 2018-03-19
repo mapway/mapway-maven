@@ -18,6 +18,9 @@ import com.ksyzt.gwt.client.common.MessageComposite;
 import com.ksyzt.gwt.client.event.MessageEvent;
 import com.ksyzt.gwt.client.event.MessageHandler;
 
+/**
+ * The type Edit meta.
+ */
 public class EditMeta extends MessageComposite {
 
     private static EditMetaUiBinder uiBinder = GWT.create(EditMetaUiBinder.class);
@@ -33,9 +36,15 @@ public class EditMeta extends MessageComposite {
         }
     };
 
+    /**
+     * The interface Edit meta ui binder.
+     */
     interface EditMetaUiBinder extends UiBinder<Widget, EditMeta> {
     }
 
+    /**
+     * Instantiates a new Edit meta.
+     */
     public EditMeta() {
         initWidget(uiBinder.createAndBindUi(this));
         icon.addMessageHandler(iconHandler);
@@ -82,21 +91,30 @@ public class EditMeta extends MessageComposite {
     @UiField
     ButtonEx btnOk;
 
+    /**
+     * The Txt description.
+     */
     @UiField
     TextArea txtDESCRIPTION;
 
+    /**
+     * The Tools.
+     */
     @UiField
     public HorizontalPanel tools;
 
     /**
      * Edits the authority.
      *
-     * @param authority the authority
+     * @param meta the meta
      */
     public void editMeta(S_METAObj meta) {
         toUI(meta);
     }
 
+    /**
+     * The M meta.
+     */
     S_METAObj mMeta;
 
     /**
@@ -139,8 +157,14 @@ public class EditMeta extends MessageComposite {
     @UiField
     Label lbMessage;
 
+    /**
+     * The Icon.
+     */
     @UiField
     ImageUploader icon;
+    /**
+     * The Lb id.
+     */
     @UiField
     Label lbId;
 
@@ -237,6 +261,9 @@ public class EditMeta extends MessageComposite {
         });
     }
 
+    /**
+     * Create root.
+     */
     public void createRoot() {
         mMeta = null;
         editMeta(null);

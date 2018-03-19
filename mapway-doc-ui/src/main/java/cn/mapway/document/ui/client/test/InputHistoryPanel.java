@@ -15,6 +15,7 @@ import com.google.gwt.user.client.ui.Widget;
 import cn.mapway.document.ui.client.main.storage.LocalStorage;
 
 // TODO: Auto-generated Javadoc
+
 /**
  * The Class InputHistoryPanel.
  */
@@ -25,25 +26,29 @@ public class InputHistoryPanel extends Composite implements
 	private static InputHistoryPanelUiBinder uiBinder = GWT
 			.create(InputHistoryPanelUiBinder.class);
 
-	/**
-	 * The Interface InputHistoryPanelUiBinder.
-	 */
-	interface InputHistoryPanelUiBinder extends
+    /**
+     * The Interface InputHistoryPanelUiBinder.
+     */
+    interface InputHistoryPanelUiBinder extends
 			UiBinder<Widget, InputHistoryPanel> {
 	}
 
-	/**
-	 * Instantiates a new input history panel.
-	 */
-	public InputHistoryPanel() {
+    /**
+     * Instantiates a new input history panel.
+     */
+    public InputHistoryPanel() {
 		initWidget(uiBinder.createAndBindUi(this));
 	}
 
-	/** The current. */
-	HistoryItem current = null;
+    /**
+     * The current.
+     */
+    HistoryItem current = null;
 
-	/** The content. */
-	@UiField
+    /**
+     * The content.
+     */
+    @UiField
 	HTMLPanel content;
 	
 	/** The item click. */
@@ -56,20 +61,20 @@ public class InputHistoryPanel extends Composite implements
 		}
 	};
 
-	/**
-	 * Cleat content.
-	 */
-	public void cleatContent() {
+    /**
+     * Cleat content.
+     */
+    public void cleatContent() {
 		content.clear();
 	}
 
-	/**
-	 * Adds the item.
-	 *
-	 * @param title the title
-	 * @param value the value
-	 */
-	public void addItem(String title, String value) {
+    /**
+     * Adds the item.
+     *
+     * @param title the title
+     * @param value the value
+     */
+    public void addItem(String title, String value) {
 		HistoryItem item = new HistoryItem();
 		HistoryData hd = new HistoryData(title, value);
 
@@ -86,12 +91,12 @@ public class InputHistoryPanel extends Composite implements
 		return addHandler(handler, CloseEvent.getType());
 	}
 
-	/**
-	 * Render.
-	 *
-	 * @param relativePath the relative path
-	 */
-	public void render(String relativePath) {
+    /**
+     * Render.
+     *
+     * @param relativePath the relative path
+     */
+    public void render(String relativePath) {
 		content.clear();
 		String v = LocalStorage.val(relativePath);
 		if (v == null || v.length() == 0) {

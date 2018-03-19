@@ -7,6 +7,7 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 // TODO: Auto-generated Javadoc
+
 /**
  * 描述代码的特定值及其含义.
  *
@@ -16,32 +17,32 @@ import java.lang.annotation.Target;
 @Retention(RetentionPolicy.RUNTIME)
 @Target({ ElementType.FIELD })
 public @interface Code {
-	
-	/**
-	 * 字段值.
-	 *
-	 * @return the string
-	 */
-	public String value();
 
-	/**
-	 * 字段含义.
-	 *
-	 * @return the string
-	 */
-	public String desc() default "";
+    /**
+     * 字段值.
+     *
+     * @return the string
+     */
+    String value();
 
-	/**
-	 * 字段定义的名称.
-	 *
-	 * @return the string
-	 */
-	public String name() default "";
+    /**
+     * 字段含义.
+     *
+     * @return the string
+     */
+    String desc() default "";
 
-	/**
-	 * scope.
-	 *
-	 * @return the string
-	 */
-	public String scope() default "";
+    /**
+     * 字段定义的名称.
+     *
+     * @return the string
+     */
+    String name() default "";
+
+    /**
+     * scope.
+     *
+     * @return the string
+     */
+    String scope() default "";
 }

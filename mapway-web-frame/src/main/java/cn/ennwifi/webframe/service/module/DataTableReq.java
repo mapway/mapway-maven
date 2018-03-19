@@ -5,8 +5,8 @@ import java.util.Map;
 
 /**
  * dataTable列表查询传入数据
- * @author admin
  *
+ * @author admin
  */
 public class DataTableReq {
 	
@@ -22,51 +22,111 @@ public class DataTableReq {
 	
 	private Map<String , String> queryMap = new HashMap<String , String>();//条件查询
 
-	public int getStart() {
+    /**
+     * Gets start.
+     *
+     * @return the start
+     */
+    public int getStart() {
 		return start;
 	}
 
-	public void setStart(int start) {
+    /**
+     * Sets start.
+     *
+     * @param start the start
+     */
+    public void setStart(int start) {
 		this.start = start;
 	}
 
-	public int getLength() {
+    /**
+     * Gets length.
+     *
+     * @return the length
+     */
+    public int getLength() {
 		return length;
 	}
 
-	public void setLength(int length) {
+    /**
+     * Sets length.
+     *
+     * @param length the length
+     */
+    public void setLength(int length) {
 		this.length = length;
 	}
 
-	public String getOrder() {
+    /**
+     * Gets order.
+     *
+     * @return the order
+     */
+    public String getOrder() {
 		return order;
 	}
 
-	public void setOrder(String order) {
+    /**
+     * Sets order.
+     *
+     * @param order the order
+     */
+    public void setOrder(String order) {
 		this.order = order;
 	}
 
-	public String getOrderFiled() {
+    /**
+     * Gets order filed.
+     *
+     * @return the order filed
+     */
+    public String getOrderFiled() {
 		return orderFiled;
 	}
 
-	public void setOrderFiled(String orderFiled) {
+    /**
+     * Sets order filed.
+     *
+     * @param orderFiled the order filed
+     */
+    public void setOrderFiled(String orderFiled) {
 		this.orderFiled = orderFiled;
 	}
-	
-	public String getSearch() {
+
+    /**
+     * Gets search.
+     *
+     * @return the search
+     */
+    public String getSearch() {
 		return search;
 	}
 
-	public void setSearch(String search) {
+    /**
+     * Sets search.
+     *
+     * @param search the search
+     */
+    public void setSearch(String search) {
 		this.search = search;
 	}
 
-	public Map<String, String> getQueryMap() {
+    /**
+     * Gets query map.
+     *
+     * @return the query map
+     */
+    public Map<String, String> getQueryMap() {
 		return queryMap;
 	}
 
-	public void setQueryMap(Map<String, String> queryMap) {
+    /**
+     * Sets query map.
+     *
+     * @param queryMap the query map
+     */
+    public void setQueryMap(Map<String, String> queryMap) {
 		this.queryMap = queryMap;
 	}
 }

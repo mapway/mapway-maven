@@ -15,6 +15,7 @@ import com.ksyzt.gwt.client.event.MessageEvent;
 import com.ksyzt.gwt.client.event.MessageHandler;
 
 // TODO: Auto-generated Javadoc
+
 /**
  * The Class MessageTextBox.
  */
@@ -30,9 +31,11 @@ public class MessageTextBox extends TextBox implements HasMessageHandlers {
 		m_register = addHandler(handler, MessageEvent.TYPE);
 		return m_register;
 	}
-	
-	/** The m register. */
-	HandlerRegistration m_register = null;
+
+    /**
+     * The m register.
+     */
+    HandlerRegistration m_register = null;
 	
 	/** The m key down handler. */
 	private KeyDownHandler m_key_down_handler =new KeyDownHandler() {
@@ -68,11 +71,11 @@ public class MessageTextBox extends TextBox implements HasMessageHandlers {
 			
 		}
 	};
-	
-	/**
-	 * Instantiates a new message text box.
-	 */
-	@UiConstructor
+
+    /**
+     * Instantiates a new message text box.
+     */
+    @UiConstructor
 	public MessageTextBox()
 	{
 		super();

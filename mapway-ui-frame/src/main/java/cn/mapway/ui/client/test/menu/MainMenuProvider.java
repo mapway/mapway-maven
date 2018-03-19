@@ -8,9 +8,15 @@ import cn.mapway.ui.client.widget.menu.handler.MenuExecutor;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Widget;
 
+/**
+ * The type Main menu provider.
+ */
 public class MainMenuProvider implements IMenuProvider {
 
-  IMenuItem root;
+    /**
+     * The Root.
+     */
+    IMenuItem root;
   private MenuExecutor menuHandler = new MenuExecutor() {
 
     @Override
@@ -19,7 +25,10 @@ public class MainMenuProvider implements IMenuProvider {
     }
   };
 
-  public MainMenuProvider() {
+    /**
+     * Instantiates a new Main menu provider.
+     */
+    public MainMenuProvider() {
     root = new MenuItem("主菜单");
     IMenuItem item1;
 

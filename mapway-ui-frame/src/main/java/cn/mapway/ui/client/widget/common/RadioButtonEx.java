@@ -6,6 +6,9 @@ import com.google.gwt.safehtml.shared.SafeHtml;
 import com.google.gwt.uibinder.client.UiConstructor;
 import com.google.gwt.user.client.ui.RadioButton;
 
+/**
+ * The type Radio button ex.
+ */
 public class RadioButtonEx extends RadioButton implements IValidator {
 
   @Override
@@ -41,21 +44,42 @@ public class RadioButtonEx extends RadioButton implements IValidator {
     return true;
   }
 
-  @UiConstructor
+    /**
+     * Instantiates a new Radio button ex.
+     */
+    @UiConstructor
   public RadioButtonEx() {
     super("");
     setStyleName("gwtEx-RadioButton");
   }
 
-  public RadioButtonEx(String name) {
+    /**
+     * Instantiates a new Radio button ex.
+     *
+     * @param name the name
+     */
+    public RadioButtonEx(String name) {
     super(name);
   }
 
-  public RadioButtonEx(String name, SafeHtml label) {
+    /**
+     * Instantiates a new Radio button ex.
+     *
+     * @param name  the name
+     * @param label the label
+     */
+    public RadioButtonEx(String name, SafeHtml label) {
     super(name, label);
   }
 
-  public RadioButtonEx(String name, SafeHtml label, DirectionEstimator directionEstimator) {
+    /**
+     * Instantiates a new Radio button ex.
+     *
+     * @param name               the name
+     * @param label              the label
+     * @param directionEstimator the direction estimator
+     */
+    public RadioButtonEx(String name, SafeHtml label, DirectionEstimator directionEstimator) {
     super(name, label, directionEstimator);
   }
 

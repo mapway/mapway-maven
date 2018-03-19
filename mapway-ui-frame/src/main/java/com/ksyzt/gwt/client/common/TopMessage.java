@@ -10,6 +10,7 @@ import com.google.gwt.user.client.ui.PopupPanel;
 import com.google.gwt.user.client.ui.Widget;
 
 // TODO: Auto-generated Javadoc
+
 /**
  * The Class TopMessage.
  */
@@ -19,16 +20,16 @@ public class TopMessage extends PopupPanel {
 	private static TopMessageUiBinder uiBinder = GWT
 			.create(TopMessageUiBinder.class);
 
-	/**
-	 * The Interface TopMessageUiBinder.
-	 */
-	interface TopMessageUiBinder extends UiBinder<Widget, TopMessage> {
+    /**
+     * The Interface TopMessageUiBinder.
+     */
+    interface TopMessageUiBinder extends UiBinder<Widget, TopMessage> {
 	}
 
-	/**
-	 * Instantiates a new top message.
-	 */
-	public TopMessage() {
+    /**
+     * Instantiates a new top message.
+     */
+    public TopMessage() {
 		setWidget(uiBinder.createAndBindUi(this));
 		this.setAnimationEnabled(true);
 		this.setAutoHideEnabled(false);
@@ -37,8 +38,10 @@ public class TopMessage extends PopupPanel {
 		this.setStyleName("");
 	}
 
-	/** The lb message. */
-	@UiField
+    /**
+     * The lb message.
+     */
+    @UiField
 	Label lbMessage;
 	
 	/** The m callback. */
@@ -53,12 +56,12 @@ public class TopMessage extends PopupPanel {
 
 	};
 
-	/**
-	 * Show mesasge.
-	 *
-	 * @param text the text
-	 */
-	public void showMesasge(String text) {
+    /**
+     * Show mesasge.
+     *
+     * @param text the text
+     */
+    public void showMesasge(String text) {
 		if (text == null || text.length() == 0) {
 			this.hide();
 		} else {

@@ -4,6 +4,7 @@ import cn.mapway.document.ui.client.main.storage.LocalStorage;
 import cn.mapway.document.ui.client.test.TestPanel;
 
 // TODO: Auto-generated Javadoc
+
 /**
  * RPC调用的上下文.
  *
@@ -14,18 +15,22 @@ public class RpcContext {
   /** The context. */
   private static RpcContext context = null;
 
-  /** The enn custom token. */
-  public String KEY = "";
+    /**
+     * The enn custom token.
+     */
+    public String KEY = "";
 
-  /** The enn gateway token. */
-  public String VALUE = "";
+    /**
+     * The enn gateway token.
+     */
+    public String VALUE = "";
 
-  /**
-   * Gets the.
-   *
-   * @return the rpc context
-   */
-  public final static RpcContext get() {
+    /**
+     * Gets the.
+     *
+     * @return the rpc context
+     */
+    public final static RpcContext get() {
     if (context == null) {
       context = new RpcContext();
       context.KEY = LocalStorage.val(TestPanel.GWT_USER_HEADER);

@@ -1,6 +1,7 @@
 package cn.mapway.document.helper;
 
 // TODO: Auto-generated Javadoc
+
 /**
  * The Enum ParseType.
  *
@@ -8,8 +9,12 @@ package cn.mapway.document.helper;
  */
 public enum ParseType {
 
-	/** The pt nutz. */
-	PT_NUTZ,
-	/** The pt spring. */
-	PT_SPRING
+    /**
+     * The pt nutz.
+     */
+    PT_NUTZ,
+    /**
+     * The pt spring.
+     */
+    PT_SPRING
 }

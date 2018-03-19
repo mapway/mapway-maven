@@ -5,19 +5,20 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 // TODO: Auto-generated Javadoc
+
 /**
  * The Class StrUtil.
  */
 public class StrUtil {
 
-	/**
-	 * Replace 2.
-	 *
-	 * @param str the str
-	 * @param data the data
-	 * @return the string
-	 */
-	public static String replace2(String str, Map<String, String> data) {
+    /**
+     * Replace 2.
+     *
+     * @param str  the str
+     * @param data the data
+     * @return the string
+     */
+    public static String replace2(String str, Map<String, String> data) {
 
 		for (String key : data.keySet()) {
 			str = str.replaceAll(key, data.get(key));
@@ -25,14 +26,14 @@ public class StrUtil {
 		return str;
 	}
 
-	/**
-	 * Replace.
-	 *
-	 * @param str the str
-	 * @param data the data
-	 * @return the string
-	 */
-	public static String replace(String str, Map<String, String> data) {
+    /**
+     * Replace.
+     *
+     * @param str  the str
+     * @param data the data
+     * @return the string
+     */
+    public static String replace(String str, Map<String, String> data) {
 		try {
 			return StrUtil.composeMessage(str, data);
 		} catch (Exception e) {
@@ -41,15 +42,15 @@ public class StrUtil {
 		return "";
 	}
 
-	/**
-	 * Compose message.
-	 *
-	 * @param template the template
-	 * @param data the data
-	 * @return the string
-	 * @throws Exception the exception
-	 */
-	public static String composeMessage(String template, Map data)
+    /**
+     * Compose message.
+     *
+     * @param template the template
+     * @param data     the data
+     * @return the string
+     * @throws Exception the exception
+     */
+    public static String composeMessage(String template, Map data)
 			throws Exception {
 		String regex = "\\$\\{(.+?)\\}";
 		Pattern pattern = Pattern.compile(regex);

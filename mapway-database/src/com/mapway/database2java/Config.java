@@ -10,7 +10,9 @@ import org.apache.commons.cli.Options;
 import org.apache.commons.cli.ParseException;
 
 /**
- * @author zhangjianshe@gmail.com
+ * The type Config.
+ *
+ * @author zhangjianshe @gmail.com
  */
 public class Config implements IConfigure {
 
@@ -18,12 +20,22 @@ public class Config implements IConfigure {
 
     private CommandLine line;
 
+    /**
+     * Instantiates a new Config.
+     */
     public Config() {
         mOptions = new Options();
 
         init();
     }
 
+    /**
+     * Parse boolean.
+     *
+     * @param args the args
+     * @return the boolean
+     * @throws ParseException the parse exception
+     */
     public boolean parse(String[] args) throws ParseException {
         CommandLineParser parser = new BasicParser();
         line = parser.parse(mOptions, args);

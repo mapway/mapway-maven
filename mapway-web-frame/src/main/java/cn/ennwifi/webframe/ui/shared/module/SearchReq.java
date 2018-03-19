@@ -11,14 +11,12 @@ import com.google.gwt.user.client.rpc.IsSerializable;
 /**
  * The Class SearchReq.
  */
-
 public class SearchReq implements IsSerializable {
 
 
     /**
      * Instantiates a new search req.
      */
-
     public SearchReq() {
 
         this(1, 10, -1);
@@ -29,14 +27,12 @@ public class SearchReq implements IsSerializable {
     /**
      * 查询的排序.
      */
-
     public List<Pair<String, String>> orders;
 
 
     /**
      * 查询条件.
      */
-
     public String cnd = "";
 
 
@@ -47,8 +43,6 @@ public class SearchReq implements IsSerializable {
      * @param pageSize   the page size
      * @param count      the count
      */
-
-
     public SearchReq(int pageNumber, int pageSize, Integer count) {
 
         this.pageNumber = pageNumber;
@@ -96,7 +90,6 @@ public class SearchReq implements IsSerializable {
      *
      * @return the page number
      */
-
     public int getPageNumber() {
 
         return pageNumber;
@@ -109,7 +102,6 @@ public class SearchReq implements IsSerializable {
      *
      * @param pageNumber the new page number
      */
-
     public void setPageNumber(int pageNumber) {
 
         this.pageNumber = pageNumber;
@@ -122,7 +114,6 @@ public class SearchReq implements IsSerializable {
      *
      * @return the page size
      */
-
     public int getPageSize() {
 
         return pageSize;
@@ -135,7 +126,6 @@ public class SearchReq implements IsSerializable {
      *
      * @param pageSize the new page size
      */
-
     public void setPageSize(int pageSize) {
 
         this.pageSize = pageSize;
@@ -148,7 +138,6 @@ public class SearchReq implements IsSerializable {
      *
      * @return the count
      */
-
     public Integer getCount() {
 
         return count;
@@ -161,7 +150,6 @@ public class SearchReq implements IsSerializable {
      *
      * @param count the new count
      */
-
     public void setCount(Integer count) {
 
         this.count = count;
@@ -169,9 +157,19 @@ public class SearchReq implements IsSerializable {
     }
 
 
+    /**
+     * The Filters.
+     */
     public List<DataFilter> filters;
 
 
+    /**
+     * Add filter.
+     *
+     * @param name  the name
+     * @param op    the op
+     * @param value the value
+     */
     public void addFilter(String name, String op, String value) {
 
         DataFilter df = new DataFilter();
@@ -187,6 +185,9 @@ public class SearchReq implements IsSerializable {
     }
 
 
+    /**
+     * Clear filters.
+     */
     public void clearFilters() {
 
         filters.clear();
@@ -197,10 +198,9 @@ public class SearchReq implements IsSerializable {
     /**
      * 添加排序
      *
-     * @param fieldName
-     * @param order
+     * @param fieldName the field name
+     * @param order     the order
      */
-
     public void addOrder(String fieldName, String order) {
 
         Pair p = new Pair<String, String>();
@@ -214,6 +214,11 @@ public class SearchReq implements IsSerializable {
     }
 
 
+    /**
+     * Remove order.
+     *
+     * @param fieldName the field name
+     */
     public void removeOrder(String fieldName) {
 
         for (Pair<String, String> p : orders) {
@@ -231,6 +236,11 @@ public class SearchReq implements IsSerializable {
     }
 
 
+    /**
+     * Remove filter.
+     *
+     * @param name the name
+     */
     public void removeFilter(String name) {
 
         for (DataFilter df : filters) {

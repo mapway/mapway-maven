@@ -19,16 +19,16 @@ public class Item extends MessageComposite implements DataHolder {
   /** The ui binder. */
   private static ItemUiBinder uiBinder = GWT.create(ItemUiBinder.class);
 
-  /**
-   * The Interface ItemUiBinder.
-   */
-  interface ItemUiBinder extends UiBinder<Widget, Item> {
+    /**
+     * The Interface ItemUiBinder.
+     */
+    interface ItemUiBinder extends UiBinder<Widget, Item> {
   }
 
-  /**
-   * Instantiates a new item.
-   */
-  public Item() {
+    /**
+     * Instantiates a new item.
+     */
+    public Item() {
     initWidget(uiBinder.createAndBindUi(this));
   }
 
@@ -52,21 +52,33 @@ public class Item extends MessageComposite implements DataHolder {
     this.data = data;
   }
 
-  /** The lb name. */
-  @UiField
+    /**
+     * The lb name.
+     */
+    @UiField
   Label lbName;
 
-  /** The lb summary. */
-  @UiField
+    /**
+     * The lb summary.
+     */
+    @UiField
   Label lbSummary;
 
-  @UiField
+    /**
+     * The Img.
+     */
+    @UiField
   Image img;
 
   /** The data. */
   private Object data;
 
-  public void setSelected(boolean b) {
+    /**
+     * Sets selected.
+     *
+     * @param b the b
+     */
+    public void setSelected(boolean b) {
     if (b) {
       this.getElement().setAttribute(SELECTED, "true");
     } else {

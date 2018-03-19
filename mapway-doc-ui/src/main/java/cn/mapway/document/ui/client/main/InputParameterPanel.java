@@ -10,31 +10,60 @@ import cn.mapway.document.ui.client.component.Clients;
 import cn.mapway.document.ui.client.module.Entry;
 import cn.mapway.document.ui.client.module.ObjectInfo;
 
+/**
+ * The type Input parameter panel.
+ */
 public class InputParameterPanel extends Composite {
 
   private static InputParameterPanelUiBinder uiBinder = GWT
       .create(InputParameterPanelUiBinder.class);
 
-  interface InputParameterPanelUiBinder extends UiBinder<Widget, InputParameterPanel> {
+    /**
+     * The interface Input parameter panel ui binder.
+     */
+    interface InputParameterPanelUiBinder extends UiBinder<Widget, InputParameterPanel> {
   }
 
-  public InputParameterPanel() {
+    /**
+     * Instantiates a new Input parameter panel.
+     */
+    public InputParameterPanel() {
     initWidget(uiBinder.createAndBindUi(this));
   }
 
-  @UiField
+    /**
+     * The Para path.
+     */
+    @UiField
   ObjectsInfoPanel paraPath;
-  @UiField
+    /**
+     * The Para query.
+     */
+    @UiField
   ObjectsInfoPanel paraQuery;
-  @UiField
+    /**
+     * The Para body.
+     */
+    @UiField
   ParameterPanel paraBody;
 
-  @UiField
+    /**
+     * The Lb url.
+     */
+    @UiField
   Label lbUrl;
-  @UiField
+    /**
+     * The Lb none.
+     */
+    @UiField
   Label lbNone;
 
-  public void parseEntry(Entry entry) {
+    /**
+     * Parse entry.
+     *
+     * @param entry the entry
+     */
+    public void parseEntry(Entry entry) {
 
     boolean show = true;
     boolean urlShow = false;
@@ -92,7 +121,12 @@ public class InputParameterPanel extends Composite {
 
   }
 
-  public static void main(String[] args) {
+    /**
+     * The entry point of application.
+     *
+     * @param args the input arguments
+     */
+    public static void main(String[] args) {
 
   }
 

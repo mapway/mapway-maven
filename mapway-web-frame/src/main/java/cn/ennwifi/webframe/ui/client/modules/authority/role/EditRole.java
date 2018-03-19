@@ -29,29 +29,31 @@ public class EditRole extends DialogBoxEx {
   /** The ui binder. */
   private static EditRoleUiBinder uiBinder = GWT.create(EditRoleUiBinder.class);
 
-  /**
-   * The Interface EditRoleUiBinder.
-   */
-  interface EditRoleUiBinder extends UiBinder<Widget, EditRole> {}
+    /**
+     * The Interface EditRoleUiBinder.
+     */
+    interface EditRoleUiBinder extends UiBinder<Widget, EditRole> {}
 
-  /**
-   * Instantiates a new edits the role.
-   */
-  public EditRole() {
+    /**
+     * Instantiates a new edits the role.
+     */
+    public EditRole() {
     setWidget(uiBinder.createAndBindUi(this));
     setText("角色编辑");
     edit(null);
   }
 
-  /** The m role. */
-  S_ROLEObj mRole;
+    /**
+     * The m role.
+     */
+    S_ROLEObj mRole;
 
-  /**
-   * Edits the.
-   *
-   * @param role the role
-   */
-  public void edit(S_ROLEObj role) {
+    /**
+     * Edits the.
+     *
+     * @param role the role
+     */
+    public void edit(S_ROLEObj role) {
     message("");
     if (role == null) {
       role = new S_ROLEObj();
@@ -70,17 +72,25 @@ public class EditRole extends DialogBoxEx {
     txtSummary.setValue(mRole.getSummary());
   }
 
-  /** The txt NAME. */
-  @UiField
+    /**
+     * The txt NAME.
+     */
+    @UiField
   TextBox txtName;
 
-  /** The txt SUMMARY. */
-  @UiField
+    /**
+     * The txt SUMMARY.
+     */
+    @UiField
   TextArea txtSummary;
 
 
-
-  void onDeleteClick(ClickEvent e) {
+    /**
+     * On delete click.
+     *
+     * @param e the e
+     */
+    void onDeleteClick(ClickEvent e) {
     WebFrameProxy.get().deleteAdminRole(mRole.getId(), new AsyncCallback<Boolean>() {
 
       @Override
@@ -96,12 +106,12 @@ public class EditRole extends DialogBoxEx {
   }
 
 
-  /**
-   * On save click.
-   *
-   * @param e the e
-   */
-  @UiHandler("btnSave")
+    /**
+     * On save click.
+     *
+     * @param e the e
+     */
+    @UiHandler("btnSave")
   void onSaveClick(ClickEvent e) {
     fromUserInterface();
     String checked = checkObject(mRole);
@@ -127,7 +137,10 @@ public class EditRole extends DialogBoxEx {
     });
   }
 
-  @UiField
+    /**
+     * The Lb message.
+     */
+    @UiField
   Label lbMessage;
 
   private void message(String checked) {

@@ -5,30 +5,34 @@ package cn.mapway.document.coder;
  */
 public class Coder {
 
-  /** The code. */
-  public String code;
+    /**
+     * The code.
+     */
+    public String code;
 
-  /** The message. */
-  public String message;
+    /**
+     * The message.
+     */
+    public String message;
 
-  /**
-   * Instantiates a new coder.
-   *
-   * @param code the code
-   * @param message the message
-   */
-  public Coder(String code, String message) {
+    /**
+     * Instantiates a new coder.
+     *
+     * @param code    the code
+     * @param message the message
+     */
+    public Coder(String code, String message) {
     this.code = code;
     this.message = message;
   }
 
-  /**
-   * Bind.
-   *
-   * @param objects the objects
-   * @return the coder
-   */
-  public Coder bind(Object... objects) {
+    /**
+     * Bind.
+     *
+     * @param objects the objects
+     * @return the coder
+     */
+    public Coder bind(Object... objects) {
     if (objects == null) {
       return this;
     }

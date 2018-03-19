@@ -21,7 +21,10 @@ import cn.mapway.ui.client.mvc.ModuleParameter;
  */
 @ModuleMarker(value = AuthorityDefine.MODULE_CODE, name = "资源定义",group ="/系统", icon = "ad.png")
 public class AuthorityDefine extends AbstractModule {
-  public final static String MODULE_CODE = "MC_AUTHORITY_DEFINE";
+    /**
+     * The constant MODULE_CODE.
+     */
+    public final static String MODULE_CODE = "MC_AUTHORITY_DEFINE";
 
   @Override
   public String getModuleCode() {
@@ -36,12 +39,16 @@ public class AuthorityDefine extends AbstractModule {
     return b;
   }
 
-  /** The tree authority. */
-  @UiField
+    /**
+     * The tree authority.
+     */
+    @UiField
   AuthorityTree treeAuthority;
 
-  /** The edit authority. */
-  @UiField
+    /**
+     * The edit authority.
+     */
+    @UiField
   EditAuthority editAuthority;
 
 
@@ -49,15 +56,15 @@ public class AuthorityDefine extends AbstractModule {
   /** The ui binder. */
   private static AuthorityDefineUiBinder uiBinder = GWT.create(AuthorityDefineUiBinder.class);
 
-  /**
-   * The Interface AuthorityDefineUiBinder.
-   */
-  interface AuthorityDefineUiBinder extends UiBinder<Widget, AuthorityDefine> {}
+    /**
+     * The Interface AuthorityDefineUiBinder.
+     */
+    interface AuthorityDefineUiBinder extends UiBinder<Widget, AuthorityDefine> {}
 
-  /**
-   * Instantiates a new authority define.
-   */
-  public AuthorityDefine() {
+    /**
+     * Instantiates a new authority define.
+     */
+    public AuthorityDefine() {
     initModuleWidget(uiBinder.createAndBindUi(this));
     initEvent();
   }

@@ -4,21 +4,39 @@ import com.google.gwt.user.client.rpc.IsSerializable;
 
 /**
  * 数据数量
- * 
- * @author zhangjianshe
  *
+ * @author zhangjianshe
  */
 public class DashboardData implements IsSerializable {
 
-  public String name;
-  public int count;
-  public String icon;
+    /**
+     * The Name.
+     */
+    public String name;
+    /**
+     * The Count.
+     */
+    public int count;
+    /**
+     * The Icon.
+     */
+    public String icon;
 
-  public DashboardData() {
+    /**
+     * Instantiates a new Dashboard data.
+     */
+    public DashboardData() {
 
   }
 
-  public DashboardData(String name, int count, String icon) {
+    /**
+     * Instantiates a new Dashboard data.
+     *
+     * @param name  the name
+     * @param count the count
+     * @param icon  the icon
+     */
+    public DashboardData(String name, int count, String icon) {
     this.name = name;
     this.count = count;
     this.icon = icon;

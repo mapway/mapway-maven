@@ -8,15 +8,33 @@ import java.math.BigDecimal;
 import java.text.NumberFormat;
 import java.util.*;
 
+/**
+ * The type Collection ascii table aware.
+ *
+ * @param <T> the type parameter
+ */
 public class CollectionASCIITableAware<T> implements IASCIITableAware {
 
     private List<ASCIITableHeader> headers;
     private List<List<Object>> data;
 
+    /**
+     * Instantiates a new Collection ascii table aware.
+     *
+     * @param objList    the obj list
+     * @param properties the properties
+     */
     public CollectionASCIITableAware(final List<T> objList, final String... properties) {
         this(objList, Arrays.asList(properties), Arrays.asList(properties));
     }
 
+    /**
+     * Instantiates a new Collection ascii table aware.
+     *
+     * @param objList    the obj list
+     * @param properties the properties
+     * @param title      the title
+     */
     public CollectionASCIITableAware(final List<T> objList, final List<String> properties, final List<String> title) {
         this.headers = null;
         this.data = null;

@@ -6,6 +6,9 @@ import com.google.gwt.i18n.client.DateTimeFormat;
 import com.google.gwt.regexp.shared.RegExp;
 import com.google.gwt.user.datepicker.client.DateBox;
 
+/**
+ * The type Date box ex.
+ */
 public class DateBoxEx extends DateBox implements IValidator {
   private String msg = "";
   private RegExp regex = null;
@@ -42,14 +45,22 @@ public class DateBoxEx extends DateBox implements IValidator {
 
   private static String DATE_TIME_FORMAT = "yyyy/MM/dd-HH:mm:ss";
 
-  public DateBoxEx() {
+    /**
+     * Instantiates a new Date box ex.
+     */
+    public DateBoxEx() {
     setStyleName("gwtEx-TextBox");
     setDateFormat(DATE_TIME_FORMAT);
 
     initDateBox();
   }
 
-  public void setDateFormat(String dateFormat) {
+    /**
+     * Sets date format.
+     *
+     * @param dateFormat the date format
+     */
+    public void setDateFormat(String dateFormat) {
     if (!dateFormat.isEmpty()) {
       DATE_TIME_FORMAT = dateFormat;
     }
@@ -58,14 +69,20 @@ public class DateBoxEx extends DateBox implements IValidator {
     this.setFormat(df);
   }
 
-  public void initDateBox() {
+    /**
+     * Init date box.
+     */
+    public void initDateBox() {
     PrimaryButton btn = new PrimaryButton();
     btn.setText("当前时间");
     btn.addClickHandler(nowTimeHandler);
     this.getElement().appendChild(btn.getElement());
   }
 
-  ClickHandler nowTimeHandler = new ClickHandler() {
+    /**
+     * The Now time handler.
+     */
+    ClickHandler nowTimeHandler = new ClickHandler() {
 
     @Override
     public void onClick(ClickEvent event) {}

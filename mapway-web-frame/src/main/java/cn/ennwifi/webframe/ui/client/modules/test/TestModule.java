@@ -16,13 +16,16 @@ import com.google.gwt.user.client.ui.Widget;
 
 /**
  * 测试组件模块
- * @author zhangjianshe
  *
+ * @author zhangjianshe
  */
 @ModuleMarker(value = TestModule.MODULE_CODE, name = "组件测试模块", group = "/系统/测试")
 public class TestModule extends AbstractModuleWithEvent {
 
-  public final static String MODULE_CODE = "MC_TEST_COMPONENT";
+    /**
+     * The constant MODULE_CODE.
+     */
+    public final static String MODULE_CODE = "MC_TEST_COMPONENT";
 
   @Override
   public String getModuleCode() {
@@ -31,13 +34,22 @@ public class TestModule extends AbstractModuleWithEvent {
 
   private static TestModuleUiBinder uiBinder = GWT.create(TestModuleUiBinder.class);
 
-  interface TestModuleUiBinder extends UiBinder<Widget, TestModule> {
+    /**
+     * The interface Test module ui binder.
+     */
+    interface TestModuleUiBinder extends UiBinder<Widget, TestModule> {
   }
 
-  @UiField
+    /**
+     * The Editor.
+     */
+    @UiField
   RichEditorBox editor;
 
-  public TestModule() {
+    /**
+     * Instantiates a new Test module.
+     */
+    public TestModule() {
     initModuleWidget(uiBinder.createAndBindUi(this));
     editor.setImagePrefix(ClientContext.getContext().getConfigure().getImagePrefix());
     editor.setUploadAction(ClientContext.getContext().getImageUploadAction());
@@ -52,7 +64,12 @@ public class TestModule extends AbstractModuleWithEvent {
     return b;
   }
 
-  @UiHandler("btn")
+    /**
+     * On click.
+     *
+     * @param e the e
+     */
+    @UiHandler("btn")
   void onClick(ClickEvent e) {
     ClientContext.getContext().confirm(editor.getValue());
   }

@@ -31,48 +31,84 @@ import java.util.List;
 public class SortableTable extends VerticalPanel implements IListener,
     HasValueChangeHandlers<SearchReq>, ChangeHandler {
 
-  /** The sort table title. */
-  NeLabel sortTableTitle;
+    /**
+     * The sort table title.
+     */
+    NeLabel sortTableTitle;
 
-  /** The top buttons. */
-  HorizontalPanel topButtons;
+    /**
+     * The top buttons.
+     */
+    HorizontalPanel topButtons;
 
-  /** The refresh btn. */
-  NeButton refreshBtn;
+    /**
+     * The refresh btn.
+     */
+    NeButton refreshBtn;
 
-  /** The list. */
-  ListBox list;
+    /**
+     * The list.
+     */
+    ListBox list;
 
-  /** The table. */
-  TableEx table;
+    /**
+     * The table.
+     */
+    TableEx table;
 
-  /** The pages. */
-  HorizontalPanel pages;
+    /**
+     * The pages.
+     */
+    HorizontalPanel pages;
 
-  SearchReq req;
+    /**
+     * The Req.
+     */
+    SearchReq req;
 
-  public SearchReq getReq() {
+    /**
+     * Gets req.
+     *
+     * @return the req
+     */
+    public SearchReq getReq() {
     return req;
   }
 
-  public void setReq(SearchReq req) {
+    /**
+     * Sets req.
+     *
+     * @param req the req
+     */
+    public void setReq(SearchReq req) {
     this.req = req;
   }
 
-  public Widget getCellWidget(int row, int column) {
+    /**
+     * Gets cell widget.
+     *
+     * @param row    the row
+     * @param column the column
+     * @return the cell widget
+     */
+    public Widget getCellWidget(int row, int column) {
     return table.getWidget(row, column);
   }
 
-  /** The page size. */
-  int pageSize = 2;
+    /**
+     * The page size.
+     */
+    int pageSize = 2;
 
-  /** The current page. */
-  int currentPage = 1;
+    /**
+     * The current page.
+     */
+    int currentPage = 1;
 
-  /**
-   * Instantiates a new sortable table.
-   */
-  public SortableTable() {
+    /**
+     * Instantiates a new sortable table.
+     */
+    public SortableTable() {
     topButtons = new HorizontalPanel();
     topButtons.setWidth("100%");
     this.add(topButtons);
@@ -392,10 +428,10 @@ public class SortableTable extends VerticalPanel implements IListener,
     return pageSize;
   }
 
-  /**
-   * 当用户在页面上操作表格 选择页码 ,选择页大小 都会调用此函数.
-   */
-  public void fireRequest() {
+    /**
+     * 当用户在页面上操作表格 选择页码 ,选择页大小 都会调用此函数.
+     */
+    public void fireRequest() {
 
     getCurrentPageSize();
     req = new SearchReq(currentPage, pageSize, mProvider.getTotalCount());
@@ -450,12 +486,12 @@ public class SortableTable extends VerticalPanel implements IListener,
     return HeaderInfo.ORDER_NULL;
   }
 
-  /**
-   * Sets the data provider.
-   *
-   * @param provider the new data provider
-   */
-  public void setDataProvider(IDataProvider<IFieldValue> provider) {
+    /**
+     * Sets the data provider.
+     *
+     * @param provider the new data provider
+     */
+    public void setDataProvider(IDataProvider<IFieldValue> provider) {
     if (provider == null) {
       return;
     }

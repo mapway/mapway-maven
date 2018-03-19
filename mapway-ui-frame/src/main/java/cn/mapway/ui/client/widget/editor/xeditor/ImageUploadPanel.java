@@ -34,10 +34,10 @@ public class ImageUploadPanel extends MessageComposite {
   /** The ui binder. */
   private static ImageUploadPanelUiBinder uiBinder = GWT.create(ImageUploadPanelUiBinder.class);
 
-  /**
-   * The Interface ImageUploadPanelUiBinder.
-   */
-  interface ImageUploadPanelUiBinder extends UiBinder<Widget, ImageUploadPanel> {
+    /**
+     * The Interface ImageUploadPanelUiBinder.
+     */
+    interface ImageUploadPanelUiBinder extends UiBinder<Widget, ImageUploadPanel> {
   }
 
   /** The m file change. */
@@ -100,13 +100,13 @@ public class ImageUploadPanel extends MessageComposite {
     }
   };
 
-  /**
-   * Can upload.
-   *
-   * @param ft the ft
-   * @return true, if successful
-   */
-  public boolean canUpload(String ft) {
+    /**
+     * Can upload.
+     *
+     * @param ft the ft
+     * @return true, if successful
+     */
+    public boolean canUpload(String ft) {
     boolean b = false;
 
     if (ft.compareToIgnoreCase("zip") == 0 || ft.compareToIgnoreCase("png") == 0
@@ -118,10 +118,10 @@ public class ImageUploadPanel extends MessageComposite {
     return b;
   }
 
-  /**
-   * Instantiates a new image upload panel.
-   */
-  public ImageUploadPanel() {
+    /**
+     * Instantiates a new image upload panel.
+     */
+    public ImageUploadPanel() {
     initWidget(uiBinder.createAndBindUi(this));
 
     upload.setName("fileset");
@@ -134,24 +134,34 @@ public class ImageUploadPanel extends MessageComposite {
     frmPanel.setVisible(false);
   }
 
-  /** The txt URL. */
-  @UiField
+    /**
+     * The txt URL.
+     */
+    @UiField
   TextBox txtURL;
 
-  /** The btn upload. */
-  @UiField
+    /**
+     * The btn upload.
+     */
+    @UiField
   Button btnUpload;
 
-  /** The upload. */
-  @UiField
+    /**
+     * The upload.
+     */
+    @UiField
   FileUpload upload;
 
-  /** The frm panel. */
-  @UiField
+    /**
+     * The frm panel.
+     */
+    @UiField
   FormPanel frmPanel;
 
-  /** The lb message. */
-  @UiField
+    /**
+     * The lb message.
+     */
+    @UiField
   Label lbMessage;
 
   /*
@@ -164,12 +174,12 @@ public class ImageUploadPanel extends MessageComposite {
     lbMessage.setText(msg);
   }
 
-  /**
-   * On upload click.
-   *
-   * @param e the e
-   */
-  @UiHandler("btnUpload")
+    /**
+     * On upload click.
+     *
+     * @param e the e
+     */
+    @UiHandler("btnUpload")
   void onUploadClick(ClickEvent e) {
     if (btnUpload.getText().equals("上传")) {
       txtURL.setVisible(false);
@@ -183,12 +193,12 @@ public class ImageUploadPanel extends MessageComposite {
   }
 
 
-  /**
-   * On OK.
-   *
-   * @param e the e
-   */
-  @UiHandler("btnOK")
+    /**
+     * On OK.
+     *
+     * @param e the e
+     */
+    @UiHandler("btnOK")
   void onOK(ClickEvent e) {
     String url = txtURL.getValue();
     if (url != null && !url.equals("")) {
@@ -199,51 +209,65 @@ public class ImageUploadPanel extends MessageComposite {
     }
   }
 
-  /**
-   * On cancel.
-   *
-   * @param e the e
-   */
-  @UiHandler("btnCancel")
+    /**
+     * On cancel.
+     *
+     * @param e the e
+     */
+    @UiHandler("btnCancel")
   void onCancel(ClickEvent e) {
     MessageEvent ev = new MessageEvent(MessageEvent.CANCEL, null);
     fireEvent(ev);
   }
 
-  /** The txt width. */
-  @UiField
+    /**
+     * The txt width.
+     */
+    @UiField
   TextBox txtWidth;
 
-  /** The txt height. */
-  @UiField
+    /**
+     * The txt height.
+     */
+    @UiField
   TextBox txtHeight;
 
-  /** The txt border. */
-  @UiField
+    /**
+     * The txt border.
+     */
+    @UiField
   TextBox txtBorder;
 
-  /** The txt H space. */
-  @UiField
+    /**
+     * The txt H space.
+     */
+    @UiField
   TextBox txtHSpace;
 
-  /** The txt V space. */
-  @UiField
+    /**
+     * The txt V space.
+     */
+    @UiField
   TextBox txtVSpace;
 
-  /** The txt replace text. */
-  @UiField
+    /**
+     * The txt replace text.
+     */
+    @UiField
   TextBox txtReplaceText;
 
-  /** The ddl align. */
-  @UiField
+    /**
+     * The ddl align.
+     */
+    @UiField
   ListBox ddlAlign;
 
-  /**
-   * Gets the image attribute.
-   *
-   * @return the image attribute
-   */
-  public String getImageAttribute() {
+    /**
+     * Gets the image attribute.
+     *
+     * @return the image attribute
+     */
+    public String getImageAttribute() {
     String r = "";
     if (!txtWidth.getValue().equals("")) {
       r = "width='" + txtWidth.getValue() + "' ";
@@ -258,7 +282,12 @@ public class ImageUploadPanel extends MessageComposite {
     return r;
   }
 
-  public void setAction(String mAction) {
+    /**
+     * Sets action.
+     *
+     * @param mAction the m action
+     */
+    public void setAction(String mAction) {
     if (mAction != null && mAction.length() > 0) {
       frmPanel.setAction(mAction);
     }
@@ -266,11 +295,21 @@ public class ImageUploadPanel extends MessageComposite {
 
   private String prefix = "";
 
-  public void setImagePrefix(String prefix) {
+    /**
+     * Sets image prefix.
+     *
+     * @param prefix the prefix
+     */
+    public void setImagePrefix(String prefix) {
     this.prefix = prefix;
   }
 
-  public String getImagePrefix() {
+    /**
+     * Gets image prefix.
+     *
+     * @return the image prefix
+     */
+    public String getImagePrefix() {
     return this.prefix;
   }
 }

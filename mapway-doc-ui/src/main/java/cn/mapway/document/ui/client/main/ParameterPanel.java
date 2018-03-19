@@ -32,30 +32,35 @@ public class ParameterPanel extends Composite implements
 	private static ParameterPanelUiBinder uiBinder = GWT
 			.create(ParameterPanelUiBinder.class);
 
-	/**
-	 * The Interface ParameterPanelUiBinder.
-	 */
-	interface ParameterPanelUiBinder extends UiBinder<Widget, ParameterPanel> {
+    /**
+     * The Interface ParameterPanelUiBinder.
+     */
+    interface ParameterPanelUiBinder extends UiBinder<Widget, ParameterPanel> {
 	}
 
-	/**
-	 * Instantiates a new parameter panel.
-	 */
-	public ParameterPanel() {
+    /**
+     * Instantiates a new parameter panel.
+     */
+    public ParameterPanel() {
 		initWidget(uiBinder.createAndBindUi(this));
 		tbl.addSelectionHandler(fieldTypeSelectionHandler);
 	}
 
-	
 
-	/** The m obj. */
-	ObjectInfo mObj;
+    /**
+     * The m obj.
+     */
+    ObjectInfo mObj;
 
-	/** The mapper. */
-	Map<String, Anchor> mapper;
+    /**
+     * The mapper.
+     */
+    Map<String, Anchor> mapper;
 
-	/** The gens. */
-	List<GenInfo> gens;
+    /**
+     * The gens.
+     */
+    List<GenInfo> gens;
 
 	/** The field type selection handler. */
 	private SelectionHandler<ObjectInfo> fieldTypeSelectionHandler = new SelectionHandler<ObjectInfo>() {
@@ -72,13 +77,13 @@ public class ParameterPanel extends Composite implements
 		}
 	};
 
-	/**
-	 * Parses the.
-	 *
-	 * @param obj the obj
-	 * @param string the string
-	 */
-	public void parse(ObjectInfo obj, String string) {
+    /**
+     * Parses the.
+     *
+     * @param obj    the obj
+     * @param string the string
+     */
+    public void parse(ObjectInfo obj, String string) {
 		mObj = obj;
 		gens = new ArrayList<GenInfo>();
 		mapper = new HashMap<String, Anchor>();
@@ -153,12 +158,16 @@ public class ParameterPanel extends Composite implements
 		return false;
 	}
 
-	/** The tbl. */
-	@UiField
+    /**
+     * The tbl.
+     */
+    @UiField
 	ObjectInfoPanel tbl;
 
-	/** The json panel. */
-	@UiField
+    /**
+     * The json panel.
+     */
+    @UiField
 	JsonPanel jsonPanel;
 
 	/* (non-Javadoc)
@@ -170,8 +179,10 @@ public class ParameterPanel extends Composite implements
 		return addHandler(arg0, SelectionEvent.getType());
 	}
 
-	/** The obj info panel. */
-	@UiField
+    /**
+     * The obj info panel.
+     */
+    @UiField
 	HTMLPanel objInfoPanel;
 
 	

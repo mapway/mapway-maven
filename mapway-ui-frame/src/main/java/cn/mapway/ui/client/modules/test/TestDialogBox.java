@@ -6,14 +6,23 @@ import com.google.gwt.user.client.ui.Widget;
 
 import cn.mapway.ui.client.widget.common.DialogBoxEx;
 
+/**
+ * The type Test dialog box.
+ */
 public class TestDialogBox extends DialogBoxEx {
 
 	private static TestDialogBoxUiBinder uiBinder = GWT.create(TestDialogBoxUiBinder.class);
 
-	interface TestDialogBoxUiBinder extends UiBinder<Widget, TestDialogBox> {
+    /**
+     * The interface Test dialog box ui binder.
+     */
+    interface TestDialogBoxUiBinder extends UiBinder<Widget, TestDialogBox> {
 	}
 
-	public TestDialogBox() {
+    /**
+     * Instantiates a new Test dialog box.
+     */
+    public TestDialogBox() {
 		setWidget(uiBinder.createAndBindUi(this));
 		setText("测试弹出框");
 	}

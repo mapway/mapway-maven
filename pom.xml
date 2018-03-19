@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>cn.mapway</groupId>
     <artifactId>mapway-maven</artifactId>
-    <version>1.1.9-SNAPSHOT</version>
+    <version>2.0.0</version>
     <packaging>pom</packaging>
     
     <properties>
@@ -13,8 +13,9 @@
         <SpringVersion>4.2.6.RELEASE</SpringVersion>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <gpg.keyname>50420238</gpg.keyname>
+        <gpg.keyname>08162ECD</gpg.keyname>
     </properties>
+
     <name>mapway maven group project</name>
     <description>mmanage the cn.mapway artifacts</description>
     <url>http://maven.mapway.cn</url>
@@ -79,11 +80,7 @@
             <artifactId>nutz</artifactId>
             <version>1.r.60</version>
         </dependency>
-        <dependency>
-            <groupId>cn.ennwifi</groupId>
-            <artifactId>pgjdbc</artifactId>
-            <version>9.6-SNAPSHOT</version>
-        </dependency>
+
     </dependencies>
     <profiles>
         <profile>
@@ -145,6 +142,9 @@
                                 <goals>
                                     <goal>sign</goal>
                                 </goals>
+                                <configuration>
+                                    <keyname>${gpg.keyname}</keyname>
+                                </configuration>
                             </execution>
                         </executions>
                     </plugin>

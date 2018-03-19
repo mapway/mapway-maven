@@ -17,54 +17,63 @@ import com.ksyzt.gwt.client.event.MessageHandler;
 import com.ksyzt.gwt.client.site.urlrewrite.UrlRewriteConfigure;
 
 // TODO: Auto-generated Javadoc
+
 /**
  * The Class SiteFrame.
  */
 public class SiteFrame extends MessageComposite {
 
-	/** The style. */
-	@UiField(provided = true)
+    /**
+     * The style.
+     */
+    @UiField(provided = true)
 	CssStyle style;
 	
 	/** The ui binder. */
 	private static SiteFrameUiBinder uiBinder = GWT
 			.create(SiteFrameUiBinder.class);
 
-	/**
-	 * The Interface SiteFrameUiBinder.
-	 */
-	interface SiteFrameUiBinder extends UiBinder<Widget, SiteFrame> {
+    /**
+     * The Interface SiteFrameUiBinder.
+     */
+    interface SiteFrameUiBinder extends UiBinder<Widget, SiteFrame> {
 	}
 
-	/**
-	 * Instantiates a new site frame.
-	 */
-	public SiteFrame() {
+    /**
+     * Instantiates a new site frame.
+     */
+    public SiteFrame() {
 		style = SysResource.INSTANCE.getCss();
 		initWidget(uiBinder.createAndBindUi(this));
 	}
 
-	/**
-	 * On qiut.
-	 *
-	 * @param e the e
-	 */
-	@UiHandler("btnQiut")
+    /**
+     * On qiut.
+     *
+     * @param e the e
+     */
+    @UiHandler("btnQiut")
 	void onQiut(ClickEvent e)
 	{
 		MessageEvent ev=new MessageEvent(MessageEvent.QUIT,0);
 		fireEvent(ev);
 	}
-	
-	/** The root. */
-	@UiField
+
+    /**
+     * The root.
+     */
+    @UiField
 	DockLayoutPanel root;
 
-	/** The page info. */
-	PageSiteInfo pageInfo;
-	
-	/** The page url. */
-	UrlRewriteConfigure pageUrl;
+    /**
+     * The page info.
+     */
+    PageSiteInfo pageInfo;
+
+    /**
+     * The page url.
+     */
+    UrlRewriteConfigure pageUrl;
 	
 	/** The m message handler. */
 	private MessageHandler m_message_handler = new MessageHandler() {
@@ -78,15 +87,17 @@ public class SiteFrame extends MessageComposite {
 		}
 	};
 
-	/** The current. */
-	Widget current = null;
+    /**
+     * The current.
+     */
+    Widget current = null;
 
-	/**
-	 * On info.
-	 *
-	 * @param e the e
-	 */
-	@UiHandler("btnSiteInfo")
+    /**
+     * On info.
+     *
+     * @param e the e
+     */
+    @UiHandler("btnSiteInfo")
 	void onInfo(ClickEvent e) {
 		if (pageInfo == null) {
 			pageInfo = new PageSiteInfo();
@@ -120,12 +131,12 @@ public class SiteFrame extends MessageComposite {
 
 	}
 
-	/**
-	 * On URL.
-	 *
-	 * @param e the e
-	 */
-	@UiHandler("btnURL")
+    /**
+     * On URL.
+     *
+     * @param e the e
+     */
+    @UiHandler("btnURL")
 	void onURL(ClickEvent e) {
 		if (pageUrl == null) {
 			pageUrl = new UrlRewriteConfigure();

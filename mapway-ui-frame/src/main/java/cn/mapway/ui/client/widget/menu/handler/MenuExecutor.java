@@ -7,15 +7,15 @@ import com.google.gwt.user.client.ui.Widget;
 
 /**
  * 菜单执行句柄
- * 
- * @author zhangjianshe
  *
+ * @author zhangjianshe
  */
 public interface MenuExecutor {
-  /**
-   * 执行菜单项
-   * 
-   * @param menu
-   */
-  void execute(Widget sender, IMenuItem menu);
+    /**
+     * 执行菜单项
+     *
+     * @param sender the sender
+     * @param menu   the menu
+     */
+    void execute(Widget sender, IMenuItem menu);
 }

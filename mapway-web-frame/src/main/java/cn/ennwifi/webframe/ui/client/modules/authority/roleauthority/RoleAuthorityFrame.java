@@ -36,7 +36,10 @@ import java.util.List;
 @ModuleMarker(value = RoleAuthorityFrame.MC_ADMIN_ROLE_RESOURCE, group = "/系统",name = "资源授权", icon = "raf.png")
 public class RoleAuthorityFrame extends AbstractModule {
 
-  public final static String MC_ADMIN_ROLE_RESOURCE = "MC_ADMIN_ROLE_RESOURCE";
+    /**
+     * The constant MC_ADMIN_ROLE_RESOURCE.
+     */
+    public final static String MC_ADMIN_ROLE_RESOURCE = "MC_ADMIN_ROLE_RESOURCE";
 
 
   @Override
@@ -48,10 +51,10 @@ public class RoleAuthorityFrame extends AbstractModule {
   /** The ui binder. */
   private static RoleAuthorityFrameUiBinder uiBinder = GWT.create(RoleAuthorityFrameUiBinder.class);
 
-  /**
-   * The Interface RoleAuthorityFrameUiBinder.
-   */
-  interface RoleAuthorityFrameUiBinder extends UiBinder<Widget, RoleAuthorityFrame> {
+    /**
+     * The Interface RoleAuthorityFrameUiBinder.
+     */
+    interface RoleAuthorityFrameUiBinder extends UiBinder<Widget, RoleAuthorityFrame> {
   }
 
   /** The tree handler. */
@@ -67,8 +70,10 @@ public class RoleAuthorityFrame extends AbstractModule {
     }
   };
 
-  /** The m role. */
-  S_ROLEObj mRole = null;
+    /**
+     * The m role.
+     */
+    S_ROLEObj mRole = null;
 
   /** The list handler. */
   private MessageHandler listHandler = new MessageHandler() {
@@ -88,7 +93,12 @@ public class RoleAuthorityFrame extends AbstractModule {
     }
   };
 
-  @UiHandler("btnSaveRoleResource")
+    /**
+     * On save role resource.
+     *
+     * @param e the e
+     */
+    @UiHandler("btnSaveRoleResource")
   void onSaveRoleResource(ClickEvent e) {
 
     List<Pair<Long, String>> items = tree.getCheckedItem();
@@ -112,11 +122,10 @@ public class RoleAuthorityFrame extends AbstractModule {
   }
 
 
-
-  /**
-   * Instantiates a new role authority frame.
-   */
-  public RoleAuthorityFrame() {
+    /**
+     * Instantiates a new role authority frame.
+     */
+    public RoleAuthorityFrame() {
     initModuleWidget(uiBinder.createAndBindUi(this));
     tree.enableCheckBox(true);
     tree.addMessageHandler(treeHandler);
@@ -129,7 +138,10 @@ public class RoleAuthorityFrame extends AbstractModule {
 
   }
 
-  @UiField
+    /**
+     * The Tools.
+     */
+    @UiField
   HorizontalPanel tools;
 
 
@@ -141,7 +153,10 @@ public class RoleAuthorityFrame extends AbstractModule {
     return b;
   };
 
-  EditRole editRole;
+    /**
+     * The Edit role.
+     */
+    EditRole editRole;
 
   private MessageHandler editorHandler = new MessageHandler() {
 
@@ -153,7 +168,12 @@ public class RoleAuthorityFrame extends AbstractModule {
     }
   };
 
-  @UiHandler("btnAddRole")
+    /**
+     * On add role clicked.
+     *
+     * @param ev the ev
+     */
+    @UiHandler("btnAddRole")
   void onAddRoleClicked(ClickEvent ev) {
 
     sureEditRole();
@@ -163,7 +183,12 @@ public class RoleAuthorityFrame extends AbstractModule {
     editRole.edit(null);
   }
 
-  @UiHandler("btnModifyRole")
+    /**
+     * On modify role clicked.
+     *
+     * @param ev the ev
+     */
+    @UiHandler("btnModifyRole")
   void onModifyRoleClicked(ClickEvent ev) {
 
     sureEditRole();
@@ -179,7 +204,12 @@ public class RoleAuthorityFrame extends AbstractModule {
     }
   }
 
-  @UiHandler("btnDeleteRole")
+    /**
+     * On delete role clicked.
+     *
+     * @param ev the ev
+     */
+    @UiHandler("btnDeleteRole")
   void onDeleteRoleClicked(ClickEvent ev) {
     ClientContext.getContext().confirm("操作提示", "确定删除该角色？", new Callback<Void, Void>() {
 
@@ -216,10 +246,10 @@ public class RoleAuthorityFrame extends AbstractModule {
     });
   }
 
-  /**
-   * Fetch role authority.
-   */
-  protected void fetchRoleResource() {
+    /**
+     * Fetch role authority.
+     */
+    protected void fetchRoleResource() {
     if (mRole != null) {
       tree.resetEnabled(true);
       WebFrameProxy.get().getRoleResource(mRole.getId(),
@@ -243,24 +273,40 @@ public class RoleAuthorityFrame extends AbstractModule {
   }
 
 
-  /** The list. */
-  @UiField
+    /**
+     * The list.
+     */
+    @UiField
   RoleList list;
 
-  /** The tree. */
-  @UiField
+    /**
+     * The tree.
+     */
+    @UiField
   AuthorityTree tree;
 
-  @UiField
+    /**
+     * The Btn add role.
+     */
+    @UiField
   ButtonEx btnAddRole;
 
-  @UiField
+    /**
+     * The Btn modify role.
+     */
+    @UiField
   ButtonEx btnModifyRole;
 
-  @UiField
+    /**
+     * The Btn delete role.
+     */
+    @UiField
   ButtonEx btnDeleteRole;
 
-  @UiField
+    /**
+     * The Btn save role resource.
+     */
+    @UiField
   ButtonEx btnSaveRoleResource;
 
   /*

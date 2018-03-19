@@ -1,5 +1,12 @@
 package cn.mapway.document.parser;
+
+/**
+ * The type Compile version.
+ */
 public class CompileVersion {
-public final static String VERSION =
-                                                    "[1.1.9-SNAPSHOT]@2018年01月29日 11:53:12 from ${env.BRANCH}";
+    /**
+     * The constant VERSION.
+     */
+    public final static String VERSION =
+                                                    "[2.0.0-SNAPSHOT]@2018年03月06日 09:49:47 from ${env.BRANCH}";
 }

@@ -22,11 +22,15 @@ import com.google.gwt.user.client.ui.Label;
  */
 public class CloseCaption extends HorizontalPanel implements Caption {
 
-  /** The title. */
-  Label title;
+    /**
+     * The title.
+     */
+    Label title;
 
-  /** The btn close. */
-  InfoButton btnClose;
+    /**
+     * The btn close.
+     */
+    InfoButton btnClose;
 
   /** The close handler. */
   private ClickHandler closeHandler = new ClickHandler() {
@@ -38,10 +42,10 @@ public class CloseCaption extends HorizontalPanel implements Caption {
     }
   };
 
-  /**
-   * Instantiates a new close caption.
-   */
-  public CloseCaption() {
+    /**
+     * Instantiates a new close caption.
+     */
+    public CloseCaption() {
     title = new Label();
     btnClose = new InfoButton();
     btnClose.setText("关闭");

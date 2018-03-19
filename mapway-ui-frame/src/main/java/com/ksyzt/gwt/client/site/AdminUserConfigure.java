@@ -18,6 +18,7 @@ import com.ksyzt.gwt.client.event.MessageEvent;
 import com.ksyzt.gwt.shared.module.AdminUser;
 
 // TODO: Auto-generated Javadoc
+
 /**
  * The Class AdminUserConfigure.
  */
@@ -27,10 +28,10 @@ public class AdminUserConfigure extends MessageComposite {
 	private static AdminUserConfigureUiBinder uiBinder = GWT
 			.create(AdminUserConfigureUiBinder.class);
 
-	/**
-	 * The Interface AdminUserConfigureUiBinder.
-	 */
-	interface AdminUserConfigureUiBinder extends
+    /**
+     * The Interface AdminUserConfigureUiBinder.
+     */
+    interface AdminUserConfigureUiBinder extends
 			UiBinder<Widget, AdminUserConfigure> {
 	}
 
@@ -56,46 +57,54 @@ public class AdminUserConfigure extends MessageComposite {
 		}
 	};
 
-	/**
-	 * Instantiates a new admin user configure.
-	 */
-	public AdminUserConfigure() {
+    /**
+     * Instantiates a new admin user configure.
+     */
+    public AdminUserConfigure() {
 		initWidget(uiBinder.createAndBindUi(this));
 		txtUserName.addKeyDownHandler(m_name_dowm);
 		txtPwd.addKeyDownHandler(m_pwd_key_down);
 		txtUserName.setFocus(true);
 	}
 
-	/** The msg. */
-	@UiField
+    /**
+     * The msg.
+     */
+    @UiField
 	HTMLPanel msg;
 
-	/**
-	 * Sets the mesage.
-	 *
-	 * @param text the new mesage
-	 */
-	public void setMesage(String text) {
+    /**
+     * Sets the mesage.
+     *
+     * @param text the new mesage
+     */
+    public void setMesage(String text) {
 		msg.add(new HTML(text));
 	}
 
-	/** The on check value. */
-	public ICheckValue onCheckValue;
-	
-	/** The txt user name. */
-	@UiField
+    /**
+     * The on check value.
+     */
+    public ICheckValue onCheckValue;
+
+    /**
+     * The txt user name.
+     */
+    @UiField
 	TextBox txtUserName;
 
-	/** The txt pwd. */
-	@UiField
+    /**
+     * The txt pwd.
+     */
+    @UiField
 	TextBox txtPwd;
 
-	/**
-	 * On OK.
-	 *
-	 * @param e the e
-	 */
-	@UiHandler("btnOK")
+    /**
+     * On OK.
+     *
+     * @param e the e
+     */
+    @UiHandler("btnOK")
 	void onOK(ClickEvent e) {
 		AdminUser u = new AdminUser();
 		u.setUserName(txtUserName.getValue());

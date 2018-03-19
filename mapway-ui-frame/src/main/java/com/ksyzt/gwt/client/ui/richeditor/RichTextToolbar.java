@@ -52,34 +52,51 @@ import com.ksyzt.gwt.client.event.MessageEvent;
 import com.ksyzt.gwt.client.event.MessageHandler;
 
 // TODO: Auto-generated Javadoc
+
 /**
  * The Class RichTextToolbar.
  */
 public class RichTextToolbar extends Composite {
 
-	/** The m dlg image. */
-	ImageUploadPanel m_dlg_image;
+    /**
+     * The m dlg image.
+     */
+    ImageUploadPanel m_dlg_image;
 
-	/** The m ap shadow. */
-	HTMLPanel m_ap_shadow;
-	
-	/** The m ap content. */
-	HTMLPanel m_ap_content;
-	
-	/** The m ap line. */
-	HTMLPanel m_ap_line;
-	
-	/** The m b show popup. */
-	boolean m_b_show_popup = false;
+    /**
+     * The m ap shadow.
+     */
+    HTMLPanel m_ap_shadow;
 
-	/** The back widget. */
-	Widget back_widget;
-	
-	/** The back css. */
-	String back_css;
+    /**
+     * The m ap content.
+     */
+    HTMLPanel m_ap_content;
 
-	/** The m popup. */
-	PopupPanel m_popup;
+    /**
+     * The m ap line.
+     */
+    HTMLPanel m_ap_line;
+
+    /**
+     * The m b show popup.
+     */
+    boolean m_b_show_popup = false;
+
+    /**
+     * The back widget.
+     */
+    Widget back_widget;
+
+    /**
+     * The back css.
+     */
+    String back_css;
+
+    /**
+     * The m popup.
+     */
+    PopupPanel m_popup;
 
 	/**
 	 * Show popup.
@@ -140,10 +157,10 @@ public class RichTextToolbar extends Composite {
 
 	}
 
-	/**
-	 * Hide popup.
-	 */
-	public void hidePopup() {
+    /**
+     * Hide popup.
+     */
+    public void hidePopup() {
 		m_ap_content.setVisible(false);
 		m_ap_shadow.setVisible(false);
 		m_ap_line.setVisible(false);
@@ -193,8 +210,10 @@ public class RichTextToolbar extends Composite {
 
 	}
 
-	/**  Local CONSTANTS *. */
-	// ImageMap and CSS related
+    /**
+     * Local CONSTANTS *.
+     */
+// ImageMap and CSS related
 	public static final String HTTP_STATIC_ICONS_GIF = GWT.getModuleBaseURL()
 			+ "../images/toolbars.gif";
 	
@@ -202,8 +221,10 @@ public class RichTextToolbar extends Composite {
 	private static final String CSS_ROOT_NAME = "RichTextToolbar";
 
 	// Color and Fontlists - First Value (key) is the Name to display, Second
-	/** The Constant GUI_COLORLIST. */
-	// Value (value) is the HTML-Definition
+    /**
+     * The Constant GUI_COLORLIST.
+     */
+// Value (value) is the HTML-Definition
 	public final static HashMap<String, String> GUI_COLORLIST = new HashMap<String, String>();
 	static {
 		GUI_COLORLIST.put("White", "#FFFFFF");
@@ -213,9 +234,11 @@ public class RichTextToolbar extends Composite {
 		GUI_COLORLIST.put("Yellow", "yellow");
 		GUI_COLORLIST.put("Blue", "blue");
 	}
-	
-	/** The Constant GUI_FONTLIST. */
-	public final static HashMap<String, String> GUI_FONTLIST = new HashMap<String, String>();
+
+    /**
+     * The Constant GUI_FONTLIST.
+     */
+    public final static HashMap<String, String> GUI_FONTLIST = new HashMap<String, String>();
 	static {
 		GUI_FONTLIST.put("Times New Roman", "Times New Roman");
 		GUI_FONTLIST.put("Arial", "Arial");
@@ -442,10 +465,10 @@ public class RichTextToolbar extends Composite {
 	/** The colorlist. */
 	private ColorLabel colorlist;
 
-	/**
-	 * Instantiates a new rich text toolbar.
-	 */
-	@UiConstructor
+    /**
+     * Instantiates a new rich text toolbar.
+     */
+    @UiConstructor
 	public RichTextToolbar() {
 
 		// HTTP_STATIC_ICONS_GIF=GWT.getModuleBaseURL()+
@@ -485,12 +508,12 @@ public class RichTextToolbar extends Composite {
 		initPopupPanel();
 	}
 
-	/**
-	 * Sets the rich text area.
-	 *
-	 * @param area the new rich text area
-	 */
-	public void setRichTextArea(RichTextArea area) {
+    /**
+     * Sets the rich text area.
+     *
+     * @param area the new rich text area
+     */
+    public void setRichTextArea(RichTextArea area) {
 		styleText = area;
 		styleTextFormatter = styleText.getFormatter();
 		styleText.addKeyUpHandler(evHandler);
@@ -704,14 +727,14 @@ public class RichTextToolbar extends Composite {
 
 	}
 
-	/**
-	 * Native JavaScript that returns the selected text and position of the
-	 * start.
-	 *
-	 * @param elem the elem
-	 * @return the selection
-	 */
-	public static native JsArrayString getSelection(Element elem) /*-{
+    /**
+     * Native JavaScript that returns the selected text and position of the
+     * start.
+     *
+     * @param elem the elem
+     * @return the selection
+     */
+    public static native JsArrayString getSelection(Element elem) /*-{
 		var txt = "";
 		var pos = 0;
 		var range;

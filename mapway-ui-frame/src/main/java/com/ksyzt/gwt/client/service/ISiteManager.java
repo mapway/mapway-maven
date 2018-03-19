@@ -10,6 +10,7 @@ import com.ksyzt.gwt.shared.module.AdminUser;
 import com.ksyzt.gwt.shared.module.SiteInformation;
 
 // TODO: Auto-generated Javadoc
+
 /**
  * The Interface ISiteManager.
  */

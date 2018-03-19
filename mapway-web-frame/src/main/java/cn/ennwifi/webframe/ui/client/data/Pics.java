@@ -6,23 +6,42 @@ import com.google.gwt.core.client.JsArray;
 
 /**
  * 图片列表
- * @author zhangjianshe
  *
+ * @author zhangjianshe
  */
 public class Pics extends JsArray<PicData> {
 
-  protected Pics() {}
+    /**
+     * Instantiates a new Pics.
+     */
+    protected Pics() {}
 
-  public final native static Pics create()/*-{
+    /**
+     * Create pics.
+     *
+     * @return the pics
+     */
+    public final native static Pics create()/*-{
 		return [];
   }-*/;
 
 
-  public final String toJson() {
+    /**
+     * To json string.
+     *
+     * @return the string
+     */
+    public final String toJson() {
     return JSON.stringify(this);
   }
 
-  public final static Pics fromJson(String json) {
+    /**
+     * From json pics.
+     *
+     * @param json the json
+     * @return the pics
+     */
+    public final static Pics fromJson(String json) {
     if (json == null || json.length() == 0) {
       json = "[]";
     }

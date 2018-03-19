@@ -17,6 +17,7 @@ import com.ksyzt.gwt.client.event.MessageEvent;
 import com.ksyzt.gwt.client.event.MessageHandler;
 
 // TODO: Auto-generated Javadoc
+
 /**
  * 网页的导航条 首页 上一页 [3/10] 下一页 尾页 【】页GO.
  *
@@ -24,49 +25,67 @@ import com.ksyzt.gwt.client.event.MessageHandler;
  */
 public class PageNaviBar extends HorizontalPanel implements HasMessageHandlers {
 
-	/**
-	 * The Class NaviData.
-	 */
-	public class NaviData implements Serializable {
-		
-		/** The page. */
-		public int page;
-		
-		/** The size. */
-		public int size;
+    /**
+     * The Class NaviData.
+     */
+    public class NaviData implements Serializable {
 
-		/**
-		 * Instantiates a new navi data.
-		 *
-		 * @param page the page
-		 * @param size the size
-		 */
-		public NaviData(int page, int size) {
+        /**
+         * The page.
+         */
+        public int page;
+
+        /**
+         * The size.
+         */
+        public int size;
+
+        /**
+         * Instantiates a new navi data.
+         *
+         * @param page the page
+         * @param size the size
+         */
+        public NaviData(int page, int size) {
 			this.page = page;
 			this.size = size;
 		}
 	}
 
-	/** The first. */
-	Anchor first;
-	
-	/** The prev. */
-	Anchor prev;
-	
-	/** The next. */
-	Anchor next;
-	
-	/** The last. */
-	Anchor last;
-	
-	/** The txt page. */
-	TextBox txtPage;
-	
-	/** The btn go. */
-	Button btnGo;
-	
-	/** The lb info. */
-	Label lbInfo;
+    /**
+     * The first.
+     */
+    Anchor first;
+
+    /**
+     * The prev.
+     */
+    Anchor prev;
+
+    /**
+     * The next.
+     */
+    Anchor next;
+
+    /**
+     * The last.
+     */
+    Anchor last;
+
+    /**
+     * The txt page.
+     */
+    TextBox txtPage;
+
+    /**
+     * The btn go.
+     */
+    Button btnGo;
+
+    /**
+     * The lb info.
+     */
+    Label lbInfo;
 	
 	/** The m go click. */
 	private ClickHandler m_go_click = new ClickHandler() {
@@ -129,10 +148,10 @@ public class PageNaviBar extends HorizontalPanel implements HasMessageHandlers {
 		}
 	};
 
-	/**
-	 * Instantiates a new page navi bar.
-	 */
-	@UiConstructor
+    /**
+     * Instantiates a new page navi bar.
+     */
+    @UiConstructor
 	public PageNaviBar() {
 		super();
 		this.setSpacing(3);
@@ -187,23 +206,29 @@ public class PageNaviBar extends HorizontalPanel implements HasMessageHandlers {
 		return addHandler(handler, MessageEvent.TYPE);
 	}
 
-	/** The m currentpage. */
-	int m_currentpage;
-	
-	/** The m pages. */
-	int m_pages;
-	
-	/** The m pagesize. */
-	int m_pagesize;
+    /**
+     * The m currentpage.
+     */
+    int m_currentpage;
 
-	/**
-	 * Sets the data.
-	 *
-	 * @param currentPage the current page
-	 * @param total the total
-	 * @param pagesize the pagesize
-	 */
-	public void setData(int currentPage, int total, int pagesize) {
+    /**
+     * The m pages.
+     */
+    int m_pages;
+
+    /**
+     * The m pagesize.
+     */
+    int m_pagesize;
+
+    /**
+     * Sets the data.
+     *
+     * @param currentPage the current page
+     * @param total       the total
+     * @param pagesize    the pagesize
+     */
+    public void setData(int currentPage, int total, int pagesize) {
 		m_pagesize = pagesize;
 		m_currentpage = currentPage;
 		int pages = 0;

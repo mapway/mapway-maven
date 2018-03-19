@@ -3,6 +3,9 @@ package com.bethecoder.ascii_table;
 import com.bethecoder.ascii_table.impl.*;
 import com.bethecoder.ascii_table.spec.*;
 
+/**
+ * The type Ascii table.
+ */
 public class ASCIITable implements IASCIITable {
 
     private static ASCIITable instance;
@@ -15,7 +18,12 @@ public class ASCIITable implements IASCIITable {
     private ASCIITable() {
         this.asciiTable = new SimpleASCIITableImpl();
     }
-    
+
+    /**
+     * Gets instance.
+     *
+     * @return the instance
+     */
     public static synchronized ASCIITable getInstance() {
         if (ASCIITable.instance == null) {
             ASCIITable.instance = new ASCIITable();

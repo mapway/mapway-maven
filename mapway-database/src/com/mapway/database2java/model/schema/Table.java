@@ -2,18 +2,21 @@ package com.mapway.database2java.model.schema;
 
 
 // TODO: Auto-generated Javadoc
+
 /**
  * The Class Table.
  */
 public class Table implements ITable {
 
-  /** The columns. */
-  Columns columns;
+    /**
+     * The columns.
+     */
+    Columns columns;
 
-  /**
-   * Instantiates a new table.
-   */
-  public Table() {
+    /**
+     * Instantiates a new table.
+     */
+    public Table() {
     columns = new Columns();
   }
 
@@ -27,14 +30,20 @@ public class Table implements ITable {
     return columns;
   }
 
-  /** The name. */
-  String name;
+    /**
+     * The name.
+     */
+    String name;
 
-  /** The owner. */
-  String owner;
+    /**
+     * The owner.
+     */
+    String owner;
 
-  /** The comment. */
-  String comment;
+    /**
+     * The comment.
+     */
+    String comment;
 
   /*
    * (non-Javadoc)

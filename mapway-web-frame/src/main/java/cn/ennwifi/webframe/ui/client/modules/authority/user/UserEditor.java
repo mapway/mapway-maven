@@ -156,7 +156,7 @@ public class UserEditor extends DialogBoxEx {
     }
 
     /**
-     *
+     * Edit.
      */
     public void edit() {
         mUser = new S_USERObj();
@@ -241,6 +241,9 @@ public class UserEditor extends DialogBoxEx {
         ddlGender.setSelectedIndex(index);
     }
 
+    /**
+     * Edit enable.
+     */
     public void editEnable() {
         txtName.setEnabled(false);
         txtRealName.setEnabled(false);

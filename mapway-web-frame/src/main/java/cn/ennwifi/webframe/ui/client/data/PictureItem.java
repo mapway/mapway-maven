@@ -24,14 +24,17 @@ import com.ksyzt.gwt.client.event.MessageEvent;
 
 /**
  * 图片条目组件
- * @author zhangjianshe
  *
+ * @author zhangjianshe
  */
 public class PictureItem extends MessageComposite {
 
   private static PictureItemUiBinder uiBinder = GWT.create(PictureItemUiBinder.class);
 
-  interface PictureItemUiBinder extends UiBinder<Widget, PictureItem> {
+    /**
+     * The interface Picture item ui binder.
+     */
+    interface PictureItemUiBinder extends UiBinder<Widget, PictureItem> {
   }
 
   private BlurHandler valueChanged = new BlurHandler() {
@@ -63,26 +66,49 @@ public class PictureItem extends MessageComposite {
     lbTitle.setVisible(true);
   }
 
-  public PictureItem() {
+    /**
+     * Instantiates a new Picture item.
+     */
+    public PictureItem() {
     initWidget(uiBinder.createAndBindUi(this));
     txtValue.addBlurHandler(valueChanged);
     txtValue.addKeyDownHandler(keyDownHandler);
     delete.setUrl(SysResource.INSTANCE.delete().getSafeUri());
   }
 
-  @UiField
+    /**
+     * The Delete.
+     */
+    @UiField
   Image delete;
-  @UiField
+    /**
+     * The Img.
+     */
+    @UiField
   Image img;
-  @UiField
+    /**
+     * The Lb title.
+     */
+    @UiField
   Label lbTitle;
 
-  @UiField
+    /**
+     * The Link.
+     */
+    @UiField
   Anchor link;
 
-  PicData mData;
+    /**
+     * The M data.
+     */
+    PicData mData;
 
-  public void setValue(PicData pd) {
+    /**
+     * Sets value.
+     *
+     * @param pd the pd
+     */
+    public void setValue(PicData pd) {
     mData = pd;
     if (ImageUploader.isPicture(mData.url())) {
       img.setVisible(true);
@@ -99,11 +125,21 @@ public class PictureItem extends MessageComposite {
   }
 
 
-  public PicData getValue() {
+    /**
+     * Gets value.
+     *
+     * @return the value
+     */
+    public PicData getValue() {
     return mData;
   }
 
-  @UiHandler("lbTitle")
+    /**
+     * On click.
+     *
+     * @param e the e
+     */
+    @UiHandler("lbTitle")
   void onClick(ClickEvent e) {
     lbTitle.setVisible(false);
     txtValue.setVisible(true);
@@ -111,10 +147,18 @@ public class PictureItem extends MessageComposite {
     txtValue.setFocus(true);
   }
 
-  @UiField
+    /**
+     * The Txt value.
+     */
+    @UiField
   TextBox txtValue;
 
-  @UiHandler("delete")
+    /**
+     * On delete.
+     *
+     * @param e the e
+     */
+    @UiHandler("delete")
   void onDelete(ClickEvent e) {
     MessageEvent ev = new MessageEvent(MessageEvent.DELETE, mData);
     fireEvent(ev);

@@ -48,8 +48,16 @@ public class Column {
      */
     int length;
 
+    /**
+     * The Convertor.
+     */
     INameConvertor convertor;
 
+    /**
+     * Instantiates a new Column.
+     *
+     * @param convertor the convertor
+     */
     public Column(INameConvertor convertor) {
         if (convertor == null) {
             convertor = new CamelConvert();
@@ -57,13 +65,17 @@ public class Column {
         this.convertor = convertor;
     }
 
+    /**
+     * Instantiates a new Column.
+     */
     public Column() {
         this(null);
     }
 
     /**
      * 返回代码中的名字
-     * @return
+     *
+     * @return java name
      */
     public String getJavaName() {
         return convertor.convert(this.getName());

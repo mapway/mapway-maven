@@ -3,8 +3,16 @@ package com.mapway;
 import com.mapway.database2java.IConfigure;
 import com.mapway.database2java.MainApplication;
 
+/**
+ * The type Test.
+ */
 public class Test {
 
+    /**
+     * The entry point of application.
+     *
+     * @param args the input arguments
+     */
     public static void main(String[] args) {
 
         String USER = "mapway-wiki";

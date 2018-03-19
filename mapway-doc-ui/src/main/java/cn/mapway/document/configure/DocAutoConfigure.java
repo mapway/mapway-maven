@@ -26,14 +26,25 @@ import java.util.Map;
 @EnableConfigurationProperties(ApiDocProperties.class)
 public class DocAutoConfigure {
 
+    /**
+     * The Properties.
+     */
     @Autowired
     ApiDocProperties properties;
 
+    /**
+     * Instantiates a new Doc auto configure.
+     */
     public DocAutoConfigure()
     {
         System.out.println("auto configure started");
     }
 
+    /**
+     * Api document servlet servlet registration bean.
+     *
+     * @return the servlet registration bean
+     */
     @Bean
     ServletRegistrationBean apiDocumentServlet () {
         ServletRegistrationBean srb = new ServletRegistrationBean();

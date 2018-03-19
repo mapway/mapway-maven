@@ -8,16 +8,21 @@ import org.apache.commons.lang3.StringUtils;
 
 /**
  * Cookie操作辅助类
- * 
- * @author admin
  *
+ * @author admin
  */
 public class CookieTools {
 
-  /**
-   * 新增cookie
-   */
-  public static void addCookie(HttpServletResponse response, String cookieName, String cookieValue,
+    /**
+     * 新增cookie
+     *
+     * @param response    the response
+     * @param cookieName  the cookie name
+     * @param cookieValue the cookie value
+     * @param path        the path
+     * @param date        the date
+     */
+    public static void addCookie(HttpServletResponse response, String cookieName, String cookieValue,
       String path, Integer date) {
     Cookie cookie = new Cookie(cookieName, cookieValue);
     cookie.setPath(path);
@@ -27,13 +32,14 @@ public class CookieTools {
     response.addCookie(cookie);
   }
 
-  /**
-   * 根据cookie名称 ，获取cookie值
-   * 
-   * @param request
-   * @return
-   */
-  public static String getCookieValue(HttpServletRequest request, String cookieName) {
+    /**
+     * 根据cookie名称 ，获取cookie值
+     *
+     * @param request    the request
+     * @param cookieName the cookie name
+     * @return cookie value
+     */
+    public static String getCookieValue(HttpServletRequest request, String cookieName) {
     String token = "";
     Cookie[] cookies = request.getCookies();
     if (cookies != null && cookies.length > 0) {
@@ -47,12 +53,13 @@ public class CookieTools {
     return token;
   }
 
-  /**
-   * 删除Cookie
-   * 
-   * @param request
-   */
-  public static void deleteCookie(HttpServletRequest request, String cookieName) {
+    /**
+     * 删除Cookie
+     *
+     * @param request    the request
+     * @param cookieName the cookie name
+     */
+    public static void deleteCookie(HttpServletRequest request, String cookieName) {
     Cookie[] cookies = request.getCookies();
     if (cookies != null && cookies.length > 0) {
       for (Cookie cookie : cookies) {

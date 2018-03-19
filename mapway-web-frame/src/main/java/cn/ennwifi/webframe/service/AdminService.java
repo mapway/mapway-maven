@@ -29,20 +29,22 @@ import java.util.UUID;
  *
  * @author zhangjianshe
  */
-
 public class AdminService {
 
     /**
      * ss.
      *
-     * @param dao
-     * @param clientConfigure
+     * @param dao             the dao
+     * @param clientConfigure the client configure
      */
     public AdminService(Dao dao, ClientConfigure clientConfigure) {
         this.dao = dao;
         this.uiProperties = clientConfigure;
     }
 
+    /**
+     * The constant MODULE_CODE_SYSTEM.
+     */
     public static final String MODULE_CODE_SYSTEM = "030601";
 
     private static final String CURRENT_ADMIN = "CURRENT_ADMIN";
@@ -63,8 +65,9 @@ public class AdminService {
     /**
      * 用户登录过程.
      *
-     * @param req     the req
-     * @param request the request
+     * @param req      the req
+     * @param request  the request
+     * @param response the response
      * @return the login resp data
      */
     public AdminLoginResponse login(LoginReqData req, HttpServletRequest request,
@@ -96,8 +99,8 @@ public class AdminService {
     /**
      * 处理登录成功后返回的客户端配置信息
      *
-     * @param resRootId
-     * @param response
+     * @param resRootId the res root id
+     * @param response  the response
      */
     public void processLoginResult(Integer resRootId, AdminLoginResponse response) {
 
@@ -142,10 +145,11 @@ public class AdminService {
     }
 
     /**
-     * 用户拥有的功能菜单,根据权限进行查找 <br/>
-     * 查找方法: 用户->role->S_ATHOrity.
+     * 用户拥有的功能菜单,根据权限进行查找
+     * 查找方法: 用户 role S_ATHOrity.
      *
-     * @param userId the userid
+     * @param userId     the userid
+     * @param menuRootId the menu root id
      * @return the list
      */
     public List<S_RESOURCEObj> userMainMenu(Long userId, Integer menuRootId) {
@@ -162,6 +166,12 @@ public class AdminService {
         return authorities;
     }
 
+    /**
+     * User menu list.
+     *
+     * @param userId the user id
+     * @return the list
+     */
     public List<S_RESOURCEObj> userMenu(Long userId) {
         String where =
                 S_RESOURCEObj.FLD_PID + "=1" + " and id in (select res_id from admin_role_resource s"
@@ -175,10 +185,11 @@ public class AdminService {
     }
 
     /**
-     * 用户查找菜单的子菜单 <br/>
-     * 查找方法: 用户->role->S_ATHOrity.
+     * 用户查找菜单的子菜单
+     * 查找方法: 用户 role S_ATHOrity.
      *
      * @param userId the userid
+     * @param menuId the menu id
      * @return the list
      */
     public List<S_RESOURCEObj> userSubMenu(Long userId, Integer menuId) {
@@ -192,9 +203,9 @@ public class AdminService {
     /**
      * 用户对资源是否拥有权限
      *
-     * @param userId
-     * @param resourceId
-     * @return
+     * @param userId     the user id
+     * @param resourceId the resource id
+     * @return boolean
      */
     public Boolean userOwnResource(Long userId, Long resourceId) {
         // 用户 角色 资源
@@ -211,8 +222,8 @@ public class AdminService {
     /**
      * 直接查找子菜单
      *
-     * @param menuId
-     * @return
+     * @param menuId the menu id
+     * @return list
      */
     public List<S_RESOURCEObj> subMenu(int menuId) {
 
@@ -222,11 +233,23 @@ public class AdminService {
         return resources;
     }
 
+    /**
+     * Fetch all meta data list.
+     *
+     * @return the list
+     */
     public List<S_METAObj> fetchAllMetaData() {
         OrderBy where = Cnd.orderBy().asc(S_METAObj.FLD_PID).asc(S_METAObj.FLD_RANK);
         return dao.query(S_METAObj.class, where);
     }
 
+    /**
+     * Delete meta data boolean.
+     *
+     * @param metaId the meta id
+     * @return the boolean
+     * @throws ServerException the server exception
+     */
     public Boolean deleteMetaData(Integer metaId) throws ServerException {
         Cnd where = Cnd.where(S_METAObj.FLD_PID, "=", metaId);
         int count = dao.count(S_METAObj.class, where);
@@ -238,6 +261,13 @@ public class AdminService {
         return true;
     }
 
+    /**
+     * Save or update meta data s meta obj.
+     *
+     * @param meta the meta
+     * @return the s meta obj
+     * @throws ServerException the server exception
+     */
     public S_METAObj saveOrUpdateMetaData(final S_METAObj meta) throws ServerException {
         if (meta == null) {
             throw new ServerException("创建元数据提供空数据");
@@ -277,6 +307,12 @@ public class AdminService {
         return meta;
     }
 
+    /**
+     * Session user s user obj.
+     *
+     * @param threadLocalRequest the thread local request
+     * @return the s user obj
+     */
     public S_USERObj sessionUser(HttpServletRequest threadLocalRequest) {
 
         return (S_USERObj) threadLocalRequest.getAttribute(CURRENT_ADMIN);
@@ -285,8 +321,8 @@ public class AdminService {
     /**
      * 搜索用户
      *
-     * @param req
-     * @return
+     * @param req the req
+     * @return pager data
      */
     public PagerData<S_USERObj> searchUserList(SearchReq req) {
         PagerData<S_USERObj> r = new PagerData<S_USERObj>();

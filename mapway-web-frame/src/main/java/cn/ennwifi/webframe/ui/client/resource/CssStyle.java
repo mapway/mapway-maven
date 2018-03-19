@@ -10,98 +10,102 @@ import com.google.gwt.resources.client.CssResource;
  */
 public interface CssStyle extends CssResource {
 
-  /**
-   * Tree item image.
-   *
-   * @return the string
-   */
-  String treeItemImage();
+    /**
+     * Tree item image.
+     *
+     * @return the string
+     */
+    String treeItemImage();
 
-  /**
-   * Tree item selected.
-   *
-   * @return the string
-   */
-  String treeItemSelected();
+    /**
+     * Tree item selected.
+     *
+     * @return the string
+     */
+    String treeItemSelected();
 
-  /**
-   * Css table.
-   *
-   * @return the string
-   */
-  String cssTable();
+    /**
+     * Css table.
+     *
+     * @return the string
+     */
+    String cssTable();
 
-  /**
-   * Row 0.
-   *
-   * @return the string
-   */
-  String row0();
+    /**
+     * Row 0.
+     *
+     * @return the string
+     */
+    String row0();
 
-  /**
-   * Row 1.
-   *
-   * @return the string
-   */
-  String row1();
+    /**
+     * Row 1.
+     *
+     * @return the string
+     */
+    String row1();
 
-  /**
-   * Rowh.
-   *
-   * @return the string
-   */
-  String rowh();
+    /**
+     * Rowh.
+     *
+     * @return the string
+     */
+    String rowh();
 
 
+    /**
+     * Row select.
+     *
+     * @return the string
+     */
+    String rowSelect();
 
-  /**
-   * Row select.
-   *
-   * @return the string
-   */
-  String rowSelect();
+    /**
+     * Title.
+     *
+     * @return the string
+     */
+    String title();
 
-  /**
-   * Title.
-   *
-   * @return the string
-   */
-  String title();
+    /**
+     * Lb on.
+     *
+     * @return the string
+     */
+    String lbOn();
 
-  /**
-   * Lb on.
-   *
-   * @return the string
-   */
-  String lbOn();
+    /**
+     * Lb off.
+     *
+     * @return the string
+     */
+    String lbOff();
 
-  /**
-   * Lb off.
-   *
-   * @return the string
-   */
-  String lbOff();
+    /**
+     * Pagebtn on.
+     *
+     * @return the string
+     */
+    String pagebtnOn();
 
-  /**
-   * Pagebtn on.
-   *
-   * @return the string
-   */
-  String pagebtnOn();
+    /**
+     * Pagebtn off.
+     *
+     * @return the string
+     */
+    String pagebtnOff();
 
-  /**
-   * Pagebtn off.
-   *
-   * @return the string
-   */
-  String pagebtnOff();
+    /**
+     * Mqtt text.
+     *
+     * @return the string
+     */
+    String mqttText();
 
-  /**
-   * Mqtt text.
-   *
-   * @return the string
-   */
-  String mqttText();
-
-  String lageContent();
+    /**
+     * Lage content string.
+     *
+     * @return the string
+     */
+    String lageContent();
 }

@@ -19,14 +19,9 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 
-//import sun.io.CharToByteConverter;
+
 /**
- * String ���߰� ����ַ�ı���ȶ��ַ���?
- * 
- * ʹ��ʾ��
- * 
- * ��֪ȱ�ݣ�.
- *
+ *  utilitty
  * @author Sea
  * @version 0.1 Created on 2005-9-13 10:55:05 �޶���ʷ��
  */
@@ -45,14 +40,14 @@ public class Utility {
 	/** The Constant GT_ENCODE. */
 	private static final char[] GT_ENCODE = "&gt;".toCharArray();
 
-	/**
-	 * String 2 time.
-	 *
-	 * @param dateString the date string
-	 * @return the java.sql. timestamp
-	 * @throws ParseException the parse exception
-	 */
-	public final static java.sql.Timestamp string2Time(String dateString)
+    /**
+     * String 2 time.
+     *
+     * @param dateString the date string
+     * @return the java.sql. timestamp
+     * @throws ParseException the parse exception
+     */
+    public final static java.sql.Timestamp string2Time(String dateString)
 			throws ParseException {
 		DateFormat dateFormat;
 		dateFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH);
@@ -68,14 +63,13 @@ public class Utility {
 		return dateTime;
 	}
 
-	/**
-	 * Check email.
-	 *
-	 * @param email
-	 *            the email
-	 * @return true, if successful
-	 */
-	public static boolean checkEmail(String email) {
+    /**
+     * Check email.
+     *
+     * @param email the email
+     * @return true, if successful
+     */
+    public static boolean checkEmail(String email) {
 		String ps = "^([\\w-\\.]+)@[\\w-.]+(\\.?[a-zA-Z]{2,4}$)";
 		Pattern p = Pattern.compile(ps);
 		Matcher m = p.matcher(email);
@@ -87,19 +81,15 @@ public class Utility {
 
 	}
 
-	/**
-	 * Replaces all instances of oldString with newString in line.
-	 * 
-	 * @param line
-	 *            the String to search to perform replacements on
-	 * @param oldString
-	 *            the String that should be replaced by newString
-	 * @param newString
-	 *            the String that will replace all instances of oldString
-	 * 
-	 * @return a String will all instances of oldString replaced by newString
-	 */
-	public static final String replace(String line, String oldString,
+    /**
+     * Replaces all instances of oldString with newString in line.
+     *
+     * @param line      the String to search to perform replacements on
+     * @param oldString the String that should be replaced by newString
+     * @param newString the String that will replace all instances of oldString
+     * @return a String will all instances of oldString replaced by newString
+     */
+    public static final String replace(String line, String oldString,
 			String newString) {
 		if (line == null) {
 			return null;
@@ -124,20 +114,16 @@ public class Utility {
 		return line;
 	}
 
-	/**
-	 * Replaces all instances of oldString with newString in line with the added
-	 * feature that matches of newString in oldString ignore case.
-	 * 
-	 * @param line
-	 *            the String to search to perform replacements on
-	 * @param oldString
-	 *            the String that should be replaced by newString
-	 * @param newString
-	 *            the String that will replace all instances of oldString
-	 * 
-	 * @return a String will all instances of oldString replaced by newString
-	 */
-	public static final String replaceIgnoreCase(String line, String oldString,
+    /**
+     * Replaces all instances of oldString with newString in line with the added
+     * feature that matches of newString in oldString ignore case.
+     *
+     * @param line      the String to search to perform replacements on
+     * @param oldString the String that should be replaced by newString
+     * @param newString the String that will replace all instances of oldString
+     * @return a String will all instances of oldString replaced by newString
+     */
+    public static final String replaceIgnoreCase(String line, String oldString,
 			String newString) {
 		if (line == null) {
 			return null;
@@ -164,24 +150,18 @@ public class Utility {
 		return line;
 	}
 
-	/**
-	 * Replaces all instances of oldString with newString in line with the added
-	 * feature that matches of newString in oldString ignore case. The count
-	 * paramater is set to the number of replaces performed.
-	 * 
-	 * @param line
-	 *            the String to search to perform replacements on
-	 * @param oldString
-	 *            the String that should be replaced by newString
-	 * @param newString
-	 *            the String that will replace all instances of oldString
-	 * @param count
-	 *            a value that will be updated with the number of replaces
-	 *            performed.
-	 * 
-	 * @return a String will all instances of oldString replaced by newString
-	 */
-	public static final String replaceIgnoreCase(String line, String oldString,
+    /**
+     * Replaces all instances of oldString with newString in line with the added
+     * feature that matches of newString in oldString ignore case. The count
+     * paramater is set to the number of replaces performed.
+     *
+     * @param line      the String to search to perform replacements on
+     * @param oldString the String that should be replaced by newString
+     * @param newString the String that will replace all instances of oldString
+     * @param count     a value that will be updated with the number of replaces            performed.
+     * @return a String will all instances of oldString replaced by newString
+     */
+    public static final String replaceIgnoreCase(String line, String oldString,
 			String newString, int[] count) {
 		if (line == null) {
 			return null;
@@ -211,21 +191,17 @@ public class Utility {
 		return line;
 	}
 
-	/**
-	 * Replaces all instances of oldString with newString in line. The count
-	 * Integer is updated with number of replaces.
-	 *
-	 * @param line
-	 *            the String to search to perform replacements on
-	 * @param oldString
-	 *            the String that should be replaced by newString
-	 * @param newString
-	 *            the String that will replace all instances of oldString
-	 * @param count
-	 *            the count
-	 * @return a String will all instances of oldString replaced by newString
-	 */
-	public static final String replace(String line, String oldString,
+    /**
+     * Replaces all instances of oldString with newString in line. The count
+     * Integer is updated with number of replaces.
+     *
+     * @param line      the String to search to perform replacements on
+     * @param oldString the String that should be replaced by newString
+     * @param newString the String that will replace all instances of oldString
+     * @param count     the count
+     * @return a String will all instances of oldString replaced by newString
+     */
+    public static final String replace(String line, String oldString,
 			String newString, int[] count) {
 		if (line == null) {
 			return null;
@@ -254,13 +230,13 @@ public class Utility {
 		return line;
 	}
 
-	/**
-	 * Escape HTML tags.
-	 *
-	 * @param in            the text to be converted.
-	 * @return String
-	 */
-	public static final String escapeHTMLTags(String in) {
+    /**
+     * Escape HTML tags.
+     *
+     * @param in the text to be converted.
+     * @return String string
+     */
+    public static final String escapeHTMLTags(String in) {
 		if (in == null) {
 			return null;
 		}
@@ -302,31 +278,30 @@ public class Utility {
 	 */
 	private static MessageDigest digest = null;
 
-	/**
-	 * Hashes a String using the Md5 algorithm and returns the result as a
-	 * String of hexadecimal numbers. This method is synchronized to avoid
-	 * excessive MessageDigest object creation. If calling this method becomes a
-	 * bottleneck in your code, you may wish to maintain a pool of MessageDigest
-	 * objects instead of using this method.
-	 * <p>
-	 * A hash is a one-way function -- that is, given an input, an output is
-	 * easily computed. However, given the output, the input is almost
-	 * impossible to compute. This is useful for passwords since we can store
-	 * the hash and a hacker will then have a very hard time determining the
-	 * original password.
-	 * <p>
-	 * In Jive, every time a user logs in, we simply take their plain text
-	 * password, compute the hash, and compare the generated hash to the stored
-	 * hash. Since it is almost impossible that two passwords will generate the
-	 * same hash, we know if the user gave us the correct password or not. The
-	 * only negative to this system is that password recovery is basically
-	 * impossible. Therefore, a reset password method is used instead.
-	 * 
-	 * @param data
-	 *            the String to compute the hash of.
-	 * @return a hashed version of the passed-in String
-	 */
-	public synchronized static final String hash(String data) {
+    /**
+     * Hashes a String using the Md5 algorithm and returns the result as a
+     * String of hexadecimal numbers. This method is synchronized to avoid
+     * excessive MessageDigest object creation. If calling this method becomes a
+     * bottleneck in your code, you may wish to maintain a pool of MessageDigest
+     * objects instead of using this method.
+     * <p>
+     * A hash is a one-way function -- that is, given an input, an output is
+     * easily computed. However, given the output, the input is almost
+     * impossible to compute. This is useful for passwords since we can store
+     * the hash and a hacker will then have a very hard time determining the
+     * original password.
+     * <p>
+     * In Jive, every time a user logs in, we simply take their plain text
+     * password, compute the hash, and compare the generated hash to the stored
+     * hash. Since it is almost impossible that two passwords will generate the
+     * same hash, we know if the user gave us the correct password or not. The
+     * only negative to this system is that password recovery is basically
+     * impossible. Therefore, a reset password method is used instead.
+     *
+     * @param data the String to compute the hash of.
+     * @return a hashed version of the passed-in String
+     */
+    public synchronized static final String hash(String data) {
 		if (digest == null) {
 			try {
 				digest = MessageDigest.getInstance("MD5");
@@ -341,19 +316,18 @@ public class Utility {
 		return encodeHex(digest.digest());
 	}
 
-	/**
-	 * Turns an array of bytes into a String representing each byte as an
-	 * unsigned hex number.
-	 * <p>
-	 * Method by Santeri Paavolainen, Helsinki Finland 1996<br>
-	 * (c) Santeri Paavolainen, Helsinki Finland 1996<br>
-	 * Distributed under LGPL.
-	 * 
-	 * @param bytes
-	 *            an array of bytes to convert to a hex-string
-	 * @return generated hex string
-	 */
-	public static final String encodeHex(byte[] bytes) {
+    /**
+     * Turns an array of bytes into a String representing each byte as an
+     * unsigned hex number.
+     * <p>
+     * Method by Santeri Paavolainen, Helsinki Finland 1996<br>
+     * (c) Santeri Paavolainen, Helsinki Finland 1996<br>
+     * Distributed under LGPL.
+     *
+     * @param bytes an array of bytes to convert to a hex-string
+     * @return generated hex string
+     */
+    public static final String encodeHex(byte[] bytes) {
 		StringBuffer buf = new StringBuffer(bytes.length * 2);
 		int i;
 
@@ -366,15 +340,14 @@ public class Utility {
 		return buf.toString();
 	}
 
-	/**
-	 * Turns a hex encoded string into a byte array. It is specifically meant to
-	 * "reverse" the toHex(byte[]) method.
-	 * 
-	 * @param hex
-	 *            a hex encoded String to transform into a byte array.
-	 * @return a byte array representing the hex String[
-	 */
-	public static final byte[] decodeHex(String hex) {
+    /**
+     * Turns a hex encoded string into a byte array. It is specifically meant to
+     * "reverse" the toHex(byte[]) method.
+     *
+     * @param hex a hex encoded String to transform into a byte array.
+     * @return a byte array representing the hex String[
+     */
+    public static final byte[] decodeHex(String hex) {
 		char[] chars = hex.toCharArray();
 		byte[] bytes = new byte[chars.length / 2];
 		int byteCount = 0;
@@ -462,22 +435,21 @@ public class Utility {
 	private static char[] numbersAndLetters = ("0123456789abcdefghijklmnopqrstuvwxyz"
 			+ "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ").toCharArray();
 
-	/**
-	 * Returns a random String of numbers and letters (lower and upper case) of
-	 * the specified length. The method uses the Random class that is built-in
-	 * to Java which is suitable for low to medium grade security uses. This
-	 * means that the output is only pseudo random, i.e., each number is
-	 * mathematically generated so is not truly random.
-	 * <p>
-	 * 
-	 * The specified length must be at least one. If not, the method will return
-	 * null.
-	 * 
-	 * @param length
-	 *            the desired length of the random String to return.
-	 * @return a random String of numbers and letters of the specified length.
-	 */
-	public static final String randomString(int length) {
+    /**
+     * Returns a random String of numbers and letters (lower and upper case) of
+     * the specified length. The method uses the Random class that is built-in
+     * to Java which is suitable for low to medium grade security uses. This
+     * means that the output is only pseudo random, i.e., each number is
+     * mathematically generated so is not truly random.
+     * <p>
+     * <p>
+     * The specified length must be at least one. If not, the method will return
+     * null.
+     *
+     * @param length the desired length of the random String to return.
+     * @return a random String of numbers and letters of the specified length.
+     */
+    public static final String randomString(int length) {
 		if (length < 1) {
 			return null;
 		}
@@ -489,14 +461,13 @@ public class Utility {
 		return new String(randBuffer);
 	}
 
-	/**
-	 * Random digital.
-	 *
-	 * @param length
-	 *            the length
-	 * @return the string
-	 */
-	public static final String randomDigital(int length) {
+    /**
+     * Random digital.
+     *
+     * @param length the length
+     * @return the string
+     */
+    public static final String randomDigital(int length) {
 		if (length < 1) {
 			return null;
 		}
@@ -508,66 +479,59 @@ public class Utility {
 		return new String(randBuffer);
 	}
 
-	/**
-	 * Replace CRLF.
-	 *
-	 * @param p
-	 *            the p
-	 * @return the string
-	 */
-	public static String replaceCRLF(String p) {
+    /**
+     * Replace CRLF.
+     *
+     * @param p the p
+     * @return the string
+     */
+    public static String replaceCRLF(String p) {
 		p = escapeForXML(p);
 		p = p.replace("\n", "<br>");
 		return p;
 	}
 
-	/**
-	 * Replace AMP.
-	 *
-	 * @param p
-	 *            the p
-	 * @return the string
-	 */
-	public static String replaceAMP(String p) {
+    /**
+     * Replace AMP.
+     *
+     * @param p the p
+     * @return the string
+     */
+    public static String replaceAMP(String p) {
 
 		p = p.replace("&amp;", "&");
 		return p;
 	}
 
-	/**
-	 * Replace CRLF 2.
-	 *
-	 * @param p
-	 *            the p
-	 * @return the string
-	 */
-	public static String replaceCRLF2(String p) {
+    /**
+     * Replace CRLF 2.
+     *
+     * @param p the p
+     * @return the string
+     */
+    public static String replaceCRLF2(String p) {
 		p = escapeForXML(p);
 		p = p.replace("\\r\\n", "<br>");
 		return p;
 	}
 
-	/**
-	 * Intelligently chops a String at a word boundary (whitespace) that occurs
-	 * at the specified index in the argument or before. However, if there is a
-	 * newline character before <code>length</code>, the String will be chopped
-	 * there. If no newline or whitespace is found in <code>string</code> up to
-	 * the index <code>length</code>, the String will chopped at
-	 * <code>length</code>.
-	 * <p>
-	 * For example, chopAtWord("This is a nice String", 10) will return "This is
-	 * a" which is the first word boundary less than or equal to 10 characters
-	 * into the original String.
-	 * 
-	 * @param string
-	 *            the String to chop.
-	 * @param length
-	 *            the index in <code>string</code> to start looking for a
-	 *            whitespace boundary at.
-	 * @return a substring of <code>string</code> whose length is less than or
-	 *         equal to <code>length</code>, and that is chopped at whitespace.
-	 */
-	public static final String chopAtWord(String string, int length) {
+    /**
+     * Intelligently chops a String at a word boundary (whitespace) that occurs
+     * at the specified index in the argument or before. However, if there is a
+     * newline character before <code>length</code>, the String will be chopped
+     * there. If no newline or whitespace is found in <code>string</code> up to
+     * the index <code>length</code>, the String will chopped at
+     * <code>length</code>.
+     * <p>
+     * For example, chopAtWord("This is a nice String", 10) will return "This is
+     * a" which is the first word boundary less than or equal to 10 characters
+     * into the original String.
+     *
+     * @param string the String to chop.
+     * @param length the index in <code>string</code> to start looking for a            whitespace boundary at.
+     * @return a substring of <code>string</code> whose length is less than or         equal to <code>length</code>, and that is chopped at whitespace.
+     */
+    public static final String chopAtWord(String string, int length) {
 		if (string == null) {
 			return string;
 		}
@@ -651,15 +615,15 @@ public class Utility {
 	 * // Do the actual substitution via a simple regular expression. return
 	 * perl5Util.substitute(regexp.toString(), string); }
 	 */
-	/**
-	 * Escapes all necessary characters in the String so that it can be used in
-	 * an XML doc.
-	 * 
-	 * @param string
-	 *            the string to escape.
-	 * @return the string with appropriate characters escaped.
-	 */
-	public static final String escapeForXML(String string) {
+
+    /**
+     * Escapes all necessary characters in the String so that it can be used in
+     * an XML doc.
+     *
+     * @param string the string to escape.
+     * @return the string with appropriate characters escaped.
+     */
+    public static final String escapeForXML(String string) {
 		if (string == null) {
 			return null;
 		}
@@ -702,15 +666,14 @@ public class Utility {
 		return out.toString();
 	}
 
-	/**
-	 * Unescapes the String by converting XML escape sequences back into normal
-	 * characters.
-	 * 
-	 * @param string
-	 *            the string to unescape.
-	 * @return the string with appropriate characters unescaped.
-	 */
-	public static final String unescapeFromXML(String string) {
+    /**
+     * Unescapes the String by converting XML escape sequences back into normal
+     * characters.
+     *
+     * @param string the string to unescape.
+     * @return the string with appropriate characters unescaped.
+     */
+    public static final String unescapeFromXML(String string) {
 		string = replace(string, "&lt;", "<");
 		string = replace(string, "&gt;", ">");
 		string = replace(string, "&quot;", "\"");
@@ -720,21 +683,19 @@ public class Utility {
 	/** The Constant zeroArray. */
 	private static final char[] zeroArray = "0000000000000000".toCharArray();
 
-	/**
-	 * Pads the supplied String with 0's to the specified length and returns the
-	 * result as a new String. For example, if the initial String is "9999" and
-	 * the desired length is 8, the result would be "00009999". This type of
-	 * padding is useful for creating numerical values that need to be stored
-	 * and sorted as character data. Note: the current implementation of this
-	 * method allows for a maximum <tt>length</tt> of 16.
-	 * 
-	 * @param string
-	 *            the original String to pad.
-	 * @param length
-	 *            the desired length of the new padded String.
-	 * @return a new String padded with the required number of 0's.
-	 */
-	public static final String zeroPadString(String string, int length) {
+    /**
+     * Pads the supplied String with 0's to the specified length and returns the
+     * result as a new String. For example, if the initial String is "9999" and
+     * the desired length is 8, the result would be "00009999". This type of
+     * padding is useful for creating numerical values that need to be stored
+     * and sorted as character data. Note: the current implementation of this
+     * method allows for a maximum <tt>length</tt> of 16.
+     *
+     * @param string the original String to pad.
+     * @param length the desired length of the new padded String.
+     * @return a new String padded with the required number of 0's.
+     */
+    public static final String zeroPadString(String string, int length) {
 		if (string == null || string.length() > length) {
 			return string;
 		}
@@ -743,27 +704,25 @@ public class Utility {
 		return buf.toString();
 	}
 
-	/**
-	 * Formats a Date as a fifteen character long String made up of the Date's
-	 * padded millisecond value.
-	 *
-	 * @param date
-	 *            the date
-	 * @return a Date encoded as a String.
-	 */
-	public static final String dateToMillis(Date date) {
+    /**
+     * Formats a Date as a fifteen character long String made up of the Date's
+     * padded millisecond value.
+     *
+     * @param date the date
+     * @return a Date encoded as a String.
+     */
+    public static final String dateToMillis(Date date) {
 		return zeroPadString(Long.toString(date.getTime()), 15);
 	}
 
-	/**
-	 * ����һ���ַ�ļ�����ʽ��?MD5 �㷨.
-	 *
-	 * @author Sea
-	 * @param originalStr
-	 *            the original str
-	 * @return the string
-	 */
-	public static String encrypt(String originalStr) {
+    /**
+     * ����һ���ַ�ļ�����ʽ��?MD5 �㷨.
+     *
+     * @param originalStr the original str
+     * @return the string
+     * @author Sea
+     */
+    public static String encrypt(String originalStr) {
 		return hash(originalStr);
 	}
 
@@ -791,15 +750,14 @@ public class Utility {
 	// return s;
 	// }
 
-	/**
-	 * GBK ��UTF-8ת����.
-	 *
-	 * @author Sea
-	 * @param s
-	 *            the s
-	 * @return the string
-	 */
-	public static String ChineseStringToUTF(String s) {
+    /**
+     * GBK ��UTF-8ת����.
+     *
+     * @param s the s
+     * @return the string
+     * @author Sea
+     */
+    public static String ChineseStringToUTF(String s) {
 		try {
 			return new String(s.getBytes(), "UTF-8");
 		} catch (Exception e) {
@@ -808,66 +766,65 @@ public class Utility {
 		return s;
 	}
 
-	/**
-	 * Gets the now long.
-	 *
-	 * @return the now long
-	 */
-	public static long getNowLong() {
+    /**
+     * Gets the now long.
+     *
+     * @return the now long
+     */
+    public static long getNowLong() {
 		long nCurrentTime = System.currentTimeMillis();
 		return nCurrentTime;
 	}
 
-	/**
-	 * Gets the now date.
-	 *
-	 * @return the now date
-	 */
-	public static java.util.Date getNowDate() {
+    /**
+     * Gets the now date.
+     *
+     * @return the now date
+     */
+    public static java.util.Date getNowDate() {
 		java.util.Date utilDate = new java.util.Date(getNowLong());
 		return utilDate;
 	}
 
-	/**
-	 * Gets the now SQL date.
-	 *
-	 * @return the now SQL date
-	 */
-	public static java.sql.Date getNowSQLDate() {
+    /**
+     * Gets the now SQL date.
+     *
+     * @return the now SQL date
+     */
+    public static java.sql.Date getNowSQLDate() {
 		// java.util.Date��java.sql.Date��ת��
 		java.sql.Date sqlDate = new java.sql.Date(getNowLong());
 		return sqlDate;
 	}
 
-	/**
-	 * Gets the now SQL time.
-	 *
-	 * @return the now SQL time
-	 */
-	public static java.sql.Time getNowSQLTime() {
+    /**
+     * Gets the now SQL time.
+     *
+     * @return the now SQL time
+     */
+    public static java.sql.Time getNowSQLTime() {
 		java.sql.Time sqlTime = new java.sql.Time(getNowLong());
 		return sqlTime;
 	}
 
-	/**
-	 * Gets the now SQL timestamp.
-	 *
-	 * @return the now SQL timestamp
-	 */
-	// ������������ݿ���������ں�ʱ����
+    /**
+     * Gets the now SQL timestamp.
+     *
+     * @return the now SQL timestamp
+     */
+// ������������ݿ���������ں�ʱ����
 	public static java.sql.Timestamp getNowSQLTimestamp() {
 		java.sql.Timestamp sqlTimestamp = new java.sql.Timestamp(getNowLong());
 		return sqlTimestamp;
 	}
 
-	/**
-	 * Translate tags.
-	 *
-	 * @param tags
-	 *            the tags
-	 * @return the string
-	 */
-	public static String TranslateTags(String tags) {
+    /**
+     * Translate tags.
+     *
+     * @param tags the tags
+     * @return the string
+     */
+    public static String TranslateTags(String tags) {
 
 		String[] tagss = tags.split(" ");
 
@@ -879,28 +836,25 @@ public class Utility {
 		return sb.toString();
 	}
 
-	/**
-	 * Gets the user link.
-	 *
-	 * @param id
-	 *            the id
-	 * @param name
-	 *            the name
-	 * @return the user link
-	 */
-	public static String getUserLink(BigDecimal id, String name) {
+    /**
+     * Gets the user link.
+     *
+     * @param id   the id
+     * @param name the name
+     * @return the user link
+     */
+    public static String getUserLink(BigDecimal id, String name) {
 		return "<a href='person.jsp?uid=" + id.toString() + "'>" + name
 				+ "</a>";
 	}
 
-	/**
-	 * Checks if is digital.
-	 *
-	 * @param s
-	 *            the s
-	 * @return true, if is digital
-	 */
-	public static boolean isDigital(String s) {
+    /**
+     * Checks if is digital.
+     *
+     * @param s the s
+     * @return true, if is digital
+     */
+    public static boolean isDigital(String s) {
 		boolean b = true;
 		if (s == null || s.equals(""))
 			return false;
@@ -916,40 +870,36 @@ public class Utility {
 		return b;
 	}
 
-	/**
-	 * Gets the date string.
-	 *
-	 * @param l
-	 *            the l
-	 * @return the date string
-	 */
-	public static String getDateString(long l) {
+    /**
+     * Gets the date string.
+     *
+     * @param l the l
+     * @return the date string
+     */
+    public static String getDateString(long l) {
 		String v = new SimpleDateFormat("yyyy-MM-dd HH:mm").format(new Date(l));
 		return v;
 	}
 
-	/**
-	 * Gets the string.
-	 *
-	 * @param o
-	 *            the o
-	 * @return the string
-	 */
-	public static String getString(Object o) {
+    /**
+     * Gets the string.
+     *
+     * @param o the o
+     * @return the string
+     */
+    public static String getString(Object o) {
 		if (o == null)
 			return "";
 		return o.toString();
 	}
 
-	/**
-	 * Write to file.
-	 *
-	 * @param filename
-	 *            the filename
-	 * @param content
-	 *            the content
-	 */
-	public static void WriteToFile(String filename, byte[] content) {
+    /**
+     * Write to file.
+     *
+     * @param filename the filename
+     * @param content  the content
+     */
+    public static void WriteToFile(String filename, byte[] content) {
 		try {
 			FileOutputStream fo = new FileOutputStream(filename);
 			fo.write(content);
@@ -963,14 +913,13 @@ public class Utility {
 		}
 	}
 
-	/**
-	 * Read from file.
-	 *
-	 * @param fileName
-	 *            the file name
-	 * @return the byte[]
-	 */
-	public static byte[] ReadFromFile(String fileName) {
+    /**
+     * Read from file.
+     *
+     * @param fileName the file name
+     * @return the byte[]
+     */
+    public static byte[] ReadFromFile(String fileName) {
 
 		File ff = new java.io.File(fileName);
 		long filelength = ff.length();
@@ -991,14 +940,13 @@ public class Utility {
 		return code;
 	}
 
-	/**
-	 * To utf 8 string.
-	 *
-	 * @param s
-	 *            the s
-	 * @return the string
-	 */
-	public static String toUtf8String(String s) {// String Buffer����
+    /**
+     * To utf 8 string.
+     *
+     * @param s the s
+     * @return the string
+     */
+    public static String toUtf8String(String s) {// String Buffer����
 		StringBuffer sb = new StringBuffer();
 		for (int i = 0; i < s.length(); i++) {
 			char c = s.charAt(i);
@@ -1023,16 +971,14 @@ public class Utility {
 		return sb.toString();
 	}
 
-	/**
-	 * �������ڸ�ʽ����ʱ��.
-	 *
-	 * @param lon
-	 *            long��������ʱ�䣩
-	 * @param str
-	 *            String�����ڸ�ʽ��
-	 * @return String
-	 */
-	public static String longRstr(long lon, String str) {
+    /**
+     * �������ڸ�ʽ����ʱ��.
+     *
+     * @param lon long��������ʱ�䣩
+     * @param str String�����ڸ�ʽ��
+     * @return String string
+     */
+    public static String longRstr(long lon, String str) {
 		String rstr = "";
 		if (lon < 1)
 			return rstr;

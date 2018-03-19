@@ -9,27 +9,49 @@ import com.google.gwt.uibinder.client.UiHandler;
 import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.Widget;
 
+/**
+ * The type Confirm dialog.
+ */
 public class ConfirmDialog extends DialogBoxEx {
 
   private static ConfirmDialogUiBinder uiBinder = GWT.create(ConfirmDialogUiBinder.class);
 
-  interface ConfirmDialogUiBinder extends UiBinder<Widget, ConfirmDialog> {
+    /**
+     * The interface Confirm dialog ui binder.
+     */
+    interface ConfirmDialogUiBinder extends UiBinder<Widget, ConfirmDialog> {
   }
 
-  public ConfirmDialog() {
+    /**
+     * Instantiates a new Confirm dialog.
+     */
+    public ConfirmDialog() {
     setWidget(uiBinder.createAndBindUi(this));
     getElement().getStyle().setZIndex(8001);
   }
 
-  @UiField
+    /**
+     * The Html.
+     */
+    @UiField
   HTML html;
   private Callback<Void, Void> mCallback = null;
 
-  public void setCallback(Callback<Void, Void> callback) {
+    /**
+     * Sets callback.
+     *
+     * @param callback the callback
+     */
+    public void setCallback(Callback<Void, Void> callback) {
     mCallback = callback;
   }
 
-  @UiHandler("btnCancel")
+    /**
+     * On cancel.
+     *
+     * @param ev the ev
+     */
+    @UiHandler("btnCancel")
   void onCancel(ClickEvent ev) {
     this.hide();
     if (mCallback != null) {
@@ -37,7 +59,12 @@ public class ConfirmDialog extends DialogBoxEx {
     }
   }
 
-  @UiHandler("btnOK")
+    /**
+     * On ok.
+     *
+     * @param ev the ev
+     */
+    @UiHandler("btnOK")
   void onOK(ClickEvent ev) {
     this.hide();
     if (mCallback != null) {
@@ -45,13 +72,13 @@ public class ConfirmDialog extends DialogBoxEx {
     }
   }
 
-  /**
-   * 设置显示的消息
-   * 
-   * @param title
-   * @param content
-   */
-  public void setInfo(String title, String content) {
+    /**
+     * 设置显示的消息
+     *
+     * @param title   the title
+     * @param content the content
+     */
+    public void setInfo(String title, String content) {
     this.setText(title);
     html.setHTML(content);
   }

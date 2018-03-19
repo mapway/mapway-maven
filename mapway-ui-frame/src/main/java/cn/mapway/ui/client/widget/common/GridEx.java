@@ -7,8 +7,14 @@ import com.ksyzt.gwt.client.event.HasMessageHandlers;
 import com.ksyzt.gwt.client.event.MessageEvent;
 import com.ksyzt.gwt.client.event.MessageHandler;
 
+/**
+ * The type Grid ex.
+ */
 public class GridEx extends Grid implements HasMessageHandlers {
-	public GridEx() {
+    /**
+     * Instantiates a new Grid ex.
+     */
+    public GridEx() {
 		init();
 	}
 
@@ -32,13 +38,12 @@ public class GridEx extends Grid implements HasMessageHandlers {
 		return addHandler(handler, MessageEvent.TYPE);
 	}
 
-	/**
-	 * 报告消息.
-	 *
-	 * @param msg
-	 *            the msg
-	 */
-	public void message(String msg) {
+    /**
+     * 报告消息.
+     *
+     * @param msg the msg
+     */
+    public void message(String msg) {
 		MessageEvent ev = new MessageEvent(MessageEvent.MESSAGE, msg);
 		fireEvent(ev);
 	}

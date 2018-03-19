@@ -11,12 +11,17 @@ import org.apache.maven.plugins.annotations.Mojo;
 import org.apache.maven.plugins.annotations.Parameter;
 
 /**
+ * The type Write file.
+ *
  * @author Aleksey Yablokov.
  */
 @Mojo(name = WriteFile.MOJO_NAME, requiresProject = true)
 @SuppressWarnings("unused")
 public class WriteFile extends AbstractMojo {
-  public static final String MOJO_NAME = "write-file";
+    /**
+     * The constant MOJO_NAME.
+     */
+    public static final String MOJO_NAME = "write-file";
 
   @Parameter
   @SuppressWarnings({"unused", "MismatchedReadAndWriteOfArray"})

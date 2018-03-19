@@ -35,6 +35,9 @@ import java.util.Date;
  */
 public class TestPanel extends Composite implements HasCloseHandlers<Void> {
 
+    /**
+     * The constant GWT_USER_HEADER.
+     */
     public static final String GWT_USER_HEADER = "gwt_user_token";
 
     /**
@@ -74,6 +77,9 @@ public class TestPanel extends Composite implements HasCloseHandlers<Void> {
 
     }
 
+    /**
+     * Save header.
+     */
     protected void saveHeader() {
         String key = txtHeader.getValue();
         String value = txtHeaderValue.getValue();
@@ -260,6 +266,9 @@ public class TestPanel extends Composite implements HasCloseHandlers<Void> {
     @UiField
     TextBox txtHeader;
 
+    /**
+     * The Txt header value.
+     */
     @UiField
     TextBox txtHeaderValue;
 

@@ -9,10 +9,16 @@ import com.google.gwt.core.client.GWT;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.user.client.ui.Widget;
 
+/**
+ * The type Day work module.
+ */
 @ModuleMarker(value = DayWorkModule.MODULE_CODE, group = "/测试",name = "空模块", summary = "--==--")
 public class DayWorkModule extends BaseAbstractModule {
 
-  public static final String MODULE_CODE = "MC_DAYWORK";
+    /**
+     * The constant MODULE_CODE.
+     */
+    public static final String MODULE_CODE = "MC_DAYWORK";
 
   @Override
   public String getModuleCode() {
@@ -21,10 +27,16 @@ public class DayWorkModule extends BaseAbstractModule {
 
   private static DayWorkModuleUiBinder uiBinder = GWT.create(DayWorkModuleUiBinder.class);
 
-  interface DayWorkModuleUiBinder extends UiBinder<Widget, DayWorkModule> {
+    /**
+     * The interface Day work module ui binder.
+     */
+    interface DayWorkModuleUiBinder extends UiBinder<Widget, DayWorkModule> {
   }
 
-  public DayWorkModule() {
+    /**
+     * Instantiates a new Day work module.
+     */
+    public DayWorkModule() {
     initWidget(uiBinder.createAndBindUi(this));
 
   }

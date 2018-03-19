@@ -15,6 +15,7 @@ import com.ksyzt.gwt.client.event.MessageEvent;
 import com.ksyzt.gwt.client.event.MessageHandler;
 
 // TODO: Auto-generated Javadoc
+
 /**
  * The Class ColorLabel.
  */
@@ -40,10 +41,10 @@ public class ColorLabel extends TextBox implements HasMessageHandlers {
 		}
 	};
 
-	/**
-	 * Instantiates a new color label.
-	 */
-	public ColorLabel() {
+    /**
+     * Instantiates a new color label.
+     */
+    public ColorLabel() {
 		this.popup = new ColorPopup();
 		setValue("#ffffff");
 

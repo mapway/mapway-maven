@@ -10,7 +10,9 @@ import cn.mapway.document.annotation.Doc;
 @Doc("登录系统返回数据")
 public class LoginRespData extends RespData {
 
-  /** The token. */
-  @ApiField(value = "用户信息，包括token")
+    /**
+     * The token.
+     */
+    @ApiField(value = "用户信息，包括token")
   public S_USERObj user = new S_USERObj();
 }

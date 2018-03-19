@@ -4,8 +4,14 @@ import com.google.gwt.dom.client.Style.Unit;
 import com.google.gwt.regexp.shared.RegExp;
 import com.google.gwt.user.client.ui.CheckBox;
 
+/**
+ * The type Check box ex.
+ */
 public class CheckBoxEx extends CheckBox implements IValidator {
-  public CheckBoxEx() {
+    /**
+     * Instantiates a new Check box ex.
+     */
+    public CheckBoxEx() {
     setStyleName("gwtEx-CheckBox");
     init();
   }
@@ -17,34 +23,49 @@ public class CheckBoxEx extends CheckBox implements IValidator {
   /** 按钮的数据. */
   private Object data;
 
-  public CheckBoxEx(String name) {
+    /**
+     * Instantiates a new Check box ex.
+     *
+     * @param name the name
+     */
+    public CheckBoxEx(String name) {
     super(name);
     init();
   }
 
-  /**
-   * Gets the data.
-   *
-   * @return the data
-   */
-  public Object getData() {
+    /**
+     * Gets the data.
+     *
+     * @return the data
+     */
+    public Object getData() {
     return data;
   }
 
-  /**
-   * Sets the data.
-   *
-   * @param data the new data
-   */
-  public void setData(Object data) {
+    /**
+     * Sets the data.
+     *
+     * @param data the new data
+     */
+    public void setData(Object data) {
     this.data = data;
   }
 
-  public String getTag() {
+    /**
+     * Gets tag.
+     *
+     * @return the tag
+     */
+    public String getTag() {
     return tag;
   }
 
-  public void setTag(String tag) {
+    /**
+     * Sets tag.
+     *
+     * @param tag the tag
+     */
+    public void setTag(String tag) {
     this.tag = tag;
   }
 

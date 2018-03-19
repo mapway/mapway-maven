@@ -29,6 +29,9 @@ import com.google.gwt.user.client.ui.Widget;
  */
 @ModuleMarker(value = LoginModule.MODULE_CODE, name = "登录模块", group = "/系统")
 public class LoginModule extends BaseAbstractModuleWithEvent {
+    /**
+     * The constant MODULE_CODE.
+     */
     public final static String MODULE_CODE = "MC_LOING";
 
     @Override
@@ -36,8 +39,17 @@ public class LoginModule extends BaseAbstractModuleWithEvent {
         return MODULE_CODE;
     }
 
+    /**
+     * The constant USER_TOKEN.
+     */
     public static final String USER_TOKEN = "token";
+    /**
+     * The constant USER_NAME.
+     */
     public static final String USER_NAME = "userName";
+    /**
+     * The constant USER_TYPE.
+     */
     public static final String USER_TYPE = "loginType";
 
     /**
@@ -63,6 +75,9 @@ public class LoginModule extends BaseAbstractModuleWithEvent {
     @UiField
     PasswordTextBox txtPassword;
 
+    /**
+     * The Resource root id.
+     */
     Integer resourceRootId = null;
 
     /**
@@ -129,6 +144,11 @@ public class LoginModule extends BaseAbstractModuleWithEvent {
 //    checkLogin(UserLoginType.USER_LOGIN_TYPE_LDAP);
 //  }
 
+    /**
+     * Custom logoin.
+     *
+     * @param ev the ev
+     */
     @UiHandler("btnCustomLogin")
     void customLogoin(ClickEvent ev) {
         checkLogin(UserLoginType.USER_LOGIN_TYPE_REGISTER);
@@ -136,6 +156,8 @@ public class LoginModule extends BaseAbstractModuleWithEvent {
 
     /**
      * Check login.
+     *
+     * @param type the type
      */
     protected void checkLogin(String type) {
         if (txtUserName.getValue().length() == 0) {
@@ -175,8 +197,8 @@ public class LoginModule extends BaseAbstractModuleWithEvent {
     /**
      * 检查TOKEN
      *
-     * @param resourceRootId
-     * @param handler
+     * @param resourceRootId the resource root id
+     * @param handler        the handler
      */
     public static void checkUserToken(Integer resourceRootId, final Callback<Boolean, String> handler) {
         Storage localStorage = Storage.getLocalStorageIfSupported(); // 获取存储对象
@@ -237,6 +259,9 @@ public class LoginModule extends BaseAbstractModuleWithEvent {
 
     }
 
+    /**
+     * The Lb message.
+     */
     @UiField
     Label lbMessage;
 

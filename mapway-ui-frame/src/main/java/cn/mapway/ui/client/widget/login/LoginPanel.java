@@ -19,34 +19,54 @@ import com.google.gwt.user.client.ui.Widget;
 
 /**
  * 登录UI.
- * @author zhangjianshe
  *
+ * @author zhangjianshe
  */
 public class LoginPanel extends Composite implements HasMapwayHandlers<LoginData> {
 
 	private static LoginPanelUiBinder uiBinder = GWT
 			.create(LoginPanelUiBinder.class);
 
-	interface LoginPanelUiBinder extends UiBinder<Widget, LoginPanel> {
+    /**
+     * The interface Login panel ui binder.
+     */
+    interface LoginPanelUiBinder extends UiBinder<Widget, LoginPanel> {
 	}
 
-	public LoginPanel() {
+    /**
+     * Instantiates a new Login panel.
+     */
+    public LoginPanel() {
 		initWidget(uiBinder.createAndBindUi(this));
 	}
 
 	public HandlerRegistration addMapwayHandler(MapwayHandler<LoginData> handler) {
 		return addHandler(handler, MapwayEvent.getType());
 	}
-	
-	@UiField
+
+    /**
+     * The Btn submit.
+     */
+    @UiField
 	MapwayButton btnSubmit;
-	@UiField
+    /**
+     * The Txt name.
+     */
+    @UiField
 	TextBox txtName;
-	@UiField
+    /**
+     * The Txt password.
+     */
+    @UiField
 	PasswordTextBox txtPassword;
-	
-	
-	@UiHandler("btnSubmit")
+
+
+    /**
+     * On submit clicked.
+     *
+     * @param event the event
+     */
+    @UiHandler("btnSubmit")
 	void onSubmitClicked(ClickEvent event)
 	{
 		LoginData data=new LoginData();

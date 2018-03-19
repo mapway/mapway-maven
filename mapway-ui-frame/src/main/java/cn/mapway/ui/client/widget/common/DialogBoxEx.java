@@ -6,8 +6,14 @@ import com.ksyzt.gwt.client.event.HasMessageHandlers;
 import com.ksyzt.gwt.client.event.MessageEvent;
 import com.ksyzt.gwt.client.event.MessageHandler;
 
+/**
+ * The type Dialog box ex.
+ */
 public class DialogBoxEx extends DialogBox implements HasMessageHandlers{
-	public DialogBoxEx() {
+    /**
+     * Instantiates a new Dialog box ex.
+     */
+    public DialogBoxEx() {
 		super(new CloseCaption());
 		setStyleName("gwtEx-DialogBox");
 	}

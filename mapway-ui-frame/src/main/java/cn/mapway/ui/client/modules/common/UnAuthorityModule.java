@@ -11,17 +11,29 @@ import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.Widget;
 
+/**
+ * The type Un authority module.
+ */
 @ModuleMarker(value = UnAuthorityModule.MODULE_CODE,group = "/系统", name = "未经授权的模块")
 public class UnAuthorityModule extends BaseAbstractModule {
 
-  public static final String MODULE_CODE = "SYS_UNAUTHORITY_MODULE";
+    /**
+     * The constant MODULE_CODE.
+     */
+    public static final String MODULE_CODE = "SYS_UNAUTHORITY_MODULE";
 
   private static UnAuthorityModuleUiBinder uiBinder = GWT.create(UnAuthorityModuleUiBinder.class);
 
-  interface UnAuthorityModuleUiBinder extends UiBinder<Widget, UnAuthorityModule> {
+    /**
+     * The interface Un authority module ui binder.
+     */
+    interface UnAuthorityModuleUiBinder extends UiBinder<Widget, UnAuthorityModule> {
   }
 
-  public UnAuthorityModule() {
+    /**
+     * Instantiates a new Un authority module.
+     */
+    public UnAuthorityModule() {
     initWidget(uiBinder.createAndBindUi(this));
   }
 
@@ -30,13 +42,16 @@ public class UnAuthorityModule extends BaseAbstractModule {
     return this;
   }
 
-  @UiField
+    /**
+     * The Lb moduel name.
+     */
+    @UiField
   Label lbModuelName;
 
-  /**
-   * 模块参数:模块名称
-   */
-  public static final String PARA_MODULE_NAME = "ModuelName";
+    /**
+     * 模块参数:模块名称
+     */
+    public static final String PARA_MODULE_NAME = "ModuelName";
 
   @Override
   public boolean initialize(IModule parentModule, ModuleParameter parameters) {

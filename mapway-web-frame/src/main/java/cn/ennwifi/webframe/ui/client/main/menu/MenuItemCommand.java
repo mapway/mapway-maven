@@ -15,16 +15,17 @@ import com.google.gwt.core.client.Scheduler.ScheduledCommand;
 public class MenuItemCommand implements ScheduledCommand {
 
 
+    /**
+     * The data.
+     */
+    S_RESOURCEObj data;
 
-  /** The data. */
-  S_RESOURCEObj data;
-
-  /**
-   * 构造一个对菜单项的执行.
-   *
-   * @param au the au
-   */
-  public MenuItemCommand(S_RESOURCEObj au) {
+    /**
+     * 构造一个对菜单项的执行.
+     *
+     * @param au the au
+     */
+    public MenuItemCommand(S_RESOURCEObj au) {
     data = au;
   }
 

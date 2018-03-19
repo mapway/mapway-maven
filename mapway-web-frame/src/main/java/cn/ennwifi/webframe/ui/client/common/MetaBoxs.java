@@ -20,13 +20,16 @@ import com.ksyzt.gwt.client.event.MessageHandler;
 
 /**
  * 多选的元数据框
- * @author zhangjianshe
  *
+ * @author zhangjianshe
  */
 public class MetaBoxs extends HTMLPanel implements HasMessageHandlers, Observer, IValidator {
 
 
-  public MetaBoxs() {
+    /**
+     * Instantiates a new Meta boxs.
+     */
+    public MetaBoxs() {
     this("div");
   }
 
@@ -35,7 +38,12 @@ public class MetaBoxs extends HTMLPanel implements HasMessageHandlers, Observer,
     return addHandler(handler, MessageEvent.TYPE);
   }
 
-  public MetaBoxs(String tag) {
+    /**
+     * Instantiates a new Meta boxs.
+     *
+     * @param tag the tag
+     */
+    public MetaBoxs(String tag) {
     super(tag);
     setStyleName("gwtEx-width-12");
     getElement().getStyle().setTextAlign(com.google.gwt.dom.client.Style.TextAlign.LEFT);
@@ -58,7 +66,12 @@ public class MetaBoxs extends HTMLPanel implements HasMessageHandlers, Observer,
     }
   };
 
-  public void setCatalog(String catalog) {
+    /**
+     * Sets catalog.
+     *
+     * @param catalog the catalog
+     */
+    public void setCatalog(String catalog) {
     mCatalog = catalog;
     refreshView();
   }
@@ -68,10 +81,10 @@ public class MetaBoxs extends HTMLPanel implements HasMessageHandlers, Observer,
     refreshView();
   }
 
-  /**
-   * 刷新页面
-   */
-  public void refreshView() {
+    /**
+     * 刷新页面
+     */
+    public void refreshView() {
     this.clear();
     if (mCatalog != null && mCatalog.length() > 0) {
       List<S_METAObj> datas = MetaDataProvider.get().findByCatalog(mCatalog);
@@ -86,13 +99,17 @@ public class MetaBoxs extends HTMLPanel implements HasMessageHandlers, Observer,
     updateData(true);
   }
 
-  List<String> mCodes = new ArrayList<String>();
+    /**
+     * The M codes.
+     */
+    List<String> mCodes = new ArrayList<String>();
 
-  /**
-   * 设置代码数据
-   * @param codes  ,00,01,
-   */
-  public void setValue(String codes) {
+    /**
+     * 设置代码数据
+     *
+     * @param codes ,00,01,
+     */
+    public void setValue(String codes) {
     mCodes = new ArrayList<String>();
     if (codes != null) {
       String[] codelist = codes.split(",");
@@ -107,11 +124,12 @@ public class MetaBoxs extends HTMLPanel implements HasMessageHandlers, Observer,
     updateData(true);
   }
 
-  /**
-   * 获取选中的数值
-   * @return
-   */
-  public String getValue() {
+    /**
+     * 获取选中的数值
+     *
+     * @return value
+     */
+    public String getValue() {
     List<S_METAObj> selected = updateData(false);
     mCodes = new ArrayList<String>();
     for (S_METAObj meta : selected) {
@@ -215,24 +233,32 @@ public class MetaBoxs extends HTMLPanel implements HasMessageHandlers, Observer,
   }
 
 
-  Integer minLength = null;
-  Integer maxLength = null;
+    /**
+     * The Min length.
+     */
+    Integer minLength = null;
+    /**
+     * The Max length.
+     */
+    Integer maxLength = null;
 
 
-  /**
-   * 设置最小个数
-   * @param minLength
-   */
-  void setMinLength(int minLength) {
+    /**
+     * 设置最小个数
+     *
+     * @param minLength the min length
+     */
+    void setMinLength(int minLength) {
     this.minLength = minLength;
 
   }
 
-  /**
-   * 设置最大个数
-   * @param maxLength
-   */
-  public void setMaxLength(int maxLength) {
+    /**
+     * 设置最大个数
+     *
+     * @param maxLength the max length
+     */
+    public void setMaxLength(int maxLength) {
     this.maxLength = maxLength;
   }
 

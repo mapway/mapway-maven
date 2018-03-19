@@ -46,6 +46,9 @@ public class EditAuthority extends MessageComposite {
     @UiField
     TextBox txtName;
 
+    /**
+     * The Lb id.
+     */
     @UiField
     Label lbID;
 
@@ -109,6 +112,9 @@ public class EditAuthority extends MessageComposite {
     @UiField
     ImageUploader icon;
 
+    /**
+     * The Tools.
+     */
     @UiField
     HorizontalPanel tools;
 

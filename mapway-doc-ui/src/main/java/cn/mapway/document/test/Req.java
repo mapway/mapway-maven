@@ -6,6 +6,7 @@ import cn.mapway.document.annotation.ApiField;
 import cn.mapway.document.annotation.Doc;
 
 // TODO: Auto-generated Javadoc
+
 /**
  * The Class Req.
  */
@@ -23,24 +24,34 @@ import cn.mapway.document.annotation.Doc;
 	    )
 public class Req {
 
-	/** The f 1. */
-	@ApiField("int field")
+    /**
+     * The f 1.
+     */
+    @ApiField("int field")
 	public int f1;
 
-	/** The boolea field. */
-	@ApiField("booelan field")
+    /**
+     * The boolea field.
+     */
+    @ApiField("booelan field")
 	public Boolean booleaField;
 
-	/** The names. */
-	@ApiField("List test")
+    /**
+     * The names.
+     */
+    @ApiField("List test")
 	public List<String> names;
 
-	/** The rets. */
-	@ApiField("RET数组")
+    /**
+     * The rets.
+     */
+    @ApiField("RET数组")
 	public List<Ret> rets;
 
-	/** The test obj. */
-	@ApiField("TestObject in api Field")
+    /**
+     * The test obj.
+     */
+    @ApiField("TestObject in api Field")
 	public TestObj testObj;
 
 }

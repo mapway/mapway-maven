@@ -19,6 +19,7 @@ import com.ksyzt.gwt.client.ui.dialog.Alert;
 import com.ksyzt.gwt.shared.module.SystemConst;
 
 // TODO: Auto-generated Javadoc
+
 /**
  * The Class UrlRewriteConfigure.
  */
@@ -28,22 +29,24 @@ public class UrlRewriteConfigure extends MessageComposite {
   private static UrlRewriteConfigureUiBinder uiBinder = GWT
       .create(UrlRewriteConfigureUiBinder.class);
 
-  /**
-   * The Interface UrlRewriteConfigureUiBinder.
-   */
-  interface UrlRewriteConfigureUiBinder extends UiBinder<Widget, UrlRewriteConfigure> {
+    /**
+     * The Interface UrlRewriteConfigureUiBinder.
+     */
+    interface UrlRewriteConfigureUiBinder extends UiBinder<Widget, UrlRewriteConfigure> {
   }
 
-  /** The btn new. */
-  @UiField
+    /**
+     * The btn new.
+     */
+    @UiField
   Anchor btnNew;
 
-  /**
-   * On btn new.
-   *
-   * @param e the e
-   */
-  @UiHandler("btnNew")
+    /**
+     * On btn new.
+     *
+     * @param e the e
+     */
+    @UiHandler("btnNew")
   void onBtnNew(ClickEvent e) {
     CellUrlMapper cell = new CellUrlMapper();
     cell.addMessageHandler(m_row_handler);
@@ -111,8 +114,10 @@ public class UrlRewriteConfigure extends MessageComposite {
     }
   };
 
-  /** The index. */
-  int index = 0;
+    /**
+     * The index.
+     */
+    int index = 0;
 
   /** The m on data. */
   private AsyncCallback<List<RewriteData>> m_on_data = new AsyncCallback<List<RewriteData>>() {
@@ -129,17 +134,17 @@ public class UrlRewriteConfigure extends MessageComposite {
     }
   };
 
-  /**
-   * Instantiates a new url rewrite configure.
-   */
-  public UrlRewriteConfigure() {
+    /**
+     * Instantiates a new url rewrite configure.
+     */
+    public UrlRewriteConfigure() {
     initWidget(uiBinder.createAndBindUi(this));
   }
 
-  /**
-   * Inits the.
-   */
-  public void init() {
+    /**
+     * Inits the.
+     */
+    public void init() {
     message("开始请求数据");
     CommonServerProxy.SITE_MANAGER.getRewriteData(m_on_data);
   }
@@ -161,7 +166,9 @@ public class UrlRewriteConfigure extends MessageComposite {
     }
   }
 
-  /** The center. */
-  @UiField
+    /**
+     * The center.
+     */
+    @UiField
   HTMLPanel center;
 }

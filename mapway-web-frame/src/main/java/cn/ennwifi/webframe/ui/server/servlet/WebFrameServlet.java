@@ -77,8 +77,9 @@ public abstract class WebFrameServlet extends CheckAdminTokenServlet implements 
     private final static String MODULE_ACCOUNT = "账户";
 
     /**
-     * @param rpcRequest
-     * @return
+     * ff
+     * @param rpcRequest  the
+     * @return boolean
      */
     @Override
     public boolean checkToken(RPCRequest rpcRequest) {
@@ -439,8 +440,8 @@ public abstract class WebFrameServlet extends CheckAdminTokenServlet implements 
     /**
      * 用户是否拥有某个资源的访问权限
      *
-     * @param resid
-     * @return
+     * @param resid dd
+     * @return d
      * @throws ServerException
      */
     @Override
@@ -510,9 +511,9 @@ public abstract class WebFrameServlet extends CheckAdminTokenServlet implements 
     /**
      * 判断当前用户否是拥有功能点权限
      *
-     * @param request
-     * @return
-     * @throws ServerException
+     * @param request dd
+     * @return  dd
+     * @throws ServerException dd
      */
     @Override
     public List<ResourceNameAuthority> isUserOwnResource(List<ResourceNameAuthority> request, Integer rootid) throws ServerException {

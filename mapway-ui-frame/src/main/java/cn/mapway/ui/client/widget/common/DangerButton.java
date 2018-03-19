@@ -1,7 +1,13 @@
 package cn.mapway.ui.client.widget.common;
 
+/**
+ * The type Danger button.
+ */
 public class DangerButton extends ButtonEx{
-	public DangerButton() {
+    /**
+     * Instantiates a new Danger button.
+     */
+    public DangerButton() {
 		setStyleName("gwtEx-Button gwtEx-DangerButton");
 	}
 	

@@ -14,25 +14,27 @@ import java.util.Map;
  */
 public class EventBus {
 
-  /** The events. */
-  public Map<String, List<IEventHandler>> events;
+    /**
+     * The events.
+     */
+    public Map<String, List<IEventHandler>> events;
 
-  /**
-   * Instantiates a new event bus.
-   */
-  public EventBus() {
+    /**
+     * Instantiates a new event bus.
+     */
+    public EventBus() {
     events = new HashMap<String, List<IEventHandler>>();
   }
 
 
-  /**
-   * 向消息总线注册消息句柄.
-   *
-   * @param topic the topic
-   * @param handler the handler
-   * @return true, if successful
-   */
-  public boolean register(String topic, IEventHandler handler) {
+    /**
+     * 向消息总线注册消息句柄.
+     *
+     * @param topic   the topic
+     * @param handler the handler
+     * @return true, if successful
+     */
+    public boolean register(String topic, IEventHandler handler) {
     if (topic == null || topic.length() == 0 || handler == null) {
       return false;
     }
@@ -67,15 +69,14 @@ public class EventBus {
   }
 
 
-
-  /**
-   * 向事件总线移除消息处理句柄.
-   *
-   * @param topic the topic
-   * @param handler the handler
-   * @return true, if successful
-   */
-  public boolean unregister(String topic, IEventHandler handler) {
+    /**
+     * 向事件总线移除消息处理句柄.
+     *
+     * @param topic   the topic
+     * @param handler the handler
+     * @return true, if successful
+     */
+    public boolean unregister(String topic, IEventHandler handler) {
     if (topic == null || handler == null) {
       return false;
     }
@@ -90,14 +91,14 @@ public class EventBus {
     return true;
   }
 
-  /**
-   * 激发一个事件.
-   *
-   * @param topic the topic
-   * @param type the type
-   * @param event the event
-   */
-  public void fire(String topic, int type, Object event) {
+    /**
+     * 激发一个事件.
+     *
+     * @param topic the topic
+     * @param type  the type
+     * @param event the event
+     */
+    public void fire(String topic, int type, Object event) {
     List<IEventHandler> list = events.get(topic);
     if (list == null) {
       return;

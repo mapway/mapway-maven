@@ -8,26 +8,26 @@ import com.google.gwt.core.client.JavaScriptObject;
  */
 public class BaseEvent extends JavaScriptObject {
 
-  /**
-   * Instantiates a new base event.
-   */
-  protected BaseEvent() {}
+    /**
+     * Instantiates a new base event.
+     */
+    protected BaseEvent() {}
 
-  /**
-   * 错误代码.
-   *
-   * @return the int
-   */
-  public final native int errorCode()/*-{
+    /**
+     * 错误代码.
+     *
+     * @return the int
+     */
+    public final native int errorCode()/*-{
         return this.errorCode;
   }-*/;
 
-  /**
-   * 错误消息.
-   *
-   * @return the string
-   */
-  public final native String errormsg()/*-{
+    /**
+     * 错误消息.
+     *
+     * @return the string
+     */
+    public final native String errormsg()/*-{
         return this.errorMessage;
   }-*/;
 

@@ -12,8 +12,8 @@ import com.google.gwt.user.client.rpc.AsyncCallback;
 
 /**
  * 元数据提供器
- * @author zhangjianshe
  *
+ * @author zhangjianshe
  */
 public class MetaDataProvider extends ObservableImpl {
 
@@ -37,15 +37,19 @@ public class MetaDataProvider extends ObservableImpl {
   };
   private static boolean loadding = false;
 
-  protected MetaDataProvider() {
+    /**
+     * Instantiates a new Meta data provider.
+     */
+    protected MetaDataProvider() {
     mData = new ArrayList<S_METAObj>();
   }
 
-  /**
-   * 获取唯一实例
-   * @return
-   */
-  public static MetaDataProvider get() {
+    /**
+     * 获取唯一实例
+     *
+     * @return meta data provider
+     */
+    public static MetaDataProvider get() {
     if (INSANCE == null) {
       INSANCE = new MetaDataProvider();
       INSANCE.reload(true);
@@ -53,10 +57,12 @@ public class MetaDataProvider extends ObservableImpl {
     return INSANCE;
   }
 
-  /**
-   * 重新加载数据
-   */
-  public void reload(boolean force) {
+    /**
+     * 重新加载数据
+     *
+     * @param force the force
+     */
+    public void reload(boolean force) {
     if (loadding) {
       return;
     }
@@ -68,12 +74,13 @@ public class MetaDataProvider extends ObservableImpl {
     }
   }
 
-  /**
-   * 根据路径找到元数据
-   * @param path
-   * @return
-   */
-  public List<S_METAObj> findByCatalog(String path) {
+    /**
+     * 根据路径找到元数据
+     *
+     * @param path the path
+     * @return list
+     */
+    public List<S_METAObj> findByCatalog(String path) {
     List<S_METAObj> d = new ArrayList<S_METAObj>();
     for (S_METAObj m : mData) {
       if (m.getCatalog().equals(path)) {
@@ -83,12 +90,13 @@ public class MetaDataProvider extends ObservableImpl {
     return d;
   }
 
-  /**
-   * 找到多个code 对应的元数据信息
-   * @param path
-   * @return
-   */
-  public List<S_METAObj> findByCodes(String[] codes) {
+    /**
+     * 找到多个code 对应的元数据信息
+     *
+     * @param codes the codes
+     * @return list
+     */
+    public List<S_METAObj> findByCodes(String[] codes) {
     List<S_METAObj> ds = new ArrayList<S_METAObj>();
     for (int i = 0; i < codes.length; i++) {
       S_METAObj d = findByCode(codes[i]);
@@ -99,12 +107,13 @@ public class MetaDataProvider extends ObservableImpl {
     return ds;
   }
 
-  /**
-   * 转换Code到文本
-   * @param codes
-   * @return
-   */
-  public List<S_METAObj> tanslate(String codes) {
+    /**
+     * 转换Code到文本
+     *
+     * @param codes the codes
+     * @return list
+     */
+    public List<S_METAObj> tanslate(String codes) {
     ArrayList<S_METAObj> mCodes = new ArrayList<S_METAObj>();
     if (codes != null) {
       String[] codelist = codes.split(",");
@@ -119,12 +128,13 @@ public class MetaDataProvider extends ObservableImpl {
     return mCodes;
   }
 
-  /**
-   * 根据代码找到元数据
-   * @param code
-   * @return
-   */
-  public S_METAObj findByCode(String code) {
+    /**
+     * 根据代码找到元数据
+     *
+     * @param code the code
+     * @return s meta obj
+     */
+    public S_METAObj findByCode(String code) {
     if (code == null || code.length() == 0) {
       return null;
     }
@@ -135,11 +145,12 @@ public class MetaDataProvider extends ObservableImpl {
     return null;
   }
 
-  /**
-   * 获取所有元数据
-   * @return
-   */
-  public List<S_METAObj> getData() {
+    /**
+     * 获取所有元数据
+     *
+     * @return data
+     */
+    public List<S_METAObj> getData() {
     return mData;
   }
 }

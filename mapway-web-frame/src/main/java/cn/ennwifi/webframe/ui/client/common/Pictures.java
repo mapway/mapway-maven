@@ -17,14 +17,17 @@ import com.ksyzt.gwt.client.event.MessageHandler;
 
 /**
  * 多图片组件
- * @author zhangjianshe
  *
+ * @author zhangjianshe
  */
 public class Pictures extends MessageComposite implements IValidator {
 
   private static PicturesUiBinder uiBinder = GWT.create(PicturesUiBinder.class);
 
-  interface PicturesUiBinder extends UiBinder<Widget, Pictures> {
+    /**
+     * The interface Pictures ui binder.
+     */
+    interface PicturesUiBinder extends UiBinder<Widget, Pictures> {
   }
 
   private MessageHandler imgHandler = new MessageHandler() {
@@ -43,7 +46,10 @@ public class Pictures extends MessageComposite implements IValidator {
     }
   };
 
-  public Pictures() {
+    /**
+     * Instantiates a new Pictures.
+     */
+    public Pictures() {
     initWidget(uiBinder.createAndBindUi(this));
     uploader.addAcceptFileExtensions("pdf", "doc", "docx", "txt", "zip", "gz", "cad", "xlsx",
         "xls", "ppt", "pptx");
@@ -53,10 +59,16 @@ public class Pictures extends MessageComposite implements IValidator {
     uploader.setPixelSize(220, 220);
   }
 
-  @UiField
+    /**
+     * The P pictures.
+     */
+    @UiField
   HTMLPanel pPictures;
 
-  Pics pics;
+    /**
+     * The Pics.
+     */
+    Pics pics;
 
   private MessageHandler itemHandler = new MessageHandler() {
 
@@ -70,11 +82,12 @@ public class Pictures extends MessageComposite implements IValidator {
     }
   };
 
-  /**
-   * JSON 格式 [{title:"","url":""},{title:"","url":""}]
-   * @param pictures
-   */
-  public void setValue(String pictures) {
+    /**
+     * JSON 格式 [{title:"","url":""},{title:"","url":""}]
+     *
+     * @param pictures the pictures
+     */
+    public void setValue(String pictures) {
     pics = Pics.fromJson(pictures);
     updateData(true);
   }
@@ -109,12 +122,20 @@ public class Pictures extends MessageComposite implements IValidator {
     }
   }
 
-  public String getValue() {
+    /**
+     * Gets value.
+     *
+     * @return the value
+     */
+    public String getValue() {
     updateData(false);
     return pics.toJson();
   }
 
-  @UiField
+    /**
+     * The Uploader.
+     */
+    @UiField
   ImageUploader uploader;
 
 
@@ -172,24 +193,32 @@ public class Pictures extends MessageComposite implements IValidator {
   }
 
 
-  Integer minLength = null;
-  Integer maxLength = 5;
+    /**
+     * The Min length.
+     */
+    Integer minLength = null;
+    /**
+     * The Max length.
+     */
+    Integer maxLength = 5;
 
 
-  /**
-   * 设置最小个数
-   * @param minLength
-   */
-  public void setMinLength(int minLength) {
+    /**
+     * 设置最小个数
+     *
+     * @param minLength the min length
+     */
+    public void setMinLength(int minLength) {
     this.minLength = minLength;
 
   }
 
-  /**
-   * 设置最大个数
-   * @param maxLength
-   */
-  public void setMaxLength(int maxLength) {
+    /**
+     * 设置最大个数
+     *
+     * @param maxLength the max length
+     */
+    public void setMaxLength(int maxLength) {
     this.maxLength = maxLength;
   }
 

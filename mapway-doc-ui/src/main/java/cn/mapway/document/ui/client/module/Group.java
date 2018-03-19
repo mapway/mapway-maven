@@ -5,6 +5,7 @@ import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.core.client.JsArray;
 
 // TODO: Auto-generated Javadoc
+
 /**
  * 接口组对象.
  *
@@ -12,54 +13,54 @@ import com.google.gwt.core.client.JsArray;
  */
 public class Group extends JavaScriptObject {
 
-	/**
-	 * Instantiates a new group.
-	 */
-	protected Group() {
+    /**
+     * Instantiates a new group.
+     */
+    protected Group() {
 	}
 
-	/**
-	 *  节点名称.
-	 *
-	 * @return the string
-	 */
-	public  final native String name()/*-{
+    /**
+     * 节点名称.
+     *
+     * @return the string
+     */
+    public  final native String name()/*-{
 		return this.name;
 	}-*/;
-	
-	/**
-	 *  节点全路径名称.
-	 *
-	 * @return the string
-	 */
-	public  final native String fullName()/*-{
+
+    /**
+     * 节点全路径名称.
+     *
+     * @return the string
+     */
+    public  final native String fullName()/*-{
 		return this.fullName;
 	}-*/;
 
-	/**
-	 *  节点说明.
-	 *
-	 * @return the string
-	 */
-	public  final native String summary()/*-{
+    /**
+     * 节点说明.
+     *
+     * @return the string
+     */
+    public  final native String summary()/*-{
 		return this.summary;
 	}-*/;
 
-	/**
-	 * 子节点.
-	 *
-	 * @return the js array
-	 */
-	public  final native JsArray<Entry> entries()/*-{
+    /**
+     * 子节点.
+     *
+     * @return the js array
+     */
+    public  final native JsArray<Entry> entries()/*-{
 		return this.entries || [];
 	}-*/;
 
-	/**
-	 * 子分组.
-	 *
-	 * @return the js array
-	 */
-	public final native JsArray<Group> subGroups()/*-{
+    /**
+     * 子分组.
+     *
+     * @return the js array
+     */
+    public final native JsArray<Group> subGroups()/*-{
 		return this.subGroups || [];
 	}-*/;
 

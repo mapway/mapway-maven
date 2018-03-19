@@ -12,7 +12,6 @@ import java.util.List;
  *
  * @author zhangjianshe
  */
-
 public class AdminLoginResponse implements IsSerializable {
     /**
      * Instantiates a new login response.

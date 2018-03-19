@@ -9,9 +9,8 @@ import com.ksyzt.gwt.client.common.MessageComposite;
 
 /**
  * 模块基类.
- * 
- * @author zhangjianshe
  *
+ * @author zhangjianshe
  */
 public abstract class BaseAbstractModule extends MessageComposite implements IModule {
 
@@ -19,17 +18,20 @@ public abstract class BaseAbstractModule extends MessageComposite implements IMo
   private IModule mParentModule;
   private ModuleParameter mParameter;
 
-  public BaseAbstractModule() {}
+    /**
+     * Instantiates a new Base abstract module.
+     */
+    public BaseAbstractModule() {}
 
 
   private final static ModuleFactory FACTORY = GWT.create(ModuleFactory.class);
 
-  /**
-   * 模块工厂
-   * 
-   * @return
-   */
-  public static ModuleFactory getModuleFactory() {
+    /**
+     * 模块工厂
+     *
+     * @return module factory
+     */
+    public static ModuleFactory getModuleFactory() {
     return FACTORY;
   }
 
@@ -87,14 +89,19 @@ public abstract class BaseAbstractModule extends MessageComposite implements IMo
     return getModuleFactory().findModuleInfo(getModuleCode());
   }
 
-  /**
-   * 获取模块代码
-   * 
-   * @return
-   */
-  public abstract String getModuleCode();
+    /**
+     * 获取模块代码
+     *
+     * @return module code
+     */
+    public abstract String getModuleCode();
 
-  public void initModuleWidget(Widget w) {
+    /**
+     * Init module widget.
+     *
+     * @param w the w
+     */
+    public void initModuleWidget(Widget w) {
     initWidget(w);
   }
 
@@ -114,7 +121,13 @@ public abstract class BaseAbstractModule extends MessageComposite implements IMo
     return modules;
   }
 
-  public List<SwitchModuleData> getModulePath(IModule module) {
+    /**
+     * Gets module path.
+     *
+     * @param module the module
+     * @return the module path
+     */
+    public List<SwitchModuleData> getModulePath(IModule module) {
 
     List<SwitchModuleData> r = new ArrayList<SwitchModuleData>();
 

@@ -15,6 +15,7 @@ import com.google.gwt.user.client.Random;
 import com.google.gwt.user.client.Window;
 
 // TODO: Auto-generated Javadoc
+
 /**
  * The Class GwtUtil.
  */
@@ -23,12 +24,12 @@ public class GwtUtil {
 	/** The g mf. */
 	private static DateTimeFormat g_mf;
 
-	/**
-	 * Gets the date format.
-	 *
-	 * @return the date format
-	 */
-	public static DateTimeFormat getDateFormat() {
+    /**
+     * Gets the date format.
+     *
+     * @return the date format
+     */
+    public static DateTimeFormat getDateFormat() {
 		if (g_mf == null) {
 			g_mf = DateTimeFormat.getFormat("yyyy年MM月dd日");
 		}
@@ -36,30 +37,30 @@ public class GwtUtil {
 		return g_mf;
 	}
 
-	/**
-	 * Redirect.
-	 *
-	 * @param url the url
-	 */
-	public static native void redirect(String url)/*-{
+    /**
+     * Redirect.
+     *
+     * @param url the url
+     */
+    public static native void redirect(String url)/*-{
 													$wnd.location = url;
 													}-*/;
 
-	/**
-	 * Open.
-	 *
-	 * @param url the url
-	 */
-	public static native void open(String url)/*-{
+    /**
+     * Open.
+     *
+     * @param url the url
+     */
+    public static native void open(String url)/*-{
 												$wnd.open(url);
 												}-*/;
 
-	/**
-	 * Nocopy.
-	 *
-	 * @param e the e
-	 */
-	public static native void nocopy(Element e)/*-{
+    /**
+     * Nocopy.
+     *
+     * @param e the e
+     */
+    public static native void nocopy(Element e)/*-{
 												e.onselectstart = function() {
 												return false;
 												}
@@ -71,29 +72,29 @@ public class GwtUtil {
 												}
 												}-*/;
 
-	/**
-	 * Refresh.
-	 */
-	public static native void refresh()/*-{
+    /**
+     * Refresh.
+     */
+    public static native void refresh()/*-{
 										$wnd.location.reload();
 										}-*/;
 
-	/**
-	 * Gets the current page URL.
-	 *
-	 * @return the current page URL
-	 */
-	public static String getCurrentPageURL() {
+    /**
+     * Gets the current page URL.
+     *
+     * @return the current page URL
+     */
+    public static String getCurrentPageURL() {
 		return Window.Location.getHref();
 	}
 
-	/**
-	 * Gets the encode URL.
-	 *
-	 * @param url the url
-	 * @return the encode URL
-	 */
-	public static String getEncodeURL(String url) {
+    /**
+     * Gets the encode URL.
+     *
+     * @param url the url
+     * @return the encode URL
+     */
+    public static String getEncodeURL(String url) {
 		if (url == null) {
 			return "";
 		} else {
@@ -101,13 +102,13 @@ public class GwtUtil {
 		}
 	}
 
-	/**
-	 * Gets the encode query string.
-	 *
-	 * @param uri the uri
-	 * @return the encode query string
-	 */
-	public static String getEncodeQueryString(String uri) {
+    /**
+     * Gets the encode query string.
+     *
+     * @param uri the uri
+     * @return the encode query string
+     */
+    public static String getEncodeQueryString(String uri) {
 		if (uri == null) {
 			return "";
 		} else {
@@ -115,13 +116,13 @@ public class GwtUtil {
 		}
 	}
 
-	/**
-	 * Gets the dncode query string.
-	 *
-	 * @param uri the uri
-	 * @return the dncode query string
-	 */
-	public static String getDncodeQueryString(String uri) {
+    /**
+     * Gets the dncode query string.
+     *
+     * @param uri the uri
+     * @return the dncode query string
+     */
+    public static String getDncodeQueryString(String uri) {
 		if (uri == null) {
 			return "";
 		} else {
@@ -129,13 +130,13 @@ public class GwtUtil {
 		}
 	}
 
-	/**
-	 * Gets the decode URL.
-	 *
-	 * @param url the url
-	 * @return the decode URL
-	 */
-	public static String getDecodeURL(String url) {
+    /**
+     * Gets the decode URL.
+     *
+     * @param url the url
+     * @return the decode URL
+     */
+    public static String getDecodeURL(String url) {
 		if (url == null) {
 			return "";
 		} else {
@@ -143,12 +144,12 @@ public class GwtUtil {
 		}
 	}
 
-	/**
-	 * Gets the current page login URL.
-	 *
-	 * @return the current page login URL
-	 */
-	public static String getCurrentPageLoginURL() {
+    /**
+     * Gets the current page login URL.
+     *
+     * @return the current page login URL
+     */
+    public static String getCurrentPageLoginURL() {
 		String base = GWT.getModuleBaseURL();
 		String current_page = GwtUtil.getCurrentPageURL();
 
@@ -157,13 +158,13 @@ public class GwtUtil {
 		return url;
 	}
 
-	/**
-	 * Int 2 path.
-	 *
-	 * @param v the v
-	 * @return the string
-	 */
-	public final static String int2path(int v) {
+    /**
+     * Int 2 path.
+     *
+     * @param v the v
+     * @return the string
+     */
+    public final static String int2path(int v) {
 		String id = v + "";
 		String str = "";
 		for (int i = 0; i < id.length(); i++) {
@@ -172,12 +173,12 @@ public class GwtUtil {
 		return str;
 	}
 
-	/**
-	 * Gets the debug.
-	 *
-	 * @return the debug
-	 */
-	public static String getDebug() {
+    /**
+     * Gets the debug.
+     *
+     * @return the debug
+     */
+    public static String getDebug() {
 		String v = Window.Location.getParameter("gwt.codesvr");
 		if (v != null && v.length() > 0) {
 			return "&gwt.codesvr=" + v;
@@ -185,41 +186,43 @@ public class GwtUtil {
 		return "";
 	}
 
-	/**
-	 * Gets the image url.
-	 *
-	 * @param path the path
-	 * @param id the id
-	 * @return the image url
-	 */
-	public static String getImageUrl(String path, int id) {
+    /**
+     * Gets the image url.
+     *
+     * @param path the path
+     * @param id   the id
+     * @return the image url
+     */
+    public static String getImageUrl(String path, int id) {
 		String picurl = GWT.getModuleBaseURL() + "../" + path + "/"
 				+ GwtUtil.int2path(id) + "64.jpg?t=" + Random.nextDouble();
 		return picurl;
 	}
 
-	/**
-	 * Gets the user icon URL.
-	 *
-	 * @param uid the uid
-	 * @param size the size
-	 * @return the user icon URL
-	 */
-	public static String getUserIconURL(int uid, int size) {
+    /**
+     * Gets the user icon URL.
+     *
+     * @param uid  the uid
+     * @param size the size
+     * @return the user icon URL
+     */
+    public static String getUserIconURL(int uid, int size) {
 		return GWT.getModuleBaseURL() + "../images/user/"
 				+ GwtUtil.int2path(uid) + size + ".jpg";
 	}
 
-	/** The chars. */
-	public static String chars = "abcdefghigklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    /**
+     * The chars.
+     */
+    public static String chars = "abcdefghigklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
-	/**
-	 * Rand string.
-	 *
-	 * @param i the i
-	 * @return the string
-	 */
-	public static String RandString(int i) {
+    /**
+     * Rand string.
+     *
+     * @param i the i
+     * @return the string
+     */
+    public static String RandString(int i) {
 
 		String str = "";
 		for (int count = 0; count < i; count++) {
@@ -228,44 +231,48 @@ public class GwtUtil {
 		return str;
 	}
 
-	/** The m dfshort. */
-	static DateTimeFormat m_dfshort = null;
-	
-	/** The m dflong. */
-	static DateTimeFormat m_dflong = null;
+    /**
+     * The m dfshort.
+     */
+    static DateTimeFormat m_dfshort = null;
 
-	/**
-	 * Gets the long format.
-	 *
-	 * @return the long format
-	 */
-	public static DateTimeFormat getLongFormat() {
+    /**
+     * The m dflong.
+     */
+    static DateTimeFormat m_dflong = null;
+
+    /**
+     * Gets the long format.
+     *
+     * @return the long format
+     */
+    public static DateTimeFormat getLongFormat() {
 		if (m_dflong == null) {
 			m_dflong = DateTimeFormat.getFormat("yyyy年MM月dd日 HH:mm:ss");
 		}
 		return m_dflong;
 	}
 
-	/**
-	 * Gets the short format.
-	 *
-	 * @return the short format
-	 */
-	public static DateTimeFormat getShortFormat() {
+    /**
+     * Gets the short format.
+     *
+     * @return the short format
+     */
+    public static DateTimeFormat getShortFormat() {
 		if (m_dfshort == null) {
 			m_dfshort = DateTimeFormat.getFormat("yyyy年MM月dd日");
 		}
 		return m_dfshort;
 	}
 
-	/**
-	 * Format timestamp.
-	 *
-	 * @param time the time
-	 * @param longformat the longformat
-	 * @return the string
-	 */
-	public static String formatTimestamp(Timestamp time, boolean longformat) {
+    /**
+     * Format timestamp.
+     *
+     * @param time       the time
+     * @param longformat the longformat
+     * @return the string
+     */
+    public static String formatTimestamp(Timestamp time, boolean longformat) {
 		if (time == null) {
 			return "----";
 		} else {
@@ -277,44 +284,44 @@ public class GwtUtil {
 		}
 	}
 
-	/**
-	 * Gets the home.
-	 *
-	 * @return the home
-	 */
-	public static String getHome() {
+    /**
+     * Gets the home.
+     *
+     * @return the home
+     */
+    public static String getHome() {
 		String base = GWT.getModuleBaseURL();
 		String url = base + "../?" + getDebug();
 		return url;
 	}
 
-	/**
-	 * Gets the timestamp.
-	 *
-	 * @param value the value
-	 * @return the timestamp
-	 */
-	public static Timestamp getTimestamp(Date value) {
+    /**
+     * Gets the timestamp.
+     *
+     * @param value the value
+     * @return the timestamp
+     */
+    public static Timestamp getTimestamp(Date value) {
 
 		return new Timestamp(value.getTime());
 	}
 
-	/**
-	 * Gets the now.
-	 *
-	 * @return the now
-	 */
-	public static Date getNow() {
+    /**
+     * Gets the now.
+     *
+     * @return the now
+     */
+    public static Date getNow() {
 		return new Date();
 	}
 
-	/**
-	 * Gets the date.
-	 *
-	 * @param establishdate the establishdate
-	 * @return the date
-	 */
-	public static Date getDate(Timestamp establishdate) {
+    /**
+     * Gets the date.
+     *
+     * @param establishdate the establishdate
+     * @return the date
+     */
+    public static Date getDate(Timestamp establishdate) {
 		if (establishdate == null)
 			return new Date();
 		else {
@@ -322,13 +329,13 @@ public class GwtUtil {
 		}
 	}
 
-	/**
-	 * Parses the post image result.
-	 *
-	 * @param json the json
-	 * @return the string[]
-	 */
-	public static String[] parsePostImageResult(String json) {
+    /**
+     * Parses the post image result.
+     *
+     * @param json the json
+     * @return the string[]
+     */
+    public static String[] parsePostImageResult(String json) {
 		JSONValue jv = JSONParser.parse(json);
 		JSONObject jo = (JSONObject) (jv);
 		JSONString strobj;

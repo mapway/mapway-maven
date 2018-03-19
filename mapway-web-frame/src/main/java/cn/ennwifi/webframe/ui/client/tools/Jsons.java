@@ -10,23 +10,21 @@ import com.google.gwt.json.client.JSONString;
 import com.google.gwt.json.client.JSONValue;
 
 /**
- * @author zhangjianshe@navinfo.com
- * 
+ * The type Jsons.
+ *
+ * @author zhangjianshe @navinfo.com
  */
 public class Jsons {
 
-  /**
-   * 获取对象中的值
-   * 
-   * @param json
-   *            JSON对象 obj
-   * @param path
-   *            JSON对象图 name.surname
-   * @param dv
-   *            缺省值
-   * @return
-   */
-  public final static Integer getAsInt(JSONObject json, String path, Integer dv) {
+    /**
+     * 获取对象中的值
+     *
+     * @param json JSON对象 obj
+     * @param path JSON对象图 name.surname
+     * @param dv   缺省值
+     * @return as int
+     */
+    public final static Integer getAsInt(JSONObject json, String path, Integer dv) {
     JSONObject obj = json;
 
     JSONNumber value = null;
@@ -55,18 +53,15 @@ public class Jsons {
     }
   }
 
-  /**
-   * 获取对象中的值
-   * 
-   * @param json
-   *            JSON对象 obj
-   * @param path
-   *            JSON对象图 name.surname
-   * @param dv
-   *            缺省值
-   * @return
-   */
-  public final static String getAsString(JSONObject json, String path, String dv) {
+    /**
+     * 获取对象中的值
+     *
+     * @param json JSON对象 obj
+     * @param path JSON对象图 name.surname
+     * @param dv   缺省值
+     * @return as string
+     */
+    public final static String getAsString(JSONObject json, String path, String dv) {
     JSONObject obj = json;
     JSONValue value = null;
     if (path != null && path.length() > 0) {
@@ -129,13 +124,15 @@ public class Jsons {
 
   }
 
-  /**
-   * @param json
-   * @param string
-   * @param jsonArray
-   * @return
-   */
-  public static JSONArray getAsArray(JSONObject json, String path, JSONArray dv) {
+    /**
+     * Gets as array.
+     *
+     * @param json the json
+     * @param path the path
+     * @param dv   the dv
+     * @return as array
+     */
+    public static JSONArray getAsArray(JSONObject json, String path, JSONArray dv) {
     JSONObject obj = json;
     JSONArray value = null;
     if (path != null && path.length() > 0) {
@@ -163,13 +160,15 @@ public class Jsons {
     }
   }
 
-  /**
-   * @param data
-   * @param string
-   * @param b
-   * @return
-   */
-  public static boolean getAsBoolean(JSONObject json, String path, boolean dv) {
+    /**
+     * Gets as boolean.
+     *
+     * @param json the json
+     * @param path the path
+     * @param dv   the dv
+     * @return as boolean
+     */
+    public static boolean getAsBoolean(JSONObject json, String path, boolean dv) {
     JSONObject obj = json;
     JSONBoolean value = null;
     if (path != null && path.length() > 0) {
@@ -197,13 +196,15 @@ public class Jsons {
     }
   }
 
-  /**
-   * @param data
-   * @param string
-   * @param b
-   * @return
-   */
-  public static Double getAsDouble(JSONObject json, String path, double dv) {
+    /**
+     * Gets as double.
+     *
+     * @param json the json
+     * @param path the path
+     * @param dv   the dv
+     * @return as double
+     */
+    public static Double getAsDouble(JSONObject json, String path, double dv) {
     JSONObject obj = json;
     JSONNumber value = null;
     if (path != null && path.length() > 0) {
@@ -231,13 +232,15 @@ public class Jsons {
     }
   }
 
-  /**
-   * @param data
-   * @param string
-   * @param object
-   * @return
-   */
-  public static JSONObject getAsObject(JSONObject json, String path, JSONObject dv) {
+    /**
+     * Gets as object.
+     *
+     * @param json the json
+     * @param path the path
+     * @param dv   the dv
+     * @return as object
+     */
+    public static JSONObject getAsObject(JSONObject json, String path, JSONObject dv) {
     JSONObject obj = json;
     if (path != null && path.length() > 0) {
       String[] paths = path.split("\\.");
@@ -264,13 +267,15 @@ public class Jsons {
     }
   }
 
-  /**
-   * @param rowdata
-   * @param key
-   * @param object
-   * @return
-   */
-  public static JSONValue getAsValue(JSONObject json, String path, JSONValue dv) {
+    /**
+     * Gets as value.
+     *
+     * @param json the json
+     * @param path the path
+     * @param dv   the dv
+     * @return as value
+     */
+    public static JSONValue getAsValue(JSONObject json, String path, JSONValue dv) {
     JSONObject obj = json;
     JSONValue value = null;
     if (path != null && path.length() > 0) {
@@ -298,24 +303,33 @@ public class Jsons {
     }
   }
 
-  public native static void log(String log)/*-{
+    /**
+     * Log.
+     *
+     * @param log the log
+     */
+    public native static void log(String log)/*-{
 		console.log(log);
   }-*/;
 
-  public native static void log(JavaScriptObject log)/*-{
+    /**
+     * Log.
+     *
+     * @param log the log
+     */
+    public native static void log(JavaScriptObject log)/*-{
 		console.log(log);
   }-*/;
 
-  /**
-   * 
-   * @param o
-   * @param ifields
-   *            包含的字段
-   * @param efields
-   *            排除的字段
-   * @return
-   */
-  public final static native String toJson(JavaScriptObject o, String ifields, String efields)/*-{
+    /**
+     * To json string.
+     *
+     * @param o       the o
+     * @param ifields 包含的字段
+     * @param efields 排除的字段
+     * @return string
+     */
+    public final static native String toJson(JavaScriptObject o, String ifields, String efields)/*-{
 
 		var quoteString = function(str) {
 			if (str.match(escape)) {

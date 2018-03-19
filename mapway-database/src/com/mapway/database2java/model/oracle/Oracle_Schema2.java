@@ -70,6 +70,7 @@ import com.mapway.database2java.model.schema.View;
 import com.mapway.database2java.model.schema.Views;
 
 // TODO: Auto-generated Javadoc
+
 /**
  * The Class Oracle_Schema2.
  */
@@ -95,13 +96,13 @@ public class Oracle_Schema2 extends SchemaBase {
 		return s;
 	}
 
-	/**
-	 * ���캯�� ����ORACLE��Ԫ���ģ��.
-	 *
-	 * @param pool the pool
-	 * @param configure the configure
-	 */
-	public Oracle_Schema2(IConnectionPool pool, Configure configure) {
+    /**
+     * ���캯�� ����ORACLE��Ԫ���ģ��.
+     *
+     * @param pool      the pool
+     * @param configure the configure
+     */
+    public Oracle_Schema2(IConnectionPool pool, Configure configure) {
 		super(pool, configure);
 		this.setSQLClause(new Oracle_SQLClause(configure.getDatabase()));
 	}
@@ -282,14 +283,14 @@ public class Oracle_Schema2 extends SchemaBase {
 		return true;
 	}
 
-	/**
-	 * Export table.
-	 *
-	 * @param table the table
-	 * @param conf the conf
-	 * @return the string
-	 */
-	public String exportTable(Table table, Configure conf) {
+    /**
+     * Export table.
+     *
+     * @param table the table
+     * @param conf  the conf
+     * @return the string
+     */
+    public String exportTable(Table table, Configure conf) {
 		StringBuilder sb = new StringBuilder();
 		out(sb, getCopyright());
 		Configure cf = conf.copy();

@@ -78,6 +78,5 @@
     <orderEntry type="library" name="Maven: org.nutz:nutz:1.r.60" level="project" />
     <orderEntry type="module" module-name="mapway-ui-frame" />
     <orderEntry type="module" module-name="mapway-annotation" />
-    <orderEntry type="library" name="Maven: cn.ennwifi:pgjdbc:9.6-SNAPSHOT" level="project" />
   </component>
 </module>

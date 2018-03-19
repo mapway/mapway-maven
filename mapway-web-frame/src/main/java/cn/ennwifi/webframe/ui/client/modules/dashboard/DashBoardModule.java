@@ -20,15 +20,27 @@ import com.google.gwt.user.client.ui.Image;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.Widget;
 
+/**
+ * The type Dash board module.
+ */
 @ModuleMarker(value = DashBoardModule.MODULE_CODE, name = "看板",group = "/系统")
 public class DashBoardModule extends AbstractModuleWithEvent {
 
+    /**
+     * The constant MODULE_CODE.
+     */
     public final static String MODULE_CODE = "MC_DASHBOARD";
     private static DashBoardModuleUiBinder uiBinder = GWT.create(DashBoardModuleUiBinder.class);
 
+    /**
+     * The interface Dash board module ui binder.
+     */
     interface DashBoardModuleUiBinder extends UiBinder<Widget, DashBoardModule> {
     }
 
+    /**
+     * The M data.
+     */
     protected List<DashboardData> mData;
 
     @Override
@@ -36,12 +48,18 @@ public class DashBoardModule extends AbstractModuleWithEvent {
         return MODULE_CODE;
     }
 
+    /**
+     * Instantiates a new Dash board module.
+     */
     public DashBoardModule() {
         initModuleWidget(uiBinder.createAndBindUi(this));
         loading.setUrl(SysResource.INSTANCE.loadding().getSafeUri());
         lbVersion.setText(ClientContext.getContext().getConfigure().getCompileInformation());
     }
 
+    /**
+     * The Loading.
+     */
     @UiField
     Image loading;
 
@@ -52,6 +70,9 @@ public class DashBoardModule extends AbstractModuleWithEvent {
         return b;
     }
 
+    /**
+     * Refresh view.
+     */
     protected void refreshView() {
         root.clear();
 
@@ -62,9 +83,15 @@ public class DashBoardModule extends AbstractModuleWithEvent {
         }
     }
 
+    /**
+     * The Root.
+     */
     @UiField
     HTMLPanel root;
 
+    /**
+     * The Lb version.
+     */
     @UiField
     Label lbVersion;
 

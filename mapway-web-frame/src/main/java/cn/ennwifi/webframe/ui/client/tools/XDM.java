@@ -11,51 +11,63 @@ import com.google.gwt.core.shared.GWT;
 import com.google.gwt.json.client.JSONObject;
 
 /**
- * @author zhangjianshe@navinfo.com
- * 
+ * The type Xdm.
+ *
+ * @author zhangjianshe @navinfo.com
  */
 public class XDM {
 
   private HashMap<String, List<IOnPostMessage>> mapper;
 
-  public interface IOnPostMessage {
-    void onPostMessage(JSONObject data);
+    /**
+     * The interface On post message.
+     */
+    public interface IOnPostMessage {
+        /**
+         * On post message.
+         *
+         * @param data the data
+         */
+        void onPostMessage(JSONObject data);
   }
 
-  public XDM() {
+    /**
+     * Instantiates a new Xdm.
+     */
+    public XDM() {
     mapper = new HashMap<String, List<IOnPostMessage>>();
     registerReceiver(this);
   }
 
-  /**
-   * 向父窗口框架发送消息
-   * 
-   * @param frame
-   * @param data
-   */
-  public final native void postParentMessage(JavaScriptObject data)/*-{
+    /**
+     * 向父窗口框架发送消息
+     *
+     * @param data the data
+     */
+    public final native void postParentMessage(JavaScriptObject data)/*-{
 		var p = $wnd.parent;
 		p.postMessage(data, "*");
 
   }-*/;
 
-  /**
-   * 向父窗口的子窗口发送消息
-   * 
-   * @param data
-   */
-  public final native void postParentFrameMessage(String frame, JavaScriptObject data)/*-{
+    /**
+     * 向父窗口的子窗口发送消息
+     *
+     * @param frame the frame
+     * @param data  the data
+     */
+    public final native void postParentFrameMessage(String frame, JavaScriptObject data)/*-{
 		var p = $wnd.parent.frames[frame];
 		p.postMessage(data, "*");
   }-*/;
 
-  /**
-   * 向框架发送消息
-   * 
-   * @param frame
-   * @param data
-   */
-  public final native void postMessage(String frame, JavaScriptObject data)/*-{
+    /**
+     * 向框架发送消息
+     *
+     * @param frame the frame
+     * @param data  the data
+     */
+    public final native void postMessage(String frame, JavaScriptObject data)/*-{
 		console.log("post>" + frame);
 		if (frame == null || frame == "") {
 			var p = $wnd.parent;
@@ -91,7 +103,13 @@ public class XDM {
 		}
   }-*/;
 
-  public void addListener(String action, IOnPostMessage listener) {
+    /**
+     * Add listener.
+     *
+     * @param action   the action
+     * @param listener the listener
+     */
+    public void addListener(String action, IOnPostMessage listener) {
     if (action == null || action.length() == 0) {
       return;
     }
@@ -103,7 +121,13 @@ public class XDM {
     list.add(listener);
   }
 
-  public void removeListener(String action, IOnPostMessage listener) {
+    /**
+     * Remove listener.
+     *
+     * @param action   the action
+     * @param listener the listener
+     */
+    public void removeListener(String action, IOnPostMessage listener) {
     if (action == null || action.length() == 0) {
       return;
     }
@@ -119,7 +143,12 @@ public class XDM {
     }
   }
 
-  protected void onPostMessage(JavaScriptObject data) {
+    /**
+     * On post message.
+     *
+     * @param data the data
+     */
+    protected void onPostMessage(JavaScriptObject data) {
     GWT.log(JSON.stringify(data));
     JSONObject d = new JSONObject(data);
     String postAction = Jsons.getAsString(d, "postAction", "");

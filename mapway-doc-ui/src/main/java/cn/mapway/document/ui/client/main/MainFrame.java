@@ -28,17 +28,21 @@ public class MainFrame extends Composite {
   /** The ui binder. */
   private static MainFrameUiBinder uiBinder = GWT.create(MainFrameUiBinder.class);
 
-  /**
-   * The Interface MainFrameUiBinder.
-   */
-  interface MainFrameUiBinder extends UiBinder<Widget, MainFrame> {
+    /**
+     * The Interface MainFrameUiBinder.
+     */
+    interface MainFrameUiBinder extends UiBinder<Widget, MainFrame> {
   }
 
-  /** The current item. */
-  TreeItem currentItem = null;
+    /**
+     * The current item.
+     */
+    TreeItem currentItem = null;
 
-  /** The entry panel. */
-  EntryPanel entryPanel;
+    /**
+     * The entry panel.
+     */
+    EntryPanel entryPanel;
 
   /** The tree select. */
   private SelectionHandler<TreeItem> treeSelect = new SelectionHandler<TreeItem>() {
@@ -93,15 +97,17 @@ public class MainFrame extends Composite {
 
   }
 
-  /** The list. */
-  EntryListPanel list;
+    /**
+     * The list.
+     */
+    EntryListPanel list;
 
-  /**
-   * Show entry list.
-   *
-   * @param group the group
-   */
-  protected void showEntryList(Group group) {
+    /**
+     * Show entry list.
+     *
+     * @param group the group
+     */
+    protected void showEntryList(Group group) {
     if (list == null) {
       list = new EntryListPanel();
     }
@@ -113,10 +119,10 @@ public class MainFrame extends Composite {
     content.scrollToTop();
   }
 
-  /**
-   * Instantiates a new main frame.
-   */
-  public MainFrame() {
+    /**
+     * Instantiates a new main frame.
+     */
+    public MainFrame() {
     initWidget(uiBinder.createAndBindUi(this));
     logo.setUrl(SysResource.INSTANCE.logo().getSafeUri());
 
@@ -138,8 +144,10 @@ public class MainFrame extends Composite {
     }
   }
 
-  /** The doc. */
-  ApiDoc doc;
+    /**
+     * The doc.
+     */
+    ApiDoc doc;
 
   /** The goto word handler. */
   private ClickHandler gotoWordHandler = new ClickHandler() {
@@ -173,12 +181,12 @@ public class MainFrame extends Composite {
 		return null;
   }-*/;
 
-  /**
-   * Inits the.
-   *
-   * @param target the target
-   */
-  public void init(String target) {
+    /**
+     * Inits the.
+     *
+     * @param target the target
+     */
+    public void init(String target) {
 
     ApiDoc doc = findDocData();
     if (doc == null) {
@@ -198,12 +206,12 @@ public class MainFrame extends Composite {
     }
   }
 
-  /**
-   * Parses the data.
-   *
-   * @param doc the doc
-   */
-  void parseData(final ApiDoc doc) {
+    /**
+     * Parses the data.
+     *
+     * @param doc the doc
+     */
+    void parseData(final ApiDoc doc) {
     this.doc = doc;
 
     JsArray<JarInfo> jars = doc.getDownloads();
@@ -254,45 +262,70 @@ public class MainFrame extends Composite {
 
   }
 
-  @UiField
+    /**
+     * The Api version.
+     */
+    @UiField
   Label apiVersion;
 
-  /** The api tree. */
-  @UiField
+    /**
+     * The api tree.
+     */
+    @UiField
   ApiTree apiTree;
 
-  /** The content. */
-  @UiField
+    /**
+     * The content.
+     */
+    @UiField
   ScrollPanel content;
 
-  /** The lb title. */
-  @UiField
+    /**
+     * The lb title.
+     */
+    @UiField
   Label lbTitle;
 
-  /** The logo. */
-  @UiField
+    /**
+     * The logo.
+     */
+    @UiField
   Image logo;
 
-  /** The tools. */
-  @UiField
+    /**
+     * The tools.
+     */
+    @UiField
   HorizontalPanel tools;
 
-  /** sub title. */
-  @UiField
+    /**
+     * sub title.
+     */
+    @UiField
   Label lbSubtitle;
 
-  /** sub title. */
-  @UiField
+    /**
+     * sub title.
+     */
+    @UiField
   HTML lbCopy;
 
-  /** sub title. */
-  @UiField
+    /**
+     * sub title.
+     */
+    @UiField
   Anchor anchorDomain;
 
-  @UiField
+    /**
+     * The Top bar.
+     */
+    @UiField
   HorizontalPanel topBar;
 
-  @UiField
+    /**
+     * The Root.
+     */
+    @UiField
   DockLayoutPanel root;
 
 }

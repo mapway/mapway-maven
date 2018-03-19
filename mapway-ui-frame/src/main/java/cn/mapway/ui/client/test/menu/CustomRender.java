@@ -9,12 +9,21 @@ import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.VerticalPanel;
 import com.google.gwt.user.client.ui.Widget;
 
+/**
+ * The type Custom render.
+ */
 public class CustomRender implements IMenuRender {
 
-  public static CustomRender INSTANCE = new CustomRender();
+    /**
+     * The constant INSTANCE.
+     */
+    public static CustomRender INSTANCE = new CustomRender();
 
 
-  protected CustomRender() {}
+    /**
+     * Instantiates a new Custom render.
+     */
+    protected CustomRender() {}
 
   @Override
   public Widget render(Widget parent, IMenuItem menu) {

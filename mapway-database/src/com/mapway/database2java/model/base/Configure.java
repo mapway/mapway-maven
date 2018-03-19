@@ -54,10 +54,20 @@ public class Configure {
      */
     String useFieldIndex;
 
+    /**
+     * Gets use gwt.
+     *
+     * @return the use gwt
+     */
     public String getUseGwt() {
         return useGwt;
     }
 
+    /**
+     * Sets use gwt.
+     *
+     * @param useGwt the use gwt
+     */
     public void setUseGwt(String useGwt) {
         this.useGwt = useGwt;
     }
@@ -65,13 +75,22 @@ public class Configure {
     /**
      * 是否使用GWT
      */
-
     String useGwt;
 
+    /**
+     * Gets use document.
+     *
+     * @return the use document
+     */
     public String getUseDocument() {
         return useDocument;
     }
 
+    /**
+     * Sets use document.
+     *
+     * @param useDocument the use document
+     */
     public void setUseDocument(String useDocument) {
         this.useDocument = useDocument;
     }
@@ -220,26 +239,56 @@ public class Configure {
         this.netFilePath = netFilePath;
     }
 
+    /**
+     * Gets use field style.
+     *
+     * @return the use field style
+     */
     public String getUseFieldStyle() {
         return useFieldStyle;
     }
 
+    /**
+     * Sets use field style.
+     *
+     * @param useFieldStyle the use field style
+     */
     public void setUseFieldStyle(String useFieldStyle) {
         this.useFieldStyle = useFieldStyle;
     }
 
+    /**
+     * Gets use nutz.
+     *
+     * @return the use nutz
+     */
     public String getUseNutz() {
         return useNutz;
     }
 
+    /**
+     * Sets use nutz.
+     *
+     * @param useNutz the use nutz
+     */
     public void setUseNutz(String useNutz) {
         this.useNutz = useNutz;
     }
 
+    /**
+     * Gets use field index.
+     *
+     * @return the use field index
+     */
     public String getUseFieldIndex() {
         return useFieldIndex;
     }
 
+    /**
+     * Sets use field index.
+     *
+     * @param useFieldIndex the use field index
+     */
     public void setUseFieldIndex(String useFieldIndex) {
         this.useFieldIndex = useFieldIndex;
     }

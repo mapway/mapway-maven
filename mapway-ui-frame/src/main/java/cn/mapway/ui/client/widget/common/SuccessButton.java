@@ -1,7 +1,13 @@
 package cn.mapway.ui.client.widget.common;
 
+/**
+ * The type Success button.
+ */
 public class SuccessButton extends ButtonEx{
-	public SuccessButton() {
+    /**
+     * Instantiates a new Success button.
+     */
+    public SuccessButton() {
 		setStyleName("gwtEx-Button gwtEx-SuccessButton");
 	}
 	

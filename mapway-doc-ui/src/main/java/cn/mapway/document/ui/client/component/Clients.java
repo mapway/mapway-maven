@@ -8,12 +8,12 @@ import com.google.gwt.user.client.Window;
  */
 public class Clients {
 
-	/**
-	 * 获取主机网络地址.
-	 *
-	 * @return the host port
-	 */
-	public static final String getHostPort() {
+    /**
+     * 获取主机网络地址.
+     *
+     * @return the host port
+     */
+    public static final String getHostPort() {
 		String host = Window.Location.getHost();
 		String protocol = Window.Location.getProtocol();
 		String r = protocol + "//" + host;

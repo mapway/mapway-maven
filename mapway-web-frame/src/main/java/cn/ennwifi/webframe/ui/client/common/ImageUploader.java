@@ -184,8 +184,8 @@ public class ImageUploader extends MessageComposite {
     /**
      * 是否是图片
      *
-     * @param url
-     * @return
+     * @param url the url
+     * @return boolean
      */
     public static boolean isPicture(String url) {
         if (url == null || url.length() == 0) {
@@ -278,6 +278,11 @@ public class ImageUploader extends MessageComposite {
         }
     }
 
+    /**
+     * Gets url.
+     *
+     * @return the url
+     */
     public String getUrl() {
         return img.getUrl();
     }
@@ -291,6 +296,11 @@ public class ImageUploader extends MessageComposite {
         lbTitle.setText(string);
     }
 
+    /**
+     * Gets image title.
+     *
+     * @return the image title
+     */
     public String getImageTitle() {
         return lbTitle.getText();
     }
@@ -322,7 +332,9 @@ public class ImageUploader extends MessageComposite {
     Image btnUploader;
 
     /**
-     * @param url
+     * Sets url.
+     *
+     * @param url the url
      */
     public void setUrl(SafeUri url) {
         img.setUrl(url);

@@ -154,8 +154,8 @@ public class ApiTree extends Tree {
     /**
      * 构建TAG标签 .
      *
-     * @param tags
-     * @return
+     * @param tags the tags
+     * @return string
      */
     public static String buildTags(String[] tags) {
         if (tags == null) {

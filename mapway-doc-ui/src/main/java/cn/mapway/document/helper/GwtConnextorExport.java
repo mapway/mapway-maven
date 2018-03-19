@@ -22,25 +22,27 @@ import cn.mapway.document.resource.Template;
  */
 public class GwtConnextorExport {
 
-  /** The modules. */
-  Map<String, ObjectInfo> modules;
+    /**
+     * The modules.
+     */
+    Map<String, ObjectInfo> modules;
 
-  /**
-   * Instantiates a new gwt connextor export.
-   */
-  public GwtConnextorExport() {
+    /**
+     * Instantiates a new gwt connextor export.
+     */
+    public GwtConnextorExport() {
     modules = new HashMap<String, ObjectInfo>();
   }
 
-  /**
-   * 输出API 对应的 Java Connector 模型在独立的文件中
-   * 
-   * @param api
-   * @param packageName
-   * @param className
-   * @return
-   */
-  public List<JavaClassContent> export2(ApiDoc api, String packageName, String className) {
+    /**
+     * 输出API 对应的 Java Connector 模型在独立的文件中
+     *
+     * @param api         the api
+     * @param packageName the package name
+     * @param className   the class name
+     * @return list
+     */
+    public List<JavaClassContent> export2(ApiDoc api, String packageName, String className) {
 
     entries = new HashMap<String, Integer>();
 
@@ -133,19 +135,19 @@ public class GwtConnextorExport {
 
   }
 
-  /**
-   * 输出API 对应的 Java Connector
-   * 
-   * public resp doSomthing(Req req) {
-   * 
-   * }.
-   *
-   * @param api the api
-   * @param packageName the package name
-   * @param className the class name
-   * @return the string
-   */
-  public String export(ApiDoc api, String packageName, String className) {
+    /**
+     * 输出API 对应的 Java Connector
+     * <p>
+     * public resp doSomthing(Req req) {
+     * <p>
+     * }.
+     *
+     * @param api         the api
+     * @param packageName the package name
+     * @param className   the class name
+     * @return the string
+     */
+    public String export(ApiDoc api, String packageName, String className) {
 
     entries = new HashMap<String, Integer>();
     StringBuilder imports = new StringBuilder();
@@ -179,14 +181,14 @@ public class GwtConnextorExport {
 
   }
 
-  /**
-   * Replace.
-   *
-   * @param str the str
-   * @param data the data
-   * @return the string
-   */
-  public String replace(String str, Map<String, String> data) {
+    /**
+     * Replace.
+     *
+     * @param str  the str
+     * @param data the data
+     * @return the string
+     */
+    public String replace(String str, Map<String, String> data) {
     try {
       return StrUtil.composeMessage(str, data);
     } catch (Exception e) {
@@ -348,7 +350,10 @@ public class GwtConnextorExport {
 
   }
 
-  HashMap<String, Integer> entries = new HashMap<String, Integer>();
+    /**
+     * The Entries.
+     */
+    HashMap<String, Integer> entries = new HashMap<String, Integer>();
 
 
   /**
@@ -409,13 +414,13 @@ public class GwtConnextorExport {
     sb.append("}\r\n");
   }
 
-  /**
-   * List<?> ===> ?.
-   *
-   * @param t the t
-   * @return the string
-   */
-  String unwrapType(String t) {
+    /**
+     * List<?> ===> ?.
+     *
+     * @param t the t
+     * @return the string
+     */
+    String unwrapType(String t) {
     if (t.startsWith("List")) {
       return t.substring(5, t.length() - 1);
     }

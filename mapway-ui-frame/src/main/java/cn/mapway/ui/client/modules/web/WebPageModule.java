@@ -17,6 +17,9 @@ import com.google.gwt.user.client.ui.Widget;
 @ModuleMarker(value = WebPageModule.MODULE_CODE, group = "/系统", name = "网页模块")
 public class WebPageModule extends AbstractModule {
 
+    /**
+     * The constant MODULE_CODE.
+     */
     public final static String MODULE_CODE = "MC_WEB";
 
     @Override

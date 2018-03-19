@@ -3,6 +3,9 @@ package cn.mapway.ui.client.widget.common;
 import com.google.gwt.regexp.shared.RegExp;
 import com.google.gwt.user.client.ui.ListBox;
 
+/**
+ * The type List box ex.
+ */
 public class ListBoxEx extends ListBox implements IValidator {
 
   private String msg = "";
@@ -38,25 +41,48 @@ public class ListBoxEx extends ListBox implements IValidator {
     this.msg = msg;
   }
 
-  public ListBoxEx() {
+    /**
+     * Instantiates a new List box ex.
+     */
+    public ListBoxEx() {
     setStyleName("gwtEx-ListBox");
   }
 
   private Object data;
 
-  public Object getData() {
+    /**
+     * Gets data.
+     *
+     * @return the data
+     */
+    public Object getData() {
     return data;
   }
 
-  public void setData(Object data) {
+    /**
+     * Sets data.
+     *
+     * @param data the data
+     */
+    public void setData(Object data) {
     this.data = data;
   }
 
-  public String getTag() {
+    /**
+     * Gets tag.
+     *
+     * @return the tag
+     */
+    public String getTag() {
     return tag;
   }
 
-  public void setTag(String tag) {
+    /**
+     * Sets tag.
+     *
+     * @param tag the tag
+     */
+    public void setTag(String tag) {
     this.tag = tag;
   }
 
@@ -65,12 +91,12 @@ public class ListBoxEx extends ListBox implements IValidator {
 
   private String initName;
 
-  /**
-   * 选中某个值
-   * 
-   * @param value
-   */
-  public void selectValue(String value) {
+    /**
+     * 选中某个值
+     *
+     * @param value the value
+     */
+    public void selectValue(String value) {
     this.initValue = value;
     if (this.initValue != null) {
       for (int i = 0; i < this.getItemCount(); i++) {
@@ -83,12 +109,12 @@ public class ListBoxEx extends ListBox implements IValidator {
     }
   }
 
-  /**
-   * 选中某个值
-   * 
-   * @param value
-   */
-  public void selectName(String name) {
+    /**
+     * 选中某个值
+     *
+     * @param name the name
+     */
+    public void selectName(String name) {
     this.initName = name;
     if (this.initName != null) {
       for (int i = 0; i < this.getItemCount(); i++) {
@@ -101,10 +127,12 @@ public class ListBoxEx extends ListBox implements IValidator {
     }
   }
 
-  /**
-   * 选中初始化名字
-   */
-  public boolean selectInitName() {
+    /**
+     * 选中初始化名字
+     *
+     * @return the boolean
+     */
+    public boolean selectInitName() {
     if (getInitName() != null && getInitName().length() > 0) {
       selectName(getInitName());
       return true;
@@ -112,10 +140,12 @@ public class ListBoxEx extends ListBox implements IValidator {
     return false;
   }
 
-  /**
-   * 选中初始化值
-   */
-  public boolean selectInitValue() {
+    /**
+     * 选中初始化值
+     *
+     * @return the boolean
+     */
+    public boolean selectInitValue() {
     if (getInitValue() != null && getInitValue().length() > 0) {
       selectValue(getInitValue());
       return true;
@@ -123,27 +153,55 @@ public class ListBoxEx extends ListBox implements IValidator {
     return false;
   }
 
-  public String getInitValue() {
+    /**
+     * Gets init value.
+     *
+     * @return the init value
+     */
+    public String getInitValue() {
     return initValue;
   }
 
-  public void setInitValue(String initValue) {
+    /**
+     * Sets init value.
+     *
+     * @param initValue the init value
+     */
+    public void setInitValue(String initValue) {
     this.initValue = initValue;
   }
 
-  public void setInitName(String initName) {
+    /**
+     * Sets init name.
+     *
+     * @param initName the init name
+     */
+    public void setInitName(String initName) {
     this.initName = initName;
   }
 
-  public String getInitName() {
+    /**
+     * Gets init name.
+     *
+     * @return the init name
+     */
+    public String getInitName() {
     return this.initName;
   }
 
-  public void fire() {
+    /**
+     * Fire.
+     */
+    public void fire() {
 
   }
 
-  public void setDisabled(boolean disabled) {
+    /**
+     * Sets disabled.
+     *
+     * @param disabled the disabled
+     */
+    public void setDisabled(boolean disabled) {
     String disabledStyle = "disabled";
     if (disabled) {
       addStyleDependentName(disabledStyle);

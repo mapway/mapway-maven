@@ -2,14 +2,34 @@ package cn.ennwifi.webframe.tools;
 
 /**
  * 日志动作
- * 
- * @author zhangjianshe
  *
+ * @author zhangjianshe
  */
 public enum Actions {
-  CREATE("创建"), DELETE("删除"), UPDATE("修改"), READ("查询"), SHENHE("审核"), LOGIN("登录");
+    /**
+     * Create actions.
+     */
+    CREATE("创建"), /**
+     * Delete actions.
+     */
+    DELETE("删除"), /**
+     * Update actions.
+     */
+    UPDATE("修改"), /**
+     * Read actions.
+     */
+    READ("查询"), /**
+     * Shenhe actions.
+     */
+    SHENHE("审核"), /**
+     * Login actions.
+     */
+    LOGIN("登录");
 
-  public String name;
+    /**
+     * The Name.
+     */
+    public String name;
 
   Actions(String name) {
     this.name = name;

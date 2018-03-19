@@ -49,14 +49,14 @@ public class MySQL_Schema2 extends SchemaBase {
 		return s;
 	}
 
-	
-	/**
-	 * Instantiates a new my SQ L schema 2.
-	 *
-	 * @param pool the pool
-	 * @param configure the configure
-	 */
-	public MySQL_Schema2(IConnectionPool pool, Configure configure) {
+
+    /**
+     * Instantiates a new my SQ L schema 2.
+     *
+     * @param pool      the pool
+     * @param configure the configure
+     */
+    public MySQL_Schema2(IConnectionPool pool, Configure configure) {
 		super(pool, configure);
 		this.setSQLClause(new MySQL_SQLClause(configure.getSchema()));
 	}

@@ -12,44 +12,79 @@ import com.ksyzt.gwt.client.common.MessageComposite;
 import com.ksyzt.gwt.client.event.MessageEvent;
 
 /**
- *  数据库行操作
- * @author zhangjianshe
+ * 数据库行操作
  *
+ * @author zhangjianshe
  */
 public class RowOperator extends MessageComposite {
 
   private static RowOperatorUiBinder uiBinder = GWT.create(RowOperatorUiBinder.class);
 
-  interface RowOperatorUiBinder extends UiBinder<Widget, RowOperator> {
+    /**
+     * The interface Row operator ui binder.
+     */
+    interface RowOperatorUiBinder extends UiBinder<Widget, RowOperator> {
   }
 
-  public RowOperator() {
+    /**
+     * Instantiates a new Row operator.
+     */
+    public RowOperator() {
     initWidget(uiBinder.createAndBindUi(this));
   }
 
-  Object mData;
+    /**
+     * The M data.
+     */
+    Object mData;
 
-  public void setData(Object obj) {
+    /**
+     * Sets data.
+     *
+     * @param obj the obj
+     */
+    public void setData(Object obj) {
     mData = obj;
   }
 
-  public Object getData() {
+    /**
+     * Gets data.
+     *
+     * @return the data
+     */
+    public Object getData() {
     return mData;
   }
 
-  @UiField
+    /**
+     * The Btn editor.
+     */
+    @UiField
   PrimaryButton btnEditor;
 
-  @UiField
+    /**
+     * The Btn delete.
+     */
+    @UiField
   PrimaryButton btnDelete;
 
-  @UiHandler("btnEditor")
+    /**
+     * On editor.
+     *
+     * @param e the e
+     */
+    @UiHandler("btnEditor")
   void onEditor(ClickEvent e) {
     MessageEvent ev = new MessageEvent(MessageEvent.EDIT, mData);
     fireEvent(ev);
   }
 
-  @UiHandler("btnDelete")
+    /**
+     * On delete.
+     *
+     * @param e the e
+     */
+    @UiHandler("btnDelete")
   void onDelete(ClickEvent e) {
     MessageEvent ev = new MessageEvent(MessageEvent.DELETE, mData);
     fireEvent(ev);

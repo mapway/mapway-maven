@@ -10,13 +10,16 @@ import cn.ennwifi.webframe.ui.shared.repository.S_USERObj;
 
 /**
  * Google rpc call with additional headers.
- * 
+ *
  * @author zhangjianshe
  */
 public class RequestBuilderWithToken extends RpcRequestBuilder {
 
 
-  public RequestBuilderWithToken() {
+    /**
+     * Instantiates a new Request builder with token.
+     */
+    public RequestBuilderWithToken() {
 
   }
 

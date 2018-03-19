@@ -15,6 +15,9 @@ import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * The type Check admin token servlet.
+ */
 public abstract class CheckAdminTokenServlet extends RemoteServiceServlet {
 
     /**
@@ -24,32 +27,39 @@ public abstract class CheckAdminTokenServlet extends RemoteServiceServlet {
 
     /**
      * 需要提供一个DAO
+     *
+     * @return the dao
      */
     public abstract Dao createDao();
 
     /**
      * 返回 一个客户端配置.
      *
-     * @return
+     * @return client configure
      */
     public ClientConfigure getClientConfigure() {
         return new DefaultClientConfigure();
     }
 
     /**
-     *
+     * Instantiates a new Check admin token servlet.
      */
     public CheckAdminTokenServlet() {
         excludesMethod = new ArrayList<String>();
         extendCheckToken(excludesMethod);
     }
 
+    /**
+     * The constant SESSION_ADMIN_USER.
+     */
     public final static String SESSION_ADMIN_USER = "SESSION_ADMIN_USER";
 
     private Dao dao;
 
     /**
-     * @return
+     * Gets dao.
+     *
+     * @return dao
      */
     public synchronized Dao getDao() {
         if (dao == null) {
@@ -79,8 +89,10 @@ public abstract class CheckAdminTokenServlet extends RemoteServiceServlet {
     }
 
     /**
-     * @param rpcRequest
-     * @return
+     * Check token boolean.
+     *
+     * @param rpcRequest the rpc request
+     * @return boolean
      */
     public boolean checkToken(RPCRequest rpcRequest) {
 
@@ -103,7 +115,7 @@ public abstract class CheckAdminTokenServlet extends RemoteServiceServlet {
     /**
      * 从Request中获取用户信息.
      *
-     * @return
+     * @return s user obj
      */
     public S_USERObj requestUser() {
         HttpServletRequest request = this.getThreadLocalRequest();
@@ -145,12 +157,17 @@ public abstract class CheckAdminTokenServlet extends RemoteServiceServlet {
     /**
      * 子类重构
      *
-     * @param methodList
+     * @param methodList the method list
      */
     public void extendCheckToken(List<String> methodList) {
 
     }
 
+    /**
+     * Gets base path.
+     *
+     * @return the base path
+     */
     public final String getBasePath() {
         String path = getThreadLocalRequest().getContextPath();
         String basePath =

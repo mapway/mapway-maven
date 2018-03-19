@@ -3,6 +3,9 @@ package cn.mapway.ui.client.widget.common;
 import com.google.gwt.event.dom.client.KeyUpEvent;
 import com.google.gwt.event.dom.client.KeyUpHandler;
 
+/**
+ * The type Number text box.
+ */
 public class NumberTextBox extends TextBoxEx implements KeyUpHandler {
 
 
@@ -17,8 +20,10 @@ public class NumberTextBox extends TextBoxEx implements KeyUpHandler {
   };
 
 
-
-  public NumberTextBox() {
+    /**
+     * Instantiates a new Number text box.
+     */
+    public NumberTextBox() {
     setStyleName("gwtEx-TextBox");
     init();
   }
@@ -55,28 +60,41 @@ public class NumberTextBox extends TextBoxEx implements KeyUpHandler {
     this.setValue(value);
   }
 
-  public boolean checkNum() {
+    /**
+     * Check num boolean.
+     *
+     * @return the boolean
+     */
+    public boolean checkNum() {
     String value = this.getValue();
     String reg = "^(\\-|\\+)?\\d+(\\.\\d+)?$";
     return value.matches(reg);
   }
 
-  Double min = null;
-  Double max = null;
+    /**
+     * The Min.
+     */
+    Double min = null;
+    /**
+     * The Max.
+     */
+    Double max = null;
 
-  /**
-   * 设置最小值
-   * @param min
-   */
-  public void setMin(double min) {
+    /**
+     * 设置最小值
+     *
+     * @param min the min
+     */
+    public void setMin(double min) {
     this.min = min;
   }
 
-  /**
-   * 设置最大值
-   * @param max
-   */
-  public void setMax(double max) {
+    /**
+     * 设置最大值
+     *
+     * @param max the max
+     */
+    public void setMax(double max) {
     this.max = max;
   }
 

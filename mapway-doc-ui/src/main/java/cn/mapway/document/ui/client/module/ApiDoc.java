@@ -140,7 +140,7 @@ public class ApiDoc extends JavaScriptObject {
     /**
      * s
      *
-     * @return
+     * @return string
      */
     public final native String apiVersion()/*-{
 		return this.apiVersion;
@@ -149,7 +149,7 @@ public class ApiDoc extends JavaScriptObject {
     /**
      * s
      *
-     * @return
+     * @return string
      */
     public final native String homeUrl() /*-{
     return this.homeUrl || '';
@@ -157,7 +157,8 @@ public class ApiDoc extends JavaScriptObject {
 
     /**
      * style information.
-     * @return
+     *
+     * @return string
      */
     public final native String cssStyle()/*-{
         return this.cssStyle;

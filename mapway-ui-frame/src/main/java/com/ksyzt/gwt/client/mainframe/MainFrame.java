@@ -14,6 +14,7 @@ import com.ksyzt.gwt.client.event.MessageEvent;
 import com.ksyzt.gwt.client.event.MessageHandler;
 
 // TODO: Auto-generated Javadoc
+
 /**
  * 应用程序主框架.
  *
@@ -25,10 +26,10 @@ public class MainFrame extends MessageComposite {
 	private static MainFrameUiBinder uiBinder = GWT
 			.create(MainFrameUiBinder.class);
 
-	/**
-	 * The Interface MainFrameUiBinder.
-	 */
-	interface MainFrameUiBinder extends UiBinder<Widget, MainFrame> {
+    /**
+     * The Interface MainFrameUiBinder.
+     */
+    interface MainFrameUiBinder extends UiBinder<Widget, MainFrame> {
 	}
 
 	/** The m topbar handler. */
@@ -50,12 +51,12 @@ public class MainFrame extends MessageComposite {
 		}
 	};
 
-	/**
-	 * 切换页面.
-	 *
-	 * @param d the d
-	 */
-	protected void switch_page(ModuleData d) {
+    /**
+     * 切换页面.
+     *
+     * @param d the d
+     */
+    protected void switch_page(ModuleData d) {
 
 		if (d != null) {
 			Widget page = d.getWidget();
@@ -72,61 +73,71 @@ public class MainFrame extends MessageComposite {
 		}
 	}
 
-	/**
-	 * Instantiates a new main frame.
-	 */
-	public MainFrame() {
+    /**
+     * Instantiates a new main frame.
+     */
+    public MainFrame() {
 		initWidget(uiBinder.createAndBindUi(this));
 		topbar.addMessageHandler(m_topbar_handler);
 		modules = new ArrayList<ModuleData>();
 	}
 
-	/** The topbar. */
-	@UiField
+    /**
+     * The topbar.
+     */
+    @UiField
 	AppTopbar topbar;
 
-	/** The current. */
-	Widget current;
+    /**
+     * The current.
+     */
+    Widget current;
 
-	/** The root. */
-	@UiField
+    /**
+     * The root.
+     */
+    @UiField
 	DockLayoutPanel root;
 
-	/** The modules. */
-	List<ModuleData> modules;
+    /**
+     * The modules.
+     */
+    List<ModuleData> modules;
 
-	/** The application. */
-	AppData application;
+    /**
+     * The application.
+     */
+    AppData application;
 
-	/**
-	 * Sets the application.
-	 *
-	 * @param app the new application
-	 */
-	public void setApplication(AppData app) {
+    /**
+     * Sets the application.
+     *
+     * @param app the new application
+     */
+    public void setApplication(AppData app) {
 		application = app;
 		topbar.initTop(application.user.realname, app.user.id);
 	}
 
-	/**
-	 * Adds the module factory.
-	 *
-	 * @param mf the mf
-	 * @param props the props
-	 */
-	public void addModuleFactory(IModuleFactory mf, ModuleProperties props) {
+    /**
+     * Adds the module factory.
+     *
+     * @param mf    the mf
+     * @param props the props
+     */
+    public void addModuleFactory(IModuleFactory mf, ModuleProperties props) {
 
 		ModuleData d = new ModuleData(application, mf, props);
 		modules.add(d);
 		topbar.addTab(d);
 	}
 
-	/**
-	 * Show module.
-	 *
-	 * @param index the index
-	 */
-	public void showModule(int index) {
+    /**
+     * Show module.
+     *
+     * @param index the index
+     */
+    public void showModule(int index) {
 		if (index >= 0 && index < modules.size()) {
 			switch_page(modules.get(index));
 			topbar.setSelected(index);

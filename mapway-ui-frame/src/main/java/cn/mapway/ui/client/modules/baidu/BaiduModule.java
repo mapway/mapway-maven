@@ -17,10 +17,16 @@ import com.google.gwt.user.client.ui.HTMLPanel;
 import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.Widget;
 
+/**
+ * The type Baidu module.
+ */
 @ModuleMarker(value = BaiduModule.MODULE_CODE, group = "/测试",name = "百度模块", summary = "XXXXXX", icon = "help.png")
 public class BaiduModule extends BaseAbstractModule {
 
-  public static final String MODULE_CODE = "MC_BAIDU";
+    /**
+     * The constant MODULE_CODE.
+     */
+    public static final String MODULE_CODE = "MC_BAIDU";
 
   @Override
   public String getModuleCode() {
@@ -29,10 +35,16 @@ public class BaiduModule extends BaseAbstractModule {
 
   private static BaiduModuleUiBinder uiBinder = GWT.create(BaiduModuleUiBinder.class);
 
-  interface BaiduModuleUiBinder extends UiBinder<Widget, BaiduModule> {
+    /**
+     * The interface Baidu module ui binder.
+     */
+    interface BaiduModuleUiBinder extends UiBinder<Widget, BaiduModule> {
   }
 
-  public BaiduModule() {
+    /**
+     * Instantiates a new Baidu module.
+     */
+    public BaiduModule() {
     initWidget(uiBinder.createAndBindUi(this));
 
     Button btn = new Button("tets");
@@ -68,16 +80,28 @@ public class BaiduModule extends BaseAbstractModule {
     return this;
   }
 
-  @UiField
+    /**
+     * The Tr.
+     */
+    @UiField
   Element tr;
 
-  boolean b = true;
+    /**
+     * The B.
+     */
+    boolean b = true;
 
 
-  @UiField
+    /**
+     * The Root.
+     */
+    @UiField
   HTMLPanel root;
 
-  @UiField
+    /**
+     * The Txt.
+     */
+    @UiField
   TextBox txt;
 
 

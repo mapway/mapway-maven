@@ -15,12 +15,15 @@ import com.ksyzt.gwt.client.event.MessageHandler;
 
 /**
  * 元数据选择框
- * 
+ *
  * @author zhangjianshe
  */
 public class MetaBox extends ListBoxEx implements Observer, HasMessageHandlers {
 
-  public MetaBox() {
+    /**
+     * Instantiates a new Meta box.
+     */
+    public MetaBox() {
     MetaDataProvider.get().addObserver(this);
   }
 
@@ -31,12 +34,22 @@ public class MetaBox extends ListBoxEx implements Observer, HasMessageHandlers {
 
   private String mCatalog = "";
 
-  public void setCatalog(String catalog) {
+    /**
+     * Sets catalog.
+     *
+     * @param catalog the catalog
+     */
+    public void setCatalog(String catalog) {
     mCatalog = catalog;
     refreshView();
   }
 
-  public String getCatalog() {
+    /**
+     * Gets catalog.
+     *
+     * @return the catalog
+     */
+    public String getCatalog() {
     return mCatalog;
   }
 
@@ -46,10 +59,10 @@ public class MetaBox extends ListBoxEx implements Observer, HasMessageHandlers {
   }
 
 
-  /**
-   * 刷新页面
-   */
-  public void refreshView() {
+    /**
+     * 刷新页面
+     */
+    public void refreshView() {
     this.clear();
     if (mCatalog != null && mCatalog.length() > 0) {
       if (mEmptyString != null && mEmptyString.length() > 0) {
@@ -83,18 +96,33 @@ public class MetaBox extends ListBoxEx implements Observer, HasMessageHandlers {
     fireEvent(ev);
   }
 
-  public String getValue() {
+    /**
+     * Gets value.
+     *
+     * @return the value
+     */
+    public String getValue() {
     String v = getSelectedValue();
     return v == null ? "" : v;
   }
 
-  public void setValue(String value) {
+    /**
+     * Sets value.
+     *
+     * @param value the value
+     */
+    public void setValue(String value) {
     selectValue(value);
   }
 
   private String mEmptyString = "";
 
-  public void setEmpty(String emptyString) {
+    /**
+     * Sets empty.
+     *
+     * @param emptyString the empty string
+     */
+    public void setEmpty(String emptyString) {
     mEmptyString = emptyString;
     refreshView();
   }

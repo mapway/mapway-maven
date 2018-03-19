@@ -9,12 +9,12 @@ import com.google.gwt.event.shared.HasHandlers;
  * @param <T> the generic type
  */
 public interface HasMapwayHandlers<T> extends HasHandlers {
-	
-	/**
-	 * Adds the mapway handler.
-	 *
-	 * @param handler the handler
-	 * @return the handler registration
-	 */
-	HandlerRegistration addMapwayHandler(MapwayHandler<T> handler);
+
+    /**
+     * Adds the mapway handler.
+     *
+     * @param handler the handler
+     * @return the handler registration
+     */
+    HandlerRegistration addMapwayHandler(MapwayHandler<T> handler);
 }

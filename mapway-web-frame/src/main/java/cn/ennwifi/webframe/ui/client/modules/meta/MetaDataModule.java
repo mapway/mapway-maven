@@ -17,10 +17,16 @@ import com.google.gwt.user.client.ui.Widget;
 import com.ksyzt.gwt.client.event.MessageEvent;
 import com.ksyzt.gwt.client.event.MessageHandler;
 
+/**
+ * The type Meta data module.
+ */
 @ModuleMarker(value = MetaDataModule.MODEULE_CODE, group = "/系统",name = "元数据管理", icon = "meta.png")
 public class MetaDataModule extends AbstractModule {
 
-  public final static String MODEULE_CODE = "MC_META_DATA";
+    /**
+     * The constant MODEULE_CODE.
+     */
+    public final static String MODEULE_CODE = "MC_META_DATA";
 
   @Override
   public String getModuleCode() {
@@ -29,7 +35,10 @@ public class MetaDataModule extends AbstractModule {
 
   private static MetaDataModuleUiBinder uiBinder = GWT.create(MetaDataModuleUiBinder.class);
 
-  interface MetaDataModuleUiBinder extends UiBinder<Widget, MetaDataModule> {
+    /**
+     * The interface Meta data module ui binder.
+     */
+    interface MetaDataModuleUiBinder extends UiBinder<Widget, MetaDataModule> {
   }
 
   private SelectionHandler<TreeItem> metaSelectHandler = new SelectionHandler<TreeItem>() {
@@ -66,8 +75,12 @@ public class MetaDataModule extends AbstractModule {
   };
 
 
-
-  protected void treeToUI(TreeItem selectedItem) {
+    /**
+     * Tree to ui.
+     *
+     * @param selectedItem the selected item
+     */
+    protected void treeToUI(TreeItem selectedItem) {
     tbl.removeAllRows();
     int count = selectedItem.getChildCount();
     for (int i = 0; i < count; i++) {
@@ -79,7 +92,10 @@ public class MetaDataModule extends AbstractModule {
   }
 
 
-  public MetaDataModule() {
+    /**
+     * Instantiates a new Meta data module.
+     */
+    public MetaDataModule() {
     initModuleWidget(uiBinder.createAndBindUi(this));
     tree.addSelectionHandler(metaSelectHandler);
     editor.addMessageHandler(editorHandler);
@@ -90,12 +106,21 @@ public class MetaDataModule extends AbstractModule {
     return this;
   }
 
-  @UiField
+    /**
+     * The Editor.
+     */
+    @UiField
   EditMeta editor;
-  @UiField
+    /**
+     * The Tree.
+     */
+    @UiField
   MetaTree tree;
 
-  @UiField
+    /**
+     * The Tbl.
+     */
+    @UiField
   FlexTable tbl;
 
 }

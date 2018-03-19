@@ -7,6 +7,7 @@ import cn.mapway.document.annotation.ApiStyle;
 import cn.mapway.document.annotation.Doc;
 
 // TODO: Auto-generated Javadoc
+
 /**
  * The Class TestController.
  */
@@ -16,13 +17,13 @@ import cn.mapway.document.annotation.Doc;
 @RequestMapping(value = "doc/123/")
 public class TestController {
 
-  /**
-   * Gets the name.
-   *
-   * @param req the req
-   * @return the name
-   */
-  @Doc(
+    /**
+     * Gets the name.
+     *
+     * @param req the req
+     * @return the name
+     */
+    @Doc(
       value = "這裏是重要的央視",
       style = ApiStyle.IMPORTANT,
       desc = "我们的意图是明确的，将返回的多个Person实体对象放到一个Map结构中。但是问题就在于返回的JSON中的keys是不固定的(比如上述JSON中的keys是人名)，这导致反序列化失败。毕竟默认配置下的ObjectMapper也没有聪明到这种程度，能够猜测你是想要将多个实体放到Map中。")

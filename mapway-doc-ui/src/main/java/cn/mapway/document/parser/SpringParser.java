@@ -51,7 +51,7 @@ import cn.mapway.document.module.FieldCode;
 /**
  * 解析Spring 注解.
  *
- * @author zhangjianshe@gmail.com
+ * @author zhangjianshe @gmail.com
  */
 public class SpringParser {
 

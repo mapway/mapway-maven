@@ -15,7 +15,7 @@
     <orderEntry type="library" name="Maven: us.fatehi:schemacrawler:14.16.03-java7" level="project" />
     <orderEntry type="library" name="Maven: com.squareup:javawriter:2.5.1" level="project" />
     <orderEntry type="library" name="Maven: cn.mapway:mapway-annotation:1.1.7-SNAPSHOT" level="project" />
-    <orderEntry type="library" name="Maven: org.nutz:nutz:1.r.60" level="project" />
     <orderEntry type="library" name="Maven: cn.ennwifi:pgjdbc:9.6-SNAPSHOT" level="project" />
+    <orderEntry type="library" name="Maven: org.nutz:nutz:1.r.60" level="project" />
   </component>
 </module>

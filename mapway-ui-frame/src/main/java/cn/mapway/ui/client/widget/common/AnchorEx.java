@@ -3,6 +3,9 @@ package cn.mapway.ui.client.widget.common;
 import com.google.gwt.regexp.shared.RegExp;
 import com.google.gwt.user.client.ui.Anchor;
 
+/**
+ * The type Anchor ex.
+ */
 public class AnchorEx extends Anchor implements IValidator {
 
   private String msg = "";
@@ -38,46 +41,49 @@ public class AnchorEx extends Anchor implements IValidator {
     this.msg = msg;
   }
 
-  public AnchorEx() {
+    /**
+     * Instantiates a new Anchor ex.
+     */
+    public AnchorEx() {
 
   }
 
   /** 按钮的数据. */
   private Object data;
 
-  /**
-   * Gets the data.
-   *
-   * @return the data
-   */
-  public Object getData() {
+    /**
+     * Gets the data.
+     *
+     * @return the data
+     */
+    public Object getData() {
     return data;
   }
 
-  /**
-   * Sets the data.
-   *
-   * @param data the new data
-   */
-  public void setData(Object data) {
+    /**
+     * Sets the data.
+     *
+     * @param data the new data
+     */
+    public void setData(Object data) {
     this.data = data;
   }
 
-  /**
-   * Gets the command.
-   *
-   * @return the command
-   */
-  public Integer getCommand() {
+    /**
+     * Gets the command.
+     *
+     * @return the command
+     */
+    public Integer getCommand() {
     return command;
   }
 
-  /**
-   * Sets the command.
-   *
-   * @param command the new command
-   */
-  public void setCommand(Integer command) {
+    /**
+     * Sets the command.
+     *
+     * @param command the new command
+     */
+    public void setCommand(Integer command) {
     this.command = command;
   }
 

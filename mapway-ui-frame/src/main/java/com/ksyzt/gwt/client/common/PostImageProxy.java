@@ -10,25 +10,26 @@ import com.google.gwt.user.client.Window.Navigator;
 import com.google.gwt.user.client.ui.RootPanel;
 
 // TODO: Auto-generated Javadoc
+
 /**
  * The Class PostImageProxy.
  */
 public class PostImageProxy extends JavaScriptObject {
 
-	/**
-	 * Instantiates a new post image proxy.
-	 */
-	protected PostImageProxy() {
+    /**
+     * Instantiates a new post image proxy.
+     */
+    protected PostImageProxy() {
 
 	}
 
-	/**
-	 * Show picture.
-	 *
-	 * @param path the path
-	 * @param id the id
-	 */
-	public final void showPicture(String path, Integer id) {
+    /**
+     * Show picture.
+     *
+     * @param path the path
+     * @param id   the id
+     */
+    public final void showPicture(String path, Integer id) {
 
 		String url = GWT.getModuleBaseURL();
 
@@ -49,13 +50,13 @@ public class PostImageProxy extends JavaScriptObject {
 		}
 	}
 
-	/**
-	 * Gets the post image proxy.
-	 *
-	 * @param id the id
-	 * @return the post image proxy
-	 */
-	public final static PostImageProxy getPostImageProxy(String id) {
+    /**
+     * Gets the post image proxy.
+     *
+     * @param id the id
+     * @return the post image proxy
+     */
+    public final static PostImageProxy getPostImageProxy(String id) {
 		return getById(id);
 	}
 
@@ -106,16 +107,16 @@ public class PostImageProxy extends JavaScriptObject {
 		}
 	}-*/;
 
-	/**
-	 * Setup.
-	 *
-	 * @param who the who
-	 * @param server the server
-	 * @param id the id
-	 * @param loc the loc
-	 * @param initsrc the initsrc
-	 */
-	public final native void setup(JavaScriptObject who, String server, int id,
+    /**
+     * Setup.
+     *
+     * @param who     the who
+     * @param server  the server
+     * @param id      the id
+     * @param loc     the loc
+     * @param initsrc the initsrc
+     */
+    public final native void setup(JavaScriptObject who, String server, int id,
 			String loc, String initsrc)
 	/*-{
 		var _this = this;
@@ -134,13 +135,13 @@ public class PostImageProxy extends JavaScriptObject {
 
 	}-*/;
 
-	/**
-	 * Creates the post image proxy.
-	 *
-	 * @param flashid the flashid
-	 * @throws Exception the exception
-	 */
-	public static void createPostImageProxy(String flashid) throws Exception {
+    /**
+     * Creates the post image proxy.
+     *
+     * @param flashid the flashid
+     * @throws Exception the exception
+     */
+    public static void createPostImageProxy(String flashid) throws Exception {
 
 		try {
 			Element wrapper = DOM.createDiv();
@@ -161,13 +162,13 @@ public class PostImageProxy extends JavaScriptObject {
 
 	}
 
-	/**
-	 * Gets the flash string.
-	 *
-	 * @param flashid the flashid
-	 * @return the flash string
-	 */
-	public final static String getFlashString(String flashid) {
+    /**
+     * Gets the flash string.
+     *
+     * @param flashid the flashid
+     * @return the flash string
+     */
+    public final static String getFlashString(String flashid) {
 		String base = GWT.getModuleBaseURL();
 		String movie = base + "../images/PostImage.swf";
 
@@ -177,13 +178,13 @@ public class PostImageProxy extends JavaScriptObject {
 		return flash;
 	}
 
-	/**
-	 * Int 2 path.
-	 *
-	 * @param v the v
-	 * @return the string
-	 */
-	public final static String int2path(int v) {
+    /**
+     * Int 2 path.
+     *
+     * @param v the v
+     * @return the string
+     */
+    public final static String int2path(int v) {
 		String id = v + "";
 		String str = "";
 		for (int i = 0; i < id.length(); i++) {
@@ -192,41 +193,41 @@ public class PostImageProxy extends JavaScriptObject {
 		return str;
 	}
 
-	/**
-	 * Hide.
-	 */
-	public final void hide() {
+    /**
+     * Hide.
+     */
+    public final void hide() {
 		Element ele = this.cast();
 		ele.getStyle().setVisibility(Visibility.HIDDEN);
 	}
 
-	/**
-	 * Show.
-	 */
-	public final void show() {
+    /**
+     * Show.
+     */
+    public final void show() {
 		Element ele = this.cast();
 		ele.getStyle().setVisibility(Visibility.VISIBLE);
 	}
 
-	/**
-	 * Move to.
-	 *
-	 * @param left the left
-	 * @param top the top
-	 */
-	public final native void moveTo(int left, int top)
+    /**
+     * Move to.
+     *
+     * @param left the left
+     * @param top  the top
+     */
+    public final native void moveTo(int left, int top)
 	/*-{
 		this.style.left = left + "px";
 		this.style.top = top + "px";
 	}-*/;
 
-	/**
-	 * Sets the size.
-	 *
-	 * @param w the w
-	 * @param h the h
-	 */
-	public final native void setSize(int w, int h)
+    /**
+     * Sets the size.
+     *
+     * @param w the w
+     * @param h the h
+     */
+    public final native void setSize(int w, int h)
 	/*-{
 		this.style.width = w + "px";
 		this.style.height = h + "px";

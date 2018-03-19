@@ -7,15 +7,20 @@ import com.google.gwt.user.client.ui.Widget;
 
 /**
  * 缺省的菜单处理菜单处理句柄.
- * 
- * @author zhangjianshe
  *
+ * @author zhangjianshe
  */
 public class DefaultMenuHandler implements MenuExecutor {
 
-  public static DefaultMenuHandler INSTANCE = new DefaultMenuHandler();
+    /**
+     * The constant INSTANCE.
+     */
+    public static DefaultMenuHandler INSTANCE = new DefaultMenuHandler();
 
-  protected DefaultMenuHandler() {
+    /**
+     * Instantiates a new Default menu handler.
+     */
+    protected DefaultMenuHandler() {
 
   }
 

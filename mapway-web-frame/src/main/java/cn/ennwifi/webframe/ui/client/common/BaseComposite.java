@@ -7,23 +7,26 @@ import cn.mapway.ui.client.event.IEventHandler;
 
 import com.ksyzt.gwt.client.common.MessageComposite;
 
+/**
+ * The type Base composite.
+ */
 public abstract class BaseComposite extends MessageComposite implements IEventHandler {
 
-  /**
-   * 向事件总线注册监听的TOPIC
-   * 
-   * @param topic
-   */
-  public void registerEventHandler(String topic) {
+    /**
+     * 向事件总线注册监听的TOPIC
+     *
+     * @param topic the topic
+     */
+    public void registerEventHandler(String topic) {
     ClientContext.getContext().getEventBus().register(topic, this);
   }
 
-  /**
-   * 取消事件总线的TOPIC
-   * 
-   * @param topic
-   */
-  public void unRegisterEventHandler(String topic) {
+    /**
+     * 取消事件总线的TOPIC
+     *
+     * @param topic the topic
+     */
+    public void unRegisterEventHandler(String topic) {
     ClientContext.getContext().getEventBus().unregister(topic, this);
   }
 
@@ -35,30 +38,33 @@ public abstract class BaseComposite extends MessageComposite implements IEventHa
 
   }
 
-  /**
-   * 向总线发送一个文本消息
-   * 
-   * @param message
-   */
-  public void postMessage(String message) {
+    /**
+     * 向总线发送一个文本消息
+     *
+     * @param message the message
+     */
+    public void postMessage(String message) {
     postTopic(EventTopics.MESSAGE, 0, message);
   }
 
-  /**
-   * 向总线发送一个文本消息
-   * 
-   * @param message
-   */
-  public void postTopic(String topic, int type, Object data) {
+    /**
+     * 向总线发送一个文本消息
+     *
+     * @param topic the topic
+     * @param type  the type
+     * @param data  the data
+     */
+    public void postTopic(String topic, int type, Object data) {
     ClientContext.getContext().postTopic(topic, type, data);
   }
 
-  /**
-   * 向总线发送一个文本消息
-   * 
-   * @param message
-   */
-  public void postTopic(String topic, Object data) {
+    /**
+     * 向总线发送一个文本消息
+     *
+     * @param topic the topic
+     * @param data  the data
+     */
+    public void postTopic(String topic, Object data) {
     postTopic(topic, 0, data);
   }
 

@@ -7,59 +7,78 @@ import java.util.Set;
 
 /**
  * 模块参数
- * 
- * @author zhangjianshe
  *
+ * @author zhangjianshe
  */
 public class ModuleParameter {
-  /**
-   * 通用参数，用于从数据库中的参数传递到模块中.
-   */
-  public final static String PARA_KEY = "para_key";
+    /**
+     * 通用参数，用于从数据库中的参数传递到模块中.
+     */
+    public final static String PARA_KEY = "para_key";
   private String subModule = "";
   private Map<String, Object> paras;
 
-  public ModuleParameter() {
+    /**
+     * Instantiates a new Module parameter.
+     */
+    public ModuleParameter() {
     paras = new HashMap<String, Object>();
   }
 
-  /**
-   * 设置默认参数.
-   * 
-   * @param value
-   */
-  public void put(Object value) {
+    /**
+     * 设置默认参数.
+     *
+     * @param value the value
+     */
+    public void put(Object value) {
     put(PARA_KEY, value);
   }
 
-  /**
-   * 获取子模块
-   * 
-   * @return
-   */
-  public String getSubModule() {
+    /**
+     * 获取子模块
+     *
+     * @return sub module
+     */
+    public String getSubModule() {
     return subModule;
   }
 
 
-  public void setSubModule(String moduleCode) {
+    /**
+     * Sets sub module.
+     *
+     * @param moduleCode the module code
+     */
+    public void setSubModule(String moduleCode) {
     subModule = moduleCode;
   }
 
-  /**
-   * 获取默认参数.
-   * 
-   * @return
-   */
-  public Object get() {
+    /**
+     * 获取默认参数.
+     *
+     * @return object
+     */
+    public Object get() {
     return get(PARA_KEY);
   }
 
-  public void put(String key, Object value) {
+    /**
+     * Put.
+     *
+     * @param key   the key
+     * @param value the value
+     */
+    public void put(String key, Object value) {
     paras.put(key, value);
   }
 
-  public Object get(String key) {
+    /**
+     * Get object.
+     *
+     * @param key the key
+     * @return the object
+     */
+    public Object get(String key) {
     return paras.get(key);
   }
 
@@ -79,12 +98,12 @@ public class ModuleParameter {
     return r;
   }
 
-  /**
-   * 反序列化数据
-   * 
-   * @param data
-   */
-  public void parse(String data) {
+    /**
+     * 反序列化数据
+     *
+     * @param data the data
+     */
+    public void parse(String data) {
     if (data == null || data.length() == 0) {
       return;
     }
@@ -101,21 +120,21 @@ public class ModuleParameter {
     }
   }
 
-  /**
-   * 参数的数量
-   * 
-   * @return
-   */
-  public int size() {
+    /**
+     * 参数的数量
+     *
+     * @return int
+     */
+    public int size() {
     return paras.size();
   }
 
-  /**
-   * 参数的额KEYS列表
-   * 
-   * @return
-   */
-  public Set<String> keys() {
+    /**
+     * 参数的额KEYS列表
+     *
+     * @return set
+     */
+    public Set<String> keys() {
     return paras.keySet();
   }
 }

@@ -17,10 +17,18 @@ public class Markdowns {
 
     private static Markdowns INSTANCE;
 
+    /**
+     * Instantiates a new Markdowns.
+     */
     protected Markdowns() {
 
     }
 
+    /**
+     * Get markdowns.
+     *
+     * @return the markdowns
+     */
     public final static Markdowns get() {
         if (INSTANCE == null) {
             INSTANCE = new Markdowns();
@@ -32,6 +40,11 @@ public class Markdowns {
     private HtmlRenderer renderer;
     private List<Extension> extensions;
 
+    /**
+     * Gets parser.
+     *
+     * @return the parser
+     */
     public synchronized Parser getParser() {
         if (parser == null) {
             parser = Parser.builder().extensions(getExtensions()).build();
@@ -39,6 +52,11 @@ public class Markdowns {
         return parser;
     }
 
+    /**
+     * Gets html render.
+     *
+     * @return the html render
+     */
     public synchronized final HtmlRenderer getHtmlRender() {
         if (renderer == null) {
             renderer = HtmlRenderer.builder().extensions(getExtensions()).build();
@@ -46,6 +64,11 @@ public class Markdowns {
         return renderer;
     }
 
+    /**
+     * Gets extensions.
+     *
+     * @return the extensions
+     */
     public synchronized final List<Extension> getExtensions() {
         if (extensions == null) {
             extensions = Arrays.asList(TablesExtension.create());
@@ -56,8 +79,8 @@ public class Markdowns {
     /**
      * 转换器
      *
-     * @param desc
-     * @return
+     * @param desc the desc
+     * @return string
      */
     public String translate(String desc) {
         Node node = getParser().parse(desc);

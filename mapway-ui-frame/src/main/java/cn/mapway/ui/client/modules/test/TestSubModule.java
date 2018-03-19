@@ -13,23 +13,34 @@ import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.Widget;
 
 
-
+/**
+ * The type Test sub module.
+ */
 @ModuleMarker(value = TestSubModule.MODULE_CODE, name = "测试子模块")
 public class TestSubModule extends AbstractModule {
 
   private static TestSubModuleUiBinder uiBinder = GWT.create(TestSubModuleUiBinder.class);
 
-  interface TestSubModuleUiBinder extends UiBinder<Widget, TestSubModule> {
+    /**
+     * The interface Test sub module ui binder.
+     */
+    interface TestSubModuleUiBinder extends UiBinder<Widget, TestSubModule> {
   }
 
-  public static final String MODULE_CODE = "TEST_SUB_MODULE";
+    /**
+     * The constant MODULE_CODE.
+     */
+    public static final String MODULE_CODE = "TEST_SUB_MODULE";
 
   @Override
   public String getModuleCode() {
     return MODULE_CODE;
   }
 
-  public TestSubModule() {
+    /**
+     * Instantiates a new Test sub module.
+     */
+    public TestSubModule() {
 
     registerSubModule(BaiduModule.MODULE_CODE, true);
     registerSubModule(DayWorkModule.MODULE_CODE, true);

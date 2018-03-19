@@ -2,6 +2,9 @@ package cn.mapway.maven;
 
 import java.io.File;
 
+/**
+ * The type File parameter.
+ */
 public class FileParameter {
   @SuppressWarnings("unused")
   private File path;
@@ -9,11 +12,21 @@ public class FileParameter {
   @SuppressWarnings("unused")
   private String[] lines;
 
-  public File getPath() {
+    /**
+     * Gets path.
+     *
+     * @return the path
+     */
+    public File getPath() {
     return path;
   }
 
-  public String[] getLines() {
+    /**
+     * Get lines string [ ].
+     *
+     * @return the string [ ]
+     */
+    public String[] getLines() {
     return lines;
   }
 }

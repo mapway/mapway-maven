@@ -4,12 +4,15 @@ import com.google.gwt.user.client.ui.Label;
 
 /**
  * 必填字段信息
- * @author zhangjianshe
  *
+ * @author zhangjianshe
  */
 public class InfoRequited extends Label {
 
-  public InfoRequited() {
+    /**
+     * Instantiates a new Info requited.
+     */
+    public InfoRequited() {
     setStyleName("solu_needed");
     setText("*必填");
   }

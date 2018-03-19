@@ -5,15 +5,18 @@ import cn.mapway.ui.client.widget.menu.IMenuItem;
 import com.google.gwt.user.client.ui.Widget;
 
 /**
- * @author zhangjianshe
+ * The interface Menu render.
  *
+ * @author zhangjianshe
  */
 public interface IMenuRender {
 
-  /**
-   * @param parent
-   * @param menu
-   * @return
-   */
-  Widget render(Widget parent, IMenuItem menu);
+    /**
+     * Render widget.
+     *
+     * @param parent the parent
+     * @param menu   the menu
+     * @return widget
+     */
+    Widget render(Widget parent, IMenuItem menu);
 }

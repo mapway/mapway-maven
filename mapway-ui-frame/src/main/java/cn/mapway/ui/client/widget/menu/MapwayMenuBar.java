@@ -6,20 +6,22 @@ import com.google.gwt.user.client.ui.MenuBar;
 
 /**
  * MenuBar.
- * 
- * @author zhangjianshe
  *
+ * @author zhangjianshe
  */
 public class MapwayMenuBar extends MenuBar {
 
-  IMenuProvider mProvider;
+    /**
+     * The M provider.
+     */
+    IMenuProvider mProvider;
 
-  /**
-   * 设置菜单内容
-   * 
-   * @param provider
-   */
-  public void setMenuProvider(IMenuProvider provider) {
+    /**
+     * 设置菜单内容
+     *
+     * @param provider the provider
+     */
+    public void setMenuProvider(IMenuProvider provider) {
     mProvider = provider;
     render();
   }

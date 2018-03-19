@@ -50,8 +50,17 @@ import static javax.lang.model.element.Modifier.STATIC;
  */
 public class SchemaBase implements ISchema {
 
+    /**
+     * The Field style camel.
+     */
     public final static String  FIELD_STYLE_CAMEL="CAMEL";
+    /**
+     * The Field style lower case.
+     */
     public final static String  FIELD_STYLE_LOWER_CASE="LOWER_CASE";
+    /**
+     * The Field style upper case.
+     */
     public final static String  FIELD_STYLE_UPPER_CASE="UPPER_CASE";
 
     /**
@@ -982,6 +991,12 @@ public class SchemaBase implements ISchema {
     }
 
 
+    /**
+     * Esacpe quoto string.
+     *
+     * @param s the s
+     * @return the string
+     */
     public String esacpeQuoto(String s) {
         if (Strings.isBlank(s)) {
             return "";
@@ -989,6 +1004,14 @@ public class SchemaBase implements ISchema {
         return s.replaceAll("\"", "\\\\\"");
     }
 
+    /**
+     * Gen simple.
+     *
+     * @param conf  the conf
+     * @param table the table
+     * @param sb    the sb
+     * @throws IOException the io exception
+     */
     public void genSimple(Configure conf, ITable table, StringBuilder sb) throws IOException {
         boolean needDocument = "1".equals(conf.getUseDocument());
         boolean needGwt = "1".equals(conf.getUseGwt());
@@ -1205,6 +1228,11 @@ public class SchemaBase implements ISchema {
         }
     }
 
+    /**
+     * The entry point of application.
+     *
+     * @param args the input arguments
+     */
     public static void main(String[] args) {
 
     }

@@ -24,9 +24,18 @@ import com.mapway.database2java.model.base.SchemaBase;
 import com.mapway.database2java.model.schema.Column;
 import com.mapway.database2java.model.schema.Table;
 
+/**
+ * The type Postgre sql schema.
+ */
 public class PostgreSQLSchema extends SchemaBase {
 
-  public PostgreSQLSchema(IConnectionPool pool, Configure configure) {
+    /**
+     * Instantiates a new Postgre sql schema.
+     *
+     * @param pool      the pool
+     * @param configure the configure
+     */
+    public PostgreSQLSchema(IConnectionPool pool, Configure configure) {
     super(pool, configure);
     setSQLClause(new Postgre_SQLClause(configure.getDatabase()));
   }
@@ -128,7 +137,12 @@ public class PostgreSQLSchema extends SchemaBase {
     return name.replaceAll("\\\"", "");
   }
 
-  public static void main(String[] args) {
+    /**
+     * The entry point of application.
+     *
+     * @param args the input arguments
+     */
+    public static void main(String[] args) {
 
 
 

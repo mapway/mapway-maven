@@ -26,13 +26,22 @@ import com.google.gwt.user.client.ui.TreeItem;
 public class MetaTree extends Tree implements OpenHandler<TreeItem>, CloseHandler<TreeItem> {
 
 
+    /**
+     * The M data.
+     */
     protected List<S_METAObj> mData;
 
+    /**
+     * Instantiates a new Meta tree.
+     */
     public MetaTree() {
         this.addOpenHandler(this);
         this.addCloseHandler(this);
     }
 
+    /**
+     * Load data.
+     */
     public void loadData() {
         WebFrameProxy.get().fetchMetaData(new AsyncCallback<List<S_METAObj>>() {
 
@@ -51,6 +60,9 @@ public class MetaTree extends Tree implements OpenHandler<TreeItem>, CloseHandle
     }
 
 
+    /**
+     * Refresh view.
+     */
     protected void refreshView() {
         if (mData == null) {
             return;

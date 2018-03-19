@@ -5,35 +5,36 @@ import cn.mapway.document.ui.client.resource.CssStyle;
 import cn.mapway.document.ui.client.resource.SysResource;
 
 // TODO: Auto-generated Javadoc
+
 /**
  * The Class JsonPanel.
  */
 public class JsonPanel extends HTML {
 
-	/**
-	 * Instantiates a new json panel.
-	 */
-	public JsonPanel() {
+    /**
+     * Instantiates a new json panel.
+     */
+    public JsonPanel() {
 	}
 
-	/**
-	 * Sets the json.
-	 *
-	 * @param json the new json
-	 */
-	public void setJson(String json) {
+    /**
+     * Sets the json.
+     *
+     * @param json the new json
+     */
+    public void setJson(String json) {
 		CssStyle css = SysResource.INSTANCE.getCss();
 		String html = highted(json, css.cssNumber(), css.cssKey(),
 				css.cssString(), css.cssBoolean(), css.cssNull());
 		this.setHTML("<pre class='" + css.pre() + "'>" + html + "</pre>");
 	}
 
-	/**
-	 * Sets the string.
-	 *
-	 * @param text the new string
-	 */
-	public void setString(String text) {
+    /**
+     * Sets the string.
+     *
+     * @param text the new string
+     */
+    public void setString(String text) {
 		CssStyle css = SysResource.INSTANCE.getCss();
 		this.setHTML("<pre class='" + css.pre() + "'>" + text + "</pre>");
 	}

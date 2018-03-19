@@ -2,6 +2,9 @@ package com.mapway.database2java.model.base.naming;
 
 import org.nutz.lang.Strings;
 
+/**
+ * The type Camel convert.
+ */
 public class CamelConvert implements INameConvertor {
     @Override
     public String convert(String name) {
@@ -9,10 +12,10 @@ public class CamelConvert implements INameConvertor {
     }
 
     /**
-     * Accepts any String & converts in into Camel Case String
+     * Accepts any String  converts in into Camel Case String
      *
-     * @param text
-     * @return
+     * @param text the text
+     * @return string
      */
     public String convertToCamelCase(String text) {
         String[] segs;

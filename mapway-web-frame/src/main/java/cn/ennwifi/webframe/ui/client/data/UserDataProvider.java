@@ -19,15 +19,26 @@ import java.util.List;
 /**
  * 用户数据库
  *
- * @author zhangjianshe@gmail.com
- * @creation 2017-11-29 15:04:10
+ * @author zhangjianshe @gmail.com
  */
 public class UserDataProvider extends AbstractDataProvider {
 
+    /**
+     * The constant ROLE_EDITOR.
+     */
     public static final Integer ROLE_EDITOR = MessageEvent.CUSTOM + 6000;
 
+    /**
+     * The Page return.
+     */
     PagerData<S_USERObj> pageReturn;
+    /**
+     * The Headers.
+     */
     List<HeaderInfo> headers;
+    /**
+     * The Req.
+     */
     SearchReq req;
     private ClickHandler editHandler = new ClickHandler() {
 
@@ -48,6 +59,11 @@ public class UserDataProvider extends AbstractDataProvider {
         }
     };
 
+    /**
+     * Sets title.
+     *
+     * @param t the t
+     */
     public void setTitle(String t) {
     }
 
@@ -102,6 +118,9 @@ public class UserDataProvider extends AbstractDataProvider {
         return pageReturn.getData().size();
     }
 
+    /**
+     * Instantiates a new User data provider.
+     */
     public UserDataProvider() {
         headers = new ArrayList<HeaderInfo>();
         headers.add(new HeaderInfo("ID", S_USERObj.FLD_ID));

@@ -16,35 +16,64 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * The type Output parameter.
+ */
 public class OutputParameter extends Composite implements
 HasSelectionHandlers<ObjectInfo>  {
 
 	private static OutputParameterUiBinder uiBinder = GWT
 			.create(OutputParameterUiBinder.class);
 
-	interface OutputParameterUiBinder extends UiBinder<Widget, OutputParameter> {
+    /**
+     * The interface Output parameter ui binder.
+     */
+    interface OutputParameterUiBinder extends UiBinder<Widget, OutputParameter> {
 	}
 
-	public OutputParameter() {
+    /**
+     * Instantiates a new Output parameter.
+     */
+    public OutputParameter() {
 		initWidget(uiBinder.createAndBindUi(this));
 		tbl.addSelectionHandler(fieldTypeSelectionHandler);
 	}
 
-	@UiField
+    /**
+     * The Lb type.
+     */
+    @UiField
 	Label lbType;
-	@UiField
+    /**
+     * The Lb summary.
+     */
+    @UiField
 	Label lbSummary;
-	
-	@UiField
+
+    /**
+     * The Tbl.
+     */
+    @UiField
 	ObjectInfoPanel tbl;
-	
-	@UiField
+
+    /**
+     * The Json panel.
+     */
+    @UiField
 	JsonPanel jsonPanel;
-	
-	@UiField
+
+    /**
+     * The Obj info panel.
+     */
+    @UiField
 	HTMLPanel objInfoPanel;
 
-	public void parse(ObjectInfo output) {
+    /**
+     * Parse.
+     *
+     * @param output the output
+     */
+    public void parse(ObjectInfo output) {
 		gens =new ArrayList<GenInfo>();
 		mapper=new HashMap<String, Anchor>();
 		lbType.setText(output.type());
@@ -141,11 +170,15 @@ HasSelectionHandlers<ObjectInfo>  {
 		}
 	};
 
-	/** The mapper. */
-	Map<String, Anchor> mapper;
+    /**
+     * The mapper.
+     */
+    Map<String, Anchor> mapper;
 
-	/** The gens. */
-	List<GenInfo> gens;
+    /**
+     * The gens.
+     */
+    List<GenInfo> gens;
 
 	/* (non-Javadoc)
 	 * @see com.google.gwt.event.logical.shared.HasSelectionHandlers#addSelectionHandler(com.google.gwt.event.logical.shared.SelectionHandler)

@@ -9,10 +9,11 @@ import java.util.ResourceBundle;
 import java.util.Vector;
 
 // TODO: Auto-generated Javadoc
+
 /**
  * 数据库线程池.
  *
- * @author zhangjianshe@gmail.com
+ * @author zhangjianshe @gmail.com
  */
 public class MyPool implements IConnectionPool
 {
@@ -107,7 +108,7 @@ public class MyPool implements IConnectionPool
     /**
      * Gets the single instance of MyPool.
      *
-     * @param database the database
+     * @param database      the database
      * @param configurefile the configurefile
      * @return single instance of MyPool
      */
@@ -145,13 +146,13 @@ public class MyPool implements IConnectionPool
     /**
      * �����̳߳�.
      *
-     * @param drivername            ��ݿ������
-     * @param jdbcurl            ��ݿ�����URL
-     * @param username            ��ݿ��û���
-     * @param password            ��ݿ�����
-     * @param packagename            package���
-     * @param path            ��ɴ���·��
-     * @param connectionSize            ����ʱ��С
+     * @param drivername     ��ݿ������
+     * @param jdbcurl        ��ݿ�����URL
+     * @param username       ��ݿ��û���
+     * @param password       ��ݿ�����
+     * @param packagename    package���
+     * @param path           ��ɴ���·��
+     * @param connectionSize ����ʱ��С
      */
     public MyPool(String drivername, String jdbcurl, String username,
 	    String password, String packagename, String path, int connectionSize)
@@ -174,17 +175,21 @@ public class MyPool implements IConnectionPool
 	m_poolMySQL = this;
     }
 
-    /** The dt mysql. */
+    /**
+     * The dt mysql.
+     */
     public final String DT_MYSQL = "MySQL";
-    
-    /** The dt oracle. */
+
+    /**
+     * The dt oracle.
+     */
     public final String DT_ORACLE = "Oracle";
 
     /**
      * 根据配置文件.
      *
-     * @param databaseType            数据库类型，可用的参数类型有 MySQL ，Oracle
-     * @param rb            数据库配置参数属性文件
+     * @param databaseType 数据库类型，可用的参数类型有 MySQL ，Oracle
+     * @param rb           数据库配置参数属性文件
      */
     public MyPool(String databaseType, ResourceBundle rb)
     {
@@ -194,7 +199,7 @@ public class MyPool implements IConnectionPool
     /**
      * Instantiates a new my pool.
      *
-     * @param database the database
+     * @param database      the database
      * @param configurefile the configurefile
      */
     public MyPool(String database, String configurefile)
@@ -308,7 +313,7 @@ public class MyPool implements IConnectionPool
     /**
      * �����ӳػ�ȡ��������.����ָ���ͻ������ܹ��ȴ���ʱ�� �μ�ǰһ��getConnection()����.
      *
-     * @param timeout            �Ժ���Ƶĵȴ�ʱ������
+     * @param timeout �Ժ���Ƶĵȴ�ʱ������
      * @return the connection
      */
     public synchronized Connection getConnection(long timeout)
@@ -399,7 +404,7 @@ public class MyPool implements IConnectionPool
     /**
      * Sets the driver name.
      *
-     * @param driverName            the driverName to set
+     * @param driverName the driverName to set
      */
     public void setDriverName(String driverName)
     {
@@ -419,7 +424,7 @@ public class MyPool implements IConnectionPool
     /**
      * Sets the jdbc URL.
      *
-     * @param jdbcURL            the jdbcURL to set
+     * @param jdbcURL the jdbcURL to set
      */
     public void setJdbcURL(String jdbcURL)
     {
@@ -439,7 +444,7 @@ public class MyPool implements IConnectionPool
     /**
      * Sets the passwd.
      *
-     * @param passwd            the passwd to set
+     * @param passwd the passwd to set
      */
     public void setPasswd(String passwd)
     {
@@ -459,7 +464,7 @@ public class MyPool implements IConnectionPool
     /**
      * Sets the username.
      *
-     * @param username            the username to set
+     * @param username the username to set
      */
     public void setUsername(String username)
     {
@@ -470,9 +475,9 @@ public class MyPool implements IConnectionPool
      * Instantiates a new my pool.
      *
      * @param driverName the driver name
-     * @param passwd the passwd
-     * @param username the username
-     * @param jdbcURL the jdbc URL
+     * @param passwd     the passwd
+     * @param username   the username
+     * @param jdbcURL    the jdbc URL
      */
     public MyPool(String driverName, String passwd, String username,
 	    String jdbcURL)
@@ -497,7 +502,7 @@ public class MyPool implements IConnectionPool
     /**
      * Sets the max connections.
      *
-     * @param maxConnections            the maxConnections to set
+     * @param maxConnections the maxConnections to set
      */
     public void setMaxConnections(int maxConnections)
     {
@@ -514,7 +519,9 @@ public class MyPool implements IConnectionPool
 	this.pack = pack;
     }
 
-    /** The net path. */
+    /**
+     * The net path.
+     */
     String netPath;
 
     /* (non-Javadoc)

@@ -6,9 +6,8 @@ import java.util.List;
 
 /**
  * 简单实现
- * 
- * @author zhangjianshe
  *
+ * @author zhangjianshe
  */
 public class ObservableImpl implements Observable {
   private List<Observer> observers;
@@ -29,20 +28,19 @@ public class ObservableImpl implements Observable {
     }
   }
 
-  /**
-   * Notify all the Observer of a change
-   * 
-   */
-  public void notifyObservers() {
+    /**
+     * Notify all the Observer of a change
+     */
+    public void notifyObservers() {
     notifyObservers(null);
   }
 
-  /**
-   * Notify all the Observer of a change along with an Hint Object
-   * 
-   * @param hint Hint to the Observers as to what they should do.
-   */
-  public void notifyObservers(Object hint) {
+    /**
+     * Notify all the Observer of a change along with an Hint Object
+     *
+     * @param hint Hint to the Observers as to what they should do.
+     */
+    public void notifyObservers(Object hint) {
     if (observers != null) {
       Iterator iter = this.observers.iterator();
       while (iter.hasNext()) {

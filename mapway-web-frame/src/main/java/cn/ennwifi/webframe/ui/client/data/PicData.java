@@ -4,40 +4,66 @@ import com.google.gwt.core.client.JavaScriptObject;
 
 /**
  * 图片数据
- * @author zhangjianshe
  *
+ * @author zhangjianshe
  */
 public class PicData extends JavaScriptObject {
 
-  protected PicData() {
+    /**
+     * Instantiates a new Pic data.
+     */
+    protected PicData() {
 
   }
 
-  /**
-   * 构造客户端的JAVASCRIPT 对象
-   * @return
-   */
-  public native final static PicData create()/*-{
+    /**
+     * 构造客户端的JAVASCRIPT 对象
+     *
+     * @return pic data
+     */
+    public native final static PicData create()/*-{
 		return {
 			"title" : "",
 			"url" : ""
 		};
   }-*/;
 
-  public native final String title()/*-{
+    /**
+     * Title string.
+     *
+     * @return the string
+     */
+    public native final String title()/*-{
 		return this.title;
   }-*/;
 
-  public native final String url()/*-{
+    /**
+     * Url string.
+     *
+     * @return the string
+     */
+    public native final String url()/*-{
 		return this.url;
   }-*/;
 
-  public native final PicData title(String title)/*-{
+    /**
+     * Title pic data.
+     *
+     * @param title the title
+     * @return the pic data
+     */
+    public native final PicData title(String title)/*-{
 		this.title = title;
 		return this;
   }-*/;
 
-  public native final PicData url(String url)/*-{
+    /**
+     * Url pic data.
+     *
+     * @param url the url
+     * @return the pic data
+     */
+    public native final PicData url(String url)/*-{
 		this.url = url;
 		return this;
   }-*/;

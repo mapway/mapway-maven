@@ -4,12 +4,27 @@ import jsinterop.annotations.JsPackage;
 import jsinterop.annotations.JsType;
 
 
+/**
+ * The type Json.
+ */
 @JsType(isNative = true, namespace = JsPackage.GLOBAL)
 public class JSON {
 
 
-  public native static String stringify(Object obj);
+    /**
+     * Stringify string.
+     *
+     * @param obj the obj
+     * @return the string
+     */
+    public native static String stringify(Object obj);
 
-  public native static Object parse(String obj);
+    /**
+     * Parse object.
+     *
+     * @param obj the obj
+     * @return the object
+     */
+    public native static Object parse(String obj);
 
 }

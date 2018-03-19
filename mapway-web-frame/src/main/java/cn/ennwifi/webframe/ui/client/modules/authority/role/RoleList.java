@@ -19,21 +19,23 @@ import com.ksyzt.gwt.client.event.MessageEvent;
  */
 public class RoleList extends cn.mapway.ui.client.widget.common.ItemList {
 
-  /**
-   * Instantiates a new role list.
-   */
-  @UiConstructor
+    /**
+     * Instantiates a new role list.
+     */
+    @UiConstructor
   public RoleList() {
 
   }
 
-  /** The m data. */
-  List<S_ROLEObj> mData;
+    /**
+     * The m data.
+     */
+    List<S_ROLEObj> mData;
 
-  /**
-   * Fetch data.
-   */
-  public void fetchData() {
+    /**
+     * Fetch data.
+     */
+    public void fetchData() {
     this.clear();
     this.add(new SimpleMessage("加载系统角色数据"));
     WebFrameProxy.get().getAllRole(new AsyncCallback<List<S_ROLEObj>>() {
@@ -54,10 +56,10 @@ public class RoleList extends cn.mapway.ui.client.widget.common.ItemList {
     });
   }
 
-  /**
-   * Refresh view.
-   */
-  public void refreshView() {
+    /**
+     * Refresh view.
+     */
+    public void refreshView() {
 
     Item item = getSelected();
 

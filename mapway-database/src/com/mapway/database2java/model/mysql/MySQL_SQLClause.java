@@ -10,15 +10,18 @@ import com.mapway.database2java.model.itf.ISQLClause;
 import com.mapway.database2java.model.oracle.Oracle_SQLClause;
 
 // TODO: Auto-generated Javadoc
+
 /**
  * The Class MySQL_SQLClause.
  */
 public class MySQL_SQLClause implements ISQLClause {
 
-    /** The m database. */
+    /**
+     * The m database.
+     */
     String m_database = "";
 
-   
+
     /**
      * Instantiates a new my SQ L SQL clause.
      *

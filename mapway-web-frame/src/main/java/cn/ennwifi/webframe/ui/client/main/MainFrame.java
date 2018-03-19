@@ -50,6 +50,9 @@ import com.ksyzt.gwt.client.event.MessageHandler;
 public class MainFrame extends BaseAbstractModuleWithEvent implements IMqttHandler,
         IModuleDispatcher {
 
+    /**
+     * The constant MODULE_CODE.
+     */
     public final static String MODULE_CODE = "MC_MAIN_FRAME";
 
     @Override
@@ -72,9 +75,15 @@ public class MainFrame extends BaseAbstractModuleWithEvent implements IMqttHandl
      */
     private static MainFrameUiBinder uiBinder = GWT.create(MainFrameUiBinder.class);
 
+    /**
+     * The interface Main frame ui binder.
+     */
     interface MainFrameUiBinder extends UiBinder<Widget, MainFrame> {
     }
 
+    /**
+     * The Links.
+     */
     @UiField
     Links links;
 
@@ -132,6 +141,9 @@ public class MainFrame extends BaseAbstractModuleWithEvent implements IMqttHandl
         initHistory();
     }
 
+    /**
+     * The History manager.
+     */
     HistoryManager historyManager;
 
     private void initHistory() {
@@ -435,6 +447,9 @@ public class MainFrame extends BaseAbstractModuleWithEvent implements IMqttHandl
 
     }
 
+    /**
+     * The Client.
+     */
     MqttJsClient client;
 
     /*
