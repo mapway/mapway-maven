@@ -1,5 +1,5 @@
 /bin/
-/target/
+target/
 /gwt-unitCache/
 *.jar
 .idea/
