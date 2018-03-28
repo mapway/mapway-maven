@@ -16,8 +16,7 @@ import java.util.*;
 
 import javax.servlet.jsp.jstl.sql.Result;
 
-import cn.mapway.document.annotation.ApiField;
-import cn.mapway.document.annotation.Doc;
+
 import com.squareup.javawriter.JavaWriter;
 import org.nutz.dao.entity.annotation.Id;
 import org.nutz.dao.entity.annotation.Name;
@@ -53,15 +52,15 @@ public class SchemaBase implements ISchema {
     /**
      * The Field style camel.
      */
-    public final static String  FIELD_STYLE_CAMEL="CAMEL";
+    public final static String FIELD_STYLE_CAMEL = "CAMEL";
     /**
      * The Field style lower case.
      */
-    public final static String  FIELD_STYLE_LOWER_CASE="LOWER_CASE";
+    public final static String FIELD_STYLE_LOWER_CASE = "LOWER_CASE";
     /**
      * The Field style upper case.
      */
-    public final static String  FIELD_STYLE_UPPER_CASE="UPPER_CASE";
+    public final static String FIELD_STYLE_UPPER_CASE = "UPPER_CASE";
 
     /**
      * The a.
@@ -1067,7 +1066,7 @@ public class SchemaBase implements ISchema {
 
         // is use mapway document
         if (needDocument) {
-            writer.emitAnnotation(Doc.class, "\"" + table.getName() + " " + table.getComment() + "\"");
+            writer.emitAnnotation("cn.mapway.document.annotation.Doc", "\"" + table.getName() + " " + table.getComment() + "\"");
         }
 
         // is use gwt integration
@@ -1131,7 +1130,7 @@ public class SchemaBase implements ISchema {
                 }
                 attr.put("value", "\"" + v + "\"");
                 attr.put("example", "\"\"");
-                writer.emitAnnotation(ApiField.class, attr);
+                writer.emitAnnotation("cn.mapway.document.annotation.ApiField", attr);
             }
             writer.emitField(col.getJavaType(), col.getJavaName(), EnumSet.of(PUBLIC));
 
