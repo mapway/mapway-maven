@@ -67,7 +67,7 @@
         <g:center>
             <g:ScrollPanel styleName = "{style.content}">
                 <g:HTMLPanel styleName = "{style.login}">
-                    <div class = "{style.title}">CIM库-泛能网络科技</div>
+                    <div class = "{style.title}">系统登录</div>
                     <g:TextBox ui:field = "txtUserName" styleName = "{style.input} {style.username}"></g:TextBox>
                     <g:PasswordTextBox ui:field = "txtPassword"
                                        styleName = "{style.input} {style.password}"></g:PasswordTextBox>
