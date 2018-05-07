@@ -26,4 +26,4 @@ echo release ${version} to ${profile}
 
 mvn versions:set -DnewVersion=${version}
 mvn versions:commit
-mvn clean install -P${profile}
+mvn clean deploy -P${profile}
