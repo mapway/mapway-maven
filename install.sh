@@ -1,6 +1,6 @@
 #!/bin/bash
 
-echo " > release package to repository. <"
+echo " > install package to local repository. <"
 echo " >================================<"
 
 version=$1
@@ -8,7 +8,7 @@ profile=$2
 
 function print_usage()
 {
-    echo  example : release 1.0.4-SNAPSHOT release
+    echo  example : install 1.0.4-SNAPSHOT release
 }
 
 
