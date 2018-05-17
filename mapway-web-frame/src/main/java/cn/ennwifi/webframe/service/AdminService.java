@@ -92,7 +92,10 @@ public class AdminService {
 
             resp.user = user;
         }
-        processLoginResult(req.rootResourceId, resp);
+
+        System.out.println("admin login ready");
+
+        System.out.println("admin login processLogin ready");
         return resp;
     }
 
@@ -104,9 +107,10 @@ public class AdminService {
      */
     public void processLoginResult(Integer resRootId, AdminLoginResponse response) {
 
+        System.out.println("processLoginResult " + resRootId + " " + Json.toJson(response));
         response.configure.imagePrefix = uiProperties.getImagePrefix();
         response.configure.imageUploadProxyUrl = uiProperties.getImageUploadProxyUrl();
-        response.configure.mqttPath = uiProperties.getMqttPort();
+        response.configure.mqttPort = uiProperties.getMqttPort();
         response.configure.mqttServer = uiProperties.getMqttServer();
         response.configure.mqttPath = uiProperties.getMqttPath();
         response.configure.compileInformation = uiProperties.getCompileInformation();
@@ -114,7 +118,9 @@ public class AdminService {
 
         //处理权限
         if ((resRootId != null) && (response.user != null)) {
+            System.out.println("start fetch user main menu!");
             response.authorities = userMainMenu(response.user.getId(), resRootId);
+            System.out.println("end fetch user main menu");
         }
     }
 

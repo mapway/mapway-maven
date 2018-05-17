@@ -95,9 +95,13 @@ public abstract class WebFrameServlet extends CheckAdminTokenServlet implements 
         req.type = type;
         req.rootResourceId=resourceRootId;
 
+        System.out.println(Json.toJson(req));
+
         AdminLoginResponse resp = null;
         try {
             resp = getAdminService().login(req, getThreadLocalRequest(), getThreadLocalResponse());
+            System.out.println(Json.toJson(resp));
+
         } catch (Exception e) {
             String content = "尝试登陆系统失败" + e.getMessage();
 
@@ -105,6 +109,7 @@ public abstract class WebFrameServlet extends CheckAdminTokenServlet implements 
         }
         String content = "用户" + req.username + "登陆成功";
 
+        System.out.println(content);
         processLoginResult(resourceRootId,resp);
         return resp;
     }
@@ -353,6 +358,11 @@ public abstract class WebFrameServlet extends CheckAdminTokenServlet implements 
         r.user = admin;
         processLoginResult(rootResourceId,r);
         return r;
+    }
+
+    @Override
+    public ClientConfigure getClientConfigure() {
+        return super.getClientConfigure();
     }
 
     /**

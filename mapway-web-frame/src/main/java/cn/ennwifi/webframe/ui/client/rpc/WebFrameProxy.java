@@ -27,7 +27,7 @@ public class WebFrameProxy {
             PROXY = GWT.create(IWebFrameService.class);
             requestBuilder = new RequestBuilderWithToken();
             ServiceDefTarget t = (ServiceDefTarget) PROXY;
-            t.setServiceEntryPoint(GWT.getModuleBaseURL() + "../" + WebFrameServlet.DEFAULt_WEB_FRAME_SERVER_PATH);
+            t.setServiceEntryPoint("/" + WebFrameServlet.DEFAULt_WEB_FRAME_SERVER_PATH);
             t.setRpcRequestBuilder(requestBuilder);
         }
         return PROXY;

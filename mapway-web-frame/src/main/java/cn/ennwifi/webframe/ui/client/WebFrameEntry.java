@@ -81,7 +81,7 @@ public class WebFrameEntry implements EntryPoint, IEventHandler {
      */
     private void checkUserToken() {
         LoginModule.checkUserToken(getResourceRootId(), checkHandler);
-        ClientContext.getContext().initMqtt();
+
     }
 
     /*
@@ -101,6 +101,7 @@ public class WebFrameEntry implements EntryPoint, IEventHandler {
             Window.Location.reload();
         } else if (EventTopics.LOGIN.equals(topic)) {
             MetaDataProvider.get();
+            ClientContext.getContext().initMqtt();
             ClientContext.getContext().setDashboardCode(getDashBoardModuleCode());
             ClientContext.getContext().switchModule(MainFrame.MODULE_CODE, null);
         }
@@ -119,13 +120,14 @@ public class WebFrameEntry implements EntryPoint, IEventHandler {
             MetaDataProvider.get();
             ClientContext.getContext().setDashboardCode(getDashBoardModuleCode());
             ClientContext.getContext().switchModule(MainFrame.MODULE_CODE, null);
+            ClientContext.getContext().initMqtt();
         }
 
         @Override
         public void onFailure(String reason) {
             ModuleParameter mp = new ModuleParameter();
             mp.put("RESOURCE_ROOT_ID", getResourceRootId() + "");
-            ClientContext.getContext().switchModule(LoginModule.MODULE_CODE, null);
+            ClientContext.getContext().switchModule(LoginModule.MODULE_CODE, mp);
         }
     };
 

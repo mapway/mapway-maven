@@ -65,6 +65,7 @@ public abstract class CheckAdminTokenServlet extends RemoteServiceServlet {
         if (dao == null) {
             dao = createDao();
         }
+        System.out.println("DAO IS " + dao);
         return dao;
     }
 
