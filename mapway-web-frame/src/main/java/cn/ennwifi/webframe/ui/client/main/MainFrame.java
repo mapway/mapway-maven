@@ -54,6 +54,16 @@ public class MainFrame extends BaseAbstractModuleWithEvent implements IMqttHandl
      * The constant MODULE_CODE.
      */
     public final static String MODULE_CODE = "MC_MAIN_FRAME";
+    /**
+     * mqtt 连接创建
+     */
+    public static final String MQTT_CONNECTION_ARRIVED = "__MQTT_CONNECTION_ARRIVED__";
+
+    /**
+     * mqtt 连接失败
+     */
+    public static final String MQTT_CONNECTION_LOST = "__MQTT_CONNECTION_LOST__";
+
 
     @Override
     public String getModuleCode() {
@@ -444,7 +454,6 @@ public class MainFrame extends BaseAbstractModuleWithEvent implements IMqttHandl
         } catch (Throwable e) {
             GWT.log(e.getMessage());
         }
-
     }
 
     /**
@@ -463,8 +472,10 @@ public class MainFrame extends BaseAbstractModuleWithEvent implements IMqttHandl
     public void onConnect(MqttJsClient client) {
         GWT.log("connected");
         this.client = client;
-        // client.sub("iot/monitor/#");
+        //client.sub("iot/monitor/#");
         // ClientContext.getContext().setMqttTopicPrefix("iot/monitor/");
+
+        postTopic(MQTT_CONNECTION_ARRIVED, 0, client);
     }
 
     /*
@@ -477,7 +488,9 @@ public class MainFrame extends BaseAbstractModuleWithEvent implements IMqttHandl
     public void onConnetFailed(MqttJsClient client, String message) {
         GWT.log("connection Failed,reconnect>" + message);
         // 连接失败
-        // ClientContext.getContext().initMqtt();
+        //ClientContext.getContext().initMqtt();
+
+        postTopic(MQTT_CONNECTION_LOST, 0, client);
     }
 
 }

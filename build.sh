@@ -1,17 +1,29 @@
 #!/bin/bash
 
-echo "deploy jar."
+echo " > deploy package to remote repository. <"
+echo " >================================<"
 
 version=$1
+profile=$2
 
-echo ${version}
+function print_usage()
+{
+    echo  example : build 1.0.4-SNAPSHOT release
+}
+
 
 if [ -z ${version} ]; then
-  echo  usage : build.sh version
-  echo  example : build 1.0.4-SNAPSHOT
-  exit
+   print_usage
+   exit
 fi
+
+if [ -z ${profile} ]; then
+    print_usage
+    exit
+fi
+
+echo release ${version} to ${profile}
 
 mvn versions:set -DnewVersion=${version}
 mvn versions:commit
-mvn clean deploy -Pto-ziroom
+mvn clean deploy -P${profile}
