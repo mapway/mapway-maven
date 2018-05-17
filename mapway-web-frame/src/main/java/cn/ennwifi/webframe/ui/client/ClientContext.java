@@ -324,6 +324,11 @@ public class ClientContext implements IEventHandler, IOnPostMessage {
      * Inits the mqtt.
      */
     public void initMqtt() {
+        if(configure.getMqttServer()==null || configure.getMqttServer().length()==0)
+        {
+            GWT.log("没有MQTT配置信息，不进行MQTT连接操作");
+            return;
+        }
         timer.schedule(500);
     }
 
