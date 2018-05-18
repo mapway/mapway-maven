@@ -17,6 +17,7 @@ import cn.mapway.ui.client.json.JSON;
 import cn.mapway.ui.client.mqtt.IMqttHandler;
 import cn.mapway.ui.client.mqtt.MqttJs;
 import cn.mapway.ui.client.mqtt.MqttJsClient;
+import cn.mapway.ui.client.mqtt.event.MqttMessage;
 import cn.mapway.ui.client.mvc.*;
 import cn.mapway.ui.client.widget.common.ConfirmDialog;
 import com.google.gwt.core.client.Callback;
@@ -324,8 +325,7 @@ public class ClientContext implements IEventHandler, IOnPostMessage {
      * Inits the mqtt.
      */
     public void initMqtt() {
-        if(configure.getMqttServer()==null || configure.getMqttServer().length()==0)
-        {
+        if (configure.getMqttServer() == null || configure.getMqttServer().length() == 0) {
             GWT.log("没有MQTT配置信息，不进行MQTT连接操作");
             return;
         }
@@ -466,5 +466,18 @@ public class ClientContext implements IEventHandler, IOnPostMessage {
             }
         }
         return authorized;
+    }
+
+    /**
+     * 发送MQTT消息
+     *
+     * @param topic 消息主题
+     * @param data  消息内容
+     */
+    public void pub(String topic, String data) {
+        if (mqttJsClient != null) {
+            MqttMessage msg = MqttMessage.create(topic, data);
+            mqttJsClient.pub(msg);
+        }
     }
 }
