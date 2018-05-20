@@ -1,0 +1,32 @@
+<ui:UiBinder xmlns:ui='urn:ui:com.google.gwt.uibinder'
+             xmlns:g='urn:import:com.google.gwt.user.client.ui'>
+    <ui:style>
+            .bk{
+                background-color: #f0f0f0;
+                padding: 10px;
+            }
+
+            .input {
+                height: 28px;
+                line-height: 28px;
+            }
+    </ui:style>
+    <g:HTMLPanel styleName="{style.bk}">
+
+        <g:HorizontalPanel spacing="3">
+            <g:Label width="150px">HTTP头</g:Label>
+            <g:TextBox styleName="{style.input}" ui:field="txtKEY"></g:TextBox>
+        </g:HorizontalPanel>
+
+        <g:HorizontalPanel spacing="3">
+            <g:Label width="150px">HTTP值</g:Label>
+            <g:TextBox styleName="{style.input}" ui:field="txtVALUE"></g:TextBox>
+        </g:HorizontalPanel>
+
+        <g:HorizontalPanel spacing="3">
+            <g:Button ui:field="btnAdd">添加</g:Button>
+            <g:Button ui:field="btnClose">关闭</g:Button>
+        </g:HorizontalPanel>
+
+    </g:HTMLPanel>
+</ui:UiBinder>

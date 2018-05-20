@@ -12,30 +12,8 @@
             overflow: hidden;
         }
 
-        .center1 {
-            padding: 4px;
-            overflow: hidden;
-        }
 
-        .titletext {
-            font-weight: bold;
-            padding: 5px 0px;
-        }
 
-        .btnImage {
-            border: solid 1px skyblue;
-            background: white;
-            margin-top: 3px;
-        }
-
-        .btnImage:HOVER {
-            background-color: #f0f0f0;
-        }
-
-        .input {
-            height: 28px;
-            line-height: 28px;
-        }
 
         .json {
             margin: 4px;
@@ -54,7 +32,6 @@
                                verticalAlignment="middle" spacing="5" styleName="{style.top}">
                 <g:cell>
                     <g:HTMLPanel>
-                        <g:Label ui:field="lbTitle" styleName="{style.titletext}"></g:Label>
                         <g:Label ui:field="lbUrl"></g:Label>
                     </g:HTMLPanel>
                 </g:cell>
@@ -62,21 +39,20 @@
                     <g:HorizontalPanel spacing="3" verticalAlignment="middle">
                         <g:Image ui:field="imgLoadding" visible="false" width="48px"
                                  height="40px"></g:Image>
-                        <g:Button ui:field="btnExecute" text="运行"></g:Button>
+                        <g:Button ui:field="btnHeader" text="http头"></g:Button>
+                        <g:Button ui:field="btnHistory" text="历史记录"></g:Button>
                         <g:Button ui:field="btnClose" text="关闭"></g:Button>
+
+                        <g:Button ui:field="btnExecute" text="运行"></g:Button>
                     </g:HorizontalPanel>
                 </g:cell>
             </g:HorizontalPanel>
         </g:north>
         <g:north size="40">
-            <g:HorizontalPanel width="100%" spacing="2" verticalAlignment="middle">
-                <g:Label text="HTTP头"></g:Label>
-                <g:TextBox ui:field="txtHeader" styleName="{style.input}"></g:TextBox>
-                <g:Label text="HTTP头值"></g:Label>
-                <g:TextBox width="350px" ui:field="txtHeaderValue" styleName="{style.input}"></g:TextBox>
-                <g:Image ui:field="btnHistory" width="28px" height="28px"
-                         styleName="{style.btnImage}"></g:Image>
+            <g:HorizontalPanel ui:field="htmlHeaders">
+
             </g:HorizontalPanel>
+
         </g:north>
         <g:center>
             <g:SplitLayoutPanel>

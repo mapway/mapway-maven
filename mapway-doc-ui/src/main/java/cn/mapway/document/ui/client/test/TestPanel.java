@@ -1,10 +1,15 @@
 package cn.mapway.document.ui.client.test;
 
+import cn.mapway.document.ui.client.component.Clients;
+import cn.mapway.document.ui.client.main.JsonPanel;
+import cn.mapway.document.ui.client.main.storage.LocalStorage;
+import cn.mapway.document.ui.client.module.Entry;
+import cn.mapway.document.ui.client.resource.SysResource;
+import cn.mapway.document.ui.client.rpc.ApiDocProxy;
+import cn.mapway.document.ui.client.rpc.IOnData;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.core.client.JsonUtils;
-import com.google.gwt.event.dom.client.BlurEvent;
-import com.google.gwt.event.dom.client.BlurHandler;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.logical.shared.CloseEvent;
 import com.google.gwt.event.logical.shared.CloseHandler;
@@ -15,14 +20,6 @@ import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.uibinder.client.UiHandler;
 import com.google.gwt.user.client.ui.*;
-import cn.mapway.document.ui.client.component.Clients;
-import cn.mapway.document.ui.client.main.JsonPanel;
-import cn.mapway.document.ui.client.main.storage.LocalStorage;
-import cn.mapway.document.ui.client.module.Entry;
-import cn.mapway.document.ui.client.resource.SysResource;
-import cn.mapway.document.ui.client.rpc.ApiDocProxy;
-import cn.mapway.document.ui.client.rpc.IOnData;
-import cn.mapway.document.ui.client.rpc.RpcContext;
 
 import java.util.Date;
 
@@ -38,12 +35,23 @@ public class TestPanel extends Composite implements HasCloseHandlers<Void> {
     /**
      * The constant GWT_USER_HEADER.
      */
-    public static final String GWT_USER_HEADER = "gwt_user_token";
+    public static final String GWT_USER_HEADER = "gwt_user_token_1";
 
     /**
      * The ui binder.
      */
     private static TestPanelUiBinder uiBinder = GWT.create(TestPanelUiBinder.class);
+    private CloseHandler<String> itemDeleted = new CloseHandler<String>() {
+        @Override
+        public void onClose(CloseEvent<String> closeEvent) {
+
+            HeaderItem item = (HeaderItem) closeEvent
+                    .getSource();
+            htmlHeaders.remove(item);
+            headers.remove(closeEvent.getTarget());
+            saveHeader();
+        }
+    };
 
     /**
      * The Interface TestPanelUiBinder.
@@ -56,58 +64,46 @@ public class TestPanel extends Composite implements HasCloseHandlers<Void> {
      */
     public TestPanel() {
         initWidget(uiBinder.createAndBindUi(this));
-        btnExecute.setStyleName(SysResource.INSTANCE.getCss().btn());
-        btnClose.setStyleName(SysResource.INSTANCE.getCss().btn());
+        String css = SysResource.INSTANCE.getCss().btn();
+        btnExecute.setStyleName(css);
+        btnClose.setStyleName(css);
+        btnHistory.setStyleName(css);
+        btnHeader.setStyleName(css);
         imgLoadding.setUrl(SysResource.INSTANCE.loading().getSafeUri());
-        btnHistory.setUrl(SysResource.INSTANCE.history().getSafeUri());
-        txtHeader.addBlurHandler(new BlurHandler() {
 
-            @Override
-            public void onBlur(BlurEvent event) {
-                saveHeader();
-            }
-        });
-        txtHeaderValue.addBlurHandler(new BlurHandler() {
-
-            @Override
-            public void onBlur(BlurEvent event) {
-                saveHeader();
-            }
-        });
 
     }
 
+
+    @UiField
+    HorizontalPanel htmlHeaders;
+
+    KeyValueObjs headers;
+
     /**
-     * Save header.
+     * 恢复请求头的数据
      */
-    protected void saveHeader() {
-        String key = txtHeader.getValue();
-        String value = txtHeaderValue.getValue();
-        if (key != null && key.length() > 0 && value != null && value.length() > 0) {
-            RpcContext context = RpcContext.get();
-            context.KEY = key;
-            context.VALUE = value;
-            LocalStorage.save(GWT_USER_HEADER, context.KEY);
-            LocalStorage.save(context.KEY, value);
+    private void loadHeader() {
+        htmlHeaders.clear();
+        String key = LocalStorage.val(GWT_USER_HEADER);
+        headers = KeyValueObjs.parse(key);
+        for (int i = 0; i < headers.length(); i++) {
+            KeyValueObj kv = headers
+                    .get(i);
+            HeaderItem item = new HeaderItem();
+            item.setData(kv.getKey(), kv.getValue());
+            item.addCloseHandler(itemDeleted);
+            htmlHeaders.add(item);
         }
     }
 
     /**
      * 恢复请求头的数据
      */
-    private void loadHeader() {
-        String key = LocalStorage.val(GWT_USER_HEADER);
-        if (key != null && key.length() > 0) {
-            txtHeader.setValue(key);
-            txtHeaderValue.setValue(LocalStorage.val(key));
-        }
+    private void saveHeader() {
+        LocalStorage.save(GWT_USER_HEADER, headers.toJSON());
     }
 
-    /**
-     * The lb title.
-     */
-    @UiField
-    Label lbTitle;
 
     /**
      * The lb url.
@@ -140,7 +136,6 @@ public class TestPanel extends Composite implements HasCloseHandlers<Void> {
     public void invoke(Entry entry) {
         loadHeader();
         mEntry = entry;
-        lbTitle.setText(entry.title());
         lbUrl.setText(Clients.getHostPort() + entry.url());
         String his = readHistory();
         if (his.length() == 0) {
@@ -195,7 +190,9 @@ public class TestPanel extends Composite implements HasCloseHandlers<Void> {
      * The btn history.
      */
     @UiField
-    Image btnHistory;
+    Button btnHistory;
+    @UiField
+    Button btnHeader;
 
     /**
      * On execute.
@@ -204,9 +201,6 @@ public class TestPanel extends Composite implements HasCloseHandlers<Void> {
      */
     @UiHandler("btnExecute")
     void onExecute(ClickEvent ev) {
-
-        ///保存请求头数据
-        //saveHeader();
 
         imgLoadding.setVisible(true);
         txtOutput.setText("");
@@ -260,17 +254,6 @@ public class TestPanel extends Composite implements HasCloseHandlers<Void> {
 
     }
 
-    /**
-     * The txt custom token.
-     */
-    @UiField
-    TextBox txtHeader;
-
-    /**
-     * The Txt header value.
-     */
-    @UiField
-    TextBox txtHeaderValue;
 
     /**
      * On close.
@@ -330,5 +313,26 @@ public class TestPanel extends Composite implements HasCloseHandlers<Void> {
         }
         pop.showRelativeTo(btnHistory);
         historyPanel.render(mEntry.relativePath());
+    }
+
+    HeaderEditor headEditor;
+    DialogBox dlg;
+
+    @UiHandler("btnHeader")
+    public void btnHeaderClick(ClickEvent event) {
+        if (dlg == null) {
+            dlg = new DialogBox();
+            headEditor = new HeaderEditor();
+            dlg.setText("编辑HTTP头部信息");
+            dlg.setWidget(headEditor);
+            headEditor.addCloseHandler(new CloseHandler<KeyValueObjs>() {
+                @Override
+                public void onClose(CloseEvent<KeyValueObjs> closeEvent) {
+                    dlg.hide();
+                    loadHeader();
+                }
+            });
+        }
+        dlg.center();
     }
 }

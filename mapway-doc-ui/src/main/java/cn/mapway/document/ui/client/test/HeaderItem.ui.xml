@@ -1,0 +1,23 @@
+<ui:UiBinder xmlns:ui='urn:ui:com.google.gwt.uibinder'
+             xmlns:g='urn:import:com.google.gwt.user.client.ui'>
+    <ui:style>
+        .lb {
+            color: cornflowerblue;
+        }
+
+        .v {
+            color: green;
+        }
+
+        .item {
+            display: inline;
+        }
+    </ui:style>
+    <g:HTMLPanel styleName="{style.item}">
+        <g:HorizontalPanel verticalAlignment="middle" spacing="4">
+            <g:Label styleName="{style.lb}" ui:field="lbKey"></g:Label>
+            <g:Label styleName="{style.v}" ui:field="lbValue"></g:Label>
+            <g:Image ui:field="imgDelete"></g:Image>
+        </g:HorizontalPanel>
+    </g:HTMLPanel>
+</ui:UiBinder>

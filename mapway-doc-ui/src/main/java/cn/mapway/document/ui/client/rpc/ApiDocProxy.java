@@ -1,5 +1,9 @@
 package cn.mapway.document.ui.client.rpc;
 
+import cn.mapway.document.ui.client.main.storage.LocalStorage;
+import cn.mapway.document.ui.client.test.KeyValueObj;
+import cn.mapway.document.ui.client.test.KeyValueObjs;
+import cn.mapway.document.ui.client.test.TestPanel;
 import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.core.client.JsonUtils;
 import com.google.gwt.http.client.*;
@@ -30,9 +34,11 @@ public class ApiDocProxy {
       contextType = "application/json;charset=UTF-8";
     }
     builder.setHeader("Content-type", contextType);
-    RpcContext context = RpcContext.get();
-    if (context.KEY != null && context.KEY.length() > 0 && context.VALUE != null) {
-      builder.setHeader(context.KEY, context.VALUE);
+
+    KeyValueObjs headers=KeyValueObjs.parse(LocalStorage.val(TestPanel.GWT_USER_HEADER));
+    for(int i=0;i<headers.length();i++) {
+        KeyValueObj kv=headers.get(i);
+        builder.setHeader(kv.getKey(),kv.getValue());
     }
     Request request = builder.sendRequest(jsonData, new RequestCallback() {
       @Override

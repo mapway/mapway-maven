@@ -76,6 +76,14 @@ public interface SysResource extends ClientBundle {
     ImageResource inter();
 
     /**
+     * Inter.
+     *
+     * @return the image resource
+     */
+    @Source("image/delete.png")
+    ImageResource delete();
+
+    /**
      * Tree open.
      *
      * @return the image resource
