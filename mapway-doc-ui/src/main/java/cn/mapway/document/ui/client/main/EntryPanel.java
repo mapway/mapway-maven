@@ -1,5 +1,6 @@
 package cn.mapway.document.ui.client.main;
 
+import cn.mapway.document.ui.client.component.CloseDialogBox;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.logical.shared.CloseEvent;
@@ -179,16 +180,15 @@ public class EntryPanel extends Composite {
     @UiHandler("btnTest")
     void onTest(ClickEvent e) {
         if (dlg == null) {
-            dlg = new DialogBox();
+            dlg = new CloseDialogBox();
             dlg.setText("接口测试");
             testPanel = new TestPanel();
-            testPanel.addCloseHandler(new CloseHandler<Void>() {
-
-                @Override
-                public void onClose(CloseEvent<Void> event) {
-                    dlg.hide();
-                }
-            });
+//            testPanel.addCloseHandler(new CloseHandler<Void>() {
+//                @Override
+//                public void onClose(CloseEvent<Void> event) {
+//                    dlg.hide();
+//                }
+//            });
             dlg.setWidget(testPanel);
             dlg.setGlassEnabled(true);
             dlg.setAutoHideEnabled(false);

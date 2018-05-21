@@ -66,12 +66,9 @@ public class TestPanel extends Composite implements HasCloseHandlers<Void> {
         initWidget(uiBinder.createAndBindUi(this));
         String css = SysResource.INSTANCE.getCss().btn();
         btnExecute.setStyleName(css);
-        btnClose.setStyleName(css);
         btnHistory.setStyleName(css);
         btnHeader.setStyleName(css);
         imgLoadding.setUrl(SysResource.INSTANCE.loading().getSafeUri());
-
-
     }
 
 
@@ -175,12 +172,6 @@ public class TestPanel extends Composite implements HasCloseHandlers<Void> {
     Button btnExecute;
 
     /**
-     * The btn close.
-     */
-    @UiField
-    Button btnClose;
-
-    /**
      * The img loadding.
      */
     @UiField
@@ -254,16 +245,6 @@ public class TestPanel extends Composite implements HasCloseHandlers<Void> {
 
     }
 
-
-    /**
-     * On close.
-     *
-     * @param ev the ev
-     */
-    @UiHandler("btnClose")
-    void onClose(ClickEvent ev) {
-        CloseEvent.fire(this, null);
-    }
 
     /*
      * (non-Javadoc)

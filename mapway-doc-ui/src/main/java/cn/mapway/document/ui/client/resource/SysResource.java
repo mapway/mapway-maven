@@ -117,6 +117,22 @@ public interface SysResource extends ClientBundle {
     ImageResource word();
 
     /**
+     * Word.
+     *
+     * @return the image resource
+     */
+    @Source("image/close-red.png")
+    ImageResource closeRed();
+
+    /**
+     * Word.
+     *
+     * @return the image resource
+     */
+    @Source("image/close-gray.png")
+    ImageResource closeGray();
+
+    /**
      * Jsondata.
      *
      * @return the text resource

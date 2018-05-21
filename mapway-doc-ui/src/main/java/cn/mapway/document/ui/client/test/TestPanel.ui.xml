@@ -41,7 +41,6 @@
                                  height="40px"></g:Image>
                         <g:Button ui:field="btnHeader" text="http头"></g:Button>
                         <g:Button ui:field="btnHistory" text="历史记录"></g:Button>
-                        <g:Button ui:field="btnClose" text="关闭"></g:Button>
 
                         <g:Button ui:field="btnExecute" text="运行"></g:Button>
                     </g:HorizontalPanel>
