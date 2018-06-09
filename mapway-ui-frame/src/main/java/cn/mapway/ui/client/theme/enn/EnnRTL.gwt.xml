@@ -20,5 +20,5 @@
 <!-- is subject to change in the future.  Specifically, the RTL version -->
 <!-- will be automatically selected in locales with RTL languages.      -->
 <module>
-      <stylesheet src="gwt/enn/enn_rtl.css"/>
+    <stylesheet src="gwt/enn/enn_rtl.css"/>
 </module>

@@ -19,5 +19,5 @@ public class LoginData {
      * The Code.
      */
     public String code;
-	
+
 }

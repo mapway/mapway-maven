@@ -15,37 +15,37 @@ import com.google.gwt.user.client.ui.Widget;
  */
 public class DashItem extends Composite {
 
-  private static DashItemUiBinder uiBinder = GWT.create(DashItemUiBinder.class);
+    private static DashItemUiBinder uiBinder = GWT.create(DashItemUiBinder.class);
 
     /**
      * The interface Dash item ui binder.
      */
     interface DashItemUiBinder extends UiBinder<Widget, DashItem> {
-  }
+    }
 
     /**
      * Instantiates a new Dash item.
      */
     public DashItem() {
-    initWidget(uiBinder.createAndBindUi(this));
-  }
+        initWidget(uiBinder.createAndBindUi(this));
+    }
 
     /**
      * The Img.
      */
     @UiField
-  Image img;
+    Image img;
     /**
      * The Lb title.
      */
     @UiField
-  Label lbTitle;
+    Label lbTitle;
 
     /**
      * The Lb count.
      */
     @UiField
-  Label lbCount;
+    Label lbCount;
 
     /**
      * Render.
@@ -53,8 +53,8 @@ public class DashItem extends Composite {
      * @param d the d
      */
     public void render(DashboardData d) {
-    img.setUrl(GWT.getModuleBaseURL() + "../" + d.icon);
-    lbTitle.setText(d.name);
-    lbCount.setText(d.count + "");
-  }
+        img.setUrl(GWT.getModuleBaseURL() + "../" + d.icon);
+        lbTitle.setText(d.name);
+        lbCount.setText(d.count + "");
+    }
 }

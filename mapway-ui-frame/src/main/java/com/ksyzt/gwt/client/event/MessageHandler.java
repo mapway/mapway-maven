@@ -16,5 +16,5 @@ public interface MessageHandler extends EventHandler {
      * @param message the message
      * @param value   the value
      */
-    void onMessage(Object sender,Integer message, Object value);
+    void onMessage(Object sender, Integer message, Object value);
 }

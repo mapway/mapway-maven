@@ -6,9 +6,9 @@ import java.io.Serializable;
  * The type Upload change event.
  */
 public class UploadChangeEvent implements Serializable {
-  private static final long serialVersionUID = -7651323870985523683L;
-  private String            fileName;
-  private Integer           percentage;
+    private static final long serialVersionUID = -7651323870985523683L;
+    private String fileName;
+    private Integer percentage;
 
     /**
      * Gets file name.
@@ -16,8 +16,8 @@ public class UploadChangeEvent implements Serializable {
      * @return the file name
      */
     public String getFileName() {
-    return fileName;
-  }
+        return fileName;
+    }
 
     /**
      * Sets file name.
@@ -25,8 +25,8 @@ public class UploadChangeEvent implements Serializable {
      * @param fileName the file name
      */
     public void setFileName(String fileName) {
-    this.fileName = fileName;
-  }
+        this.fileName = fileName;
+    }
 
     /**
      * Gets percentage.
@@ -34,8 +34,8 @@ public class UploadChangeEvent implements Serializable {
      * @return the percentage
      */
     public Integer getPercentage() {
-    return percentage;
-  }
+        return percentage;
+    }
 
     /**
      * Sets percentage.
@@ -43,11 +43,11 @@ public class UploadChangeEvent implements Serializable {
      * @param percentage the percentage
      */
     public void setPercentage(Integer percentage) {
-    this.percentage = percentage;
-  }
+        this.percentage = percentage;
+    }
 
-  @Override
-  public String toString() {
-    return this.fileName + "-" + this.percentage + "%";
-  }
+    @Override
+    public String toString() {
+        return this.fileName + "-" + this.percentage + "%";
+    }
 }

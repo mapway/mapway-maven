@@ -18,20 +18,20 @@ import com.ksyzt.gwt.client.event.MessageEvent;
  */
 public class RowOperator extends MessageComposite {
 
-  private static RowOperatorUiBinder uiBinder = GWT.create(RowOperatorUiBinder.class);
+    private static RowOperatorUiBinder uiBinder = GWT.create(RowOperatorUiBinder.class);
 
     /**
      * The interface Row operator ui binder.
      */
     interface RowOperatorUiBinder extends UiBinder<Widget, RowOperator> {
-  }
+    }
 
     /**
      * Instantiates a new Row operator.
      */
     public RowOperator() {
-    initWidget(uiBinder.createAndBindUi(this));
-  }
+        initWidget(uiBinder.createAndBindUi(this));
+    }
 
     /**
      * The M data.
@@ -44,8 +44,8 @@ public class RowOperator extends MessageComposite {
      * @param obj the obj
      */
     public void setData(Object obj) {
-    mData = obj;
-  }
+        mData = obj;
+    }
 
     /**
      * Gets data.
@@ -53,20 +53,20 @@ public class RowOperator extends MessageComposite {
      * @return the data
      */
     public Object getData() {
-    return mData;
-  }
+        return mData;
+    }
 
     /**
      * The Btn editor.
      */
     @UiField
-  PrimaryButton btnEditor;
+    PrimaryButton btnEditor;
 
     /**
      * The Btn delete.
      */
     @UiField
-  PrimaryButton btnDelete;
+    PrimaryButton btnDelete;
 
     /**
      * On editor.
@@ -74,10 +74,10 @@ public class RowOperator extends MessageComposite {
      * @param e the e
      */
     @UiHandler("btnEditor")
-  void onEditor(ClickEvent e) {
-    MessageEvent ev = new MessageEvent(MessageEvent.EDIT, mData);
-    fireEvent(ev);
-  }
+    void onEditor(ClickEvent e) {
+        MessageEvent ev = new MessageEvent(MessageEvent.EDIT, mData);
+        fireEvent(ev);
+    }
 
     /**
      * On delete.
@@ -85,8 +85,8 @@ public class RowOperator extends MessageComposite {
      * @param e the e
      */
     @UiHandler("btnDelete")
-  void onDelete(ClickEvent e) {
-    MessageEvent ev = new MessageEvent(MessageEvent.DELETE, mData);
-    fireEvent(ev);
-  }
+    void onDelete(ClickEvent e) {
+        MessageEvent ev = new MessageEvent(MessageEvent.DELETE, mData);
+        fireEvent(ev);
+    }
 }

@@ -164,7 +164,7 @@ public class EntryPanel extends Composite {
     /**
      * The test panel.
      */
-    TestPanel testPanel;
+    TestPanel testPanel=null;
 
     /**
      * The btn test.
@@ -183,12 +183,6 @@ public class EntryPanel extends Composite {
             dlg = new CloseDialogBox();
             dlg.setText("接口测试");
             testPanel = new TestPanel();
-//            testPanel.addCloseHandler(new CloseHandler<Void>() {
-//                @Override
-//                public void onClose(CloseEvent<Void> event) {
-//                    dlg.hide();
-//                }
-//            });
             dlg.setWidget(testPanel);
             dlg.setGlassEnabled(true);
             dlg.setAutoHideEnabled(false);
@@ -196,7 +190,7 @@ public class EntryPanel extends Composite {
         }
         dlg.show();
         dlg.center();
-        dlg.setText("接口测试-"+mEntry.title());
+        dlg.setText("接口测试-" + mEntry.title());
         testPanel.invoke(mEntry);
     }
 

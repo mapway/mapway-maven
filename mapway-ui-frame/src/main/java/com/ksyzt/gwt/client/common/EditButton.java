@@ -15,11 +15,11 @@ public class EditButton extends Image {
      * Instantiates a new edits the button.
      */
     @UiConstructor
-	public EditButton() {
-		super(SysResource.INSTANCE.edit());
-		DOM.setElementPropertyInt(this.getElement(), "v", 0);
-		DOM.setStyleAttribute(this.getElement(), "cursor", "hand");
-	}
+    public EditButton() {
+        super(SysResource.INSTANCE.edit());
+        DOM.setElementPropertyInt(this.getElement(), "v", 0);
+        DOM.setStyleAttribute(this.getElement(), "cursor", "hand");
+    }
 
     /**
      * Gets the value.
@@ -27,6 +27,6 @@ public class EditButton extends Image {
      * @return the value
      */
     public int getValue() {
-		return DOM.getElementPropertyInt(this.getElement(), "v");
-	}
+        return DOM.getElementPropertyInt(this.getElement(), "v");
+    }
 }

@@ -11,21 +11,21 @@ import java.util.Vector;
 /**
  * The Class GeneratorPool.
  */
-public class GeneratorPool implements IConnectionPool
-{
+public class GeneratorPool implements IConnectionPool {
 
     /**
      * Gets the single instance of GeneratorPool.
      *
      * @return single instance of GeneratorPool
      */
-    public GeneratorPool getInstance()
-    {
-	return m_pool;
-	// TODO Auto-generated constructor stub
+    public GeneratorPool getInstance() {
+        return m_pool;
+        // TODO Auto-generated constructor stub
     }
 
-    /** The m pool. */
+    /**
+     * The m pool.
+     */
     private static GeneratorPool m_pool;
 
 
@@ -41,54 +41,71 @@ public class GeneratorPool implements IConnectionPool
      * @param connectionSize the connection size
      */
     public GeneratorPool(String drivername, String jdbcurl, String username,
-	    String password, String packagename, String path, int connectionSize)
-    {
-	this.driverName = drivername;
-	this.jdbcURL = jdbcurl;
-	this.username = username;
-	this.passwd = password;
-	this.pack = packagename;
-	this.path = path;
-	this.maxConnections = connectionSize;
+                         String password, String packagename, String path, int connectionSize) {
+        this.driverName = drivername;
+        this.jdbcURL = jdbcurl;
+        this.username = username;
+        this.passwd = password;
+        this.pack = packagename;
+        this.path = path;
+        this.maxConnections = connectionSize;
 
-	try
-	{
-	    Class.forName(driverName);
-	} catch (ClassNotFoundException e)
-	{
-	    e.printStackTrace();
-	}
-	m_pool = this;
+        try {
+            Class.forName(driverName);
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        m_pool = this;
     }
 
-    /** The checked out. */
+    /**
+     * The checked out.
+     */
     private int checkedOut;
-    
-    /** The free connections. */
+
+    /**
+     * The free connections.
+     */
     private Vector freeConnections = new Vector();
-    
-    /** The driver name. */
+
+    /**
+     * The driver name.
+     */
     private String driverName;
-    
-    /** The passwd. */
+
+    /**
+     * The passwd.
+     */
     private String passwd;
-    
-    /** The username. */
+
+    /**
+     * The username.
+     */
     private String username;
-    
-    /** The jdbc URL. */
+
+    /**
+     * The jdbc URL.
+     */
     private String jdbcURL;
-    
-    /** The database. */
+
+    /**
+     * The database.
+     */
     private String database;
-    
-    /** The max connections. */
+
+    /**
+     * The max connections.
+     */
     private int maxConnections;
-    
-    /** The pack. */
+
+    /**
+     * The pack.
+     */
     private String pack;
-    
-    /** The path. */
+
+    /**
+     * The path.
+     */
     private String path;
 
     /**
@@ -96,57 +113,48 @@ public class GeneratorPool implements IConnectionPool
      *
      * @param msg the msg
      */
-    public void log(String msg)
-    {
-	System.out.println(msg);
+    public void log(String msg) {
+        System.out.println(msg);
     }
 
     /* (non-Javadoc)
      * @see com.mapway.database2java.database.IConnectionPool#getConnection()
      */
     @Override
-    public Connection getConnection()
-    {
-	Connection con = null;
-	if (freeConnections.size() > 0)
-	{
-	   
-	    con = (Connection) freeConnections.firstElement();
-	    freeConnections.removeElementAt(0);
-	    try
-	    {
-		if (con.isClosed())
-		{
-		   
-		    con = getConnection();
-		}
-	    } catch (SQLException e)
-	    {
-		log("�����ӳ�ɾ��һ����Ч����");
-		
-		con = getConnection();
-	    }
-	} else if (this.maxConnections == 0
-		|| this.checkedOut < this.maxConnections)
-	{
-	    con = createConnection();
-	}
-	if (con != null)
-	{
-	    checkedOut++;
-	}
-	return con;
+    public Connection getConnection() {
+        Connection con = null;
+        if (freeConnections.size() > 0) {
+
+            con = (Connection) freeConnections.firstElement();
+            freeConnections.removeElementAt(0);
+            try {
+                if (con.isClosed()) {
+
+                    con = getConnection();
+                }
+            } catch (SQLException e) {
+                log("�����ӳ�ɾ��һ����Ч����");
+
+                con = getConnection();
+            }
+        } else if (this.maxConnections == 0
+                || this.checkedOut < this.maxConnections) {
+            con = createConnection();
+        }
+        if (con != null) {
+            checkedOut++;
+        }
+        return con;
     }
 
     /* (non-Javadoc)
      * @see com.mapway.database2java.database.IConnectionPool#releaseConnection(java.sql.Connection)
      */
     @Override
-    public synchronized void releaseConnection(Connection con)
-    {
-	freeConnections.addElement(con);
-	checkedOut--;
-	notifyAll();
+    public synchronized void releaseConnection(Connection con) {
+        freeConnections.addElement(con);
+        checkedOut--;
+        notifyAll();
     }
 
 
@@ -156,45 +164,36 @@ public class GeneratorPool implements IConnectionPool
      * @param timeout the timeout
      * @return the connection
      */
-    public synchronized Connection getConnection(long timeout)
-    {
-	long startTime = new java.util.Date().getTime();
-	Connection con;
-	while ((con = getConnection()) == null)
-	{
-	    try
-	    {
-		wait(timeout);
-	    } catch (InterruptedException e)
-	    {
-	    }
-	    if ((new java.util.Date().getTime() - startTime) >= timeout)
-	    {
-		// wait()���ص�ԭ���ǳ�ʱ
-		return null;
-	    }
-	}
-	return con;
+    public synchronized Connection getConnection(long timeout) {
+        long startTime = new java.util.Date().getTime();
+        Connection con;
+        while ((con = getConnection()) == null) {
+            try {
+                wait(timeout);
+            } catch (InterruptedException e) {
+            }
+            if ((new java.util.Date().getTime() - startTime) >= timeout) {
+                // wait()���ص�ԭ���ǳ�ʱ
+                return null;
+            }
+        }
+        return con;
     }
 
     /**
      * Close.
      */
-    public synchronized void close()
-    {
-	Enumeration allConnections = freeConnections.elements();
-	while (allConnections.hasMoreElements())
-	{
-	    Connection con = (Connection) allConnections.nextElement();
-	    try
-	    {
-		con.close();
-	    } catch (SQLException e)
-	    {
-		
-	    }
-	}
-	freeConnections.removeAllElements();
+    public synchronized void close() {
+        Enumeration allConnections = freeConnections.elements();
+        while (allConnections.hasMoreElements()) {
+            Connection con = (Connection) allConnections.nextElement();
+            try {
+                con.close();
+            } catch (SQLException e) {
+
+            }
+        }
+        freeConnections.removeAllElements();
     }
 
 
@@ -203,66 +202,57 @@ public class GeneratorPool implements IConnectionPool
      *
      * @return the connection
      */
-    private Connection createConnection()
-    {
-	Connection con = null;
-	try
-	{
-	    if (this.username == null)
-	    {
-		con = DriverManager.getConnection(this.jdbcURL);
-	    } else
-	    {
-		con = DriverManager.getConnection(this.jdbcURL, this.username,
-			this.passwd);
-	    }
-	    log("" + this.jdbcURL + ":" + this.username + ":"
-		    + this.passwd);
-	} catch (SQLException e)
-	{
-	    log(" " + this.jdbcURL);
-	    log("" + e.getMessage());
-	    return null;
-	}
-	return con;
+    private Connection createConnection() {
+        Connection con = null;
+        try {
+            if (this.username == null) {
+                con = DriverManager.getConnection(this.jdbcURL);
+            } else {
+                con = DriverManager.getConnection(this.jdbcURL, this.username,
+                        this.passwd);
+            }
+            log("" + this.jdbcURL + ":" + this.username + ":"
+                    + this.passwd);
+        } catch (SQLException e) {
+            log(" " + this.jdbcURL);
+            log("" + e.getMessage());
+            return null;
+        }
+        return con;
     }
 
     /* (non-Javadoc)
      * @see com.mapway.database2java.database.IConnectionPool#getPath()
      */
     @Override
-    public String getPath()
-    {
-	return path;
+    public String getPath() {
+        return path;
     }
 
     /* (non-Javadoc)
      * @see com.mapway.database2java.database.IConnectionPool#getNetPath()
      */
     @Override
-    public String getNetPath()
-    {
-	// TODO Auto-generated method stub
-	return null;
+    public String getNetPath() {
+        // TODO Auto-generated method stub
+        return null;
     }
 
     /* (non-Javadoc)
      * @see com.mapway.database2java.database.IConnectionPool#getPackage()
      */
     @Override
-    public String getPackage()
-    {
-	return pack;
+    public String getPackage() {
+        return pack;
     }
 
     /* (non-Javadoc)
      * @see com.mapway.database2java.database.IConnectionPool#getGwtbase()
      */
     @Override
-    public String getGwtbase()
-    {
-	// TODO Auto-generated method stub
-	return pack;
+    public String getGwtbase() {
+        // TODO Auto-generated method stub
+        return pack;
     }
 
 }

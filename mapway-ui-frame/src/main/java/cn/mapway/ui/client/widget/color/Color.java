@@ -5,8 +5,7 @@ package cn.mapway.ui.client.widget.color;
 /**
  * The Class Color.
  */
-public class Color
-{
+public class Color {
 
     /**
      * The Constant WHITE.
@@ -72,8 +71,10 @@ public class Color
      * The Constant BLUE.
      */
     public final static Color BLUE = new Color(0, 0, 255);
-    
-    /** The b. */
+
+    /**
+     * The b.
+     */
     private int r, g, b;
 
     /**
@@ -81,11 +82,11 @@ public class Color
      *
      * @param hex the hex
      */
-    public Color (String hex) {
+    public Color(String hex) {
         int rgb = Integer.decode(hex);
         r = (rgb & 0xff0000) >> 16;
         g = (rgb & 0x00ff00) >> 8;
-        b =  rgb & 0x0000ff;
+        b = rgb & 0x0000ff;
     }
 
     /**
@@ -95,8 +96,7 @@ public class Color
      * @param g the g
      * @param b the b
      */
-    public Color (int r, int g, int b)
-    {
+    public Color(int r, int g, int b) {
         this.r = r;
         this.g = g;
         this.b = b;
@@ -109,31 +109,31 @@ public class Color
      * @param s the s
      * @param l the l
      */
-    public Color (float h, float s, float l) {
+    public Color(float h, float s, float l) {
         float q = 0;
         if (l < 0.5f)
             q = l * (s + 1.0f);
         else
             q = l + s - (l * s);
-        
+
         float p = 2.0f * l - q;
         float hk = h / 360.0f;
-        
-        float tr = hk + 1.0f/3;
+
+        float tr = hk + 1.0f / 3;
         float tg = hk;
-        float tb = hk - 1.0f/3;
-        
+        float tb = hk - 1.0f / 3;
+
         this.r = (int) (getComponent(tr, q, p) * 255f);
         this.g = (int) (getComponent(tg, q, p) * 255f);
         this.b = (int) (getComponent(tb, q, p) * 255f);
     }
-    
+
     /**
      * Gets the component.
      *
      * @param tc the tc
-     * @param q the q
-     * @param p the p
+     * @param q  the q
+     * @param p  the p
      * @return the component
      */
     private float getComponent(float tc, float q, float p) {
@@ -141,16 +141,16 @@ public class Color
             tc += 1;
         else if (tc > 1)
             tc -= 1;
-        
-        if (tc < (1f/6f))
-            tc = p + ((q-p) * 6f * tc);
-        else if ((1f/6f) <= tc && tc < 0.5f)
+
+        if (tc < (1f / 6f))
+            tc = p + ((q - p) * 6f * tc);
+        else if ((1f / 6f) <= tc && tc < 0.5f)
             tc = q;
-        else if (0.5f <= tc && tc < (2f/3f))
-            tc = p + ((q-p) * 6.0f * (2f/3f - tc));
+        else if (0.5f <= tc && tc < (2f / 3f))
+            tc = p + ((q - p) * 6.0f * (2f / 3f - tc));
         else
             tc = p;
-        
+
         return tc;
     }
 
@@ -159,8 +159,7 @@ public class Color
      *
      * @return the red
      */
-    public int getRed ()
-    {
+    public int getRed() {
         return r;
     }
 
@@ -169,8 +168,7 @@ public class Color
      *
      * @return the green
      */
-    public int getGreen ()
-    {
+    public int getGreen() {
         return g;
     }
 
@@ -179,8 +177,7 @@ public class Color
      *
      * @return the blue
      */
-    public int getBlue ()
-    {
+    public int getBlue() {
         return b;
     }
 
@@ -193,18 +190,18 @@ public class Color
         float r = this.r / 255f;
         float g = this.g / 255f;
         float b = this.b / 255f;
-        
-        float max = getMax(r,g,b);
-        float min = getMin(r,g,b);
-        
+
+        float max = getMax(r, g, b);
+        float min = getMin(r, g, b);
+
         if (max == min) {
             return 0;
         } else if (max == r) {
-            return ( 60f * ( (float)(g-b) / max-min ) + 360 ) % 360;
+            return (60f * ((float) (g - b) / max - min) + 360) % 360;
         } else if (max == g) {
-            return ( 60f * ( (float)(b-r) / max-min ) + 120 );
+            return (60f * ((float) (b - r) / max - min) + 120);
         } else if (max == b) {
-            return ( 60f * ( (float)(r-g) / max-min ) + 240 );
+            return (60f * ((float) (r - g) / max - min) + 240);
         } else {
             return 0;
         }
@@ -219,17 +216,17 @@ public class Color
         float r = this.r / 255f;
         float g = this.g / 255f;
         float b = this.b / 255f;
-        
+
         float l = getLightness();
-        float max = getMax(r,g,b);
-        float min = getMin(r,g,b);
-        
+        float max = getMax(r, g, b);
+        float min = getMin(r, g, b);
+
         if (max == min) {
             return 0;
         } else if (l <= 0.5) {
-            return (max-min)/(2f*l);
+            return (max - min) / (2f * l);
         } else if (l > 0.5) {
-            return (max-min)/(2f-2f*l);
+            return (max - min) / (2f - 2f * l);
         } else {
             return 0;
         }
@@ -244,10 +241,10 @@ public class Color
         float r = this.r / 255f;
         float g = this.g / 255f;
         float b = this.b / 255f;
-        
-        return ( getMax(r,g,b)+getMin(r,g,b) ) / 2f;
+
+        return (getMax(r, g, b) + getMin(r, g, b)) / 2f;
     }
-    
+
     /**
      * Gets the max.
      *
@@ -259,7 +256,7 @@ public class Color
     private float getMax(float r, float g, float b) {
         return r > g ? (r > b ? r : b) : (g > b ? g : b);
     }
-    
+
     /**
      * Gets the min.
      *
@@ -278,8 +275,7 @@ public class Color
      * @param in the in
      * @return the string
      */
-    private String pad (String in)
-    {
+    private String pad(String in) {
         if (in.length() == 0) {
             return "00";
         }
@@ -292,11 +288,10 @@ public class Color
     /* (non-Javadoc)
      * @see java.lang.Object#toString()
      */
-    public String toString ()
-    {
+    public String toString() {
         return "#"
-        + pad(Integer.toHexString(r))
-        + pad(Integer.toHexString(g))
-        + pad(Integer.toHexString(b));
+                + pad(Integer.toHexString(r))
+                + pad(Integer.toHexString(g))
+                + pad(Integer.toHexString(b));
     }
 }

@@ -4,76 +4,76 @@
 @def bkcolor #BF692F;
 @external .gwt-Anchor;
 .gwt-Anchor {
-	font-size: 14px;
-	color: blue;
-	cursor: pointer;
-	font-family: fontfamily;
-	color: #0000f0;
-	padding: 3px;
-	border-bottom: solid 1px #0000f0;
+    font-size: 14px;
+    color: blue;
+    cursor: pointer;
+    font-family: fontfamily;
+    color: #0000f0;
+    padding: 3px;
+    border-bottom: solid 1px #0000f0;
 }
 
 .gwt-Anchor:HOVER {
-	color: white;
-	padding: 3px;
-	background-color: darkblue;
+    color: white;
+    padding: 3px;
+    background-color: darkblue;
 }
 
 .caption {
-	font-family: fontfamily;
-	font-size: 16px;
-	font-weight: bold;
-	color: black;
+    font-family: fontfamily;
+    font-size: 16px;
+    font-weight: bold;
+    color: black;
 }
 
 .text {
-	font-family: fontfamily;
-	font-size: 14px;
-	color: black;
+    font-family: fontfamily;
+    font-size: 14px;
+    color: black;
 }
 
 .lb {
-	font-family: fontfamily;
-	font-size: 14px;
-	color: black;
-	text-align: left;
-	cursor: default;
+    font-family: fontfamily;
+    font-size: 14px;
+    color: black;
+    text-align: left;
+    cursor: default;
 }
 
 .message {
-	font-family: fontfamily;
-	font-size: 14px;
-	font-weight: normal;
-	color: darkblue;
-	border-bottom: dotted 1px black;
-	padding: 3px;
+    font-family: fontfamily;
+    font-size: 14px;
+    font-weight: normal;
+    color: darkblue;
+    border-bottom: dotted 1px black;
+    padding: 3px;
 }
 
 .input {
-	font-family: fontfamily;
-	font-size: 16px;
-	color: green;
-	width: 250px;
-	height: 23px;
-	font-weight: bold;
-	border: solid 1px skyblue;
-	vertical-align: middle;
-	padding-top: 4px;
+    font-family: fontfamily;
+    font-size: 16px;
+    color: green;
+    width: 250px;
+    height: 23px;
+    font-weight: bold;
+    border: solid 1px skyblue;
+    vertical-align: middle;
+    padding-top: 4px;
 }
 
 .input:FOCUS {
-	background-color: #f0f0f0;
-	border: solid 1px green;
+    background-color: #f0f0f0;
+    border: solid 1px green;
 }
 
 .captionbar {
-	border-bottom: solid 2px skyblue;
-	padding: 5px 5px 5px 0px;
-	text-align: left;
+    border-bottom: solid 2px skyblue;
+    padding: 5px 5px 5px 0px;
+    text-align: left;
 }
 
 .mcenter {
-	text-align: center;
+    text-align: center;
 }
 
 .box {
@@ -81,259 +81,259 @@
 }
 
 .logo {
-	cursor: pointer;
+    cursor: pointer;
 }
 
 @sprite .top {
-	gwt-image: "item_selected_back";
-	border-bottom: solid 1px #a0a0a0;
-	background-color: bkcolor;
+    gwt-image: "item_selected_back";
+    border-bottom: solid 1px #a0a0a0;
+    background-color: bkcolor;
 }
 
 .systitle {
-	font-size: 28px;
-	font-weight: bold;
+    font-size: 28px;
+    font-weight: bold;
 }
 
 @sprite .topbar {
-	gwt-image: "frameback";
-	border-bottom: solid 1px bkcolor;
+    gwt-image: "frameback";
+    border-bottom: solid 1px bkcolor;
 }
 
 .desc {
-	color: #303030;
-	padding-top: 3px;
+    color: #303030;
+    padding-top: 3px;
 }
 
 .item_unselected {
-	padding: 5px;
-	background-color: white;
-	border-bottom: solid 1px #a0a0a0;
+    padding: 5px;
+    background-color: white;
+    border-bottom: solid 1px #a0a0a0;
 }
 
 @Sprite .item_selected {
-	padding: 5px;
-	gwt-image: "item_selected_back";
-	border-bottom: solid 1px #a0a0a0;
-	background-position: left bottom;
+    padding: 5px;
+    gwt-image: "item_selected_back";
+    border-bottom: solid 1px #a0a0a0;
+    background-position: left bottom;
 }
 
 .leftblock {
-	background-color: infobackground;
-	border-right: solid 1px #d0d0d0;
+    background-color: infobackground;
+    border-right: solid 1px #d0d0d0;
 }
 
 .content {
-	font-size: 14px;
-	font-family: fontfamily;
-	padding: 10px;
+    font-size: 14px;
+    font-family: fontfamily;
+    padding: 10px;
 }
 
 .catalog {
-	font-size: 14px;
-	color: #505050;
-	font-weight: bold;
-	padding-bottom: 5px;
+    font-size: 14px;
+    color: #505050;
+    font-weight: bold;
+    padding-bottom: 5px;
 }
 
 .treeback {
-	background-color: infobackground;
+    background-color: infobackground;
 }
 
 .placeholder {
-	background-color: #f0f0f0;
+    background-color: #f0f0f0;
 }
 
 .dlg_tools {
-	background-color: #f0f0f0;
+    background-color: #f0f0f0;
 }
 
 .onsale_unselected {
-	padding: 3px;
-	background-color: white;
-	border-bottom: solid 1px #f0f0f0;
+    padding: 3px;
+    background-color: white;
+    border-bottom: solid 1px #f0f0f0;
 }
 
 .onsale_selected {
-	padding: 3px;
-	background-color: skyblue;
-	border-bottom: solid 1px #f0f0ff;
+    padding: 3px;
+    background-color: skyblue;
+    border-bottom: solid 1px #f0f0ff;
 }
 
 .offsale_selected {
-	padding: 3px;
-	background-color: skyblue;
+    padding: 3px;
+    background-color: skyblue;
 }
 
 .offsale_unselected {
-	padding: 3px;
-	background-color: #f0f0f0;
+    padding: 3px;
+    background-color: #f0f0f0;
 }
 
 .border_right {
-	border-right: solid 3px bkcolor;
+    border-right: solid 3px bkcolor;
 }
 
 .row_buttons {
-	text-align: right;
-	vertical-align: middle;
+    text-align: right;
+    vertical-align: middle;
 }
 
-@Sprite .left_panel
-{
-	gwt-image: "right_shadow";
-	background-position: top right;
-	background-color: infobackground;
+@Sprite .left_panel {
+    gwt-image: "right_shadow";
+    background-position: top right;
+    background-color: infobackground;
 }
 
 .syssmalllogo {
-	cursor: pointer;
-	border: solid 0px gray;
+    cursor: pointer;
+    border: solid 0px gray;
 }
 
 .close {
-	cursor: pointer;
-	border: solid 0px gray;
+    cursor: pointer;
+    border: solid 0px gray;
 }
 
 .mlabel {
-	font-family: fontfamily;
-	font-size: 14px;
-	font-weight: bold;
+    font-family: fontfamily;
+    font-size: 14px;
+    font-weight: bold;
 }
 
 .caption {
-	font-size: 16px;
-	font-family: fontfamily;
-	color: darkblue;
-	font-weight: bold;
+    font-size: 16px;
+    font-family: fontfamily;
+    color: darkblue;
+    font-weight: bold;
 }
 
 .title {
-	font-size: 14px;
-	font-family: fontfamily;
-	font-weight: bold;
+    font-size: 14px;
+    font-family: fontfamily;
+    font-weight: bold;
 }
 
 .text {
-	font-size: 14px;
-	font-family: fontfamily;
+    font-size: 14px;
+    font-family: fontfamily;
 }
 
 .pad10 {
-	padding: 10px;
+    padding: 10px;
 }
 
 .subtitle {
-	font-size: 14px;
-	font-family: fontfamily;
-	color: #909090;
+    font-size: 14px;
+    font-family: fontfamily;
+    color: #909090;
 }
 
 .message {
-	color: red;
-	font-size: size_normal;
-	font-family: fontfamily;
-	font-style: italic;
+    color: red;
+    font-size: size_normal;
+    font-family: fontfamily;
+    font-style: italic;
 }
 
 .box {
-	border: solid 2px orange;
+    border: solid 2px orange;
 }
 
 .west {
-	border-right: solid 1px orange;
+    border-right: solid 1px orange;
 }
 
 .item_row {
-	background-color: white;
-	padding: 3px;
+    background-color: white;
+    padding: 3px;
 }
 
 .item_row:HOVER {
-	background-color: #f0f0f0;
+    background-color: #f0f0f0;
 }
 
 .item_row_selected {
-	background-color: skyblue;
-	border-bottom: dotted 1px black;
-	padding: 3px;
+    background-color: skyblue;
+    border-bottom: dotted 1px black;
+    padding: 3px;
 }
 
 .titlebar {
-	background-color: orange;
-	padding: 5px;
+    background-color: orange;
+    padding: 5px;
 }
 
 .actionbar_bottom {
-	border-top: solid 1px #a0a0a0;
-	padding: 5px;
+    border-top: solid 1px #a0a0a0;
+    padding: 5px;
 }
 
 .actionbar_top {
-	border-bottom: solid 1px #a0a0a0;
-	padding: 5px;
+    border-bottom: solid 1px #a0a0a0;
+    padding: 5px;
 }
 
 .name {
-	font-size: 14px;
-	font-family: fontfamily;
-	color: darkblue;
-	font-weight: bold;
+    font-size: 14px;
+    font-family: fontfamily;
+    color: darkblue;
+    font-weight: bold;
 }
 
 .cardno {
-	font-size: 14px;
-	font-family: Verdana, Fixed;
-	color: orange;
+    font-size: 14px;
+    font-family: Verdana, Fixed;
+    color: orange;
 }
 
 .itemlist {
-	font-size: 14px;
-	font-family: fontfamily;
-	padding: 4px;
-	cursor: default;
+    font-size: 14px;
+    font-family: fontfamily;
+    padding: 4px;
+    cursor: default;
 }
 
 .itemlist:HOVER {
-	font-weight: bold;
-	background-color: skyblue;
+    font-weight: bold;
+    background-color: skyblue;
 }
 
 .itemlist_selected {
-	font-size: 14px;
-	font-family: fontfamily;
-	padding: 4px;
-	cursor: default;
-	font-weight: bold;
-	background-color: orange;
+    font-size: 14px;
+    font-family: fontfamily;
+    padding: 4px;
+    cursor: default;
+    font-weight: bold;
+    background-color: orange;
 }
 
 .itemlist_selected:HOVER {
-	background-color: skyblue;
+    background-color: skyblue;
 }
 
 .clGreen {
-	color: green;
+    color: green;
 }
 
 .clOrange {
-	color: orange;
+    color: orange;
 }
 
 .f14 {
-	font-size: 14px;
-	font-family: fontfamily;
-	cursor: default;
+    font-size: 14px;
+    font-family: fontfamily;
+    cursor: default;
 }
-.roomname
-{
-	text-decoration: none;
-	font-size: 14px;
-	font-family: fontfamily;
-	cursor: default;
-	color: orange;
+
+.roomname {
+    text-decoration: none;
+    font-size: 14px;
+    font-family: fontfamily;
+    cursor: default;
+    color: orange;
 }
+
 .roomname:HOVER {
-	text-decoration: underline;
+    text-decoration: underline;
 }

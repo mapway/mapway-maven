@@ -17,85 +17,85 @@ import com.ksyzt.gwt.shared.module.SiteInformation;
 @RemoteServiceRelativePath("../ksyzt_site_manager")
 public interface ISiteManager extends RemoteService {
 
-	/**
-	 * *************************** site infomation ****************************.
-	 *
-	 * @param info the info
-	 * @return the site information
-	 * @throws Exception the exception
-	 */
-	public SiteInformation updateSiteInformation(SiteInformation info)
-			throws Exception;
+    /**
+     * *************************** site infomation ****************************.
+     *
+     * @param info the info
+     * @return the site information
+     * @throws Exception the exception
+     */
+    public SiteInformation updateSiteInformation(SiteInformation info)
+            throws Exception;
 
-	/**
-	 * Gets the site information.
-	 *
-	 * @return the site information
-	 * @throws Exception the exception
-	 */
-	public SiteInformation getSiteInformation() throws Exception;
+    /**
+     * Gets the site information.
+     *
+     * @return the site information
+     * @throws Exception the exception
+     */
+    public SiteInformation getSiteInformation() throws Exception;
 
-	/**
-	 * ************************* url rewrite ***********************************.
-	 *
-	 * @return the rewrite data
-	 * @throws Exception the exception
-	 */
-	public List<RewriteData> getRewriteData() throws Exception;
+    /**
+     * ************************* url rewrite ***********************************.
+     *
+     * @return the rewrite data
+     * @throws Exception the exception
+     */
+    public List<RewriteData> getRewriteData() throws Exception;
 
-	/**
-	 * Update rewrite data.
-	 *
-	 * @param data the data
-	 * @return the list
-	 * @throws Exception the exception
-	 */
-	public List<RewriteData> updateRewriteData(RewriteData data)
-			throws Exception;
+    /**
+     * Update rewrite data.
+     *
+     * @param data the data
+     * @return the list
+     * @throws Exception the exception
+     */
+    public List<RewriteData> updateRewriteData(RewriteData data)
+            throws Exception;
 
-	/**
-	 * Delete rewrite data.
-	 *
-	 * @param data the data
-	 * @return the list
-	 * @throws Exception the exception
-	 */
-	public List<RewriteData> deleteRewriteData(RewriteData data)
-			throws Exception;
+    /**
+     * Delete rewrite data.
+     *
+     * @param data the data
+     * @return the list
+     * @throws Exception the exception
+     */
+    public List<RewriteData> deleteRewriteData(RewriteData data)
+            throws Exception;
 
-	/**
-	 * *********************** site configure user login ***********************.
-	 *
-	 * @param username the username
-	 * @param pwd the pwd
-	 * @return the admin user
-	 * @throws AdminLoginException the admin login exception
-	 */
-	public AdminUser adminLogin(String username, String pwd)
-			throws AdminLoginException;
+    /**
+     * *********************** site configure user login ***********************.
+     *
+     * @param username the username
+     * @param pwd      the pwd
+     * @return the admin user
+     * @throws AdminLoginException the admin login exception
+     */
+    public AdminUser adminLogin(String username, String pwd)
+            throws AdminLoginException;
 
-	/**
-	 * Admin update.
-	 *
-	 * @param username the username
-	 * @param pwd the pwd
-	 * @return the admin user
-	 * @throws AdminLoginException the admin login exception
-	 */
-	public AdminUser adminUpdate(String username, String pwd)
-			throws AdminLoginException;
+    /**
+     * Admin update.
+     *
+     * @param username the username
+     * @param pwd      the pwd
+     * @return the admin user
+     * @throws AdminLoginException the admin login exception
+     */
+    public AdminUser adminUpdate(String username, String pwd)
+            throws AdminLoginException;
 
-	/**
-	 * Check admin login.
-	 *
-	 * @return the admin user
-	 * @throws AdminLoginException the admin login exception
-	 */
-	public AdminUser checkAdminLogin() throws AdminLoginException;
+    /**
+     * Check admin login.
+     *
+     * @return the admin user
+     * @throws AdminLoginException the admin login exception
+     */
+    public AdminUser checkAdminLogin() throws AdminLoginException;
 
-	/**
-	 * Quit.
-	 */
-	public void quit();
+    /**
+     * Quit.
+     */
+    public void quit();
 
 }

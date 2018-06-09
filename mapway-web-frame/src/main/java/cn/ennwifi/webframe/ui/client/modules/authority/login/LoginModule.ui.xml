@@ -1,79 +1,79 @@
 <!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
-<ui:UiBinder xmlns:ui = "urn:ui:com.google.gwt.uibinder" xmlns:g = "urn:import:com.google.gwt.user.client.ui">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder" xmlns:g="urn:import:com.google.gwt.user.client.ui">
     <ui:style>
         .input {
-            margin: 10px auto;
-            height: 40px;
-            line-height: 40px;
-            border-radius: 20px;
-            border: solid 1px #AABDC1;
-            background-color: #EEF3F7;
-            padding-left: 60px;
-            display: block;
-            width: 260px;
-            outline: none;
+        margin: 10px auto;
+        height: 40px;
+        line-height: 40px;
+        border-radius: 20px;
+        border: solid 1px #AABDC1;
+        background-color: #EEF3F7;
+        padding-left: 60px;
+        display: block;
+        width: 260px;
+        outline: none;
         }
 
         .username {
-            background-image: url("../img/account.png");
-            background-repeat: no-repeat;
-            background-position: 15px 8px;
+        background-image: url("../img/account.png");
+        background-repeat: no-repeat;
+        background-position: 15px 8px;
         }
 
         .password {
-            background-image: url("../img/pwd.png");
-            background-repeat: no-repeat;
-            background-position: 15px 8px;
+        background-image: url("../img/pwd.png");
+        background-repeat: no-repeat;
+        background-position: 15px 8px;
         }
 
         .content {
-            background-color: #13253B;
-            text-align: center;
+        background-color: #13253B;
+        text-align: center;
         }
 
         .login {
-            background-image: url("../img/loginback.png");
-            overflow: hidden;
-            background-repeat: no-repeat;
-            width: 500px;
-            height: 381px;
-            margin: auto;
-            margin-top: 130px;
+        background-image: url("../img/loginback.png");
+        overflow: hidden;
+        background-repeat: no-repeat;
+        width: 500px;
+        height: 381px;
+        margin: auto;
+        margin-top: 130px;
         }
 
         .btn {
-            margin: 5px;
-            height: 40px;
-            line-height: 40px;
-            border-radius: 20px;
-            border: solid 1px #0088FE;
-            color: #0088FE;
-            padding: 0px 20px;
-            background-color: white;
+        margin: 5px;
+        height: 40px;
+        line-height: 40px;
+        border-radius: 20px;
+        border: solid 1px #0088FE;
+        color: #0088FE;
+        padding: 0px 20px;
+        background-color: white;
         }
 
         .btn:HOVER {
-            background-color: #0088FE;
-            color: white;
+        background-color: #0088FE;
+        color: white;
         }
 
         .title {
-            font-weight: bold;
-            margin-top: 70px;
-            color: #006A9E;
+        font-weight: bold;
+        margin-top: 70px;
+        color: #006A9E;
         }
     </ui:style>
     <g:DockLayoutPanel>
         <g:center>
-            <g:ScrollPanel styleName = "{style.content}">
-                <g:HTMLPanel styleName = "{style.login}">
-                    <div class = "{style.title}">系统登录</div>
-                    <g:TextBox ui:field = "txtUserName" styleName = "{style.input} {style.username}"></g:TextBox>
-                    <g:PasswordTextBox ui:field = "txtPassword"
-                                       styleName = "{style.input} {style.password}"></g:PasswordTextBox>
-                    <g:Button ui:field = "btnCustomLogin" styleName = "{style.btn}">注册用户登录</g:Button>
+            <g:ScrollPanel styleName="{style.content}">
+                <g:HTMLPanel styleName="{style.login}">
+                    <div class="{style.title}">系统登录</div>
+                    <g:TextBox ui:field="txtUserName" styleName="{style.input} {style.username}"></g:TextBox>
+                    <g:PasswordTextBox ui:field="txtPassword"
+                                       styleName="{style.input} {style.password}"></g:PasswordTextBox>
+                    <g:Button ui:field="btnCustomLogin" styleName="{style.btn}">注册用户登录</g:Button>
                     <!--<g:Button ui:field="btnLogin" styleName="{style.btn}">新奥账号登录</g:Button>-->
-                    <g:Label ui:field = "lbMessage" styleName = "message" width = "250px"></g:Label>
+                    <g:Label ui:field="lbMessage" styleName="message" width="250px"></g:Label>
                 </g:HTMLPanel>
             </g:ScrollPanel>
         </g:center>

@@ -18,40 +18,42 @@ import com.ksyzt.gwt.client.event.MessageEvent;
  */
 public class CellUrlMapper extends MessageComposite {
 
-	/** The ui binder. */
-	private static CellUrlMapperUiBinder uiBinder = GWT
-			.create(CellUrlMapperUiBinder.class);
+    /**
+     * The ui binder.
+     */
+    private static CellUrlMapperUiBinder uiBinder = GWT
+            .create(CellUrlMapperUiBinder.class);
 
     /**
      * The Interface CellUrlMapperUiBinder.
      */
     interface CellUrlMapperUiBinder extends UiBinder<Widget, CellUrlMapper> {
-	}
+    }
 
     /**
      * Instantiates a new cell url mapper.
      */
     public CellUrlMapper() {
-		initWidget(uiBinder.createAndBindUi(this));
-	}
+        initWidget(uiBinder.createAndBindUi(this));
+    }
 
     /**
      * The txt description.
      */
     @UiField
-	TextBox txtDescription;
+    TextBox txtDescription;
 
     /**
      * The txt from.
      */
     @UiField
-	TextBox txtFrom;
+    TextBox txtFrom;
 
     /**
      * The txt to.
      */
     @UiField
-	TextBox txtTo;
+    TextBox txtTo;
 
     /**
      * Render cell.
@@ -59,10 +61,10 @@ public class CellUrlMapper extends MessageComposite {
      * @param d the d
      */
     public void renderCell(RewriteData d) {
-		txtDescription.setText(d.desc);
-		txtFrom.setText(d.from);
-		txtTo.setText(d.to);
-	}
+        txtDescription.setText(d.desc);
+        txtFrom.setText(d.from);
+        txtTo.setText(d.to);
+    }
 
     /**
      * On modify.
@@ -70,14 +72,14 @@ public class CellUrlMapper extends MessageComposite {
      * @param e the e
      */
     @UiHandler("btnModify")
-	void onModify(ClickEvent e) {
-		RewriteData d = new RewriteData();
-		d.desc = txtDescription.getValue();
-		d.from = txtFrom.getValue();
-		d.to = txtTo.getValue();
-		MessageEvent ev = new MessageEvent(MessageEvent.EDIT, d);
-		fireEvent(ev);
-	}
+    void onModify(ClickEvent e) {
+        RewriteData d = new RewriteData();
+        d.desc = txtDescription.getValue();
+        d.from = txtFrom.getValue();
+        d.to = txtTo.getValue();
+        MessageEvent ev = new MessageEvent(MessageEvent.EDIT, d);
+        fireEvent(ev);
+    }
 
     /**
      * On delete.
@@ -85,12 +87,12 @@ public class CellUrlMapper extends MessageComposite {
      * @param e the e
      */
     @UiHandler("btnDelete")
-	void onDelete(ClickEvent e) {
-		RewriteData d = new RewriteData();
-		d.desc = txtDescription.getValue();
-		d.from = txtFrom.getValue();
-		d.to = txtTo.getValue();
-		MessageEvent ev = new MessageEvent(MessageEvent.DELETE, d);
-		fireEvent(ev);
-	}
+    void onDelete(ClickEvent e) {
+        RewriteData d = new RewriteData();
+        d.desc = txtDescription.getValue();
+        d.from = txtFrom.getValue();
+        d.to = txtTo.getValue();
+        MessageEvent ev = new MessageEvent(MessageEvent.DELETE, d);
+        fireEvent(ev);
+    }
 }

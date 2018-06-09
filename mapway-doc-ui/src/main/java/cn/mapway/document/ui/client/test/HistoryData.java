@@ -14,9 +14,9 @@ public class HistoryData {
      * @param v the v
      */
     public HistoryData(String t, String v) {
-		this.title = t;
-		this.value = v;
-	}
+        this.title = t;
+        this.value = v;
+    }
 
     /**
      * The title.

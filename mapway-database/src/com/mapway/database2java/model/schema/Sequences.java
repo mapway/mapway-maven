@@ -17,19 +17,18 @@ public class Sequences {
     /**
      * Instantiates a new sequences.
      */
-    public Sequences(){
-		Sequences=new ArrayList<Sequence>(); 
-	}
+    public Sequences() {
+        Sequences = new ArrayList<Sequence>();
+    }
 
     /**
      * Gets the count.
      *
      * @return the count
      */
-    public int getCount()
-	{
-		return Sequences.size();
-	}
+    public int getCount() {
+        return Sequences.size();
+    }
 
     /**
      * Gets the at.
@@ -37,24 +36,23 @@ public class Sequences {
      * @param index the index
      * @return the at
      */
-    public Sequence getAt(int index){
-		return Sequences.get(index);
-	}
+    public Sequence getAt(int index) {
+        return Sequences.get(index);
+    }
 
     /**
      * Clear.
      */
-    public void Clear(){
-		Sequences.clear();
-	}
+    public void Clear() {
+        Sequences.clear();
+    }
 
     /**
      * Adds the sequence.
      *
      * @param sequence the sequence
      */
-    public void addSequence(Sequence sequence)
-	{
-		Sequences.add(sequence);
-	}
+    public void addSequence(Sequence sequence) {
+        Sequences.add(sequence);
+    }
 }

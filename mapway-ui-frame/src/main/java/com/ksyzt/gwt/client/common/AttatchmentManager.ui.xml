@@ -1,52 +1,52 @@
 <!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
 <ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
-	xmlns:g="urn:import:com.google.gwt.user.client.ui">
-	<ui:style>
-		.list {
-			padding: 5px;
-			border: solid 1px brown;
-		}
-		
-		.top {
-			background-color: #f0f0f0;
-		}
-	</ui:style>
-	<g:FlowPanel>
-		<g:Label text="" ui:field="lbMessage" styleName="site-Message"></g:Label>
-		<g:FormPanel ui:field="formAction">
-			<g:HTMLPanel styleName="{style.top}">
-				<table cellpadding="3px">
-					<tr>
-						<td>
-							<g:Label styleName="site-Label" text="选择文件"></g:Label>
-						</td>
-						<td>
-							<g:FileUpload ui:field="uploader" name="uploadfile"></g:FileUpload>
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<g:Label styleName="site-Label" text="附件名称"></g:Label>
-						</td>
-						<td>
-							<g:TextBox ui:field="txtTitle" name="title" styleName="site-Input"></g:TextBox>
-							<g:Hidden ui:field="nid" name="nid"></g:Hidden>
-						</td>
-					</tr>
-					<tr>
-						<td align="center">
-							<g:Button ui:field="btnSubmit" text="上传"></g:Button>
-						</td>
-						<td align="center">
-							<g:Button ui:field="btnCancel" text="取消"></g:Button>
-						</td>
-					</tr>
-				</table>
-			</g:HTMLPanel>
+             xmlns:g="urn:import:com.google.gwt.user.client.ui">
+    <ui:style>
+        .list {
+        padding: 5px;
+        border: solid 1px brown;
+        }
 
-		</g:FormPanel>
-		<g:VerticalPanel ui:field="list">
-		</g:VerticalPanel>
+        .top {
+        background-color: #f0f0f0;
+        }
+    </ui:style>
+    <g:FlowPanel>
+        <g:Label text="" ui:field="lbMessage" styleName="site-Message"></g:Label>
+        <g:FormPanel ui:field="formAction">
+            <g:HTMLPanel styleName="{style.top}">
+                <table cellpadding="3px">
+                    <tr>
+                        <td>
+                            <g:Label styleName="site-Label" text="选择文件"></g:Label>
+                        </td>
+                        <td>
+                            <g:FileUpload ui:field="uploader" name="uploadfile"></g:FileUpload>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <g:Label styleName="site-Label" text="附件名称"></g:Label>
+                        </td>
+                        <td>
+                            <g:TextBox ui:field="txtTitle" name="title" styleName="site-Input"></g:TextBox>
+                            <g:Hidden ui:field="nid" name="nid"></g:Hidden>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="center">
+                            <g:Button ui:field="btnSubmit" text="上传"></g:Button>
+                        </td>
+                        <td align="center">
+                            <g:Button ui:field="btnCancel" text="取消"></g:Button>
+                        </td>
+                    </tr>
+                </table>
+            </g:HTMLPanel>
 
-	</g:FlowPanel>
+        </g:FormPanel>
+        <g:VerticalPanel ui:field="list">
+        </g:VerticalPanel>
+
+    </g:FlowPanel>
 </ui:UiBinder>

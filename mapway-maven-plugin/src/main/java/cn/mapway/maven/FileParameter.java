@@ -6,11 +6,11 @@ import java.io.File;
  * The type File parameter.
  */
 public class FileParameter {
-  @SuppressWarnings("unused")
-  private File path;
+    @SuppressWarnings("unused")
+    private File path;
 
-  @SuppressWarnings("unused")
-  private String[] lines;
+    @SuppressWarnings("unused")
+    private String[] lines;
 
     /**
      * Gets path.
@@ -18,8 +18,8 @@ public class FileParameter {
      * @return the path
      */
     public File getPath() {
-    return path;
-  }
+        return path;
+    }
 
     /**
      * Get lines string [ ].
@@ -27,6 +27,6 @@ public class FileParameter {
      * @return the string [ ]
      */
     public String[] getLines() {
-    return lines;
-  }
+        return lines;
+    }
 }

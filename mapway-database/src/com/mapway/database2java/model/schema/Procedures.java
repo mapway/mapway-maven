@@ -17,19 +17,18 @@ public class Procedures {
     /**
      * Instantiates a new procedures.
      */
-    public Procedures(){
-		Procedures=new ArrayList<Procedure>(); 
-	}
+    public Procedures() {
+        Procedures = new ArrayList<Procedure>();
+    }
 
     /**
      * Gets the count.
      *
      * @return the count
      */
-    public int getCount()
-	{
-		return Procedures.size();
-	}
+    public int getCount() {
+        return Procedures.size();
+    }
 
     /**
      * Gets the at.
@@ -37,24 +36,23 @@ public class Procedures {
      * @param index the index
      * @return the at
      */
-    public Procedure getAt(int index){
-		return Procedures.get(index);
-	}
+    public Procedure getAt(int index) {
+        return Procedures.get(index);
+    }
 
     /**
      * Clear.
      */
-    public void Clear(){
-		Procedures.clear();
-	}
+    public void Clear() {
+        Procedures.clear();
+    }
 
     /**
      * Adds the procedure.
      *
      * @param proc the proc
      */
-    public void addProcedure(Procedure proc)
-	{
-		Procedures.add(proc);
-	}
+    public void addProcedure(Procedure proc) {
+        Procedures.add(proc);
+    }
 }

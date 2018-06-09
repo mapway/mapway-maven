@@ -1,20 +1,20 @@
 <!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
 <ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
-	xmlns:g="urn:import:com.google.gwt.user.client.ui" xmlns:d="urn:import:com.google.gwt.dom.client">
-	<ui:style>
-		.mid {
-			padding: 5px;
-			text-align: center;
-			color: #FF9865;
-		}
-		
-		.title {
-			font-size: 14px;
-			font-weight: bold;
-		}
-	</ui:style>
-	<g:HTMLPanel styleName="site-Content">
-		<g:Label ui:field="title" styleName="{style.title}"></g:Label>
-		<g:HTML ui:field="html" styleName="{style.mid}"></g:HTML>
-	</g:HTMLPanel>
+             xmlns:g="urn:import:com.google.gwt.user.client.ui" xmlns:d="urn:import:com.google.gwt.dom.client">
+    <ui:style>
+        .mid {
+        padding: 5px;
+        text-align: center;
+        color: #FF9865;
+        }
+
+        .title {
+        font-size: 14px;
+        font-weight: bold;
+        }
+    </ui:style>
+    <g:HTMLPanel styleName="site-Content">
+        <g:Label ui:field="title" styleName="{style.title}"></g:Label>
+        <g:HTML ui:field="html" styleName="{style.mid}"></g:HTML>
+    </g:HTMLPanel>
 </ui:UiBinder>

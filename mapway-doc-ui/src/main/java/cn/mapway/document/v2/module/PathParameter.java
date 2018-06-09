@@ -16,8 +16,8 @@ public class PathParameter {
      * @return the name
      */
     public String getName() {
-		return name;
-	}
+        return name;
+    }
 
     /**
      * Sets the name.
@@ -25,8 +25,8 @@ public class PathParameter {
      * @param name the new name
      */
     public void setName(String name) {
-		this.name = name;
-	}
+        this.name = name;
+    }
 
     /**
      * Gets the description.
@@ -34,8 +34,8 @@ public class PathParameter {
      * @return the description
      */
     public String getDescription() {
-		return description;
-	}
+        return description;
+    }
 
     /**
      * Sets the description.
@@ -43,8 +43,8 @@ public class PathParameter {
      * @param description the new description
      */
     public void setDescription(String description) {
-		this.description = description;
-	}
+        this.description = description;
+    }
 
     /**
      * Gets the data type.
@@ -52,8 +52,8 @@ public class PathParameter {
      * @return the data type
      */
     public String getDataType() {
-		return dataType;
-	}
+        return dataType;
+    }
 
     /**
      * Sets the data type.
@@ -61,8 +61,8 @@ public class PathParameter {
      * @param dataType the new data type
      */
     public void setDataType(String dataType) {
-		this.dataType = dataType;
-	}
+        this.dataType = dataType;
+    }
 
     /**
      * Gets the example.
@@ -70,8 +70,8 @@ public class PathParameter {
      * @return the example
      */
     public String getExample() {
-		return example;
-	}
+        return example;
+    }
 
     /**
      * Sets the example.
@@ -79,8 +79,8 @@ public class PathParameter {
      * @param example the new example
      */
     public void setExample(String example) {
-		this.example = example;
-	}
+        this.example = example;
+    }
 
     /**
      * The name.

@@ -10,50 +10,50 @@ import com.google.gwt.user.datepicker.client.DateBox;
  * The type Date box ex.
  */
 public class DateBoxEx extends DateBox implements IValidator {
-  private String msg = "";
-  private RegExp regex = null;
-  private boolean required = false;
+    private String msg = "";
+    private RegExp regex = null;
+    private boolean required = false;
 
-  @Override
-  public String getMessage() {
-    return msg;
-  }
-
-  @Override
-  public void setPattern(String pattern) {
-    if (pattern != null && pattern.length() > 0) {
-      regex = RegExp.compile(pattern);
-    } else {
-      regex = null;
+    @Override
+    public String getMessage() {
+        return msg;
     }
-  }
 
-  @Override
-  public void setRequired(boolean b) {
-    required = b;
-  }
+    @Override
+    public void setPattern(String pattern) {
+        if (pattern != null && pattern.length() > 0) {
+            regex = RegExp.compile(pattern);
+        } else {
+            regex = null;
+        }
+    }
 
-  @Override
-  public boolean isValidate() {
-    return true;
-  }
+    @Override
+    public void setRequired(boolean b) {
+        required = b;
+    }
 
-  @Override
-  public void setMessage(String msg) {
-    this.msg = msg;
-  }
+    @Override
+    public boolean isValidate() {
+        return true;
+    }
 
-  private static String DATE_TIME_FORMAT = "yyyy/MM/dd-HH:mm:ss";
+    @Override
+    public void setMessage(String msg) {
+        this.msg = msg;
+    }
+
+    private static String DATE_TIME_FORMAT = "yyyy/MM/dd-HH:mm:ss";
 
     /**
      * Instantiates a new Date box ex.
      */
     public DateBoxEx() {
-    setStyleName("gwtEx-TextBox");
-    setDateFormat(DATE_TIME_FORMAT);
+        setStyleName("gwtEx-TextBox");
+        setDateFormat(DATE_TIME_FORMAT);
 
-    initDateBox();
-  }
+        initDateBox();
+    }
 
     /**
      * Sets date format.
@@ -61,31 +61,32 @@ public class DateBoxEx extends DateBox implements IValidator {
      * @param dateFormat the date format
      */
     public void setDateFormat(String dateFormat) {
-    if (!dateFormat.isEmpty()) {
-      DATE_TIME_FORMAT = dateFormat;
+        if (!dateFormat.isEmpty()) {
+            DATE_TIME_FORMAT = dateFormat;
+        }
+        DateTimeFormat dateTimeFormat = DateTimeFormat.getFormat(DATE_TIME_FORMAT);
+        DefaultFormat df = new DateBoxEx.DefaultFormat(dateTimeFormat);
+        this.setFormat(df);
     }
-    DateTimeFormat dateTimeFormat = DateTimeFormat.getFormat(DATE_TIME_FORMAT);
-    DefaultFormat df = new DateBoxEx.DefaultFormat(dateTimeFormat);
-    this.setFormat(df);
-  }
 
     /**
      * Init date box.
      */
     public void initDateBox() {
-    PrimaryButton btn = new PrimaryButton();
-    btn.setText("当前时间");
-    btn.addClickHandler(nowTimeHandler);
-    this.getElement().appendChild(btn.getElement());
-  }
+        PrimaryButton btn = new PrimaryButton();
+        btn.setText("当前时间");
+        btn.addClickHandler(nowTimeHandler);
+        this.getElement().appendChild(btn.getElement());
+    }
 
     /**
      * The Now time handler.
      */
     ClickHandler nowTimeHandler = new ClickHandler() {
 
-    @Override
-    public void onClick(ClickEvent event) {}
-  };
+        @Override
+        public void onClick(ClickEvent event) {
+        }
+    };
 
 }

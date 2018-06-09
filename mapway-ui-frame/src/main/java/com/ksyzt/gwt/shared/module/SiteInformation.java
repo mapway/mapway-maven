@@ -19,8 +19,8 @@ public class SiteInformation implements Serializable {
      * @return the name
      */
     public String getName() {
-		return name;
-	}
+        return name;
+    }
 
     /**
      * Sets the name.
@@ -28,8 +28,8 @@ public class SiteInformation implements Serializable {
      * @param name the name to set
      */
     public void setName(String name) {
-		this.name = name;
-	}
+        this.name = name;
+    }
 
     /**
      * Gets the summary.
@@ -37,8 +37,8 @@ public class SiteInformation implements Serializable {
      * @return the summary
      */
     public String getSummary() {
-		return summary;
-	}
+        return summary;
+    }
 
     /**
      * Sets the summary.
@@ -46,8 +46,8 @@ public class SiteInformation implements Serializable {
      * @param summary the summary to set
      */
     public void setSummary(String summary) {
-		this.summary = summary;
-	}
+        this.summary = summary;
+    }
 
     /**
      * Gets the when.
@@ -55,8 +55,8 @@ public class SiteInformation implements Serializable {
      * @return the when
      */
     public Date getWhen() {
-		return when;
-	}
+        return when;
+    }
 
     /**
      * Sets the when.
@@ -64,8 +64,8 @@ public class SiteInformation implements Serializable {
      * @param when the when to set
      */
     public void setWhen(Date when) {
-		this.when = when;
-	}
+        this.when = when;
+    }
 
     /**
      * Gets the version.
@@ -73,8 +73,8 @@ public class SiteInformation implements Serializable {
      * @return the version
      */
     public int getVersion() {
-		return version;
-	}
+        return version;
+    }
 
     /**
      * Sets the version.
@@ -82,8 +82,8 @@ public class SiteInformation implements Serializable {
      * @param version the version to set
      */
     public void setVersion(int version) {
-		this.version = version;
-	}
+        this.version = version;
+    }
 
     /**
      * Gets the icp.
@@ -91,8 +91,8 @@ public class SiteInformation implements Serializable {
      * @return the icp
      */
     public String getIcp() {
-		return icp;
-	}
+        return icp;
+    }
 
     /**
      * Sets the icp.
@@ -100,8 +100,8 @@ public class SiteInformation implements Serializable {
      * @param icp the icp to set
      */
     public void setIcp(String icp) {
-		this.icp = icp;
-	}
+        this.icp = icp;
+    }
 
     /**
      * Gets the secno.
@@ -109,8 +109,8 @@ public class SiteInformation implements Serializable {
      * @return the secno
      */
     public String getSecno() {
-		return secno;
-	}
+        return secno;
+    }
 
     /**
      * Sets the secno.
@@ -118,8 +118,8 @@ public class SiteInformation implements Serializable {
      * @param secno the secno to set
      */
     public void setSecno(String secno) {
-		this.secno = secno;
-	}
+        this.secno = secno;
+    }
 
     /**
      * Gets the email.
@@ -127,8 +127,8 @@ public class SiteInformation implements Serializable {
      * @return the email
      */
     public String getEmail() {
-		return email;
-	}
+        return email;
+    }
 
     /**
      * Sets the email.
@@ -136,8 +136,8 @@ public class SiteInformation implements Serializable {
      * @param email the email to set
      */
     public void setEmail(String email) {
-		this.email = email;
-	}
+        this.email = email;
+    }
 
     /**
      * Gets the web.
@@ -145,8 +145,8 @@ public class SiteInformation implements Serializable {
      * @return the web
      */
     public String getWeb() {
-		return web;
-	}
+        return web;
+    }
 
     /**
      * Sets the web.
@@ -154,8 +154,8 @@ public class SiteInformation implements Serializable {
      * @param web the web to set
      */
     public void setWeb(String web) {
-		this.web = web;
-	}
+        this.web = web;
+    }
 
     /**
      * Gets the open.
@@ -163,8 +163,8 @@ public class SiteInformation implements Serializable {
      * @return the open
      */
     public boolean getOpen() {
-		return open;
-	}
+        return open;
+    }
 
     /**
      * Sets the open.
@@ -172,8 +172,8 @@ public class SiteInformation implements Serializable {
      * @param open the open to set
      */
     public void setOpen(boolean open) {
-		this.open = open;
-	}
+        this.open = open;
+    }
 
     /**
      * Checks if is allowreg.
@@ -181,8 +181,8 @@ public class SiteInformation implements Serializable {
      * @return the allowreg
      */
     public boolean isAllowreg() {
-		return allowreg;
-	}
+        return allowreg;
+    }
 
     /**
      * Sets the allowreg.
@@ -190,8 +190,8 @@ public class SiteInformation implements Serializable {
      * @param allowreg the allowreg to set
      */
     public void setAllowreg(boolean allowreg) {
-		this.allowreg = allowreg;
-	}
+        this.allowreg = allowreg;
+    }
 
     /**
      * Gets the keywords.
@@ -199,8 +199,8 @@ public class SiteInformation implements Serializable {
      * @return the keywords
      */
     public String getKeywords() {
-		return keywords;
-	}
+        return keywords;
+    }
 
     /**
      * Sets the keywords.
@@ -208,8 +208,8 @@ public class SiteInformation implements Serializable {
      * @param keywords the keywords to set
      */
     public void setKeywords(String keywords) {
-		this.keywords = keywords;
-	}
+        this.keywords = keywords;
+    }
 
     /**
      * Gets the siteowner.
@@ -217,8 +217,8 @@ public class SiteInformation implements Serializable {
      * @return the siteowner
      */
     public String getSiteowner() {
-		return siteowner;
-	}
+        return siteowner;
+    }
 
     /**
      * Sets the siteowner.
@@ -226,8 +226,8 @@ public class SiteInformation implements Serializable {
      * @param siteowner the siteowner to set
      */
     public void setSiteowner(String siteowner) {
-		this.siteowner = siteowner;
-	}
+        this.siteowner = siteowner;
+    }
 
     /**
      * Gets the serialversionuid.
@@ -235,51 +235,79 @@ public class SiteInformation implements Serializable {
      * @return the serialversionuid
      */
     public static long getSerialversionuid() {
-		return serialVersionUID;
-	}
+        return serialVersionUID;
+    }
 
-	/** The Constant serialVersionUID. */
-	private static final long serialVersionUID = 5990058217383767521L;
+    /**
+     * The Constant serialVersionUID.
+     */
+    private static final long serialVersionUID = 5990058217383767521L;
 
-	
-	/** The name. */
-	private String name;
-	
-	/** The summary. */
-	private String summary;
-	
-	/** The when. */
-	private Date when;
 
-	/** The version. */
-	private int version;
-	
-	/** The icp. */
-	private String icp;
-	
-	/** The secno. */
-	private String secno;
-	
-	/** The email. */
-	private String email;
-	
-	/** The web. */
-	private String web;
-	
-	/** The open. */
-	private boolean open;
-	
-	/** The allowreg. */
-	private boolean allowreg;
-	
-	/** The keywords. */
-	private String keywords;
-	
-	/** The siteowner. */
-	private String siteowner;
-	
-	/** The tel. */
-	private String tel;
+    /**
+     * The name.
+     */
+    private String name;
+
+    /**
+     * The summary.
+     */
+    private String summary;
+
+    /**
+     * The when.
+     */
+    private Date when;
+
+    /**
+     * The version.
+     */
+    private int version;
+
+    /**
+     * The icp.
+     */
+    private String icp;
+
+    /**
+     * The secno.
+     */
+    private String secno;
+
+    /**
+     * The email.
+     */
+    private String email;
+
+    /**
+     * The web.
+     */
+    private String web;
+
+    /**
+     * The open.
+     */
+    private boolean open;
+
+    /**
+     * The allowreg.
+     */
+    private boolean allowreg;
+
+    /**
+     * The keywords.
+     */
+    private String keywords;
+
+    /**
+     * The siteowner.
+     */
+    private String siteowner;
+
+    /**
+     * The tel.
+     */
+    private String tel;
 
     /**
      * Gets the tel.
@@ -287,8 +315,8 @@ public class SiteInformation implements Serializable {
      * @return the tel
      */
     public String getTel() {
-		return tel;
-	}
+        return tel;
+    }
 
     /**
      * Sets the tel.
@@ -296,6 +324,6 @@ public class SiteInformation implements Serializable {
      * @param tel the tel to set
      */
     public void setTel(String tel) {
-		this.tel = tel;
-	}
+        this.tel = tel;
+    }
 }

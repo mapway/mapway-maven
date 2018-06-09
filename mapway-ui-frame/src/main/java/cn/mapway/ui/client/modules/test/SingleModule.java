@@ -13,13 +13,13 @@ import com.ksyzt.gwt.client.common.MessageComposite;
  */
 public class SingleModule extends MessageComposite {
 
-  private static SingleModuleUiBinder uiBinder = GWT.create(SingleModuleUiBinder.class);
+    private static SingleModuleUiBinder uiBinder = GWT.create(SingleModuleUiBinder.class);
 
     /**
      * The interface Single module ui binder.
      */
     interface SingleModuleUiBinder extends UiBinder<Widget, SingleModule> {
-  }
+    }
 
     /**
      * The Content.
@@ -30,15 +30,14 @@ public class SingleModule extends MessageComposite {
      * Instantiates a new Single module.
      */
     public SingleModule() {
-    initWidget(uiBinder.createAndBindUi(this));
-  }
+        initWidget(uiBinder.createAndBindUi(this));
+    }
 
     /**
      * The Tools.
      */
     @UiField
-  HorizontalPanel tools;
-
+    HorizontalPanel tools;
 
 
 }

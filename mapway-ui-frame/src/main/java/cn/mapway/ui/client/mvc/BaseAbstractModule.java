@@ -15,16 +15,17 @@ import com.ksyzt.gwt.client.common.MessageComposite;
 public abstract class BaseAbstractModule extends MessageComposite implements IModule {
 
 
-  private IModule mParentModule;
-  private ModuleParameter mParameter;
+    private IModule mParentModule;
+    private ModuleParameter mParameter;
 
     /**
      * Instantiates a new Base abstract module.
      */
-    public BaseAbstractModule() {}
+    public BaseAbstractModule() {
+    }
 
 
-  private final static ModuleFactory FACTORY = GWT.create(ModuleFactory.class);
+    private final static ModuleFactory FACTORY = GWT.create(ModuleFactory.class);
 
     /**
      * 模块工厂
@@ -32,62 +33,61 @@ public abstract class BaseAbstractModule extends MessageComposite implements IMo
      * @return module factory
      */
     public static ModuleFactory getModuleFactory() {
-    return FACTORY;
-  }
-
-  @Override
-  public boolean initialize(IModule parentModule, ModuleParameter parameter) {
-    if (parameter == null) {
-      mParameter = new ModuleParameter();
-    } else {
-      mParameter = parameter;
+        return FACTORY;
     }
-    mParentModule = parentModule;
-    return true;
-  }
 
-  @Override
-  public void unInitialize() {
-
-  }
-
-
-
-  @Override
-  public boolean updateTools(Widget... tools) {
-    if (mParentModule != null) {
-      return mParentModule.updateTools(tools);
+    @Override
+    public boolean initialize(IModule parentModule, ModuleParameter parameter) {
+        if (parameter == null) {
+            mParameter = new ModuleParameter();
+        } else {
+            mParameter = parameter;
+        }
+        mParentModule = parentModule;
+        return true;
     }
-    return false;
-  }
 
-  @Override
-  public boolean appendTools(Widget tools) {
-    if (mParentModule != null) {
-      return mParentModule.appendTools(tools);
+    @Override
+    public void unInitialize() {
 
     }
-    return false;
-  }
 
-  @Override
-  public boolean appendTools(Widget[] tools) {
-    if (mParentModule != null) {
-      return mParentModule.appendTools(tools);
 
+    @Override
+    public boolean updateTools(Widget... tools) {
+        if (mParentModule != null) {
+            return mParentModule.updateTools(tools);
+        }
+        return false;
     }
-    return false;
-  }
 
-  @Override
-  public IModule getParentModule() {
-    return mParentModule;
-  }
+    @Override
+    public boolean appendTools(Widget tools) {
+        if (mParentModule != null) {
+            return mParentModule.appendTools(tools);
 
-  @Override
-  public ModuleInfo getModuleInfo() {
-    return getModuleFactory().findModuleInfo(getModuleCode());
-  }
+        }
+        return false;
+    }
+
+    @Override
+    public boolean appendTools(Widget[] tools) {
+        if (mParentModule != null) {
+            return mParentModule.appendTools(tools);
+
+        }
+        return false;
+    }
+
+    @Override
+    public IModule getParentModule() {
+        return mParentModule;
+    }
+
+    @Override
+    public ModuleInfo getModuleInfo() {
+        return getModuleFactory().findModuleInfo(getModuleCode());
+    }
 
     /**
      * 获取模块代码
@@ -102,24 +102,24 @@ public abstract class BaseAbstractModule extends MessageComposite implements IMo
      * @param w the w
      */
     public void initModuleWidget(Widget w) {
-    initWidget(w);
-  }
-
-  @Override
-  public Widget getRootWidget() {
-    return this;
-  }
-
-  private List<IModule> getModuleStack(IModule module) {
-
-    List<IModule> modules = new ArrayList<IModule>();
-    IModule p = module;
-    while (p != null) {
-      modules.add(p);
-      p = p.getParentModule();
+        initWidget(w);
     }
-    return modules;
-  }
+
+    @Override
+    public Widget getRootWidget() {
+        return this;
+    }
+
+    private List<IModule> getModuleStack(IModule module) {
+
+        List<IModule> modules = new ArrayList<IModule>();
+        IModule p = module;
+        while (p != null) {
+            modules.add(p);
+            p = p.getParentModule();
+        }
+        return modules;
+    }
 
     /**
      * Gets module path.
@@ -129,23 +129,23 @@ public abstract class BaseAbstractModule extends MessageComposite implements IMo
      */
     public List<SwitchModuleData> getModulePath(IModule module) {
 
-    List<SwitchModuleData> r = new ArrayList<SwitchModuleData>();
+        List<SwitchModuleData> r = new ArrayList<SwitchModuleData>();
 
-    List<IModule> modules = getModuleStack(module);
+        List<IModule> modules = getModuleStack(module);
 
-    for (IModule m : modules) {
-      ModuleInfo info = m.getModuleInfo();
-      SwitchModuleData d = new SwitchModuleData(info.code, info.hash);
-      d.setParameters(m.getParameters());
-      r.add(0, d);
+        for (IModule m : modules) {
+            ModuleInfo info = m.getModuleInfo();
+            SwitchModuleData d = new SwitchModuleData(info.code, info.hash);
+            d.setParameters(m.getParameters());
+            r.add(0, d);
+        }
+        return r;
     }
-    return r;
-  }
 
-  @Override
-  public ModuleParameter getParameters() {
-    return mParameter;
-  }
+    @Override
+    public ModuleParameter getParameters() {
+        return mParameter;
+    }
 
 
 }

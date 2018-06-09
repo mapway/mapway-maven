@@ -11,20 +11,20 @@ import cn.mapway.ui.client.widget.common.DialogBoxEx;
  */
 public class TestDialogBox extends DialogBoxEx {
 
-	private static TestDialogBoxUiBinder uiBinder = GWT.create(TestDialogBoxUiBinder.class);
+    private static TestDialogBoxUiBinder uiBinder = GWT.create(TestDialogBoxUiBinder.class);
 
     /**
      * The interface Test dialog box ui binder.
      */
     interface TestDialogBoxUiBinder extends UiBinder<Widget, TestDialogBox> {
-	}
+    }
 
     /**
      * Instantiates a new Test dialog box.
      */
     public TestDialogBox() {
-		setWidget(uiBinder.createAndBindUi(this));
-		setText("测试弹出框");
-	}
+        setWidget(uiBinder.createAndBindUi(this));
+        setText("测试弹出框");
+    }
 
 }

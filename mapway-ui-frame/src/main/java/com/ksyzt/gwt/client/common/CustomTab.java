@@ -21,39 +21,41 @@ import com.ksyzt.gwt.client.event.MessageEvent;
  */
 public class CustomTab extends MessageComposite {
 
-	/** The ui binder. */
-	private static CustomTabUiBinder uiBinder = GWT
-			.create(CustomTabUiBinder.class);
+    /**
+     * The ui binder.
+     */
+    private static CustomTabUiBinder uiBinder = GWT
+            .create(CustomTabUiBinder.class);
 
     /**
      * The Interface CustomTabUiBinder.
      */
     interface CustomTabUiBinder extends UiBinder<Widget, CustomTab> {
-	}
+    }
 
     /**
      * Instantiates a new custom tab.
      */
     @UiConstructor
-	public CustomTab() {
-		initWidget(uiBinder.createAndBindUi(this));
-		this.setStylePrimaryName("KSYZT");
-		setTabAlign(HasHorizontalAlignment.ALIGN_LEFT);
-	}
+    public CustomTab() {
+        initWidget(uiBinder.createAndBindUi(this));
+        this.setStylePrimaryName("KSYZT");
+        setTabAlign(HasHorizontalAlignment.ALIGN_LEFT);
+    }
 
-	/* (non-Javadoc)
-	 * @see com.google.gwt.user.client.ui.UIObject#setStylePrimaryName(java.lang.String)
-	 */
-	@Override
-	public void setStylePrimaryName(String name) {
-		super.setStylePrimaryName(name);
-		this.setStyleName(this.getStylePrimaryName() + "-TAB");
-		lbCaption.setStyleName(this.getStylePrimaryName() + "-CAPTION");
-		for (int index = 0; index < btns.getWidgetCount(); index++) {
-			Widget a1 = (Widget) btns.getWidget(index);
-			a1.setStyleName(this.getStylePrimaryName() + "-Button");
-		}
-	}
+    /* (non-Javadoc)
+     * @see com.google.gwt.user.client.ui.UIObject#setStylePrimaryName(java.lang.String)
+     */
+    @Override
+    public void setStylePrimaryName(String name) {
+        super.setStylePrimaryName(name);
+        this.setStyleName(this.getStylePrimaryName() + "-TAB");
+        lbCaption.setStyleName(this.getStylePrimaryName() + "-CAPTION");
+        for (int index = 0; index < btns.getWidgetCount(); index++) {
+            Widget a1 = (Widget) btns.getWidget(index);
+            a1.setStyleName(this.getStylePrimaryName() + "-Button");
+        }
+    }
 
     /**
      * Sets the tab align.
@@ -61,41 +63,41 @@ public class CustomTab extends MessageComposite {
      * @param align the new tab align
      */
     public void setTabAlign(HorizontalAlignmentConstant align) {
-		if (HasHorizontalAlignment.ALIGN_RIGHT.getTextAlignString().equals(
-				align.getTextAlignString())) {
-			box.remove(lbCaption);
-			box.insert(lbCaption, 0);
-			box.setCellHorizontalAlignment(btns,
-					HasHorizontalAlignment.ALIGN_RIGHT);
-			box.setCellHorizontalAlignment(lbCaption,
-					HasHorizontalAlignment.ALIGN_LEFT);
-		} else {
-			box.remove(lbCaption);
-			box.insert(lbCaption, 1);
-			box.setCellHorizontalAlignment(btns,
-					HasHorizontalAlignment.ALIGN_LEFT);
-			box.setCellHorizontalAlignment(lbCaption,
-					HasHorizontalAlignment.ALIGN_RIGHT);
-		}
-	}
+        if (HasHorizontalAlignment.ALIGN_RIGHT.getTextAlignString().equals(
+                align.getTextAlignString())) {
+            box.remove(lbCaption);
+            box.insert(lbCaption, 0);
+            box.setCellHorizontalAlignment(btns,
+                    HasHorizontalAlignment.ALIGN_RIGHT);
+            box.setCellHorizontalAlignment(lbCaption,
+                    HasHorizontalAlignment.ALIGN_LEFT);
+        } else {
+            box.remove(lbCaption);
+            box.insert(lbCaption, 1);
+            box.setCellHorizontalAlignment(btns,
+                    HasHorizontalAlignment.ALIGN_LEFT);
+            box.setCellHorizontalAlignment(lbCaption,
+                    HasHorizontalAlignment.ALIGN_RIGHT);
+        }
+    }
 
     /**
      * The box.
      */
     @UiField
-	HorizontalPanel box;
+    HorizontalPanel box;
 
     /**
      * The btns.
      */
     @UiField
-	HorizontalPanel btns;
+    HorizontalPanel btns;
 
     /**
      * The lb caption.
      */
     @UiField
-	Label lbCaption;
+    Label lbCaption;
 
     /**
      * Sets the caption.
@@ -103,8 +105,8 @@ public class CustomTab extends MessageComposite {
      * @param text the new caption
      */
     public void setCaption(String text) {
-		lbCaption.setText(text);
-	}
+        lbCaption.setText(text);
+    }
 
     /**
      * Sets the select index.
@@ -112,8 +114,8 @@ public class CustomTab extends MessageComposite {
      * @param index the new select index
      */
     public void setSelectIndex(int index) {
-		setSelectIndex(index, false);
-	}
+        setSelectIndex(index, false);
+    }
 
     /**
      * Sets the select index.
@@ -121,8 +123,8 @@ public class CustomTab extends MessageComposite {
      * @param data the new select index
      */
     public void setSelectIndex(Object data) {
-		setSelectIndex(data, false);
-	}
+        setSelectIndex(data, false);
+    }
 
     /**
      * Sets the select index.
@@ -131,11 +133,11 @@ public class CustomTab extends MessageComposite {
      * @param fireEvent the fire event
      */
     public void setSelectIndex(int index, boolean fireEvent) {
-		if (index >= 0 && index < btns.getWidgetCount()) {
-			Widget a = (Widget) btns.getWidget(index);
-			makeAnchorSelected(a, fireEvent);
-		}
-	}
+        if (index >= 0 && index < btns.getWidgetCount()) {
+            Widget a = (Widget) btns.getWidget(index);
+            makeAnchorSelected(a, fireEvent);
+        }
+    }
 
     /**
      * Sets the select index.
@@ -144,40 +146,40 @@ public class CustomTab extends MessageComposite {
      * @param fireEvent the fire event
      */
     public void setSelectIndex(Object data, boolean fireEvent) {
-		for (int i = 0; i < btns.getWidgetCount(); i++) {
-			Widget a = (Widget) btns.getWidget(i);
-			if (a.getElement().getPropertyObject("v").equals(data)) {
-				makeAnchorSelected(a, fireEvent);
-				break;
-			}
-		}
-	}
+        for (int i = 0; i < btns.getWidgetCount(); i++) {
+            Widget a = (Widget) btns.getWidget(i);
+            if (a.getElement().getPropertyObject("v").equals(data)) {
+                makeAnchorSelected(a, fireEvent);
+                break;
+            }
+        }
+    }
 
-	/**
-	 * Make anchor selected.
-	 *
-	 * @param a the a
-	 * @param fireEvent the fire event
-	 */
-	private void makeAnchorSelected(Widget a, boolean fireEvent) {
-		if (!a.getStyleName().equals(
-				this.getStylePrimaryName() + "-BUTTON-SELECED")) {
-			for (int index = 0; index < btns.getWidgetCount(); index++) {
-				Widget a1 = (Widget) btns.getWidget(index);
-				if (a1.equals(a)) {
-					a1.setStyleName(this.getStylePrimaryName()
-							+ "-BUTTON-SELECTED");
-				} else {
-					a1.setStyleName(this.getStylePrimaryName() + "-BUTTON");
-				}
-			}
-		}
-		if (fireEvent) {
-			Object v = a.getElement().getPropertyObject("v");
-			MessageEvent ev = new MessageEvent(MessageEvent.ITEMCLICK, v);
-			fireEvent(ev);
-		}
-	}
+    /**
+     * Make anchor selected.
+     *
+     * @param a         the a
+     * @param fireEvent the fire event
+     */
+    private void makeAnchorSelected(Widget a, boolean fireEvent) {
+        if (!a.getStyleName().equals(
+                this.getStylePrimaryName() + "-BUTTON-SELECED")) {
+            for (int index = 0; index < btns.getWidgetCount(); index++) {
+                Widget a1 = (Widget) btns.getWidget(index);
+                if (a1.equals(a)) {
+                    a1.setStyleName(this.getStylePrimaryName()
+                            + "-BUTTON-SELECTED");
+                } else {
+                    a1.setStyleName(this.getStylePrimaryName() + "-BUTTON");
+                }
+            }
+        }
+        if (fireEvent) {
+            Object v = a.getElement().getPropertyObject("v");
+            MessageEvent ev = new MessageEvent(MessageEvent.ITEMCLICK, v);
+            fireEvent(ev);
+        }
+    }
 
     /**
      * Adds the item.
@@ -186,19 +188,21 @@ public class CustomTab extends MessageComposite {
      * @param value the value
      */
     public void addItem(String text, Object value) {
-		Label a = new Label(text);
-		a.addClickHandler(m_click);
-		a.setStyleName(this.getStylePrimaryName() + "-BUTTON");
-		a.getElement().setPropertyObject("v", value);
-		a.setAutoHorizontalAlignment(HasAutoHorizontalAlignment.ALIGN_CENTER);
-		btns.add(a);
-	}
+        Label a = new Label(text);
+        a.addClickHandler(m_click);
+        a.setStyleName(this.getStylePrimaryName() + "-BUTTON");
+        a.getElement().setPropertyObject("v", value);
+        a.setAutoHorizontalAlignment(HasAutoHorizontalAlignment.ALIGN_CENTER);
+        btns.add(a);
+    }
 
-	/** The m click. */
-	private ClickHandler m_click = new ClickHandler() {
-		public void onClick(ClickEvent event) {
-			Widget a = (Widget) event.getSource();
-			makeAnchorSelected(a, true);
-		}
-	};
+    /**
+     * The m click.
+     */
+    private ClickHandler m_click = new ClickHandler() {
+        public void onClick(ClickEvent event) {
+            Widget a = (Widget) event.getSource();
+            makeAnchorSelected(a, true);
+        }
+    };
 }

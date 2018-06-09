@@ -11,20 +11,20 @@ import com.google.gwt.user.client.rpc.IsSerializable;
 @Doc("查询基础用户数据")
 public class PageTableReq implements IsSerializable {
 
-  @ApiField("当前页数")
-  private int page;
+    @ApiField("当前页数")
+    private int page;
 
-  @ApiField("每页显示多少行")
-  private int size = 10;
+    @ApiField("每页显示多少行")
+    private int size = 10;
 
-  @ApiField("排序字段")
-  private String orderField;
+    @ApiField("排序字段")
+    private String orderField;
 
-  @ApiField("排序方式")
-  private String order;
+    @ApiField("排序方式")
+    private String order;
 
-  @ApiField("查询条件")
-  private String cnd;
+    @ApiField("查询条件")
+    private String cnd;
 
     /**
      * Gets page.
@@ -32,8 +32,8 @@ public class PageTableReq implements IsSerializable {
      * @return the page
      */
     public int getPage() {
-    return page;
-  }
+        return page;
+    }
 
     /**
      * Sets page.
@@ -41,8 +41,8 @@ public class PageTableReq implements IsSerializable {
      * @param page the page
      */
     public void setPage(int page) {
-    this.page = page;
-  }
+        this.page = page;
+    }
 
     /**
      * Gets size.
@@ -50,8 +50,8 @@ public class PageTableReq implements IsSerializable {
      * @return the size
      */
     public int getSize() {
-    return size;
-  }
+        return size;
+    }
 
     /**
      * Sets size.
@@ -59,8 +59,8 @@ public class PageTableReq implements IsSerializable {
      * @param size the size
      */
     public void setSize(int size) {
-    this.size = size;
-  }
+        this.size = size;
+    }
 
     /**
      * Gets order field.
@@ -68,8 +68,8 @@ public class PageTableReq implements IsSerializable {
      * @return the order field
      */
     public String getOrderField() {
-    return orderField;
-  }
+        return orderField;
+    }
 
     /**
      * Sets order field.
@@ -77,8 +77,8 @@ public class PageTableReq implements IsSerializable {
      * @param orderField the order field
      */
     public void setOrderField(String orderField) {
-    this.orderField = orderField;
-  }
+        this.orderField = orderField;
+    }
 
     /**
      * Gets order.
@@ -86,8 +86,8 @@ public class PageTableReq implements IsSerializable {
      * @return the order
      */
     public String getOrder() {
-    return order;
-  }
+        return order;
+    }
 
     /**
      * Sets order.
@@ -95,8 +95,8 @@ public class PageTableReq implements IsSerializable {
      * @param order the order
      */
     public void setOrder(String order) {
-    this.order = order;
-  }
+        this.order = order;
+    }
 
     /**
      * Gets cnd.
@@ -104,8 +104,8 @@ public class PageTableReq implements IsSerializable {
      * @return the cnd
      */
     public String getCnd() {
-    return cnd;
-  }
+        return cnd;
+    }
 
     /**
      * Sets cnd.
@@ -113,7 +113,7 @@ public class PageTableReq implements IsSerializable {
      * @param cnd the cnd
      */
     public void setCnd(String cnd) {
-    this.cnd = cnd;
-  }
+        this.cnd = cnd;
+    }
 
 }

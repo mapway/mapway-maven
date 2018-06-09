@@ -20,11 +20,11 @@ public class TestController2 {
      * @param req the req
      * @return the name 3
      */
-    @Doc(value = "touch3", group = "/Style",tags = {"测试","文明"})
-	@RequestMapping("/touch3")
-	public Ret getname3(Req req) {
-		return new Ret();
-	}
+    @Doc(value = "touch3", group = "/Style", tags = {"测试", "文明"})
+    @RequestMapping("/touch3")
+    public Ret getname3(Req req) {
+        return new Ret();
+    }
 
     /**
      * Gets the name 456.
@@ -33,8 +33,8 @@ public class TestController2 {
      * @return the name 456
      */
     @Doc(value = "touch4", group = "/Css")
-	@RequestMapping("/touch3")
-	public Ret getname456(Req req) {
-		return new Ret();
-	}
+    @RequestMapping("/touch3")
+    public Ret getname456(Req req) {
+        return new Ret();
+    }
 }

@@ -20,7 +20,7 @@ import com.google.gwt.user.client.ui.Widget;
 /**
  * The type Baidu module.
  */
-@ModuleMarker(value = BaiduModule.MODULE_CODE, group = "/测试",name = "百度模块", summary = "XXXXXX", icon = "help.png")
+@ModuleMarker(value = BaiduModule.MODULE_CODE, group = "/测试", name = "百度模块", summary = "XXXXXX", icon = "help.png")
 public class BaiduModule extends BaseAbstractModule {
 
     /**
@@ -28,63 +28,63 @@ public class BaiduModule extends BaseAbstractModule {
      */
     public static final String MODULE_CODE = "MC_BAIDU";
 
-  @Override
-  public String getModuleCode() {
-    return MODULE_CODE;
-  }
+    @Override
+    public String getModuleCode() {
+        return MODULE_CODE;
+    }
 
-  private static BaiduModuleUiBinder uiBinder = GWT.create(BaiduModuleUiBinder.class);
+    private static BaiduModuleUiBinder uiBinder = GWT.create(BaiduModuleUiBinder.class);
 
     /**
      * The interface Baidu module ui binder.
      */
     interface BaiduModuleUiBinder extends UiBinder<Widget, BaiduModule> {
-  }
+    }
 
     /**
      * Instantiates a new Baidu module.
      */
     public BaiduModule() {
-    initWidget(uiBinder.createAndBindUi(this));
+        initWidget(uiBinder.createAndBindUi(this));
 
-    Button btn = new Button("tets");
-    btn.addClickHandler(new ClickHandler() {
+        Button btn = new Button("tets");
+        btn.addClickHandler(new ClickHandler() {
 
-      public void onClick(ClickEvent event) {
-        if (b) {
-          tr.getStyle().setHeight(1, Unit.PX);
-          b = false;
-        } else {
-          tr.getStyle().setHeight(20, Unit.PX);
-          b = true;
-        }
-      }
-    });
-    root.add(btn);
+            public void onClick(ClickEvent event) {
+                if (b) {
+                    tr.getStyle().setHeight(1, Unit.PX);
+                    b = false;
+                } else {
+                    tr.getStyle().setHeight(20, Unit.PX);
+                    b = true;
+                }
+            }
+        });
+        root.add(btn);
 
-    txt.getElement().setAttribute("placeholder", "DEBUG_ID_PREFIX");
+        txt.getElement().setAttribute("placeholder", "DEBUG_ID_PREFIX");
 
-  }
-
-  @Override
-  public boolean initialize(IModule parentModule, ModuleParameter parameters) {
-    boolean b = super.initialize(parentModule, parameters);
-    if (parentModule != null) {
-      parentModule.updateTools(new Button("Back"));
     }
-    return b;
-  }
 
-  @Override
-  public Widget getRootWidget() {
-    return this;
-  }
+    @Override
+    public boolean initialize(IModule parentModule, ModuleParameter parameters) {
+        boolean b = super.initialize(parentModule, parameters);
+        if (parentModule != null) {
+            parentModule.updateTools(new Button("Back"));
+        }
+        return b;
+    }
+
+    @Override
+    public Widget getRootWidget() {
+        return this;
+    }
 
     /**
      * The Tr.
      */
     @UiField
-  Element tr;
+    Element tr;
 
     /**
      * The B.
@@ -96,13 +96,13 @@ public class BaiduModule extends BaseAbstractModule {
      * The Root.
      */
     @UiField
-  HTMLPanel root;
+    HTMLPanel root;
 
     /**
      * The Txt.
      */
     @UiField
-  TextBox txt;
+    TextBox txt;
 
 
 }

@@ -17,7 +17,7 @@ public class Entry extends JavaScriptObject {
      * Instantiates a new entry.
      */
     protected Entry() {
-	}
+    }
 
     /**
      * 入口的函数名称.

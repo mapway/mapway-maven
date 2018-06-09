@@ -39,99 +39,105 @@ import com.ksyzt.gwt.client.event.MessageEvent;
  */
 public class ImageUploader extends MessageComposite {
 
-	/** The ui binder. */
-	private static ImageUploaderUiBinder uiBinder = GWT
-			.create(ImageUploaderUiBinder.class);
+    /**
+     * The ui binder.
+     */
+    private static ImageUploaderUiBinder uiBinder = GWT
+            .create(ImageUploaderUiBinder.class);
 
     /**
      * The Interface ImageUploaderUiBinder.
      */
     interface ImageUploaderUiBinder extends UiBinder<Widget, ImageUploader> {
-	}
+    }
 
     /**
      * The root.
      */
     @UiField
-	AbsolutePanel root;
+    AbsolutePanel root;
 
     /**
      * The btn cancel.
      */
     @UiField
-	Button btnCancel;
+    Button btnCancel;
 
-	/** The m image click. */
-	private ClickHandler m_image_click = new ClickHandler() {
+    /**
+     * The m image click.
+     */
+    private ClickHandler m_image_click = new ClickHandler() {
 
-		public void onClick(ClickEvent event) {
-			panelLoader.setVisible(true);
-		}
-	};
+        public void onClick(ClickEvent event) {
+            panelLoader.setVisible(true);
+        }
+    };
 
     /**
      * The m cancel click.
      */
     ClickHandler m_cancel_click = new ClickHandler() {
 
-		public void onClick(ClickEvent event) {
-			panelLoader.setVisible(false);
+        public void onClick(ClickEvent event) {
+            panelLoader.setVisible(false);
 
-		}
-	};
+        }
+    };
 
     /**
      * The info.
      */
     @UiField
-	Label info;
-	
-	/** The m mouse over. */
-	private MouseOverHandler m_mouse_over = new MouseOverHandler() {
+    Label info;
 
-		public void onMouseOver(MouseOverEvent event) {
+    /**
+     * The m mouse over.
+     */
+    private MouseOverHandler m_mouse_over = new MouseOverHandler() {
 
-			if (!panelLoader.isVisible()) {
-				info.setVisible(true);
-			}
-		}
-	};
+        public void onMouseOver(MouseOverEvent event) {
+
+            if (!panelLoader.isVisible()) {
+                info.setVisible(true);
+            }
+        }
+    };
 
     /**
      * The m mouse out.
      */
     MouseOutHandler m_mouse_out = new MouseOutHandler() {
 
-		public void onMouseOut(MouseOutEvent event) {
-			info.setVisible(false);
-		}
-	};
+        public void onMouseOut(MouseOutEvent event) {
+            info.setVisible(false);
+        }
+    };
 
     /**
      * Instantiates a new image uploader.
      */
     @UiConstructor
-	public ImageUploader() {
-		initWidget(uiBinder.createAndBindUi(this));
-		html.addClickHandler(m_image_click);
+    public ImageUploader() {
+        initWidget(uiBinder.createAndBindUi(this));
+        html.addClickHandler(m_image_click);
 
-		btnCancel.addClickHandler(m_cancel_click);
+        btnCancel.addClickHandler(m_cancel_click);
 
-		uploader.setName("fileset");
-		uploader.addChangeHandler(m_file_change);
+        uploader.setName("fileset");
+        uploader.addChangeHandler(m_file_change);
 
-		form.setEncoding(FormPanel.ENCODING_MULTIPART);
-		form.setMethod(FormPanel.METHOD_POST);
-		form.setAction(GWT.getModuleBaseURL() + "../gwtfileuploader");
-		form.addSubmitHandler(m_submit_handler);
-		form.addSubmitCompleteHandler(m_submit_complete_handler);
-		panelLoader.setVisible(false);
+        form.setEncoding(FormPanel.ENCODING_MULTIPART);
+        form.setMethod(FormPanel.METHOD_POST);
+        form.setAction(GWT.getModuleBaseURL() + "../gwtfileuploader");
+        form.addSubmitHandler(m_submit_handler);
+        form.addSubmitCompleteHandler(m_submit_complete_handler);
+        panelLoader.setVisible(false);
 
-		html.addMouseOverHandler(m_mouse_over);
+        html.addMouseOverHandler(m_mouse_over);
 
-		html.addMouseOutHandler(m_mouse_out);
+        html.addMouseOutHandler(m_mouse_out);
 
-	}
+    }
 
     /**
      * Can upload.
@@ -140,121 +146,127 @@ public class ImageUploader extends MessageComposite {
      * @return true, if successful
      */
     public boolean canUpload(String ft) {
-		boolean b = false;
+        boolean b = false;
 
-		if (ft.compareToIgnoreCase("zip") == 0
-				|| ft.compareToIgnoreCase("png") == 0
-				|| ft.compareToIgnoreCase("bmp") == 0
-				|| ft.compareToIgnoreCase("jpg") == 0
-				|| ft.compareToIgnoreCase("jpeg") == 0
-				|| ft.compareToIgnoreCase("swf") == 0
-				|| ft.compareToIgnoreCase("doc") == 0
-				|| ft.compareToIgnoreCase("docx") == 0
-				|| ft.compareToIgnoreCase("gif") == 0
-				|| ft.compareToIgnoreCase("txt") == 0)
-			b = true;
-		return b;
-	}
+        if (ft.compareToIgnoreCase("zip") == 0
+                || ft.compareToIgnoreCase("png") == 0
+                || ft.compareToIgnoreCase("bmp") == 0
+                || ft.compareToIgnoreCase("jpg") == 0
+                || ft.compareToIgnoreCase("jpeg") == 0
+                || ft.compareToIgnoreCase("swf") == 0
+                || ft.compareToIgnoreCase("doc") == 0
+                || ft.compareToIgnoreCase("docx") == 0
+                || ft.compareToIgnoreCase("gif") == 0
+                || ft.compareToIgnoreCase("txt") == 0)
+            b = true;
+        return b;
+    }
 
-	/** The m file change. */
-	private ChangeHandler m_file_change = new ChangeHandler() {
+    /**
+     * The m file change.
+     */
+    private ChangeHandler m_file_change = new ChangeHandler() {
 
-		public void onChange(ChangeEvent event) {
-			String fn = uploader.getFilename();
-			if (uploader.getFilename().equals("")) {
+        public void onChange(ChangeEvent event) {
+            String fn = uploader.getFilename();
+            if (uploader.getFilename().equals("")) {
 
-			} else {
-				int lastdot = fn.lastIndexOf('.');
-				if (lastdot > 0) {
-					String filetype = fn.substring(lastdot + 1);
-					if (canUpload(filetype)) {
-						form.submit();
-					} else {
-						message("不能上传此文件格式");
-					}
-				}
-			}
-		}
-	};
+            } else {
+                int lastdot = fn.lastIndexOf('.');
+                if (lastdot > 0) {
+                    String filetype = fn.substring(lastdot + 1);
+                    if (canUpload(filetype)) {
+                        form.submit();
+                    } else {
+                        message("不能上传此文件格式");
+                    }
+                }
+            }
+        }
+    };
 
-	/* (non-Javadoc)
-	 * @see com.ksyzt.gwt.client.common.MessageComposite#message(java.lang.String)
-	 */
-	public void message(String msg) {
-		MessageEvent ev = new MessageEvent(MessageEvent.MESSAGE, msg);
-		fireEvent(ev);
-	}
+    /* (non-Javadoc)
+     * @see com.ksyzt.gwt.client.common.MessageComposite#message(java.lang.String)
+     */
+    public void message(String msg) {
+        MessageEvent ev = new MessageEvent(MessageEvent.MESSAGE, msg);
+        fireEvent(ev);
+    }
 
-	
-	/** The m submit handler. */
-	private SubmitHandler m_submit_handler = new SubmitHandler() {
 
-		public void onSubmit(SubmitEvent event) {
-			
-		}
-	};
+    /**
+     * The m submit handler.
+     */
+    private SubmitHandler m_submit_handler = new SubmitHandler() {
+
+        public void onSubmit(SubmitEvent event) {
+
+        }
+    };
 
     /**
      * The html.
      */
     @UiField
-	HTML html;
-	
-	/** The m submit complete handler. */
-	private SubmitCompleteHandler m_submit_complete_handler = new SubmitCompleteHandler() {
+    HTML html;
 
-		public void onSubmitComplete(SubmitCompleteEvent event) {
+    /**
+     * The m submit complete handler.
+     */
+    private SubmitCompleteHandler m_submit_complete_handler = new SubmitCompleteHandler() {
 
-			String jsonstr = event.getResults();
-			JSONValue rvalue = JSONParser.parse(jsonstr);
-			JSONObject robj = rvalue.isObject();
+        public void onSubmitComplete(SubmitCompleteEvent event) {
 
-			JSONString msg = (JSONString) robj.get("err").isString();
-			if (msg.stringValue().equals("")) {
-				JSONObject data = robj.get("data").isObject();
+            String jsonstr = event.getResults();
+            JSONValue rvalue = JSONParser.parse(jsonstr);
+            JSONObject robj = rvalue.isObject();
 
-				String path = data.get("path").isString().stringValue();
-				String url = data.get("url").isString().stringValue();
-				mUrl = url;
-				int w = root.getOffsetWidth() - 6;
-				int h = root.getOffsetHeight() - 6;
+            JSONString msg = (JSONString) robj.get("err").isString();
+            if (msg.stringValue().equals("")) {
+                JSONObject data = robj.get("data").isObject();
 
-				String imgdata = "<img src='" + url + "' width=" + w
-						+ " height=" + h + " />";
-				html.setHTML(imgdata);
-				MessageEvent ev = new MessageEvent(MessageEvent.SUCCESS, path);
-				fireEvent(ev);
-				message("上传成功");
-			} else {
-				message(msg.stringValue());
-			}
-			panelLoader.setVisible(false);
-		}
-	};
+                String path = data.get("path").isString().stringValue();
+                String url = data.get("url").isString().stringValue();
+                mUrl = url;
+                int w = root.getOffsetWidth() - 6;
+                int h = root.getOffsetHeight() - 6;
+
+                String imgdata = "<img src='" + url + "' width=" + w
+                        + " height=" + h + " />";
+                html.setHTML(imgdata);
+                MessageEvent ev = new MessageEvent(MessageEvent.SUCCESS, path);
+                fireEvent(ev);
+                message("上传成功");
+            } else {
+                message(msg.stringValue());
+            }
+            panelLoader.setVisible(false);
+        }
+    };
 
     /**
      * The panel loader.
      */
     @UiField
-	FlowPanel panelLoader;
+    FlowPanel panelLoader;
 
     /**
      * The uploader.
      */
     @UiField
-	FileUpload uploader;
+    FileUpload uploader;
 
     /**
      * The thumb width.
      */
     @UiField
-	Hidden thumbWidth;
+    Hidden thumbWidth;
 
     /**
      * The thumb height.
      */
     @UiField
-	Hidden thumbHeight;
+    Hidden thumbHeight;
 
     /**
      * The m height.
@@ -273,19 +285,19 @@ public class ImageUploader extends MessageComposite {
      * @param h the h
      */
     public void setThumbSize(int w, int h) {
-		if (w > 0) {
-			m_width = w;
-		}
-		if (h > 0) {
-			m_height = h;
-		}
-	}
+        if (w > 0) {
+            m_width = w;
+        }
+        if (h > 0) {
+            m_height = h;
+        }
+    }
 
     /**
      * The form.
      */
     @UiField
-	FormPanel form;
+    FormPanel form;
 
     /**
      * 设置初始化图像.
@@ -293,30 +305,30 @@ public class ImageUploader extends MessageComposite {
      * @param url the new image
      */
     public void setImage(String url) {
-		if (url == null || url.length() == 0) {
+        if (url == null || url.length() == 0) {
 
-			int w = this.getOffsetWidth() - 6;
-			int h = this.getOffsetHeight() - 6;
-			url = SysResource.INSTANCE.upload().getSafeUri().asString();
-			String imgdata = "<img src='" + url + "' width=" + w + " height="
-					+ h + " />";
-			html.setHTML(imgdata);
+            int w = this.getOffsetWidth() - 6;
+            int h = this.getOffsetHeight() - 6;
+            url = SysResource.INSTANCE.upload().getSafeUri().asString();
+            String imgdata = "<img src='" + url + "' width=" + w + " height="
+                    + h + " />";
+            html.setHTML(imgdata);
 
-		} else {
-			int w = this.getOffsetWidth() - 6;
-			int h = this.getOffsetHeight() - 6;
-			String imgdata = "<img src='" + url + "' width=" + w + " height="
-					+ h + " />";
-			html.setHTML(imgdata);
-		}
-		panelLoader.setVisible(false);
-	}
+        } else {
+            int w = this.getOffsetWidth() - 6;
+            int h = this.getOffsetHeight() - 6;
+            String imgdata = "<img src='" + url + "' width=" + w + " height="
+                    + h + " />";
+            html.setHTML(imgdata);
+        }
+        panelLoader.setVisible(false);
+    }
 
     /**
      * The btn remove picture.
      */
     @UiField
-	Button btnRemovePicture;
+    Button btnRemovePicture;
 
     /**
      * 删除新闻图片.
@@ -324,22 +336,24 @@ public class ImageUploader extends MessageComposite {
      * @param e the e
      */
     @UiHandler("btnRemovePicture")
-	void onbtnRemovePicture(ClickEvent e) {
-		MessageEvent ev = new MessageEvent(MessageEvent.DELETE, 0);
-		fireEvent(ev);
-	}
+    void onbtnRemovePicture(ClickEvent e) {
+        MessageEvent ev = new MessageEvent(MessageEvent.DELETE, 0);
+        fireEvent(ev);
+    }
 
     /**
      * Reset.
      */
     public void reset() {
-		form.reset();
-		thumbHeight.setValue(m_height + "");
-		thumbWidth.setValue(m_width + "");
-	}
+        form.reset();
+        thumbHeight.setValue(m_height + "");
+        thumbWidth.setValue(m_width + "");
+    }
 
-	/** The m url. */
-	private String mUrl = "";
+    /**
+     * The m url.
+     */
+    private String mUrl = "";
 
     /**
      * 获取图像Url.
@@ -347,6 +361,6 @@ public class ImageUploader extends MessageComposite {
      * @return the image relative url
      */
     public String getImageRelativeUrl() {
-		return mUrl;
-	}
+        return mUrl;
+    }
 }

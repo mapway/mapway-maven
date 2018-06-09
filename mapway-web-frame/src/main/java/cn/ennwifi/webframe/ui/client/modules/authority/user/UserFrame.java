@@ -29,7 +29,7 @@ import java.util.List;
  *
  * @author zhangjianshe
  */
-@ModuleMarker(value = UserFrame.MODULE_CODE,group = "/系统", name = "用户管理", icon = "uf.png")
+@ModuleMarker(value = UserFrame.MODULE_CODE, group = "/系统", name = "用户管理", icon = "uf.png")
 public class UserFrame extends AbstractModuleWithEvent {
 
     /**

@@ -9,7 +9,8 @@ public class ImageEx extends Image {
     /**
      * Instantiates a new Image ex.
      */
-    public ImageEx() {}
+    public ImageEx() {
+    }
 
     /**
      * Gets data.
@@ -17,8 +18,8 @@ public class ImageEx extends Image {
      * @return the data
      */
     public Object getData() {
-    return data;
-  }
+        return data;
+    }
 
     /**
      * Sets data.
@@ -26,10 +27,10 @@ public class ImageEx extends Image {
      * @param data the data
      */
     public void setData(Object data) {
-    this.data = data;
-  }
+        this.data = data;
+    }
 
-  private Object data;
+    private Object data;
 
 
 }

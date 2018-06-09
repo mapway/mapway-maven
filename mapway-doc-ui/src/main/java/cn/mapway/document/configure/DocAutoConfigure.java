@@ -35,8 +35,7 @@ public class DocAutoConfigure {
     /**
      * Instantiates a new Doc auto configure.
      */
-    public DocAutoConfigure()
-    {
+    public DocAutoConfigure() {
         System.out.println("auto configure started");
     }
 
@@ -46,9 +45,9 @@ public class DocAutoConfigure {
      * @return the servlet registration bean
      */
     @Bean
-    ServletRegistrationBean apiDocumentServlet () {
+    ServletRegistrationBean apiDocumentServlet() {
         ServletRegistrationBean srb = new ServletRegistrationBean();
-        MapwayDocServlet servlet =new MapwayDocServlet();
+        MapwayDocServlet servlet = new MapwayDocServlet();
         srb.setServlet(servlet);
         srb.setUrlMappings(Arrays.asList(properties.url));
 
@@ -60,10 +59,10 @@ public class DocAutoConfigure {
         params.put(MapwayDocServlet.PARAM_SUB_TITLE, properties.subTitle);
         params.put(MapwayDocServlet.PARAM_TITLE, properties.title);
         params.put(MapwayDocServlet.PARAM_COPY_RIGHT, properties.copyright);
-        params.put(MapwayDocServlet.PARAM_API_VERSION,properties.version);
-        params.put(MapwayDocServlet.PARAM_LOGO_BASE64,properties.logo);
-        params.put(MapwayDocServlet.PARAM_HOME_URL,properties.home);
-        params.put(MapwayDocServlet.PARAM_CSS_STYLE,properties.style);
+        params.put(MapwayDocServlet.PARAM_API_VERSION, properties.version);
+        params.put(MapwayDocServlet.PARAM_LOGO_BASE64, properties.logo);
+        params.put(MapwayDocServlet.PARAM_HOME_URL, properties.home);
+        params.put(MapwayDocServlet.PARAM_CSS_STYLE, properties.style);
         srb.setInitParameters(params);
         srb.setLoadOnStartup(1);
         return srb;

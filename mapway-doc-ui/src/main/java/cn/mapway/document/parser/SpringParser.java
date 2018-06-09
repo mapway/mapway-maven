@@ -417,8 +417,7 @@ public class SpringParser {
                 //转换markdown to html
                 desc = translateMarkdown(desc);
                 sb.append("<div class='md'>").append(desc).append("</div>");
-            }
-            else {
+            } else {
                 sb.append(desc);
             }
         }

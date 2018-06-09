@@ -22,29 +22,29 @@ public class DefaultMenuHandler implements MenuExecutor {
      */
     protected DefaultMenuHandler() {
 
-  }
-
-  @Override
-  public void execute(Widget sender, IMenuItem menu) {
-    if (menu.getSubMenus().size() == 0) {
-      if (menu.getHandler() != null) {
-        menu.getHandler().execute(sender, menu);
-      }
-      return;
     }
 
-    Widget subMenuPanel = menu.getRender().render(sender, menu);
+    @Override
+    public void execute(Widget sender, IMenuItem menu) {
+        if (menu.getSubMenus().size() == 0) {
+            if (menu.getHandler() != null) {
+                menu.getHandler().execute(sender, menu);
+            }
+            return;
+        }
 
-    if (subMenuPanel == null) {
-      if (menu.getHandler() != null) {
-        menu.getHandler().execute(sender, menu);
+        Widget subMenuPanel = menu.getRender().render(sender, menu);
 
-      }
-      return;
+        if (subMenuPanel == null) {
+            if (menu.getHandler() != null) {
+                menu.getHandler().execute(sender, menu);
+
+            }
+            return;
+        }
+
+        PopupPanel p = new PopupPanel(true);
+        p.add(subMenuPanel);
+        p.showRelativeTo(sender);
     }
-
-    PopupPanel p = new PopupPanel(true);
-    p.add(subMenuPanel);
-    p.showRelativeTo(sender);
-  }
 }

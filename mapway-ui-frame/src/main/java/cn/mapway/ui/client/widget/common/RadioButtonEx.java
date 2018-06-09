@@ -11,47 +11,47 @@ import com.google.gwt.user.client.ui.RadioButton;
  */
 public class RadioButtonEx extends RadioButton implements IValidator {
 
-  @Override
-  public void setMessage(String msg) {
-    this.msg = msg;
-  }
-
-  private String msg = "";
-  private RegExp regex = null;
-  private boolean required = false;
-
-  @Override
-  public String getMessage() {
-    return msg;
-  }
-
-  @Override
-  public void setPattern(String pattern) {
-    if (pattern != null && pattern.length() > 0) {
-      regex = RegExp.compile(pattern);
-    } else {
-      regex = null;
+    @Override
+    public void setMessage(String msg) {
+        this.msg = msg;
     }
-  }
 
-  @Override
-  public void setRequired(boolean b) {
-    required = b;
-  }
+    private String msg = "";
+    private RegExp regex = null;
+    private boolean required = false;
 
-  @Override
-  public boolean isValidate() {
-    return true;
-  }
+    @Override
+    public String getMessage() {
+        return msg;
+    }
+
+    @Override
+    public void setPattern(String pattern) {
+        if (pattern != null && pattern.length() > 0) {
+            regex = RegExp.compile(pattern);
+        } else {
+            regex = null;
+        }
+    }
+
+    @Override
+    public void setRequired(boolean b) {
+        required = b;
+    }
+
+    @Override
+    public boolean isValidate() {
+        return true;
+    }
 
     /**
      * Instantiates a new Radio button ex.
      */
     @UiConstructor
-  public RadioButtonEx() {
-    super("");
-    setStyleName("gwtEx-RadioButton");
-  }
+    public RadioButtonEx() {
+        super("");
+        setStyleName("gwtEx-RadioButton");
+    }
 
     /**
      * Instantiates a new Radio button ex.
@@ -59,8 +59,8 @@ public class RadioButtonEx extends RadioButton implements IValidator {
      * @param name the name
      */
     public RadioButtonEx(String name) {
-    super(name);
-  }
+        super(name);
+    }
 
     /**
      * Instantiates a new Radio button ex.
@@ -69,8 +69,8 @@ public class RadioButtonEx extends RadioButton implements IValidator {
      * @param label the label
      */
     public RadioButtonEx(String name, SafeHtml label) {
-    super(name, label);
-  }
+        super(name, label);
+    }
 
     /**
      * Instantiates a new Radio button ex.
@@ -80,7 +80,7 @@ public class RadioButtonEx extends RadioButton implements IValidator {
      * @param directionEstimator the direction estimator
      */
     public RadioButtonEx(String name, SafeHtml label, DirectionEstimator directionEstimator) {
-    super(name, label, directionEstimator);
-  }
+        super(name, label, directionEstimator);
+    }
 
 }

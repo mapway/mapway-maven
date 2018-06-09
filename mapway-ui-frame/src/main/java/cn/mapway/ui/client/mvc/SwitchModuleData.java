@@ -6,9 +6,9 @@ package cn.mapway.ui.client.mvc;
  * @author admin
  */
 public class SwitchModuleData {
-  private String moduleCode;
-  private String hash;
-  private ModuleParameter paras;
+    private String moduleCode;
+    private String hash;
+    private ModuleParameter paras;
 
     /**
      * Gets module code.
@@ -16,8 +16,8 @@ public class SwitchModuleData {
      * @return the module code
      */
     public String getModuleCode() {
-    return moduleCode;
-  }
+        return moduleCode;
+    }
 
     /**
      * Gets hash.
@@ -25,8 +25,8 @@ public class SwitchModuleData {
      * @return the hash
      */
     public String getHash() {
-    return hash;
-  }
+        return hash;
+    }
 
     /**
      * Gets parameters.
@@ -34,8 +34,8 @@ public class SwitchModuleData {
      * @return the parameters
      */
     public ModuleParameter getParameters() {
-    return paras;
-  }
+        return paras;
+    }
 
     /**
      * 设置模块参数.
@@ -43,8 +43,8 @@ public class SwitchModuleData {
      * @param ps the ps
      */
     public void setParameters(ModuleParameter ps) {
-    paras = ps;
-  }
+        paras = ps;
+    }
 
     /**
      * Instantiates a new Switch module data.
@@ -53,10 +53,10 @@ public class SwitchModuleData {
      * @param hash the hash
      */
     public SwitchModuleData(String code, String hash) {
-    this.moduleCode = code;
-    this.hash = hash;
-    this.paras = new ModuleParameter();
-  }
+        this.moduleCode = code;
+        this.hash = hash;
+        this.paras = new ModuleParameter();
+    }
 
     /**
      * Put switch module data.
@@ -66,13 +66,13 @@ public class SwitchModuleData {
      * @return the switch module data
      */
     public SwitchModuleData put(String key, Object value) {
-    this.paras.put(key, value);
-    return this;
-  }
+        this.paras.put(key, value);
+        return this;
+    }
 
-  @Override
-  public String toString() {
-    return "Moduel switch data:" + moduleCode + ">" + paras.size();
-  }
+    @Override
+    public String toString() {
+        return "Moduel switch data:" + moduleCode + ">" + paras.size();
+    }
 
 }

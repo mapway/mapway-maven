@@ -8,17 +8,25 @@ package com.mapway.database2java.model.schema;
  */
 public class Argument {
 
-	/** The Name. */
-	private String Name;
-	
-	/** The type. */
-	private String type;
-	
-	/** The Property. */
-	private String Property;
-	
-	/** The position. */
-	private int    position;
+    /**
+     * The Name.
+     */
+    private String Name;
+
+    /**
+     * The type.
+     */
+    private String type;
+
+    /**
+     * The Property.
+     */
+    private String Property;
+
+    /**
+     * The position.
+     */
+    private int position;
 
     /**
      * Gets the position.
@@ -26,8 +34,8 @@ public class Argument {
      * @return the position
      */
     public int getPosition() {
-		return position;
-	}
+        return position;
+    }
 
     /**
      * Sets the position.
@@ -35,8 +43,8 @@ public class Argument {
      * @param position the new position
      */
     public void setPosition(int position) {
-		this.position = position;
-	}
+        this.position = position;
+    }
 
     /**
      * Gets the property.
@@ -44,8 +52,8 @@ public class Argument {
      * @return the property
      */
     public String getProperty() {
-		return Property;
-	}
+        return Property;
+    }
 
     /**
      * Sets the property.
@@ -53,8 +61,8 @@ public class Argument {
      * @param property the new property
      */
     public void setProperty(String property) {
-		Property = property;
-	}
+        Property = property;
+    }
 
     /**
      * Gets the name.
@@ -62,8 +70,8 @@ public class Argument {
      * @return the name
      */
     public String getName() {
-		return Name;
-	}
+        return Name;
+    }
 
     /**
      * Sets the name.
@@ -71,8 +79,8 @@ public class Argument {
      * @param name the new name
      */
     public void setName(String name) {
-		Name = name;
-	}
+        Name = name;
+    }
 
     /**
      * Gets the type.
@@ -80,8 +88,8 @@ public class Argument {
      * @return the type
      */
     public String getType() {
-		return type;
-	}
+        return type;
+    }
 
     /**
      * Sets the type.
@@ -89,56 +97,52 @@ public class Argument {
      * @param type the new type
      */
     public void setType(String type) {
-		this.type = type;
-	}
+        this.type = type;
+    }
 
     /**
      * Gets the java type.
      *
      * @return the java type
      */
-    public String getJavaType()
-	{
-		TypeMapper tm=TypeMapper.getInstance();
-		ModleTypes mts=tm.getOracle2JDBC();
-		return mts.likeValue(this.type);
-	}
+    public String getJavaType() {
+        TypeMapper tm = TypeMapper.getInstance();
+        ModleTypes mts = tm.getOracle2JDBC();
+        return mts.likeValue(this.type);
+    }
 
     /**
      * Gets the java type 2.
      *
      * @return the java type 2
      */
-    public String getJavaType2()
-	{
-		TypeMapper tm=TypeMapper.getInstance();
-		ModleTypes mts=tm.getOracle2JDBC2();
-		return mts.likeValue(this.type);
-	}
+    public String getJavaType2() {
+        TypeMapper tm = TypeMapper.getInstance();
+        ModleTypes mts = tm.getOracle2JDBC2();
+        return mts.likeValue(this.type);
+    }
 
     /**
      * Gets the java type 3.
      *
      * @return the java type 3
      */
-    public String getJavaType3()
-	{
-		TypeMapper tm=TypeMapper.getInstance();
-		ModleTypes mts=tm.getOracle2JDBC3();
-		return mts.likeValue(this.type);
-	}
+    public String getJavaType3() {
+        TypeMapper tm = TypeMapper.getInstance();
+        ModleTypes mts = tm.getOracle2JDBC3();
+        return mts.likeValue(this.type);
+    }
 
     /**
      * Gets the net type.
      *
      * @return the net type
      */
-    public String getNetType()
-	{
-		TypeMapper tm=TypeMapper.getInstance();
-		ModleTypes mts=tm.getOracle2Net();
-		return mts.likeValue(this.type);
-	}
+    public String getNetType() {
+        TypeMapper tm = TypeMapper.getInstance();
+        ModleTypes mts = tm.getOracle2Net();
+        return mts.likeValue(this.type);
+    }
 
     /**
      * Gets the java type 4.
@@ -146,9 +150,9 @@ public class Argument {
      * @return the java type 4
      */
     public String getJavaType4() {
-		TypeMapper tm=TypeMapper.getInstance();
-		ModleTypes mts=tm.getOracle2JDBC4();
-		return mts.likeValue(this.type);
-	}
-	
+        TypeMapper tm = TypeMapper.getInstance();
+        ModleTypes mts = tm.getOracle2JDBC4();
+        return mts.likeValue(this.type);
+    }
+
 }

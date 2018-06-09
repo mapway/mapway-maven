@@ -20,31 +20,31 @@ import com.google.gwt.resources.client.ImageResource;
 public class MenuItem implements IMenuItem {
 
 
-  private IMenuItem parent;
-  private ImageResource icon;
-  private String name;
-  private String title;
-  private List<IMenuItem> subMenus;
-  private MenuExecutor handler;
-  private Map<String, Object> parameters;
-  private MenuDirection direction;
-  private IMenuRender render;
+    private IMenuItem parent;
+    private ImageResource icon;
+    private String name;
+    private String title;
+    private List<IMenuItem> subMenus;
+    private MenuExecutor handler;
+    private Map<String, Object> parameters;
+    private MenuDirection direction;
+    private IMenuRender render;
 
 
     /**
      * Instantiates a new Menu item.
      */
     public MenuItem() {
-    name = "菜单项";
-    title = name;
-    icon = null;
-    subMenus = new ArrayList<IMenuItem>();
-    parameters = new HashMap<String, Object>();
-    direction = MenuDirection.HORIZONTAL;
-    render = HorizontalMenuRender.HORIZONTAL_MENU_RENDER;
-    parent = null;
-    handler = null;
-  }
+        name = "菜单项";
+        title = name;
+        icon = null;
+        subMenus = new ArrayList<IMenuItem>();
+        parameters = new HashMap<String, Object>();
+        direction = MenuDirection.HORIZONTAL;
+        render = HorizontalMenuRender.HORIZONTAL_MENU_RENDER;
+        parent = null;
+        handler = null;
+    }
 
     /**
      * Instantiates a new Menu item.
@@ -52,8 +52,8 @@ public class MenuItem implements IMenuItem {
      * @param name the name
      */
     public MenuItem(String name) {
-    this(name, DefaultMenuHandler.INSTANCE);
-  }
+        this(name, DefaultMenuHandler.INSTANCE);
+    }
 
     /**
      * Instantiates a new Menu item.
@@ -62,8 +62,8 @@ public class MenuItem implements IMenuItem {
      * @param handler the handler
      */
     public MenuItem(String name, MenuExecutor handler) {
-    this(name, HorizontalMenuRender.HORIZONTAL_MENU_RENDER, handler);
-  }
+        this(name, HorizontalMenuRender.HORIZONTAL_MENU_RENDER, handler);
+    }
 
     /**
      * Instantiates a new Menu item.
@@ -72,8 +72,8 @@ public class MenuItem implements IMenuItem {
      * @param render the render
      */
     public MenuItem(String name, IMenuRender render) {
-    this(name, render, DefaultMenuHandler.INSTANCE);
-  }
+        this(name, render, DefaultMenuHandler.INSTANCE);
+    }
 
     /**
      * Instantiates a new Menu item.
@@ -83,119 +83,119 @@ public class MenuItem implements IMenuItem {
      * @param handler the handler
      */
     public MenuItem(String name, IMenuRender render, MenuExecutor handler) {
-    this();
-    this.name = name;
-    this.render = render;
-    this.handler = handler;
-  }
+        this();
+        this.name = name;
+        this.render = render;
+        this.handler = handler;
+    }
 
 
-  @Override
-  public MenuDirection getDirection() {
+    @Override
+    public MenuDirection getDirection() {
 
-    return direction;
-  }
+        return direction;
+    }
 
-  @Override
-  public void setDirection(MenuDirection direction) {
-    this.direction = direction;
-  }
+    @Override
+    public void setDirection(MenuDirection direction) {
+        this.direction = direction;
+    }
 
-  @Override
-  public String getName() {
+    @Override
+    public String getName() {
 
-    return name;
-  }
+        return name;
+    }
 
-  @Override
-  public void setName(String name) {
-    this.name = name;
-  }
+    @Override
+    public void setName(String name) {
+        this.name = name;
+    }
 
-  @Override
-  public String getTitle() {
+    @Override
+    public String getTitle() {
 
-    return title;
-  }
+        return title;
+    }
 
-  @Override
-  public void setTitle(String title) {
-    this.title = title;
+    @Override
+    public void setTitle(String title) {
+        this.title = title;
 
-  }
+    }
 
-  @Override
-  public ImageResource getIcon() {
+    @Override
+    public ImageResource getIcon() {
 
-    return icon;
-  }
+        return icon;
+    }
 
-  @Override
-  public void setIcon(ImageResource icon) {
+    @Override
+    public void setIcon(ImageResource icon) {
 
-    this.icon = icon;
-  }
+        this.icon = icon;
+    }
 
-  @Override
-  public Map<String, Object> getParameters() {
+    @Override
+    public Map<String, Object> getParameters() {
 
-    return parameters;
-  }
+        return parameters;
+    }
 
-  @Override
-  public void setParameters(Map<String, Object> parameters) {
-    this.parameters = parameters;
-  }
+    @Override
+    public void setParameters(Map<String, Object> parameters) {
+        this.parameters = parameters;
+    }
 
 
-  @Override
-  public void setRender(IMenuRender render) {
+    @Override
+    public void setRender(IMenuRender render) {
 
-    this.render = render;
-  }
+        this.render = render;
+    }
 
-  @Override
-  public IMenuRender getRender() {
+    @Override
+    public IMenuRender getRender() {
 
-    return render;
-  }
+        return render;
+    }
 
-  @Override
-  public IMenuItem addSubMenu(IMenuItem item) {
-    subMenus.add(item);
-    item.setParent(this);
-    return item;
-  }
+    @Override
+    public IMenuItem addSubMenu(IMenuItem item) {
+        subMenus.add(item);
+        item.setParent(this);
+        return item;
+    }
 
-  @Override
-  public List<IMenuItem> getSubMenus() {
+    @Override
+    public List<IMenuItem> getSubMenus() {
 
-    return this.subMenus;
-  }
+        return this.subMenus;
+    }
 
-  @Override
-  public IMenuItem parent() {
+    @Override
+    public IMenuItem parent() {
 
-    return parent;
-  }
+        return parent;
+    }
 
-  @Override
-  public void setParent(MenuItem parent) {
+    @Override
+    public void setParent(MenuItem parent) {
 
-    this.parent = parent;
-  }
+        this.parent = parent;
+    }
 
-  @Override
-  public void setHandler(MenuExecutor handler) {
+    @Override
+    public void setHandler(MenuExecutor handler) {
 
-    this.handler = handler;
-  }
+        this.handler = handler;
+    }
 
-  @Override
-  public MenuExecutor getHandler() {
+    @Override
+    public MenuExecutor getHandler() {
 
-    return this.handler;
-  }
+        return this.handler;
+    }
 
 
 }

@@ -23,10 +23,10 @@ public class Links extends HorizontalPanel implements HasMessageHandlers, ClickH
      * Instantiates a new links.
      */
     public Links() {
-    super();
-    this.setSpacing(3);
-    this.setStyleName("home-Links");
-  }
+        super();
+        this.setSpacing(3);
+        this.setStyleName("home-Links");
+    }
 
     /**
      * 添加命令.
@@ -36,16 +36,16 @@ public class Links extends HorizontalPanel implements HasMessageHandlers, ClickH
      * @param data    the data
      */
     public void addCommand(Integer command, String text, Object data) {
-    AnchorEx AnchorEx = new AnchorEx();
-    AnchorEx.setText(text);
-    AnchorEx.setData(data);
-    AnchorEx.setCommand(command);
-    AnchorEx.addClickHandler(this);
-    if (this.getWidgetCount() > 0) {
-      this.add(new HTML("&nbsp;&nbsp;"));
+        AnchorEx AnchorEx = new AnchorEx();
+        AnchorEx.setText(text);
+        AnchorEx.setData(data);
+        AnchorEx.setCommand(command);
+        AnchorEx.addClickHandler(this);
+        if (this.getWidgetCount() > 0) {
+            this.add(new HTML("&nbsp;&nbsp;"));
+        }
+        this.add(AnchorEx);
     }
-    this.add(AnchorEx);
-  }
 
     /**
      * 加入一个链接.
@@ -55,39 +55,39 @@ public class Links extends HorizontalPanel implements HasMessageHandlers, ClickH
      * @param target 目标窗口
      */
     public void addLink(String text, String url, String target) {
-    AnchorEx AnchorEx = new AnchorEx();
-    AnchorEx.setText(text);
-    AnchorEx.setHref(url);
-    AnchorEx.setTarget(target);
-    if (this.getWidgetCount() > 0) {
-      this.add(new HTML("&nbsp;&nbsp;"));
+        AnchorEx AnchorEx = new AnchorEx();
+        AnchorEx.setText(text);
+        AnchorEx.setHref(url);
+        AnchorEx.setTarget(target);
+        if (this.getWidgetCount() > 0) {
+            this.add(new HTML("&nbsp;&nbsp;"));
+        }
+        this.add(AnchorEx);
     }
-    this.add(AnchorEx);
-  }
 
-  /*
-   * (non-Javadoc)
-   * 
-   * @see
-   * com.ksyzt.gwt.client.event.HasMessageHandlers#addMessageHandler(com.ksyzt.gwt.client.event.
-   * MessageHandler)
-   */
-  @Override
-  public HandlerRegistration addMessageHandler(MessageHandler handler) {
-    return addHandler(handler, MessageEvent.TYPE);
-  }
+    /*
+     * (non-Javadoc)
+     *
+     * @see
+     * com.ksyzt.gwt.client.event.HasMessageHandlers#addMessageHandler(com.ksyzt.gwt.client.event.
+     * MessageHandler)
+     */
+    @Override
+    public HandlerRegistration addMessageHandler(MessageHandler handler) {
+        return addHandler(handler, MessageEvent.TYPE);
+    }
 
-  /*
-   * (non-Javadoc)
-   * 
-   * @see
-   * com.google.gwt.event.dom.client.ClickHandler#onClick(com.google.gwt.event.dom.client.ClickEvent
-   * )
-   */
-  @Override
-  public void onClick(ClickEvent event) {
-    AnchorEx AnchorEx = (AnchorEx) event.getSource();
-    MessageEvent ev = new MessageEvent(AnchorEx.getCommand(), AnchorEx.getData());
-    fireEvent(ev);
-  }
+    /*
+     * (non-Javadoc)
+     *
+     * @see
+     * com.google.gwt.event.dom.client.ClickHandler#onClick(com.google.gwt.event.dom.client.ClickEvent
+     * )
+     */
+    @Override
+    public void onClick(ClickEvent event) {
+        AnchorEx AnchorEx = (AnchorEx) event.getSource();
+        MessageEvent ev = new MessageEvent(AnchorEx.getCommand(), AnchorEx.getData());
+        fireEvent(ev);
+    }
 }

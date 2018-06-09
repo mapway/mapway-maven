@@ -23,8 +23,8 @@ public class EventBus {
      * Instantiates a new event bus.
      */
     public EventBus() {
-    events = new HashMap<String, List<IEventHandler>>();
-  }
+        events = new HashMap<String, List<IEventHandler>>();
+    }
 
 
     /**
@@ -35,38 +35,38 @@ public class EventBus {
      * @return true, if successful
      */
     public boolean register(String topic, IEventHandler handler) {
-    if (topic == null || topic.length() == 0 || handler == null) {
-      return false;
+        if (topic == null || topic.length() == 0 || handler == null) {
+            return false;
+        }
+        List<IEventHandler> list = events.get(topic);
+        if (list == null) {
+            list = new ArrayList<IEventHandler>();
+            events.put(topic, list);
+        }
+        boolean exist = exist(list, handler);
+        if (exist) {
+            return false;
+        } else {
+            list.add(handler);
+            return true;
+        }
     }
-    List<IEventHandler> list = events.get(topic);
-    if (list == null) {
-      list = new ArrayList<IEventHandler>();
-      events.put(topic, list);
-    }
-    boolean exist = exist(list, handler);
-    if (exist) {
-      return false;
-    } else {
-      list.add(handler);
-      return true;
-    }
-  }
 
-  /**
-   * Exist.
-   *
-   * @param list the list
-   * @param handler the handler
-   * @return true, if successful
-   */
-  private boolean exist(List<IEventHandler> list, IEventHandler handler) {
-    for (IEventHandler h : list) {
-      if (h.equals(handler)) {
-        return true;
-      }
+    /**
+     * Exist.
+     *
+     * @param list    the list
+     * @param handler the handler
+     * @return true, if successful
+     */
+    private boolean exist(List<IEventHandler> list, IEventHandler handler) {
+        for (IEventHandler h : list) {
+            if (h.equals(handler)) {
+                return true;
+            }
+        }
+        return false;
     }
-    return false;
-  }
 
 
     /**
@@ -77,19 +77,19 @@ public class EventBus {
      * @return true, if successful
      */
     public boolean unregister(String topic, IEventHandler handler) {
-    if (topic == null || handler == null) {
-      return false;
+        if (topic == null || handler == null) {
+            return false;
+        }
+        List<IEventHandler> list = events.get(topic);
+        if (list == null) {
+            return false;
+        }
+        list.remove(handler);
+        if (list.size() == 0) {
+            events.remove(topic);
+        }
+        return true;
     }
-    List<IEventHandler> list = events.get(topic);
-    if (list == null) {
-      return false;
-    }
-    list.remove(handler);
-    if (list.size() == 0) {
-      events.remove(topic);
-    }
-    return true;
-  }
 
     /**
      * 激发一个事件.
@@ -99,13 +99,13 @@ public class EventBus {
      * @param event the event
      */
     public void fire(String topic, int type, Object event) {
-    List<IEventHandler> list = events.get(topic);
-    if (list == null) {
-      return;
+        List<IEventHandler> list = events.get(topic);
+        if (list == null) {
+            return;
+        }
+        Iterator<IEventHandler> it = list.iterator();
+        while (it.hasNext()) {
+            it.next().onEvent(topic, type, event);
+        }
     }
-    Iterator<IEventHandler> it = list.iterator();
-    while (it.hasNext()) {
-      it.next().onEvent(topic, type, event);
-    }
-  }
 }

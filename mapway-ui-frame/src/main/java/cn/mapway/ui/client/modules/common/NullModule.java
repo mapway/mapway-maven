@@ -10,7 +10,7 @@ import com.google.gwt.user.client.ui.Widget;
 /**
  * The type Null module.
  */
-@ModuleMarker(value = NullModule.MODULE_CODE,group = "/系统", name = "空模块")
+@ModuleMarker(value = NullModule.MODULE_CODE, group = "/系统", name = "空模块")
 public class NullModule extends BaseAbstractModule {
 
     /**
@@ -18,24 +18,24 @@ public class NullModule extends BaseAbstractModule {
      */
     public final static String MODULE_CODE = "NULL_MODULE";
 
-  @Override
-  public String getModuleCode() {
-    return MODULE_CODE;
-  }
+    @Override
+    public String getModuleCode() {
+        return MODULE_CODE;
+    }
 
-  private static NullModuleUiBinder uiBinder = GWT.create(NullModuleUiBinder.class);
+    private static NullModuleUiBinder uiBinder = GWT.create(NullModuleUiBinder.class);
 
     /**
      * The interface Null module ui binder.
      */
     interface NullModuleUiBinder extends UiBinder<Widget, NullModule> {
-  }
+    }
 
     /**
      * Instantiates a new Null module.
      */
     public NullModule() {
-    initModuleWidget(uiBinder.createAndBindUi(this));
-  }
+        initModuleWidget(uiBinder.createAndBindUi(this));
+    }
 
 }

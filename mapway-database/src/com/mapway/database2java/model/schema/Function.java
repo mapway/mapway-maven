@@ -6,21 +6,24 @@ package com.mapway.database2java.model.schema;
  * The Class Function.
  */
 public class Function {
-	
-	/** The Name. */
-	private String Name;
-	
-	/** The arguments. */
-	private Arguments arguments;
+
+    /**
+     * The Name.
+     */
+    private String Name;
+
+    /**
+     * The arguments.
+     */
+    private Arguments arguments;
 
     /**
      * Instantiates a new function.
      */
-    public Function()
-	{
-		Name="";
-		arguments=new Arguments();
-	}
+    public Function() {
+        Name = "";
+        arguments = new Arguments();
+    }
 
     /**
      * Gets the arguments.
@@ -28,8 +31,8 @@ public class Function {
      * @return the arguments
      */
     public Arguments getArguments() {
-		return arguments;
-	}
+        return arguments;
+    }
 
     /**
      * Sets the arguments.
@@ -37,8 +40,8 @@ public class Function {
      * @param arguments the new arguments
      */
     public void setArguments(Arguments arguments) {
-		this.arguments = arguments;
-	}
+        this.arguments = arguments;
+    }
 
     /**
      * Gets the name.
@@ -46,8 +49,8 @@ public class Function {
      * @return the name
      */
     public String getName() {
-		return Name;
-	}
+        return Name;
+    }
 
     /**
      * Sets the name.
@@ -55,6 +58,6 @@ public class Function {
      * @param name the new name
      */
     public void setName(String name) {
-		Name = name;
-	}
+        Name = name;
+    }
 }

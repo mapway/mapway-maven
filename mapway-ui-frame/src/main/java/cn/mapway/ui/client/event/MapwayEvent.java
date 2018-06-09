@@ -10,10 +10,10 @@ import com.google.gwt.event.shared.GwtEvent.Type;
  */
 public class MapwayEvent<T> extends GwtEvent<MapwayHandler<T>> {
 
-	  /**
-	   * Handler type.
-	   */
-	  private static Type<MapwayHandler<?>> TYPE;
+    /**
+     * Handler type.
+     */
+    private static Type<MapwayHandler<?>> TYPE;
 
     /**
      * Fires a selection event on all registered handlers in the handler
@@ -24,12 +24,12 @@ public class MapwayEvent<T> extends GwtEvent<MapwayHandler<T>> {
      * @param msgType the msg type
      * @param data    the data
      */
-    public static <T> void fire(HasMapwayHandlers<T> source,Integer msgType, T data) {
-	    if (TYPE != null) {
-	      MapwayEvent<T> event = new MapwayEvent<T>(msgType,data);
-	      source.fireEvent(event);
-	    }
-	  }
+    public static <T> void fire(HasMapwayHandlers<T> source, Integer msgType, T data) {
+        if (TYPE != null) {
+            MapwayEvent<T> event = new MapwayEvent<T>(msgType, data);
+            source.fireEvent(event);
+        }
+    }
 
     /**
      * Gets the type associated with this event.
@@ -37,17 +37,21 @@ public class MapwayEvent<T> extends GwtEvent<MapwayHandler<T>> {
      * @return returns the handler type
      */
     public static Type<MapwayHandler<?>> getType() {
-	    if (TYPE == null) {
-	      TYPE = new Type<MapwayHandler<?>>();
-	    }
-	    return TYPE;
-	  }
+        if (TYPE == null) {
+            TYPE = new Type<MapwayHandler<?>>();
+        }
+        return TYPE;
+    }
 
-	  /** The data. */
-  	private final T data;
-	  
-  	/** The msg type. */
-  	private Integer msgType;
+    /**
+     * The data.
+     */
+    private final T data;
+
+    /**
+     * The msg type.
+     */
+    private Integer msgType;
 
     /**
      * Instantiates a new mapway event.
@@ -55,21 +59,21 @@ public class MapwayEvent<T> extends GwtEvent<MapwayHandler<T>> {
      * @param msgType the msg type
      * @param data    the data
      */
-    protected MapwayEvent(Integer msgType,T data) {
-	    this.data = data;
-	    this.msgType=msgType;
-	  }
+    protected MapwayEvent(Integer msgType, T data) {
+        this.data = data;
+        this.msgType = msgType;
+    }
 
-	  // The instance knows its BeforeMapwayHandler is of type I, but the TYPE
-	  /* (non-Javadoc)
-  	 * @see com.google.gwt.event.shared.GwtEvent#getAssociatedType()
-  	 */
-  	// field itself does not, so we have to do an unsafe cast here.
-	  @SuppressWarnings("unchecked")
-	  @Override
-	  public final Type<MapwayHandler<T>> getAssociatedType() {
-	    return (Type) TYPE;
-	  }
+    // The instance knows its BeforeMapwayHandler is of type I, but the TYPE
+    /* (non-Javadoc)
+     * @see com.google.gwt.event.shared.GwtEvent#getAssociatedType()
+     */
+    // field itself does not, so we have to do an unsafe cast here.
+    @SuppressWarnings("unchecked")
+    @Override
+    public final Type<MapwayHandler<T>> getAssociatedType() {
+        return (Type) TYPE;
+    }
 
     /**
      * Gets the selected item.
@@ -77,16 +81,16 @@ public class MapwayEvent<T> extends GwtEvent<MapwayHandler<T>> {
      * @return the selected item
      */
     public T getSelectedItem() {
-	    return data;
-	  }
+        return data;
+    }
 
-	  /* (non-Javadoc)
-  	 * @see com.google.gwt.event.shared.GwtEvent#dispatch(com.google.gwt.event.shared.EventHandler)
-  	 */
-  	@Override
-	  protected void dispatch(MapwayHandler<T> handler) {
-	    handler.handle(this.getSource(),this.msgType,this.data);
-	  }
+    /* (non-Javadoc)
+     * @see com.google.gwt.event.shared.GwtEvent#dispatch(com.google.gwt.event.shared.EventHandler)
+     */
+    @Override
+    protected void dispatch(MapwayHandler<T> handler) {
+        handler.handle(this.getSource(), this.msgType, this.data);
+    }
 
 
     /**

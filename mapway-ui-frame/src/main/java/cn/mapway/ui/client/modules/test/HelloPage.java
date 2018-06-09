@@ -10,19 +10,19 @@ import com.google.gwt.user.client.ui.Widget;
  */
 public class HelloPage extends Composite {
 
-  private static HelloPageUiBinder uiBinder = GWT.create(HelloPageUiBinder.class);
+    private static HelloPageUiBinder uiBinder = GWT.create(HelloPageUiBinder.class);
 
     /**
      * The interface Hello page ui binder.
      */
     interface HelloPageUiBinder extends UiBinder<Widget, HelloPage> {
-  }
+    }
 
     /**
      * Instantiates a new Hello page.
      */
     public HelloPage() {
-    initWidget(uiBinder.createAndBindUi(this));
-  }
+        initWidget(uiBinder.createAndBindUi(this));
+    }
 
 }

@@ -27,42 +27,42 @@ public class TestModule extends AbstractModuleWithEvent {
      */
     public final static String MODULE_CODE = "MC_TEST_COMPONENT";
 
-  @Override
-  public String getModuleCode() {
-    return MODULE_CODE;
-  }
+    @Override
+    public String getModuleCode() {
+        return MODULE_CODE;
+    }
 
-  private static TestModuleUiBinder uiBinder = GWT.create(TestModuleUiBinder.class);
+    private static TestModuleUiBinder uiBinder = GWT.create(TestModuleUiBinder.class);
 
     /**
      * The interface Test module ui binder.
      */
     interface TestModuleUiBinder extends UiBinder<Widget, TestModule> {
-  }
+    }
 
     /**
      * The Editor.
      */
     @UiField
-  RichEditorBox editor;
+    RichEditorBox editor;
 
     /**
      * Instantiates a new Test module.
      */
     public TestModule() {
-    initModuleWidget(uiBinder.createAndBindUi(this));
-    editor.setImagePrefix(ClientContext.getContext().getConfigure().getImagePrefix());
-    editor.setUploadAction(ClientContext.getContext().getImageUploadAction());
-  }
+        initModuleWidget(uiBinder.createAndBindUi(this));
+        editor.setImagePrefix(ClientContext.getContext().getConfigure().getImagePrefix());
+        editor.setUploadAction(ClientContext.getContext().getImageUploadAction());
+    }
 
 
-  @Override
-  public boolean initialize(IModule parentModule, ModuleParameter parameters) {
-    boolean b = super.initialize(parentModule, parameters);
+    @Override
+    public boolean initialize(IModule parentModule, ModuleParameter parameters) {
+        boolean b = super.initialize(parentModule, parameters);
 
-    editor.setValue("<b> wangmingli</b>");
-    return b;
-  }
+        editor.setValue("<b> wangmingli</b>");
+        return b;
+    }
 
     /**
      * On click.
@@ -70,7 +70,7 @@ public class TestModule extends AbstractModuleWithEvent {
      * @param e the e
      */
     @UiHandler("btn")
-  void onClick(ClickEvent e) {
-    ClientContext.getContext().confirm(editor.getValue());
-  }
+    void onClick(ClickEvent e) {
+        ClientContext.getContext().confirm(editor.getValue());
+    }
 }

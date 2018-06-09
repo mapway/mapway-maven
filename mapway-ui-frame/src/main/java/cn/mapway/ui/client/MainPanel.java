@@ -14,27 +14,26 @@ import com.google.gwt.user.client.ui.Widget;
  */
 public class MainPanel extends Composite {
 
-  private static MainPanelUiBinder uiBinder = GWT.create(MainPanelUiBinder.class);
+    private static MainPanelUiBinder uiBinder = GWT.create(MainPanelUiBinder.class);
 
     /**
      * The interface Main panel ui binder.
      */
     interface MainPanelUiBinder extends UiBinder<Widget, MainPanel> {
-  }
+    }
 
     /**
      * Instantiates a new Main panel.
      */
     public MainPanel() {
-    initWidget(uiBinder.createAndBindUi(this));
-  }
+        initWidget(uiBinder.createAndBindUi(this));
+    }
 
     /**
      * The Root.
      */
     @UiField
-  DockLayoutPanel root;
-
+    DockLayoutPanel root;
 
 
 }

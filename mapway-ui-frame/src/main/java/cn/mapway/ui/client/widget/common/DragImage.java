@@ -17,24 +17,24 @@ public class DragImage extends Image implements DragStartHandler, DragHandler {
      * Instantiates a new Drag image.
      */
     public DragImage() {
-    initDnd();
-  }
+        initDnd();
+    }
 
-  private void initDnd() {
-    getElement().setDraggable(Element.DRAGGABLE_TRUE);
-    addDragStartHandler(this);
-  }
+    private void initDnd() {
+        getElement().setDraggable(Element.DRAGGABLE_TRUE);
+        addDragStartHandler(this);
+    }
 
-  @Override
-  public void onDrag(DragEvent event) {
-    NativeEvent e = event.getNativeEvent();
-    GWT.log("drag " + e.getClientX() + "," + e.getClientY());
+    @Override
+    public void onDrag(DragEvent event) {
+        NativeEvent e = event.getNativeEvent();
+        GWT.log("drag " + e.getClientX() + "," + e.getClientY());
 
-  }
+    }
 
-  @Override
-  public void onDragStart(DragStartEvent event) {
+    @Override
+    public void onDragStart(DragStartEvent event) {
 
-  }
+    }
 
 }

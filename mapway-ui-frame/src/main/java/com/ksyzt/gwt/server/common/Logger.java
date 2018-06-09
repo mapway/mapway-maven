@@ -44,7 +44,7 @@ public class Logger {
      */
     public Logger() {
 
-	}
+    }
 
     /**
      * Info.
@@ -53,8 +53,8 @@ public class Logger {
      * @param msg the msg
      */
     public void info(String tag, String msg) {
-		System.out.println("[INFO]" + tag + " : " + msg);
-	}
+        System.out.println("[INFO]" + tag + " : " + msg);
+    }
 
     /**
      * Err.
@@ -63,7 +63,7 @@ public class Logger {
      * @param msg the msg
      */
     public void err(String tag, String msg) {
-		System.out.println("[ERRO]" + tag + " : " + msg);
-	}
+        System.out.println("[ERRO]" + tag + " : " + msg);
+    }
 
 }

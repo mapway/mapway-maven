@@ -1,11 +1,11 @@
 <!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
 <ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder" xmlns:g="urn:import:com.google.gwt.user.client.ui">
     <ui:style>
-    
+
     </ui:style>
     <g:DockLayoutPanel>
         <g:center>
-            <g:Frame ui:field="frame" height="100%" width="100%" />
+            <g:Frame ui:field="frame" height="100%" width="100%"/>
         </g:center>
     </g:DockLayoutPanel>
 </ui:UiBinder> 

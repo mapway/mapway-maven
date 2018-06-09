@@ -18,7 +18,7 @@ public class MqttJsClient extends JavaScriptObject {
      */
     protected MqttJsClient() {
 
-  }
+    }
 
 
     /**
@@ -66,14 +66,14 @@ public class MqttJsClient extends JavaScriptObject {
      * @param token  the token
      */
     public final void connect(String userId, String token) {
-    GWT.log("connect as " + getId() + " " + userId + " " + token);
-    innerconnect(userId, token);
-  }
+        GWT.log("connect as " + getId() + " " + userId + " " + token);
+        innerconnect(userId, token);
+    }
 
-  /**
-   * Innerconnect.
-   */
-  private final native void innerconnect(String userId, String token)/*-{
+    /**
+     * Innerconnect.
+     */
+    private final native void innerconnect(String userId, String token)/*-{
 		var _this = this;
 		if (_this.handler == null) {
 			this.connect({

@@ -19,82 +19,83 @@ import cn.mapway.ui.client.mvc.ModuleParameter;
  *
  * @author zhangjianshe
  */
-@ModuleMarker(value = AuthorityDefine.MODULE_CODE, name = "资源定义",group ="/系统", icon = "ad.png")
+@ModuleMarker(value = AuthorityDefine.MODULE_CODE, name = "资源定义", group = "/系统", icon = "ad.png")
 public class AuthorityDefine extends AbstractModule {
     /**
      * The constant MODULE_CODE.
      */
     public final static String MODULE_CODE = "MC_AUTHORITY_DEFINE";
 
-  @Override
-  public String getModuleCode() {
-    return MODULE_CODE;
-  }
+    @Override
+    public String getModuleCode() {
+        return MODULE_CODE;
+    }
 
 
-  @Override
-  public boolean initialize(IModule parentModule, ModuleParameter parameters) {
-    boolean b = super.initialize(parentModule, parameters);
-    updateTools(editAuthority.tools);
-    return b;
-  }
+    @Override
+    public boolean initialize(IModule parentModule, ModuleParameter parameters) {
+        boolean b = super.initialize(parentModule, parameters);
+        updateTools(editAuthority.tools);
+        return b;
+    }
 
     /**
      * The tree authority.
      */
     @UiField
-  AuthorityTree treeAuthority;
+    AuthorityTree treeAuthority;
 
     /**
      * The edit authority.
      */
     @UiField
-  EditAuthority editAuthority;
+    EditAuthority editAuthority;
 
 
-
-  /** The ui binder. */
-  private static AuthorityDefineUiBinder uiBinder = GWT.create(AuthorityDefineUiBinder.class);
+    /**
+     * The ui binder.
+     */
+    private static AuthorityDefineUiBinder uiBinder = GWT.create(AuthorityDefineUiBinder.class);
 
     /**
      * The Interface AuthorityDefineUiBinder.
      */
-    interface AuthorityDefineUiBinder extends UiBinder<Widget, AuthorityDefine> {}
+    interface AuthorityDefineUiBinder extends UiBinder<Widget, AuthorityDefine> {
+    }
 
     /**
      * Instantiates a new authority define.
      */
     public AuthorityDefine() {
-    initModuleWidget(uiBinder.createAndBindUi(this));
-    initEvent();
-  }
+        initModuleWidget(uiBinder.createAndBindUi(this));
+        initEvent();
+    }
 
 
+    /**
+     * Inits the event.
+     */
+    private void initEvent() {
+        treeAuthority.addMessageHandler(new MessageHandler() {
 
-  /**
-   * Inits the event.
-   */
-  private void initEvent() {
-    treeAuthority.addMessageHandler(new MessageHandler() {
+            @Override
+            public void onMessage(Object sender, Integer message, Object value) {
+                if (message == MessageEvent.ITEMCLICK) {
+                    S_RESOURCEObj obj = (S_RESOURCEObj) value;
+                    editAuthority.editAuthority(obj);
+                }
+            }
+        });
 
-      @Override
-      public void onMessage(Object sender, Integer message, Object value) {
-        if (message == MessageEvent.ITEMCLICK) {
-          S_RESOURCEObj obj = (S_RESOURCEObj) value;
-          editAuthority.editAuthority(obj);
-        }
-      }
-    });
+        editAuthority.addMessageHandler(new MessageHandler() {
 
-    editAuthority.addMessageHandler(new MessageHandler() {
-
-      @Override
-      public void onMessage(Object sender, Integer message, Object value) {
-        if (message == MessageEvent.REFRESH) {
-          treeAuthority.refresh();
-        }
-      }
-    });
-  }
+            @Override
+            public void onMessage(Object sender, Integer message, Object value) {
+                if (message == MessageEvent.REFRESH) {
+                    treeAuthority.refresh();
+                }
+            }
+        });
+    }
 
 }

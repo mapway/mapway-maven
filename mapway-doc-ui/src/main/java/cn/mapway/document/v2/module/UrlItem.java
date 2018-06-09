@@ -78,19 +78,19 @@ public class UrlItem {
      * Instantiates a new url item.
      */
     public UrlItem() {
-		methods=new ArrayList<String>();
-		pathParameters=new ArrayList<PathParameter>();
-		queryParameters=new ArrayList<QueryParameter>();
-		bodyParameters =new ArrayList<BodyParameter>();
-		returnParameter=new ReturnParameter();
-		state =DevelopmentState.FINISH;
-		group="/";
-		author="";
-		path="";
-		name="";
-		description="";
-		order=0;
-	}
+        methods = new ArrayList<String>();
+        pathParameters = new ArrayList<PathParameter>();
+        queryParameters = new ArrayList<QueryParameter>();
+        bodyParameters = new ArrayList<BodyParameter>();
+        returnParameter = new ReturnParameter();
+        state = DevelopmentState.FINISH;
+        group = "/";
+        author = "";
+        path = "";
+        name = "";
+        description = "";
+        order = 0;
+    }
 
     /**
      * Gets the order.
@@ -98,8 +98,8 @@ public class UrlItem {
      * @return the order
      */
     public int getOrder() {
-		return order;
-	}
+        return order;
+    }
 
     /**
      * Sets the order.
@@ -107,8 +107,8 @@ public class UrlItem {
      * @param order the new order
      */
     public void setOrder(int order) {
-		this.order = order;
-	}
+        this.order = order;
+    }
 
     /**
      * Gets the path.
@@ -116,8 +116,8 @@ public class UrlItem {
      * @return the path
      */
     public String getPath() {
-		return path;
-	}
+        return path;
+    }
 
     /**
      * Sets the path.
@@ -125,8 +125,8 @@ public class UrlItem {
      * @param path the new path
      */
     public void setPath(String path) {
-		this.path = path;
-	}
+        this.path = path;
+    }
 
     /**
      * Gets the name.
@@ -134,8 +134,8 @@ public class UrlItem {
      * @return the name
      */
     public String getName() {
-		return name;
-	}
+        return name;
+    }
 
     /**
      * Sets the name.
@@ -143,8 +143,8 @@ public class UrlItem {
      * @param name the new name
      */
     public void setName(String name) {
-		this.name = name;
-	}
+        this.name = name;
+    }
 
     /**
      * Gets the description.
@@ -152,8 +152,8 @@ public class UrlItem {
      * @return the description
      */
     public String getDescription() {
-		return description;
-	}
+        return description;
+    }
 
     /**
      * Sets the description.
@@ -161,8 +161,8 @@ public class UrlItem {
      * @param description the new description
      */
     public void setDescription(String description) {
-		this.description = description;
-	}
+        this.description = description;
+    }
 
     /**
      * Gets the group.
@@ -170,8 +170,8 @@ public class UrlItem {
      * @return the group
      */
     public String getGroup() {
-		return group;
-	}
+        return group;
+    }
 
     /**
      * Sets the group.
@@ -179,8 +179,8 @@ public class UrlItem {
      * @param group the new group
      */
     public void setGroup(String group) {
-		this.group = group;
-	}
+        this.group = group;
+    }
 
     /**
      * Gets the methods.
@@ -188,8 +188,8 @@ public class UrlItem {
      * @return the methods
      */
     public List<String> getMethods() {
-		return methods;
-	}
+        return methods;
+    }
 
     /**
      * Sets the methods.
@@ -197,8 +197,8 @@ public class UrlItem {
      * @param methods the new methods
      */
     public void setMethods(List<String> methods) {
-		this.methods = methods;
-	}
+        this.methods = methods;
+    }
 
     /**
      * Gets the author.
@@ -206,8 +206,8 @@ public class UrlItem {
      * @return the author
      */
     public String getAuthor() {
-		return author;
-	}
+        return author;
+    }
 
     /**
      * Sets the author.
@@ -215,8 +215,8 @@ public class UrlItem {
      * @param author the new author
      */
     public void setAuthor(String author) {
-		this.author = author;
-	}
+        this.author = author;
+    }
 
     /**
      * Gets the state.
@@ -224,8 +224,8 @@ public class UrlItem {
      * @return the state
      */
     public DevelopmentState getState() {
-		return state;
-	}
+        return state;
+    }
 
     /**
      * Sets the state.
@@ -233,7 +233,7 @@ public class UrlItem {
      * @param state the new state
      */
     public void setState(DevelopmentState state) {
-		this.state = state;
-	}
+        this.state = state;
+    }
 
 }

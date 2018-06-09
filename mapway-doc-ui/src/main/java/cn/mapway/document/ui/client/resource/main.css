@@ -41,6 +41,7 @@ textarea {
 }
 
 .gwt-SplitLayoutPanel-HDragger {
+    background-color: darkgray;
     cursor: ew-resize;
 }
 

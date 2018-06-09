@@ -10,8 +10,8 @@ import com.google.gwt.user.client.ui.Widget;
  * @author zhangjianshe
  */
 public class VerticalMenuRender implements IMenuRender {
-  @Override
-  public Widget render(Widget parent, IMenuItem menu) {
-    return null;
-  }
+    @Override
+    public Widget render(Widget parent, IMenuItem menu) {
+        return null;
+    }
 }

@@ -15,31 +15,46 @@ import java.util.Vector;
  *
  * @author zhangjianshe @gmail.com
  */
-public class MyPool implements IConnectionPool
-{
-    
-    /** The checked out. */
+public class MyPool implements IConnectionPool {
+
+    /**
+     * The checked out.
+     */
     private int checkedOut;
-    
-    /** The free connections. */
+
+    /**
+     * The free connections.
+     */
     private Vector freeConnections = new Vector();
-    
-    /** The driver name. */
+
+    /**
+     * The driver name.
+     */
     private String driverName;
-    
-    /** The passwd. */
+
+    /**
+     * The passwd.
+     */
     private String passwd;
-    
-    /** The username. */
+
+    /**
+     * The username.
+     */
     private String username;
-    
-    /** The jdbc URL. */
+
+    /**
+     * The jdbc URL.
+     */
     private String jdbcURL;
-    
-    /** The database. */
+
+    /**
+     * The database.
+     */
     private String database;
-    
-    /** The max connections. */
+
+    /**
+     * The max connections.
+     */
     private int maxConnections;
 
     /**
@@ -47,9 +62,8 @@ public class MyPool implements IConnectionPool
      *
      * @return the gwt base
      */
-    public String getGwt_base()
-    {
-	return gwt_base;
+    public String getGwt_base() {
+        return gwt_base;
     }
 
     /**
@@ -57,31 +71,44 @@ public class MyPool implements IConnectionPool
      *
      * @param gwt_base the new gwt base
      */
-    public void setGwt_base(String gwt_base)
-    {
-	this.gwt_base = gwt_base;
+    public void setGwt_base(String gwt_base) {
+        this.gwt_base = gwt_base;
     }
 
-   
-    /** The m pool oracle. */
+
+    /**
+     * The m pool oracle.
+     */
     private static MyPool m_poolOracle;
-    
-    /** The m pool my SQL. */
+
+    /**
+     * The m pool my SQL.
+     */
     private static MyPool m_poolMySQL;
-    
-    /** The path. */
+
+    /**
+     * The path.
+     */
     private String path;
-    
-    /** The pack. */
+
+    /**
+     * The pack.
+     */
     private String pack;
-    
-    /** The gwt modle. */
+
+    /**
+     * The gwt modle.
+     */
     private String gwt_modle;
-    
-    /** The gwt dao. */
+
+    /**
+     * The gwt dao.
+     */
     private String gwt_dao;
-    
-    /** The gwt base. */
+
+    /**
+     * The gwt base.
+     */
     private String gwt_base;
 
     /**
@@ -90,9 +117,8 @@ public class MyPool implements IConnectionPool
      * @param database the database
      * @return single instance of MyPool
      */
-    public static synchronized MyPool getInstance(String database)
-    {
-	return getInstance(database, "database");
+    public static synchronized MyPool getInstance(String database) {
+        return getInstance(database, "database");
     }
 
     /**
@@ -100,9 +126,8 @@ public class MyPool implements IConnectionPool
      *
      * @return single instance of MyPool
      */
-    public static synchronized MyPool getInstance()
-    {
-	return m_poolMySQL;
+    public static synchronized MyPool getInstance() {
+        return m_poolMySQL;
     }
 
     /**
@@ -113,33 +138,25 @@ public class MyPool implements IConnectionPool
      * @return single instance of MyPool
      */
     public static synchronized MyPool getInstance(String database,
-	    String configurefile)
-    {
-	if (database == null || database.equals(""))
-	{
-	    database = "Oracle";
-	}
-	if (database.equals("Oracle"))
-	{
-	    if (m_poolOracle == null)
-	    {
-		m_poolOracle = new MyPool("Oracle", configurefile);
-	    }
-	    return m_poolOracle;
-	} else if (database.equals("MySQL"))
-	{
-	    if (m_poolMySQL == null)
-	    {
-		m_poolMySQL = new MyPool("MySQL", configurefile);
-	    }
-	} else if (database.equals("MySQL2"))
-	{
-	    if (m_poolMySQL == null)
-	    {
-		m_poolMySQL = new MyPool("MySQL2", configurefile);
-	    }
-	}
-	return m_poolMySQL;
+                                                  String configurefile) {
+        if (database == null || database.equals("")) {
+            database = "Oracle";
+        }
+        if (database.equals("Oracle")) {
+            if (m_poolOracle == null) {
+                m_poolOracle = new MyPool("Oracle", configurefile);
+            }
+            return m_poolOracle;
+        } else if (database.equals("MySQL")) {
+            if (m_poolMySQL == null) {
+                m_poolMySQL = new MyPool("MySQL", configurefile);
+            }
+        } else if (database.equals("MySQL2")) {
+            if (m_poolMySQL == null) {
+                m_poolMySQL = new MyPool("MySQL2", configurefile);
+            }
+        }
+        return m_poolMySQL;
 
     }
 
@@ -155,24 +172,21 @@ public class MyPool implements IConnectionPool
      * @param connectionSize ����ʱ��С
      */
     public MyPool(String drivername, String jdbcurl, String username,
-	    String password, String packagename, String path, int connectionSize)
-    {
-	this.driverName = drivername;
-	this.jdbcURL = jdbcurl;
-	this.username = username;
-	this.passwd = password;
-	this.pack = packagename;
-	this.path = path;
-	this.maxConnections = connectionSize;
+                  String password, String packagename, String path, int connectionSize) {
+        this.driverName = drivername;
+        this.jdbcURL = jdbcurl;
+        this.username = username;
+        this.passwd = password;
+        this.pack = packagename;
+        this.path = path;
+        this.maxConnections = connectionSize;
 
-	try
-	{
-	    Class.forName(driverName);
-	} catch (ClassNotFoundException e)
-	{
-	    e.printStackTrace();
-	}
-	m_poolMySQL = this;
+        try {
+            Class.forName(driverName);
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        m_poolMySQL = this;
     }
 
     /**
@@ -191,9 +205,8 @@ public class MyPool implements IConnectionPool
      * @param databaseType 数据库类型，可用的参数类型有 MySQL ，Oracle
      * @param rb           数据库配置参数属性文件
      */
-    public MyPool(String databaseType, ResourceBundle rb)
-    {
-	init(databaseType, rb);
+    public MyPool(String databaseType, ResourceBundle rb) {
+        init(databaseType, rb);
     }
 
     /**
@@ -202,47 +215,42 @@ public class MyPool implements IConnectionPool
      * @param database      the database
      * @param configurefile the configurefile
      */
-    public MyPool(String database, String configurefile)
-    {
-	if (database == null)
-	{
-	    database = "Oracle";
-	}
-	Locale locale = Locale.getDefault();
-	ResourceBundle rb = ResourceBundle.getBundle(configurefile, locale);
-	init(database, rb);
+    public MyPool(String database, String configurefile) {
+        if (database == null) {
+            database = "Oracle";
+        }
+        Locale locale = Locale.getDefault();
+        ResourceBundle rb = ResourceBundle.getBundle(configurefile, locale);
+        init(database, rb);
     }
 
     /**
      * Inits the.
      *
      * @param databaseType the database type
-     * @param rb the rb
+     * @param rb           the rb
      */
-    private void init(String databaseType, ResourceBundle rb)
-    {
-	this.driverName = rb.getString(database + "_driver");
-	this.jdbcURL = rb.getString(database + "_dataurl");
-	this.username = rb.getString(database + "_user");
-	this.passwd = rb.getString(database + "_password");
-	this.pack = rb.getString(database + "_package");
-	this.path = rb.getString(database + "_path");
-	this.database = rb.getString(database + "_database");
-	this.netPath = rb.getString(database + "_netpath");
+    private void init(String databaseType, ResourceBundle rb) {
+        this.driverName = rb.getString(database + "_driver");
+        this.jdbcURL = rb.getString(database + "_dataurl");
+        this.username = rb.getString(database + "_user");
+        this.passwd = rb.getString(database + "_password");
+        this.pack = rb.getString(database + "_package");
+        this.path = rb.getString(database + "_path");
+        this.database = rb.getString(database + "_database");
+        this.netPath = rb.getString(database + "_netpath");
 
-	this.gwt_modle = rb.getString("gwt_modle");
-	this.gwt_dao = rb.getString("gwt_dao");
-	this.gwt_base = rb.getString("gwt_base");
+        this.gwt_modle = rb.getString("gwt_modle");
+        this.gwt_dao = rb.getString("gwt_dao");
+        this.gwt_base = rb.getString("gwt_base");
 
-	this.maxConnections = Integer.valueOf(rb.getString(database
-		+ "_maxconnections"));
-	try
-	{
-	    Class.forName(driverName);
-	} catch (ClassNotFoundException e)
-	{
-	    e.printStackTrace();
-	}
+        this.maxConnections = Integer.valueOf(rb.getString(database
+                + "_maxconnections"));
+        try {
+            Class.forName(driverName);
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
     }
 
     /**
@@ -250,23 +258,21 @@ public class MyPool implements IConnectionPool
      *
      * @param msg the msg
      */
-    public void log(String msg)
-    {
-	System.out.println(msg);
+    public void log(String msg) {
+        System.out.println(msg);
     }
 
     /**
      * ������ʹ�õ����ӷ��ظ����ӳ�.
      *
-     * @param con            �ͻ������ͷŵ�����
+     * @param con �ͻ������ͷŵ�����
      */
     @SuppressWarnings("unchecked")
-    public synchronized void releaseConnection(Connection con)
-    {
-	// ��ָ�����Ӽ��뵽����ĩβ
-	freeConnections.addElement(con);
-	checkedOut--;
-	notifyAll();
+    public synchronized void releaseConnection(Connection con) {
+        // ��ָ�����Ӽ��뵽����ĩβ
+        freeConnections.addElement(con);
+        checkedOut--;
+        notifyAll();
     }
 
     /**
@@ -276,38 +282,31 @@ public class MyPool implements IConnectionPool
      *
      * @return the connection
      */
-    public synchronized Connection getConnection()
-    {
-	Connection con = null;
-	if (freeConnections.size() > 0)
-	{
-	    // ��ȡ�����е�һ����������
-	    con = (Connection) freeConnections.firstElement();
-	    freeConnections.removeElementAt(0);
-	    try
-	    {
-		if (con.isClosed())
-		{
-		    log("�����ӳ�ɾ��һ����Ч����");
-		    // �ݹ�����Լ�,�����ٴλ�ȡ��������
-		    con = getConnection();
-		}
-	    } catch (SQLException e)
-	    {
-		log("�����ӳ�ɾ��һ����Ч����");
-		// �ݹ�����Լ�,�����ٴλ�ȡ��������
-		con = getConnection();
-	    }
-	} else if (this.maxConnections == 0
-		|| this.checkedOut < this.maxConnections)
-	{
-	    con = createConnection();
-	}
-	if (con != null)
-	{
-	    checkedOut++;
-	}
-	return con;
+    public synchronized Connection getConnection() {
+        Connection con = null;
+        if (freeConnections.size() > 0) {
+            // ��ȡ�����е�һ����������
+            con = (Connection) freeConnections.firstElement();
+            freeConnections.removeElementAt(0);
+            try {
+                if (con.isClosed()) {
+                    log("�����ӳ�ɾ��һ����Ч����");
+                    // �ݹ�����Լ�,�����ٴλ�ȡ��������
+                    con = getConnection();
+                }
+            } catch (SQLException e) {
+                log("�����ӳ�ɾ��һ����Ч����");
+                // �ݹ�����Լ�,�����ٴλ�ȡ��������
+                con = getConnection();
+            }
+        } else if (this.maxConnections == 0
+                || this.checkedOut < this.maxConnections) {
+            con = createConnection();
+        }
+        if (con != null) {
+            checkedOut++;
+        }
+        return con;
     }
 
     /**
@@ -316,46 +315,37 @@ public class MyPool implements IConnectionPool
      * @param timeout �Ժ���Ƶĵȴ�ʱ������
      * @return the connection
      */
-    public synchronized Connection getConnection(long timeout)
-    {
-	long startTime = new java.util.Date().getTime();
-	Connection con;
-	while ((con = getConnection()) == null)
-	{
-	    try
-	    {
-		wait(timeout);
-	    } catch (InterruptedException e)
-	    {
-	    }
-	    if ((new java.util.Date().getTime() - startTime) >= timeout)
-	    {
-		// wait()���ص�ԭ���ǳ�ʱ
-		return null;
-	    }
-	}
-	return con;
+    public synchronized Connection getConnection(long timeout) {
+        long startTime = new java.util.Date().getTime();
+        Connection con;
+        while ((con = getConnection()) == null) {
+            try {
+                wait(timeout);
+            } catch (InterruptedException e) {
+            }
+            if ((new java.util.Date().getTime() - startTime) >= timeout) {
+                // wait()���ص�ԭ���ǳ�ʱ
+                return null;
+            }
+        }
+        return con;
     }
 
     /**
      * �ر���������.
      */
-    public synchronized void close()
-    {
-	Enumeration allConnections = freeConnections.elements();
-	while (allConnections.hasMoreElements())
-	{
-	    Connection con = (Connection) allConnections.nextElement();
-	    try
-	    {
-		con.close();
-		log("�ر����ӳ��е�һ������");
-	    } catch (SQLException e)
-	    {
-		log("�޷��ر����ӳ��е�����");
-	    }
-	}
-	freeConnections.removeAllElements();
+    public synchronized void close() {
+        Enumeration allConnections = freeConnections.elements();
+        while (allConnections.hasMoreElements()) {
+            Connection con = (Connection) allConnections.nextElement();
+            try {
+                con.close();
+                log("�ر����ӳ��е�һ������");
+            } catch (SQLException e) {
+                log("�޷��ر����ӳ��е�����");
+            }
+        }
+        freeConnections.removeAllElements();
     }
 
     /**
@@ -363,32 +353,27 @@ public class MyPool implements IConnectionPool
      *
      * @return the connection
      */
-    private Connection createConnection()
-    {
-	Connection con = null;
-	try
-	{
-	    if (this.username == null)
-	    {
-		con = DriverManager.getConnection(this.jdbcURL.replace(
-			"$database", this.database));
-	    } else
-	    {
-		con = DriverManager.getConnection(
-			this.jdbcURL.replace("$database", this.database),
-			this.username, this.passwd);
-	    }
-	    log("���ӳش���һ���µ�����@"
-		    + this.jdbcURL.replace("$database", this.database) + ":"
-		    + this.username + ":" + this.passwd);
-	} catch (SQLException e)
-	{
-	    log("�޷���������URL������: "
-		    + this.jdbcURL.replace("$database", this.database));
-	    log("ԭ�� " + e.getMessage());
-	    return null;
-	}
-	return con;
+    private Connection createConnection() {
+        Connection con = null;
+        try {
+            if (this.username == null) {
+                con = DriverManager.getConnection(this.jdbcURL.replace(
+                        "$database", this.database));
+            } else {
+                con = DriverManager.getConnection(
+                        this.jdbcURL.replace("$database", this.database),
+                        this.username, this.passwd);
+            }
+            log("���ӳش���һ���µ�����@"
+                    + this.jdbcURL.replace("$database", this.database) + ":"
+                    + this.username + ":" + this.passwd);
+        } catch (SQLException e) {
+            log("�޷���������URL������: "
+                    + this.jdbcURL.replace("$database", this.database));
+            log("ԭ�� " + e.getMessage());
+            return null;
+        }
+        return con;
     }
 
     /**
@@ -396,9 +381,8 @@ public class MyPool implements IConnectionPool
      *
      * @return the driverName
      */
-    public String getDriverName()
-    {
-	return driverName;
+    public String getDriverName() {
+        return driverName;
     }
 
     /**
@@ -406,9 +390,8 @@ public class MyPool implements IConnectionPool
      *
      * @param driverName the driverName to set
      */
-    public void setDriverName(String driverName)
-    {
-	this.driverName = driverName;
+    public void setDriverName(String driverName) {
+        this.driverName = driverName;
     }
 
     /**
@@ -416,9 +399,8 @@ public class MyPool implements IConnectionPool
      *
      * @return the jdbcURL
      */
-    public String getJdbcURL()
-    {
-	return jdbcURL;
+    public String getJdbcURL() {
+        return jdbcURL;
     }
 
     /**
@@ -426,9 +408,8 @@ public class MyPool implements IConnectionPool
      *
      * @param jdbcURL the jdbcURL to set
      */
-    public void setJdbcURL(String jdbcURL)
-    {
-	this.jdbcURL = jdbcURL;
+    public void setJdbcURL(String jdbcURL) {
+        this.jdbcURL = jdbcURL;
     }
 
     /**
@@ -436,9 +417,8 @@ public class MyPool implements IConnectionPool
      *
      * @return the passwd
      */
-    public String getPasswd()
-    {
-	return passwd;
+    public String getPasswd() {
+        return passwd;
     }
 
     /**
@@ -446,9 +426,8 @@ public class MyPool implements IConnectionPool
      *
      * @param passwd the passwd to set
      */
-    public void setPasswd(String passwd)
-    {
-	this.passwd = passwd;
+    public void setPasswd(String passwd) {
+        this.passwd = passwd;
     }
 
     /**
@@ -456,9 +435,8 @@ public class MyPool implements IConnectionPool
      *
      * @return the username
      */
-    public String getUsername()
-    {
-	return username;
+    public String getUsername() {
+        return username;
     }
 
     /**
@@ -466,9 +444,8 @@ public class MyPool implements IConnectionPool
      *
      * @param username the username to set
      */
-    public void setUsername(String username)
-    {
-	this.username = username;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     /**
@@ -480,13 +457,12 @@ public class MyPool implements IConnectionPool
      * @param jdbcURL    the jdbc URL
      */
     public MyPool(String driverName, String passwd, String username,
-	    String jdbcURL)
-    {
-	super();
-	this.driverName = driverName;
-	this.passwd = passwd;
-	this.username = username;
-	this.jdbcURL = jdbcURL;
+                  String jdbcURL) {
+        super();
+        this.driverName = driverName;
+        this.passwd = passwd;
+        this.username = username;
+        this.jdbcURL = jdbcURL;
     }
 
     /**
@@ -494,9 +470,8 @@ public class MyPool implements IConnectionPool
      *
      * @return the maxConnections
      */
-    public int getMaxConnections()
-    {
-	return maxConnections;
+    public int getMaxConnections() {
+        return maxConnections;
     }
 
     /**
@@ -504,9 +479,8 @@ public class MyPool implements IConnectionPool
      *
      * @param maxConnections the maxConnections to set
      */
-    public void setMaxConnections(int maxConnections)
-    {
-	this.maxConnections = maxConnections;
+    public void setMaxConnections(int maxConnections) {
+        this.maxConnections = maxConnections;
     }
 
     /**
@@ -514,9 +488,8 @@ public class MyPool implements IConnectionPool
      *
      * @param pack the new package
      */
-    public void setPackage(String pack)
-    {
-	this.pack = pack;
+    public void setPackage(String pack) {
+        this.pack = pack;
     }
 
     /**
@@ -527,9 +500,8 @@ public class MyPool implements IConnectionPool
     /* (non-Javadoc)
      * @see com.mapway.database2java.database.IConnectionPool#getNetPath()
      */
-    public String getNetPath()
-    {
-	return netPath;
+    public String getNetPath() {
+        return netPath;
     }
 
     /**
@@ -537,17 +509,15 @@ public class MyPool implements IConnectionPool
      *
      * @param netPath the new net path
      */
-    public void setNetPath(String netPath)
-    {
-	this.netPath = netPath;
+    public void setNetPath(String netPath) {
+        this.netPath = netPath;
     }
 
     /* (non-Javadoc)
      * @see com.mapway.database2java.database.IConnectionPool#getPath()
      */
-    public String getPath()
-    {
-	return path;
+    public String getPath() {
+        return path;
     }
 
     /**
@@ -555,17 +525,15 @@ public class MyPool implements IConnectionPool
      *
      * @param path the new path
      */
-    public void setPath(String path)
-    {
-	this.path = path;
+    public void setPath(String path) {
+        this.path = path;
     }
 
     /* (non-Javadoc)
      * @see com.mapway.database2java.database.IConnectionPool#getPackage()
      */
-    public String getPackage()
-    {
-	return this.pack;
+    public String getPackage() {
+        return this.pack;
     }
 
     /**
@@ -573,9 +541,8 @@ public class MyPool implements IConnectionPool
      *
      * @return the database
      */
-    public String getDatabase()
-    {
-	return database;
+    public String getDatabase() {
+        return database;
     }
 
     /**
@@ -583,16 +550,14 @@ public class MyPool implements IConnectionPool
      *
      * @param database the new database
      */
-    public void setDatabase(String database)
-    {
-	this.database = database;
+    public void setDatabase(String database) {
+        this.database = database;
     }
 
     /* (non-Javadoc)
      * @see com.mapway.database2java.database.IConnectionPool#getGwtbase()
      */
-    public String getGwtbase()
-    {
-	return this.gwt_base;
+    public String getGwtbase() {
+        return this.gwt_base;
     }
 }

@@ -14,7 +14,8 @@ public class Pics extends JsArray<PicData> {
     /**
      * Instantiates a new Pics.
      */
-    protected Pics() {}
+    protected Pics() {
+    }
 
     /**
      * Create pics.
@@ -32,8 +33,8 @@ public class Pics extends JsArray<PicData> {
      * @return the string
      */
     public final String toJson() {
-    return JSON.stringify(this);
-  }
+        return JSON.stringify(this);
+    }
 
     /**
      * From json pics.
@@ -42,10 +43,10 @@ public class Pics extends JsArray<PicData> {
      * @return the pics
      */
     public final static Pics fromJson(String json) {
-    if (json == null || json.length() == 0) {
-      json = "[]";
+        if (json == null || json.length() == 0) {
+            json = "[]";
+        }
+        return (Pics) JSON.parse(json);
     }
-    return (Pics) JSON.parse(json);
-  }
 
 }

@@ -33,7 +33,7 @@ import java.util.List;
  *
  * @author zhangjianshe
  */
-@ModuleMarker(value = RoleAuthorityFrame.MC_ADMIN_ROLE_RESOURCE, group = "/系统",name = "资源授权", icon = "raf.png")
+@ModuleMarker(value = RoleAuthorityFrame.MC_ADMIN_ROLE_RESOURCE, group = "/系统", name = "资源授权", icon = "raf.png")
 public class RoleAuthorityFrame extends AbstractModule {
 
     /**
@@ -42,56 +42,62 @@ public class RoleAuthorityFrame extends AbstractModule {
     public final static String MC_ADMIN_ROLE_RESOURCE = "MC_ADMIN_ROLE_RESOURCE";
 
 
-  @Override
-  public String getModuleCode() {
-    return MC_ADMIN_ROLE_RESOURCE;
-  }
+    @Override
+    public String getModuleCode() {
+        return MC_ADMIN_ROLE_RESOURCE;
+    }
 
 
-  /** The ui binder. */
-  private static RoleAuthorityFrameUiBinder uiBinder = GWT.create(RoleAuthorityFrameUiBinder.class);
+    /**
+     * The ui binder.
+     */
+    private static RoleAuthorityFrameUiBinder uiBinder = GWT.create(RoleAuthorityFrameUiBinder.class);
 
     /**
      * The Interface RoleAuthorityFrameUiBinder.
      */
     interface RoleAuthorityFrameUiBinder extends UiBinder<Widget, RoleAuthorityFrame> {
-  }
-
-  /** The tree handler. */
-  private MessageHandler treeHandler = new MessageHandler() {
-
-    @Override
-    public void onMessage(Object sender, Integer message, Object value) {
-      if (message == AuthorityTree.DATA_LOADED) {
-        tree.resetEnabled(false);
-      } else if (message == MessageEvent.VALUECHANGE) {
-
-      }
     }
-  };
+
+    /**
+     * The tree handler.
+     */
+    private MessageHandler treeHandler = new MessageHandler() {
+
+        @Override
+        public void onMessage(Object sender, Integer message, Object value) {
+            if (message == AuthorityTree.DATA_LOADED) {
+                tree.resetEnabled(false);
+            } else if (message == MessageEvent.VALUECHANGE) {
+
+            }
+        }
+    };
 
     /**
      * The m role.
      */
     S_ROLEObj mRole = null;
 
-  /** The list handler. */
-  private MessageHandler listHandler = new MessageHandler() {
+    /**
+     * The list handler.
+     */
+    private MessageHandler listHandler = new MessageHandler() {
 
-    @Override
-    public void onMessage(Object sender, Integer message, Object value) {
-      if (message == MessageEvent.ITEMCLICK) {
-        DataHolder holder = (DataHolder) value;
-        S_ROLEObj role = (S_ROLEObj) holder.getData();
-        mRole = role;
-        fetchRoleResource();
-        btnDeleteRole.setEnabled(true);
-        btnModifyRole.setEnabled(true);
-        btnSaveRoleResource.setEnabled(true);
+        @Override
+        public void onMessage(Object sender, Integer message, Object value) {
+            if (message == MessageEvent.ITEMCLICK) {
+                DataHolder holder = (DataHolder) value;
+                S_ROLEObj role = (S_ROLEObj) holder.getData();
+                mRole = role;
+                fetchRoleResource();
+                btnDeleteRole.setEnabled(true);
+                btnModifyRole.setEnabled(true);
+                btnSaveRoleResource.setEnabled(true);
 
-      }
-    }
-  };
+            }
+        }
+    };
 
     /**
      * On save role resource.
@@ -99,74 +105,76 @@ public class RoleAuthorityFrame extends AbstractModule {
      * @param e the e
      */
     @UiHandler("btnSaveRoleResource")
-  void onSaveRoleResource(ClickEvent e) {
+    void onSaveRoleResource(ClickEvent e) {
 
-    List<Pair<Long, String>> items = tree.getCheckedItem();
+        List<Pair<Long, String>> items = tree.getCheckedItem();
 
-    List<Long> ids = new ArrayList<Long>();
-    for (Pair<Long, String> i : items) {
-      ids.add(i.key);
+        List<Long> ids = new ArrayList<Long>();
+        for (Pair<Long, String> i : items) {
+            ids.add(i.key);
+        }
+        WebFrameProxy.get().updateRoleResource(mRole.getId(), ids, new AsyncCallback<Boolean>() {
+
+            @Override
+            public void onSuccess(Boolean result) {
+                ClientContext.getContext().confirm("操作提示", "保存角色权限成功", null);
+            }
+
+            @Override
+            public void onFailure(Throwable caught) {
+                ClientContext.getContext().confirm("操作提示", "保存角色权限失败", null);
+            }
+        });
     }
-    WebFrameProxy.get().updateRoleResource(mRole.getId(), ids, new AsyncCallback<Boolean>() {
-
-      @Override
-      public void onSuccess(Boolean result) {
-        ClientContext.getContext().confirm("操作提示", "保存角色权限成功", null);
-      }
-
-      @Override
-      public void onFailure(Throwable caught) {
-        ClientContext.getContext().confirm("操作提示", "保存角色权限失败", null);
-      }
-    });
-  }
 
 
     /**
      * Instantiates a new role authority frame.
      */
     public RoleAuthorityFrame() {
-    initModuleWidget(uiBinder.createAndBindUi(this));
-    tree.enableCheckBox(true);
-    tree.addMessageHandler(treeHandler);
-    list.addMessageHandler(listHandler);
+        initModuleWidget(uiBinder.createAndBindUi(this));
+        tree.enableCheckBox(true);
+        tree.addMessageHandler(treeHandler);
+        list.addMessageHandler(listHandler);
 
-    btnAddRole.setEnabled(true);
-    btnModifyRole.setEnabled(false);
-    btnDeleteRole.setEnabled(false);
-    btnSaveRoleResource.setEnabled(false);
+        btnAddRole.setEnabled(true);
+        btnModifyRole.setEnabled(false);
+        btnDeleteRole.setEnabled(false);
+        btnSaveRoleResource.setEnabled(false);
 
-  }
+    }
 
     /**
      * The Tools.
      */
     @UiField
-  HorizontalPanel tools;
+    HorizontalPanel tools;
 
 
-  @Override
-  public boolean initialize(cn.mapway.ui.client.mvc.IModule parentModule,
-      cn.mapway.ui.client.mvc.ModuleParameter parameters) {
-    boolean b = super.initialize(parentModule, parameters);
-    updateTools(tools);
-    return b;
-  };
+    @Override
+    public boolean initialize(cn.mapway.ui.client.mvc.IModule parentModule,
+                              cn.mapway.ui.client.mvc.ModuleParameter parameters) {
+        boolean b = super.initialize(parentModule, parameters);
+        updateTools(tools);
+        return b;
+    }
+
+    ;
 
     /**
      * The Edit role.
      */
     EditRole editRole;
 
-  private MessageHandler editorHandler = new MessageHandler() {
+    private MessageHandler editorHandler = new MessageHandler() {
 
-    @Override
-    public void onMessage(Object sender, Integer message, Object value) {
-      if (message == MessageEvent.SAVE) {
-        list.fetchData();
-      }
-    }
-  };
+        @Override
+        public void onMessage(Object sender, Integer message, Object value) {
+            if (message == MessageEvent.SAVE) {
+                list.fetchData();
+            }
+        }
+    };
 
     /**
      * On add role clicked.
@@ -174,14 +182,14 @@ public class RoleAuthorityFrame extends AbstractModule {
      * @param ev the ev
      */
     @UiHandler("btnAddRole")
-  void onAddRoleClicked(ClickEvent ev) {
+    void onAddRoleClicked(ClickEvent ev) {
 
-    sureEditRole();
+        sureEditRole();
 
-    editRole.show();
-    editRole.center();
-    editRole.edit(null);
-  }
+        editRole.show();
+        editRole.center();
+        editRole.edit(null);
+    }
 
     /**
      * On modify role clicked.
@@ -189,20 +197,20 @@ public class RoleAuthorityFrame extends AbstractModule {
      * @param ev the ev
      */
     @UiHandler("btnModifyRole")
-  void onModifyRoleClicked(ClickEvent ev) {
+    void onModifyRoleClicked(ClickEvent ev) {
 
-    sureEditRole();
-    editRole.show();
-    editRole.center();
-    editRole.edit(mRole);
-  }
-
-  private void sureEditRole() {
-    if (editRole == null) {
-      editRole = new EditRole();
-      editRole.addMessageHandler(editorHandler);
+        sureEditRole();
+        editRole.show();
+        editRole.center();
+        editRole.edit(mRole);
     }
-  }
+
+    private void sureEditRole() {
+        if (editRole == null) {
+            editRole = new EditRole();
+            editRole.addMessageHandler(editorHandler);
+        }
+    }
 
     /**
      * On delete role clicked.
@@ -210,115 +218,117 @@ public class RoleAuthorityFrame extends AbstractModule {
      * @param ev the ev
      */
     @UiHandler("btnDeleteRole")
-  void onDeleteRoleClicked(ClickEvent ev) {
-    ClientContext.getContext().confirm("操作提示", "确定删除该角色？", new Callback<Void, Void>() {
+    void onDeleteRoleClicked(ClickEvent ev) {
+        ClientContext.getContext().confirm("操作提示", "确定删除该角色？", new Callback<Void, Void>() {
 
-      @Override
-      public void onSuccess(Void result) {
+            @Override
+            public void onSuccess(Void result) {
 
-        WebFrameProxy.get().deleteAdminRole(mRole.getId(), new AsyncCallback<Boolean>() {
+                WebFrameProxy.get().deleteAdminRole(mRole.getId(), new AsyncCallback<Boolean>() {
 
-          @Override
-          public void onSuccess(Boolean result) {
-            ClientContext.getContext().confirm("操作提示", "删除成功", new Callback<Void, Void>() {
+                    @Override
+                    public void onSuccess(Boolean result) {
+                        ClientContext.getContext().confirm("操作提示", "删除成功", new Callback<Void, Void>() {
 
-              @Override
-              public void onFailure(Void reason) {}
+                            @Override
+                            public void onFailure(Void reason) {
+                            }
 
-              @Override
-              public void onSuccess(Void result) {
-                list.fetchData();
-              }
-            });
-          }
+                            @Override
+                            public void onSuccess(Void result) {
+                                list.fetchData();
+                            }
+                        });
+                    }
 
-          @Override
-          public void onFailure(Throwable caught) {
-            ClientContext.getContext().processFailure(caught);
-            message(caught.getMessage());
-          }
+                    @Override
+                    public void onFailure(Throwable caught) {
+                        ClientContext.getContext().processFailure(caught);
+                        message(caught.getMessage());
+                    }
+                });
+            }
+
+            @Override
+            public void onFailure(Void reason) {
+            }
+
         });
-      }
-
-      @Override
-      public void onFailure(Void reason) {}
-
-    });
-  }
+    }
 
     /**
      * Fetch role authority.
      */
     protected void fetchRoleResource() {
-    if (mRole != null) {
-      tree.resetEnabled(true);
-      WebFrameProxy.get().getRoleResource(mRole.getId(),
-          new AsyncCallback<List<S_ROLE_RESOURCEObj>>() {
+        if (mRole != null) {
+            tree.resetEnabled(true);
+            WebFrameProxy.get().getRoleResource(mRole.getId(),
+                    new AsyncCallback<List<S_ROLE_RESOURCEObj>>() {
 
-            @Override
-            public void onSuccess(List<S_ROLE_RESOURCEObj> result) {
+                        @Override
+                        public void onSuccess(List<S_ROLE_RESOURCEObj> result) {
 
-              tree.resetChecked(false);
-              for (S_ROLE_RESOURCEObj a : result) {
-                tree.enableAuthorityChecked(a.getRes_id(), true);
-              }
-            }
+                            tree.resetChecked(false);
+                            for (S_ROLE_RESOURCEObj a : result) {
+                                tree.enableAuthorityChecked(a.getRes_id(), true);
+                            }
+                        }
 
-            @Override
-            public void onFailure(Throwable caught) {
-              message(caught.getMessage());
-            }
-          });
+                        @Override
+                        public void onFailure(Throwable caught) {
+                            message(caught.getMessage());
+                        }
+                    });
+        }
     }
-  }
 
 
     /**
      * The list.
      */
     @UiField
-  RoleList list;
+    RoleList list;
 
     /**
      * The tree.
      */
     @UiField
-  AuthorityTree tree;
+    AuthorityTree tree;
 
     /**
      * The Btn add role.
      */
     @UiField
-  ButtonEx btnAddRole;
+    ButtonEx btnAddRole;
 
     /**
      * The Btn modify role.
      */
     @UiField
-  ButtonEx btnModifyRole;
+    ButtonEx btnModifyRole;
 
     /**
      * The Btn delete role.
      */
     @UiField
-  ButtonEx btnDeleteRole;
+    ButtonEx btnDeleteRole;
 
     /**
      * The Btn save role resource.
      */
     @UiField
-  ButtonEx btnSaveRoleResource;
+    ButtonEx btnSaveRoleResource;
 
-  /*
-   * (non-Javadoc)
-   * 
-   * @see com.google.gwt.user.client.ui.Widget#onLoad()
-   */
-  @Override
-  protected void onLoad() {
-    super.onLoad();
-    list.fetchData();
-  }
+    /*
+     * (non-Javadoc)
+     *
+     * @see com.google.gwt.user.client.ui.Widget#onLoad()
+     */
+    @Override
+    protected void onLoad() {
+        super.onLoad();
+        list.fetchData();
+    }
 
 
 }

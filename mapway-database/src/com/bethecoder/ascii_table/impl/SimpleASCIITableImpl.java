@@ -2,6 +2,7 @@ package com.bethecoder.ascii_table.impl;
 
 import com.bethecoder.ascii_table.*;
 import com.bethecoder.ascii_table.spec.*;
+
 import java.util.*;
 
 /**
@@ -13,27 +14,27 @@ public class SimpleASCIITableImpl implements IASCIITable {
     public void printTable(final String[] header, final String[][] data) {
         this.printTable(header, 0, data, 1);
     }
-    
+
     @Override
     public void printTable(final String[] header, final String[][] data, final int dataAlign) {
         this.printTable(header, 0, data, dataAlign);
     }
-    
+
     @Override
     public void printTable(final String[] header, final int headerAlign, final String[][] data, final int dataAlign) {
         System.out.println(this.getTable(header, headerAlign, data, dataAlign));
     }
-    
+
     @Override
     public String getTable(final String[] header, final String[][] data) {
         return this.getTable(header, 0, data, 1);
     }
-    
+
     @Override
     public String getTable(final String[] header, final String[][] data, final int dataAlign) {
         return this.getTable(header, 0, data, dataAlign);
     }
-    
+
     @Override
     public String getTable(final String[] header, final int headerAlign, final String[][] data, final int dataAlign) {
         ASCIITableHeader[] headerObjs = new ASCIITableHeader[0];
@@ -45,12 +46,12 @@ public class SimpleASCIITableImpl implements IASCIITable {
         }
         return this.getTable(headerObjs, data);
     }
-    
+
     @Override
     public void printTable(final ASCIITableHeader[] headerObjs, final String[][] data) {
         System.out.println(this.getTable(headerObjs, data));
     }
-    
+
     @Override
     public String getTable(final IASCIITableAware asciiTableAware) {
         ASCIITableHeader[] headerObjs = new ASCIITableHeader[0];
@@ -88,12 +89,12 @@ public class SimpleASCIITableImpl implements IASCIITable {
         }
         return this.getTable(headerObjs, data);
     }
-    
+
     @Override
     public void printTable(final IASCIITableAware asciiTableAware) {
         System.out.println(this.getTable(asciiTableAware));
     }
-    
+
     @Override
     public String getTable(final ASCIITableHeader[] headerObjs, final String[][] data) {
         if (data == null || data.length == 0) {
@@ -114,8 +115,7 @@ public class SimpleASCIITableImpl implements IASCIITable {
             for (int j = 0; j < colCount; ++j) {
                 if (j < data[i].length) {
                     rowData[j] = data[i][j];
-                }
-                else {
+                } else {
                     rowData[j] = "";
                 }
             }
@@ -124,7 +124,7 @@ public class SimpleASCIITableImpl implements IASCIITable {
         tableBuf.append(this.getRowLineBuf(colCount, colMaxLenList, data));
         return tableBuf.toString();
     }
-    
+
     private String getRowDataBuf(final int colCount, final List<Integer> colMaxLenList, final String[] row, final ASCIITableHeader[] headerObjs, final boolean isHeader) {
         final StringBuilder rowBuilder = new StringBuilder();
         String formattedData = null;
@@ -133,8 +133,7 @@ public class SimpleASCIITableImpl implements IASCIITable {
             if (headerObjs != null && i < headerObjs.length) {
                 if (isHeader) {
                     align = headerObjs[i].getHeaderAlign();
-                }
-                else {
+                } else {
                     align = headerObjs[i].getDataAlign();
                 }
             }
@@ -147,7 +146,7 @@ public class SimpleASCIITableImpl implements IASCIITable {
         }
         return rowBuilder.append("\n").toString();
     }
-    
+
     private String getFormattedData(final int maxLength, String data, final int align) {
         if (data.length() > maxLength) {
             return data;
@@ -156,19 +155,16 @@ public class SimpleASCIITableImpl implements IASCIITable {
         while (data.length() < maxLength) {
             if (align == -1) {
                 data = String.valueOf(data) + " ";
-            }
-            else if (align == 1) {
+            } else if (align == 1) {
                 data = " " + data;
-            }
-            else {
+            } else {
                 if (align != 0) {
                     continue;
                 }
                 if (toggle) {
                     data = " " + data;
                     toggle = false;
-                }
-                else {
+                } else {
                     data = String.valueOf(data) + " ";
                     toggle = true;
                 }
@@ -176,7 +172,7 @@ public class SimpleASCIITableImpl implements IASCIITable {
         }
         return data;
     }
-    
+
     private String getRowLineBuf(final int colCount, final List<Integer> colMaxLenList, final String[][] data) {
         final StringBuilder rowBuilder = new StringBuilder();
         int colWidth = 0;
@@ -185,18 +181,16 @@ public class SimpleASCIITableImpl implements IASCIITable {
             for (int j = 0; j < colWidth; ++j) {
                 if (j == 0) {
                     rowBuilder.append("+");
-                }
-                else if (i + 1 == colCount && j + 1 == colWidth) {
+                } else if (i + 1 == colCount && j + 1 == colWidth) {
                     rowBuilder.append("-+");
-                }
-                else {
+                } else {
                     rowBuilder.append("-");
                 }
             }
         }
         return rowBuilder.append("\n").toString();
     }
-    
+
     private int getMaxItemLength(final List<String> colData) {
         int maxLength = 0;
         for (int i = 0; i < colData.size(); ++i) {
@@ -204,7 +198,7 @@ public class SimpleASCIITableImpl implements IASCIITable {
         }
         return maxLength;
     }
-    
+
     private int getMaxColumns(final String[] header, final String[][] data) {
         int maxColumns = 0;
         for (int i = 0; i < data.length; ++i) {
@@ -213,7 +207,7 @@ public class SimpleASCIITableImpl implements IASCIITable {
         maxColumns = Math.max(header.length, maxColumns);
         return maxColumns;
     }
-    
+
     private List<Integer> getMaxColLengths(final int colCount, final String[] header, final String[][] data) {
         final List<Integer> colMaxLenList = new ArrayList<Integer>(colCount);
         List<String> colData = null;
@@ -225,8 +219,7 @@ public class SimpleASCIITableImpl implements IASCIITable {
             for (int j = 0; j < data.length; ++j) {
                 if (i < data[j].length) {
                     colData.add(data[j][i]);
-                }
-                else {
+                } else {
                     colData.add("");
                 }
             }
@@ -235,7 +228,7 @@ public class SimpleASCIITableImpl implements IASCIITable {
         }
         return colMaxLenList;
     }
-    
+
     private String[] getHeaders(final ASCIITableHeader[] headerObjs) {
         String[] header = new String[0];
         if (headerObjs != null && headerObjs.length > 0) {

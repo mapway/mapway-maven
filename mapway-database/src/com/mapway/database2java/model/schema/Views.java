@@ -17,19 +17,18 @@ public class Views {
     /**
      * Instantiates a new views.
      */
-    public Views(){
-		Views=new ArrayList<View>(); 
-	}
+    public Views() {
+        Views = new ArrayList<View>();
+    }
 
     /**
      * Gets the count.
      *
      * @return the count
      */
-    public int getCount()
-	{
-		return Views.size();
-	}
+    public int getCount() {
+        return Views.size();
+    }
 
     /**
      * Gets the at.
@@ -37,25 +36,24 @@ public class Views {
      * @param index the index
      * @return the at
      */
-    public View getAt(int index){
-		return Views.get(index);
-	}
+    public View getAt(int index) {
+        return Views.get(index);
+    }
 
     /**
      * Clear.
      */
-    public void Clear(){
-		Views.clear();
-	}
+    public void Clear() {
+        Views.clear();
+    }
 
     /**
      * Adds the view.
      *
      * @param view the view
      */
-    public void addView(View view)
-	{
-		Views.add(view);
-	}
-	
+    public void addView(View view) {
+        Views.add(view);
+    }
+
 }

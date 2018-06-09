@@ -133,9 +133,8 @@ public class Scans {
 
         URL url = Scans.class.getClassLoader().getResource(packageName);
 
-        if(url==null)
-        {
-            System.out.println("sorry cannot find resource :"+packageName+"/"+fileName);
+        if (url == null) {
+            System.out.println("sorry cannot find resource :" + packageName + "/" + fileName);
             return "".getBytes();
         }
         // 得到协议的名称

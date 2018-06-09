@@ -13,8 +13,8 @@ public class InfoRequited extends Label {
      * Instantiates a new Info requited.
      */
     public InfoRequited() {
-    setStyleName("solu_needed");
-    setText("*必填");
-  }
+        setStyleName("solu_needed");
+        setText("*必填");
+    }
 
 }

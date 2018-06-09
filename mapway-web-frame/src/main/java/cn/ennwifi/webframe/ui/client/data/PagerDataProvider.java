@@ -41,47 +41,49 @@ public class PagerDataProvider<T extends IFieldValue> extends AbstractDataProvid
      * Instantiates a new Pager data provider.
      */
     public PagerDataProvider() {
-    mReq = new SearchReq();
-    headers = new ArrayList<HeaderInfo>();
+        mReq = new SearchReq();
+        headers = new ArrayList<HeaderInfo>();
 
-  }
+    }
 
-  @Override
-  public java.util.List<HeaderInfo> getHeaders() {
-    return headers;
-  };
+    @Override
+    public java.util.List<HeaderInfo> getHeaders() {
+        return headers;
+    }
 
-  @Override
-  public int getPageSize() {
+    ;
 
-    return mData.getPageSize();
-  }
+    @Override
+    public int getPageSize() {
 
-  @Override
-  public int getPageNumber() {
+        return mData.getPageSize();
+    }
 
-    return mData.getPage();
-  }
+    @Override
+    public int getPageNumber() {
 
-  @Override
-  public String getTitle() {
-    return "资金提供方";
-  }
+        return mData.getPage();
+    }
 
-  @Override
-  public Integer getTotalCount() {
-    return mData.getTotal();
-  }
+    @Override
+    public String getTitle() {
+        return "资金提供方";
+    }
 
-  @Override
-  public long getCount() {
-    return mData.getData().size();
-  }
+    @Override
+    public Integer getTotalCount() {
+        return mData.getTotal();
+    }
 
-  @Override
-  public IFieldValue getRowData(int row) {
-    return mData.getData().get(row);
-  }
+    @Override
+    public long getCount() {
+        return mData.getData().size();
+    }
+
+    @Override
+    public IFieldValue getRowData(int row) {
+        return mData.getData().get(row);
+    }
 
 
     /**
@@ -90,35 +92,35 @@ public class PagerDataProvider<T extends IFieldValue> extends AbstractDataProvid
      * @param req the req
      */
     public void load(SearchReq req) {
-    mReq = req;
+        mReq = req;
 
-  }
-
-  private MessageHandler operatorHandler = new MessageHandler() {
-
-    @Override
-    public void onMessage(Object sender, Integer message, Object value) {
-
-      final T data = (T) value;
-      if (message == MessageEvent.DELETE) {
-        ClientContext.getContext().confirm("删除操作", "确定删除?", new Callback<Void, Void>() {
-
-          @Override
-          public void onSuccess(Void result) {
-            deleteData(data);
-          }
-
-
-          @Override
-          public void onFailure(Void reason) {
-
-          }
-        });
-      } else if (message == MessageEvent.EDIT) {
-        editData(data);
-      }
     }
-  };
+
+    private MessageHandler operatorHandler = new MessageHandler() {
+
+        @Override
+        public void onMessage(Object sender, Integer message, Object value) {
+
+            final T data = (T) value;
+            if (message == MessageEvent.DELETE) {
+                ClientContext.getContext().confirm("删除操作", "确定删除?", new Callback<Void, Void>() {
+
+                    @Override
+                    public void onSuccess(Void result) {
+                        deleteData(data);
+                    }
+
+
+                    @Override
+                    public void onFailure(Void reason) {
+
+                    }
+                });
+            } else if (message == MessageEvent.EDIT) {
+                editData(data);
+            }
+        }
+    };
 
     /**
      * Gets operator.
@@ -127,12 +129,12 @@ public class PagerDataProvider<T extends IFieldValue> extends AbstractDataProvid
      * @return operator
      */
     protected RowOperator getOperator(int row) {
-    RowOperator operator = new RowOperator();
-    operator.addMessageHandler(operatorHandler);
-    T data = mData.getData().get(row);
-    operator.setData(data);
-    return operator;
-  }
+        RowOperator operator = new RowOperator();
+        operator.addMessageHandler(operatorHandler);
+        T data = mData.getData().get(row);
+        operator.setData(data);
+        return operator;
+    }
 
     /**
      * Edit data.
@@ -141,7 +143,7 @@ public class PagerDataProvider<T extends IFieldValue> extends AbstractDataProvid
      */
     protected void editData(T data) {
 
-  }
+    }
 
     /**
      * Delete data.
@@ -150,5 +152,5 @@ public class PagerDataProvider<T extends IFieldValue> extends AbstractDataProvid
      */
     protected void deleteData(T data) {
 
-  }
+    }
 }

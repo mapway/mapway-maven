@@ -6,14 +6,14 @@ package cn.ennwifi.webframe.service.module;
  * @author admin
  */
 public class DataTableResp {
-	
-	private int start;//起始位置
-	
-	private int length = 10;//每页显示数量
-	
-	private long recordsFiltered;//总记录数
-	
-	private Object data ;//返回前端数据
+
+    private int start;//起始位置
+
+    private int length = 10;//每页显示数量
+
+    private long recordsFiltered;//总记录数
+
+    private Object data;//返回前端数据
 
     /**
      * Gets start.
@@ -21,8 +21,8 @@ public class DataTableResp {
      * @return the start
      */
     public int getStart() {
-		return start;
-	}
+        return start;
+    }
 
     /**
      * Sets start.
@@ -30,8 +30,8 @@ public class DataTableResp {
      * @param start the start
      */
     public void setStart(int start) {
-		this.start = start;
-	}
+        this.start = start;
+    }
 
     /**
      * Gets length.
@@ -39,8 +39,8 @@ public class DataTableResp {
      * @return the length
      */
     public int getLength() {
-		return length;
-	}
+        return length;
+    }
 
     /**
      * Sets length.
@@ -48,8 +48,8 @@ public class DataTableResp {
      * @param length the length
      */
     public void setLength(int length) {
-		this.length = length;
-	}
+        this.length = length;
+    }
 
     /**
      * Gets records filtered.
@@ -57,8 +57,8 @@ public class DataTableResp {
      * @return the records filtered
      */
     public long getRecordsFiltered() {
-		return recordsFiltered;
-	}
+        return recordsFiltered;
+    }
 
     /**
      * Sets records filtered.
@@ -66,8 +66,8 @@ public class DataTableResp {
      * @param recordsFiltered the records filtered
      */
     public void setRecordsFiltered(long recordsFiltered) {
-		this.recordsFiltered = recordsFiltered;
-	}
+        this.recordsFiltered = recordsFiltered;
+    }
 
     /**
      * Gets data.
@@ -75,8 +75,8 @@ public class DataTableResp {
      * @return the data
      */
     public Object getData() {
-		return data;
-	}
+        return data;
+    }
 
     /**
      * Sets data.
@@ -84,7 +84,7 @@ public class DataTableResp {
      * @param data the data
      */
     public void setData(Object data) {
-		this.data = data;
-	}
+        this.data = data;
+    }
 
 }

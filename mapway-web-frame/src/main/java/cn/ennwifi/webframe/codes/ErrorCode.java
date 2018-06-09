@@ -25,9 +25,9 @@ public class ErrorCode {
      * @param message the message
      */
     public ErrorCode(Integer code, String message) {
-    this.code = code;
-    this.message = message;
-  }
+        this.code = code;
+        this.message = message;
+    }
 
 
     /**
@@ -37,18 +37,18 @@ public class ErrorCode {
      * @return the error code
      */
     public ErrorCode bind(Object... objects) {
-    if (objects == null) {
-      return this;
-    }
+        if (objects == null) {
+            return this;
+        }
 
-    String str = message;
-    for (int i = 0; i < objects.length; i++) {
-      Object object = objects[i];
-      if (object == null) {
-        object = "null";
-      }
-      str = str.replaceAll("\\$\\{" + i + "\\}", object.toString());
+        String str = message;
+        for (int i = 0; i < objects.length; i++) {
+            Object object = objects[i];
+            if (object == null) {
+                object = "null";
+            }
+            str = str.replaceAll("\\$\\{" + i + "\\}", object.toString());
+        }
+        return new ErrorCode(code, str);
     }
-    return new ErrorCode(code, str);
-  }
 }

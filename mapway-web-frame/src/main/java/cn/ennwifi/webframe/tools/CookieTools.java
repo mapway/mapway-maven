@@ -23,14 +23,14 @@ public class CookieTools {
      * @param date        the date
      */
     public static void addCookie(HttpServletResponse response, String cookieName, String cookieValue,
-      String path, Integer date) {
-    Cookie cookie = new Cookie(cookieName, cookieValue);
-    cookie.setPath(path);
-    if (date != null) {
-      cookie.setMaxAge(date);
+                                 String path, Integer date) {
+        Cookie cookie = new Cookie(cookieName, cookieValue);
+        cookie.setPath(path);
+        if (date != null) {
+            cookie.setMaxAge(date);
+        }
+        response.addCookie(cookie);
     }
-    response.addCookie(cookie);
-  }
 
     /**
      * 根据cookie名称 ，获取cookie值
@@ -40,18 +40,18 @@ public class CookieTools {
      * @return cookie value
      */
     public static String getCookieValue(HttpServletRequest request, String cookieName) {
-    String token = "";
-    Cookie[] cookies = request.getCookies();
-    if (cookies != null && cookies.length > 0) {
-      for (Cookie cookie : cookies) {
-        if (cookie.getName().equalsIgnoreCase(cookieName)) {
-          token = cookie.getValue();
-          break;
+        String token = "";
+        Cookie[] cookies = request.getCookies();
+        if (cookies != null && cookies.length > 0) {
+            for (Cookie cookie : cookies) {
+                if (cookie.getName().equalsIgnoreCase(cookieName)) {
+                    token = cookie.getValue();
+                    break;
+                }
+            }
         }
-      }
+        return token;
     }
-    return token;
-  }
 
     /**
      * 删除Cookie
@@ -60,18 +60,18 @@ public class CookieTools {
      * @param cookieName the cookie name
      */
     public static void deleteCookie(HttpServletRequest request, String cookieName) {
-    Cookie[] cookies = request.getCookies();
-    if (cookies != null && cookies.length > 0) {
-      for (Cookie cookie : cookies) {
-        if (StringUtils.equals(cookieName, cookie.getName())) {
-          cookie.setValue(null);
-          cookie.setMaxAge(0);// 立即销毁cookie
-          cookie.setPath("/");
-          break;
+        Cookie[] cookies = request.getCookies();
+        if (cookies != null && cookies.length > 0) {
+            for (Cookie cookie : cookies) {
+                if (StringUtils.equals(cookieName, cookie.getName())) {
+                    cookie.setValue(null);
+                    cookie.setMaxAge(0);// 立即销毁cookie
+                    cookie.setPath("/");
+                    break;
+                }
+            }
         }
-      }
     }
-  }
 
 
 }

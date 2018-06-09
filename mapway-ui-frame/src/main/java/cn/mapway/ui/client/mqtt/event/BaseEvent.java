@@ -11,7 +11,8 @@ public class BaseEvent extends JavaScriptObject {
     /**
      * Instantiates a new base event.
      */
-    protected BaseEvent() {}
+    protected BaseEvent() {
+    }
 
     /**
      * 错误代码.

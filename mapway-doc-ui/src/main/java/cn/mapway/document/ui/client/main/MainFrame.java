@@ -25,14 +25,16 @@ import cn.mapway.document.ui.client.rpc.IOnData;
  */
 public class MainFrame extends Composite {
 
-  /** The ui binder. */
-  private static MainFrameUiBinder uiBinder = GWT.create(MainFrameUiBinder.class);
+    /**
+     * The ui binder.
+     */
+    private static MainFrameUiBinder uiBinder = GWT.create(MainFrameUiBinder.class);
 
     /**
      * The Interface MainFrameUiBinder.
      */
     interface MainFrameUiBinder extends UiBinder<Widget, MainFrame> {
-  }
+    }
 
     /**
      * The current item.
@@ -44,58 +46,60 @@ public class MainFrame extends Composite {
      */
     EntryPanel entryPanel;
 
-  /** The tree select. */
-  private SelectionHandler<TreeItem> treeSelect = new SelectionHandler<TreeItem>() {
+    /**
+     * The tree select.
+     */
+    private SelectionHandler<TreeItem> treeSelect = new SelectionHandler<TreeItem>() {
 
-    @Override
-    public void onSelection(SelectionEvent<TreeItem> arg0) {
-      TreeItem item = arg0.getSelectedItem();
-      if (currentItem != null) {
-        currentItem.removeStyleName(SysResource.INSTANCE.getCss().entrySelected());
-      }
+        @Override
+        public void onSelection(SelectionEvent<TreeItem> arg0) {
+            TreeItem item = arg0.getSelectedItem();
+            if (currentItem != null) {
+                currentItem.removeStyleName(SysResource.INSTANCE.getCss().entrySelected());
+            }
 
-      handleItem(item);
+            handleItem(item);
 
-      currentItem = item;
-      currentItem.addStyleName(SysResource.INSTANCE.getCss().entrySelected());
-    }
+            currentItem = item;
+            currentItem.addStyleName(SysResource.INSTANCE.getCss().entrySelected());
+        }
 
-  };
+    };
 
-  /**
-   * Handle item.
-   *
-   * @param item the item
-   */
-  private void handleItem(TreeItem item) {
-    if (item.getTitle().length() == 0) {
-      Group group = (Group) item.getUserObject();
-      showEntryList(group);
-    } else {
-      Entry e = (Entry) item.getUserObject();
-      showEntry(e);
-    }
-
-  }
-
-  /**
-   * Show entry.
-   *
-   * @param e the e
-   */
-  private void showEntry(Entry e) {
-    if (entryPanel == null) {
-      entryPanel = new EntryPanel();
+    /**
+     * Handle item.
+     *
+     * @param item the item
+     */
+    private void handleItem(TreeItem item) {
+        if (item.getTitle().length() == 0) {
+            Group group = (Group) item.getUserObject();
+            showEntryList(group);
+        } else {
+            Entry e = (Entry) item.getUserObject();
+            showEntry(e);
+        }
 
     }
-    if (!entryPanel.isAttached()) {
-      content.clear();
-      content.add(entryPanel);
-    }
-    entryPanel.parse(e);
-    content.scrollToTop();
 
-  }
+    /**
+     * Show entry.
+     *
+     * @param e the e
+     */
+    private void showEntry(Entry e) {
+        if (entryPanel == null) {
+            entryPanel = new EntryPanel();
+
+        }
+        if (!entryPanel.isAttached()) {
+            content.clear();
+            content.add(entryPanel);
+        }
+        entryPanel.parse(e);
+        content.scrollToTop();
+
+    }
 
     /**
      * The list.
@@ -108,73 +112,77 @@ public class MainFrame extends Composite {
      * @param group the group
      */
     protected void showEntryList(Group group) {
-    if (list == null) {
-      list = new EntryListPanel();
+        if (list == null) {
+            list = new EntryListPanel();
+        }
+        if (!list.isAttached()) {
+            content.clear();
+            content.add(list);
+        }
+        list.parse(group, "");
+        content.scrollToTop();
     }
-    if (!list.isAttached()) {
-      content.clear();
-      content.add(list);
-    }
-    list.parse(group, "");
-    content.scrollToTop();
-  }
 
     /**
      * Instantiates a new main frame.
      */
     public MainFrame() {
-    initWidget(uiBinder.createAndBindUi(this));
-    logo.setUrl(SysResource.INSTANCE.logo().getSafeUri());
+        initWidget(uiBinder.createAndBindUi(this));
+        logo.setUrl(SysResource.INSTANCE.logo().getSafeUri());
 
-    apiTree.addSelectionHandler(treeSelect);
+        apiTree.addSelectionHandler(treeSelect);
 
-    adjustUI();
-  }
-
-  /**
-   * 根据参数调整UI布局
-   */
-  private void adjustUI() {
-    String showTop = Window.Location.getParameter("showTop");
-    if (showTop == null || showTop.length() == 0) {
-      // 显示TOP
-    } else {
-      // 不显示TOP
-      root.setWidgetHidden(topBar, true);
+        adjustUI();
     }
-  }
+
+    /**
+     * 根据参数调整UI布局
+     */
+    private void adjustUI() {
+        String showTop = Window.Location.getParameter("showTop");
+        if (showTop == null || showTop.length() == 0) {
+            // 显示TOP
+        } else {
+            // 不显示TOP
+            root.setWidgetHidden(topBar, true);
+        }
+    }
 
     /**
      * The doc.
      */
     ApiDoc doc;
 
-  /** The goto word handler. */
-  private ClickHandler gotoWordHandler = new ClickHandler() {
+    /**
+     * The goto word handler.
+     */
+    private ClickHandler gotoWordHandler = new ClickHandler() {
 
-    @Override
-    public void onClick(ClickEvent event) {
-      Window.open(doc.wordUrl(), "wordExport", "");
-    }
-  };
+        @Override
+        public void onClick(ClickEvent event) {
+            Window.open(doc.wordUrl(), "wordExport", "");
+        }
+    };
 
-  /** The download link handler. */
-  private ClickHandler downloadLinkHandler = new ClickHandler() {
+    /**
+     * The download link handler.
+     */
+    private ClickHandler downloadLinkHandler = new ClickHandler() {
 
-    @Override
-    public void onClick(ClickEvent event) {
-      CustomButton btn = (CustomButton) event.getSource();
-      JarInfo jar = (JarInfo) btn.getData();
-      Window.open(jar.link(), "Connecgtor 下载", "");
-    }
-  };
+        @Override
+        public void onClick(ClickEvent event) {
+            CustomButton btn = (CustomButton) event.getSource();
+            JarInfo jar = (JarInfo) btn.getData();
+            Window.open(jar.link(), "Connecgtor 下载", "");
+        }
+    };
 
-  /**
-   * 获取模板文件中的数据.
-   *
-   * @return the api doc
-   */
-  private final native ApiDoc findDocData()/*-{
+    /**
+     * 获取模板文件中的数据.
+     *
+     * @return the api doc
+     */
+    private final native ApiDoc findDocData()/*-{
 		if ($wnd.g_data != undefined) {
 			return $wnd.g_data;
 		}
@@ -188,23 +196,23 @@ public class MainFrame extends Composite {
      */
     public void init(String target) {
 
-    ApiDoc doc = findDocData();
-    if (doc == null) {
-      ApiDocProxy.fetchData(target, new IOnData<ApiDoc>() {
-        @Override
-        public void onError(String url, String error) {
-          Window.alert(error);
-        }
+        ApiDoc doc = findDocData();
+        if (doc == null) {
+            ApiDocProxy.fetchData(target, new IOnData<ApiDoc>() {
+                @Override
+                public void onError(String url, String error) {
+                    Window.alert(error);
+                }
 
-        @Override
-        public void onSuccess(String url, ApiDoc data) {
-          parseData(data);
+                @Override
+                public void onSuccess(String url, ApiDoc data) {
+                    parseData(data);
+                }
+            });
+        } else {
+            parseData(doc);
         }
-      });
-    } else {
-      parseData(doc);
     }
-  }
 
     /**
      * Parses the data.
@@ -212,120 +220,116 @@ public class MainFrame extends Composite {
      * @param doc the doc
      */
     void parseData(final ApiDoc doc) {
-    this.doc = doc;
+        this.doc = doc;
 
-    JsArray<JarInfo> jars = doc.getDownloads();
+        JsArray<JarInfo> jars = doc.getDownloads();
 
-    if (jars.length() > 0) {
-      for (int index = 0; index < jars.length(); index++) {
-        JarInfo jar = jars.get(index);
-        CustomButton btn = new CustomButton(jar.summary());
-        btn.setData(jar);
-        btn.addClickHandler(downloadLinkHandler);
-        tools.add(btn);
-      }
-    }
-
-    lbTitle.setText(doc.title());
-    apiTree.parseData(doc);
-    lbSubtitle.setText(doc.summary());
-
-    if(doc.homeUrl().length()>0)
-    {
-        logo.getElement().getStyle().setCursor(Style.Cursor.POINTER);
-        logo.addClickHandler(new ClickHandler() {
-            public void onClick(ClickEvent event) {
-                Window.Location.assign(doc.homeUrl());
+        if (jars.length() > 0) {
+            for (int index = 0; index < jars.length(); index++) {
+                JarInfo jar = jars.get(index);
+                CustomButton btn = new CustomButton(jar.summary());
+                btn.setData(jar);
+                btn.addClickHandler(downloadLinkHandler);
+                tools.add(btn);
             }
-        });
-    }
-    else
-    {
-        logo.getElement().getStyle().setCursor(Style.Cursor.AUTO);
-    }
+        }
 
-    handleItem(apiTree.getItem(0));
+        lbTitle.setText(doc.title());
+        apiTree.parseData(doc);
+        lbSubtitle.setText(doc.summary());
 
-    if (doc.logo()!=null)
-    {
-      logo.setUrl(doc.logo());
+        if (doc.homeUrl().length() > 0) {
+            logo.getElement().getStyle().setCursor(Style.Cursor.POINTER);
+            logo.addClickHandler(new ClickHandler() {
+                public void onClick(ClickEvent event) {
+                    Window.Location.assign(doc.homeUrl());
+                }
+            });
+        } else {
+            logo.getElement().getStyle().setCursor(Style.Cursor.AUTO);
+        }
+
+        handleItem(apiTree.getItem(0));
+
+        if (doc.logo() != null) {
+            logo.setUrl(doc.logo());
+        }
+        apiVersion.setText("版本:" + doc.apiVersion());
+
+        if (doc.domain() != null) {
+            anchorDomain.setText(doc.domain());
+        }
+
+        if (doc.copyright() != null) {
+            lbCopy.setHTML("&copy; " + doc.copyright());
+        }
+
     }
-      apiVersion.setText("版本:"+doc.apiVersion());
-
-    if (doc.domain() != null) {
-      anchorDomain.setText(doc.domain());
-    }
-
-    if (doc.copyright() != null) {
-      lbCopy.setHTML("&copy; " + doc.copyright());
-    }
-
-  }
 
     /**
      * The Api version.
      */
     @UiField
-  Label apiVersion;
+    Label apiVersion;
 
     /**
      * The api tree.
      */
     @UiField
-  ApiTree apiTree;
+    ApiTree apiTree;
 
     /**
      * The content.
      */
     @UiField
-  ScrollPanel content;
+    ScrollPanel content;
 
     /**
      * The lb title.
      */
     @UiField
-  Label lbTitle;
+    Label lbTitle;
 
     /**
      * The logo.
      */
     @UiField
-  Image logo;
+    Image logo;
 
     /**
      * The tools.
      */
     @UiField
-  HorizontalPanel tools;
+    HorizontalPanel tools;
 
     /**
      * sub title.
      */
     @UiField
-  Label lbSubtitle;
+    Label lbSubtitle;
 
     /**
      * sub title.
      */
     @UiField
-  HTML lbCopy;
+    HTML lbCopy;
 
     /**
      * sub title.
      */
     @UiField
-  Anchor anchorDomain;
+    Anchor anchorDomain;
 
     /**
      * The Top bar.
      */
     @UiField
-  HorizontalPanel topBar;
+    HorizontalPanel topBar;
 
     /**
      * The Root.
      */
     @UiField
-  DockLayoutPanel root;
+    DockLayoutPanel root;
 
 }

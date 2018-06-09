@@ -15,8 +15,8 @@ public class FieldCode implements Serializable {
      * Instantiates a new Field code.
      */
     public FieldCode() {
-		this("","");
-}
+        this("", "");
+    }
 
     /**
      * Gets the value.
@@ -24,8 +24,8 @@ public class FieldCode implements Serializable {
      * @return the value
      */
     public String getValue() {
-		return value;
-	}
+        return value;
+    }
 
     /**
      * Sets the value.
@@ -33,8 +33,8 @@ public class FieldCode implements Serializable {
      * @param value the new value
      */
     public void setValue(String value) {
-		this.value = value;
-	}
+        this.value = value;
+    }
 
     /**
      * Gets the desc.
@@ -42,8 +42,8 @@ public class FieldCode implements Serializable {
      * @return the desc
      */
     public String getDesc() {
-		return desc;
-	}
+        return desc;
+    }
 
     /**
      * Sets the desc.
@@ -51,8 +51,8 @@ public class FieldCode implements Serializable {
      * @param desc the new desc
      */
     public void setDesc(String desc) {
-		this.desc = desc;
-	}
+        this.desc = desc;
+    }
 
     /**
      * The value.
@@ -71,7 +71,7 @@ public class FieldCode implements Serializable {
      * @param d the d
      */
     public FieldCode(String v, String d) {
-		setValue(v);
-		setDesc(d);
-	}
+        setValue(v);
+        setDesc(d);
+    }
 }

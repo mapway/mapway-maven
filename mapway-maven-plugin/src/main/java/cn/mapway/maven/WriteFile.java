@@ -23,39 +23,39 @@ public class WriteFile extends AbstractMojo {
      */
     public static final String MOJO_NAME = "write-file";
 
-  @Parameter
-  @SuppressWarnings({"unused", "MismatchedReadAndWriteOfArray"})
-  private FileParameter[] files;
+    @Parameter
+    @SuppressWarnings({"unused", "MismatchedReadAndWriteOfArray"})
+    private FileParameter[] files;
 
-  @Parameter(defaultValue = "UTF-8")
-  @SuppressWarnings("unused")
-  private String charset;
+    @Parameter(defaultValue = "UTF-8")
+    @SuppressWarnings("unused")
+    private String charset;
 
 
-  public void execute() throws MojoExecutionException {
-    if (files != null) {
-      try {
-        for (FileParameter file : files) {
-          File path = file.getPath();
-          if (path == null) {
-            throw new MojoExecutionException("Path is empty");
-          }
-          path.getParentFile().mkdirs();
-          if (!path.createNewFile()) {
-            getLog().info("Overwrite file: " + path.getAbsolutePath());
-          } else {
-            getLog().info("Write to new file: " + path.getAbsolutePath());
-          }
-          Files.write(path.toPath(), Arrays.asList(file.getLines()), Charset.forName(charset));
+    public void execute() throws MojoExecutionException {
+        if (files != null) {
+            try {
+                for (FileParameter file : files) {
+                    File path = file.getPath();
+                    if (path == null) {
+                        throw new MojoExecutionException("Path is empty");
+                    }
+                    path.getParentFile().mkdirs();
+                    if (!path.createNewFile()) {
+                        getLog().info("Overwrite file: " + path.getAbsolutePath());
+                    } else {
+                        getLog().info("Write to new file: " + path.getAbsolutePath());
+                    }
+                    Files.write(path.toPath(), Arrays.asList(file.getLines()), Charset.forName(charset));
+                }
+            } catch (MojoExecutionException e) {
+                throw e;
+            } catch (Exception e) {
+                throw new MojoExecutionException(e.getMessage(), e);
+            }
+        } else {
+            getLog().warn("No files specified in configuration.");
         }
-      } catch (MojoExecutionException e) {
-        throw e;
-      } catch (Exception e) {
-        throw new MojoExecutionException(e.getMessage(), e);
-      }
-    } else {
-      getLog().warn("No files specified in configuration.");
     }
-  }
 
 }

@@ -19,8 +19,8 @@ public class LocalTree extends Tree implements HasMessageHandlers {
      * @param open the open
      */
     public void setOpen(String key, boolean open) {
-    LocalStorage.save(key, open ? "1" : "0");
-  }
+        LocalStorage.save(key, open ? "1" : "0");
+    }
 
     /**
      * Checks if is open.
@@ -29,22 +29,22 @@ public class LocalTree extends Tree implements HasMessageHandlers {
      * @return true, if is open
      */
     public boolean isOpen(String key) {
-    String data = LocalStorage.val(key);
-    if ("1".equals(data)) {
-      return true;
+        String data = LocalStorage.val(key);
+        if ("1".equals(data)) {
+            return true;
+        }
+        return false;
     }
-    return false;
-  }
 
-  /*
-   * (non-Javadoc)
-   * 
-   * @see
-   * com.ksyzt.gwt.client.event.HasMessageHandlers#addMessageHandler(com.ksyzt.gwt.client.event.
-   * MessageHandler)
-   */
-  @Override
-  public HandlerRegistration addMessageHandler(MessageHandler handler) {
-    return addHandler(handler, MessageEvent.TYPE);
-  }
+    /*
+     * (non-Javadoc)
+     *
+     * @see
+     * com.ksyzt.gwt.client.event.HasMessageHandlers#addMessageHandler(com.ksyzt.gwt.client.event.
+     * MessageHandler)
+     */
+    @Override
+    public HandlerRegistration addMessageHandler(MessageHandler handler) {
+        return addHandler(handler, MessageEvent.TYPE);
+    }
 }

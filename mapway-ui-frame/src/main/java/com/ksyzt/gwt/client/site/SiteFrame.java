@@ -27,25 +27,27 @@ public class SiteFrame extends MessageComposite {
      * The style.
      */
     @UiField(provided = true)
-	CssStyle style;
-	
-	/** The ui binder. */
-	private static SiteFrameUiBinder uiBinder = GWT
-			.create(SiteFrameUiBinder.class);
+    CssStyle style;
+
+    /**
+     * The ui binder.
+     */
+    private static SiteFrameUiBinder uiBinder = GWT
+            .create(SiteFrameUiBinder.class);
 
     /**
      * The Interface SiteFrameUiBinder.
      */
     interface SiteFrameUiBinder extends UiBinder<Widget, SiteFrame> {
-	}
+    }
 
     /**
      * Instantiates a new site frame.
      */
     public SiteFrame() {
-		style = SysResource.INSTANCE.getCss();
-		initWidget(uiBinder.createAndBindUi(this));
-	}
+        style = SysResource.INSTANCE.getCss();
+        initWidget(uiBinder.createAndBindUi(this));
+    }
 
     /**
      * On qiut.
@@ -53,17 +55,16 @@ public class SiteFrame extends MessageComposite {
      * @param e the e
      */
     @UiHandler("btnQiut")
-	void onQiut(ClickEvent e)
-	{
-		MessageEvent ev=new MessageEvent(MessageEvent.QUIT,0);
-		fireEvent(ev);
-	}
+    void onQiut(ClickEvent e) {
+        MessageEvent ev = new MessageEvent(MessageEvent.QUIT, 0);
+        fireEvent(ev);
+    }
 
     /**
      * The root.
      */
     @UiField
-	DockLayoutPanel root;
+    DockLayoutPanel root;
 
     /**
      * The page info.
@@ -74,18 +75,20 @@ public class SiteFrame extends MessageComposite {
      * The page url.
      */
     UrlRewriteConfigure pageUrl;
-	
-	/** The m message handler. */
-	private MessageHandler m_message_handler = new MessageHandler() {
 
-		@Override
-		public void onMessage(Object sender, Integer message, Object value) {
-			if (message == MessageEvent.MESSAGE) {
-				message((String) value);
-			}
+    /**
+     * The m message handler.
+     */
+    private MessageHandler m_message_handler = new MessageHandler() {
 
-		}
-	};
+        @Override
+        public void onMessage(Object sender, Integer message, Object value) {
+            if (message == MessageEvent.MESSAGE) {
+                message((String) value);
+            }
+
+        }
+    };
 
     /**
      * The current.
@@ -98,38 +101,38 @@ public class SiteFrame extends MessageComposite {
      * @param e the e
      */
     @UiHandler("btnSiteInfo")
-	void onInfo(ClickEvent e) {
-		if (pageInfo == null) {
-			pageInfo = new PageSiteInfo();
-			pageInfo.addMessageHandler(m_message_handler);
-		}
-		pageInfo.refresh();
-		setCurrentWidget(pageInfo);
+    void onInfo(ClickEvent e) {
+        if (pageInfo == null) {
+            pageInfo = new PageSiteInfo();
+            pageInfo.addMessageHandler(m_message_handler);
+        }
+        pageInfo.refresh();
+        setCurrentWidget(pageInfo);
 
-	}
+    }
 
-	/**
-	 * Sets the current widget.
-	 *
-	 * @param pageInfo2 the new current widget
-	 */
-	private void setCurrentWidget(Widget pageInfo2) {
-		if (current != null) {
-			root.remove(current);
+    /**
+     * Sets the current widget.
+     *
+     * @param pageInfo2 the new current widget
+     */
+    private void setCurrentWidget(Widget pageInfo2) {
+        if (current != null) {
+            root.remove(current);
 
-		}
-		root.add(pageInfo2);
-		current = pageInfo2;
-	}
+        }
+        root.add(pageInfo2);
+        current = pageInfo2;
+    }
 
-	/* (non-Javadoc)
-	 * @see com.ksyzt.gwt.client.common.MessageComposite#message(java.lang.String)
-	 */
-	public void message(String value) {
-		TopMessage msg = new TopMessage();
-		msg.showMesasge(value);
+    /* (non-Javadoc)
+     * @see com.ksyzt.gwt.client.common.MessageComposite#message(java.lang.String)
+     */
+    public void message(String value) {
+        TopMessage msg = new TopMessage();
+        msg.showMesasge(value);
 
-	}
+    }
 
     /**
      * On URL.
@@ -137,13 +140,13 @@ public class SiteFrame extends MessageComposite {
      * @param e the e
      */
     @UiHandler("btnURL")
-	void onURL(ClickEvent e) {
-		if (pageUrl == null) {
-			pageUrl = new UrlRewriteConfigure();
-			pageUrl.init();
-			pageUrl.addMessageHandler(m_message_handler);
-		}
+    void onURL(ClickEvent e) {
+        if (pageUrl == null) {
+            pageUrl = new UrlRewriteConfigure();
+            pageUrl.init();
+            pageUrl.addMessageHandler(m_message_handler);
+        }
 
-		setCurrentWidget(pageUrl);
-	}
+        setCurrentWidget(pageUrl);
+    }
 }

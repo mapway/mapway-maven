@@ -20,31 +20,31 @@ public class NoSubModule extends AbstractModule {
      */
     public final static String MODULE_CODE = "MC_NO_SUB";
 
-  private static NoSubModuleUiBinder uiBinder = GWT.create(NoSubModuleUiBinder.class);
+    private static NoSubModuleUiBinder uiBinder = GWT.create(NoSubModuleUiBinder.class);
 
     /**
      * The interface No sub module ui binder.
      */
     interface NoSubModuleUiBinder extends UiBinder<Widget, NoSubModule> {
-  }
+    }
 
     /**
      * Instantiates a new No sub module.
      */
     public NoSubModule() {
-    initModuleWidget(uiBinder.createAndBindUi(this));
-    updateTools(tools);
-  }
+        initModuleWidget(uiBinder.createAndBindUi(this));
+        updateTools(tools);
+    }
 
 
     /**
      * The Tools.
      */
     @UiField
-  HorizontalPanel tools;
+    HorizontalPanel tools;
 
-  @Override
-  public String getModuleCode() {
-    return MODULE_CODE;
-  }
+    @Override
+    public String getModuleCode() {
+        return MODULE_CODE;
+    }
 }

@@ -24,54 +24,60 @@ import com.ksyzt.gwt.shared.module.AdminUser;
  */
 public class AdminUserConfigure extends MessageComposite {
 
-	/** The ui binder. */
-	private static AdminUserConfigureUiBinder uiBinder = GWT
-			.create(AdminUserConfigureUiBinder.class);
+    /**
+     * The ui binder.
+     */
+    private static AdminUserConfigureUiBinder uiBinder = GWT
+            .create(AdminUserConfigureUiBinder.class);
 
     /**
      * The Interface AdminUserConfigureUiBinder.
      */
     interface AdminUserConfigureUiBinder extends
-			UiBinder<Widget, AdminUserConfigure> {
-	}
+            UiBinder<Widget, AdminUserConfigure> {
+    }
 
-	/** The m name dowm. */
-	private KeyDownHandler m_name_dowm = new KeyDownHandler() {
+    /**
+     * The m name dowm.
+     */
+    private KeyDownHandler m_name_dowm = new KeyDownHandler() {
 
-		@Override
-		public void onKeyDown(KeyDownEvent event) {
-			if (event.getNativeKeyCode() == KeyCodes.KEY_ENTER) {
-				txtPwd.setFocus(true);
-			}
-		}
-	};
-	
-	/** The m pwd key down. */
-	private KeyDownHandler m_pwd_key_down = new KeyDownHandler() {
+        @Override
+        public void onKeyDown(KeyDownEvent event) {
+            if (event.getNativeKeyCode() == KeyCodes.KEY_ENTER) {
+                txtPwd.setFocus(true);
+            }
+        }
+    };
 
-		@Override
-		public void onKeyDown(KeyDownEvent event) {
-			if (event.getNativeKeyCode() == KeyCodes.KEY_ENTER) {
-				onOK(null);
-			}
-		}
-	};
+    /**
+     * The m pwd key down.
+     */
+    private KeyDownHandler m_pwd_key_down = new KeyDownHandler() {
+
+        @Override
+        public void onKeyDown(KeyDownEvent event) {
+            if (event.getNativeKeyCode() == KeyCodes.KEY_ENTER) {
+                onOK(null);
+            }
+        }
+    };
 
     /**
      * Instantiates a new admin user configure.
      */
     public AdminUserConfigure() {
-		initWidget(uiBinder.createAndBindUi(this));
-		txtUserName.addKeyDownHandler(m_name_dowm);
-		txtPwd.addKeyDownHandler(m_pwd_key_down);
-		txtUserName.setFocus(true);
-	}
+        initWidget(uiBinder.createAndBindUi(this));
+        txtUserName.addKeyDownHandler(m_name_dowm);
+        txtPwd.addKeyDownHandler(m_pwd_key_down);
+        txtUserName.setFocus(true);
+    }
 
     /**
      * The msg.
      */
     @UiField
-	HTMLPanel msg;
+    HTMLPanel msg;
 
     /**
      * Sets the mesage.
@@ -79,8 +85,8 @@ public class AdminUserConfigure extends MessageComposite {
      * @param text the new mesage
      */
     public void setMesage(String text) {
-		msg.add(new HTML(text));
-	}
+        msg.add(new HTML(text));
+    }
 
     /**
      * The on check value.
@@ -91,13 +97,13 @@ public class AdminUserConfigure extends MessageComposite {
      * The txt user name.
      */
     @UiField
-	TextBox txtUserName;
+    TextBox txtUserName;
 
     /**
      * The txt pwd.
      */
     @UiField
-	TextBox txtPwd;
+    TextBox txtPwd;
 
     /**
      * On OK.
@@ -105,17 +111,17 @@ public class AdminUserConfigure extends MessageComposite {
      * @param e the e
      */
     @UiHandler("btnOK")
-	void onOK(ClickEvent e) {
-		AdminUser u = new AdminUser();
-		u.setUserName(txtUserName.getValue());
-		u.setPassword(txtPwd.getValue());
-		if (onCheckValue != null) {
-			boolean b = onCheckValue.check(u);
-			if (b == true) {
-				MessageEvent ev = new MessageEvent(MessageEvent.OK, u);
-				fireEvent(ev);
-			}
-		}
-	}
+    void onOK(ClickEvent e) {
+        AdminUser u = new AdminUser();
+        u.setUserName(txtUserName.getValue());
+        u.setPassword(txtPwd.getValue());
+        if (onCheckValue != null) {
+            boolean b = onCheckValue.check(u);
+            if (b == true) {
+                MessageEvent ev = new MessageEvent(MessageEvent.OK, u);
+                fireEvent(ev);
+            }
+        }
+    }
 
 }

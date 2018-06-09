@@ -34,8 +34,8 @@ public class HistoryManager implements ValueChangeHandler<String> {
      * @param handler the handler
      */
     public void setEmptyHandler(IEventHandler handler) {
-    mEmptyHander = handler;
-  }
+        mEmptyHander = handler;
+    }
 
     /**
      * The constant SEPRATOR.
@@ -45,7 +45,7 @@ public class HistoryManager implements ValueChangeHandler<String> {
      * The constant EMPTY_HASH_EVENT.
      */
     public static final String EMPTY_HASH_EVENT = "EMPTY_HASH_EVENT";
-  private IModuleDispatcher mDispatcher;
+    private IModuleDispatcher mDispatcher;
 
     /**
      * Push.
@@ -53,11 +53,11 @@ public class HistoryManager implements ValueChangeHandler<String> {
      * @param moduleDatas the module datas
      */
     public final static void push(List<SwitchModuleData> moduleDatas) {
-    String r = encode(moduleDatas);
-    if (r.length() > 0) {
-      History.newItem(r, false);
+        String r = encode(moduleDatas);
+        if (r.length() > 0) {
+            History.newItem(r, false);
+        }
     }
-  }
 
 
     /**
@@ -66,12 +66,11 @@ public class HistoryManager implements ValueChangeHandler<String> {
      * @param moduleDatas the module datas
      */
     public final static void pushParameters(List<SwitchModuleData> moduleDatas) {
-    encode(moduleDatas);
-  }
+        encode(moduleDatas);
+    }
 
 
-
-  private static HistoryManager historyManager = null;
+    private static HistoryManager historyManager = null;
 
     /**
      * Get history manager.
@@ -80,12 +79,12 @@ public class HistoryManager implements ValueChangeHandler<String> {
      * @return the history manager
      */
     public final static HistoryManager get(IModuleDispatcher dispatcher) {
-    if (historyManager == null) {
-      historyManager = new HistoryManager(dispatcher);
-      History.addValueChangeHandler(historyManager);
+        if (historyManager == null) {
+            historyManager = new HistoryManager(dispatcher);
+            History.addValueChangeHandler(historyManager);
+        }
+        return historyManager;
     }
-    return historyManager;
-  }
 
     /**
      * Instantiates a new History manager.
@@ -93,8 +92,8 @@ public class HistoryManager implements ValueChangeHandler<String> {
      * @param dispatcher the dispatcher
      */
     protected HistoryManager(IModuleDispatcher dispatcher) {
-    mDispatcher = dispatcher;
-  }
+        mDispatcher = dispatcher;
+    }
 
     /**
      * Popup.
@@ -102,78 +101,78 @@ public class HistoryManager implements ValueChangeHandler<String> {
      * @param token the token
      */
     public void popup(String token) {
-    List<SwitchModuleData> modules = decode(token);
-    IModuleDispatcher d = mDispatcher;
+        List<SwitchModuleData> modules = decode(token);
+        IModuleDispatcher d = mDispatcher;
 
-    if (modules.size() > 0) {
-      int index = 0;
-      while (d != null) {
-        if (index >= modules.size()) {
-          break;
+        if (modules.size() > 0) {
+            int index = 0;
+            while (d != null) {
+                if (index >= modules.size()) {
+                    break;
+                }
+                SwitchModuleData moduelData = modules.get(index++);
+
+                GWT.log("popup hash > " + moduelData.getModuleCode() + "  "
+                        + moduelData.getParameters().toString());
+                d = d.switchModule(moduelData.getModuleCode(), moduelData.getParameters(), false);
+            }
+        } else {
+            if (mEmptyHander != null) {
+                mEmptyHander.onEvent(EMPTY_HASH_EVENT, 0, null);
+            }
         }
-        SwitchModuleData moduelData = modules.get(index++);
-
-        GWT.log("popup hash > " + moduelData.getModuleCode() + "  "
-            + moduelData.getParameters().toString());
-        d = d.switchModule(moduelData.getModuleCode(), moduelData.getParameters(), false);
-      }
-    } else {
-      if (mEmptyHander != null) {
-        mEmptyHander.onEvent(EMPTY_HASH_EVENT, 0, null);
-      }
     }
-  }
 
-  private final static String encode(List<SwitchModuleData> moduleCodes) {
-    if (moduleCodes == null || moduleCodes.size() == 0) {
-      return "";
-    }
-    String r = "";
-    // 保存参数到本地存储中.
-    Storage storage = Storage.getLocalStorageIfSupported();
-
-    for (SwitchModuleData d : moduleCodes) {
-      if (r.length() > 0) {
-        r += ":";
-      }
-      String paraKey = Clients.randomString(6);
-      r += d.getHash() + "-" + paraKey;
-      storage.setItem(paraKey, d.getParameters().toString());
-    }
-    return r;
-  }
-
-  private final static List<SwitchModuleData> decode(String token) {
-
-    Storage storage = Storage.getLocalStorageIfSupported();
-
-    List<SwitchModuleData> r = new ArrayList<SwitchModuleData>();
-
-    if (token != null && token.length() > 0) {
-      String[] hashs = token.split(":");
-      for (int i = 0; i < hashs.length; i++) {
-        String hash = hashs[i];
-        String[] ks = hash.split("-");
-        if (ks.length != 2) {
-          break;
+    private final static String encode(List<SwitchModuleData> moduleCodes) {
+        if (moduleCodes == null || moduleCodes.size() == 0) {
+            return "";
         }
+        String r = "";
+        // 保存参数到本地存储中.
+        Storage storage = Storage.getLocalStorageIfSupported();
 
-        ModuleInfo mi = BaseAbstractModule.getModuleFactory().findModuleInfoByHash(ks[0]);
-        SwitchModuleData d = new SwitchModuleData(mi.code, mi.hash);
-        d.getParameters().parse(storage.getItem(ks[1]));
-        r.add(d);
-      }
+        for (SwitchModuleData d : moduleCodes) {
+            if (r.length() > 0) {
+                r += ":";
+            }
+            String paraKey = Clients.randomString(6);
+            r += d.getHash() + "-" + paraKey;
+            storage.setItem(paraKey, d.getParameters().toString());
+        }
+        return r;
     }
-    return r;
-  }
 
-  @Override
-  public void onValueChange(ValueChangeEvent<String> event) {
-    String token = event.getValue();
-    GWT.log("history navi to " + token);
-    if (token == null || token.length() == 0) {
-      return;
+    private final static List<SwitchModuleData> decode(String token) {
+
+        Storage storage = Storage.getLocalStorageIfSupported();
+
+        List<SwitchModuleData> r = new ArrayList<SwitchModuleData>();
+
+        if (token != null && token.length() > 0) {
+            String[] hashs = token.split(":");
+            for (int i = 0; i < hashs.length; i++) {
+                String hash = hashs[i];
+                String[] ks = hash.split("-");
+                if (ks.length != 2) {
+                    break;
+                }
+
+                ModuleInfo mi = BaseAbstractModule.getModuleFactory().findModuleInfoByHash(ks[0]);
+                SwitchModuleData d = new SwitchModuleData(mi.code, mi.hash);
+                d.getParameters().parse(storage.getItem(ks[1]));
+                r.add(d);
+            }
+        }
+        return r;
     }
-    popup(token);
-  }
+
+    @Override
+    public void onValueChange(ValueChangeEvent<String> event) {
+        String token = event.getValue();
+        GWT.log("history navi to " + token);
+        if (token == null || token.length() == 0) {
+            return;
+        }
+        popup(token);
+    }
 }

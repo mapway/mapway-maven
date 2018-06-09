@@ -17,5 +17,5 @@ public interface CommonServerProxy {
      * The Constant SITE_MANAGER.
      */
     public static final ISiteManagerAsync SITE_MANAGER = GWT
-			.create(ISiteManager.class);
+            .create(ISiteManager.class);
 }

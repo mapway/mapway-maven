@@ -23,7 +23,7 @@ public class Alert extends DialogBox {
      */
     public Alert() {
 
-	}
+    }
 
     /**
      * Instantiates a new alert.
@@ -32,36 +32,36 @@ public class Alert extends DialogBox {
      * @param msg     the msg
      */
     public Alert(String caption, String msg) {
-		this.setHTML(caption);
+        this.setHTML(caption);
 
-		VerticalPanel p = new VerticalPanel();
-		HorizontalPanel btns = new HorizontalPanel();
-		btns.setHorizontalAlignment(HasHorizontalAlignment.ALIGN_CENTER);
-		btns.setWidth("100%");
-		Style style=btns.getElement().getStyle();
-		style.setMarginTop(30, Unit.PX);
-		style.setBackgroundColor("#f0f0f0");
-		btns.setSpacing(5);
-		p.add(new HTMLPanel(msg));
-		p.add(btns);
-		Button btn = new Button("确定");
-		
-		btn.addClickHandler(btn_ok_handler);
-		btns.add(btn);
-		this.add(p);
-		this.setModal(true);
-		this.setGlassEnabled(true);
-	}
+        VerticalPanel p = new VerticalPanel();
+        HorizontalPanel btns = new HorizontalPanel();
+        btns.setHorizontalAlignment(HasHorizontalAlignment.ALIGN_CENTER);
+        btns.setWidth("100%");
+        Style style = btns.getElement().getStyle();
+        style.setMarginTop(30, Unit.PX);
+        style.setBackgroundColor("#f0f0f0");
+        btns.setSpacing(5);
+        p.add(new HTMLPanel(msg));
+        p.add(btns);
+        Button btn = new Button("确定");
+
+        btn.addClickHandler(btn_ok_handler);
+        btns.add(btn);
+        this.add(p);
+        this.setModal(true);
+        this.setGlassEnabled(true);
+    }
 
     /**
      * The btn ok handler.
      */
     ClickHandler btn_ok_handler = new ClickHandler() {
 
-		@Override
-		public void onClick(ClickEvent event) {
-			Alert.this.hide(true);
-		}
-	};
+        @Override
+        public void onClick(ClickEvent event) {
+            Alert.this.hide(true);
+        }
+    };
 
 }

@@ -34,8 +34,8 @@ public class QueryParameter {
      * @return the name
      */
     public String getName() {
-		return name;
-	}
+        return name;
+    }
 
     /**
      * Sets the name.
@@ -43,8 +43,8 @@ public class QueryParameter {
      * @param name the name to set
      */
     public void setName(String name) {
-		this.name = name;
-	}
+        this.name = name;
+    }
 
     /**
      * Gets the description.
@@ -52,8 +52,8 @@ public class QueryParameter {
      * @return the description
      */
     public String getDescription() {
-		return description;
-	}
+        return description;
+    }
 
     /**
      * Sets the description.
@@ -61,8 +61,8 @@ public class QueryParameter {
      * @param description the description to set
      */
     public void setDescription(String description) {
-		this.description = description;
-	}
+        this.description = description;
+    }
 
     /**
      * Gets the data type.
@@ -70,8 +70,8 @@ public class QueryParameter {
      * @return the dataType
      */
     public String getDataType() {
-		return dataType;
-	}
+        return dataType;
+    }
 
     /**
      * Sets the data type.
@@ -79,8 +79,8 @@ public class QueryParameter {
      * @param dataType the dataType to set
      */
     public void setDataType(String dataType) {
-		this.dataType = dataType;
-	}
+        this.dataType = dataType;
+    }
 
     /**
      * Gets the example.
@@ -88,8 +88,8 @@ public class QueryParameter {
      * @return the example
      */
     public String getExample() {
-		return example;
-	}
+        return example;
+    }
 
     /**
      * Sets the example.
@@ -97,6 +97,6 @@ public class QueryParameter {
      * @param example the example to set
      */
     public void setExample(String example) {
-		this.example = example;
-	}
+        this.example = example;
+    }
 }

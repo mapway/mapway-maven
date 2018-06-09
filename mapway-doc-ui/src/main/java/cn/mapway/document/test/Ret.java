@@ -17,8 +17,8 @@ public class Ret {
      * sads.
      */
     @ApiField(value = "double value", example = "35.4")
-	@Codes({ @Code(value = "0", desc = "调用成功"),
-			@Code(value = "123", desc = "调用成功"),
-			@Code(value = "1200", desc = "参数校验失败") })
-	public Double d;
+    @Codes({@Code(value = "0", desc = "调用成功"),
+            @Code(value = "123", desc = "调用成功"),
+            @Code(value = "1200", desc = "参数校验失败")})
+    public Double d;
 }

@@ -15,7 +15,7 @@ public class JarInfo extends JavaScriptObject {
      * Instantiates a new jar info.
      */
     protected JarInfo() {
-	}
+    }
 
     /**
      * File name.

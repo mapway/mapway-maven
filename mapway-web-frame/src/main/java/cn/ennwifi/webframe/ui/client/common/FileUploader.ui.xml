@@ -1,22 +1,22 @@
 <!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
 <ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder" xmlns:g="urn:import:com.google.gwt.user.client.ui">
     <ui:style>
-    .imgbox {
+        .imgbox {
         margin: 5px;
         position: relative;
         background-color: #f0f0f0;
         height: 42 px;
         overflow: hidden;
-    }
-    
-    .lb {
+        }
+
+        .lb {
         line-height: 30px;
         height: 30px;
         font-weight: normal;
         overflow: hidden;
-    }
-    
-    .uploader {
+        }
+
+        .uploader {
         position: absolute;
         right: 0px;
         top: 0px;
@@ -27,9 +27,9 @@
         z-index: 3002;
         cursor: pointer;
         background: transparent;
-    }
-    
-    .btnuploader {
+        }
+
+        .btnuploader {
         position: absolute;
         right: 0px;
         top: 0px;
@@ -40,7 +40,7 @@
         cursor: pointer;
         padding: 0px 10px;
         background-color: skyblue;
-    }
+        }
     </ui:style>
     <g:HTMLPanel styleName="{style.imgbox}">
         <g:Label ui:field="lbTitle" styleName="{style.lb}"></g:Label>

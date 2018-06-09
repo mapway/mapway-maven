@@ -11,8 +11,10 @@ import java.util.HashMap;
  */
 public class ModuleProperties extends HashMap<String, Object> {
 
-	/** The Constant serialVersionUID. */
-	private static final long serialVersionUID = 1L;
+    /**
+     * The Constant serialVersionUID.
+     */
+    private static final long serialVersionUID = 1L;
 
     /**
      * Gets the int.
@@ -22,13 +24,13 @@ public class ModuleProperties extends HashMap<String, Object> {
      * @return the int
      */
     public int getInt(String key, int defaultvalue) {
-		if (this.containsKey(key)) {
-			Integer i = (Integer) this.get(key);
-			return i;
-		} else {
-			return defaultvalue;
-		}
-	}
+        if (this.containsKey(key)) {
+            Integer i = (Integer) this.get(key);
+            return i;
+        } else {
+            return defaultvalue;
+        }
+    }
 
     /**
      * Gets the boolean.
@@ -38,14 +40,14 @@ public class ModuleProperties extends HashMap<String, Object> {
      * @return the boolean
      */
     public Boolean getBoolean(String key, Boolean defaultvalue) {
-		if (this.containsKey(key)) {
-			Boolean i = (Boolean) this.get(key);
-			return i;
-		} else {
-			return defaultvalue;
-		}
+        if (this.containsKey(key)) {
+            Boolean i = (Boolean) this.get(key);
+            return i;
+        } else {
+            return defaultvalue;
+        }
 
-	}
+    }
 
     /**
      * Gets the object.
@@ -55,13 +57,13 @@ public class ModuleProperties extends HashMap<String, Object> {
      * @return the object
      */
     public Object getObject(String key, Object defaultvalue) {
-		if (this.containsKey(key)) {
-			return this.get(key);
-		} else {
-			return defaultvalue;
-		}
+        if (this.containsKey(key)) {
+            return this.get(key);
+        } else {
+            return defaultvalue;
+        }
 
-	}
+    }
 
     /**
      * Gets the string.
@@ -71,12 +73,12 @@ public class ModuleProperties extends HashMap<String, Object> {
      * @return the string
      */
     public String getString(String key, String defaultvalue) {
-		if (this.containsKey(key)) {
-			return (String) this.get(key);
-		} else {
-			return defaultvalue;
-		}
+        if (this.containsKey(key)) {
+            return (String) this.get(key);
+        } else {
+            return defaultvalue;
+        }
 
-	}
+    }
 
 }

@@ -21,7 +21,7 @@ public class PostImageProxy extends JavaScriptObject {
      */
     protected PostImageProxy() {
 
-	}
+    }
 
     /**
      * Show picture.
@@ -31,24 +31,24 @@ public class PostImageProxy extends JavaScriptObject {
      */
     public final void showPicture(String path, Integer id) {
 
-		String url = GWT.getModuleBaseURL();
+        String url = GWT.getModuleBaseURL();
 
-		String ua = Navigator.getUserAgent().toLowerCase();
-		JavaScriptObject who = this;
-		if (ua.indexOf("mozilla") < 0) {
-			who = this.getFirstChild();
-		}
-		if (id != null) {
+        String ua = Navigator.getUserAgent().toLowerCase();
+        JavaScriptObject who = this;
+        if (ua.indexOf("mozilla") < 0) {
+            who = this.getFirstChild();
+        }
+        if (id != null) {
 
-			String str = PostImageProxy.int2path(id);
-			String p = url + "../" + path + "/" + str + "128.jpg";
+            String str = PostImageProxy.int2path(id);
+            String p = url + "../" + path + "/" + str + "128.jpg";
 
-			setup(who, url + "../postimage", id, path, p);
-		} else {
+            setup(who, url + "../postimage", id, path, p);
+        } else {
 
-			setup(who, url + "../postimage", -1, path, "");
-		}
-	}
+            setup(who, url + "../postimage", -1, path, "");
+        }
+    }
 
     /**
      * Gets the post image proxy.
@@ -57,27 +57,27 @@ public class PostImageProxy extends JavaScriptObject {
      * @return the post image proxy
      */
     public final static PostImageProxy getPostImageProxy(String id) {
-		return getById(id);
-	}
+        return getById(id);
+    }
 
-	/**
-	 * Gets the by id.
-	 *
-	 * @param id the id
-	 * @return the by id
-	 */
-	private final static native PostImageProxy getById(String id)
+    /**
+     * Gets the by id.
+     *
+     * @param id the id
+     * @return the by id
+     */
+    private final static native PostImageProxy getById(String id)
 	/*-{
 		var t = $doc.getElementById(id);
 		return t;
 	}-*/;
 
-	/**
-	 * Gets the first child.
-	 *
-	 * @return the first child
-	 */
-	private final native JavaScriptObject getFirstChild()
+    /**
+     * Gets the first child.
+     *
+     * @return the first child
+     */
+    private final native JavaScriptObject getFirstChild()
 	/*-{
 		var t = this.childNodes.length;
 		var tag = "embed";
@@ -91,13 +91,13 @@ public class PostImageProxy extends JavaScriptObject {
 		return null;
 	}-*/;
 
-	/**
-	 * Gets the by name.
-	 *
-	 * @param id the id
-	 * @return the by name
-	 */
-	private final static native PostImageProxy getByName(String id)
+    /**
+     * Gets the by name.
+     *
+     * @param id the id
+     * @return the by name
+     */
+    private final static native PostImageProxy getByName(String id)
 	/*-{
 		var t = $doc.getElementsByName(id);
 		if (t != null && t.length > 0) {
@@ -117,7 +117,7 @@ public class PostImageProxy extends JavaScriptObject {
      * @param initsrc the initsrc
      */
     public final native void setup(JavaScriptObject who, String server, int id,
-			String loc, String initsrc)
+                                   String loc, String initsrc)
 	/*-{
 		var _this = this;
 		if (who != null) {
@@ -143,24 +143,24 @@ public class PostImageProxy extends JavaScriptObject {
      */
     public static void createPostImageProxy(String flashid) throws Exception {
 
-		try {
-			Element wrapper = DOM.createDiv();
-			wrapper.setInnerHTML(getFlashString(flashid));
+        try {
+            Element wrapper = DOM.createDiv();
+            wrapper.setInnerHTML(getFlashString(flashid));
 
-			Element body = RootPanel.getBodyElement();
-			body.appendChild(wrapper);
+            Element body = RootPanel.getBodyElement();
+            body.appendChild(wrapper);
 
-			Node t = wrapper.getChild(0);
-			wrapper.removeChild(t);
+            Node t = wrapper.getChild(0);
+            wrapper.removeChild(t);
 
-			body.appendChild(t);
-			body.removeChild(wrapper);
+            body.appendChild(t);
+            body.removeChild(wrapper);
 
-		} catch (Exception e) {
-			throw e;
-		}
+        } catch (Exception e) {
+            throw e;
+        }
 
-	}
+    }
 
     /**
      * Gets the flash string.
@@ -169,14 +169,14 @@ public class PostImageProxy extends JavaScriptObject {
      * @return the flash string
      */
     public final static String getFlashString(String flashid) {
-		String base = GWT.getModuleBaseURL();
-		String movie = base + "../images/PostImage.swf";
+        String base = GWT.getModuleBaseURL();
+        String movie = base + "../images/PostImage.swf";
 
-		String flash = SysResource.INSTANCE.flashSource().getText();
-		flash = flash.replace("{movie}", movie);
-		flash = flash.replace("{id}", flashid);
-		return flash;
-	}
+        String flash = SysResource.INSTANCE.flashSource().getText();
+        flash = flash.replace("{movie}", movie);
+        flash = flash.replace("{id}", flashid);
+        return flash;
+    }
 
     /**
      * Int 2 path.
@@ -185,29 +185,29 @@ public class PostImageProxy extends JavaScriptObject {
      * @return the string
      */
     public final static String int2path(int v) {
-		String id = v + "";
-		String str = "";
-		for (int i = 0; i < id.length(); i++) {
-			str += id.charAt(i) + "/";
-		}
-		return str;
-	}
+        String id = v + "";
+        String str = "";
+        for (int i = 0; i < id.length(); i++) {
+            str += id.charAt(i) + "/";
+        }
+        return str;
+    }
 
     /**
      * Hide.
      */
     public final void hide() {
-		Element ele = this.cast();
-		ele.getStyle().setVisibility(Visibility.HIDDEN);
-	}
+        Element ele = this.cast();
+        ele.getStyle().setVisibility(Visibility.HIDDEN);
+    }
 
     /**
      * Show.
      */
     public final void show() {
-		Element ele = this.cast();
-		ele.getStyle().setVisibility(Visibility.VISIBLE);
-	}
+        Element ele = this.cast();
+        ele.getStyle().setVisibility(Visibility.VISIBLE);
+    }
 
     /**
      * Move to.

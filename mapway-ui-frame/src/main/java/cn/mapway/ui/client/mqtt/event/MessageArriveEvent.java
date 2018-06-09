@@ -11,7 +11,7 @@ public class MessageArriveEvent extends BaseEvent {
      */
     protected MessageArriveEvent() {
 
-  }
+    }
 
     /**
      * Duplicate.

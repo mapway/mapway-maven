@@ -19,5 +19,5 @@ public interface SysResource extends ClientBundle {
      * @return the image resource
      */
     @Source("images/dragger.png")
-  ImageResource dragger();
+    ImageResource dragger();
 }

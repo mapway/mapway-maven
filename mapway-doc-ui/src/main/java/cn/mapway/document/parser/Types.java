@@ -31,13 +31,13 @@ public class Types {
      * @param t the t
      */
     public Types(Type t) {
-		typeMapper = new HashMap<String, Type>();
-		this.type = t;
+        typeMapper = new HashMap<String, Type>();
+        this.type = t;
 
-		// 参数化类型
-		if (type instanceof ParameterizedType) {
-		}
-	}
+        // 参数化类型
+        if (type instanceof ParameterizedType) {
+        }
+    }
 
     /**
      * 返回参数的实例类型
@@ -46,12 +46,12 @@ public class Types {
      * @return class
      */
     public Class<?> findClassByTypeName(String name) {
-		Type t = typeMapper.get(name);
-		if (t instanceof Class) {
-			return (Class) t;
-		}
-		return Object.class;
-	}
+        Type t = typeMapper.get(name);
+        if (t instanceof Class) {
+            return (Class) t;
+        }
+        return Object.class;
+    }
 
     /**
      * 获取类型定义的名称
@@ -59,6 +59,6 @@ public class Types {
      * @return string [ ]
      */
     public String[] getTypeNames() {
-		return Lang.collection2array(typeMapper.keySet());
-	}
+        return Lang.collection2array(typeMapper.keySet());
+    }
 }

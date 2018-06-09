@@ -17,19 +17,18 @@ public class Tables {
     /**
      * Instantiates a new tables.
      */
-    public Tables(){
-		Tables=new ArrayList<Table>(); 
-	}
+    public Tables() {
+        Tables = new ArrayList<Table>();
+    }
 
     /**
      * Gets the count.
      *
      * @return the count
      */
-    public int getCount()
-	{
-		return Tables.size();
-	}
+    public int getCount() {
+        return Tables.size();
+    }
 
     /**
      * Gets the at.
@@ -37,24 +36,23 @@ public class Tables {
      * @param index the index
      * @return the at
      */
-    public ITable getAt(int index){
-		return Tables.get(index);
-	}
+    public ITable getAt(int index) {
+        return Tables.get(index);
+    }
 
     /**
      * Clear.
      */
-    public void Clear(){
-		Tables.clear();
-	}
+    public void Clear() {
+        Tables.clear();
+    }
 
     /**
      * Adds the table.
      *
      * @param table the table
      */
-    public void addTable(Table table)
-	{
-		Tables.add(table);
-	}
+    public void addTable(Table table) {
+        Tables.add(table);
+    }
 }

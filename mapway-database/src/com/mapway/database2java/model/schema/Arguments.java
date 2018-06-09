@@ -17,38 +17,34 @@ public class Arguments {
     /**
      * Instantiates a new arguments.
      */
-    public Arguments()
-	{
-		m_args=new ArrayList<Argument>(); 
-	}
+    public Arguments() {
+        m_args = new ArrayList<Argument>();
+    }
 
     /**
      * Clear.
      */
-    public void Clear()
-	{
-		m_args.clear();
-	}
+    public void Clear() {
+        m_args.clear();
+    }
 
     /**
      * Adds the arguemnt.
      *
      * @param a the a
      */
-    public void AddArguemnt(Argument a)
-	{
-		m_args.add(a);
-	}
+    public void AddArguemnt(Argument a) {
+        m_args.add(a);
+    }
 
     /**
      * Gets the count.
      *
      * @return the count
      */
-    public int getCount()
-	{
-		return m_args.size();
-	}
+    public int getCount() {
+        return m_args.size();
+    }
 
     /**
      * Gets the at.
@@ -56,8 +52,7 @@ public class Arguments {
      * @param index the index
      * @return the at
      */
-    public Argument getAt(int index)
-	{
-		return m_args.get(index);
-	}
+    public Argument getAt(int index) {
+        return m_args.get(index);
+    }
 }

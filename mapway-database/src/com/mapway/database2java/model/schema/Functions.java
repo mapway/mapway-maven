@@ -17,19 +17,18 @@ public class Functions {
     /**
      * Instantiates a new functions.
      */
-    public Functions(){
-		Functions=new ArrayList<Function>(); 
-	}
+    public Functions() {
+        Functions = new ArrayList<Function>();
+    }
 
     /**
      * Gets the count.
      *
      * @return the count
      */
-    public int getCount()
-	{
-		return Functions.size();
-	}
+    public int getCount() {
+        return Functions.size();
+    }
 
     /**
      * Gets the at.
@@ -37,24 +36,23 @@ public class Functions {
      * @param index the index
      * @return the at
      */
-    public Function getAt(int index){
-		return Functions.get(index);
-	}
+    public Function getAt(int index) {
+        return Functions.get(index);
+    }
 
     /**
      * Clear.
      */
-    public void Clear(){
-		Functions.clear();
-	}
+    public void Clear() {
+        Functions.clear();
+    }
 
     /**
      * Adds the function.
      *
      * @param func the func
      */
-    public void addFunction(Function func)
-	{
-		Functions.add(func);
-	}
+    public void addFunction(Function func) {
+        Functions.add(func);
+    }
 }

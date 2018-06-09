@@ -19,11 +19,13 @@ public class SimpleMessage extends Composite {
      * The Interface SimpleMessageUiBinder.
      */
     interface SimpleMessageUiBinder extends UiBinder<Widget, SimpleMessage> {
-	}
+    }
 
-	/** The ui binder. */
-	private static SimpleMessageUiBinder uiBinder = GWT
-			.create(SimpleMessageUiBinder.class);
+    /**
+     * The ui binder.
+     */
+    private static SimpleMessageUiBinder uiBinder = GWT
+            .create(SimpleMessageUiBinder.class);
 
     /**
      * Sets the message.
@@ -32,18 +34,18 @@ public class SimpleMessage extends Composite {
      * @param msg the msg
      */
     public void setMessage(String t, String msg) {
-		title.setText(t);
-		html.setHTML(msg);
-	}
+        title.setText(t);
+        html.setHTML(msg);
+    }
 
     /**
      * Instantiates a new simple message.
      */
     public SimpleMessage() {
-		initWidget(uiBinder.createAndBindUi(this));
-		title.setText("");
-		html.setHTML("");
-	}
+        initWidget(uiBinder.createAndBindUi(this));
+        title.setText("");
+        html.setHTML("");
+    }
 
     /**
      * Instantiates a new simple message.
@@ -51,10 +53,10 @@ public class SimpleMessage extends Composite {
      * @param text the text
      */
     public SimpleMessage(String text) {
-		initWidget(uiBinder.createAndBindUi(this));
-		title.setText("");
-		html.setHTML(text);
-	}
+        initWidget(uiBinder.createAndBindUi(this));
+        title.setText("");
+        html.setHTML(text);
+    }
 
     /**
      * Sets the message.
@@ -62,19 +64,19 @@ public class SimpleMessage extends Composite {
      * @param text the new message
      */
     public void setMessage(String text) {
-		title.setText("");
-		html.setHTML(text);
-	}
+        title.setText("");
+        html.setHTML(text);
+    }
 
     /**
      * The html.
      */
     @UiField
-	HTML html;
+    HTML html;
 
     /**
      * The title.
      */
     @UiField
-	Label title;
+    Label title;
 }

@@ -12,7 +12,7 @@ import com.google.gwt.user.client.ui.Widget;
 /**
  * The type Day work module.
  */
-@ModuleMarker(value = DayWorkModule.MODULE_CODE, group = "/测试",name = "空模块", summary = "--==--")
+@ModuleMarker(value = DayWorkModule.MODULE_CODE, group = "/测试", name = "空模块", summary = "--==--")
 public class DayWorkModule extends BaseAbstractModule {
 
     /**
@@ -20,37 +20,37 @@ public class DayWorkModule extends BaseAbstractModule {
      */
     public static final String MODULE_CODE = "MC_DAYWORK";
 
-  @Override
-  public String getModuleCode() {
-    return MODULE_CODE;
-  }
+    @Override
+    public String getModuleCode() {
+        return MODULE_CODE;
+    }
 
-  private static DayWorkModuleUiBinder uiBinder = GWT.create(DayWorkModuleUiBinder.class);
+    private static DayWorkModuleUiBinder uiBinder = GWT.create(DayWorkModuleUiBinder.class);
 
     /**
      * The interface Day work module ui binder.
      */
     interface DayWorkModuleUiBinder extends UiBinder<Widget, DayWorkModule> {
-  }
+    }
 
     /**
      * Instantiates a new Day work module.
      */
     public DayWorkModule() {
-    initWidget(uiBinder.createAndBindUi(this));
+        initWidget(uiBinder.createAndBindUi(this));
 
-  }
+    }
 
-  @Override
-  public boolean initialize(IModule parentModule, ModuleParameter parameters) {
-    boolean b = super.initialize(parentModule, parameters);
+    @Override
+    public boolean initialize(IModule parentModule, ModuleParameter parameters) {
+        boolean b = super.initialize(parentModule, parameters);
 
-    return b;
-  }
+        return b;
+    }
 
-  @Override
-  public Widget getRootWidget() {
-    return this;
-  }
+    @Override
+    public Widget getRootWidget() {
+        return this;
+    }
 
 }

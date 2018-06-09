@@ -18,26 +18,26 @@ public class SubWithNavi extends AbstractModule {
      * The constant MODULE_CODE.
      */
     public final static String MODULE_CODE = "SUB_WITH_NAVI";
-  private static SubWithNaviUiBinder uiBinder = GWT.create(SubWithNaviUiBinder.class);
+    private static SubWithNaviUiBinder uiBinder = GWT.create(SubWithNaviUiBinder.class);
 
     /**
      * The interface Sub with navi ui binder.
      */
     interface SubWithNaviUiBinder extends UiBinder<Widget, SubWithNavi> {
-  }
+    }
 
     /**
      * Instantiates a new Sub with navi.
      */
     public SubWithNavi() {
 
-    registerSubModule(BaiduModule.MODULE_CODE, true);
-    initModuleWidget(uiBinder.createAndBindUi(this));
-  }
+        registerSubModule(BaiduModule.MODULE_CODE, true);
+        initModuleWidget(uiBinder.createAndBindUi(this));
+    }
 
-  @Override
-  public String getModuleCode() {
-    return MODULE_CODE;
-  }
+    @Override
+    public String getModuleCode() {
+        return MODULE_CODE;
+    }
 
 }

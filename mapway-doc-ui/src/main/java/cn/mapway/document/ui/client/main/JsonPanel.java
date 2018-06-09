@@ -3,19 +3,20 @@ package cn.mapway.document.ui.client.main;
 import com.google.gwt.user.client.ui.HTML;
 import cn.mapway.document.ui.client.resource.CssStyle;
 import cn.mapway.document.ui.client.resource.SysResource;
+import com.google.gwt.user.client.ui.RequiresResize;
 
 // TODO: Auto-generated Javadoc
 
 /**
  * The Class JsonPanel.
  */
-public class JsonPanel extends HTML {
+public class JsonPanel extends HTML implements RequiresResize {
 
     /**
      * Instantiates a new json panel.
      */
     public JsonPanel() {
-	}
+    }
 
     /**
      * Sets the json.
@@ -23,11 +24,11 @@ public class JsonPanel extends HTML {
      * @param json the new json
      */
     public void setJson(String json) {
-		CssStyle css = SysResource.INSTANCE.getCss();
-		String html = highted(json, css.cssNumber(), css.cssKey(),
-				css.cssString(), css.cssBoolean(), css.cssNull());
-		this.setHTML("<pre class='" + css.pre() + "'>" + html + "</pre>");
-	}
+        CssStyle css = SysResource.INSTANCE.getCss();
+        String html = highted(json, css.cssNumber(), css.cssKey(),
+                css.cssString(), css.cssBoolean(), css.cssNull());
+        this.setHTML("<pre class='" + css.pre() + "'>" + html + "</pre>");
+    }
 
     /**
      * Sets the string.
@@ -35,23 +36,23 @@ public class JsonPanel extends HTML {
      * @param text the new string
      */
     public void setString(String text) {
-		CssStyle css = SysResource.INSTANCE.getCss();
-		this.setHTML("<pre class='" + css.pre() + "'>" + text + "</pre>");
-	}
+        CssStyle css = SysResource.INSTANCE.getCss();
+        this.setHTML("<pre class='" + css.pre() + "'>" + text + "</pre>");
+    }
 
-	/**
-	 * Highted.
-	 *
-	 * @param json the json
-	 * @param cssNumber the css number
-	 * @param cssKey the css key
-	 * @param cssString the css string
-	 * @param cssBoolean the css boolean
-	 * @param cssNull the css null
-	 * @return the string
-	 */
-	private native String highted(String json, String cssNumber, String cssKey,
-			String cssString, String cssBoolean, String cssNull)/*-{
+    /**
+     * Highted.
+     *
+     * @param json       the json
+     * @param cssNumber  the css number
+     * @param cssKey     the css key
+     * @param cssString  the css string
+     * @param cssBoolean the css boolean
+     * @param cssNull    the css null
+     * @return the string
+     */
+    private native String highted(String json, String cssNumber, String cssKey,
+                                  String cssString, String cssBoolean, String cssNull)/*-{
 
 		json = json.replace(/&/g, '&').replace(/</g, '<').replace(/>/g, '>');
 		return json
@@ -75,4 +76,8 @@ public class JsonPanel extends HTML {
 						});
 	}-*/;
 
+    @Override
+    public void onResize() {
+
+    }
 }

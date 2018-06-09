@@ -9,26 +9,37 @@ import javax.imageio.ImageIO;
 
 
 /**
- *  thumbnail
+ * thumbnail
+ *
  * @author 54powerman
  * @version 1.0
  */
 public class Thumbnail {
-	
-	/** The src file. */
-	private String srcFile;
-	
-	/** The dest file. */
-	private String destFile;
-	
-	/** The width. */
-	private int width;
-	
-	/** The height. */
-	private int height;
-	
-	/** The img. */
-	private Image img;
+
+    /**
+     * The src file.
+     */
+    private String srcFile;
+
+    /**
+     * The dest file.
+     */
+    private String destFile;
+
+    /**
+     * The width.
+     */
+    private int width;
+
+    /**
+     * The height.
+     */
+    private int height;
+
+    /**
+     * The img.
+     */
+    private Image img;
 
     /**
      * The main method.
@@ -38,7 +49,7 @@ public class Thumbnail {
      */
     public static void main(String[] args) throws Exception {
 
-	}
+    }
 
     /**
      * 构造函数.
@@ -48,13 +59,13 @@ public class Thumbnail {
      * @throws IOException Signals that an I/O exception has occurred.
      */
     public Thumbnail(String fileName, String dest) throws IOException {
-		File _file = new File(fileName); // 读入文件
-		this.srcFile = _file.getName();
-		this.destFile = dest;
-		img = javax.imageio.ImageIO.read(_file); // 构造Image对象
-		width = img.getWidth(null); // 得到源图宽
-		height = img.getHeight(null); // 得到源图长
-	}
+        File _file = new File(fileName); // 读入文件
+        this.srcFile = _file.getName();
+        this.destFile = dest;
+        img = javax.imageio.ImageIO.read(_file); // 构造Image对象
+        width = img.getWidth(null); // 得到源图宽
+        height = img.getHeight(null); // 得到源图长
+    }
 
     /**
      * 强制压缩/放大图片到固定的大小.
@@ -64,18 +75,18 @@ public class Thumbnail {
      * @throws IOException Signals that an I/O exception has occurred.
      */
     public void resize(int w, int h) throws IOException {
-		BufferedImage _image = new BufferedImage(w, h,
-				BufferedImage.TYPE_INT_RGB);
+        BufferedImage _image = new BufferedImage(w, h,
+                BufferedImage.TYPE_INT_RGB);
 
-		_image.getGraphics().drawImage(
-				img.getScaledInstance(w, h, Image.SCALE_SMOOTH), 0, 0, w, h,
-				null); // 绘制缩小后的图
-		// FileOutputStream out = new FileOutputStream(destFile); // 输出到文件流
-		// JPEGImageEncoder encoder = JPEGCodec.createJPEGEncoder(out);
-		// encoder.encode(_image); // 近JPEG编码
-		saveImage(_image, destFile);
-		// out.close();
-	}
+        _image.getGraphics().drawImage(
+                img.getScaledInstance(w, h, Image.SCALE_SMOOTH), 0, 0, w, h,
+                null); // 绘制缩小后的图
+        // FileOutputStream out = new FileOutputStream(destFile); // 输出到文件流
+        // JPEGImageEncoder encoder = JPEGCodec.createJPEGEncoder(out);
+        // encoder.encode(_image); // 近JPEG编码
+        saveImage(_image, destFile);
+        // out.close();
+    }
 
     /**
      * Save image.
@@ -85,14 +96,14 @@ public class Thumbnail {
      * @throws IOException Signals that an I/O exception has occurred.
      */
     static void saveImage(BufferedImage dstImage, String dstName)
-			throws IOException {
-		String formatName = dstName.substring(dstName.lastIndexOf(".") + 1);
-		// FileOutputStream out = new FileOutputStream(dstName);
-		// JPEGImageEncoder encoder = JPEGCodec.createJPEGEncoder(out);
-		// encoder.encode(dstImage);
-		ImageIO.write(dstImage, /* "GIF" */formatName /* format desired */,
-				new File(dstName) /* target */);
-	}
+            throws IOException {
+        String formatName = dstName.substring(dstName.lastIndexOf(".") + 1);
+        // FileOutputStream out = new FileOutputStream(dstName);
+        // JPEGImageEncoder encoder = JPEGCodec.createJPEGEncoder(out);
+        // encoder.encode(dstImage);
+        ImageIO.write(dstImage, /* "GIF" */formatName /* format desired */,
+                new File(dstName) /* target */);
+    }
 
     /**
      * 按照固定的比例缩放图片.
@@ -101,10 +112,10 @@ public class Thumbnail {
      * @throws IOException Signals that an I/O exception has occurred.
      */
     public void resize(double t) throws IOException {
-		int w = (int) (width * t);
-		int h = (int) (height * t);
-		resize(w, h);
-	}
+        int w = (int) (width * t);
+        int h = (int) (height * t);
+        resize(w, h);
+    }
 
     /**
      * 以宽度为基准，等比例放缩图片.
@@ -113,9 +124,9 @@ public class Thumbnail {
      * @throws IOException Signals that an I/O exception has occurred.
      */
     public void resizeByWidth(int w) throws IOException {
-		int h = (int) (height * w / width);
-		resize(w, h);
-	}
+        int h = (int) (height * w / width);
+        resize(w, h);
+    }
 
     /**
      * 以高度为基准，等比例缩放图片.
@@ -124,9 +135,9 @@ public class Thumbnail {
      * @throws IOException Signals that an I/O exception has occurred.
      */
     public void resizeByHeight(int h) throws IOException {
-		int w = (int) (width * h / height);
-		resize(w, h);
-	}
+        int w = (int) (width * h / height);
+        resize(w, h);
+    }
 
     /**
      * 按照最大高度限制，生成最大的等比例缩略图.
@@ -136,12 +147,12 @@ public class Thumbnail {
      * @throws IOException Signals that an I/O exception has occurred.
      */
     public void resizeFix(int w, int h) throws IOException {
-		if (width / height > w / h) {
-			resizeByWidth(w);
-		} else {
-			resizeByHeight(h);
-		}
-	}
+        if (width / height > w / h) {
+            resizeByWidth(w);
+        } else {
+            resizeByHeight(h);
+        }
+    }
 
     /**
      * 设置目标文件名 setDestFile.
@@ -150,11 +161,11 @@ public class Thumbnail {
      * @throws Exception the exception
      */
     public void setDestFile(String fileName) throws Exception {
-		if (!fileName.endsWith(".jpg")) {
-			throw new Exception("Dest File Must end with \".jpg\".");
-		}
-		destFile = fileName;
-	}
+        if (!fileName.endsWith(".jpg")) {
+            throw new Exception("Dest File Must end with \".jpg\".");
+        }
+        destFile = fileName;
+    }
 
     /**
      * 获取目标文件名 getDestFile.
@@ -162,8 +173,8 @@ public class Thumbnail {
      * @return the dest file
      */
     public String getDestFile() {
-		return destFile;
-	}
+        return destFile;
+    }
 
     /**
      * 获取图片原始宽度 getSrcWidth.
@@ -171,8 +182,8 @@ public class Thumbnail {
      * @return the src width
      */
     public int getSrcWidth() {
-		return width;
-	}
+        return width;
+    }
 
     /**
      * 获取图片原始高度 getSrcHeight.
@@ -180,6 +191,6 @@ public class Thumbnail {
      * @return the src height
      */
     public int getSrcHeight() {
-		return height;
-	}
+        return height;
+    }
 }

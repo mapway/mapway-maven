@@ -36,8 +36,8 @@ public class AccessBase {
      * @return the connection pool
      */
     public IConnectionPool getConnectionPool() {
-    return this.ConnectionPool;
-  }
+        return this.ConnectionPool;
+    }
 
 
     /**
@@ -46,8 +46,8 @@ public class AccessBase {
      * @param pool the new connection pool
      */
     public void setConnectionPool(IConnectionPool pool) {
-    this.ConnectionPool = pool;
-  }
+        this.ConnectionPool = pool;
+    }
 
     /**
      * Instantiates a new access base.
@@ -55,8 +55,8 @@ public class AccessBase {
      * @param pool the pool
      */
     public AccessBase(IConnectionPool pool) {
-    this.ConnectionPool = pool;
-  }
+        this.ConnectionPool = pool;
+    }
 
     /**
      * Execute.
@@ -66,26 +66,26 @@ public class AccessBase {
      * @throws SQLException the SQL exception
      */
     public Result execute(String sql) throws SQLException {
-    Result r = null;
-    Connection con = this.ConnectionPool.getConnection();
-    if (con == null)
-      return null;
-    Statement statement = null;
-    try {
-      statement = con.createStatement();
-      ResultSet rs = statement.executeQuery(sql);
-      r = ResultSupport.toResult(rs);
-      rs.close();
-      if (statement != null)
-        statement.close();
-    } catch (SQLException e) {
-      e.printStackTrace();
-      throw e;
-    } finally {
-      this.ConnectionPool.releaseConnection(con);
+        Result r = null;
+        Connection con = this.ConnectionPool.getConnection();
+        if (con == null)
+            return null;
+        Statement statement = null;
+        try {
+            statement = con.createStatement();
+            ResultSet rs = statement.executeQuery(sql);
+            r = ResultSupport.toResult(rs);
+            rs.close();
+            if (statement != null)
+                statement.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw e;
+        } finally {
+            this.ConnectionPool.releaseConnection(con);
+        }
+        return r;
     }
-    return r;
-  }
 
     /**
      * Find count.
@@ -96,15 +96,15 @@ public class AccessBase {
      */
     public int findCount(String src, char match) {
 
-    int count = 0;
-    for (int index = 0; index < src.length(); index++) {
-      char c = src.charAt(index);
-      if (c == match) {
-        count++;
-      }
+        int count = 0;
+        for (int index = 0; index < src.length(); index++) {
+            char c = src.charAt(index);
+            if (c == match) {
+                count++;
+            }
+        }
+        return count;
     }
-    return count;
-  }
 
     /**
      * Log.
@@ -112,8 +112,8 @@ public class AccessBase {
      * @param info the info
      */
     public void log(String info) {
-    System.out.println(info);
-  }
+        System.out.println(info);
+    }
 
     /**
      * String from clob.
@@ -123,37 +123,37 @@ public class AccessBase {
      * @throws SQLException the SQL exception
      */
     public String stringFromClob(Clob clob) throws SQLException {
-    if (clob == null)
-      return "";
-    Reader clobStream = null;
-    try {
-      clobStream = clob.getCharacterStream();
-    } catch (SQLException e) {
-      e.printStackTrace();
-      throw e;
+        if (clob == null)
+            return "";
+        Reader clobStream = null;
+        try {
+            clobStream = clob.getCharacterStream();
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw e;
+        }
+
+        StringBuilder suggestions = new StringBuilder();
+
+        int nchars = 0; // Number of characters read
+
+        char[] buffer = new char[10];
+
+        try {
+            while ((nchars = clobStream.read(buffer)) != -1)
+                suggestions.append(buffer, 0, nchars);
+        } catch (IOException e) {
+            e.printStackTrace();
+            throw new SQLException();
+        }
+        try {
+            clobStream.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+            throw new SQLException();
+        }
+        return suggestions.toString();
     }
-
-    StringBuilder suggestions = new StringBuilder();
-
-    int nchars = 0; // Number of characters read
-
-    char[] buffer = new char[10];
-
-    try {
-      while ((nchars = clobStream.read(buffer)) != -1)
-        suggestions.append(buffer, 0, nchars);
-    } catch (IOException e) {
-      e.printStackTrace();
-      throw new SQLException();
-    }
-    try {
-      clobStream.close();
-    } catch (IOException e) {
-      e.printStackTrace();
-      throw new SQLException();
-    }
-    return suggestions.toString();
-  }
 
     /**
      * The m SQ ls.
@@ -166,15 +166,15 @@ public class AccessBase {
      * @param sql the sql
      */
     /*
-	 * 
-	 */
-  public void addSQL(String sql) {
-    if (sql.equals(""))
-      return;
-    if (m_SQLs == null)
-      m_SQLs = new ArrayList<String>();
-    m_SQLs.add(sql);
-  }
+     *
+     */
+    public void addSQL(String sql) {
+        if (sql.equals(""))
+            return;
+        if (m_SQLs == null)
+            m_SQLs = new ArrayList<String>();
+        m_SQLs.add(sql);
+    }
 
     /**
      * Execute batch.
@@ -183,61 +183,61 @@ public class AccessBase {
      * @throws SQLException the SQL exception
      */
     /*
-	 * 
-	 */
-  public int[] executeBatch() throws SQLException {
-    int[] rs = new int[0];
-    Connection conn = this.ConnectionPool.getConnection();
-    if (conn == null)
-      return rs;
-    Statement statement = null;
-    boolean defaultCommit;
-    defaultCommit = conn.getAutoCommit();
-    try {
-      conn.setAutoCommit(false);
-      statement = conn.createStatement();
-      int c = 0;
-      if (m_SQLs != null && m_SQLs.size() > 0) {
-        c = m_SQLs.size();
-      }
-      if (c > 0) {
-        for (int i = 0; i < c; i++) {
-          statement.addBatch(m_SQLs.get(c));
+     *
+     */
+    public int[] executeBatch() throws SQLException {
+        int[] rs = new int[0];
+        Connection conn = this.ConnectionPool.getConnection();
+        if (conn == null)
+            return rs;
+        Statement statement = null;
+        boolean defaultCommit;
+        defaultCommit = conn.getAutoCommit();
+        try {
+            conn.setAutoCommit(false);
+            statement = conn.createStatement();
+            int c = 0;
+            if (m_SQLs != null && m_SQLs.size() > 0) {
+                c = m_SQLs.size();
+            }
+            if (c > 0) {
+                for (int i = 0; i < c; i++) {
+                    statement.addBatch(m_SQLs.get(c));
+                }
+
+                rs = statement.executeBatch();
+                conn.commit();
+            } else {
+            }
+        } catch (Exception e) {
+
+            conn.rollback();
+            e.printStackTrace();
+
+        } finally {
+            conn.setAutoCommit(defaultCommit);
+            if (statement != null) {
+                statement.clearBatch();
+                statement.close();
+            }
+            alearSQL();
+            this.ConnectionPool.releaseConnection(conn);
         }
-
-        rs = statement.executeBatch();
-        conn.commit();
-      } else {
-      }
-    } catch (Exception e) {
-
-      conn.rollback();
-      e.printStackTrace();
-
-    } finally {
-      conn.setAutoCommit(defaultCommit);
-      if (statement != null) {
-        statement.clearBatch();
-        statement.close();
-      }
-      alearSQL();
-      this.ConnectionPool.releaseConnection(conn);
+        return rs;
     }
-    return rs;
-  }
 
     /**
      * Alear SQL.
      */
     /*
-	 * 
-	 */
-  public void alearSQL() {
-    if (m_SQLs == null)
-      m_SQLs = new ArrayList<String>();
-    else
-      m_SQLs.clear();
-  }
+     *
+     */
+    public void alearSQL() {
+        if (m_SQLs == null)
+            m_SQLs = new ArrayList<String>();
+        else
+            m_SQLs.clear();
+    }
 
     /**
      * Result to string.
@@ -246,28 +246,27 @@ public class AccessBase {
      * @return the string
      */
     public String resultToString(Result rs) {
-    StringBuilder sb = new StringBuilder();
-    String[] cns = rs.getColumnNames();
+        StringBuilder sb = new StringBuilder();
+        String[] cns = rs.getColumnNames();
 
 
+        for (int i = 0; i < cns.length; i++) {
+            sb.append(cns[i]);
+            sb.append("\t");
+        }
 
-    for (int i = 0; i < cns.length; i++) {
-      sb.append(cns[i]);
-      sb.append("\t");
+        Object[][] oos = rs.getRowsByIndex();
+        for (int i = 0; i < oos.length; i++) {
+            sb.append("\r\n");
+            Object[] os = oos[i];
+            for (int j = 0; j < os.length; j++) {
+                sb.append(objectToString(os[j]));
+                sb.append("\t");
+            }
+
+        }
+        return sb.toString();
     }
-
-    Object[][] oos = rs.getRowsByIndex();
-    for (int i = 0; i < oos.length; i++) {
-      sb.append("\r\n");
-      Object[] os = oos[i];
-      for (int j = 0; j < os.length; j++) {
-        sb.append(objectToString(os[j]));
-        sb.append("\t");
-      }
-
-    }
-    return sb.toString();
-  }
 
     /**
      * Object to string.
@@ -276,10 +275,10 @@ public class AccessBase {
      * @return the string
      */
     public String objectToString(Object o) {
-    if (o == null) {
-      return "----";
-    } else {
-      return o.toString();
+        if (o == null) {
+            return "----";
+        } else {
+            return o.toString();
+        }
     }
-  }
 }

@@ -24,15 +24,15 @@ public class MetaBox extends ListBoxEx implements Observer, HasMessageHandlers {
      * Instantiates a new Meta box.
      */
     public MetaBox() {
-    MetaDataProvider.get().addObserver(this);
-  }
+        MetaDataProvider.get().addObserver(this);
+    }
 
-  @Override
-  public HandlerRegistration addMessageHandler(MessageHandler handler) {
-    return addHandler(handler, MessageEvent.TYPE);
-  }
+    @Override
+    public HandlerRegistration addMessageHandler(MessageHandler handler) {
+        return addHandler(handler, MessageEvent.TYPE);
+    }
 
-  private String mCatalog = "";
+    private String mCatalog = "";
 
     /**
      * Sets catalog.
@@ -40,9 +40,9 @@ public class MetaBox extends ListBoxEx implements Observer, HasMessageHandlers {
      * @param catalog the catalog
      */
     public void setCatalog(String catalog) {
-    mCatalog = catalog;
-    refreshView();
-  }
+        mCatalog = catalog;
+        refreshView();
+    }
 
     /**
      * Gets catalog.
@@ -50,51 +50,51 @@ public class MetaBox extends ListBoxEx implements Observer, HasMessageHandlers {
      * @return the catalog
      */
     public String getCatalog() {
-    return mCatalog;
-  }
+        return mCatalog;
+    }
 
-  @Override
-  public void update(Observable sender, Object data) {
-    refreshView();
-  }
+    @Override
+    public void update(Observable sender, Object data) {
+        refreshView();
+    }
 
 
     /**
      * 刷新页面
      */
     public void refreshView() {
-    this.clear();
-    if (mCatalog != null && mCatalog.length() > 0) {
-      if (mEmptyString != null && mEmptyString.length() > 0) {
-        this.addItem(mEmptyString, "");
-      }
-      List<S_METAObj> datas = MetaDataProvider.get().findByCatalog(mCatalog);
-      for (S_METAObj d : datas) {
-        this.addItem(d.getName(), d.getCode());
-      }
-    }
-
-    if (!selectInitValue()) {
-      selectInitName();
-    }
-  }
-
-  @Override
-  public void selectValue(String value) {
-    if (value != null && value.length() > 0) {
-      for (int i = 0; i < this.getItemCount(); i++) {
-        String v = this.getValue(i);
-        if (v.equals(value)) {
-          this.setSelectedIndex(i);
-          break;
+        this.clear();
+        if (mCatalog != null && mCatalog.length() > 0) {
+            if (mEmptyString != null && mEmptyString.length() > 0) {
+                this.addItem(mEmptyString, "");
+            }
+            List<S_METAObj> datas = MetaDataProvider.get().findByCatalog(mCatalog);
+            for (S_METAObj d : datas) {
+                this.addItem(d.getName(), d.getCode());
+            }
         }
-      }
-    } else {
-      this.setSelectedIndex(0);
+
+        if (!selectInitValue()) {
+            selectInitName();
+        }
     }
-    MessageEvent ev = new MessageEvent(MessageEvent.SELECT, "");
-    fireEvent(ev);
-  }
+
+    @Override
+    public void selectValue(String value) {
+        if (value != null && value.length() > 0) {
+            for (int i = 0; i < this.getItemCount(); i++) {
+                String v = this.getValue(i);
+                if (v.equals(value)) {
+                    this.setSelectedIndex(i);
+                    break;
+                }
+            }
+        } else {
+            this.setSelectedIndex(0);
+        }
+        MessageEvent ev = new MessageEvent(MessageEvent.SELECT, "");
+        fireEvent(ev);
+    }
 
     /**
      * Gets value.
@@ -102,9 +102,9 @@ public class MetaBox extends ListBoxEx implements Observer, HasMessageHandlers {
      * @return the value
      */
     public String getValue() {
-    String v = getSelectedValue();
-    return v == null ? "" : v;
-  }
+        String v = getSelectedValue();
+        return v == null ? "" : v;
+    }
 
     /**
      * Sets value.
@@ -112,10 +112,10 @@ public class MetaBox extends ListBoxEx implements Observer, HasMessageHandlers {
      * @param value the value
      */
     public void setValue(String value) {
-    selectValue(value);
-  }
+        selectValue(value);
+    }
 
-  private String mEmptyString = "";
+    private String mEmptyString = "";
 
     /**
      * Sets empty.
@@ -123,7 +123,7 @@ public class MetaBox extends ListBoxEx implements Observer, HasMessageHandlers {
      * @param emptyString the empty string
      */
     public void setEmpty(String emptyString) {
-    mEmptyString = emptyString;
-    refreshView();
-  }
+        mEmptyString = emptyString;
+        refreshView();
+    }
 }

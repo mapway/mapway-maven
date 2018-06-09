@@ -11,7 +11,7 @@ public class FieldCode extends JavaScriptObject {
      * Instantiates a new Field code.
      */
     protected FieldCode() {
-	}
+    }
 
     /**
      * Value string.

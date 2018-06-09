@@ -16,16 +16,18 @@ public class Deeps {
      */
     HashMap<String, ClassDepthData> map;
 
-	/** The level. */
-	private Integer level = 0;
+    /**
+     * The level.
+     */
+    private Integer level = 0;
 
     /**
      * Instantiates a new deeps.
      */
     public Deeps() {
-		map = new HashMap<String, ClassDepthData>();
-		level = 0;
-	}
+        map = new HashMap<String, ClassDepthData>();
+        level = 0;
+    }
 
     /**
      * Push.
@@ -35,17 +37,17 @@ public class Deeps {
      * @return the int
      */
     public int push(String type, int level) {
-		ClassDepthData d = map.get(type);
-		if (d == null) {
-			d = new ClassDepthData();
-			d.typeName = type;
-			map.put(type, d);
-			return d.increase(level);
+        ClassDepthData d = map.get(type);
+        if (d == null) {
+            d = new ClassDepthData();
+            d.typeName = type;
+            map.put(type, d);
+            return d.increase(level);
 
-		} else {
-			return d.increase(level);
-		}
-	}
+        } else {
+            return d.increase(level);
+        }
+    }
 
     /**
      * Gets the pre level count.
@@ -55,12 +57,12 @@ public class Deeps {
      * @return the pre level count
      */
     public int getPreLevelCount(String type, int level) {
-		ClassDepthData d = map.get(type);
-		if (d == null) {
-			return 0;
-		}
-		return d.getPreLevelCount(level);
-	}
+        ClassDepthData d = map.get(type);
+        if (d == null) {
+            return 0;
+        }
+        return d.getPreLevelCount(level);
+    }
 
     /**
      * Gets the level.
@@ -68,8 +70,8 @@ public class Deeps {
      * @return the level
      */
     public int getLevel() {
-		return level;
-	}
+        return level;
+    }
 
     /**
      * Sets the level.
@@ -77,20 +79,20 @@ public class Deeps {
      * @param level the new level
      */
     public void setLevel(int level) {
-		this.level = level;
-	}
+        this.level = level;
+    }
 
     /**
      * Inc level.
      */
     public void incLevel() {
-		this.level++;
-	}
+        this.level++;
+    }
 
     /**
      * Dec level.
      */
     public void decLevel() {
-		this.level--;
-	}
+        this.level--;
+    }
 }

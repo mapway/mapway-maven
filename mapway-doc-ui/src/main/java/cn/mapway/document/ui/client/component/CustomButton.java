@@ -10,15 +10,17 @@ import cn.mapway.document.ui.client.resource.SysResource;
  */
 public class CustomButton extends Button {
 
-	/** The data. */
-	private Object data;
+    /**
+     * The data.
+     */
+    private Object data;
 
     /**
      * Instantiates a new custom button.
      */
     public CustomButton() {
-		this("");
-	}
+        this("");
+    }
 
     /**
      * Instantiates a new custom button.
@@ -26,9 +28,9 @@ public class CustomButton extends Button {
      * @param summary the summary
      */
     public CustomButton(String summary) {
-		super(summary);
-		this.setStyleName(SysResource.INSTANCE.getCss().btn());
-	}
+        super(summary);
+        this.setStyleName(SysResource.INSTANCE.getCss().btn());
+    }
 
     /**
      * Gets the data.
@@ -36,8 +38,8 @@ public class CustomButton extends Button {
      * @return the data
      */
     public Object getData() {
-		return data;
-	}
+        return data;
+    }
 
     /**
      * Sets the data.
@@ -45,7 +47,7 @@ public class CustomButton extends Button {
      * @param data the new data
      */
     public void setData(Object data) {
-		this.data = data;
-	}
+        this.data = data;
+    }
 
 }

@@ -16,28 +16,28 @@ public class TableBuilder {
     /**
      * The Utf 8 table.
      */
-    public static String[][] UTF8TABLE={
-		{"┌","─","┬","─","┐"},
-		{"│"," ","┼"," ","│"},
-		{"├","─","┼","─","┤"},
-		{"│"," ","┼"," ","│"},
-		{"└","─","┴","─","┘"}
-	};
+    public static String[][] UTF8TABLE = {
+            {"┌", "─", "┬", "─", "┐"},
+            {"│", " ", "┼", " ", "│"},
+            {"├", "─", "┼", "─", "┤"},
+            {"│", " ", "┼", " ", "│"},
+            {"└", "─", "┴", "─", "┘"}
+    };
     /**
      * The Asiciitable.
      */
-    public static String[][] ASICIITABLE={
-		{"+","-","+","-","+"},
-		{"+","-","+","-","+"},
-		{"+","-","+","-","+"},
-		{"+","-","+","-","+"},
-		{"+","-","+","-","+"}
-	};
+    public static String[][] ASICIITABLE = {
+            {"+", "-", "+", "-", "+"},
+            {"+", "-", "+", "-", "+"},
+            {"+", "-", "+", "-", "+"},
+            {"+", "-", "+", "-", "+"},
+            {"+", "-", "+", "-", "+"}
+    };
 
     /**
      * The Table.
      */
-    public String[][] TABLE=ASICIITABLE;
+    public String[][] TABLE = ASICIITABLE;
 
     /**
      * The Padding.
@@ -50,8 +50,8 @@ public class TableBuilder {
      * @param padding the padding
      */
     public void setPadding(int padding) {
-		this.padding = padding;
-	}
+        this.padding = padding;
+    }
 
     /**
      * The Rows.
@@ -68,132 +68,132 @@ public class TableBuilder {
      * @param cols the cols
      */
     public void addRow(String... cols) {
-		rows.add(cols);
-	}
+        rows.add(cols);
+    }
 
-	/**
-	 * 列的宽度
-	 * 
-	 * @return
-	 */
-	private int[] colWidths() {
+    /**
+     * 列的宽度
+     *
+     * @return
+     */
+    private int[] colWidths() {
 
-		for (String[] row : rows)
-			columns = Math.max(columns, row.length);
+        for (String[] row : rows)
+            columns = Math.max(columns, row.length);
 
-		// 获取最大的列数
+        // 获取最大的列数
 
-		int[] widths = new int[columns];
+        int[] widths = new int[columns];
 
-		for (String[] row : rows) {
-			for (int colNum = 0; colNum < row.length; colNum++) {
-				widths[colNum] = Math.max(widths[colNum],
-						Strings.charLength(row[colNum]));
-			}
-		}
+        for (String[] row : rows) {
+            for (int colNum = 0; colNum < row.length; colNum++) {
+                widths[colNum] = Math.max(widths[colNum],
+                        Strings.charLength(row[colNum]));
+            }
+        }
 
-		return widths;
-	}
+        return widths;
+    }
 
-	@Override
-	public String toString() {
-		StringBuilder buf = new StringBuilder();
+    @Override
+    public String toString() {
+        StringBuilder buf = new StringBuilder();
 
-		int[] colWidths = colWidths();
+        int[] colWidths = colWidths();
 
-		// 输出头部
-		printTopLine(buf, colWidths);
-		
+        // 输出头部
+        printTopLine(buf, colWidths);
 
-		for (int index = 0; index < rows.size(); index++) {
-			String[] row = rows.get(index);
-			for (int colNum = 0; colNum < row.length; colNum++) {
-				if (colNum == 0) {
-					buf.append(TABLE[3][0]);
-				}
 
-				int colwidth = colWidths[colNum];
-				buf.append(Strings.dup(' ', padding));
-				buf.append(row[colNum]);
-				buf.append(Strings.dup(' ', colwidth - row[colNum].length()));
-				buf.append(Strings.dup(' ', padding));
-				if (colNum == colWidths.length - 1) {
-					buf.append('│');
-				} else {
-					buf.append('│');
-				}
-			}
-			buf.append('\n');
+        for (int index = 0; index < rows.size(); index++) {
+            String[] row = rows.get(index);
+            for (int colNum = 0; colNum < row.length; colNum++) {
+                if (colNum == 0) {
+                    buf.append(TABLE[3][0]);
+                }
 
-			if (index == rows.size() - 1) {
-				printBottomLine(buf, colWidths, row);
-			} else {
-				printMiddleLine(buf, colWidths, row);
+                int colwidth = colWidths[colNum];
+                buf.append(Strings.dup(' ', padding));
+                buf.append(row[colNum]);
+                buf.append(Strings.dup(' ', colwidth - row[colNum].length()));
+                buf.append(Strings.dup(' ', padding));
+                if (colNum == colWidths.length - 1) {
+                    buf.append('│');
+                } else {
+                    buf.append('│');
+                }
+            }
+            buf.append('\n');
 
-			}
+            if (index == rows.size() - 1) {
+                printBottomLine(buf, colWidths, row);
+            } else {
+                printMiddleLine(buf, colWidths, row);
 
-		}
+            }
 
-		return buf.toString();
-	}
+        }
 
-	private void printTopLine(StringBuilder buf, int[] colWidths) {
-		for (int colNum = 0; colNum < colWidths.length; colNum++) {
-			if (colNum == 0) {
-				buf.append(TABLE[0][0]);
-			}
-			int colwidth = colWidths[colNum];
-			buf.append(Strings.dup(TABLE[0][1], colwidth + padding * 2));
-			if (colNum == colWidths.length - 1) {
-				buf.append(TABLE[0][4]);
-			} else {
-				buf.append(TABLE[0][2]);
-			}
-		}
-		buf.append('\n');
-	}
+        return buf.toString();
+    }
 
-	private void printMiddleLine(StringBuilder buf, int[] colWidths,
-			String[] row) {
-		for (int colNum = 0; colNum < colWidths.length; colNum++) {
-			if (colNum == 0) {
-				buf.append(TABLE[1][0]);
-			}
+    private void printTopLine(StringBuilder buf, int[] colWidths) {
+        for (int colNum = 0; colNum < colWidths.length; colNum++) {
+            if (colNum == 0) {
+                buf.append(TABLE[0][0]);
+            }
+            int colwidth = colWidths[colNum];
+            buf.append(Strings.dup(TABLE[0][1], colwidth + padding * 2));
+            if (colNum == colWidths.length - 1) {
+                buf.append(TABLE[0][4]);
+            } else {
+                buf.append(TABLE[0][2]);
+            }
+        }
+        buf.append('\n');
+    }
 
-			int colwidth = colWidths[colNum];
+    private void printMiddleLine(StringBuilder buf, int[] colWidths,
+                                 String[] row) {
+        for (int colNum = 0; colNum < colWidths.length; colNum++) {
+            if (colNum == 0) {
+                buf.append(TABLE[1][0]);
+            }
 
-			buf.append(Strings.dup(TABLE[1][1], colwidth + padding * 2));
+            int colwidth = colWidths[colNum];
 
-			if (colNum == colWidths.length - 1) {
-				buf.append(TABLE[1][2]);
-			} else {
-				buf.append(TABLE[1][1]);
-			}
-			
-		}
-		buf.append('\n');
-	}
+            buf.append(Strings.dup(TABLE[1][1], colwidth + padding * 2));
 
-	private void printBottomLine(StringBuilder buf, int[] colWidths,
-			String[] row) {
-		for (int colNum = 0; colNum < colWidths.length; colNum++) {
-			if (colNum == 0) {
-				buf.append(TABLE[2][0]);
-			}
-			
-			int colwidth = colWidths[colNum];
+            if (colNum == colWidths.length - 1) {
+                buf.append(TABLE[1][2]);
+            } else {
+                buf.append(TABLE[1][1]);
+            }
 
-			buf.append(Strings.dup(TABLE[2][1], colwidth + padding * 2));
+        }
+        buf.append('\n');
+    }
 
-			if (colNum == colWidths.length - 1) {
-				buf.append(TABLE[1][2]);
-			} else {
+    private void printBottomLine(StringBuilder buf, int[] colWidths,
+                                 String[] row) {
+        for (int colNum = 0; colNum < colWidths.length; colNum++) {
+            if (colNum == 0) {
+                buf.append(TABLE[2][0]);
+            }
 
-				buf.append(TABLE[2][2]);
-			}
-		}
-		buf.append('\n');
-	}
+            int colwidth = colWidths[colNum];
+
+            buf.append(Strings.dup(TABLE[2][1], colwidth + padding * 2));
+
+            if (colNum == colWidths.length - 1) {
+                buf.append(TABLE[1][2]);
+            } else {
+
+                buf.append(TABLE[2][2]);
+            }
+        }
+        buf.append('\n');
+    }
 
     /**
      * The entry point of application.
@@ -201,12 +201,12 @@ public class TableBuilder {
      * @param args the input arguments
      */
     public static void main(String[] args) {
-		TableBuilder tb = new TableBuilder();
-		tb.addRow("title", "url", "special");
-		for (int i = 0; i < 10; i++) {
-			tb.addRow(R.sg(4, 25).next(), "http://www.baidu.com/" + i);
-		}
-		tb.addRow("","","Hello","touch");
-		System.out.println(tb);
-	}
+        TableBuilder tb = new TableBuilder();
+        tb.addRow("title", "url", "special");
+        for (int i = 0; i < 10; i++) {
+            tb.addRow(R.sg(4, 25).next(), "http://www.baidu.com/" + i);
+        }
+        tb.addRow("", "", "Hello", "touch");
+        System.out.println(tb);
+    }
 }

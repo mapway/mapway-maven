@@ -29,74 +29,74 @@ import com.ksyzt.gwt.client.event.MessageEvent;
  */
 public class PictureItem extends MessageComposite {
 
-  private static PictureItemUiBinder uiBinder = GWT.create(PictureItemUiBinder.class);
+    private static PictureItemUiBinder uiBinder = GWT.create(PictureItemUiBinder.class);
 
     /**
      * The interface Picture item ui binder.
      */
     interface PictureItemUiBinder extends UiBinder<Widget, PictureItem> {
-  }
-
-  private BlurHandler valueChanged = new BlurHandler() {
-
-    @Override
-    public void onBlur(BlurEvent event) {
-      doBlur();
     }
-  };
-  private KeyDownHandler keyDownHandler = new KeyDownHandler() {
 
-    @Override
-    public void onKeyDown(KeyDownEvent event) {
-      if (event.getNativeKeyCode() == KeyCodes.KEY_ENTER) {
-        doBlur();
-      }
+    private BlurHandler valueChanged = new BlurHandler() {
+
+        @Override
+        public void onBlur(BlurEvent event) {
+            doBlur();
+        }
+    };
+    private KeyDownHandler keyDownHandler = new KeyDownHandler() {
+
+        @Override
+        public void onKeyDown(KeyDownEvent event) {
+            if (event.getNativeKeyCode() == KeyCodes.KEY_ENTER) {
+                doBlur();
+            }
+        }
+    };
+
+    private void doBlur() {
+        if (txtValue.getValue() == null || txtValue.getValue().length() == 0) {
+
+        } else {
+            lbTitle.setText(txtValue.getValue());
+            mData.title(txtValue.getValue());
+
+        }
+        txtValue.setVisible(false);
+        lbTitle.setVisible(true);
     }
-  };
-
-  private void doBlur() {
-    if (txtValue.getValue() == null || txtValue.getValue().length() == 0) {
-
-    } else {
-      lbTitle.setText(txtValue.getValue());
-      mData.title(txtValue.getValue());
-
-    }
-    txtValue.setVisible(false);
-    lbTitle.setVisible(true);
-  }
 
     /**
      * Instantiates a new Picture item.
      */
     public PictureItem() {
-    initWidget(uiBinder.createAndBindUi(this));
-    txtValue.addBlurHandler(valueChanged);
-    txtValue.addKeyDownHandler(keyDownHandler);
-    delete.setUrl(SysResource.INSTANCE.delete().getSafeUri());
-  }
+        initWidget(uiBinder.createAndBindUi(this));
+        txtValue.addBlurHandler(valueChanged);
+        txtValue.addKeyDownHandler(keyDownHandler);
+        delete.setUrl(SysResource.INSTANCE.delete().getSafeUri());
+    }
 
     /**
      * The Delete.
      */
     @UiField
-  Image delete;
+    Image delete;
     /**
      * The Img.
      */
     @UiField
-  Image img;
+    Image img;
     /**
      * The Lb title.
      */
     @UiField
-  Label lbTitle;
+    Label lbTitle;
 
     /**
      * The Link.
      */
     @UiField
-  Anchor link;
+    Anchor link;
 
     /**
      * The M data.
@@ -109,20 +109,20 @@ public class PictureItem extends MessageComposite {
      * @param pd the pd
      */
     public void setValue(PicData pd) {
-    mData = pd;
-    if (ImageUploader.isPicture(mData.url())) {
-      img.setVisible(true);
-      img.setUrl(ClientContext.getContext().getConfigure().getImagePrefix() + pd.url());
-      link.setVisible(false);
-    } else {
-      img.setVisible(false);
-      link.setVisible(true);
-      link.setHref(ClientContext.getContext().getConfigure().getImagePrefix() + mData.url());
-      link.setTarget("_blank");
-    }
-    lbTitle.setText(pd.title());
+        mData = pd;
+        if (ImageUploader.isPicture(mData.url())) {
+            img.setVisible(true);
+            img.setUrl(ClientContext.getContext().getConfigure().getImagePrefix() + pd.url());
+            link.setVisible(false);
+        } else {
+            img.setVisible(false);
+            link.setVisible(true);
+            link.setHref(ClientContext.getContext().getConfigure().getImagePrefix() + mData.url());
+            link.setTarget("_blank");
+        }
+        lbTitle.setText(pd.title());
 
-  }
+    }
 
 
     /**
@@ -131,8 +131,8 @@ public class PictureItem extends MessageComposite {
      * @return the value
      */
     public PicData getValue() {
-    return mData;
-  }
+        return mData;
+    }
 
     /**
      * On click.
@@ -140,18 +140,18 @@ public class PictureItem extends MessageComposite {
      * @param e the e
      */
     @UiHandler("lbTitle")
-  void onClick(ClickEvent e) {
-    lbTitle.setVisible(false);
-    txtValue.setVisible(true);
-    txtValue.setValue(mData.title());
-    txtValue.setFocus(true);
-  }
+    void onClick(ClickEvent e) {
+        lbTitle.setVisible(false);
+        txtValue.setVisible(true);
+        txtValue.setValue(mData.title());
+        txtValue.setFocus(true);
+    }
 
     /**
      * The Txt value.
      */
     @UiField
-  TextBox txtValue;
+    TextBox txtValue;
 
     /**
      * On delete.
@@ -159,8 +159,8 @@ public class PictureItem extends MessageComposite {
      * @param e the e
      */
     @UiHandler("delete")
-  void onDelete(ClickEvent e) {
-    MessageEvent ev = new MessageEvent(MessageEvent.DELETE, mData);
-    fireEvent(ev);
-  }
+    void onDelete(ClickEvent e) {
+        MessageEvent ev = new MessageEvent(MessageEvent.DELETE, mData);
+        fireEvent(ev);
+    }
 }

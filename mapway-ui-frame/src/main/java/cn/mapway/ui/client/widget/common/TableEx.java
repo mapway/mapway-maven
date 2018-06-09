@@ -12,22 +12,22 @@ import com.google.gwt.user.client.ui.HTMLTable.Cell;
 /**
  * The type Table ex.
  */
-public class TableEx extends FlexTable implements HasSelectionHandlers<Cell>{
+public class TableEx extends FlexTable implements HasSelectionHandlers<Cell> {
 
     /**
      * Instantiates a new Table ex.
      */
     public TableEx() {
-		setStyleName("gwtEx-Table");
-		rf = getRowFormatter();
-		this.addClickHandler(tableClickTable);
-	}
+        setStyleName("gwtEx-Table");
+        rf = getRowFormatter();
+        this.addClickHandler(tableClickTable);
+    }
 
-	private static final String THEAD_CSS = "gwtEx-table-head";
+    private static final String THEAD_CSS = "gwtEx-table-head";
 
-	private static final String TABLE_TR_HOVER_CSS = "gwtEx-Table-hover";
+    private static final String TABLE_TR_HOVER_CSS = "gwtEx-Table-hover";
 
-	private static final String TABLE_TR_CLICK_CSS = "gwtEx-Table-click";
+    private static final String TABLE_TR_CLICK_CSS = "gwtEx-Table-click";
 
     /**
      * The Rf.
@@ -45,39 +45,39 @@ public class TableEx extends FlexTable implements HasSelectionHandlers<Cell>{
      * @param format the format
      */
     public void format(boolean format) {
-		if (format) {
-			int rowCount = this.getRowCount();
-			if (rowCount > 0) {
-				rf.setStyleName(0, THEAD_CSS);
-				for (int i = 1; i < rowCount; i++) {
-					rf.setStyleName(i, TABLE_TR_HOVER_CSS);
-				}
-			}
-		}
-	}
-	
+        if (format) {
+            int rowCount = this.getRowCount();
+            if (rowCount > 0) {
+                rf.setStyleName(0, THEAD_CSS);
+                for (int i = 1; i < rowCount; i++) {
+                    rf.setStyleName(i, TABLE_TR_HOVER_CSS);
+                }
+            }
+        }
+    }
 
-	@Override
-	public HandlerRegistration addSelectionHandler(SelectionHandler<Cell> handler) {
-		return addHandler(handler, SelectionEvent.getType());
-	}
+
+    @Override
+    public HandlerRegistration addSelectionHandler(SelectionHandler<Cell> handler) {
+        return addHandler(handler, SelectionEvent.getType());
+    }
 
     /**
      * The Table click table.
      */
     ClickHandler tableClickTable = new ClickHandler() {
 
-		@Override
-		public void onClick(ClickEvent event) {
-			Cell cell = TableEx.this.getCellForEvent(event);
-			if (cell != null) {
-				if( cell.getRowIndex() != 0 ){
-					setSelectionRow( cell.getRowIndex());
-					SelectionEvent.fire(TableEx.this, cell);
-				}
-			}
-		}
-	};
+        @Override
+        public void onClick(ClickEvent event) {
+            Cell cell = TableEx.this.getCellForEvent(event);
+            if (cell != null) {
+                if (cell.getRowIndex() != 0) {
+                    setSelectionRow(cell.getRowIndex());
+                    SelectionEvent.fire(TableEx.this, cell);
+                }
+            }
+        }
+    };
 
     /**
      * Sets selection row.
@@ -85,23 +85,23 @@ public class TableEx extends FlexTable implements HasSelectionHandlers<Cell>{
      * @param row the row
      */
     public void setSelectionRow(int row) {
-	    cancelRowSelect();
-	    if (row > 0 && row < this.getRowCount()) {
-	      rf.setStyleName(row, TABLE_TR_CLICK_CSS);
-	      currentRow = row;
+        cancelRowSelect();
+        if (row > 0 && row < this.getRowCount()) {
+            rf.setStyleName(row, TABLE_TR_CLICK_CSS);
+            currentRow = row;
 
-	    }
-	  }
+        }
+    }
 
-	  /**
-	   * 取消当前选择的行.
-	   */
-	  private void cancelRowSelect() {
-	    if (currentRow > 0) {
-	      rf.removeStyleName(currentRow, TABLE_TR_CLICK_CSS);
-	      rf.setStyleName(currentRow, TABLE_TR_HOVER_CSS);
-	      currentRow = -1;
-	    }
-	  }
-	
+    /**
+     * 取消当前选择的行.
+     */
+    private void cancelRowSelect() {
+        if (currentRow > 0) {
+            rf.removeStyleName(currentRow, TABLE_TR_CLICK_CSS);
+            rf.setStyleName(currentRow, TABLE_TR_HOVER_CSS);
+            currentRow = -1;
+        }
+    }
+
 }

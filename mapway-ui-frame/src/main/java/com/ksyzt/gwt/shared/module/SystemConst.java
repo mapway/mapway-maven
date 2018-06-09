@@ -10,7 +10,7 @@ public class SystemConst {
     /**
      * The Constant FLASHID.
      */
-    public static final String FLASHID="flashid";
+    public static final String FLASHID = "flashid";
 
     /**
      * The Constant SITE_INFO.

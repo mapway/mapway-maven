@@ -8,9 +8,11 @@ import com.google.gwt.user.client.ui.Anchor;
  * The Class CustomAnchor.
  */
 public class CustomAnchor extends Anchor {
-	
-	/** The data. */
-	private Object data;
+
+    /**
+     * The data.
+     */
+    private Object data;
 
     /**
      * Gets the data.
@@ -18,8 +20,8 @@ public class CustomAnchor extends Anchor {
      * @return the data
      */
     public Object getData() {
-		return data;
-	}
+        return data;
+    }
 
     /**
      * Sets the data.
@@ -27,7 +29,7 @@ public class CustomAnchor extends Anchor {
      * @param data the new data
      */
     public void setData(Object data) {
-		this.data = data;
-	}
-	
+        this.data = data;
+    }
+
 }

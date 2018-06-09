@@ -18,59 +18,61 @@ import static cn.mapway.document.ui.client.resource.SysResource.INSTANCE;
  */
 public class EntryListPanel extends Composite {
 
-	/** The ui binder. */
-	private static EntryListPanelUiBinder uiBinder = GWT
-			.create(EntryListPanelUiBinder.class);
+    /**
+     * The ui binder.
+     */
+    private static EntryListPanelUiBinder uiBinder = GWT
+            .create(EntryListPanelUiBinder.class);
 
     /**
      * The Interface EntryListPanelUiBinder.
      */
     interface EntryListPanelUiBinder extends UiBinder<Widget, EntryListPanel> {
-	}
+    }
 
     /**
      * Instantiates a new entry list panel.
      */
     public EntryListPanel() {
-		initWidget(uiBinder.createAndBindUi(this));
-		btnSearch.setStyleName(SysResource.INSTANCE.getCss().btn());
+        initWidget(uiBinder.createAndBindUi(this));
+        btnSearch.setStyleName(SysResource.INSTANCE.getCss().btn());
 
-		txtSEARCH.addKeyUpHandler(new KeyUpHandler() {
+        txtSEARCH.addKeyUpHandler(new KeyUpHandler() {
 
-			@Override
-			public void onKeyUp(KeyUpEvent event) {
-				search();
-			}
-		});
-		txtSEARCH.addFocusHandler(new FocusHandler() {
+            @Override
+            public void onKeyUp(KeyUpEvent event) {
+                search();
+            }
+        });
+        txtSEARCH.addFocusHandler(new FocusHandler() {
 
-			@Override
-			public void onFocus(FocusEvent event) {
-				if (txtSEARCH.getValue() != null
-						&& txtSEARCH.getValue().length() > 0)
-					txtSEARCH.setSelectionRange(0, txtSEARCH.getValue()
-							.length());
-			}
-		});
-	}
+            @Override
+            public void onFocus(FocusEvent event) {
+                if (txtSEARCH.getValue() != null
+                        && txtSEARCH.getValue().length() > 0)
+                    txtSEARCH.setSelectionRange(0, txtSEARCH.getValue()
+                            .length());
+            }
+        });
+    }
 
     /**
      * The lb title.
      */
     @UiField
-	Label lbTitle;
+    Label lbTitle;
 
     /**
      * The list.
      */
     @UiField
-	EntryList list;
+    EntryList list;
 
     /**
      * The Btn search.
      */
     @UiField
-	Button btnSearch;
+    Button btnSearch;
 
     /**
      * The m group.
@@ -86,7 +88,7 @@ public class EntryListPanel extends Composite {
      * The html.
      */
     @UiField
-	HTML html;
+    HTML html;
 
     /**
      * Parses the.
@@ -95,35 +97,35 @@ public class EntryListPanel extends Composite {
      * @param searchText the search text
      */
     public void parse(Group group, String searchText) {
-		if (group == null) {
-			return;
-		}
+        if (group == null) {
+            return;
+        }
 
-		this.searchText = searchText;
-		txtSEARCH.setValue(searchText);
-		mGroup = group;
-		lbTitle.setText(group.name() == null ? "所有接口" : group.fullName());
-		int count = list.findCount(group, "");
-		String h = list.parse(group, searchText);
-		if (count == 0) {
-			entries.setVisible(false);
-		} else {
-			entries.setVisible(true);
-		}
-		html.setHTML(h);
-	}
+        this.searchText = searchText;
+        txtSEARCH.setValue(searchText);
+        mGroup = group;
+        lbTitle.setText(group.name() == null ? "所有接口" : group.fullName());
+        int count = list.findCount(group, "");
+        String h = list.parse(group, searchText);
+        if (count == 0) {
+            entries.setVisible(false);
+        } else {
+            entries.setVisible(true);
+        }
+        html.setHTML(h);
+    }
 
     /**
      * The entries.
      */
     @UiField
-	VerticalPanel entries;
+    VerticalPanel entries;
 
     /**
      * The txt SEARCH.
      */
     @UiField
-	TextBox txtSEARCH;
+    TextBox txtSEARCH;
 
     /**
      * On search.
@@ -131,18 +133,18 @@ public class EntryListPanel extends Composite {
      * @param e the e
      */
     @UiHandler("btnSearch")
-	void onSearch(ClickEvent e) {
-		search();
-	}
+    void onSearch(ClickEvent e) {
+        search();
+    }
 
-	/**
-	 * Search.
-	 */
-	private void search() {
-		String key = txtSEARCH.getValue();
-		if (key == null || key.length() == 0) {
-			parse(mGroup, "");
-		}
-		parse(mGroup, key);
-	}
+    /**
+     * Search.
+     */
+    private void search() {
+        String key = txtSEARCH.getValue();
+        if (key == null || key.length() == 0) {
+            parse(mGroup, "");
+        }
+        parse(mGroup, key);
+    }
 }

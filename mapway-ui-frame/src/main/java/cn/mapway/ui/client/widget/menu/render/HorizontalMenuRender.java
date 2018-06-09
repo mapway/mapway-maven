@@ -24,36 +24,37 @@ public class HorizontalMenuRender implements IMenuRender {
     /**
      * Instantiates a new Horizontal menu render.
      */
-    protected HorizontalMenuRender() {}
-
-  /*
-   * (non-Javadoc)
-   * 
-   * @see cn.mapway.ui.client.widget.menu.IMenuRender#render(com.google.gwt.user.client.ui.Widget,
-   * cn.mapway.ui.client.widget.menu.IMenuItem)
-   */
-  @Override
-  public Widget render(Widget parent, IMenuItem menu) {
-    if (menu == null || menu.getSubMenus().size() == 0) {
-      return null;
-    }
-    final HorizontalPanel hp = new HorizontalPanel();
-
-    hp.setSpacing(5);
-    for (final IMenuItem item : menu.getSubMenus()) {
-      final Anchor a = new Anchor(item.getName());
-      hp.add(a);
-      if (item.getHandler() != null) {
-        a.addClickHandler(new ClickHandler() {
-          @Override
-          public void onClick(ClickEvent event) {
-            item.getHandler().execute(a, item);
-          }
-        });
-      }
+    protected HorizontalMenuRender() {
     }
 
-    return hp;
+    /*
+     * (non-Javadoc)
+     *
+     * @see cn.mapway.ui.client.widget.menu.IMenuRender#render(com.google.gwt.user.client.ui.Widget,
+     * cn.mapway.ui.client.widget.menu.IMenuItem)
+     */
+    @Override
+    public Widget render(Widget parent, IMenuItem menu) {
+        if (menu == null || menu.getSubMenus().size() == 0) {
+            return null;
+        }
+        final HorizontalPanel hp = new HorizontalPanel();
 
-  }
+        hp.setSpacing(5);
+        for (final IMenuItem item : menu.getSubMenus()) {
+            final Anchor a = new Anchor(item.getName());
+            hp.add(a);
+            if (item.getHandler() != null) {
+                a.addClickHandler(new ClickHandler() {
+                    @Override
+                    public void onClick(ClickEvent event) {
+                        item.getHandler().execute(a, item);
+                    }
+                });
+            }
+        }
+
+        return hp;
+
+    }
 }

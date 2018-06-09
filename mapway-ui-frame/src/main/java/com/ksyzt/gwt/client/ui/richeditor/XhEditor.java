@@ -14,9 +14,9 @@ public class XhEditor extends TextArea {
      * Instantiates a new xh editor.
      */
     @UiConstructor
-  public XhEditor() {
+    public XhEditor() {
 
-  }
+    }
 
     /**
      * Instantiates a new xh editor.
@@ -24,11 +24,13 @@ public class XhEditor extends TextArea {
      * @param element the element
      */
     public XhEditor(Element element) {
-    super(element);
-  }
+        super(element);
+    }
 
-  /** The proxy. */
-  private RichBox proxy;
+    /**
+     * The proxy.
+     */
+    private RichBox proxy;
 
     /**
      * Inits the control.
@@ -36,11 +38,11 @@ public class XhEditor extends TextArea {
      * @param option the option
      */
     public void initControl(EditOption option) {
-    if (option == null) {
-      option = EditOption.getSimpleOption();
+        if (option == null) {
+            option = EditOption.getSimpleOption();
+        }
+        proxy = RichBox.initialize(getElement(), option);
     }
-    proxy = RichBox.initialize(getElement(), option);
-  }
 
     /**
      * 设置HTML内容.
@@ -48,8 +50,8 @@ public class XhEditor extends TextArea {
      * @param html the new source
      */
     public void setSource(String html) {
-    proxy.html(html);
-  }
+        proxy.html(html);
+    }
 
     /**
      * 获取HTML内容.
@@ -57,40 +59,40 @@ public class XhEditor extends TextArea {
      * @return the source
      */
     public String getSource() {
-    return proxy.html();
-  }
+        return proxy.html();
+    }
 
     /**
      * 卸载组件.
      */
     public void unload() {
-    proxy.unLoad();
-  }
+        proxy.unLoad();
+    }
 
     /**
      * Focus.
      */
     public void focus() {
-    proxy.focus();
-  }
+        proxy.focus();
+    }
 
-  /**
-   * 获取HTML.
-   *
-   * @return the value
-   */
-  @Override
-  public String getValue() {
-    return this.getSource();
-  }
+    /**
+     * 获取HTML.
+     *
+     * @return the value
+     */
+    @Override
+    public String getValue() {
+        return this.getSource();
+    }
 
-  /**
-   * 设置HTML.
-   *
-   * @param html the new value
-   */
-  @Override
-  public void setValue(String html) {
-    this.setSource(html);
-  }
+    /**
+     * 设置HTML.
+     *
+     * @param html the new value
+     */
+    @Override
+    public void setValue(String html) {
+        this.setSource(html);
+    }
 }

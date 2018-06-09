@@ -19,30 +19,32 @@ import com.google.gwt.user.client.ui.Widget;
  */
 public class HistoryItem extends Composite implements HasClickHandlers {
 
-	/** The ui binder. */
-	private static HistoryItemUiBinder uiBinder = GWT
-			.create(HistoryItemUiBinder.class);
+    /**
+     * The ui binder.
+     */
+    private static HistoryItemUiBinder uiBinder = GWT
+            .create(HistoryItemUiBinder.class);
 
     /**
      * The Interface HistoryItemUiBinder.
      */
     interface HistoryItemUiBinder extends UiBinder<Widget, HistoryItem> {
-	}
+    }
 
     /**
      * Instantiates a new history item.
      */
     public HistoryItem() {
-		initWidget(uiBinder.createAndBindUi(this));
-		Event.sinkEvents(this.getElement(), Event.ONCLICK);
+        initWidget(uiBinder.createAndBindUi(this));
+        Event.sinkEvents(this.getElement(), Event.ONCLICK);
 
-	}
+    }
 
     /**
      * The lb title.
      */
     @UiField
-	Label lbTitle;
+    Label lbTitle;
 
     /**
      * The m data.
@@ -55,9 +57,9 @@ public class HistoryItem extends Composite implements HasClickHandlers {
      * @param data the data
      */
     public void render(HistoryData data) {
-		mData = data;
-		lbTitle.setText(data.title);
-	}
+        mData = data;
+        lbTitle.setText(data.title);
+    }
 
     /**
      * Gets the data.
@@ -65,14 +67,14 @@ public class HistoryItem extends Composite implements HasClickHandlers {
      * @return the data
      */
     public HistoryData getData() {
-		return mData;
-	}
+        return mData;
+    }
 
-	/* (non-Javadoc)
-	 * @see com.google.gwt.event.dom.client.HasClickHandlers#addClickHandler(com.google.gwt.event.dom.client.ClickHandler)
-	 */
-	@Override
-	public HandlerRegistration addClickHandler(ClickHandler handler) {
-		return addHandler(handler, ClickEvent.getType());
-	}
+    /* (non-Javadoc)
+     * @see com.google.gwt.event.dom.client.HasClickHandlers#addClickHandler(com.google.gwt.event.dom.client.ClickHandler)
+     */
+    @Override
+    public HandlerRegistration addClickHandler(ClickHandler handler) {
+        return addHandler(handler, ClickEvent.getType());
+    }
 }

@@ -1,47 +1,47 @@
 <!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
-<ui:UiBinder xmlns:ui = "urn:ui:com.google.gwt.uibinder"
-             xmlns:g = "urn:import:com.google.gwt.user.client.ui"
-             xmlns:c = "urn:import:cn.mapway.ui.client.widget.common"
-             xmlns:common = "urn:import:cn.ennwifi.webframe.ui.client.common"
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+             xmlns:g="urn:import:com.google.gwt.user.client.ui"
+             xmlns:c="urn:import:cn.mapway.ui.client.widget.common"
+             xmlns:common="urn:import:cn.ennwifi.webframe.ui.client.common"
 >
     <ui:style>
         .content {
-            background-color: white;
-            padding: 5px 5px 5px 25px;
+        background-color: white;
+        padding: 5px 5px 5px 25px;
         }
 
         .tbl td {
-            font-size: 15px;
-            font-weight: bold;
-            olor: #404040;
+        font-size: 15px;
+        font-weight: bold;
+        olor: #404040;
         }
 
         .tools {
-            background-color: #f0f0f0;
+        background-color: #f0f0f0;
         }
 
         .message {
-            border-radius: 5px;
-            border: dotted 1px #e0e0e0;
-            background-color: linen;
+        border-radius: 5px;
+        border: dotted 1px #e0e0e0;
+        background-color: linen;
         }
     </ui:style>
-    <g:DockLayoutPanel width = "750px" height = "350px" styleName = "{style.content}">
-        <g:south size = "50">
-            <g:HorizontalPanel width = "100%" height = "50px" verticalAlignment = "middle"
-                               horizontalAlignment = "center" styleName = "{style.tools}">
-                <c:PrimaryButton ui:field = "btnSave" text = "保存"></c:PrimaryButton>
+    <g:DockLayoutPanel width="750px" height="350px" styleName="{style.content}">
+        <g:south size="50">
+            <g:HorizontalPanel width="100%" height="50px" verticalAlignment="middle"
+                               horizontalAlignment="center" styleName="{style.tools}">
+                <c:PrimaryButton ui:field="btnSave" text="保存"></c:PrimaryButton>
             </g:HorizontalPanel>
         </g:south>
         <g:center>
             <g:ScrollPanel>
-                <g:HTMLPanel styleName = "{style.content}">
-                    <table width = "100%" cellpadding = "2" class = "{style.tbl}">
+                <g:HTMLPanel styleName="{style.content}">
+                    <table width="100%" cellpadding="2" class="{style.tbl}">
                         <tr>
                             <td>登录名
                             </td>
                             <td>
-                                <c:TextBoxEx ui:field = "txtName" title = "用户名称,长度>6"></c:TextBoxEx>
+                                <c:TextBoxEx ui:field="txtName" title="用户名称,长度>6"></c:TextBoxEx>
                             </td>
                             <td>头像
                             </td>
@@ -50,46 +50,46 @@
                             <td>真实姓名
                             </td>
                             <td>
-                                <c:TextBoxEx ui:field = "txtRealName" title = "用户真名"></c:TextBoxEx>
+                                <c:TextBoxEx ui:field="txtRealName" title="用户真名"></c:TextBoxEx>
                             </td>
-                            <td rowspan = "5">
-                                <common:ImageUploader ui:field = "avator"></common:ImageUploader>
+                            <td rowspan="5">
+                                <common:ImageUploader ui:field="avator"></common:ImageUploader>
                             </td>
                         </tr>
                         <tr>
                             <td>密码
                             </td>
                             <td>
-                                <c:TextBoxEx ui:field = "txtPassword" title = "如果填写，则会修改密码，如果不填不会更改密码"></c:TextBoxEx>
+                                <c:TextBoxEx ui:field="txtPassword" title="如果填写，则会修改密码，如果不填不会更改密码"></c:TextBoxEx>
                             </td>
                         </tr>
                         <tr>
                             <td>电话
                             </td>
                             <td>
-                                <c:TextBoxEx ui:field = "txtTel"></c:TextBoxEx>
+                                <c:TextBoxEx ui:field="txtTel"></c:TextBoxEx>
                             </td>
                         </tr>
                         <tr>
                             <td>邮箱
                             </td>
                             <td>
-                                <c:TextBoxEx ui:field = "txtEmail"></c:TextBoxEx>
+                                <c:TextBoxEx ui:field="txtEmail"></c:TextBoxEx>
                             </td>
                         </tr>
                         <tr>
                             <td>性别
                             </td>
                             <td>
-                                <c:ListBoxEx ui:field = "ddlGender">
-                                    <g:item value = "男">男</g:item>
-                                    <g:item value = "女">女</g:item>
-                                    <g:item value = "未知">未知</g:item>
+                                <c:ListBoxEx ui:field="ddlGender">
+                                    <g:item value="男">男</g:item>
+                                    <g:item value="女">女</g:item>
+                                    <g:item value="未知">未知</g:item>
                                 </c:ListBoxEx>
                             </td>
                         </tr>
                     </table>
-                    <c:LabelEx styleName = "{style.message}" ui:field = "lbMsg"></c:LabelEx>
+                    <c:LabelEx styleName="{style.message}" ui:field="lbMsg"></c:LabelEx>
                 </g:HTMLPanel>
             </g:ScrollPanel>
         </g:center>

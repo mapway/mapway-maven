@@ -17,7 +17,7 @@ import com.google.gwt.json.client.JSONObject;
  */
 public class XDM {
 
-  private HashMap<String, List<IOnPostMessage>> mapper;
+    private HashMap<String, List<IOnPostMessage>> mapper;
 
     /**
      * The interface On post message.
@@ -29,15 +29,15 @@ public class XDM {
          * @param data the data
          */
         void onPostMessage(JSONObject data);
-  }
+    }
 
     /**
      * Instantiates a new Xdm.
      */
     public XDM() {
-    mapper = new HashMap<String, List<IOnPostMessage>>();
-    registerReceiver(this);
-  }
+        mapper = new HashMap<String, List<IOnPostMessage>>();
+        registerReceiver(this);
+    }
 
     /**
      * 向父窗口框架发送消息
@@ -110,16 +110,16 @@ public class XDM {
      * @param listener the listener
      */
     public void addListener(String action, IOnPostMessage listener) {
-    if (action == null || action.length() == 0) {
-      return;
+        if (action == null || action.length() == 0) {
+            return;
+        }
+        List<IOnPostMessage> list = mapper.get(action);
+        if (list == null) {
+            list = new ArrayList<IOnPostMessage>();
+            mapper.put(action, list);
+        }
+        list.add(listener);
     }
-    List<IOnPostMessage> list = mapper.get(action);
-    if (list == null) {
-      list = new ArrayList<IOnPostMessage>();
-      mapper.put(action, list);
-    }
-    list.add(listener);
-  }
 
     /**
      * Remove listener.
@@ -128,20 +128,20 @@ public class XDM {
      * @param listener the listener
      */
     public void removeListener(String action, IOnPostMessage listener) {
-    if (action == null || action.length() == 0) {
-      return;
+        if (action == null || action.length() == 0) {
+            return;
+        }
+        List<IOnPostMessage> list = mapper.get(action);
+        if (list == null) {
+            return;
+        }
+        for (IOnPostMessage l : list) {
+            if (l.equals(listener)) {
+                list.remove(l);
+                break;
+            }
+        }
     }
-    List<IOnPostMessage> list = mapper.get(action);
-    if (list == null) {
-      return;
-    }
-    for (IOnPostMessage l : list) {
-      if (l.equals(listener)) {
-        list.remove(l);
-        break;
-      }
-    }
-  }
 
     /**
      * On post message.
@@ -149,23 +149,23 @@ public class XDM {
      * @param data the data
      */
     protected void onPostMessage(JavaScriptObject data) {
-    GWT.log(JSON.stringify(data));
-    JSONObject d = new JSONObject(data);
-    String postAction = Jsons.getAsString(d, "postAction", "");
-    if (postAction != null && postAction.length() > 0) {
-      List<IOnPostMessage> listeners = mapper.get(postAction);
-      if (listeners != null) {
-        for (IOnPostMessage l : listeners) {
-          l.onPostMessage(d);
+        GWT.log(JSON.stringify(data));
+        JSONObject d = new JSONObject(data);
+        String postAction = Jsons.getAsString(d, "postAction", "");
+        if (postAction != null && postAction.length() > 0) {
+            List<IOnPostMessage> listeners = mapper.get(postAction);
+            if (listeners != null) {
+                for (IOnPostMessage l : listeners) {
+                    l.onPostMessage(d);
+                }
+            }
         }
-      }
     }
-  }
 
-  /**
-   * 注册消息接收器
-   */
-  private final native void registerReceiver(XDM xdm)/*-{
+    /**
+     * 注册消息接收器
+     */
+    private final native void registerReceiver(XDM xdm)/*-{
 		function __xdm__postMessageListener(e) {
 
 			xdm.@cn.ennwifi.webframe.ui.client.tools.XDM::onPostMessage(Lcom/google/gwt/core/client/JavaScriptObject;)(e.data);

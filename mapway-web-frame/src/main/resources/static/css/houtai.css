@@ -1,94 +1,99 @@
 @CHARSET "UTF-8";
-#main_menu{
-	
-	padding: 20px 10px;
+#main_menu {
+
+    padding: 20px 10px;
 }
 
-.logo_text{
-	color: darkblue;
-	font-weight: bold;
-	font-size: 16px;
-	width: 120px;
-	display: inline;
+.logo_text {
+    color: darkblue;
+    font-weight: bold;
+    font-size: 16px;
+    width: 120px;
+    display: inline;
 }
 
-#menus
-{
-	margin: 0px;
-	display: inline;
+#menus {
+    margin: 0px;
+    display: inline;
 }
-#menus>li{
 
-	display: inline;
-	list-style: none;
+#menus > li {
+
+    display: inline;
+    list-style: none;
 }
-#menus>li>a{
+
+#menus > li > a {
     padding: 5px 10px;
-	font-size:16px;
-	color: black;
-	background: white;
-	width: 100px;
-	line-height: 50px;
-	height: 50px;
-	text-decoration: none;
-}
-#menus>li>a:HOVER{
-	background: #f0f0f0;
-}
-#bottom
-{
-	text-align: center;
-	margin-top: 50px 10px;
-	font-size: 14px;
-	color: #a0a0a0;
-	padding: 20px;
-}
-#navi{
-	padding: 0px;
-	border-bottom: solid 1px #808080;
-	border-top: solid 1px #808080;
-	background-color: #e0e0e0;
-}
-.navi_item
-{
-	width: 120px;
-	height: 40px;
-	line-height: 40px;
-	text-align: center;
-	text-decoration: none;
-	display: inline-block;
-}
-.navi_item[current]
-{
-	background-color: skyblue;
-	color: white;
-}
-#left
-{
-	width: 200px;
-	border: solid 1px #a0a0a0;
-	margin: 10px 5px;
-	float: left;
-	border-radius:5px;
-}
-#left > a{
-	display: block;
-	height: 40px;
-	line-height: 40px;
-	border-bottom: solid 1px skyblue;
-	text-decoration: none;
-	text-align: center;
-}
-#left > a[current]{
-	background-color: skyblue;
-}
-#left > a:HOVER{
-	background-color: green;
-	color: white;
+    font-size: 16px;
+    color: black;
+    background: white;
+    width: 100px;
+    line-height: 50px;
+    height: 50px;
+    text-decoration: none;
 }
 
-#content
-{
-	margin-left: 210px;
-	float: left;
+#menus > li > a:HOVER {
+    background: #f0f0f0;
+}
+
+#bottom {
+    text-align: center;
+    margin-top: 50px 10px;
+    font-size: 14px;
+    color: #a0a0a0;
+    padding: 20px;
+}
+
+#navi {
+    padding: 0px;
+    border-bottom: solid 1px #808080;
+    border-top: solid 1px #808080;
+    background-color: #e0e0e0;
+}
+
+.navi_item {
+    width: 120px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.navi_item[current] {
+    background-color: skyblue;
+    color: white;
+}
+
+#left {
+    width: 200px;
+    border: solid 1px #a0a0a0;
+    margin: 10px 5px;
+    float: left;
+    border-radius: 5px;
+}
+
+#left > a {
+    display: block;
+    height: 40px;
+    line-height: 40px;
+    border-bottom: solid 1px skyblue;
+    text-decoration: none;
+    text-align: center;
+}
+
+#left > a[current] {
+    background-color: skyblue;
+}
+
+#left > a:HOVER {
+    background-color: green;
+    color: white;
+}
+
+#content {
+    margin-left: 210px;
+    float: left;
 }

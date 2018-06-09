@@ -23,7 +23,7 @@ import com.google.gwt.user.client.ui.Widget;
 /**
  * The type Dash board module.
  */
-@ModuleMarker(value = DashBoardModule.MODULE_CODE, name = "看板",group = "/系统")
+@ModuleMarker(value = DashBoardModule.MODULE_CODE, name = "看板", group = "/系统")
 public class DashBoardModule extends AbstractModuleWithEvent {
 
     /**

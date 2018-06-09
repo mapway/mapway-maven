@@ -2,15 +2,15 @@
              xmlns:g='urn:import:com.google.gwt.user.client.ui'>
     <ui:style>
         .lb {
-            color: cornflowerblue;
+        color: cornflowerblue;
         }
 
         .v {
-            color: green;
+        color: green;
         }
 
         .item {
-            display: inline;
+        display: inline;
         }
     </ui:style>
     <g:HTMLPanel styleName="{style.item}">

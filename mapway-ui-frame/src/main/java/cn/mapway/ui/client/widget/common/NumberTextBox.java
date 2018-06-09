@@ -9,56 +9,57 @@ import com.google.gwt.event.dom.client.KeyUpHandler;
 public class NumberTextBox extends TextBoxEx implements KeyUpHandler {
 
 
-
-  @Override
-  public String getValue() {
-    String v = super.getValue();
-    if (v == null || v.length() == 0) {
-      return "0";
+    @Override
+    public String getValue() {
+        String v = super.getValue();
+        if (v == null || v.length() == 0) {
+            return "0";
+        }
+        return v;
     }
-    return v;
-  };
+
+    ;
 
 
     /**
      * Instantiates a new Number text box.
      */
     public NumberTextBox() {
-    setStyleName("gwtEx-TextBox");
-    init();
-  }
-
-  private void init() {
-    this.addKeyUpHandler(this);
-    setPattern("^(-?\\d+)(\\.\\d+){0,1}$");
-  }
-
-  @Override
-  public boolean isValidate() {
-    String v = getValue();
-    if (regex.test(v)) {
-      Double d = Double.valueOf(v);
-      if (this.min != null) {
-        if (d < this.min) {
-          return false;
-        }
-      }
-      if (this.max != null) {
-        if (d > this.max) {
-          return false;
-        }
-      }
-      return true;
+        setStyleName("gwtEx-TextBox");
+        init();
     }
-    return false;
-  }
 
-  @Override
-  public void onKeyUp(KeyUpEvent event) {
-    String value = this.getValue();
-    value = value.replaceAll("[^\\d\\.\\-]", "");
-    this.setValue(value);
-  }
+    private void init() {
+        this.addKeyUpHandler(this);
+        setPattern("^(-?\\d+)(\\.\\d+){0,1}$");
+    }
+
+    @Override
+    public boolean isValidate() {
+        String v = getValue();
+        if (regex.test(v)) {
+            Double d = Double.valueOf(v);
+            if (this.min != null) {
+                if (d < this.min) {
+                    return false;
+                }
+            }
+            if (this.max != null) {
+                if (d > this.max) {
+                    return false;
+                }
+            }
+            return true;
+        }
+        return false;
+    }
+
+    @Override
+    public void onKeyUp(KeyUpEvent event) {
+        String value = this.getValue();
+        value = value.replaceAll("[^\\d\\.\\-]", "");
+        this.setValue(value);
+    }
 
     /**
      * Check num boolean.
@@ -66,10 +67,10 @@ public class NumberTextBox extends TextBoxEx implements KeyUpHandler {
      * @return the boolean
      */
     public boolean checkNum() {
-    String value = this.getValue();
-    String reg = "^(\\-|\\+)?\\d+(\\.\\d+)?$";
-    return value.matches(reg);
-  }
+        String value = this.getValue();
+        String reg = "^(\\-|\\+)?\\d+(\\.\\d+)?$";
+        return value.matches(reg);
+    }
 
     /**
      * The Min.
@@ -86,8 +87,8 @@ public class NumberTextBox extends TextBoxEx implements KeyUpHandler {
      * @param min the min
      */
     public void setMin(double min) {
-    this.min = min;
-  }
+        this.min = min;
+    }
 
     /**
      * 设置最大值
@@ -95,8 +96,8 @@ public class NumberTextBox extends TextBoxEx implements KeyUpHandler {
      * @param max the max
      */
     public void setMax(double max) {
-    this.max = max;
-  }
+        this.max = max;
+    }
 
 
 }

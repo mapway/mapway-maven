@@ -6,7 +6,7 @@ import java.util.List;
  * The type Meta req.
  */
 public class MetaReq {
-	private String code;
+    private String code;
 
     /**
      * Gets code.
@@ -14,8 +14,8 @@ public class MetaReq {
      * @return the code
      */
     public String getCode() {
-		return code;
-	}
+        return code;
+    }
 
     /**
      * Sets code.
@@ -23,8 +23,8 @@ public class MetaReq {
      * @param code the code
      */
     public void setCode(String code) {
-		this.code = code;
-	}
+        this.code = code;
+    }
 
     /**
      * Gets name.
@@ -32,8 +32,8 @@ public class MetaReq {
      * @return the name
      */
     public String getName() {
-		return name;
-	}
+        return name;
+    }
 
     /**
      * Sets name.
@@ -41,8 +41,8 @@ public class MetaReq {
      * @param name the name
      */
     public void setName(String name) {
-		this.name = name;
-	}
+        this.name = name;
+    }
 
     /**
      * Gets submeta.
@@ -50,8 +50,8 @@ public class MetaReq {
      * @return the submeta
      */
     public List<MetaReq> getSubmeta() {
-		return submeta;
-	}
+        return submeta;
+    }
 
     /**
      * Sets submeta.
@@ -59,9 +59,10 @@ public class MetaReq {
      * @param submeta the submeta
      */
     public void setSubmeta(List<MetaReq> submeta) {
-		this.submeta = submeta;
-	}
-	private String name;
-	private List<MetaReq> submeta;
+        this.submeta = submeta;
+    }
+
+    private String name;
+    private List<MetaReq> submeta;
 
 }

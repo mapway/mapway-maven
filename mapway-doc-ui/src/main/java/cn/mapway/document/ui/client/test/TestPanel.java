@@ -1,6 +1,8 @@
 package cn.mapway.document.ui.client.test;
 
 import cn.mapway.document.ui.client.component.Clients;
+import cn.mapway.document.ui.client.component.ace.AceEditor;
+import cn.mapway.document.ui.client.component.ace.AceEditorMode;
 import cn.mapway.document.ui.client.main.JsonPanel;
 import cn.mapway.document.ui.client.main.storage.LocalStorage;
 import cn.mapway.document.ui.client.module.Entry;
@@ -16,6 +18,7 @@ import com.google.gwt.event.logical.shared.CloseHandler;
 import com.google.gwt.event.logical.shared.HasCloseHandlers;
 import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.http.client.RequestException;
+import com.google.gwt.json.client.JSONObject;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.uibinder.client.UiHandler;
@@ -23,7 +26,6 @@ import com.google.gwt.user.client.ui.*;
 
 import java.util.Date;
 
-// TODO: Auto-generated Javadoc
 
 /**
  * 测试面板.
@@ -108,22 +110,45 @@ public class TestPanel extends Composite implements HasCloseHandlers<Void> {
     @UiField
     Label lbUrl;
 
-    /**
-     * The txt input.
-     */
+
     @UiField
-    TextArea txtInput;
+    AceEditor editor;
 
     /**
      * The txt output.
      */
     @UiField
-    JsonPanel txtOutput;
+    AceEditor result;
 
     /**
      * The m entry.
      */
     Entry mEntry;
+
+    @Override
+    protected void onLoad() {
+        super.onLoad();
+        initJsonEditor();
+    }
+
+    boolean initialize = false;
+
+    private void initJsonEditor() {
+        if (initialize == false) {
+            editor.startEditor();
+            editor.setMode(AceEditorMode.JSON);
+            editor.setShowPrintMargin(false);
+            editor.setFontSize(16);
+
+            result.startEditor();
+            result.setMode(AceEditorMode.JSON);
+            result.setShowPrintMargin(false);
+            result.setFontSize(16);
+            result.setReadOnly(true);
+
+            initialize = true;
+        }
+    }
 
     /**
      * Invoke.
@@ -138,8 +163,9 @@ public class TestPanel extends Composite implements HasCloseHandlers<Void> {
         if (his.length() == 0) {
             his = entry.input().get(0).json();
         }
-        txtInput.setValue(his);
-        txtOutput.setString("");
+        editor.setValue(his);
+        editor.redisplay();
+        result.setValue("");
     }
 
     /**
@@ -194,14 +220,14 @@ public class TestPanel extends Composite implements HasCloseHandlers<Void> {
     void onExecute(ClickEvent ev) {
 
         imgLoadding.setVisible(true);
-        txtOutput.setText("");
+        result.setValue("");
         // 保存到本地
         String v = LocalStorage.val(mEntry.relativePath());
         Date d = new Date();
         String key =
                 (d.getYear() + 1900) + "-" + (d.getMonth() + 1) + "-" + d.getDate() + " " + d.getHours()
                         + ":" + d.getMinutes() + ":" + d.getSeconds();
-        String va = txtInput.getValue();
+        String va = editor.getValue();
 
         if (v == null || v.length() == 0) {
             LocalStorage.save(mEntry.relativePath(), key + "`" + va);
@@ -209,30 +235,28 @@ public class TestPanel extends Composite implements HasCloseHandlers<Void> {
             LocalStorage.save(mEntry.relativePath(), key + "`" + va + "|" + v);
         }
         try {
-            ApiDocProxy.fetchString(mEntry.url(), txtInput.getValue(), "", mEntry.invokeMethods().get(0),
+            ApiDocProxy.fetchString(mEntry.url(), va, "", mEntry.invokeMethods().get(0),
                     new IOnData<String>() {
                         @Override
                         public void onError(String url, String error) {
-                            txtOutput.setString(error);
+                            result.setValue(error);
                             imgLoadding.setVisible(false);
 
                         }
 
                         @Override
                         public void onSuccess(String url, String data) {
-                            JavaScriptObject jso = JsonUtils.unsafeEval(data);
-                            txtOutput.setJson(JsonUtils.stringify(jso, "   "));
+                            GWT.log(data);
+                            JavaScriptObject obj = JsonUtils.safeEval(data);
+                            result.setValue(JsonUtils.stringify(obj, "\t"));
                             imgLoadding.setVisible(false);
                             processToken(url, data);
                         }
-
-                        ;
                     });
         } catch (RequestException e) {
-            txtOutput.setString(e.getMessage());
+            result.setValue(e.getMessage());
             imgLoadding.setVisible(false);
         }
-        // }
     }
 
     /**
@@ -274,7 +298,7 @@ public class TestPanel extends Composite implements HasCloseHandlers<Void> {
 
         @Override
         public void onClose(CloseEvent<HistoryData> event) {
-            txtInput.setValue(event.getTarget().value);
+            editor.setValue(event.getTarget().value);
             pop.hide();
         }
     };

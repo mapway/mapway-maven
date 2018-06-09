@@ -143,7 +143,6 @@ public class GenBean extends AbstractMojo {
             }
 
 
-
             @Override
             public int getMaxConnections() {
                 return 10;
@@ -158,7 +157,6 @@ public class GenBean extends AbstractMojo {
             public String getDriver() {
                 return driver;
             }
-
 
 
             @Override

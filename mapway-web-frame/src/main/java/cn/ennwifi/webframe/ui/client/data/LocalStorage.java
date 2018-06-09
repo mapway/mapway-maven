@@ -19,11 +19,11 @@ public class LocalStorage {
      * @param data the data
      */
     public static void save(String key, String data) {
-    if (storage == null) {
-      return;
+        if (storage == null) {
+            return;
+        }
+        storage.setItem(key, data);
     }
-    storage.setItem(key, data);
-  }
 
     /**
      * Val.
@@ -32,11 +32,11 @@ public class LocalStorage {
      * @return the string
      */
     public static String val(String key) {
-    if (storage == null) {
-      return null;
-    }
+        if (storage == null) {
+            return null;
+        }
 
-    String data = storage.getItem(key);
-    return data;
-  }
+        String data = storage.getItem(key);
+        return data;
+    }
 }

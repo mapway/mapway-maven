@@ -118,7 +118,7 @@ public class DocHelper {
         }
         //TODO 增加markdown样式表
 
-        System.out.print("custom style>"+customStyle);
+        System.out.print("custom style>" + customStyle);
         template = template.replace("API_CSS_STYLE", customStyle);
         template = template.replace("API_DOC_DATA", json);
         template = template.replace("API_DOC_UI", ui);

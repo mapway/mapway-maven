@@ -21,8 +21,10 @@ import com.google.gwt.user.client.Window;
  */
 public class GwtUtil {
 
-	/** The g mf. */
-	private static DateTimeFormat g_mf;
+    /**
+     * The g mf.
+     */
+    private static DateTimeFormat g_mf;
 
     /**
      * Gets the date format.
@@ -30,12 +32,12 @@ public class GwtUtil {
      * @return the date format
      */
     public static DateTimeFormat getDateFormat() {
-		if (g_mf == null) {
-			g_mf = DateTimeFormat.getFormat("yyyy年MM月dd日");
-		}
+        if (g_mf == null) {
+            g_mf = DateTimeFormat.getFormat("yyyy年MM月dd日");
+        }
 
-		return g_mf;
-	}
+        return g_mf;
+    }
 
     /**
      * Redirect.
@@ -85,8 +87,8 @@ public class GwtUtil {
      * @return the current page URL
      */
     public static String getCurrentPageURL() {
-		return Window.Location.getHref();
-	}
+        return Window.Location.getHref();
+    }
 
     /**
      * Gets the encode URL.
@@ -95,12 +97,12 @@ public class GwtUtil {
      * @return the encode URL
      */
     public static String getEncodeURL(String url) {
-		if (url == null) {
-			return "";
-		} else {
-			return URL.encode(url);
-		}
-	}
+        if (url == null) {
+            return "";
+        } else {
+            return URL.encode(url);
+        }
+    }
 
     /**
      * Gets the encode query string.
@@ -109,12 +111,12 @@ public class GwtUtil {
      * @return the encode query string
      */
     public static String getEncodeQueryString(String uri) {
-		if (uri == null) {
-			return "";
-		} else {
-			return URL.encodeQueryString(uri);
-		}
-	}
+        if (uri == null) {
+            return "";
+        } else {
+            return URL.encodeQueryString(uri);
+        }
+    }
 
     /**
      * Gets the dncode query string.
@@ -123,12 +125,12 @@ public class GwtUtil {
      * @return the dncode query string
      */
     public static String getDncodeQueryString(String uri) {
-		if (uri == null) {
-			return "";
-		} else {
-			return URL.decodeQueryString(uri);
-		}
-	}
+        if (uri == null) {
+            return "";
+        } else {
+            return URL.decodeQueryString(uri);
+        }
+    }
 
     /**
      * Gets the decode URL.
@@ -137,12 +139,12 @@ public class GwtUtil {
      * @return the decode URL
      */
     public static String getDecodeURL(String url) {
-		if (url == null) {
-			return "";
-		} else {
-			return URL.decode(url);
-		}
-	}
+        if (url == null) {
+            return "";
+        } else {
+            return URL.decode(url);
+        }
+    }
 
     /**
      * Gets the current page login URL.
@@ -150,13 +152,13 @@ public class GwtUtil {
      * @return the current page login URL
      */
     public static String getCurrentPageLoginURL() {
-		String base = GWT.getModuleBaseURL();
-		String current_page = GwtUtil.getCurrentPageURL();
+        String base = GWT.getModuleBaseURL();
+        String current_page = GwtUtil.getCurrentPageURL();
 
-		String encodePath = URL.encodeQueryString(current_page);
-		String url = base + "../user/login?url=" + encodePath;
-		return url;
-	}
+        String encodePath = URL.encodeQueryString(current_page);
+        String url = base + "../user/login?url=" + encodePath;
+        return url;
+    }
 
     /**
      * Int 2 path.
@@ -165,13 +167,13 @@ public class GwtUtil {
      * @return the string
      */
     public final static String int2path(int v) {
-		String id = v + "";
-		String str = "";
-		for (int i = 0; i < id.length(); i++) {
-			str += id.charAt(i) + "/";
-		}
-		return str;
-	}
+        String id = v + "";
+        String str = "";
+        for (int i = 0; i < id.length(); i++) {
+            str += id.charAt(i) + "/";
+        }
+        return str;
+    }
 
     /**
      * Gets the debug.
@@ -179,12 +181,12 @@ public class GwtUtil {
      * @return the debug
      */
     public static String getDebug() {
-		String v = Window.Location.getParameter("gwt.codesvr");
-		if (v != null && v.length() > 0) {
-			return "&gwt.codesvr=" + v;
-		}
-		return "";
-	}
+        String v = Window.Location.getParameter("gwt.codesvr");
+        if (v != null && v.length() > 0) {
+            return "&gwt.codesvr=" + v;
+        }
+        return "";
+    }
 
     /**
      * Gets the image url.
@@ -194,10 +196,10 @@ public class GwtUtil {
      * @return the image url
      */
     public static String getImageUrl(String path, int id) {
-		String picurl = GWT.getModuleBaseURL() + "../" + path + "/"
-				+ GwtUtil.int2path(id) + "64.jpg?t=" + Random.nextDouble();
-		return picurl;
-	}
+        String picurl = GWT.getModuleBaseURL() + "../" + path + "/"
+                + GwtUtil.int2path(id) + "64.jpg?t=" + Random.nextDouble();
+        return picurl;
+    }
 
     /**
      * Gets the user icon URL.
@@ -207,9 +209,9 @@ public class GwtUtil {
      * @return the user icon URL
      */
     public static String getUserIconURL(int uid, int size) {
-		return GWT.getModuleBaseURL() + "../images/user/"
-				+ GwtUtil.int2path(uid) + size + ".jpg";
-	}
+        return GWT.getModuleBaseURL() + "../images/user/"
+                + GwtUtil.int2path(uid) + size + ".jpg";
+    }
 
     /**
      * The chars.
@@ -224,12 +226,12 @@ public class GwtUtil {
      */
     public static String RandString(int i) {
 
-		String str = "";
-		for (int count = 0; count < i; count++) {
-			str += chars.charAt(Random.nextInt(chars.length()));
-		}
-		return str;
-	}
+        String str = "";
+        for (int count = 0; count < i; count++) {
+            str += chars.charAt(Random.nextInt(chars.length()));
+        }
+        return str;
+    }
 
     /**
      * The m dfshort.
@@ -247,11 +249,11 @@ public class GwtUtil {
      * @return the long format
      */
     public static DateTimeFormat getLongFormat() {
-		if (m_dflong == null) {
-			m_dflong = DateTimeFormat.getFormat("yyyy年MM月dd日 HH:mm:ss");
-		}
-		return m_dflong;
-	}
+        if (m_dflong == null) {
+            m_dflong = DateTimeFormat.getFormat("yyyy年MM月dd日 HH:mm:ss");
+        }
+        return m_dflong;
+    }
 
     /**
      * Gets the short format.
@@ -259,11 +261,11 @@ public class GwtUtil {
      * @return the short format
      */
     public static DateTimeFormat getShortFormat() {
-		if (m_dfshort == null) {
-			m_dfshort = DateTimeFormat.getFormat("yyyy年MM月dd日");
-		}
-		return m_dfshort;
-	}
+        if (m_dfshort == null) {
+            m_dfshort = DateTimeFormat.getFormat("yyyy年MM月dd日");
+        }
+        return m_dfshort;
+    }
 
     /**
      * Format timestamp.
@@ -273,16 +275,16 @@ public class GwtUtil {
      * @return the string
      */
     public static String formatTimestamp(Timestamp time, boolean longformat) {
-		if (time == null) {
-			return "----";
-		} else {
-			if (longformat == true) {
-				return getLongFormat().format(new Date(time.getTime()));
-			} else {
-				return getShortFormat().format(new Date(time.getTime()));
-			}
-		}
-	}
+        if (time == null) {
+            return "----";
+        } else {
+            if (longformat == true) {
+                return getLongFormat().format(new Date(time.getTime()));
+            } else {
+                return getShortFormat().format(new Date(time.getTime()));
+            }
+        }
+    }
 
     /**
      * Gets the home.
@@ -290,10 +292,10 @@ public class GwtUtil {
      * @return the home
      */
     public static String getHome() {
-		String base = GWT.getModuleBaseURL();
-		String url = base + "../?" + getDebug();
-		return url;
-	}
+        String base = GWT.getModuleBaseURL();
+        String url = base + "../?" + getDebug();
+        return url;
+    }
 
     /**
      * Gets the timestamp.
@@ -303,8 +305,8 @@ public class GwtUtil {
      */
     public static Timestamp getTimestamp(Date value) {
 
-		return new Timestamp(value.getTime());
-	}
+        return new Timestamp(value.getTime());
+    }
 
     /**
      * Gets the now.
@@ -312,8 +314,8 @@ public class GwtUtil {
      * @return the now
      */
     public static Date getNow() {
-		return new Date();
-	}
+        return new Date();
+    }
 
     /**
      * Gets the date.
@@ -322,12 +324,12 @@ public class GwtUtil {
      * @return the date
      */
     public static Date getDate(Timestamp establishdate) {
-		if (establishdate == null)
-			return new Date();
-		else {
-			return new Date(establishdate.getTime());
-		}
-	}
+        if (establishdate == null)
+            return new Date();
+        else {
+            return new Date(establishdate.getTime());
+        }
+    }
 
     /**
      * Parses the post image result.
@@ -336,16 +338,16 @@ public class GwtUtil {
      * @return the string[]
      */
     public static String[] parsePostImageResult(String json) {
-		JSONValue jv = JSONParser.parse(json);
-		JSONObject jo = (JSONObject) (jv);
-		JSONString strobj;
-		strobj = (JSONString) jo.get("returncode");
-		String rcode = strobj.stringValue();
-		strobj = (JSONString) jo.get("msg");
-		String msg = strobj.stringValue();
-		String[] r = new String[2];
-		r[0] = rcode;
-		r[1] = msg;
-		return r;
-	}
+        JSONValue jv = JSONParser.parse(json);
+        JSONObject jo = (JSONObject) (jv);
+        JSONString strobj;
+        strobj = (JSONString) jo.get("returncode");
+        String rcode = strobj.stringValue();
+        strobj = (JSONString) jo.get("msg");
+        String msg = strobj.stringValue();
+        String[] r = new String[2];
+        r[0] = rcode;
+        r[1] = msg;
+        return r;
+    }
 }

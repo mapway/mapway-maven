@@ -10,31 +10,31 @@ import cn.mapway.document.annotation.Doc;
 /**
  * The Class TestObj.
  */
-@Doc(value="TestObject in TestObject",desc="1.场景ID 统一为 Long.2.定义场景结构由原来的一个场景下可以有多个执行单元 改为一个场景下只允许存在一个执行单元，这样结构简化为如下的形式：")
+@Doc(value = "TestObject in TestObject", desc = "1.场景ID 统一为 Long.2.定义场景结构由原来的一个场景下可以有多个执行单元 改为一个场景下只允许存在一个执行单元，这样结构简化为如下的形式：")
 public class TestObj {
 
     /**
      * The a.
      */
     @ApiField("eq")
-	public int a;
+    public int a;
 
     /**
      * The b.
      */
     @ApiField("eq")
-	public Integer b;
+    public Integer b;
 
     /**
      * The c.
      */
     @ApiField("eq")
-	public List<String> c;
+    public List<String> c;
 
     /**
      * The d.
      */
     @ApiField("eq")
-	public List<Req> d;
+    public List<Req> d;
 
 }

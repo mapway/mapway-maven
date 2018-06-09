@@ -16,7 +16,8 @@ public class ObjectInfo extends JavaScriptObject {
     /**
      * Instantiates a new object info.
      */
-    protected ObjectInfo() {}
+    protected ObjectInfo() {
+    }
 
     /**
      * Name.

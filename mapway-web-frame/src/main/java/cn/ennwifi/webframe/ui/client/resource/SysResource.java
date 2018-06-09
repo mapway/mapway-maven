@@ -25,8 +25,8 @@ public interface SysResource extends ClientBundle {
      * @return the css
      */
     @Source("style.css")
-  @CssResource.NotStrict
-  CssStyle getCss();
+    @CssResource.NotStrict
+    CssStyle getCss();
 
     /**
      * Custom.
@@ -34,7 +34,7 @@ public interface SysResource extends ClientBundle {
      * @return the image resource
      */
     @Source("image/custom.png")
-  ImageResource custom();
+    ImageResource custom();
 
 
     /**
@@ -43,7 +43,7 @@ public interface SysResource extends ClientBundle {
      * @return the image resource
      */
     @Source("image/edit.png")
-  ImageResource edit();
+    ImageResource edit();
 
     /**
      * User.
@@ -51,7 +51,7 @@ public interface SysResource extends ClientBundle {
      * @return the image resource
      */
     @Source("image/user.png")
-  ImageResource user();
+    ImageResource user();
 
     /**
      * Key.
@@ -59,7 +59,7 @@ public interface SysResource extends ClientBundle {
      * @return the image resource
      */
     @Source("image/key.png")
-  ImageResource key();
+    ImageResource key();
 
     /**
      * Logo.
@@ -67,7 +67,7 @@ public interface SysResource extends ClientBundle {
      * @return the image resource
      */
     @Source("image/logo.png")
-  ImageResource logo();
+    ImageResource logo();
 
 
     /**
@@ -76,7 +76,7 @@ public interface SysResource extends ClientBundle {
      * @return the image resource
      */
     @Source("image/upload.png")
-  ImageResource upload();
+    ImageResource upload();
 
     /**
      * Arrow left.
@@ -84,7 +84,7 @@ public interface SysResource extends ClientBundle {
      * @return the image resource
      */
     @Source("image/arrow_left.png")
-  ImageResource arrow_left();
+    ImageResource arrow_left();
 
     /**
      * Arrow right.
@@ -92,7 +92,7 @@ public interface SysResource extends ClientBundle {
      * @return the image resource
      */
     @Source("image/arrow_right.png")
-  ImageResource arrow_right();
+    ImageResource arrow_right();
 
     /**
      * Arrow up.
@@ -100,7 +100,7 @@ public interface SysResource extends ClientBundle {
      * @return the image resource
      */
     @Source("image/arrow_up.png")
-  ImageResource arrow_up();
+    ImageResource arrow_up();
 
     /**
      * Arrow down.
@@ -108,7 +108,7 @@ public interface SysResource extends ClientBundle {
      * @return the image resource
      */
     @Source("image/arrow_down.png")
-  ImageResource arrow_down();
+    ImageResource arrow_down();
 
     /**
      * Arrow left white.
@@ -116,7 +116,7 @@ public interface SysResource extends ClientBundle {
      * @return the image resource
      */
     @Source("image/arrow_left_white.png")
-  ImageResource arrow_left_white();
+    ImageResource arrow_left_white();
 
 
     /**
@@ -125,7 +125,7 @@ public interface SysResource extends ClientBundle {
      * @return the image resource
      */
     @Source("image/inter.png")
-  ImageResource inter();
+    ImageResource inter();
 
     /**
      * Tree open.
@@ -133,7 +133,7 @@ public interface SysResource extends ClientBundle {
      * @return the image resource
      */
     @Source("image/treeOpen.png")
-  ImageResource treeOpen();
+    ImageResource treeOpen();
 
     /**
      * Tree close.
@@ -141,7 +141,7 @@ public interface SysResource extends ClientBundle {
      * @return the image resource
      */
     @Source("image/treeClose.png")
-  ImageResource treeClose();
+    ImageResource treeClose();
 
 
     /**
@@ -150,7 +150,7 @@ public interface SysResource extends ClientBundle {
      * @return the image resource
      */
     @Source("image/check_false.png")
-  ImageResource checkFalse();
+    ImageResource checkFalse();
 
     /**
      * Check true.
@@ -158,7 +158,7 @@ public interface SysResource extends ClientBundle {
      * @return the image resource
      */
     @Source("image/check_true.png")
-  ImageResource checkTrue();
+    ImageResource checkTrue();
 
     /**
      * Check false disabled.
@@ -166,7 +166,7 @@ public interface SysResource extends ClientBundle {
      * @return the image resource
      */
     @Source("image/check_false_disabled.png")
-  ImageResource checkFalseDisabled();
+    ImageResource checkFalseDisabled();
 
     /**
      * Check true disabled.
@@ -174,7 +174,7 @@ public interface SysResource extends ClientBundle {
      * @return the image resource
      */
     @Source("image/check_true_disabled.png")
-  ImageResource checkTrueDisabled();
+    ImageResource checkTrueDisabled();
 
 
     /**
@@ -183,7 +183,7 @@ public interface SysResource extends ClientBundle {
      * @return the image resource
      */
     @Source("image/wifi_green.png")
-  ImageResource wifiGreen();
+    ImageResource wifiGreen();
 
     /**
      * Wifi red.
@@ -191,7 +191,7 @@ public interface SysResource extends ClientBundle {
      * @return the image resource
      */
     @Source("image/wifi_red.png")
-  ImageResource wifiRed();
+    ImageResource wifiRed();
 
     /**
      * Wifi blue.
@@ -199,7 +199,7 @@ public interface SysResource extends ClientBundle {
      * @return the image resource
      */
     @Source("image/wifi_blue.png")
-  ImageResource wifiBlue();
+    ImageResource wifiBlue();
 
     /**
      * Wifi connecting.
@@ -207,7 +207,7 @@ public interface SysResource extends ClientBundle {
      * @return the image resource
      */
     @Source("image/wifi_connecting.gif")
-  ImageResource wifiConnecting();
+    ImageResource wifiConnecting();
 
 
     /**
@@ -216,7 +216,7 @@ public interface SysResource extends ClientBundle {
      * @return the image resource
      */
     @Source("image/loadding.gif")
-  ImageResource loadding();
+    ImageResource loadding();
 
     /**
      * Manual pattern on.
@@ -224,7 +224,7 @@ public interface SysResource extends ClientBundle {
      * @return the image resource
      */
     @Source("image/empty.png")
-  ImageResource empty();
+    ImageResource empty();
 
     /**
      * Manual pattern on.
@@ -232,7 +232,7 @@ public interface SysResource extends ClientBundle {
      * @return the image resource
      */
     @Source("image/logviewer.png")
-  ImageResource logviewer();
+    ImageResource logviewer();
 
     /**
      * Manual pattern on.
@@ -240,5 +240,5 @@ public interface SysResource extends ClientBundle {
      * @return the image resource
      */
     @Source("image/delete.png")
-  ImageResource delete();
+    ImageResource delete();
 }

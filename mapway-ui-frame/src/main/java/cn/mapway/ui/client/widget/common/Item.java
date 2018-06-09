@@ -14,64 +14,68 @@ import com.ksyzt.gwt.client.common.MessageComposite;
  */
 public class Item extends MessageComposite implements DataHolder {
 
-  private static final String SELECTED = "selected";
+    private static final String SELECTED = "selected";
 
-  /** The ui binder. */
-  private static ItemUiBinder uiBinder = GWT.create(ItemUiBinder.class);
+    /**
+     * The ui binder.
+     */
+    private static ItemUiBinder uiBinder = GWT.create(ItemUiBinder.class);
 
     /**
      * The Interface ItemUiBinder.
      */
     interface ItemUiBinder extends UiBinder<Widget, Item> {
-  }
+    }
 
     /**
      * Instantiates a new item.
      */
     public Item() {
-    initWidget(uiBinder.createAndBindUi(this));
-  }
+        initWidget(uiBinder.createAndBindUi(this));
+    }
 
-  /*
-   * (non-Javadoc)
-   * 
-   * @see cn.ennwifi.datahub.monitor.ui.client.component.DataHolder#getData()
-   */
-  @Override
-  public Object getData() {
-    return data;
-  }
+    /*
+     * (non-Javadoc)
+     *
+     * @see cn.ennwifi.datahub.monitor.ui.client.component.DataHolder#getData()
+     */
+    @Override
+    public Object getData() {
+        return data;
+    }
 
-  /*
-   * (non-Javadoc)
-   * 
-   * @see cn.ennwifi.datahub.monitor.ui.client.component.DataHolder#setData(java.lang.Object)
-   */
-  @Override
-  public void setData(Object data) {
-    this.data = data;
-  }
+    /*
+     * (non-Javadoc)
+     *
+     * @see cn.ennwifi.datahub.monitor.ui.client.component.DataHolder#setData(java.lang.Object)
+     */
+    @Override
+    public void setData(Object data) {
+        this.data = data;
+    }
 
     /**
      * The lb name.
      */
     @UiField
-  Label lbName;
+    Label lbName;
 
     /**
      * The lb summary.
      */
     @UiField
-  Label lbSummary;
+    Label lbSummary;
 
     /**
      * The Img.
      */
     @UiField
-  Image img;
+    Image img;
 
-  /** The data. */
-  private Object data;
+    /**
+     * The data.
+     */
+    private Object data;
 
     /**
      * Sets selected.
@@ -79,10 +83,10 @@ public class Item extends MessageComposite implements DataHolder {
      * @param b the b
      */
     public void setSelected(boolean b) {
-    if (b) {
-      this.getElement().setAttribute(SELECTED, "true");
-    } else {
-      this.getElement().removeAttribute(SELECTED);
+        if (b) {
+            this.getElement().setAttribute(SELECTED, "true");
+        } else {
+            this.getElement().removeAttribute(SELECTED);
+        }
     }
-  }
 }

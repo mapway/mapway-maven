@@ -22,75 +22,75 @@ import com.ksyzt.gwt.client.event.MessageEvent;
  */
 public class ContentScroller extends MessageComposite {
 
-  private static ContentScrollerUiBinder uiBinder = GWT.create(ContentScrollerUiBinder.class);
+    private static ContentScrollerUiBinder uiBinder = GWT.create(ContentScrollerUiBinder.class);
 
     /**
      * The interface Content scroller ui binder.
      */
     interface ContentScrollerUiBinder extends UiBinder<Widget, ContentScroller> {
-  }
+    }
 
     /**
      * Instantiates a new Content scroller.
      */
     public ContentScroller() {
-    initWidget(uiBinder.createAndBindUi(this));
-    mapper = new HashMap<LabelEx, Widget>();
-  }
+        initWidget(uiBinder.createAndBindUi(this));
+        mapper = new HashMap<LabelEx, Widget>();
+    }
 
     /**
      * The Navi.
      */
     @UiField
-  HTMLPanel navi;
+    HTMLPanel navi;
 
     /**
      * The List.
      */
     @UiField
-  HTMLPanel list;
+    HTMLPanel list;
 
     /**
      * The Current.
      */
     LabelEx current = null;
-  private ClickHandler linkHandler = new ClickHandler() {
+    private ClickHandler linkHandler = new ClickHandler() {
 
-    @Override
-    public void onClick(ClickEvent event) {
-      LabelEx source = (LabelEx) event.getSource();
-      changeView(source);
+        @Override
+        public void onClick(ClickEvent event) {
+            LabelEx source = (LabelEx) event.getSource();
+            changeView(source);
+        }
+
+
+    };
+
+    /**
+     * @param source
+     */
+    private void changeView(LabelEx source) {
+        Widget l = mapper.get(source);
+        l.setVisible(true);
+        list.clear();
+        list.add(l);
+
+        if (current != null) {
+            current.getElement().removeAttribute("s");
+        }
+        current = source;
+        current.getElement().setAttribute("s", "true");
+
+        MessageEvent ev = new MessageEvent(MessageEvent.SELECT, l);
+        fireEvent(ev);
     }
-
-
-  };
-
-  /**
-   * @param source
-   */
-  private void changeView(LabelEx source) {
-    Widget l = mapper.get(source);
-    l.setVisible(true);
-    list.clear();
-    list.add(l);
-
-    if (current != null) {
-      current.getElement().removeAttribute("s");
-    }
-    current = source;
-    current.getElement().setAttribute("s", "true");
-
-    MessageEvent ev = new MessageEvent(MessageEvent.SELECT, l);
-    fireEvent(ev);
-  }
 
     /**
      * Clear.
      */
     public void clear() {
-    navi.clear();
-    list.clear();
-  }
+        navi.clear();
+        list.clear();
+    }
 
     /**
      * The Mapper.
@@ -103,14 +103,14 @@ public class ContentScroller extends MessageComposite {
      * @param widget the widget
      */
     public void add(Widget widget) {
-    LabelEx l = new LabelEx();
-    l.setText(widget.getTitle());
-    l.setStyleName("content-scroller");
-    l.addClickHandler(linkHandler);
-    navi.add(l);
-    widget.setVisible(false);
-    mapper.put(l, widget);
-  }
+        LabelEx l = new LabelEx();
+        l.setText(widget.getTitle());
+        l.setStyleName("content-scroller");
+        l.addClickHandler(linkHandler);
+        navi.add(l);
+        widget.setVisible(false);
+        mapper.put(l, widget);
+    }
 
     /**
      * Show index.
@@ -118,11 +118,11 @@ public class ContentScroller extends MessageComposite {
      * @param index the index
      */
     public void showIndex(int index) {
-    GWT.log("show index " + index);
-    if (index >= 0 && index < navi.getWidgetCount()) {
-      LabelEx l = (LabelEx) navi.getWidget(index);
-      GWT.log(l.toString());
-      changeView(l);
+        GWT.log("show index " + index);
+        if (index >= 0 && index < navi.getWidgetCount()) {
+            LabelEx l = (LabelEx) navi.getWidget(index);
+            GWT.log(l.toString());
+            changeView(l);
+        }
     }
-  }
 }

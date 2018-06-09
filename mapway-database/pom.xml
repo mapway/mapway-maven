@@ -6,7 +6,7 @@
     <parent>
         <groupId>cn.mapway</groupId>
         <artifactId>mapway-maven</artifactId>
-        <version>2.0.9</version>
+        <version>2.0.10</version>
     </parent>
     <description>auto gen java bean from database</description>
     <url>http://database.mapway.cn</url>
@@ -112,22 +112,22 @@
                 </executions>
             </plugin>
             <!--<plugin>-->
-                <!--<groupId>org.apache.maven.plugins</groupId>-->
-                <!--<artifactId>maven-dependency-plugin</artifactId>-->
-                <!--<executions>-->
-                    <!--<execution>-->
-                        <!--<id>copy</id>-->
-                        <!--<phase>package</phase>-->
-                        <!--<goals>-->
-                            <!--<goal>copy-dependencies</goal>-->
-                        <!--</goals>-->
-                        <!--<configuration>-->
-                            <!--&lt;!&ndash; ${project.build.directory} 构建目录，缺省为target &ndash;&gt;-->
-                            <!--<outputDirectory>target/libs-->
-                            <!--</outputDirectory>-->
-                        <!--</configuration>-->
-                    <!--</execution>-->
-                <!--</executions>-->
+            <!--<groupId>org.apache.maven.plugins</groupId>-->
+            <!--<artifactId>maven-dependency-plugin</artifactId>-->
+            <!--<executions>-->
+            <!--<execution>-->
+            <!--<id>copy</id>-->
+            <!--<phase>package</phase>-->
+            <!--<goals>-->
+            <!--<goal>copy-dependencies</goal>-->
+            <!--</goals>-->
+            <!--<configuration>-->
+            <!--&lt;!&ndash; ${project.build.directory} 构建目录，缺省为target &ndash;&gt;-->
+            <!--<outputDirectory>target/libs-->
+            <!--</outputDirectory>-->
+            <!--</configuration>-->
+            <!--</execution>-->
+            <!--</executions>-->
             <!--</plugin>-->
         </plugins>
     </build>

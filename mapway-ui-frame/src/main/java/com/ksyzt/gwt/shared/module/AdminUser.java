@@ -25,8 +25,8 @@ public class AdminUser implements Serializable {
      * @return the userName
      */
     public String getUserName() {
-		return userName;
-	}
+        return userName;
+    }
 
     /**
      * Sets the user name.
@@ -34,8 +34,8 @@ public class AdminUser implements Serializable {
      * @param userName the userName to set
      */
     public void setUserName(String userName) {
-		this.userName = userName;
-	}
+        this.userName = userName;
+    }
 
     /**
      * Gets the password.
@@ -43,8 +43,8 @@ public class AdminUser implements Serializable {
      * @return the password
      */
     public String getPassword() {
-		return password;
-	}
+        return password;
+    }
 
     /**
      * Sets the password.
@@ -52,6 +52,6 @@ public class AdminUser implements Serializable {
      * @param password the password to set
      */
     public void setPassword(String password) {
-		this.password = password;
-	}
+        this.password = password;
+    }
 }

@@ -23,8 +23,8 @@ public class ModleType {
      * @return the key
      */
     public String getKey() {
-		return key;
-	}
+        return key;
+    }
 
     /**
      * Sets the key.
@@ -32,8 +32,8 @@ public class ModleType {
      * @param key the new key
      */
     public void setKey(String key) {
-		this.key = key;
-	}
+        this.key = key;
+    }
 
     /**
      * Gets the value.
@@ -41,8 +41,8 @@ public class ModleType {
      * @return the value
      */
     public String getValue() {
-		return value;
-	}
+        return value;
+    }
 
     /**
      * Sets the value.
@@ -50,6 +50,6 @@ public class ModleType {
      * @param value the new value
      */
     public void setValue(String value) {
-		this.value = value;
-	}
+        this.value = value;
+    }
 }

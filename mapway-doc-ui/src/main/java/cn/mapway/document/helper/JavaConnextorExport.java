@@ -59,7 +59,6 @@ public class JavaConnextorExport {
         template = Scans.readResource("cn.mapway.document.resource", "java.txt");
 
 
-
         processModuleMody(packageName, modules, clazzs);
 
         Map<String, String> map = new HashMap<String, String>();

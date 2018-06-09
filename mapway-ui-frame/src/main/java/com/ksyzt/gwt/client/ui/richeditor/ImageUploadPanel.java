@@ -34,71 +34,79 @@ import com.ksyzt.gwt.client.event.MessageEvent;
  */
 public class ImageUploadPanel extends MessageComposite {
 
-	/** The ui binder. */
-	private static ImageUploadPanelUiBinder uiBinder = GWT
-			.create(ImageUploadPanelUiBinder.class);
+    /**
+     * The ui binder.
+     */
+    private static ImageUploadPanelUiBinder uiBinder = GWT
+            .create(ImageUploadPanelUiBinder.class);
 
     /**
      * The Interface ImageUploadPanelUiBinder.
      */
     interface ImageUploadPanelUiBinder extends
-			UiBinder<Widget, ImageUploadPanel> {
-	}
+            UiBinder<Widget, ImageUploadPanel> {
+    }
 
-	/** The m file change. */
-	private ChangeHandler m_file_change = new ChangeHandler() {
+    /**
+     * The m file change.
+     */
+    private ChangeHandler m_file_change = new ChangeHandler() {
 
-		public void onChange(ChangeEvent event) {
-			String fn = upload.getFilename();
-			if (upload.getFilename().equals("")) {
+        public void onChange(ChangeEvent event) {
+            String fn = upload.getFilename();
+            if (upload.getFilename().equals("")) {
 
-			} else {
-				int lastdot = fn.lastIndexOf('.');
-				if (lastdot > 0) {
-					String filetype = fn.substring(lastdot + 1);
-					if (canUpload(filetype)) {
-						frmPanel.submit();
-					} else {
-						message("不能上传此文件格式");
-					}
-				}
-			}
-		}
-	};
-	
-	/** The m submit handler. */
-	private SubmitHandler m_submit_handler = new SubmitHandler() {
+            } else {
+                int lastdot = fn.lastIndexOf('.');
+                if (lastdot > 0) {
+                    String filetype = fn.substring(lastdot + 1);
+                    if (canUpload(filetype)) {
+                        frmPanel.submit();
+                    } else {
+                        message("不能上传此文件格式");
+                    }
+                }
+            }
+        }
+    };
 
-		public void onSubmit(SubmitEvent event) {
-			// TODO Auto-generated method stub
+    /**
+     * The m submit handler.
+     */
+    private SubmitHandler m_submit_handler = new SubmitHandler() {
 
-		}
-	};
+        public void onSubmit(SubmitEvent event) {
+            // TODO Auto-generated method stub
 
-	/** The m submit complete handler. */
-	private SubmitCompleteHandler m_submit_complete_handler = new SubmitCompleteHandler() {
+        }
+    };
 
-		public void onSubmitComplete(SubmitCompleteEvent event) {
+    /**
+     * The m submit complete handler.
+     */
+    private SubmitCompleteHandler m_submit_complete_handler = new SubmitCompleteHandler() {
 
-			String jsonstr = event.getResults();
-			JSONValue rvalue = JSONParser.parseStrict(jsonstr);
-			JSONObject robj = rvalue.isObject();
+        public void onSubmitComplete(SubmitCompleteEvent event) {
 
-			JSONString msg = (JSONString) robj.get("err").isString();
-			if (msg.stringValue().equals("")) {
-				JSONObject data = robj.get("data").isObject();
+            String jsonstr = event.getResults();
+            JSONValue rvalue = JSONParser.parseStrict(jsonstr);
+            JSONObject robj = rvalue.isObject();
 
-				String path = data.get("path").isString().stringValue();
-				String url = data.get("url").isString().stringValue();
-				frmPanel.setVisible(false);
-				txtURL.setVisible(true);
-				txtURL.setValue(url);
-				message("上传成功");
-			} else {
-				message(msg.stringValue());
-			}
-		}
-	};
+            JSONString msg = (JSONString) robj.get("err").isString();
+            if (msg.stringValue().equals("")) {
+                JSONObject data = robj.get("data").isObject();
+
+                String path = data.get("path").isString().stringValue();
+                String url = data.get("url").isString().stringValue();
+                frmPanel.setVisible(false);
+                txtURL.setVisible(true);
+                txtURL.setValue(url);
+                message("上传成功");
+            } else {
+                message(msg.stringValue());
+            }
+        }
+    };
 
     /**
      * Can upload.
@@ -107,74 +115,74 @@ public class ImageUploadPanel extends MessageComposite {
      * @return true, if successful
      */
     public boolean canUpload(String ft) {
-		boolean b = false;
+        boolean b = false;
 
-		if (ft.compareToIgnoreCase("zip") == 0
-				|| ft.compareToIgnoreCase("png") == 0
-				|| ft.compareToIgnoreCase("bmp") == 0
-				|| ft.compareToIgnoreCase("jpg") == 0
-				|| ft.compareToIgnoreCase("jpeg") == 0
-				|| ft.compareToIgnoreCase("swf") == 0
-				|| ft.compareToIgnoreCase("doc") == 0
-				|| ft.compareToIgnoreCase("docx") == 0
-				|| ft.compareToIgnoreCase("gif") == 0
-				|| ft.compareToIgnoreCase("txt") == 0)
-			b = true;
-		return b;
-	}
+        if (ft.compareToIgnoreCase("zip") == 0
+                || ft.compareToIgnoreCase("png") == 0
+                || ft.compareToIgnoreCase("bmp") == 0
+                || ft.compareToIgnoreCase("jpg") == 0
+                || ft.compareToIgnoreCase("jpeg") == 0
+                || ft.compareToIgnoreCase("swf") == 0
+                || ft.compareToIgnoreCase("doc") == 0
+                || ft.compareToIgnoreCase("docx") == 0
+                || ft.compareToIgnoreCase("gif") == 0
+                || ft.compareToIgnoreCase("txt") == 0)
+            b = true;
+        return b;
+    }
 
     /**
      * Instantiates a new image upload panel.
      */
     public ImageUploadPanel() {
-		initWidget(uiBinder.createAndBindUi(this));
+        initWidget(uiBinder.createAndBindUi(this));
 
-		upload.setName("fileset");
-		upload.addChangeHandler(m_file_change);
-		frmPanel.setEncoding(FormPanel.ENCODING_MULTIPART);
-		frmPanel.setMethod(FormPanel.METHOD_POST);
-		frmPanel.setAction(GWT.getModuleBaseURL() + "../gwtfileuploader");
-		frmPanel.addSubmitHandler(m_submit_handler);
-		frmPanel.addSubmitCompleteHandler(m_submit_complete_handler);
-		frmPanel.setVisible(false);
-	}
+        upload.setName("fileset");
+        upload.addChangeHandler(m_file_change);
+        frmPanel.setEncoding(FormPanel.ENCODING_MULTIPART);
+        frmPanel.setMethod(FormPanel.METHOD_POST);
+        frmPanel.setAction(GWT.getModuleBaseURL() + "../gwtfileuploader");
+        frmPanel.addSubmitHandler(m_submit_handler);
+        frmPanel.addSubmitCompleteHandler(m_submit_complete_handler);
+        frmPanel.setVisible(false);
+    }
 
     /**
      * The txt URL.
      */
     @UiField
-	TextBox txtURL;
+    TextBox txtURL;
 
     /**
      * The btn upload.
      */
     @UiField
-	Button btnUpload;
+    Button btnUpload;
 
     /**
      * The upload.
      */
     @UiField
-	FileUpload upload;
+    FileUpload upload;
 
     /**
      * The frm panel.
      */
     @UiField
-	FormPanel frmPanel;
+    FormPanel frmPanel;
 
     /**
      * The lb message.
      */
     @UiField
-	Label lbMessage;
+    Label lbMessage;
 
-	/* (non-Javadoc)
-	 * @see com.ksyzt.gwt.client.common.MessageComposite#message(java.lang.String)
-	 */
-	public void message(String msg) {
-		lbMessage.setText(msg);
-	}
+    /* (non-Javadoc)
+     * @see com.ksyzt.gwt.client.common.MessageComposite#message(java.lang.String)
+     */
+    public void message(String msg) {
+        lbMessage.setText(msg);
+    }
 
     /**
      * On upload click.
@@ -182,17 +190,17 @@ public class ImageUploadPanel extends MessageComposite {
      * @param e the e
      */
     @UiHandler("btnUpload")
-	void onUploadClick(ClickEvent e) {
-		if (btnUpload.getText().equals("上传")) {
-			txtURL.setVisible(false);
-			frmPanel.setVisible(true);
-			btnUpload.setText("网络");
-		} else {
-			txtURL.setVisible(true);
-			frmPanel.setVisible(false);
-			btnUpload.setText("上传");
-		}
-	}
+    void onUploadClick(ClickEvent e) {
+        if (btnUpload.getText().equals("上传")) {
+            txtURL.setVisible(false);
+            frmPanel.setVisible(true);
+            btnUpload.setText("网络");
+        } else {
+            txtURL.setVisible(true);
+            frmPanel.setVisible(false);
+            btnUpload.setText("上传");
+        }
+    }
 
 
     /**
@@ -201,16 +209,16 @@ public class ImageUploadPanel extends MessageComposite {
      * @param e the e
      */
     @UiHandler("btnOK")
-	void onOK(ClickEvent e) {
-		String url = txtURL.getValue();
-		if (url != null && !url.equals("")) {
+    void onOK(ClickEvent e) {
+        String url = txtURL.getValue();
+        if (url != null && !url.equals("")) {
 
-			String html = "<img src='" + url + "' " + getImageAttribute()
-					+ " />";
-			MessageEvent ev = new MessageEvent(MessageEvent.OK, html);
-			fireEvent(ev);
-		}
-	}
+            String html = "<img src='" + url + "' " + getImageAttribute()
+                    + " />";
+            MessageEvent ev = new MessageEvent(MessageEvent.OK, html);
+            fireEvent(ev);
+        }
+    }
 
     /**
      * On cancel.
@@ -218,52 +226,52 @@ public class ImageUploadPanel extends MessageComposite {
      * @param e the e
      */
     @UiHandler("btnCancel")
-	void onCancel(ClickEvent e) {
-		MessageEvent ev = new MessageEvent(MessageEvent.CANCEL, null);
-		fireEvent(ev);
-	}
+    void onCancel(ClickEvent e) {
+        MessageEvent ev = new MessageEvent(MessageEvent.CANCEL, null);
+        fireEvent(ev);
+    }
 
     /**
      * The txt width.
      */
     @UiField
-	TextBox txtWidth;
+    TextBox txtWidth;
 
     /**
      * The txt height.
      */
     @UiField
-	TextBox txtHeight;
+    TextBox txtHeight;
 
     /**
      * The txt border.
      */
     @UiField
-	TextBox txtBorder;
+    TextBox txtBorder;
 
     /**
      * The txt H space.
      */
     @UiField
-	TextBox txtHSpace;
+    TextBox txtHSpace;
 
     /**
      * The txt V space.
      */
     @UiField
-	TextBox txtVSpace;
+    TextBox txtVSpace;
 
     /**
      * The txt replace text.
      */
     @UiField
-	TextBox txtReplaceText;
+    TextBox txtReplaceText;
 
     /**
      * The ddl align.
      */
     @UiField
-	ListBox ddlAlign;
+    ListBox ddlAlign;
 
     /**
      * Gets the image attribute.
@@ -271,17 +279,17 @@ public class ImageUploadPanel extends MessageComposite {
      * @return the image attribute
      */
     public String getImageAttribute() {
-		String r = "";
-		if (!txtWidth.getValue().equals("")) {
-			r = "width='" + txtWidth.getValue() + "' ";
-		}
-		if (!txtHeight.getValue().equals("")) {
-			r += "height='" + txtHeight.getValue() + "' ";
-		}
-		if (!txtReplaceText.getValue().equals("")) {
-			r += "alt='" + txtReplaceText.getValue() + "' ";
-		}
+        String r = "";
+        if (!txtWidth.getValue().equals("")) {
+            r = "width='" + txtWidth.getValue() + "' ";
+        }
+        if (!txtHeight.getValue().equals("")) {
+            r += "height='" + txtHeight.getValue() + "' ";
+        }
+        if (!txtReplaceText.getValue().equals("")) {
+            r += "alt='" + txtReplaceText.getValue() + "' ";
+        }
 
-		return r;
-	}
+        return r;
+    }
 }

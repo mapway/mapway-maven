@@ -18,11 +18,11 @@ public class Group implements Serializable {
      * Instantiates a new group.
      */
     public Group() {
-		entries = new ArrayList<Entry>();
-		subGroups = new ArrayList<Group>();
+        entries = new ArrayList<Entry>();
+        subGroups = new ArrayList<Group>();
 
-		setParent(null);
-	}
+        setParent(null);
+    }
 
     /**
      * The order.
@@ -39,8 +39,10 @@ public class Group implements Serializable {
      */
     public String summary;
 
-	/** 父节点. */
-	private Group parent;
+    /**
+     * 父节点.
+     */
+    private Group parent;
 
     /**
      * 节点全路径名称.
@@ -63,16 +65,16 @@ public class Group implements Serializable {
      * @param g the g
      */
     public void addChildGroup(Group g) {
-		g.setParent(this);
-		subGroups.add(g);
-	}
+        g.setParent(this);
+        subGroups.add(g);
+    }
 
     /**
      * 清空子節點.
      */
     public void clearChildGroup() {
-		subGroups.clear();
-	}
+        subGroups.clear();
+    }
 
     /**
      * 移除子节点.
@@ -80,8 +82,8 @@ public class Group implements Serializable {
      * @param g the g
      */
     public void removeChildGroup(Group g) {
-		subGroups.remove(g);
-	}
+        subGroups.remove(g);
+    }
 
     /**
      * Gets the child groups.
@@ -89,8 +91,8 @@ public class Group implements Serializable {
      * @return the child groups
      */
     public List<Group> getChildGroups() {
-		return subGroups;
-	}
+        return subGroups;
+    }
 
     /**
      * 获取节点的全路径.
@@ -98,25 +100,25 @@ public class Group implements Serializable {
      * @return the path
      */
     public String getPath() {
-		ArrayList<String> strArray = new ArrayList<String>();
+        ArrayList<String> strArray = new ArrayList<String>();
 
-		Group g = getParent();
+        Group g = getParent();
 
-		while (g != null) {
-			strArray.add(g.name);
-			g = g.getParent();
-		}
+        while (g != null) {
+            strArray.add(g.name);
+            g = g.getParent();
+        }
 
-		StringBuilder sb = new StringBuilder();
-		for (int i = strArray.size() - 1; i >= 0; i--) {
-			if (strArray.get(i).equals("/")) {
-				continue;
-			}
-			sb.append("/" + strArray.get(i));
-		}
+        StringBuilder sb = new StringBuilder();
+        for (int i = strArray.size() - 1; i >= 0; i--) {
+            if (strArray.get(i).equals("/")) {
+                continue;
+            }
+            sb.append("/" + strArray.get(i));
+        }
 
-		return sb.toString();
-	}
+        return sb.toString();
+    }
 
     /**
      * Gets the parent.
@@ -124,8 +126,8 @@ public class Group implements Serializable {
      * @return the parent
      */
     public Group getParent() {
-		return parent;
-	}
+        return parent;
+    }
 
     /**
      * Sets the parent.
@@ -133,31 +135,31 @@ public class Group implements Serializable {
      * @param parent the new parent
      */
     public void setParent(Group parent) {
-		this.parent = parent;
-	}
+        this.parent = parent;
+    }
 
     /**
      * 排序.
      */
     public void sort() {
 
-		Collections.sort(subGroups, new Comparator<Group>() {
-			@Override
-			public int compare(Group o1, Group o2) {
-				return o1.order > o2.order ? 1 : -1;
-			}
-		});
+        Collections.sort(subGroups, new Comparator<Group>() {
+            @Override
+            public int compare(Group o1, Group o2) {
+                return o1.order > o2.order ? 1 : -1;
+            }
+        });
 
-		Collections.sort(entries, new Comparator<Entry>() {
-			@Override
-			public int compare(Entry o1, Entry o2) {
-				return o1.order > o2.order ? 1 : -1;
-			}
-		});
+        Collections.sort(entries, new Comparator<Entry>() {
+            @Override
+            public int compare(Entry o1, Entry o2) {
+                return o1.order > o2.order ? 1 : -1;
+            }
+        });
 
-		for (Group g : subGroups) {
-			g.sort();
-		}
+        for (Group g : subGroups) {
+            g.sort();
+        }
 
-	}
+    }
 }

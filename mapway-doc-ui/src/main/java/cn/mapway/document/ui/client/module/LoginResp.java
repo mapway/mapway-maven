@@ -17,7 +17,7 @@ public class LoginResp extends JavaScriptObject {
      */
     protected LoginResp() {
 
-	}
+    }
 
     /**
      * Gets the user id.

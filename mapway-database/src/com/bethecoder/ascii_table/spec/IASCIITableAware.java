@@ -1,6 +1,7 @@
 package com.bethecoder.ascii_table.spec;
 
 import java.util.*;
+
 import com.bethecoder.ascii_table.*;
 
 /**

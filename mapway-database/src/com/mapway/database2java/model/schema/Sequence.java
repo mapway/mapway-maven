@@ -18,8 +18,8 @@ public class Sequence {
      * @return the name
      */
     public String getName() {
-	return Name;
-}
+        return Name;
+    }
 
     /**
      * Sets the name.
@@ -27,6 +27,6 @@ public class Sequence {
      * @param name the new name
      */
     public void setName(String name) {
-	Name = name;
-}
+        Name = name;
+    }
 }

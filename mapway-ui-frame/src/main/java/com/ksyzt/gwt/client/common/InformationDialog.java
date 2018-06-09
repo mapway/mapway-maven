@@ -1,14 +1,14 @@
 /******************************************************************************
-<pre>
+ <pre>
 
-           =============================================================
-           -   ____ _  _ ____ _  _ ____  _ _ ____ _  _ ____ _  _ ____  -
-           -    __] |__| |__| |\ | | __  | | |__| |\ | [__  |__| |___  -
-           -   [___ |  | |  | | \| |__| _| | |  | | \| ___] |  | |___  -
-           -           http://hi.baidu.com/zhangjianshe                -
-           =============================================================
+ =============================================================
+ -   ____ _  _ ____ _  _ ____  _ _ ____ _  _ ____ _  _ ____  -
+ -    __] |__| |__| |\ | | __  | | |__| |\ | [__  |__| |___  -
+ -   [___ |  | |  | | \| |__| _| | |  | | \| ___] |  | |___  -
+ -           http://hi.baidu.com/zhangjianshe                -
+ =============================================================
 
-</pre>
+ </pre>
  *******************************************************************************/
 package com.ksyzt.gwt.client.common;
 
@@ -46,25 +46,25 @@ public class InformationDialog extends PopupPanel {
      * @return the dialog
      */
     public static InformationDialog getDialog() {
-		if (DIALOG == null) {
-			DIALOG = new InformationDialog();
-		}
-		return DIALOG;
-	}
+        if (DIALOG == null) {
+            DIALOG = new InformationDialog();
+        }
+        return DIALOG;
+    }
 
     /**
      * Instantiates a new information dialog.
      */
     public InformationDialog() {
-		this.setAnimationEnabled(false);
-		this.setAutoHideEnabled(false);
-		this.setStylePrimaryName("information-dialog");
+        this.setAnimationEnabled(false);
+        this.setAutoHideEnabled(false);
+        this.setStylePrimaryName("information-dialog");
 
-		mHTML = new HTML();
-		this.add(mHTML);
-		this.setGlassEnabled(false);
-		this.setModal(true);
-	}
+        mHTML = new HTML();
+        this.add(mHTML);
+        this.setGlassEnabled(false);
+        this.setModal(true);
+    }
 
     /**
      * 设置图标.
@@ -72,11 +72,13 @@ public class InformationDialog extends PopupPanel {
      * @param url the new icon
      */
     public void setIcon(String url) {
-		mIcon = url;
-	}
+        mIcon = url;
+    }
 
-	/** The m icon. */
-	private String mIcon;
+    /**
+     * The m icon.
+     */
+    private String mIcon;
 
     /**
      * Sets the information.
@@ -85,16 +87,16 @@ public class InformationDialog extends PopupPanel {
      * @param loadding the loadding
      */
     public void setInformation(String info, boolean loadding) {
-		String html = "";
-		if (loadding) {
-			html += "<table><tr><td><img src='" + mIcon + "'/></td>";
-			html += "<td>" + info + "</td>";
-			html += "</tr></table>";
-		} else {
-			html += info;
-		}
-		mHTML.setHTML(html);
-	}
+        String html = "";
+        if (loadding) {
+            html += "<table><tr><td><img src='" + mIcon + "'/></td>";
+            html += "<td>" + info + "</td>";
+            html += "</tr></table>";
+        } else {
+            html += info;
+        }
+        mHTML.setHTML(html);
+    }
 
     /**
      * Sets the information.
@@ -102,6 +104,6 @@ public class InformationDialog extends PopupPanel {
      * @param info the new information
      */
     public void setInformation(String info) {
-		setInformation(info, true);
-	}
+        setInformation(info, true);
+    }
 }

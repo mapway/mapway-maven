@@ -63,15 +63,15 @@ public class ModuleInfo {
      * @param visible  the visible
      */
     public ModuleInfo(String name, String code, String summary, boolean isPublic, String icon,
-      String hash, boolean visible) {
-    this.name = name;
-    this.code = code;
-    this.isPublic = isPublic;
-    this.icon = icon;
-    this.summary = summary;
-    this.hash = hash;
-    this.isVisible = visible;
-  }
+                      String hash, boolean visible) {
+        this.name = name;
+        this.code = code;
+        this.isPublic = isPublic;
+        this.icon = icon;
+        this.summary = summary;
+        this.hash = hash;
+        this.isVisible = visible;
+    }
 
     /**
      * Instantiates a new Module info.
@@ -86,10 +86,10 @@ public class ModuleInfo {
      * @param group    the group
      */
     public ModuleInfo(String name, String code, String summary, boolean isPublic, String icon,
-      String hash, boolean visible, String group) {
-    this(name, code, summary, isPublic, icon, hash, visible);
-    this.group = group;
-  }
+                      String hash, boolean visible, String group) {
+        this(name, code, summary, isPublic, icon, hash, visible);
+        this.group = group;
+    }
 
     /**
      * Copy module info.
@@ -97,9 +97,9 @@ public class ModuleInfo {
      * @return the module info
      */
     public ModuleInfo copy() {
-    ModuleInfo n = new ModuleInfo(name, code, summary, isPublic, icon, hash, isVisible);
-    return n;
-  }
+        ModuleInfo n = new ModuleInfo(name, code, summary, isPublic, icon, hash, isVisible);
+        return n;
+    }
 
     /**
      * 设置单例模式.
@@ -108,7 +108,7 @@ public class ModuleInfo {
      * @return single
      */
     public ModuleInfo setSingle(boolean single) {
-    this.single = single;
-    return this;
-  }
+        this.single = single;
+        return this;
+    }
 }

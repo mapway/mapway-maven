@@ -21,29 +21,33 @@ import com.ksyzt.gwt.client.event.MessageHandler;
  */
 public class AppTopbar extends MessageComposite {
 
-	/** The ui binder. */
-	private static AppTopbarUiBinder uiBinder = GWT
-			.create(AppTopbarUiBinder.class);
+    /**
+     * The ui binder.
+     */
+    private static AppTopbarUiBinder uiBinder = GWT
+            .create(AppTopbarUiBinder.class);
 
     /**
      * The Interface AppTopbarUiBinder.
      */
     interface AppTopbarUiBinder extends UiBinder<Widget, AppTopbar> {
-	}
+    }
 
-	/** The m tabs handler. */
-	private MessageHandler m_tabs_handler = new MessageHandler() {
+    /**
+     * The m tabs handler.
+     */
+    private MessageHandler m_tabs_handler = new MessageHandler() {
 
-		@Override
-		public void onMessage(Object sender, Integer message, Object value) {
-			if (message == MessageEvent.MESSAGE) {
-				message((String) value);
-			} else {
-				MessageEvent ev = new MessageEvent(message, value);
-				fireEvent(ev);
-			}
-		}
-	};
+        @Override
+        public void onMessage(Object sender, Integer message, Object value) {
+            if (message == MessageEvent.MESSAGE) {
+                message((String) value);
+            } else {
+                MessageEvent ev = new MessageEvent(message, value);
+                fireEvent(ev);
+            }
+        }
+    };
 
     /**
      * On exit.
@@ -51,32 +55,32 @@ public class AppTopbar extends MessageComposite {
      * @param e the e
      */
     @UiHandler("linkQuit")
-	void onExit(ClickEvent e) {
-		MessageEvent ev = new MessageEvent(MessageEvent.QUIT, 0);
-		fireEvent(ev);
-	}
+    void onExit(ClickEvent e) {
+        MessageEvent ev = new MessageEvent(MessageEvent.QUIT, 0);
+        fireEvent(ev);
+    }
 
     /**
      * Instantiates a new app topbar.
      */
     @UiConstructor
-	public AppTopbar() {
-		initWidget(uiBinder.createAndBindUi(this));
-		tabs.addMessageHandler(m_tabs_handler);
-		tabs.setTabAlign(HasHorizontalAlignment.ALIGN_RIGHT);
-	}
+    public AppTopbar() {
+        initWidget(uiBinder.createAndBindUi(this));
+        tabs.addMessageHandler(m_tabs_handler);
+        tabs.setTabAlign(HasHorizontalAlignment.ALIGN_RIGHT);
+    }
 
     /**
      * The tabs.
      */
     @UiField
-	CustomTab tabs;
+    CustomTab tabs;
 
     /**
      * The lb user name.
      */
     @UiField
-	Label lbUserName;
+    Label lbUserName;
 
     /**
      * The m uid.
@@ -90,9 +94,9 @@ public class AppTopbar extends MessageComposite {
      * @param uid      the uid
      */
     public void initTop(String username, int uid) {
-		lbUserName.setText(username);
-		m_uid = uid;
-	}
+        lbUserName.setText(username);
+        m_uid = uid;
+    }
 
     /**
      * Adds the tab.
@@ -101,8 +105,8 @@ public class AppTopbar extends MessageComposite {
      * @param id      the id
      */
     public void addTab(String caption, Integer id) {
-		tabs.addItem(caption, id);
-	}
+        tabs.addItem(caption, id);
+    }
 
     /**
      * Adds the tab.
@@ -110,8 +114,8 @@ public class AppTopbar extends MessageComposite {
      * @param d the d
      */
     public void addTab(ModuleData d) {
-		tabs.addItem(d.getCaption(), d);
-	}
+        tabs.addItem(d.getCaption(), d);
+    }
 
     /**
      * Sets the selected.
@@ -119,6 +123,6 @@ public class AppTopbar extends MessageComposite {
      * @param index the new selected
      */
     public void setSelected(int index) {
-		tabs.setSelectIndex(index);
-	}
+        tabs.setSelectIndex(index);
+    }
 }

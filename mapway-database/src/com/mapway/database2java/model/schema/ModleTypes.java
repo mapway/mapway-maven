@@ -17,10 +17,9 @@ public class ModleTypes {
     /**
      * Instantiates a new modle types.
      */
-    public ModleTypes()
-	{
-		m_dic=new ArrayList<ModleType>(); 
-	}
+    public ModleTypes() {
+        m_dic = new ArrayList<ModleType>();
+    }
 
     /**
      * Adds the.
@@ -28,17 +27,15 @@ public class ModleTypes {
      * @param key   the key
      * @param value the value
      */
-    public void Add(String key,String value)
-	{
-		ModleType mt=findModleType(key);
-		if(mt==null)
-			{
-			mt=new ModleType();
-			mt.setKey(key);
-			m_dic.add(mt);
-			}
-		mt.setValue(value);
-	}
+    public void Add(String key, String value) {
+        ModleType mt = findModleType(key);
+        if (mt == null) {
+            mt = new ModleType();
+            mt.setKey(key);
+            m_dic.add(mt);
+        }
+        mt.setValue(value);
+    }
 
     /**
      * Find modle type.
@@ -46,18 +43,15 @@ public class ModleTypes {
      * @param key the key
      * @return the modle type
      */
-    public ModleType findModleType(String key)
-	{
-		for(int i=0;i<m_dic.size();i++)
-		{
-			ModleType mt=m_dic.get(i);
-			if(mt.key.equals(key))
-			{
-				return mt;
-			}
-		}
-		return null;
-	}
+    public ModleType findModleType(String key) {
+        for (int i = 0; i < m_dic.size(); i++) {
+            ModleType mt = m_dic.get(i);
+            if (mt.key.equals(key)) {
+                return mt;
+            }
+        }
+        return null;
+    }
 
     /**
      * Find value.
@@ -65,18 +59,15 @@ public class ModleTypes {
      * @param key the key
      * @return the string
      */
-    public String findValue(String key)
-	{
-		for(int i=0;i<m_dic.size();i++)
-		{
-			ModleType mt=m_dic.get(i);
-			if(mt.key.equals(key))
-			{
-				return mt.getValue();
-			}
-		}
-		return "";
-	}
+    public String findValue(String key) {
+        for (int i = 0; i < m_dic.size(); i++) {
+            ModleType mt = m_dic.get(i);
+            if (mt.key.equals(key)) {
+                return mt.getValue();
+            }
+        }
+        return "";
+    }
 
     /**
      * Like value.
@@ -84,16 +75,13 @@ public class ModleTypes {
      * @param key the key
      * @return the string
      */
-    public String likeValue(String key)
-	{
-		for(int i=0;i<m_dic.size();i++)
-		{
-			ModleType mt=m_dic.get(i);
-			if(mt.getKey().indexOf(key)>=0)
-			{
-				return mt.getValue();
-			}
-		}
-		return "";
-	}
+    public String likeValue(String key) {
+        for (int i = 0; i < m_dic.size(); i++) {
+            ModleType mt = m_dic.get(i);
+            if (mt.getKey().indexOf(key) >= 0) {
+                return mt.getValue();
+            }
+        }
+        return "";
+    }
 }

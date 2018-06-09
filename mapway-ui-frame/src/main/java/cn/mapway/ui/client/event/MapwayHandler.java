@@ -16,5 +16,5 @@ public interface MapwayHandler<T> extends EventHandler {
      * @param message the message
      * @param value   the value
      */
-    void handle(Object sender,Integer message, T value);
+    void handle(Object sender, Integer message, T value);
 }

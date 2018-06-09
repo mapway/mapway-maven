@@ -78,7 +78,8 @@ public abstract class WebFrameServlet extends CheckAdminTokenServlet implements 
 
     /**
      * ff
-     * @param rpcRequest  the
+     *
+     * @param rpcRequest the
      * @return boolean
      */
     @Override
@@ -87,13 +88,13 @@ public abstract class WebFrameServlet extends CheckAdminTokenServlet implements 
     }
 
     @Override
-    public AdminLoginResponse adminLogin(Integer resourceRootId,String username, String pwd, String type)
+    public AdminLoginResponse adminLogin(Integer resourceRootId, String username, String pwd, String type)
             throws ServerException {
         LoginReqData req = new LoginReqData();
         req.username = username;
         req.password = pwd;
         req.type = type;
-        req.rootResourceId=resourceRootId;
+        req.rootResourceId = resourceRootId;
 
         System.out.println(Json.toJson(req));
 
@@ -110,7 +111,7 @@ public abstract class WebFrameServlet extends CheckAdminTokenServlet implements 
         String content = "用户" + req.username + "登陆成功";
 
         System.out.println(content);
-        processLoginResult(resourceRootId,resp);
+        processLoginResult(resourceRootId, resp);
         return resp;
     }
 
@@ -344,7 +345,7 @@ public abstract class WebFrameServlet extends CheckAdminTokenServlet implements 
      * @see cn.ennwifi.hangye.monitor.ui.client.rpc.IUiServer#getUserByToken(java. lang.String)
      */
     @Override
-    public AdminLoginResponse getUserByToken(Integer rootResourceId, String  token) throws ServerException {
+    public AdminLoginResponse getUserByToken(Integer rootResourceId, String token) throws ServerException {
 
         // 检查Session中是否有该用户
 
@@ -356,7 +357,7 @@ public abstract class WebFrameServlet extends CheckAdminTokenServlet implements 
 
         AdminLoginResponse r = new AdminLoginResponse();
         r.user = admin;
-        processLoginResult(rootResourceId,r);
+        processLoginResult(rootResourceId, r);
         return r;
     }
 
@@ -370,7 +371,7 @@ public abstract class WebFrameServlet extends CheckAdminTokenServlet implements 
      *
      * @param response
      */
-    private void processLoginResult(Integer resourceRootId,AdminLoginResponse response) {
+    private void processLoginResult(Integer resourceRootId, AdminLoginResponse response) {
 
         getAdminService().processLoginResult(resourceRootId, response);
 
@@ -522,7 +523,7 @@ public abstract class WebFrameServlet extends CheckAdminTokenServlet implements 
      * 判断当前用户否是拥有功能点权限
      *
      * @param request dd
-     * @return  dd
+     * @return dd
      * @throws ServerException dd
      */
     @Override

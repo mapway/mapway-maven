@@ -193,7 +193,8 @@ public class ErrorCodes {
     /**
      * The constant ERROR_APPLY_COMMITTED.
      */
-    public static final ErrorCode ERROR_APPLY_COMMITTED = new ErrorCode(309, "重复提交报名表");;
+    public static final ErrorCode ERROR_APPLY_COMMITTED = new ErrorCode(309, "重复提交报名表");
+    ;
     /**
      * The constant ERROR_INPUT_IS_NULL.
      */

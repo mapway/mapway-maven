@@ -8,23 +8,28 @@ package com.mapway.database2java.model.schema;
  */
 public class Procedure {
 
-	/** The Name. */
-	private String Name;
-	
-	/** The arguments. */
-	private Arguments arguments;
-	
-	/** The Package name. */
-	private String PackageName;
+    /**
+     * The Name.
+     */
+    private String Name;
+
+    /**
+     * The arguments.
+     */
+    private Arguments arguments;
+
+    /**
+     * The Package name.
+     */
+    private String PackageName;
 
     /**
      * Instantiates a new procedure.
      */
-    public Procedure()
-	{
-		Name="";
-		arguments=new Arguments();
-	}
+    public Procedure() {
+        Name = "";
+        arguments = new Arguments();
+    }
 
     /**
      * Gets the arguments.
@@ -32,8 +37,8 @@ public class Procedure {
      * @return the arguments
      */
     public Arguments getArguments() {
-		return arguments;
-	}
+        return arguments;
+    }
 
     /**
      * Sets the arguments.
@@ -41,8 +46,8 @@ public class Procedure {
      * @param arguments the new arguments
      */
     public void setArguments(Arguments arguments) {
-		this.arguments = arguments;
-	}
+        this.arguments = arguments;
+    }
 
     /**
      * Gets the name.
@@ -50,8 +55,8 @@ public class Procedure {
      * @return the name
      */
     public String getName() {
-		return Name;
-	}
+        return Name;
+    }
 
     /**
      * Sets the name.
@@ -59,8 +64,8 @@ public class Procedure {
      * @param name the new name
      */
     public void setName(String name) {
-		Name = name;
-	}
+        Name = name;
+    }
 
     /**
      * Gets the package name.
@@ -68,8 +73,8 @@ public class Procedure {
      * @return the package name
      */
     public String getPackageName() {
-		return PackageName;
-	}
+        return PackageName;
+    }
 
     /**
      * Sets the package name.
@@ -77,6 +82,6 @@ public class Procedure {
      * @param packageName the new package name
      */
     public void setPackageName(String packageName) {
-		PackageName = packageName;
-	}
+        PackageName = packageName;
+    }
 }

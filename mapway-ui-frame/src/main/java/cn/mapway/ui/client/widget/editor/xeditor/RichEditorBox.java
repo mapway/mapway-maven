@@ -17,15 +17,15 @@ public class RichEditorBox extends VerticalPanel implements IValidator {
      * Instantiates a new rich editor.
      */
     @UiConstructor
-  public RichEditorBox() {
-    super();
-    m_editor = new RichTextArea();
-    toolbar = new RichTextToolbar();
-    toolbar.setRichTextArea(m_editor);
-    this.add(toolbar);
-    this.add(m_editor);
-    m_editor.setWidth("100%");
-  }
+    public RichEditorBox() {
+        super();
+        m_editor = new RichTextArea();
+        toolbar = new RichTextToolbar();
+        toolbar.setRichTextArea(m_editor);
+        this.add(toolbar);
+        this.add(m_editor);
+        m_editor.setWidth("100%");
+    }
 
 
     /**
@@ -34,14 +34,18 @@ public class RichEditorBox extends VerticalPanel implements IValidator {
      * @param action the action
      */
     public void setUploadAction(String action) {
-    toolbar.setAction(action);
-  }
+        toolbar.setAction(action);
+    }
 
-  /** The toolbar. */
-  private RichTextToolbar toolbar;
+    /**
+     * The toolbar.
+     */
+    private RichTextToolbar toolbar;
 
-  /** The m editor. */
-  private RichTextArea m_editor;
+    /**
+     * The m editor.
+     */
+    private RichTextArea m_editor;
 
 
     /**
@@ -50,8 +54,8 @@ public class RichEditorBox extends VerticalPanel implements IValidator {
      * @param html the new html
      */
     public void setValue(String html) {
-    m_editor.setHTML(html);
-  }
+        m_editor.setHTML(html);
+    }
 
     /**
      * Gets the html.
@@ -59,87 +63,87 @@ public class RichEditorBox extends VerticalPanel implements IValidator {
      * @return the html
      */
     public String getValue() {
-    return m_editor.getHTML();
-  }
+        return m_editor.getHTML();
+    }
 
-  /*
-   * (non-Javadoc)
-   * 
-   * @see com.google.gwt.user.client.ui.Widget#onDetach()
-   */
-  @Override
-  protected void onDetach() {
-    super.onDetach();
-    toolbar.hidePopup();
-  }
+    /*
+     * (non-Javadoc)
+     *
+     * @see com.google.gwt.user.client.ui.Widget#onDetach()
+     */
+    @Override
+    protected void onDetach() {
+        super.onDetach();
+        toolbar.hidePopup();
+    }
 
-  @Override
-  public void setMessage(String msg) {
-    this.msg = msg;
-  }
+    @Override
+    public void setMessage(String msg) {
+        this.msg = msg;
+    }
 
-  private String msg = "";
+    private String msg = "";
     /**
      * The Regex.
      */
     protected RegExp regex = null;
-  private boolean required = false;
+    private boolean required = false;
 
-  @Override
-  public String getMessage() {
-    return msg;
-  }
-
-  @Override
-  public void setPattern(String pattern) {
-
-  }
-
-  @Override
-  public void setRequired(boolean b) {
-    required = b;
-  }
-
-  @Override
-  public boolean isValidate() {
-    String v = getValue();
-
-    if (required) {
-
-      if (minLength != null) {
-        if (v == null || v.length() == 0 || v.length() < minLength) {
-          return false;
-        }
-      }
-      if (maxLength != null) {
-        if (v == null || v.length() == 0 || v.length() > maxLength) {
-          return false;
-        }
-      }
-
-      if (v == null || v.length() == 0) {
-        return false;
-      } else {
-        return regex == null ? true : regex.test(v);
-      }
-    } else {
-      if (v == null || v.length() == 0) {
-        return true;
-      }
-
-      if (minLength != null) {
-        if (v.length() < minLength) {
-          return false;
-        }
-      }
-      if (maxLength != null) {
-        if (v.length() > maxLength) {
-          return false;
-        }
-      }
-      return true;
+    @Override
+    public String getMessage() {
+        return msg;
     }
-  }
+
+    @Override
+    public void setPattern(String pattern) {
+
+    }
+
+    @Override
+    public void setRequired(boolean b) {
+        required = b;
+    }
+
+    @Override
+    public boolean isValidate() {
+        String v = getValue();
+
+        if (required) {
+
+            if (minLength != null) {
+                if (v == null || v.length() == 0 || v.length() < minLength) {
+                    return false;
+                }
+            }
+            if (maxLength != null) {
+                if (v == null || v.length() == 0 || v.length() > maxLength) {
+                    return false;
+                }
+            }
+
+            if (v == null || v.length() == 0) {
+                return false;
+            } else {
+                return regex == null ? true : regex.test(v);
+            }
+        } else {
+            if (v == null || v.length() == 0) {
+                return true;
+            }
+
+            if (minLength != null) {
+                if (v.length() < minLength) {
+                    return false;
+                }
+            }
+            if (maxLength != null) {
+                if (v.length() > maxLength) {
+                    return false;
+                }
+            }
+            return true;
+        }
+    }
 
     /**
      * The Min length.
@@ -157,9 +161,9 @@ public class RichEditorBox extends VerticalPanel implements IValidator {
      * @param minLength the min length
      */
     public void setMinLength(int minLength) {
-    this.minLength = minLength;
+        this.minLength = minLength;
 
-  }
+    }
 
     /**
      * 设置最大长度
@@ -167,8 +171,8 @@ public class RichEditorBox extends VerticalPanel implements IValidator {
      * @param maxLength the max length
      */
     public void setMaxLength(int maxLength) {
-    this.maxLength = maxLength;
-  }
+        this.maxLength = maxLength;
+    }
 
 
     /**
@@ -177,6 +181,6 @@ public class RichEditorBox extends VerticalPanel implements IValidator {
      * @param prefix the prefix
      */
     public void setImagePrefix(String prefix) {
-    toolbar.setImagePrefix(prefix);
-  }
+        toolbar.setImagePrefix(prefix);
+    }
 }

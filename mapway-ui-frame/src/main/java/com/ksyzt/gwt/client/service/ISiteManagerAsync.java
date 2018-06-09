@@ -28,7 +28,7 @@ public interface ISiteManagerAsync {
      * @param callback the callback
      */
     void updateSiteInformation(SiteInformation info,
-			AsyncCallback<SiteInformation> callback);
+                               AsyncCallback<SiteInformation> callback);
 
     /**
      * Gets the rewrite data.
@@ -44,7 +44,7 @@ public interface ISiteManagerAsync {
      * @param callback the callback
      */
     void updateRewriteData(RewriteData data,
-			AsyncCallback<List<RewriteData>> callback);
+                           AsyncCallback<List<RewriteData>> callback);
 
     /**
      * Delete rewrite data.
@@ -53,7 +53,7 @@ public interface ISiteManagerAsync {
      * @param callback the callback
      */
     void deleteRewriteData(RewriteData data,
-			AsyncCallback<List<RewriteData>> callback);
+                           AsyncCallback<List<RewriteData>> callback);
 
     /**
      * Admin login.
@@ -63,7 +63,7 @@ public interface ISiteManagerAsync {
      * @param callback the callback
      */
     void adminLogin(String username, String pwd,
-			AsyncCallback<AdminUser> callback);
+                    AsyncCallback<AdminUser> callback);
 
     /**
      * Admin update.
@@ -73,7 +73,7 @@ public interface ISiteManagerAsync {
      * @param callback the callback
      */
     void adminUpdate(String username, String pwd,
-			AsyncCallback<AdminUser> callback);
+                     AsyncCallback<AdminUser> callback);
 
     /**
      * Check admin login.

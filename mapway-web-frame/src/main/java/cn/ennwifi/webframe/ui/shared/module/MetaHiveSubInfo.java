@@ -32,8 +32,8 @@ public class MetaHiveSubInfo implements IsSerializable {
      * @return the meta id
      */
     public Integer getMetaId() {
-    return metaId;
-  }
+        return metaId;
+    }
 
     /**
      * Sets meta id.
@@ -41,8 +41,8 @@ public class MetaHiveSubInfo implements IsSerializable {
      * @param metaId the meta id
      */
     public void setMetaId(Integer metaId) {
-    this.metaId = metaId;
-  }
+        this.metaId = metaId;
+    }
 
     /**
      * Gets meta.
@@ -50,8 +50,8 @@ public class MetaHiveSubInfo implements IsSerializable {
      * @return the meta
      */
     public S_METAObj getMeta() {
-    return meta;
-  }
+        return meta;
+    }
 
     /**
      * Sets meta.
@@ -59,8 +59,8 @@ public class MetaHiveSubInfo implements IsSerializable {
      * @param meta the meta
      */
     public void setMeta(S_METAObj meta) {
-    this.meta = meta;
-  }
+        this.meta = meta;
+    }
 
     /**
      * Gets sub meta.
@@ -68,8 +68,8 @@ public class MetaHiveSubInfo implements IsSerializable {
      * @return the sub meta
      */
     public List<S_METAObj> getSubMeta() {
-    return subMeta;
-  }
+        return subMeta;
+    }
 
     /**
      * Sets sub meta.
@@ -77,7 +77,7 @@ public class MetaHiveSubInfo implements IsSerializable {
      * @param subMeta the sub meta
      */
     public void setSubMeta(List<S_METAObj> subMeta) {
-    this.subMeta = subMeta;
-  }
+        this.subMeta = subMeta;
+    }
 
 }

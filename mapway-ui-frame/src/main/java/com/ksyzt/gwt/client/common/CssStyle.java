@@ -347,5 +347,5 @@ public interface CssStyle extends CssResource {
      * @return the string
      */
     String roomname();
-	
+
 }

@@ -22,7 +22,6 @@ public class Test {
         String JDBCURL = "jdbc:mysql://10.39.0.150/mapway-wiki";
 
 
-
         IConfigure config = new IConfigure() {
 
             @Override

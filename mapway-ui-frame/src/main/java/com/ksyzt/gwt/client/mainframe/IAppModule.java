@@ -17,7 +17,7 @@ public interface IAppModule {
      * @param application the application
      * @param pros        the pros
      */
-    public void onInitialize(AppData application,ModuleProperties pros);
+    public void onInitialize(AppData application, ModuleProperties pros);
 
     /**
      * 模块卸载.

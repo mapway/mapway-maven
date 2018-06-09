@@ -23,30 +23,31 @@ public class CustomRender implements IMenuRender {
     /**
      * Instantiates a new Custom render.
      */
-    protected CustomRender() {}
-
-  @Override
-  public Widget render(Widget parent, IMenuItem menu) {
-
-    if (menu.getSubMenus().size() == 0) {
-      return null;
+    protected CustomRender() {
     }
-    final VerticalPanel vp = new VerticalPanel();
-    vp.setBorderWidth(2);
-    vp.setSpacing(5);
 
-    for (final IMenuItem item : menu.getSubMenus()) {
-      final Button lb = new Button(item.getName());
-      vp.add(lb);
-      lb.addClickHandler(new ClickHandler() {
+    @Override
+    public Widget render(Widget parent, IMenuItem menu) {
 
-        @Override
-        public void onClick(ClickEvent event) {
-
-          item.getHandler().execute(lb, item);
+        if (menu.getSubMenus().size() == 0) {
+            return null;
         }
-      });
+        final VerticalPanel vp = new VerticalPanel();
+        vp.setBorderWidth(2);
+        vp.setSpacing(5);
+
+        for (final IMenuItem item : menu.getSubMenus()) {
+            final Button lb = new Button(item.getName());
+            vp.add(lb);
+            lb.addClickHandler(new ClickHandler() {
+
+                @Override
+                public void onClick(ClickEvent event) {
+
+                    item.getHandler().execute(lb, item);
+                }
+            });
+        }
+        return vp;
     }
-    return vp;
-  }
 }

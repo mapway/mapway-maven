@@ -5,16 +5,16 @@ import com.google.gwt.user.client.ui.Button;
 /**
  * The type Button ex.
  */
-public class ButtonEx extends Button{
+public class ButtonEx extends Button {
 
     /**
      * Instantiates a new Button ex.
      */
     public ButtonEx() {
-		setStyleName("gwtEx-Button");
-	}
-	
-	private Object data;
+        setStyleName("gwtEx-Button");
+    }
+
+    private Object data;
 
     /**
      * Gets data.
@@ -22,8 +22,8 @@ public class ButtonEx extends Button{
      * @return the data
      */
     public Object getData() {
-		return data;
-	}
+        return data;
+    }
 
     /**
      * Sets data.
@@ -31,7 +31,7 @@ public class ButtonEx extends Button{
      * @param data the data
      */
     public void setData(Object data) {
-		this.data = data;
-	}
-	
+        this.data = data;
+    }
+
 }

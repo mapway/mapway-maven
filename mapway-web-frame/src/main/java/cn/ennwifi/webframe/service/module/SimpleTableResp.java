@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 package cn.ennwifi.webframe.service.module;
 
@@ -15,7 +15,7 @@ import org.nutz.dao.entity.Record;
  */
 public class SimpleTableResp {
 
-  private List<Record> data = new ArrayList<Record>();// 返回前端数据
+    private List<Record> data = new ArrayList<Record>();// 返回前端数据
 
     /**
      * Gets data.
@@ -23,8 +23,8 @@ public class SimpleTableResp {
      * @return the data
      */
     public List<Record> getData() {
-    return data;
-  }
+        return data;
+    }
 
     /**
      * Sets data.
@@ -32,7 +32,7 @@ public class SimpleTableResp {
      * @param data the data
      */
     public void setData(List<Record> data) {
-    this.data = data;
-  }
+        this.data = data;
+    }
 
 }

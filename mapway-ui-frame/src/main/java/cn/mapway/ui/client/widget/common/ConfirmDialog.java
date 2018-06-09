@@ -14,28 +14,28 @@ import com.google.gwt.user.client.ui.Widget;
  */
 public class ConfirmDialog extends DialogBoxEx {
 
-  private static ConfirmDialogUiBinder uiBinder = GWT.create(ConfirmDialogUiBinder.class);
+    private static ConfirmDialogUiBinder uiBinder = GWT.create(ConfirmDialogUiBinder.class);
 
     /**
      * The interface Confirm dialog ui binder.
      */
     interface ConfirmDialogUiBinder extends UiBinder<Widget, ConfirmDialog> {
-  }
+    }
 
     /**
      * Instantiates a new Confirm dialog.
      */
     public ConfirmDialog() {
-    setWidget(uiBinder.createAndBindUi(this));
-    getElement().getStyle().setZIndex(8001);
-  }
+        setWidget(uiBinder.createAndBindUi(this));
+        getElement().getStyle().setZIndex(8001);
+    }
 
     /**
      * The Html.
      */
     @UiField
-  HTML html;
-  private Callback<Void, Void> mCallback = null;
+    HTML html;
+    private Callback<Void, Void> mCallback = null;
 
     /**
      * Sets callback.
@@ -43,8 +43,8 @@ public class ConfirmDialog extends DialogBoxEx {
      * @param callback the callback
      */
     public void setCallback(Callback<Void, Void> callback) {
-    mCallback = callback;
-  }
+        mCallback = callback;
+    }
 
     /**
      * On cancel.
@@ -52,12 +52,12 @@ public class ConfirmDialog extends DialogBoxEx {
      * @param ev the ev
      */
     @UiHandler("btnCancel")
-  void onCancel(ClickEvent ev) {
-    this.hide();
-    if (mCallback != null) {
-      mCallback.onFailure(null);
+    void onCancel(ClickEvent ev) {
+        this.hide();
+        if (mCallback != null) {
+            mCallback.onFailure(null);
+        }
     }
-  }
 
     /**
      * On ok.
@@ -65,12 +65,12 @@ public class ConfirmDialog extends DialogBoxEx {
      * @param ev the ev
      */
     @UiHandler("btnOK")
-  void onOK(ClickEvent ev) {
-    this.hide();
-    if (mCallback != null) {
-      mCallback.onSuccess(null);
+    void onOK(ClickEvent ev) {
+        this.hide();
+        if (mCallback != null) {
+            mCallback.onSuccess(null);
+        }
     }
-  }
 
     /**
      * 设置显示的消息
@@ -79,7 +79,7 @@ public class ConfirmDialog extends DialogBoxEx {
      * @param content the content
      */
     public void setInfo(String title, String content) {
-    this.setText(title);
-    html.setHTML(content);
-  }
+        this.setText(title);
+        html.setHTML(content);
+    }
 }

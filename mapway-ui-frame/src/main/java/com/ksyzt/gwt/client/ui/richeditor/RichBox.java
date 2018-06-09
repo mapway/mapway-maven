@@ -15,7 +15,7 @@ public class RichBox extends JavaScriptObject {
      */
     protected RichBox() {
 
-	}
+    }
 
     /**
      * 初始化文本编辑器.

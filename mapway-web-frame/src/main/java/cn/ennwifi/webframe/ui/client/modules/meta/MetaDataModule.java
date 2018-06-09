@@ -1,7 +1,6 @@
 package cn.ennwifi.webframe.ui.client.modules.meta;
 
 
-
 import cn.ennwifi.webframe.ui.shared.repository.S_METAObj;
 import cn.mapway.ui.client.frames.AbstractModule;
 import cn.mapway.ui.client.mvc.ModuleMarker;
@@ -20,7 +19,7 @@ import com.ksyzt.gwt.client.event.MessageHandler;
 /**
  * The type Meta data module.
  */
-@ModuleMarker(value = MetaDataModule.MODEULE_CODE, group = "/系统",name = "元数据管理", icon = "meta.png")
+@ModuleMarker(value = MetaDataModule.MODEULE_CODE, group = "/系统", name = "元数据管理", icon = "meta.png")
 public class MetaDataModule extends AbstractModule {
 
     /**
@@ -28,51 +27,53 @@ public class MetaDataModule extends AbstractModule {
      */
     public final static String MODEULE_CODE = "MC_META_DATA";
 
-  @Override
-  public String getModuleCode() {
-    return MODEULE_CODE;
-  }
+    @Override
+    public String getModuleCode() {
+        return MODEULE_CODE;
+    }
 
-  private static MetaDataModuleUiBinder uiBinder = GWT.create(MetaDataModuleUiBinder.class);
+    private static MetaDataModuleUiBinder uiBinder = GWT.create(MetaDataModuleUiBinder.class);
 
     /**
      * The interface Meta data module ui binder.
      */
     interface MetaDataModuleUiBinder extends UiBinder<Widget, MetaDataModule> {
-  }
-
-  private SelectionHandler<TreeItem> metaSelectHandler = new SelectionHandler<TreeItem>() {
-
-    @Override
-    public void onSelection(SelectionEvent<TreeItem> event) {
-      S_METAObj meta = (S_METAObj) event.getSelectedItem().getUserObject();
-      if (meta != null) {
-        editor.editMeta(meta);
-        treeToUI(event.getSelectedItem());
-      } else {
-        editor.createRoot();
-        treeToUI(event.getSelectedItem());
-      }
     }
-  };
-  private MessageHandler editorHandler = new MessageHandler() {
+
+    private SelectionHandler<TreeItem> metaSelectHandler = new SelectionHandler<TreeItem>() {
+
+        @Override
+        public void onSelection(SelectionEvent<TreeItem> event) {
+            S_METAObj meta = (S_METAObj) event.getSelectedItem().getUserObject();
+            if (meta != null) {
+                editor.editMeta(meta);
+                treeToUI(event.getSelectedItem());
+            } else {
+                editor.createRoot();
+                treeToUI(event.getSelectedItem());
+            }
+        }
+    };
+    private MessageHandler editorHandler = new MessageHandler() {
+
+        @Override
+        public void onMessage(Object sender, Integer message, Object value) {
+            if (message == MessageEvent.REFRESH) {
+                tree.loadData();
+            }
+        }
+    };
 
     @Override
-    public void onMessage(Object sender, Integer message, Object value) {
-      if (message == MessageEvent.REFRESH) {
+    public boolean initialize(cn.mapway.ui.client.mvc.IModule parentModule,
+                              cn.mapway.ui.client.mvc.ModuleParameter parameters) {
+        boolean b = super.initialize(parentModule, parameters);
         tree.loadData();
-      }
+        updateTools(editor.tools);
+        return b;
     }
-  };
 
-  @Override
-  public boolean initialize(cn.mapway.ui.client.mvc.IModule parentModule,
-      cn.mapway.ui.client.mvc.ModuleParameter parameters) {
-    boolean b = super.initialize(parentModule, parameters);
-    tree.loadData();
-    updateTools(editor.tools);
-    return b;
-  };
+    ;
 
 
     /**
@@ -81,46 +82,46 @@ public class MetaDataModule extends AbstractModule {
      * @param selectedItem the selected item
      */
     protected void treeToUI(TreeItem selectedItem) {
-    tbl.removeAllRows();
-    int count = selectedItem.getChildCount();
-    for (int i = 0; i < count; i++) {
-      TreeItem item = selectedItem.getChild(i);
-      S_METAObj meta = (S_METAObj) item.getUserObject();
-      tbl.setText(i, 0, meta.getName());
-      tbl.setText(i, 1, meta.getCode());
+        tbl.removeAllRows();
+        int count = selectedItem.getChildCount();
+        for (int i = 0; i < count; i++) {
+            TreeItem item = selectedItem.getChild(i);
+            S_METAObj meta = (S_METAObj) item.getUserObject();
+            tbl.setText(i, 0, meta.getName());
+            tbl.setText(i, 1, meta.getCode());
+        }
     }
-  }
 
 
     /**
      * Instantiates a new Meta data module.
      */
     public MetaDataModule() {
-    initModuleWidget(uiBinder.createAndBindUi(this));
-    tree.addSelectionHandler(metaSelectHandler);
-    editor.addMessageHandler(editorHandler);
-  }
+        initModuleWidget(uiBinder.createAndBindUi(this));
+        tree.addSelectionHandler(metaSelectHandler);
+        editor.addMessageHandler(editorHandler);
+    }
 
-  @Override
-  public Widget getRootWidget() {
-    return this;
-  }
+    @Override
+    public Widget getRootWidget() {
+        return this;
+    }
 
     /**
      * The Editor.
      */
     @UiField
-  EditMeta editor;
+    EditMeta editor;
     /**
      * The Tree.
      */
     @UiField
-  MetaTree tree;
+    MetaTree tree;
 
     /**
      * The Tbl.
      */
     @UiField
-  FlexTable tbl;
+    FlexTable tbl;
 
 }

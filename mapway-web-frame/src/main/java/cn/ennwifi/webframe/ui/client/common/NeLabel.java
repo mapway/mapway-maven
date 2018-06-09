@@ -7,9 +7,11 @@ import com.google.gwt.user.client.ui.Label;
  * The Class NeLabel.
  */
 public class NeLabel extends Label {
-  
-  /** The data. */
-  private Object data;
+
+    /**
+     * The data.
+     */
+    private Object data;
 
     /**
      * Gets the data.
@@ -17,8 +19,8 @@ public class NeLabel extends Label {
      * @return the data
      */
     public Object getData() {
-    return data;
-  }
+        return data;
+    }
 
     /**
      * Sets the data.
@@ -26,15 +28,15 @@ public class NeLabel extends Label {
      * @param data the new data
      */
     public void setData(Object data) {
-    this.data = data;
-  }
+        this.data = data;
+    }
 
     /**
      * Instantiates a new ne label.
      */
     public NeLabel() {
-    setStyleName("text");
-  }
+        setStyleName("text");
+    }
 
     /**
      * Instantiates a new ne label.
@@ -42,7 +44,7 @@ public class NeLabel extends Label {
      * @param text the text
      */
     public NeLabel(String text) {
-    setStyleName("text");
-    setText(text);
-  }
+        setStyleName("text");
+        setText(text);
+    }
 }

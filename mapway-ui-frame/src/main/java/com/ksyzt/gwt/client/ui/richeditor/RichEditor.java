@@ -16,21 +16,25 @@ public class RichEditor extends VerticalPanel {
      * Instantiates a new rich editor.
      */
     @UiConstructor
-  public RichEditor() {
-    super();
-    m_editor = new RichTextArea();
-    toolbar = new RichTextToolbar();
-    toolbar.setRichTextArea(m_editor);
-    this.add(toolbar);
-    this.add(m_editor);
-    m_editor.setWidth("100%");
-  }
+    public RichEditor() {
+        super();
+        m_editor = new RichTextArea();
+        toolbar = new RichTextToolbar();
+        toolbar.setRichTextArea(m_editor);
+        this.add(toolbar);
+        this.add(m_editor);
+        m_editor.setWidth("100%");
+    }
 
-  /** The toolbar. */
-  private RichTextToolbar toolbar;
+    /**
+     * The toolbar.
+     */
+    private RichTextToolbar toolbar;
 
-  /** The m editor. */
-  private RichTextArea m_editor;
+    /**
+     * The m editor.
+     */
+    private RichTextArea m_editor;
 
 
     /**
@@ -39,8 +43,8 @@ public class RichEditor extends VerticalPanel {
      * @param html the new html
      */
     public void setValue(String html) {
-    m_editor.setHTML(html);
-  }
+        m_editor.setHTML(html);
+    }
 
     /**
      * Gets the html.
@@ -48,20 +52,19 @@ public class RichEditor extends VerticalPanel {
      * @return the html
      */
     public String getValue() {
-    return m_editor.getHTML();
-  }
+        return m_editor.getHTML();
+    }
 
-  /*
-   * (non-Javadoc)
-   * 
-   * @see com.google.gwt.user.client.ui.Widget#onDetach()
-   */
-  @Override
-  protected void onDetach() {
-    super.onDetach();
-    toolbar.hidePopup();
-  }
-
+    /*
+     * (non-Javadoc)
+     *
+     * @see com.google.gwt.user.client.ui.Widget#onDetach()
+     */
+    @Override
+    protected void onDetach() {
+        super.onDetach();
+        toolbar.hidePopup();
+    }
 
 
 }

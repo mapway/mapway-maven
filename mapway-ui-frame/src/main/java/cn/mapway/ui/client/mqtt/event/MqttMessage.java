@@ -13,7 +13,7 @@ public class MqttMessage extends JavaScriptObject {
      */
     protected MqttMessage() {
 
-  }
+    }
 
     /**
      * Creates the.

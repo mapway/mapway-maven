@@ -270,7 +270,7 @@ public class MainFrame extends BaseAbstractModuleWithEvent implements IMqttHandl
             switch (message) {
                 case COMMAND_EXIT: {
                     if (client != null) {
-                        client.unsub(ClientContext.getContext().getMqttTopicPrefix()+"/#");
+                        client.unsub(ClientContext.getContext().getMqttTopicPrefix() + "/#");
                     }
                     postTopic(EventTopics.EXIT, 0);
                     break;

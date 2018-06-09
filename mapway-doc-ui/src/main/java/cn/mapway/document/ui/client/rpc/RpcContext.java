@@ -12,8 +12,10 @@ import cn.mapway.document.ui.client.test.TestPanel;
  */
 public class RpcContext {
 
-  /** The context. */
-  private static RpcContext context = null;
+    /**
+     * The context.
+     */
+    private static RpcContext context = null;
 
     /**
      * The enn custom token.
@@ -31,13 +33,13 @@ public class RpcContext {
      * @return the rpc context
      */
     public final static RpcContext get() {
-    if (context == null) {
-      context = new RpcContext();
-      context.KEY = LocalStorage.val(TestPanel.GWT_USER_HEADER);
-      if (context.KEY != null) {
-        context.VALUE = LocalStorage.val(context.KEY);
-      }
+        if (context == null) {
+            context = new RpcContext();
+            context.KEY = LocalStorage.val(TestPanel.GWT_USER_HEADER);
+            if (context.KEY != null) {
+                context.VALUE = LocalStorage.val(context.KEY);
+            }
+        }
+        return context;
     }
-    return context;
-  }
 }

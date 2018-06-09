@@ -12,8 +12,10 @@ import com.google.gwt.core.client.ScriptInjector;
  */
 public class MqttJs {
 
-  /** The loaded. */
-  private static boolean loaded = false;
+    /**
+     * The loaded.
+     */
+    private static boolean loaded = false;
 
     /**
      * 是否加载类库成功.
@@ -21,8 +23,8 @@ public class MqttJs {
      * @return true, if is loaded
      */
     public static final boolean isLoaded() {
-    return loaded;
-  }
+        return loaded;
+    }
 
     /**
      * 创建MQTT客户端.
@@ -34,12 +36,12 @@ public class MqttJs {
      * @return the mqtt js client
      */
     public static final MqttJsClient createClient(String host, int port, String id, String path) {
-    if (isLoaded()) {
-      return MqttJsClient.create(host, port, id, path);
-    } else {
-      return null;
+        if (isLoaded()) {
+            return MqttJsClient.create(host, port, id, path);
+        } else {
+            return null;
+        }
     }
-  }
 
     /**
      * 初始化ECHART 类库.
@@ -47,26 +49,25 @@ public class MqttJs {
      * @param handler the handler
      */
     public static void load(final Callback<Void, Exception> handler) {
-    String url = GWT.getModuleBaseURL() + "../js/mqtt.js";
-    ScriptInjector.fromUrl(url).setCallback(new Callback<Void, Exception>() {
-      @Override
-      public void onSuccess(Void result) {
-        MqttJs.loaded = true;
-        if (handler != null) {
-          handler.onSuccess(null);
-        }
-      }
+        String url = GWT.getModuleBaseURL() + "../js/mqtt.js";
+        ScriptInjector.fromUrl(url).setCallback(new Callback<Void, Exception>() {
+            @Override
+            public void onSuccess(Void result) {
+                MqttJs.loaded = true;
+                if (handler != null) {
+                    handler.onSuccess(null);
+                }
+            }
 
-      @Override
-      public void onFailure(Exception reason) {
-        MqttJs.loaded = false;
-        if (handler != null) {
-          handler.onFailure(reason);
-        }
-      }
-    }).inject();
-  }
-
+            @Override
+            public void onFailure(Exception reason) {
+                MqttJs.loaded = false;
+                if (handler != null) {
+                    handler.onFailure(reason);
+                }
+            }
+        }).inject();
+    }
 
 
 }

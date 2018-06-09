@@ -15,48 +15,48 @@ import cn.mapway.document.ui.client.module.ObjectInfo;
  */
 public class InputParameterPanel extends Composite {
 
-  private static InputParameterPanelUiBinder uiBinder = GWT
-      .create(InputParameterPanelUiBinder.class);
+    private static InputParameterPanelUiBinder uiBinder = GWT
+            .create(InputParameterPanelUiBinder.class);
 
     /**
      * The interface Input parameter panel ui binder.
      */
     interface InputParameterPanelUiBinder extends UiBinder<Widget, InputParameterPanel> {
-  }
+    }
 
     /**
      * Instantiates a new Input parameter panel.
      */
     public InputParameterPanel() {
-    initWidget(uiBinder.createAndBindUi(this));
-  }
+        initWidget(uiBinder.createAndBindUi(this));
+    }
 
     /**
      * The Para path.
      */
     @UiField
-  ObjectsInfoPanel paraPath;
+    ObjectsInfoPanel paraPath;
     /**
      * The Para query.
      */
     @UiField
-  ObjectsInfoPanel paraQuery;
+    ObjectsInfoPanel paraQuery;
     /**
      * The Para body.
      */
     @UiField
-  ParameterPanel paraBody;
+    ParameterPanel paraBody;
 
     /**
      * The Lb url.
      */
     @UiField
-  Label lbUrl;
+    Label lbUrl;
     /**
      * The Lb none.
      */
     @UiField
-  Label lbNone;
+    Label lbNone;
 
     /**
      * Parse entry.
@@ -65,61 +65,60 @@ public class InputParameterPanel extends Composite {
      */
     public void parseEntry(Entry entry) {
 
-    boolean show = true;
-    boolean urlShow = false;
-    String url = entry.url();
+        boolean show = true;
+        boolean urlShow = false;
+        String url = entry.url();
 
-    if (entry.pathParas().length() == 0) {
-      paraPath.setVisible(false);
-    } else {
-      paraPath.setVisible(true);
-      paraPath.parse(entry.pathParas(), "路径参数", "");
-      show = false;
-      urlShow = true;
+        if (entry.pathParas().length() == 0) {
+            paraPath.setVisible(false);
+        } else {
+            paraPath.setVisible(true);
+            paraPath.parse(entry.pathParas(), "路径参数", "");
+            show = false;
+            urlShow = true;
 
-      for (int i = 0; i < entry.pathParas().length(); i++) {
-        ObjectInfo oi = entry.pathParas().get(i);
-        url = url.replaceAll("\\{" + oi.name() + "\\}", oi.example() == null ? "" : oi.example());
-      }
-    }
-
-    if (entry.queryParas().length() == 0) {
-      paraQuery.setVisible(false);
-    } else {
-      paraQuery.setVisible(true);
-      paraQuery.parse(entry.queryParas(), "查询参数", "");
-      show = false;
-      urlShow = true;
-
-      url = url + "?";
-      for (int i = 0; i < entry.queryParas().length(); i++) {
-        ObjectInfo oi = entry.queryParas().get(i);
-        if (i > 0) {
-          url += "&";
+            for (int i = 0; i < entry.pathParas().length(); i++) {
+                ObjectInfo oi = entry.pathParas().get(i);
+                url = url.replaceAll("\\{" + oi.name() + "\\}", oi.example() == null ? "" : oi.example());
+            }
         }
-        url = url + oi.name() + "=" + (oi.example() == null ? "" : oi.example());
-      }
+
+        if (entry.queryParas().length() == 0) {
+            paraQuery.setVisible(false);
+        } else {
+            paraQuery.setVisible(true);
+            paraQuery.parse(entry.queryParas(), "查询参数", "");
+            show = false;
+            urlShow = true;
+
+            url = url + "?";
+            for (int i = 0; i < entry.queryParas().length(); i++) {
+                ObjectInfo oi = entry.queryParas().get(i);
+                if (i > 0) {
+                    url += "&";
+                }
+                url = url + oi.name() + "=" + (oi.example() == null ? "" : oi.example());
+            }
+
+        }
+
+
+        lbUrl.setText("URL例子:" + Clients.getHostPort() + url);
+        lbUrl.setVisible(urlShow);
+
+        if (entry.input().length() == 0) {
+            paraBody.setVisible(false);
+        } else {
+            paraBody.setVisible(true);
+            ObjectInfo obj = entry.input().get(0);
+
+            paraBody.parse(obj, "POST数据");
+            show = false;
+        }
+
+        lbNone.setVisible(show);
 
     }
-
-
-
-    lbUrl.setText("URL例子:" + Clients.getHostPort() + url);
-    lbUrl.setVisible(urlShow);
-
-    if (entry.input().length() == 0) {
-      paraBody.setVisible(false);
-    } else {
-      paraBody.setVisible(true);
-      ObjectInfo obj = entry.input().get(0);
-
-      paraBody.parse(obj, "POST数据");
-      show = false;
-    }
-
-    lbNone.setVisible(show);
-
-  }
 
     /**
      * The entry point of application.
@@ -128,6 +127,6 @@ public class InputParameterPanel extends Composite {
      */
     public static void main(String[] args) {
 
-  }
+    }
 
 }

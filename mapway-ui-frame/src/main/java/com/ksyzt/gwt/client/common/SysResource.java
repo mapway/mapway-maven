@@ -26,7 +26,7 @@ public interface SysResource extends ClientBundle {
      * @return the text resource
      */
     @Source("flash.txt")
-  TextResource flashSource();
+    TextResource flashSource();
 
     /**
      * Gets the css.
@@ -34,8 +34,8 @@ public interface SysResource extends ClientBundle {
      * @return the css
      */
     @Source("style.css")
-  @CssResource.NotStrict
-  CssStyle getCss();
+    @CssResource.NotStrict
+    CssStyle getCss();
 
     /**
      * Logo.
@@ -43,7 +43,7 @@ public interface SysResource extends ClientBundle {
      * @return the image resource
      */
     @Source("images/logo.png")
-  ImageResource logo();
+    ImageResource logo();
 
     /**
      * Back 64.
@@ -51,7 +51,7 @@ public interface SysResource extends ClientBundle {
      * @return the image resource
      */
     @Source("images/64back.png")
-  ImageResource back64();
+    ImageResource back64();
 
     /**
      * Upload.
@@ -59,7 +59,7 @@ public interface SysResource extends ClientBundle {
      * @return the image resource
      */
     @Source("images/upload.png")
-  ImageResource upload();
+    ImageResource upload();
 
     /**
      * Delete.
@@ -67,7 +67,7 @@ public interface SysResource extends ClientBundle {
      * @return the image resource
      */
     @Source("images/delete.png")
-  ImageResource delete();
+    ImageResource delete();
 
     /**
      * Edits the.
@@ -75,7 +75,7 @@ public interface SysResource extends ClientBundle {
      * @return the image resource
      */
     @Source("images/edit.png")
-  ImageResource edit();
+    ImageResource edit();
 
     /**
      * Img operator.
@@ -83,7 +83,7 @@ public interface SysResource extends ClientBundle {
      * @return the image resource
      */
     @Source("images/operator.png")
-  ImageResource imgOperator();
+    ImageResource imgOperator();
 
     /**
      * Img system.
@@ -91,7 +91,7 @@ public interface SysResource extends ClientBundle {
      * @return the image resource
      */
     @Source("images/system.png")
-  ImageResource imgSystem();
+    ImageResource imgSystem();
 
     /**
      * Img mall.
@@ -99,7 +99,7 @@ public interface SysResource extends ClientBundle {
      * @return the image resource
      */
     @Source("images/mall.png")
-  ImageResource imgMall();
+    ImageResource imgMall();
 
     /**
      * Dragger image resource.
@@ -107,7 +107,7 @@ public interface SysResource extends ClientBundle {
      * @return the image resource
      */
     @Source("images/dragger.png")
-  ImageResource dragger();
+    ImageResource dragger();
 
     /**
      * Img btn exit.
@@ -115,7 +115,7 @@ public interface SysResource extends ClientBundle {
      * @return the image resource
      */
     @Source("images/btn_exit.png")
-  ImageResource img_btn_exit();
+    ImageResource img_btn_exit();
 
     /**
      * Img btn exit over.
@@ -123,7 +123,7 @@ public interface SysResource extends ClientBundle {
      * @return the image resource
      */
     @Source("images/btn_exit_over.png")
-  ImageResource img_btn_exit_over();
+    ImageResource img_btn_exit_over();
 
     /**
      * Topbar back.
@@ -131,8 +131,8 @@ public interface SysResource extends ClientBundle {
      * @return the image resource
      */
     @Source("images/topbar_back.png")
-  @ImageOptions(repeatStyle = RepeatStyle.Horizontal, height = 30, width = 41)
-  ImageResource topbar_back();
+    @ImageOptions(repeatStyle = RepeatStyle.Horizontal, height = 30, width = 41)
+    ImageResource topbar_back();
 
     /**
      * Frameback.
@@ -140,8 +140,8 @@ public interface SysResource extends ClientBundle {
      * @return the image resource
      */
     @Source("images/frameback.png")
-  @ImageOptions(repeatStyle = RepeatStyle.Both, height = 150, width = 150)
-  ImageResource frameback();
+    @ImageOptions(repeatStyle = RepeatStyle.Both, height = 150, width = 150)
+    ImageResource frameback();
 
     /**
      * Item selected back.
@@ -149,8 +149,8 @@ public interface SysResource extends ClientBundle {
      * @return the image resource
      */
     @Source("images/item_selected.png")
-  @ImageOptions(repeatStyle = RepeatStyle.Horizontal, height = 66, width = 170)
-  ImageResource item_selected_back();
+    @ImageOptions(repeatStyle = RepeatStyle.Horizontal, height = 66, width = 170)
+    ImageResource item_selected_back();
 
     /**
      * Col catalog.
@@ -158,7 +158,7 @@ public interface SysResource extends ClientBundle {
      * @return the image resource
      */
     @Source("images/col_catalog.png")
-  ImageResource col_catalog();
+    ImageResource col_catalog();
 
     /**
      * Col list.
@@ -166,7 +166,7 @@ public interface SysResource extends ClientBundle {
      * @return the image resource
      */
     @Source("images/col_list.png")
-  ImageResource col_list();
+    ImageResource col_list();
 
     /**
      * Col picture.
@@ -174,8 +174,8 @@ public interface SysResource extends ClientBundle {
      * @return the image resource
      */
     @Source("images/col_picture.png")
-  @ImageOptions(height = 16, width = 16)
-  ImageResource col_picture();
+    @ImageOptions(height = 16, width = 16)
+    ImageResource col_picture();
 
     /**
      * Col video.
@@ -183,7 +183,7 @@ public interface SysResource extends ClientBundle {
      * @return the image resource
      */
     @Source("images/col_video.png")
-  ImageResource col_video();
+    ImageResource col_video();
 
     /**
      * Col article.
@@ -191,7 +191,7 @@ public interface SysResource extends ClientBundle {
      * @return the image resource
      */
     @Source("images/col_article.png")
-  ImageResource col_article();
+    ImageResource col_article();
 
     /**
      * Lightness.
@@ -199,7 +199,7 @@ public interface SysResource extends ClientBundle {
      * @return the image resource
      */
     @Source("images/lightness.png")
-  ImageResource lightness();
+    ImageResource lightness();
 
     /**
      * Switchon.
@@ -207,7 +207,7 @@ public interface SysResource extends ClientBundle {
      * @return the image resource
      */
     @Source("images/switch_on.png")
-  ImageResource switchon();
+    ImageResource switchon();
 
     /**
      * Switchoff.
@@ -215,7 +215,7 @@ public interface SysResource extends ClientBundle {
      * @return the image resource
      */
     @Source("images/switch_off.png")
-  ImageResource switchoff();
+    ImageResource switchoff();
 
     /**
      * Newicon.
@@ -223,7 +223,7 @@ public interface SysResource extends ClientBundle {
      * @return the image resource
      */
     @Source("images/new.gif")
-  ImageResource newicon();
+    ImageResource newicon();
 
     /**
      * Uptop.
@@ -231,7 +231,7 @@ public interface SysResource extends ClientBundle {
      * @return the image resource
      */
     @Source("images/uptop.png")
-  ImageResource uptop();
+    ImageResource uptop();
 
     /**
      * Hue saturation.
@@ -239,7 +239,7 @@ public interface SysResource extends ClientBundle {
      * @return the image resource
      */
     @Source("images/hueSaturation.png")
-  ImageResource hueSaturation();
+    ImageResource hueSaturation();
 
     /**
      * Right shadow.
@@ -247,6 +247,6 @@ public interface SysResource extends ClientBundle {
      * @return the image resource
      */
     @Source("images/right_shadow.png")
-  @ImageOptions(repeatStyle = RepeatStyle.Vertical, height = 10, width = 13)
-  ImageResource right_shadow();
+    @ImageOptions(repeatStyle = RepeatStyle.Vertical, height = 10, width = 13)
+    ImageResource right_shadow();
 }

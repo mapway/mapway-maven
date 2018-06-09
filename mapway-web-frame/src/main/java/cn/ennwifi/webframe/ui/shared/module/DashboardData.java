@@ -27,7 +27,7 @@ public class DashboardData implements IsSerializable {
      */
     public DashboardData() {
 
-  }
+    }
 
     /**
      * Instantiates a new Dashboard data.
@@ -37,8 +37,8 @@ public class DashboardData implements IsSerializable {
      * @param icon  the icon
      */
     public DashboardData(String name, int count, String icon) {
-    this.name = name;
-    this.count = count;
-    this.icon = icon;
-  }
+        this.name = name;
+        this.count = count;
+        this.icon = icon;
+    }
 }

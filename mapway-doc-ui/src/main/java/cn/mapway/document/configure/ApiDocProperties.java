@@ -10,51 +10,51 @@ public class ApiDocProperties {
     /**
      * The Url.
      */
-    public String url="/doc/*";
+    public String url = "/doc/*";
     /**
      * The Logo.
      */
-    public String logo="";
+    public String logo = "";
     /**
      * The Author.
      */
-    public String author="zhangjianshe@gmail.com";
+    public String author = "zhangjianshe@gmail.com";
     /**
      * The Base path.
      */
-    public String basePath="";
+    public String basePath = "";
     /**
      * The Domain.
      */
-    public String domain="mapway.cn";
+    public String domain = "mapway.cn";
     /**
      * The Scans.
      */
-    public String scans="";
+    public String scans = "";
     /**
      * The Sub title.
      */
-    public String subTitle="接口文档说明";
+    public String subTitle = "接口文档说明";
     /**
      * The Title.
      */
-    public String title="接口文档";
+    public String title = "接口文档";
     /**
      * The Copyright.
      */
-    public String copyright="版权信息";
+    public String copyright = "版权信息";
     /**
      * The Version.
      */
-    public String version="1.0.0";
+    public String version = "1.0.0";
     /**
      * The Home.
      */
-    public String home="../../";
+    public String home = "../../";
     /**
      * The Style.
      */
-    public String style="";
+    public String style = "";
 
     /**
      * Gets url.

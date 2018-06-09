@@ -20,10 +20,9 @@ public class Pack {
     /**
      * Instantiates a new pack.
      */
-    public Pack()
-	{
-		procedures=new Procedures();
-	}
+    public Pack() {
+        procedures = new Procedures();
+    }
 
     /**
      * Gets the name.
@@ -31,8 +30,8 @@ public class Pack {
      * @return the name
      */
     public String getName() {
-		return name;
-	}
+        return name;
+    }
 
     /**
      * Sets the name.
@@ -40,8 +39,8 @@ public class Pack {
      * @param name the new name
      */
     public void setName(String name) {
-		this.name = name;
-	}
+        this.name = name;
+    }
 
     /**
      * Gets the procedures.
@@ -49,8 +48,8 @@ public class Pack {
      * @return the procedures
      */
     public Procedures getProcedures() {
-		return procedures;
-	}
+        return procedures;
+    }
 
     /**
      * Sets the procedures.
@@ -58,6 +57,6 @@ public class Pack {
      * @param procedures the new procedures
      */
     public void setProcedures(Procedures procedures) {
-		this.procedures = procedures;
-	}
+        this.procedures = procedures;
+    }
 }

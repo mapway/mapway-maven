@@ -12,7 +12,7 @@ public class NeButton extends Button {
      * Instantiates a new ne button.
      */
     public NeButton() {
-  }
+    }
 
     /**
      * Instantiates a new ne button.
@@ -20,11 +20,13 @@ public class NeButton extends Button {
      * @param title the title
      */
     public NeButton(String title) {
-    super(title);
-  }
+        super(title);
+    }
 
-  /** The data. */
-  private Object data;
+    /**
+     * The data.
+     */
+    private Object data;
 
     /**
      * Gets the data.
@@ -32,8 +34,8 @@ public class NeButton extends Button {
      * @return the data
      */
     public Object getData() {
-    return data;
-  }
+        return data;
+    }
 
     /**
      * Sets the data.
@@ -41,7 +43,7 @@ public class NeButton extends Button {
      * @param data the new data
      */
     public void setData(Object data) {
-    this.data = data;
-  }
+        this.data = data;
+    }
 
 }

@@ -14,5 +14,5 @@ public class LoginRespData extends RespData {
      * The token.
      */
     @ApiField(value = "用户信息，包括token")
-  public S_USERObj user = new S_USERObj();
+    public S_USERObj user = new S_USERObj();
 }

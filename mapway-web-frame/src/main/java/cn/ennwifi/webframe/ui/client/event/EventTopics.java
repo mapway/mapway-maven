@@ -62,11 +62,13 @@ public class EventTopics {
     /**
      * The constant REFRESH_MY_GATEWAY.
      */
-    public static final String REFRESH_MY_GATEWAY = "sys.refresh.my.gateway";;
+    public static final String REFRESH_MY_GATEWAY = "sys.refresh.my.gateway";
+    ;
     /**
      * The constant CHANGE_CHECKBOX_VALUE.
      */
-    public static final String CHANGE_CHECKBOX_VALUE = "sys.change.checkBox.value";;
+    public static final String CHANGE_CHECKBOX_VALUE = "sys.change.checkBox.value";
+    ;
     /**
      * The constant LOG_MESSAGE_LIST.
      */

@@ -1,29 +1,29 @@
 <!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
 <ui:UiBinder
-    xmlns:ui="urn:ui:com.google.gwt.uibinder"
-    xmlns:g="urn:import:com.google.gwt.user.client.ui">
+        xmlns:ui="urn:ui:com.google.gwt.uibinder"
+        xmlns:g="urn:import:com.google.gwt.user.client.ui">
     <ui:style>
-    	.content{
-		text-align: center;
-		padding: 20px;
-	}
-	.info{
-		color: red;
-		border-radius:15px;
-		background-color: infobackground;
-		margin-top: 50px;
-		padding: 30px;
-	}
-	.name{
-	 color: green;
-	 font-weight: bold;
-}
+        .content{
+        text-align: center;
+        padding: 20px;
+        }
+        .info{
+        color: red;
+        border-radius:15px;
+        background-color: infobackground;
+        margin-top: 50px;
+        padding: 30px;
+        }
+        .name{
+        color: green;
+        font-weight: bold;
+        }
     </ui:style>
     <g:HTMLPanel styleName="{style.content}">
         <g:HTMLPanel styleName="{style.info}">
-        <g:Label >未经授权的模块，或者没有该子模块</g:Label>
-        <g:Label styleName="{style.name}" ui:field="lbModuelName"></g:Label>
+            <g:Label>未经授权的模块，或者没有该子模块</g:Label>
+            <g:Label styleName="{style.name}" ui:field="lbModuelName"></g:Label>
         </g:HTMLPanel>
-        
+
     </g:HTMLPanel>
 </ui:UiBinder>

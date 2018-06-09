@@ -14,7 +14,7 @@ public class PicData extends JavaScriptObject {
      */
     protected PicData() {
 
-  }
+    }
 
     /**
      * 构造客户端的JAVASCRIPT 对象

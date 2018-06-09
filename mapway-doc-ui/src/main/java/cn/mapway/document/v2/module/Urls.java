@@ -22,25 +22,23 @@ public class Urls {
      * Instantiates a new urls.
      */
     public Urls() {
-		items=new ArrayList<UrlItem>();
-	}
+        items = new ArrayList<UrlItem>();
+    }
 
     /**
      * Adds the.
      *
      * @param item the item
      */
-    public void add(UrlItem item)
-	{
-		items.add(item);
-	}
+    public void add(UrlItem item) {
+        items.add(item);
+    }
 
     /**
      * Clear.
      */
-    public void clear()
-	{
-		items.clear();
-	}
-	
+    public void clear() {
+        items.clear();
+    }
+
 }

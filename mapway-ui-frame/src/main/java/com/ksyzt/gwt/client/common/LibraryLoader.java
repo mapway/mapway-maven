@@ -32,9 +32,9 @@ public class LibraryLoader {
      * Instantiates a new library loader.
      */
     public LibraryLoader() {
-		// m_callback = callback;
-		m_urls = new ArrayList<String>();
-	}
+        // m_callback = callback;
+        m_urls = new ArrayList<String>();
+    }
 
     /**
      * Adds the library.
@@ -42,8 +42,8 @@ public class LibraryLoader {
      * @param url the url
      */
     public void addLibrary(String url) {
-		m_urls.add(url);
-	}
+        m_urls.add(url);
+    }
 
     /**
      * Start.
@@ -51,30 +51,30 @@ public class LibraryLoader {
      * @param callback the callback
      */
     public void start(LoaderCallback callback) {
-		
-		
-		if (callback != null) {
-			m_callback = callback;
-		}
 
-		for (String url : m_urls) {
-			ScriptInjector.fromUrl(url)
-					.setCallback(new Callback<Void, Exception>() {
-						public void onFailure(Exception reason) {
-							if (m_callback != null) {
-								m_callback.onResult(false, reason.getMessage());
-							}
-						}
 
-						public void onSuccess(Void result) {
-							count++;
-							if (count == m_urls.size()) {
-								if (m_callback != null) {
-									m_callback.onResult(true, "success");
-								}
-							}
-						}
-					}).inject();
-		}
-	}
+        if (callback != null) {
+            m_callback = callback;
+        }
+
+        for (String url : m_urls) {
+            ScriptInjector.fromUrl(url)
+                    .setCallback(new Callback<Void, Exception>() {
+                        public void onFailure(Exception reason) {
+                            if (m_callback != null) {
+                                m_callback.onResult(false, reason.getMessage());
+                            }
+                        }
+
+                        public void onSuccess(Void result) {
+                            count++;
+                            if (count == m_urls.size()) {
+                                if (m_callback != null) {
+                                    m_callback.onResult(true, "success");
+                                }
+                            }
+                        }
+                    }).inject();
+        }
+    }
 }

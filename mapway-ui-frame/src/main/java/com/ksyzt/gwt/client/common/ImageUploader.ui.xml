@@ -1,49 +1,49 @@
 <!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
 <ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
-	xmlns:g="urn:import:com.google.gwt.user.client.ui" >
-	<ui:style>
-		.box {
-			background-color: skyblue;
-		}
-		
-		.img {
-			border: solid 1px #fff;
-		}
-		
-		.info {
-			padding: 5px;
-			background-color: infobackground;
-			color: brown;
-		}
-		
-		.box {
-			background-color: #f0f0f0;
-		}
-	</ui:style>
-	<g:AbsolutePanel height="100%" width="100%" ui:field="root" styleName="{style.box}">
-		<g:at left="3" top="3">
-			<g:HTML ui:field="html"></g:HTML>
-		</g:at>
-		<g:at left="5" top="10">
-			<g:FlowPanel ui:field="panelLoader">
-				<g:HorizontalPanel spacing="3">
-					<g:Button ui:field="btnCancel" text="取消"></g:Button>
-					<g:Button ui:field="btnRemovePicture" text="删除图片"></g:Button>
-				</g:HorizontalPanel>
-				<g:FormPanel ui:field="form">
-					<g:FlowPanel>
-						<g:FileUpload ui:field="uploader"></g:FileUpload>
-						<g:Hidden ui:field="thumbHeight" name="height" value="228"></g:Hidden>
-						<g:Hidden ui:field="thumbWidth" name="width" value="334"></g:Hidden>
-					</g:FlowPanel>
-				</g:FormPanel>
-			</g:FlowPanel>
-		</g:at>
-		<g:at left="80" top="0">
-			<g:Label ui:field="info" text="点击更新图片" styleName="{style.info}"
-				visible="false"></g:Label>
-		</g:at>
-	</g:AbsolutePanel>
+             xmlns:g="urn:import:com.google.gwt.user.client.ui">
+    <ui:style>
+        .box {
+        background-color: skyblue;
+        }
+
+        .img {
+        border: solid 1px #fff;
+        }
+
+        .info {
+        padding: 5px;
+        background-color: infobackground;
+        color: brown;
+        }
+
+        .box {
+        background-color: #f0f0f0;
+        }
+    </ui:style>
+    <g:AbsolutePanel height="100%" width="100%" ui:field="root" styleName="{style.box}">
+        <g:at left="3" top="3">
+            <g:HTML ui:field="html"></g:HTML>
+        </g:at>
+        <g:at left="5" top="10">
+            <g:FlowPanel ui:field="panelLoader">
+                <g:HorizontalPanel spacing="3">
+                    <g:Button ui:field="btnCancel" text="取消"></g:Button>
+                    <g:Button ui:field="btnRemovePicture" text="删除图片"></g:Button>
+                </g:HorizontalPanel>
+                <g:FormPanel ui:field="form">
+                    <g:FlowPanel>
+                        <g:FileUpload ui:field="uploader"></g:FileUpload>
+                        <g:Hidden ui:field="thumbHeight" name="height" value="228"></g:Hidden>
+                        <g:Hidden ui:field="thumbWidth" name="width" value="334"></g:Hidden>
+                    </g:FlowPanel>
+                </g:FormPanel>
+            </g:FlowPanel>
+        </g:at>
+        <g:at left="80" top="0">
+            <g:Label ui:field="info" text="点击更新图片" styleName="{style.info}"
+                     visible="false"></g:Label>
+        </g:at>
+    </g:AbsolutePanel>
 
 
 </ui:UiBinder>

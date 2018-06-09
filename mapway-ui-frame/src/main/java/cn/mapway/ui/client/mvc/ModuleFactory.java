@@ -49,5 +49,4 @@ public interface ModuleFactory {
     public boolean isModulePublic(String moduleCode);
 
 
-
 }

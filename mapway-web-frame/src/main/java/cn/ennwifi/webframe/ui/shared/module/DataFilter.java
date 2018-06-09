@@ -24,7 +24,7 @@ public class DataFilter implements IsSerializable {
      */
     public DataFilter() {
 
-  }
+    }
 
     /**
      * Instantiates a new Data filter.
@@ -34,8 +34,8 @@ public class DataFilter implements IsSerializable {
      * @param v the v
      */
     public DataFilter(String n, String o, String v) {
-    name = n;
-    op = o;
-    value = v;
-  }
+        name = n;
+        op = o;
+        value = v;
+    }
 }

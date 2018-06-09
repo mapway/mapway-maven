@@ -16,7 +16,7 @@ public class EmailBox extends TextBoxEx {
      * Instantiates a new Email box.
      */
     public EmailBox() {
-    setPattern(PATTERN);
+        setPattern(PATTERN);
 
-  }
+    }
 }

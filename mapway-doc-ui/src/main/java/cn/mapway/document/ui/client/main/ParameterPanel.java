@@ -26,25 +26,27 @@ import java.util.Map;
  * @author zhangjianshe
  */
 public class ParameterPanel extends Composite implements
-		HasSelectionHandlers<ObjectInfo> {
+        HasSelectionHandlers<ObjectInfo> {
 
-	/** The ui binder. */
-	private static ParameterPanelUiBinder uiBinder = GWT
-			.create(ParameterPanelUiBinder.class);
+    /**
+     * The ui binder.
+     */
+    private static ParameterPanelUiBinder uiBinder = GWT
+            .create(ParameterPanelUiBinder.class);
 
     /**
      * The Interface ParameterPanelUiBinder.
      */
     interface ParameterPanelUiBinder extends UiBinder<Widget, ParameterPanel> {
-	}
+    }
 
     /**
      * Instantiates a new parameter panel.
      */
     public ParameterPanel() {
-		initWidget(uiBinder.createAndBindUi(this));
-		tbl.addSelectionHandler(fieldTypeSelectionHandler);
-	}
+        initWidget(uiBinder.createAndBindUi(this));
+        tbl.addSelectionHandler(fieldTypeSelectionHandler);
+    }
 
 
     /**
@@ -62,20 +64,22 @@ public class ParameterPanel extends Composite implements
      */
     List<GenInfo> gens;
 
-	/** The field type selection handler. */
-	private SelectionHandler<ObjectInfo> fieldTypeSelectionHandler = new SelectionHandler<ObjectInfo>() {
+    /**
+     * The field type selection handler.
+     */
+    private SelectionHandler<ObjectInfo> fieldTypeSelectionHandler = new SelectionHandler<ObjectInfo>() {
 
-		@Override
-		public void onSelection(SelectionEvent<ObjectInfo> arg0) {
-			if (mapper != null) {
-				ObjectInfo info = arg0.getSelectedItem();
-				Anchor a = mapper.get(info.type());
-				if (a != null) {
-					a.getElement().scrollIntoView();
-				}
-			}
-		}
-	};
+        @Override
+        public void onSelection(SelectionEvent<ObjectInfo> arg0) {
+            if (mapper != null) {
+                ObjectInfo info = arg0.getSelectedItem();
+                Anchor a = mapper.get(info.type());
+                if (a != null) {
+                    a.getElement().scrollIntoView();
+                }
+            }
+        }
+    };
 
     /**
      * Parses the.
@@ -84,106 +88,105 @@ public class ParameterPanel extends Composite implements
      * @param string the string
      */
     public void parse(ObjectInfo obj, String string) {
-		mObj = obj;
-		gens = new ArrayList<GenInfo>();
-		mapper = new HashMap<String, Anchor>();
+        mObj = obj;
+        gens = new ArrayList<GenInfo>();
+        mapper = new HashMap<String, Anchor>();
 
-		
-		if(tbl.isPrimitive(obj.type()))
-		{
-			//簡單類型
-		}
-		mObj.title(string);
-		
-		tbl.parse(mObj, gens, mapper);
 
-		objInfoPanel.clear();
-		while (needContinue(gens)) {
-			List<GenInfo> gens2 = new ArrayList<GenInfo>();
-			for (GenInfo info : gens) {
-				if (info.gen == false) {
+        if (tbl.isPrimitive(obj.type())) {
+            //簡單類型
+        }
+        mObj.title(string);
 
-					ObjectInfoPanel p = new ObjectInfoPanel();
-					p.addSelectionHandler(fieldTypeSelectionHandler);
-					p.parse(info.obj, gens2, mapper);
-					objInfoPanel.add(p);
-					info.gen = true;
-					
-					Anchor a = new Anchor();
-					a.setName(info.type);
-					mapper.put(info.type, a);
-					objInfoPanel.add(a);
-				}
-			}
-			merge(gens, gens2);
-		}
+        tbl.parse(mObj, gens, mapper);
 
-		jsonPanel.setJson(obj.json());
-	}
+        objInfoPanel.clear();
+        while (needContinue(gens)) {
+            List<GenInfo> gens2 = new ArrayList<GenInfo>();
+            for (GenInfo info : gens) {
+                if (info.gen == false) {
 
-	/**
-	 * Merge.
-	 *
-	 * @param gens the gens
-	 * @param gens2 the gens 2
-	 */
-	private void merge(List<GenInfo> gens, List<GenInfo> gens2) {
-		for (GenInfo info : gens2) {
-			boolean find = false;
-			for (GenInfo gen : gens) {
-				if (gen.type.equals(info.type)) {
-					find = true;
-					break;
-				}
-			}
+                    ObjectInfoPanel p = new ObjectInfoPanel();
+                    p.addSelectionHandler(fieldTypeSelectionHandler);
+                    p.parse(info.obj, gens2, mapper);
+                    objInfoPanel.add(p);
+                    info.gen = true;
 
-			if (find == false) {
-				gens.add(info);
-			}
-		}
-	}
+                    Anchor a = new Anchor();
+                    a.setName(info.type);
+                    mapper.put(info.type, a);
+                    objInfoPanel.add(a);
+                }
+            }
+            merge(gens, gens2);
+        }
 
-	/**
-	 * Need continue.
-	 *
-	 * @param gens2 the gens 2
-	 * @return true, if successful
-	 */
-	private boolean needContinue(List<GenInfo> gens2) {
-		for (GenInfo info : gens2) {
-			if (info.gen == false) {
-				return true;
-			}
-		}
-		return false;
-	}
+        jsonPanel.setJson(obj.json());
+    }
+
+    /**
+     * Merge.
+     *
+     * @param gens  the gens
+     * @param gens2 the gens 2
+     */
+    private void merge(List<GenInfo> gens, List<GenInfo> gens2) {
+        for (GenInfo info : gens2) {
+            boolean find = false;
+            for (GenInfo gen : gens) {
+                if (gen.type.equals(info.type)) {
+                    find = true;
+                    break;
+                }
+            }
+
+            if (find == false) {
+                gens.add(info);
+            }
+        }
+    }
+
+    /**
+     * Need continue.
+     *
+     * @param gens2 the gens 2
+     * @return true, if successful
+     */
+    private boolean needContinue(List<GenInfo> gens2) {
+        for (GenInfo info : gens2) {
+            if (info.gen == false) {
+                return true;
+            }
+        }
+        return false;
+    }
 
     /**
      * The tbl.
      */
     @UiField
-	ObjectInfoPanel tbl;
+    ObjectInfoPanel tbl;
 
     /**
      * The json panel.
      */
     @UiField
-	JsonPanel jsonPanel;
+    JsonPanel jsonPanel;
 
-	/* (non-Javadoc)
-	 * @see com.google.gwt.event.logical.shared.HasSelectionHandlers#addSelectionHandler(com.google.gwt.event.logical.shared.SelectionHandler)
-	 */
-	@Override
-	public HandlerRegistration addSelectionHandler(
-			SelectionHandler<ObjectInfo> arg0) {
-		return addHandler(arg0, SelectionEvent.getType());
-	}
+    /* (non-Javadoc)
+     * @see com.google.gwt.event.logical.shared.HasSelectionHandlers#addSelectionHandler(com.google.gwt.event.logical.shared.SelectionHandler)
+     */
+    @Override
+    public HandlerRegistration addSelectionHandler(
+            SelectionHandler<ObjectInfo> arg0) {
+        return addHandler(arg0, SelectionEvent.getType());
+    }
 
     /**
      * The obj info panel.
      */
     @UiField
-	HTMLPanel objInfoPanel;
+    HTMLPanel objInfoPanel;
 
-	
+
 }

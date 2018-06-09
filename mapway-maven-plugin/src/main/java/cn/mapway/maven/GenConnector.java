@@ -27,106 +27,115 @@ import cn.mapway.document.module.ApiDoc;
 public class GenConnector extends AbstractMojo {
 
 
+    /**
+     * The path.
+     */
+    @Parameter(defaultValue = "${project.basedir}/src/main/java", property = "path", required = true)
+    private String path;
 
-  /** The path. */
-  @Parameter(defaultValue = "${project.basedir}/src/main/java", property = "path", required = true)
-  private String path;
+    /**
+     * The api url.
+     */
+    @Parameter(defaultValue = "", property = "apiUrl", required = true)
+    private String apiUrl;
 
-  /** The api url. */
-  @Parameter(defaultValue = "", property = "apiUrl", required = true)
-  private String apiUrl;
+    /**
+     * The package name.
+     */
+    @Parameter(defaultValue = "", property = "packageName", required = true)
+    private String packageName;
 
-  /** The package name. */
-  @Parameter(defaultValue = "", property = "packageName", required = true)
-  private String packageName;
+    /**
+     * The class name.
+     */
+    @Parameter(defaultValue = "Connector", property = "className", required = true)
+    private String className;
 
-  /** The class name. */
-  @Parameter(defaultValue = "Connector", property = "className", required = true)
-  private String className;
-
-  /** The class name. */
-  @Parameter(defaultValue = "gwt", property = "contype", required = true)
-  private String contype;
+    /**
+     * The class name.
+     */
+    @Parameter(defaultValue = "gwt", property = "contype", required = true)
+    private String contype;
 
 
-  /**
-   * 执行goal 调用 mapway-doc-ui 生成源代码.
-   *
-   * @throws MojoExecutionException the mojo execution exception
-   */
-  public void execute() throws MojoExecutionException {
-    Log logger = getLog();
-    if (contype.compareTo("gwt") == 0) {
-      exportGwtConnector(logger);
-    } else if (contype.compareToIgnoreCase("java") == 0) {
-      exportJavaConnector(logger);
-    } else {
-      logger.error("unsupport connection type " + contype + " ,current support gwt java");
+    /**
+     * 执行goal 调用 mapway-doc-ui 生成源代码.
+     *
+     * @throws MojoExecutionException the mojo execution exception
+     */
+    public void execute() throws MojoExecutionException {
+        Log logger = getLog();
+        if (contype.compareTo("gwt") == 0) {
+            exportGwtConnector(logger);
+        } else if (contype.compareToIgnoreCase("java") == 0) {
+            exportJavaConnector(logger);
+        } else {
+            logger.error("unsupport connection type " + contype + " ,current support gwt java");
+        }
+
     }
 
-  }
+    private void exportJavaConnector(Log logger) {
+        JavaConnextorExport exportJava = new JavaConnextorExport();
 
-  private void exportJavaConnector(Log logger) {
-    JavaConnextorExport exportJava = new JavaConnextorExport();
+        if (Strings.isBlank(apiUrl)) {
+            logger.info("apiurl 配置为空字符串,取消本次访问代码生成");
+            return;
+        }
 
-    if (Strings.isBlank(apiUrl)) {
-      logger.info("apiurl 配置为空字符串,取消本次访问代码生成");
-      return;
+        // 获取 ApiDoc
+        Response res = Http.get(apiUrl);
+        if (!res.isOK()) {
+            logger.info("获取API文档信息" + apiUrl + "错误:" + res.getStatus());
+            return;
+        }
+        ApiDoc doc = Json.fromJson(ApiDoc.class, res.getReader());
+        if (doc == null) {
+            logger.info("获取API文档信息" + apiUrl + "错误:" + res.getContent());
+            return;
+        }
+
+        List<JavaClassContent> codes = exportJava.export2(doc, packageName, className);
+
+        for (JavaClassContent jcc : codes) {
+            String fileName = makePathFile(path, jcc.packageName, jcc.className);
+            logger.info("生成JavaAPI的代理接口" + className + "-->" + fileName);
+            Files.write(fileName, jcc.body);
+        }
     }
 
-    // 获取 ApiDoc
-    Response res = Http.get(apiUrl);
-    if (!res.isOK()) {
-      logger.info("获取API文档信息" + apiUrl + "错误:" + res.getStatus());
-      return;
+
+    /**
+     *
+     */
+    private void exportGwtConnector(Log logger) {
+        GwtConnextorExport exportJava = new GwtConnextorExport();
+
+        if (Strings.isBlank(apiUrl)) {
+            logger.info("apiurl 配置为空字符串,取消本次访问代码生成");
+            return;
+        }
+
+        // 获取 ApiDoc
+        Response res = Http.get(apiUrl);
+        if (!res.isOK()) {
+            logger.info("获取API文档信息" + apiUrl + "错误:" + res.getStatus());
+            return;
+        }
+        ApiDoc doc = Json.fromJson(ApiDoc.class, res.getReader());
+        if (doc == null) {
+            logger.info("获取API文档信息" + apiUrl + "错误:" + res.getContent());
+            return;
+        }
+
+        List<JavaClassContent> codes = exportJava.export2(doc, packageName, className);
+
+        for (JavaClassContent jcc : codes) {
+            String fileName = makePathFile(path, jcc.packageName, jcc.className);
+            logger.info("生成API的代理接口" + className + "-->" + fileName);
+            Files.write(fileName, jcc.body);
+        }
     }
-    ApiDoc doc = Json.fromJson(ApiDoc.class, res.getReader());
-    if (doc == null) {
-      logger.info("获取API文档信息" + apiUrl + "错误:" + res.getContent());
-      return;
-    }
-
-    List<JavaClassContent> codes = exportJava.export2(doc, packageName, className);
-
-    for (JavaClassContent jcc : codes) {
-      String fileName = makePathFile(path, jcc.packageName, jcc.className);
-      logger.info("生成JavaAPI的代理接口" + className + "-->" + fileName);
-      Files.write(fileName, jcc.body);
-    }
-  }
-
-
-  /**
-   * 
-   */
-  private void exportGwtConnector(Log logger) {
-    GwtConnextorExport exportJava = new GwtConnextorExport();
-
-    if (Strings.isBlank(apiUrl)) {
-      logger.info("apiurl 配置为空字符串,取消本次访问代码生成");
-      return;
-    }
-
-    // 获取 ApiDoc
-    Response res = Http.get(apiUrl);
-    if (!res.isOK()) {
-      logger.info("获取API文档信息" + apiUrl + "错误:" + res.getStatus());
-      return;
-    }
-    ApiDoc doc = Json.fromJson(ApiDoc.class, res.getReader());
-    if (doc == null) {
-      logger.info("获取API文档信息" + apiUrl + "错误:" + res.getContent());
-      return;
-    }
-
-    List<JavaClassContent> codes = exportJava.export2(doc, packageName, className);
-
-    for (JavaClassContent jcc : codes) {
-      String fileName = makePathFile(path, jcc.packageName, jcc.className);
-      logger.info("生成API的代理接口" + className + "-->" + fileName);
-      Files.write(fileName, jcc.body);
-    }
-  }
 
     /**
      * 构造文件路径.
@@ -137,9 +146,9 @@ public class GenConnector extends AbstractMojo {
      * @return the string
      */
     public static String makePathFile(String javaConnectorSourcePath, String packageName,
-      String className) {
-    String p = packageName.replace(".", File.separator);
+                                      String className) {
+        String p = packageName.replace(".", File.separator);
 
-    return javaConnectorSourcePath + File.separator + p + File.separator + className + ".java";
-  }
+        return javaConnectorSourcePath + File.separator + p + File.separator + className + ".java";
+    }
 }

@@ -21,20 +21,20 @@ public abstract class MessageComposite extends Composite implements HasMessageHa
      * Instantiates a new message composite.
      */
     public MessageComposite() {
-    super();
-  }
+        super();
+    }
 
-  /*
-   * (non-Javadoc)
-   * 
-   * @see
-   * com.ksyzt.gwt.client.event.HasMessageHandlers#addMessageHandler(com.ksyzt.gwt.client.event.
-   * MessageHandler)
-   */
-  @Override
-  public HandlerRegistration addMessageHandler(MessageHandler handler) {
-    return addHandler(handler, MessageEvent.TYPE);
-  }
+    /*
+     * (non-Javadoc)
+     *
+     * @see
+     * com.ksyzt.gwt.client.event.HasMessageHandlers#addMessageHandler(com.ksyzt.gwt.client.event.
+     * MessageHandler)
+     */
+    @Override
+    public HandlerRegistration addMessageHandler(MessageHandler handler) {
+        return addHandler(handler, MessageEvent.TYPE);
+    }
 
     /**
      * Info.
@@ -42,8 +42,8 @@ public abstract class MessageComposite extends Composite implements HasMessageHa
      * @param text the text
      */
     public void info(String text) {
-    info(text, true);
-  }
+        info(text, true);
+    }
 
     /**
      * Info.
@@ -52,17 +52,17 @@ public abstract class MessageComposite extends Composite implements HasMessageHa
      * @param loadding the loadding
      */
     public void info(String text, boolean loadding) {
-    InformationDialog.DIALOG.show();
-    InformationDialog.DIALOG.center();
-    InformationDialog.DIALOG.setInformation(text, loadding);
-  }
+        InformationDialog.DIALOG.show();
+        InformationDialog.DIALOG.center();
+        InformationDialog.DIALOG.setInformation(text, loadding);
+    }
 
     /**
      * Close info.
      */
     public void closeInfo() {
-    InformationDialog.DIALOG.hide();
-  }
+        InformationDialog.DIALOG.hide();
+    }
 
     /**
      * 发送消息.
@@ -70,8 +70,8 @@ public abstract class MessageComposite extends Composite implements HasMessageHa
      * @param message the message
      */
     public void message(String message) {
-    onMessage(this, MessageEvent.MESSAGE, message);
-  }
+        onMessage(this, MessageEvent.MESSAGE, message);
+    }
 
     /**
      * 缺省的消息处理函数.
@@ -81,9 +81,9 @@ public abstract class MessageComposite extends Composite implements HasMessageHa
      * @param data    the data
      */
     public void onMessage(Object sender, Integer message, Object data) {
-    MessageEvent ev = new MessageEvent(message, data);
-    fireEvent(ev);
-  }
+        MessageEvent ev = new MessageEvent(message, data);
+        fireEvent(ev);
+    }
 
     /**
      * 辅助处理消息.
@@ -93,10 +93,10 @@ public abstract class MessageComposite extends Composite implements HasMessageHa
      * @param value   the value
      */
     public void handlerMessaage(Object sender, Integer message, Object value) {
-    if (message == MessageEvent.MESSAGE) {
-      message((String) value);
+        if (message == MessageEvent.MESSAGE) {
+            message((String) value);
+        }
     }
-  }
 
     /**
      * 辅助函数，激发一个消息.
@@ -105,12 +105,12 @@ public abstract class MessageComposite extends Composite implements HasMessageHa
      * @param data    消息数据
      */
     public void fireMessage(Integer message, Object data) {
-    MessageEvent ev = new MessageEvent(message, data);
-    fireEvent(ev);
-  }
+        MessageEvent ev = new MessageEvent(message, data);
+        fireEvent(ev);
+    }
 
-  @Override
-  public void update(Observable sender, Object data) {
+    @Override
+    public void update(Observable sender, Object data) {
 
-  }
+    }
 }

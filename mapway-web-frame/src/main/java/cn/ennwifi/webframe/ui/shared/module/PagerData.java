@@ -12,31 +12,41 @@ import java.util.List;
  */
 public class PagerData<T> implements com.google.gwt.user.client.rpc.IsSerializable {
 
-  /** The page count. */
-  private int pageCount;
+    /**
+     * The page count.
+     */
+    private int pageCount;
 
-  /** The page. 从1开始 */
-  private Integer page;
+    /**
+     * The page. 从1开始
+     */
+    private Integer page;
 
-  /** The page size. */
-  private Integer pageSize;
+    /**
+     * The page size.
+     */
+    private Integer pageSize;
 
-  /** The total. */
-  private Integer total;
+    /**
+     * The total.
+     */
+    private Integer total;
 
-  /** 返回的数据. */
-  private List<T> data;
+    /**
+     * 返回的数据.
+     */
+    private List<T> data;
 
 
     /**
      * 缺省 page=1, pageSize=20, total=-1 需要计算返回值.
      */
     public PagerData() {
-    page = 1;
-    pageSize = 20;
-    total = -1;
-    setData(new ArrayList<T>());
-  }
+        page = 1;
+        pageSize = 20;
+        total = -1;
+        setData(new ArrayList<T>());
+    }
 
     /**
      * Gets the page count.
@@ -44,8 +54,8 @@ public class PagerData<T> implements com.google.gwt.user.client.rpc.IsSerializab
      * @return the page count
      */
     public int getPageCount() {
-    return pageCount;
-  }
+        return pageCount;
+    }
 
     /**
      * Sets the page count.
@@ -53,8 +63,8 @@ public class PagerData<T> implements com.google.gwt.user.client.rpc.IsSerializab
      * @param pageCount the new page count
      */
     public void setPageCount(int pageCount) {
-    this.pageCount = pageCount;
-  }
+        this.pageCount = pageCount;
+    }
 
     /**
      * Gets the page.
@@ -62,8 +72,8 @@ public class PagerData<T> implements com.google.gwt.user.client.rpc.IsSerializab
      * @return the page
      */
     public Integer getPage() {
-    return page;
-  }
+        return page;
+    }
 
     /**
      * Sets the page.
@@ -71,8 +81,8 @@ public class PagerData<T> implements com.google.gwt.user.client.rpc.IsSerializab
      * @param page the new page
      */
     public void setPage(Integer page) {
-    this.page = page;
-  }
+        this.page = page;
+    }
 
     /**
      * Gets the page size.
@@ -80,8 +90,8 @@ public class PagerData<T> implements com.google.gwt.user.client.rpc.IsSerializab
      * @return the page size
      */
     public Integer getPageSize() {
-    return pageSize;
-  }
+        return pageSize;
+    }
 
     /**
      * Sets the page size.
@@ -89,8 +99,8 @@ public class PagerData<T> implements com.google.gwt.user.client.rpc.IsSerializab
      * @param pageSize the new page size
      */
     public void setPageSize(Integer pageSize) {
-    this.pageSize = pageSize;
-  }
+        this.pageSize = pageSize;
+    }
 
     /**
      * Gets the total.
@@ -98,8 +108,8 @@ public class PagerData<T> implements com.google.gwt.user.client.rpc.IsSerializab
      * @return the total
      */
     public Integer getTotal() {
-    return total;
-  }
+        return total;
+    }
 
     /**
      * Sets the total.
@@ -107,8 +117,8 @@ public class PagerData<T> implements com.google.gwt.user.client.rpc.IsSerializab
      * @param total the new total
      */
     public void setTotal(Integer total) {
-    this.total = total;
-  }
+        this.total = total;
+    }
 
     /**
      * Gets the data.
@@ -116,8 +126,8 @@ public class PagerData<T> implements com.google.gwt.user.client.rpc.IsSerializab
      * @return the data
      */
     public List<T> getData() {
-    return data;
-  }
+        return data;
+    }
 
     /**
      * Sets the data.
@@ -125,7 +135,7 @@ public class PagerData<T> implements com.google.gwt.user.client.rpc.IsSerializab
      * @param data the new data
      */
     public void setData(List<T> data) {
-    this.data = data;
-  }
+        this.data = data;
+    }
 
 }

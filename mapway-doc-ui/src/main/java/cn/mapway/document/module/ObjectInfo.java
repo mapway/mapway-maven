@@ -13,7 +13,7 @@ public class ObjectInfo implements Serializable {
      * Instantiates a new object info.
      */
     public ObjectInfo() {
-	}
+    }
 
     /**
      * The name.

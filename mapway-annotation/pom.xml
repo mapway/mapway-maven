@@ -8,7 +8,7 @@
     <parent>
         <groupId>cn.mapway</groupId>
         <artifactId>mapway-maven</artifactId>
-        <version>2.0.9</version>
+        <version>2.0.10</version>
     </parent>
     <description>注解库</description>
     <url>http://mapway.cn</url>

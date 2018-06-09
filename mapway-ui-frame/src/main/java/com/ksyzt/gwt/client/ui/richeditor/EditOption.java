@@ -17,10 +17,10 @@ public class EditOption extends JavaScriptObject {
      * @return the simple option
      */
     public final static EditOption getSimpleOption() {
-		EditOption option = EditOption.create();
-		option.tools(TS_SIMPLE);
-		return option;
-	}
+        EditOption option = EditOption.create();
+        option.tools(TS_SIMPLE);
+        return option;
+    }
 
     /**
      * The Constant TS_FULL.
@@ -71,8 +71,8 @@ public class EditOption extends JavaScriptObject {
      * Instantiates a new edits the option.
      */
     protected EditOption() {
-		
-	}
+
+    }
 
     /**
      * Creates the.

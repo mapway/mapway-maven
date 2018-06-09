@@ -16,5 +16,5 @@
 
 <!-- Includes the source files for the Chrome theme. -->
 <module>
-      <stylesheet src="gwt/enn/enn.css"/>
+    <stylesheet src="gwt/enn/enn.css"/>
 </module>

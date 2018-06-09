@@ -17,14 +17,14 @@ public class Group extends JavaScriptObject {
      * Instantiates a new group.
      */
     protected Group() {
-	}
+    }
 
     /**
      * 节点名称.
      *
      * @return the string
      */
-    public  final native String name()/*-{
+    public final native String name()/*-{
 		return this.name;
 	}-*/;
 
@@ -33,7 +33,7 @@ public class Group extends JavaScriptObject {
      *
      * @return the string
      */
-    public  final native String fullName()/*-{
+    public final native String fullName()/*-{
 		return this.fullName;
 	}-*/;
 
@@ -42,7 +42,7 @@ public class Group extends JavaScriptObject {
      *
      * @return the string
      */
-    public  final native String summary()/*-{
+    public final native String summary()/*-{
 		return this.summary;
 	}-*/;
 
@@ -51,7 +51,7 @@ public class Group extends JavaScriptObject {
      *
      * @return the js array
      */
-    public  final native JsArray<Entry> entries()/*-{
+    public final native JsArray<Entry> entries()/*-{
 		return this.entries || [];
 	}-*/;
 
@@ -64,5 +64,5 @@ public class Group extends JavaScriptObject {
 		return this.subGroups || [];
 	}-*/;
 
-	
+
 }

@@ -26,19 +26,19 @@ public class MenuItemCommand implements ScheduledCommand {
      * @param au the au
      */
     public MenuItemCommand(S_RESOURCEObj au) {
-    data = au;
-  }
-
-  /*
-   * (non-Javadoc)
-   * 
-   * @see com.google.gwt.core.client.Scheduler.ScheduledCommand#execute()
-   */
-  @Override
-  public void execute() {
-    if (data != null) {
-      ClientContext.getContext().postTopic(EventTopics.SWITCH_MAIN_FRAME_SUB_MODULE, 0, data);
+        data = au;
     }
-  }
+
+    /*
+     * (non-Javadoc)
+     *
+     * @see com.google.gwt.core.client.Scheduler.ScheduledCommand#execute()
+     */
+    @Override
+    public void execute() {
+        if (data != null) {
+            ClientContext.getContext().postTopic(EventTopics.SWITCH_MAIN_FRAME_SUB_MODULE, 0, data);
+        }
+    }
 
 }

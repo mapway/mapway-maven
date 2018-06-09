@@ -41,12 +41,12 @@ public class ModuleData {
      */
     ModuleProperties m_props;
 
-	/**
-	 * Instantiates a new module data.
-	 */
-	@SuppressWarnings("unused")
-	private ModuleData() {
-	}
+    /**
+     * Instantiates a new module data.
+     */
+    @SuppressWarnings("unused")
+    private ModuleData() {
+    }
 
     /**
      * Gets the widget.
@@ -54,12 +54,12 @@ public class ModuleData {
      * @return the widget
      */
     public Widget getWidget() {
-		if (module == null) {
-			return null;
-		} else {
-			return module.getRootWidget();
-		}
-	}
+        if (module == null) {
+            return null;
+        } else {
+            return module.getRootWidget();
+        }
+    }
 
     /**
      * Gets the index.
@@ -67,8 +67,8 @@ public class ModuleData {
      * @return the index
      */
     public Integer getIndex() {
-		return this.thisIndex;
-	}
+        return this.thisIndex;
+    }
 
     /**
      * Gets the caption.
@@ -76,8 +76,8 @@ public class ModuleData {
      * @return the caption
      */
     public String getCaption() {
-		return m_mf.getModuleCaption();
-	}
+        return m_mf.getModuleCaption();
+    }
 
     /**
      * Creates the widget.
@@ -85,12 +85,12 @@ public class ModuleData {
      * @return the widget
      */
     public Widget createWidget() {
-		if (module == null) {
-			module = m_mf.createModule();
-			module.onInitialize(app, m_props);
-		}
-		return module.getRootWidget();
-	}
+        if (module == null) {
+            module = m_mf.createModule();
+            module.onInitialize(app, m_props);
+        }
+        return module.getRootWidget();
+    }
 
     /**
      * Instantiates a new module data.
@@ -100,11 +100,11 @@ public class ModuleData {
      * @param props       the props
      */
     public ModuleData(AppData application, IModuleFactory mf,
-			ModuleProperties props) {
-		m_mf = mf;
-		app = application;
-		module = null;
-		thisIndex = g_index++;
-		m_props = props;
-	}
+                      ModuleProperties props) {
+        m_mf = mf;
+        app = application;
+        module = null;
+        thisIndex = g_index++;
+        m_props = props;
+    }
 }

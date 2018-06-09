@@ -1,7 +1,6 @@
 package cn.ennwifi.webframe.ui.client.modules.authority.role;
 
 
-
 import cn.ennwifi.webframe.ui.client.rpc.WebFrameProxy;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
@@ -26,22 +25,25 @@ import cn.mapway.ui.client.widget.common.DialogBoxEx;
  */
 public class EditRole extends DialogBoxEx {
 
-  /** The ui binder. */
-  private static EditRoleUiBinder uiBinder = GWT.create(EditRoleUiBinder.class);
+    /**
+     * The ui binder.
+     */
+    private static EditRoleUiBinder uiBinder = GWT.create(EditRoleUiBinder.class);
 
     /**
      * The Interface EditRoleUiBinder.
      */
-    interface EditRoleUiBinder extends UiBinder<Widget, EditRole> {}
+    interface EditRoleUiBinder extends UiBinder<Widget, EditRole> {
+    }
 
     /**
      * Instantiates a new edits the role.
      */
     public EditRole() {
-    setWidget(uiBinder.createAndBindUi(this));
-    setText("角色编辑");
-    edit(null);
-  }
+        setWidget(uiBinder.createAndBindUi(this));
+        setText("角色编辑");
+        edit(null);
+    }
 
     /**
      * The m role.
@@ -54,35 +56,35 @@ public class EditRole extends DialogBoxEx {
      * @param role the role
      */
     public void edit(S_ROLEObj role) {
-    message("");
-    if (role == null) {
-      role = new S_ROLEObj();
-      role.setName("输入角色名称");
-      role.setSummary("角色说明");
+        message("");
+        if (role == null) {
+            role = new S_ROLEObj();
+            role.setName("输入角色名称");
+            role.setSummary("角色说明");
+        }
+        mRole = role;
+        toUserInterface();
     }
-    mRole = role;
-    toUserInterface();
-  }
 
-  /**
-   * To UI.
-   */
-  private void toUserInterface() {
-    txtName.setValue(mRole.getName());
-    txtSummary.setValue(mRole.getSummary());
-  }
+    /**
+     * To UI.
+     */
+    private void toUserInterface() {
+        txtName.setValue(mRole.getName());
+        txtSummary.setValue(mRole.getSummary());
+    }
 
     /**
      * The txt NAME.
      */
     @UiField
-  TextBox txtName;
+    TextBox txtName;
 
     /**
      * The txt SUMMARY.
      */
     @UiField
-  TextArea txtSummary;
+    TextArea txtSummary;
 
 
     /**
@@ -91,19 +93,19 @@ public class EditRole extends DialogBoxEx {
      * @param e the e
      */
     void onDeleteClick(ClickEvent e) {
-    WebFrameProxy.get().deleteAdminRole(mRole.getId(), new AsyncCallback<Boolean>() {
+        WebFrameProxy.get().deleteAdminRole(mRole.getId(), new AsyncCallback<Boolean>() {
 
-      @Override
-      public void onSuccess(Boolean result) {
-        hide();
-      }
+            @Override
+            public void onSuccess(Boolean result) {
+                hide();
+            }
 
-      @Override
-      public void onFailure(Throwable caught) {
-        message(caught.getMessage());
-      }
-    });
-  }
+            @Override
+            public void onFailure(Throwable caught) {
+                message(caught.getMessage());
+            }
+        });
+    }
 
 
     /**
@@ -112,65 +114,65 @@ public class EditRole extends DialogBoxEx {
      * @param e the e
      */
     @UiHandler("btnSave")
-  void onSaveClick(ClickEvent e) {
-    fromUserInterface();
-    String checked = checkObject(mRole);
+    void onSaveClick(ClickEvent e) {
+        fromUserInterface();
+        String checked = checkObject(mRole);
 
-    if (checked.length() > 0) {
-      message(checked);
-      return;
+        if (checked.length() > 0) {
+            message(checked);
+            return;
+        }
+        WebFrameProxy.get().saveAdminRole(mRole, new AsyncCallback<S_ROLEObj>() {
+
+            @Override
+            public void onSuccess(S_ROLEObj result) {
+                edit(result);
+                MessageEvent ev = new MessageEvent(MessageEvent.SAVE, null);
+                fireEvent(ev);
+                hide();
+            }
+
+            @Override
+            public void onFailure(Throwable caught) {
+
+            }
+        });
     }
-    WebFrameProxy.get().saveAdminRole(mRole, new AsyncCallback<S_ROLEObj>() {
-
-      @Override
-      public void onSuccess(S_ROLEObj result) {
-        edit(result);
-        MessageEvent ev = new MessageEvent(MessageEvent.SAVE, null);
-        fireEvent(ev);
-        hide();
-      }
-
-      @Override
-      public void onFailure(Throwable caught) {
-
-      }
-    });
-  }
 
     /**
      * The Lb message.
      */
     @UiField
-  Label lbMessage;
+    Label lbMessage;
 
-  private void message(String checked) {
-    lbMessage.setText(checked);
-  }
-
-  /**
-   * 监测用户输入数据.
-   *
-   * @param mRole2 the m role 2
-   * @return the string
-   */
-  private String checkObject(S_ROLEObj mRole2) {
-    String rmsg = "";
-    if (mRole2.getName() == null || mRole2.getName().length() == 0 || mRole2.getName().length() > 64) {
-      return "角色名称需要1到64个字符串长度";
+    private void message(String checked) {
+        lbMessage.setText(checked);
     }
-    if (mRole2.getSummary() != null && mRole2.getSummary().length() > 128) {
-      return "角色说明不能大于128个字符";
-    }
-    return rmsg;
-  }
 
-  /**
-   * From UI.
-   */
-  private void fromUserInterface() {
-    mRole.setName(txtName.getValue());
-    mRole.setSummary(txtSummary.getValue());
-  }
+    /**
+     * 监测用户输入数据.
+     *
+     * @param mRole2 the m role 2
+     * @return the string
+     */
+    private String checkObject(S_ROLEObj mRole2) {
+        String rmsg = "";
+        if (mRole2.getName() == null || mRole2.getName().length() == 0 || mRole2.getName().length() > 64) {
+            return "角色名称需要1到64个字符串长度";
+        }
+        if (mRole2.getSummary() != null && mRole2.getSummary().length() > 128) {
+            return "角色说明不能大于128个字符";
+        }
+        return rmsg;
+    }
+
+    /**
+     * From UI.
+     */
+    private void fromUserInterface() {
+        mRole.setName(txtName.getValue());
+        mRole.setSummary(txtSummary.getValue());
+    }
 
 
 }

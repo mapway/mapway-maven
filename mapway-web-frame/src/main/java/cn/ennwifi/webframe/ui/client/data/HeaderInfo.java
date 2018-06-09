@@ -72,14 +72,14 @@ public class HeaderInfo {
      * @param widget    the widget
      */
     public HeaderInfo(String name, String fieldName, int order, SafeUri safeUri, boolean colShow, Widget widget) {
-    this.name = name;
-    this.fieldName = fieldName;
-    this.order = order;
-    this.safeUri = safeUri;
-    this.colShow = colShow;
-    this.fieldIndex = null;
-    this.widget = widget;
-  }
+        this.name = name;
+        this.fieldName = fieldName;
+        this.order = order;
+        this.safeUri = safeUri;
+        this.colShow = colShow;
+        this.fieldIndex = null;
+        this.widget = widget;
+    }
 
     /**
      * Instantiates a new header info.
@@ -90,8 +90,8 @@ public class HeaderInfo {
      * @param safeUri   the safe uri
      */
     public HeaderInfo(String name, String fieldName, int order, SafeUri safeUri) {
-    this(name, fieldName, order, safeUri, true, null);
-  }
+        this(name, fieldName, order, safeUri, true, null);
+    }
 
     /**
      * Instantiates a new header info.
@@ -101,8 +101,8 @@ public class HeaderInfo {
      * @param order     the order
      */
     public HeaderInfo(String name, String fieldName, int order) {
-    this(name, fieldName, order, SysResource.INSTANCE.checkTrue().getSafeUri(), true, null);
-  }
+        this(name, fieldName, order, SysResource.INSTANCE.checkTrue().getSafeUri(), true, null);
+    }
 
     /**
      * Instantiates a new header info.
@@ -111,8 +111,8 @@ public class HeaderInfo {
      * @param fieldName the field name
      */
     public HeaderInfo(String name, String fieldName) {
-    this(name, fieldName, ORDER_NULL, SysResource.INSTANCE.checkTrue().getSafeUri(), true, null);
-  }
+        this(name, fieldName, ORDER_NULL, SysResource.INSTANCE.checkTrue().getSafeUri(), true, null);
+    }
 
     /**
      * Instantiates a new header info.
@@ -120,8 +120,8 @@ public class HeaderInfo {
      * @param name the name
      */
     public HeaderInfo(String name) {
-    this(name, "", ORDER_NULL, SysResource.INSTANCE.checkTrue().getSafeUri(), true, null);
-  }
+        this(name, "", ORDER_NULL, SysResource.INSTANCE.checkTrue().getSafeUri(), true, null);
+    }
 
     /**
      * Instantiates a new Header info.
@@ -129,8 +129,8 @@ public class HeaderInfo {
      * @param widget the widget
      */
     public HeaderInfo(Widget widget) {
-    this(null, "", ORDER_NULL, SysResource.INSTANCE.checkTrue().getSafeUri(), true, widget);
-  }
+        this(null, "", ORDER_NULL, SysResource.INSTANCE.checkTrue().getSafeUri(), true, widget);
+    }
 
     /**
      * Instantiates a new header info.
@@ -143,13 +143,13 @@ public class HeaderInfo {
      * @param colShow    是否显示
      */
     public HeaderInfo(String name, Integer fieldIndex, String fieldName, int order, SafeUri safeUri, boolean colShow) {
-    this.name = name;
-    this.fieldName = fieldName;
-    this.order = order;
-    this.safeUri = safeUri;
-    this.colShow = colShow;
-    this.fieldIndex = fieldIndex;
-  }
+        this.name = name;
+        this.fieldName = fieldName;
+        this.order = order;
+        this.safeUri = safeUri;
+        this.colShow = colShow;
+        this.fieldIndex = fieldIndex;
+    }
 
     /**
      * Instantiates a new header info.
@@ -159,8 +159,8 @@ public class HeaderInfo {
      * @param fieldName  the field name
      */
     public HeaderInfo(String name, Integer fieldIndex, String fieldName) {
-    this(name, fieldIndex, fieldName, ORDER_NULL);
-  }
+        this(name, fieldIndex, fieldName, ORDER_NULL);
+    }
 
     /**
      * Instantiates a new header info.
@@ -171,8 +171,8 @@ public class HeaderInfo {
      * @param order      the order
      */
     public HeaderInfo(String name, Integer fieldIndex, String fieldName, int order) {
-    this(name, fieldIndex, fieldName, order, SysResource.INSTANCE.checkTrue().getSafeUri());
-  }
+        this(name, fieldIndex, fieldName, order, SysResource.INSTANCE.checkTrue().getSafeUri());
+    }
 
     /**
      * Instantiates a new header info.
@@ -184,6 +184,6 @@ public class HeaderInfo {
      * @param safeUri    the safe uri
      */
     public HeaderInfo(String name, Integer fieldIndex, String fieldName, int order, SafeUri safeUri) {
-    this(name, fieldIndex, fieldName, order, safeUri, true);
-  }
+        this(name, fieldIndex, fieldName, order, safeUri, true);
+    }
 }

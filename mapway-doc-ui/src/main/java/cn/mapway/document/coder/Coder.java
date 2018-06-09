@@ -22,9 +22,9 @@ public class Coder {
      * @param message the message
      */
     public Coder(String code, String message) {
-    this.code = code;
-    this.message = message;
-  }
+        this.code = code;
+        this.message = message;
+    }
 
     /**
      * Bind.
@@ -33,28 +33,28 @@ public class Coder {
      * @return the coder
      */
     public Coder bind(Object... objects) {
-    if (objects == null) {
-      return this;
+        if (objects == null) {
+            return this;
+        }
+
+        String str = message;
+        for (int i = 0; i < objects.length; i++) {
+            Object o = objects[i];
+            if (o == null) {
+                o = "null";
+            }
+            str = str.replaceAll("\\$\\{" + i + "\\}", o.toString());
+        }
+        return new Coder(code, str);
     }
 
-    String str = message;
-    for (int i = 0; i < objects.length; i++) {
-      Object o = objects[i];
-      if (o == null) {
-        o = "null";
-      }
-      str = str.replaceAll("\\$\\{" + i + "\\}", o.toString());
+    /**
+     * 输出对象字符串.
+     *
+     * @return the string
+     */
+    @Override
+    public String toString() {
+        return "{\"code\":\"" + code + "\",\"" + message + "\"}";
     }
-    return new Coder(code, str);
-  }
-
-  /**
-   * 输出对象字符串.
-   *
-   * @return the string
-   */
-  @Override
-  public String toString() {
-    return "{\"code\":\"" + code + "\",\"" + message + "\"}";
-  }
 }

@@ -1,27 +1,29 @@
 <!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
 <ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
-	xmlns:g="urn:import:com.google.gwt.user.client.ui" xmlns:m="urn:import:cn.mapway.ui.client.widget">
-	<ui:style>
-	
-	</ui:style>
-	<g:HTMLPanel styleName="mapway-Login-Panel">
-			<table>
-				<tr>
-					<td>用戶名</td>
-					<td><g:TextBox ui:field="txtName"></g:TextBox> </td>
-				</tr>
-				<tr>
-					<td>密碼</td>
-					<td>
-						<g:PasswordTextBox ui:field="txtPassword">
-						</g:PasswordTextBox>
-					</td>
-				</tr>
-				<tr>
-					<td colspan="2">
-						<m:MapwayButton ui:field="btnSubmit">提交</m:MapwayButton>
-					</td>
-				</tr>
-			</table>
-	</g:HTMLPanel>
+             xmlns:g="urn:import:com.google.gwt.user.client.ui" xmlns:m="urn:import:cn.mapway.ui.client.widget">
+    <ui:style>
+
+    </ui:style>
+    <g:HTMLPanel styleName="mapway-Login-Panel">
+        <table>
+            <tr>
+                <td>用戶名</td>
+                <td>
+                    <g:TextBox ui:field="txtName"></g:TextBox>
+                </td>
+            </tr>
+            <tr>
+                <td>密碼</td>
+                <td>
+                    <g:PasswordTextBox ui:field="txtPassword">
+                    </g:PasswordTextBox>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <m:MapwayButton ui:field="btnSubmit">提交</m:MapwayButton>
+                </td>
+            </tr>
+        </table>
+    </g:HTMLPanel>
 </ui:UiBinder> 

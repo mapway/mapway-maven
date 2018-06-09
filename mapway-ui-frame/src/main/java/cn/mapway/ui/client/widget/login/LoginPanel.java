@@ -24,41 +24,41 @@ import com.google.gwt.user.client.ui.Widget;
  */
 public class LoginPanel extends Composite implements HasMapwayHandlers<LoginData> {
 
-	private static LoginPanelUiBinder uiBinder = GWT
-			.create(LoginPanelUiBinder.class);
+    private static LoginPanelUiBinder uiBinder = GWT
+            .create(LoginPanelUiBinder.class);
 
     /**
      * The interface Login panel ui binder.
      */
     interface LoginPanelUiBinder extends UiBinder<Widget, LoginPanel> {
-	}
+    }
 
     /**
      * Instantiates a new Login panel.
      */
     public LoginPanel() {
-		initWidget(uiBinder.createAndBindUi(this));
-	}
+        initWidget(uiBinder.createAndBindUi(this));
+    }
 
-	public HandlerRegistration addMapwayHandler(MapwayHandler<LoginData> handler) {
-		return addHandler(handler, MapwayEvent.getType());
-	}
+    public HandlerRegistration addMapwayHandler(MapwayHandler<LoginData> handler) {
+        return addHandler(handler, MapwayEvent.getType());
+    }
 
     /**
      * The Btn submit.
      */
     @UiField
-	MapwayButton btnSubmit;
+    MapwayButton btnSubmit;
     /**
      * The Txt name.
      */
     @UiField
-	TextBox txtName;
+    TextBox txtName;
     /**
      * The Txt password.
      */
     @UiField
-	PasswordTextBox txtPassword;
+    PasswordTextBox txtPassword;
 
 
     /**
@@ -67,11 +67,10 @@ public class LoginPanel extends Composite implements HasMapwayHandlers<LoginData
      * @param event the event
      */
     @UiHandler("btnSubmit")
-	void onSubmitClicked(ClickEvent event)
-	{
-		LoginData data=new LoginData();
-		data.name=txtName.getValue();
-		data.pwd=txtPassword.getValue();
-		MapwayEvent.fire(this, 0, data);
-	}
+    void onSubmitClicked(ClickEvent event) {
+        LoginData data = new LoginData();
+        data.name = txtName.getValue();
+        data.pwd = txtPassword.getValue();
+        MapwayEvent.fire(this, 0, data);
+    }
 }

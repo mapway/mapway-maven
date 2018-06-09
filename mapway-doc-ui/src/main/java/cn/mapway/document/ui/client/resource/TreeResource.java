@@ -10,31 +10,31 @@ import com.google.gwt.user.client.ui.Tree.Resources;
  */
 public class TreeResource implements Resources {
 
-	/* (non-Javadoc)
-	 * @see com.google.gwt.user.client.ui.Tree.Resources#treeClosed()
-	 */
-	@Override
-	public ImageResource treeClosed() {
+    /* (non-Javadoc)
+     * @see com.google.gwt.user.client.ui.Tree.Resources#treeClosed()
+     */
+    @Override
+    public ImageResource treeClosed() {
 
-		return SysResource.INSTANCE.treeClose();
-	}
+        return SysResource.INSTANCE.treeClose();
+    }
 
-	/* (non-Javadoc)
-	 * @see com.google.gwt.user.client.ui.Tree.Resources#treeLeaf()
-	 */
-	@Override
-	public ImageResource treeLeaf() {
+    /* (non-Javadoc)
+     * @see com.google.gwt.user.client.ui.Tree.Resources#treeLeaf()
+     */
+    @Override
+    public ImageResource treeLeaf() {
 
-		return SysResource.INSTANCE.inter();
-	}
+        return SysResource.INSTANCE.inter();
+    }
 
-	/* (non-Javadoc)
-	 * @see com.google.gwt.user.client.ui.Tree.Resources#treeOpen()
-	 */
-	@Override
-	public ImageResource treeOpen() {
+    /* (non-Javadoc)
+     * @see com.google.gwt.user.client.ui.Tree.Resources#treeOpen()
+     */
+    @Override
+    public ImageResource treeOpen() {
 
-		return SysResource.INSTANCE.treeOpen();
-	}
+        return SysResource.INSTANCE.treeOpen();
+    }
 
 }

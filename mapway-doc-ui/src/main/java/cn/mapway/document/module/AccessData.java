@@ -19,12 +19,12 @@ public class AccessData {
      */
     public Long last;
 
-	/**
-	 * Instantiates a new access data.
-	 */
-	private AccessData() {
+    /**
+     * Instantiates a new access data.
+     */
+    private AccessData() {
 
-	}
+    }
 
     /**
      * The g access data.
@@ -37,9 +37,9 @@ public class AccessData {
      * @return the access data
      */
     public final static AccessData get() {
-		if (gAccessData == null) {
-			gAccessData = new AccessData();
-		}
-		return gAccessData;
-	}
+        if (gAccessData == null) {
+            gAccessData = new AccessData();
+        }
+        return gAccessData;
+    }
 }

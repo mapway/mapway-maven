@@ -17,19 +17,18 @@ public class Packages {
     /**
      * Instantiates a new packages.
      */
-    public Packages(){
-		Pack=new ArrayList<Pack>(); 
-	}
+    public Packages() {
+        Pack = new ArrayList<Pack>();
+    }
 
     /**
      * Gets the count.
      *
      * @return the count
      */
-    public int getCount()
-	{
-		return Pack.size();
-	}
+    public int getCount() {
+        return Pack.size();
+    }
 
     /**
      * Gets the at.
@@ -37,24 +36,23 @@ public class Packages {
      * @param index the index
      * @return the at
      */
-    public Pack getAt(int index){
-		return Pack.get(index);
-	}
+    public Pack getAt(int index) {
+        return Pack.get(index);
+    }
 
     /**
      * Clear.
      */
-    public void Clear(){
-		Pack.clear();
-	}
+    public void Clear() {
+        Pack.clear();
+    }
 
     /**
      * Adds the pack.
      *
      * @param pack the pack
      */
-    public void addPack(Pack pack)
-	{
-		Pack.add(pack);
-	}
+    public void addPack(Pack pack) {
+        Pack.add(pack);
+    }
 }

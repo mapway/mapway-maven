@@ -9,9 +9,11 @@ import com.google.gwt.storage.client.StorageMap;
  * The Class LocalCache.
  */
 public class LocalCache {
-	
-	/** The Constant localStorage. */
-	private final static Storage localStorage =Storage.getLocalStorageIfSupported();
+
+    /**
+     * The Constant localStorage.
+     */
+    private final static Storage localStorage = Storage.getLocalStorageIfSupported();
 
     /**
      * Gets the cache.
@@ -19,10 +21,10 @@ public class LocalCache {
      * @return the cache
      */
     public static StorageMap getCache() {
-		if (localStorage == null) {
-			return null;
-		} else {
-			return new StorageMap(localStorage);
-		}
-	}
+        if (localStorage == null) {
+            return null;
+        } else {
+            return new StorageMap(localStorage);
+        }
+    }
 }

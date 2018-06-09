@@ -26,6 +26,6 @@ public class UploadReturn {
      * Instantiates a new upload return.
      */
     public UploadReturn() {
-		data=new ImageLocationInfo();
-	}
+        data = new ImageLocationInfo();
+    }
 }

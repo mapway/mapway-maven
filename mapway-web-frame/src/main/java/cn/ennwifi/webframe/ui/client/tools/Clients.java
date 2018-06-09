@@ -24,8 +24,8 @@ public class Clients {
      * @return the date time format
      */
     public static final DateTimeFormat getDateTimeFormat() {
-    return getDateTimeFormat("yyyy年MM月dd日 HH:mm:ss");
-  }
+        return getDateTimeFormat("yyyy年MM月dd日 HH:mm:ss");
+    }
 
     /**
      * 获取日期时间格式.
@@ -35,8 +35,8 @@ public class Clients {
      */
     public static final DateTimeFormat getDateTimeFormat(String format) {
 
-    return DateTimeFormat.getFormat(format);
-  }
+        return DateTimeFormat.getFormat(format);
+    }
 
     /**
      * 获取日期时间格式.
@@ -44,8 +44,8 @@ public class Clients {
      * @return the date format
      */
     public static final DateTimeFormat getDateFormat() {
-    return getDateTimeFormat("yyyy年MM月dd日");
-  }
+        return getDateTimeFormat("yyyy年MM月dd日");
+    }
 
     /**
      * Format timestamp.
@@ -55,8 +55,8 @@ public class Clients {
      * @return the string
      */
     public static final String formatTime(long time, String format) {
-    return formatTimestamp(new Timestamp(time), format);
-  }
+        return formatTimestamp(new Timestamp(time), format);
+    }
 
     /**
      * Format timestamp.
@@ -66,17 +66,17 @@ public class Clients {
      * @return the string
      */
     public static final String formatTimestamp(Timestamp t, String format) {
-    if (t == null) {
-      return "";
+        if (t == null) {
+            return "";
+        }
+        DateTimeFormat df;
+        if (format == null || format.length() == 0) {
+            df = getDateTimeFormat();
+        } else {
+            df = getDateTimeFormat(format);
+        }
+        return df.format(new Date(t.getTime()));
     }
-    DateTimeFormat df;
-    if (format == null || format.length() == 0) {
-      df = getDateTimeFormat();
-    } else {
-      df = getDateTimeFormat(format);
-    }
-    return df.format(new Date(t.getTime()));
-  }
 
     /**
      * Format timestamp.
@@ -85,8 +85,8 @@ public class Clients {
      * @return the string
      */
     public static final String formatTimestamp(Timestamp t) {
-    return formatTimestamp(t, "");
-  }
+        return formatTimestamp(t, "");
+    }
 
     /**
      * Format date.
@@ -95,11 +95,11 @@ public class Clients {
      * @return the string
      */
     public static final String formatDate(Date d) {
-    if (d == null) {
-      return "";
+        if (d == null) {
+            return "";
+        }
+        return formatDate(d, null);
     }
-    return formatDate(d, null);
-  }
 
 
     /**
@@ -127,14 +127,14 @@ public class Clients {
      * @return the date
      */
     public static Date parseDate(String value, String format) {
-    DateTimeFormat df;
-    if (format == null || format.length() == 0) {
-      df = getDateTimeFormat();
-    } else {
-      df = getDateTimeFormat(format);
+        DateTimeFormat df;
+        if (format == null || format.length() == 0) {
+            df = getDateTimeFormat();
+        } else {
+            df = getDateTimeFormat(format);
+        }
+        return df.parse(value);
     }
-    return df.parse(value);
-  }
 
     /**
      * Parses the date.
@@ -143,8 +143,8 @@ public class Clients {
      * @return the date
      */
     public static Date parseDate(String value) {
-    return parseDate(value, "");
-  }
+        return parseDate(value, "");
+    }
 
     /**
      * Now.
@@ -152,9 +152,9 @@ public class Clients {
      * @return the long
      */
     public static long now() {
-    Date d = new Date();
-    return d.getTime();
-  }
+        Date d = new Date();
+        return d.getTime();
+    }
 
     /**
      * Now date date.
@@ -162,8 +162,8 @@ public class Clients {
      * @return the date
      */
     public static Date nowDate() {
-    return new Date(now());
-  }
+        return new Date(now());
+    }
 
     /**
      * The Constant DAY_MILLION.
@@ -178,8 +178,8 @@ public class Clients {
      * @return the long
      */
     public static long addDay(long time, int day) {
-    return time + day * 24 * DAY_MILLION;
-  }
+        return time + day * 24 * DAY_MILLION;
+    }
 
 
     /**
@@ -189,13 +189,13 @@ public class Clients {
      * @param callback the callback
      */
     public static void confirm(String text, Callback<Boolean, Boolean> callback) {
-    boolean b = Window.confirm(text);
-    if (b == true) {
-      callback.onSuccess(true);
-    } else {
-      callback.onSuccess(false);
+        boolean b = Window.confirm(text);
+        if (b == true) {
+            callback.onSuccess(true);
+        } else {
+            callback.onSuccess(false);
+        }
     }
-  }
 
 
     /**
@@ -206,14 +206,14 @@ public class Clients {
      * @return string
      */
     public static String formatDate(Date value, String dATE_TIME_FORMAT) {
-    if (value == null) {
-      return "";
+        if (value == null) {
+            return "";
+        }
+        if (dATE_TIME_FORMAT == null || dATE_TIME_FORMAT.length() == 0)
+            return getDateFormat().format(value);
+        else
+            return getDateTimeFormat(dATE_TIME_FORMAT).format(value);
     }
-    if (dATE_TIME_FORMAT == null || dATE_TIME_FORMAT.length() == 0)
-      return getDateFormat().format(value);
-    else
-      return getDateTimeFormat(dATE_TIME_FORMAT).format(value);
-  }
 
     /**
      * 获取图片前缀.
@@ -221,8 +221,8 @@ public class Clients {
      * @return the icon url prefix
      */
     public static final String getIconUrlPrefix() {
-    return ClientContext.getContext().getConfigure().getImagePrefix();
-  }
+        return ClientContext.getContext().getConfigure().getImagePrefix();
+    }
 
     /**
      * 判断字符串是否 null 或者 空字符串
@@ -231,14 +231,14 @@ public class Clients {
      * @return boolean
      */
     public static boolean isEmpty(String s) {
-    if (s == null) {
-      return true;
-    }
+        if (s == null) {
+            return true;
+        }
 
-    if (s.length() == 0) {
-      return true;
-    }
+        if (s.length() == 0) {
+            return true;
+        }
 
-    return false;
-  }
+        return false;
+    }
 }
