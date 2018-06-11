@@ -39,14 +39,13 @@ public class CloseCaption extends HorizontalPanel implements Caption {
     /**
      * The close handler.
      */
-    private ClickHandler closeHandler = new ClickHandler() {
-
+    private ClickHandler closeHandler =new ClickHandler() {
         @Override
-        public void onClick(ClickEvent event) {
+        public void onClick(ClickEvent clickEvent) {
             DialogBox db = (DialogBox) CloseCaption.this.getParent();
             db.hide();
         }
-    };
+    } ;
 
     /**
      * Instantiates a new close caption.

@@ -41,7 +41,7 @@ textarea {
 }
 
 .gwt-SplitLayoutPanel-HDragger {
-    background-color: darkgray;
+    background: white url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAADICAYAAADV56A/AAAABmJLR0QA/wD/AP+gvaeTAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH4gYLAw8MQ3GMNQAAAB1pVFh0Q29tbWVudAAAAAAAQ3JlYXRlZCB3aXRoIEdJTVBkLmUHAAAANUlEQVRYw+3KMQEAIAgAMKQ+GcwqDeDy2+6dW/VikLEQBEEQBEEQBEEQBEEQBEEQBEEQfoQGuP8EQjS9bykAAAAASUVORK5CYII=") no-repeat center center;
     cursor: ew-resize;
 }
 

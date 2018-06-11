@@ -3,7 +3,6 @@ package cn.mapway.document.ui.client.test;
 import cn.mapway.document.ui.client.component.Clients;
 import cn.mapway.document.ui.client.component.ace.AceEditor;
 import cn.mapway.document.ui.client.component.ace.AceEditorMode;
-import cn.mapway.document.ui.client.main.JsonPanel;
 import cn.mapway.document.ui.client.main.storage.LocalStorage;
 import cn.mapway.document.ui.client.module.Entry;
 import cn.mapway.document.ui.client.resource.SysResource;
@@ -18,7 +17,6 @@ import com.google.gwt.event.logical.shared.CloseHandler;
 import com.google.gwt.event.logical.shared.HasCloseHandlers;
 import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.http.client.RequestException;
-import com.google.gwt.json.client.JSONObject;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.uibinder.client.UiHandler;
@@ -327,6 +325,7 @@ public class TestPanel extends Composite implements HasCloseHandlers<Void> {
     public void btnHeaderClick(ClickEvent event) {
         if (dlg == null) {
             dlg = new DialogBox();
+            dlg.getElement().getStyle().setZIndex(10000);
             headEditor = new HeaderEditor();
             dlg.setText("编辑HTTP头部信息");
             dlg.setWidget(headEditor);
