@@ -69,7 +69,7 @@ public class TestPanel extends Composite implements HasCloseHandlers<Void> {
         btnHistory.setStyleName(css);
         btnHeader.setStyleName(css);
         btnFormat.setStyleName(css);
-        btnClearcache.setStyleName(css);
+        btnClearCache.setStyleName(css);
         imgLoadding.setUrl(SysResource.INSTANCE.loading().getSafeUri());
     }
 
@@ -338,7 +338,8 @@ public class TestPanel extends Composite implements HasCloseHandlers<Void> {
      */
     @UiHandler("btnClearCache")
     void onClearCache(ClickEvent e) {
-
+        LocalStorage.save(mEntry.relativePath(), "");
+        invoke(mEntry);
     }
 
     HeaderEditor headEditor;
