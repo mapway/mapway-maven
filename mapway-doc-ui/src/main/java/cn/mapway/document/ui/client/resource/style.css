@@ -78,6 +78,11 @@
     color: green;
 }
 
+.dlgSummary{
+    color: green;
+    font-weight: normal;
+    font-size: 12px;
+}
 .text {
     color: black;
 }

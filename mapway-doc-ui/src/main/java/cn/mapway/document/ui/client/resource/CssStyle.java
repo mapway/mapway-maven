@@ -228,4 +228,5 @@ public interface CssStyle extends CssResource {
      */
     String tag();
 
+    String dlgSummary();
 }

@@ -26,6 +26,7 @@ public class CloseCaption extends HorizontalPanel implements Caption {
         }
     };
 
+    Label summary;
     /**
      * The title.
      */
@@ -39,26 +40,31 @@ public class CloseCaption extends HorizontalPanel implements Caption {
     /**
      * The close handler.
      */
-    private ClickHandler closeHandler =new ClickHandler() {
+    private ClickHandler closeHandler = new ClickHandler() {
         @Override
         public void onClick(ClickEvent clickEvent) {
             DialogBox db = (DialogBox) CloseCaption.this.getParent();
             db.hide();
         }
-    } ;
+    };
 
     /**
      * Instantiates a new close caption.
      */
     public CloseCaption() {
         title = new Label();
+        summary = new Label();
+        summary.setStyleName(SysResource.INSTANCE.getCss().dlgSummary());
         btnClose = new Image();
         btnClose.setPixelSize(26, 26);
         btnClose.setUrl(SysResource.INSTANCE.closeGray().getSafeUri());
         btnClose.addMouseOverHandler(mouseOverHandler);
         btnClose.addMouseOutHandler(mouseOutHandler);
         this.setWidth("100%");
-        this.add(title);
+        VerticalPanel vp = new VerticalPanel();
+        vp.add(title);
+        vp.add(summary);
+        this.add(vp);
         this.add(btnClose);
         this.setStyleName("Caption");
         btnClose.addClickHandler(closeHandler);
@@ -174,8 +180,7 @@ public class CloseCaption extends HorizontalPanel implements Caption {
      */
     @Override
     public String getText() {
-        // TODO Auto-generated method stub
-        return null;
+        return this.title.getText();
     }
 
     /*
@@ -188,4 +193,7 @@ public class CloseCaption extends HorizontalPanel implements Caption {
 
     }
 
+    public void setSummary(String text) {
+        summary.setText(text);
+    }
 }

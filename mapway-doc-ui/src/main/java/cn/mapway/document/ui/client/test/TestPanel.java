@@ -68,6 +68,8 @@ public class TestPanel extends Composite implements HasCloseHandlers<Void> {
         btnExecute.setStyleName(css);
         btnHistory.setStyleName(css);
         btnHeader.setStyleName(css);
+        btnFormat.setStyleName(css);
+        btnClearcache.setStyleName(css);
         imgLoadding.setUrl(SysResource.INSTANCE.loading().getSafeUri());
     }
 
@@ -100,13 +102,6 @@ public class TestPanel extends Composite implements HasCloseHandlers<Void> {
     private void saveHeader() {
         LocalStorage.save(GWT_USER_HEADER, headers.toJSON());
     }
-
-
-    /**
-     * The lb url.
-     */
-    @UiField
-    Label lbUrl;
 
 
     @UiField
@@ -156,7 +151,7 @@ public class TestPanel extends Composite implements HasCloseHandlers<Void> {
     public void invoke(Entry entry) {
         loadHeader();
         mEntry = entry;
-        lbUrl.setText(Clients.getHostPort() + entry.url());
+
         String his = readHistory();
         if (his.length() == 0) {
             his = entry.input().get(0).json();
@@ -208,6 +203,10 @@ public class TestPanel extends Composite implements HasCloseHandlers<Void> {
     Button btnHistory;
     @UiField
     Button btnHeader;
+    @UiField
+    Button btnFormat;
+    @UiField
+    Button btnClearCache;
 
     /**
      * On execute.
@@ -244,7 +243,7 @@ public class TestPanel extends Composite implements HasCloseHandlers<Void> {
 
                         @Override
                         public void onSuccess(String url, String data) {
-                            GWT.log(data);
+
                             JavaScriptObject obj = JsonUtils.safeEval(data);
                             result.setValue(JsonUtils.stringify(obj, "\t"));
                             imgLoadding.setVisible(false);
@@ -316,6 +315,30 @@ public class TestPanel extends Composite implements HasCloseHandlers<Void> {
         }
         pop.showRelativeTo(btnHistory);
         historyPanel.render(mEntry.relativePath());
+    }
+
+    /**
+     * 格式化JSON代码
+     *
+     * @param e
+     */
+    @UiHandler("btnFormat")
+    void onFormatCode(ClickEvent e) {
+        String data = editor.getValue();
+        if (data.length() > 0) {
+            JavaScriptObject obj = JsonUtils.safeEval(data);
+            editor.setValue(JsonUtils.stringify(obj, "\t"));
+        }
+    }
+
+    /**
+     * 格式化JSON代码
+     *
+     * @param e
+     */
+    @UiHandler("btnClearCache")
+    void onClearCache(ClickEvent e) {
+
     }
 
     HeaderEditor headEditor;

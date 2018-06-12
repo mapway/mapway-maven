@@ -39,6 +39,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+
 import cn.mapway.document.annotation.ApiField;
 import cn.mapway.document.annotation.ApiStyle;
 import cn.mapway.document.annotation.Code;
@@ -559,6 +560,7 @@ public class SpringParser {
             fi.name = f.getName();
             fi.type = f.getType().getName();
 
+            log.info("Field example=" + fi.name + "-->" + fi.example);
             // 处理返回代码
             Codes codes = f.getAnnotation(Codes.class);
             if (codes != null) {
@@ -608,8 +610,10 @@ public class SpringParser {
 
             // 处理字段
             if (isPrimitive(f.getType())) {
+                // String Integer Boolean Double
                 tacklePrimitive(instance, f, wf, fi);
             } else if (isList(f)) {
+                // List<Object> List<String>
                 ArrayList list = new ArrayList();
                 Type type = getGenericType(f);
 
@@ -626,7 +630,8 @@ public class SpringParser {
                 }
 
                 f.set(instance, list);
-                fi.type = "List<" + type.getTypeName() + ">";
+                fi.type = new StringBuilder().append("List<").append(type.getTypeName()).append(">").toString();
+
                 if (isMap(type.getClass())) {
                     tackleMap(fi, list);
 
@@ -791,6 +796,7 @@ public class SpringParser {
      */
     private void tackleListObject(ObjectInfo fi, ArrayList list, Class<?> c)
             throws IllegalAccessException, InstantiationException {
+
         Object cinstance = newInstance(c);
         // 处理 DOc fi.summary;
 
@@ -799,8 +805,15 @@ public class SpringParser {
         if (fdoc != null) {
             fi.summary = fdoc.desc();
         }
-        // 列表添加2个例子
-        list.add(cinstance);
+
+        if (isPrimitive(c)) {
+            List<Object> listObj = Lang.list4(fi.example);
+            if (listObj != null)
+                list.addAll(listObj);
+        } else {
+            // 列表添加2个例子
+            list.add(cinstance);
+        }
 
         for (Field f1 : c.getFields()) {
             // 检查是否是循环引用

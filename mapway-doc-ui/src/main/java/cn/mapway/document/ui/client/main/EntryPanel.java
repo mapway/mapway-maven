@@ -159,12 +159,12 @@ public class EntryPanel extends Composite {
     /**
      * The dlg.
      */
-    DialogBox dlg;
+    CloseDialogBox dlg;
 
     /**
      * The test panel.
      */
-    TestPanel testPanel=null;
+    TestPanel testPanel = null;
 
     /**
      * The btn test.
@@ -191,6 +191,7 @@ public class EntryPanel extends Composite {
         dlg.show();
         dlg.center();
         dlg.setText("接口测试-" + mEntry.title());
+        dlg.setSummary(Clients.getHostPort() + mEntry.url());
         testPanel.invoke(mEntry);
     }
 
