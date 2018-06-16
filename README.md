@@ -13,7 +13,7 @@
 <dependency>
     <groupId>cn.mapway</groupId>
     <artifactId>mapway-doc-ui</artifactId>
-    <version>1.18-SNAPSHOT</version>
+    <version>2.0.10</version>
 </dependency>
 ```
 - 配置属性
@@ -84,7 +84,7 @@ public class EquipmentController extends BaseController {
     <plugin>
         <groupId>cn.mapway</groupId>
         <artifactId>mapway-maven-plugin</artifactId>
-        <version>1.1.9-SNAPSHOT</version>
+        <version>2.0.10</version>
         <executions>
             <!-- 生成数据库BEAN -->
             <execution>
