@@ -1,7 +1,7 @@
 # mapway-maven
 
 ## how to compile and deploy
-   build.bat 1.1.8-SNAPSHOT
+   install.bat 2.0.10
 
 ## API文档使用方法
  
