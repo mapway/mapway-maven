@@ -1056,7 +1056,7 @@ public class SchemaBase implements ISchema {
                         if (pk.length() > 1) {
                             pk.append(",");
                         }
-                        pk.append("\"").append(col.getName()).append("\"");
+                        pk.append("\"").append(col.getJavaName()).append("\"");
                     }
                 }
                 pk.append("}");
@@ -1073,9 +1073,9 @@ public class SchemaBase implements ISchema {
         if (needGwt) {
             String i1 = "com.google.gwt.user.client.rpc.IsSerializable";
             String i2 = "com.ksyzt.gwt.client.data.IFieldValue";
-            writer.beginType(conf.getPackage() + "." + table.getJavaName(), "class", EnumSet.of(PUBLIC, FINAL), null, i1, i2);
+            writer.beginType(conf.getPackage() + "." + table.getJavaName(), "class", EnumSet.of(PUBLIC), null, i1, i2);
         } else {
-            writer.beginType(conf.getPackage() + "." + table.getJavaName(), "class", EnumSet.of(PUBLIC, FINAL));
+            writer.beginType(conf.getPackage() + "." + table.getJavaName(), "class", EnumSet.of(PUBLIC));
         }
 
         // is use field index
@@ -1114,12 +1114,10 @@ public class SchemaBase implements ISchema {
                                 writer.emitAnnotation(Id.class, attr);
                             }
                         }
-                    } else {
-                        writer.emitAnnotation(org.nutz.dao.entity.annotation.Column.class, "\"" + col.getName() + "\"");
                     }
-                } else {
-                    writer.emitAnnotation(org.nutz.dao.entity.annotation.Column.class, "\"" + col.getName() + "\"");
                 }
+                    writer.emitAnnotation(org.nutz.dao.entity.annotation.Column.class, "\"" + col.getName() + "\"");
+
             }
 
             if (needDocument) {
