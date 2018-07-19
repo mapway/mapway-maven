@@ -92,5 +92,10 @@ public @interface Doc {
      */
     String[] tags() default {};
 
+    /**
+     * 如果函数返回值是一个泛型函数，这里的类型数组第一个表示泛型的具体类型
+     * @return
+     */
+    Class[] retClazz() default {};
 
 }

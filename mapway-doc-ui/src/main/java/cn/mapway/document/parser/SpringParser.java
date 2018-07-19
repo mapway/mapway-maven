@@ -254,6 +254,8 @@ public class SpringParser {
 
         e.methodName = m.getName();
 
+        Class retClz = null;
+
         Doc summary = m.getAnnotation(Doc.class);
         if (summary != null) {
             e.title = summary.value();
@@ -269,13 +271,18 @@ public class SpringParser {
                     e.tags.add(tag);
                 }
             }
+            if (summary.retClazz() != null && summary.retClazz().length > 0) {
+                retClz = summary.retClazz()[0];
+            }
         }
 
         Class<?>[] ps = m.getParameterTypes();
 
         Class<?> out = (Class<?>) m.getReturnType();
-        Type returnType = m.getGenericReturnType();
-        System.out.println(returnType);
+
+        if (retClz != null) {
+            out = retClz;
+        }
 
         int i = 0;
         for (Class<?> clz : ps) {
