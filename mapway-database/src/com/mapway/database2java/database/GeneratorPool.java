@@ -129,12 +129,10 @@ public class GeneratorPool implements IConnectionPool {
             freeConnections.removeElementAt(0);
             try {
                 if (con.isClosed()) {
-
                     con = getConnection();
                 }
             } catch (SQLException e) {
-                log("�����ӳ�ɾ��һ����Ч����");
-
+                log(e.getLocalizedMessage());
                 con = getConnection();
             }
         } else if (this.maxConnections == 0
@@ -173,7 +171,7 @@ public class GeneratorPool implements IConnectionPool {
             } catch (InterruptedException e) {
             }
             if ((new java.util.Date().getTime() - startTime) >= timeout) {
-                // wait()���ص�ԭ���ǳ�ʱ
+
                 return null;
             }
         }
