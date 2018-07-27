@@ -1,5 +1,6 @@
 @echo off
 set version=%1
+set pro=%2
 
 
 if not defined version (
@@ -10,6 +11,6 @@ if not defined version (
 
 
 :build
-mvn versions:set -DnewVersion=%version% && mvn versions:commit && mvn  clean deploy -P to-ziroom
+mvn versions:set -DnewVersion=%version% && mvn versions:commit && mvn  clean deploy -P %pro%
 
 :exit
