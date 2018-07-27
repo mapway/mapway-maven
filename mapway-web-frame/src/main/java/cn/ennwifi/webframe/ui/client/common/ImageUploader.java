@@ -156,8 +156,7 @@ public class ImageUploader extends MessageComposite {
             return "";
         }
         // 去掉所有html元素
-        String str = input.replaceAll("\\&[a-zA-Z]{1,10};", "").replaceAll("<[^>]*>", "");
-        str = str.replaceAll("[(/>)<]", "");
+        String str = input.replaceAll("<[^>]*>", "").replaceAll("</[^>]*>", "");
         return str;
     }
 
