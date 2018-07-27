@@ -151,6 +151,16 @@ public class ImageUploader extends MessageComposite {
         }
     };
 
+    public String removeHTMLTag(String input) {
+        if (input == null || input.trim().equals("")) {
+            return "";
+        }
+        // 去掉所有html元素
+        String str = input.replaceAll("\\&[a-zA-Z]{1,10};", "").replaceAll("<[^>]*>", "");
+        str = str.replaceAll("[(/>)<]", "");
+        return str;
+    }
+
     /**
      * The complete handler.
      */
@@ -159,6 +169,7 @@ public class ImageUploader extends MessageComposite {
         @Override
         public void onSubmitComplete(SubmitCompleteEvent event) {
             String data = event.getResults();
+            data = removeHTMLTag(data);
             UploadFileReturn r = new UploadFileReturn();
             JSONObject obj = (JSONObject) JSONParser.parseLenient(data);
             r.extra = obj.get("extra").isString().stringValue();
