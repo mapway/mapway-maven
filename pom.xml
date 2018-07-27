@@ -13,7 +13,7 @@
         <SpringVersion>4.2.6.RELEASE</SpringVersion>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <gpg.keyname>A9D79F62</gpg.keyname>
+        <gpg.keyname>717E6B0A</gpg.keyname>
     </properties>
 
     <name>mapway maven group project</name>
