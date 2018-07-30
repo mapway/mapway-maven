@@ -229,7 +229,7 @@ public class UserEditor extends DialogBoxEx {
         txtRealName.setValue(mUser.getReal_name());
         txtEmail.setValue(mUser.getEmail());
         txtTel.setValue(mUser.getMobile());
-        avator.setUrl(mUser.getAvator());
+        avator.setUrl(ClientContext.getContext().getConfigure().getImagePrefix() + mUser.getAvator());
         int index = 0;
         for (int i = 0; i < ddlGender.getItemCount(); i++) {
             String v = ddlGender.getItemText(i);

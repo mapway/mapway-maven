@@ -16,6 +16,7 @@ import org.nutz.json.Json;
 import org.nutz.lang.Lang;
 import org.nutz.lang.Strings;
 import org.nutz.lang.random.R;
+import org.nutz.log.Logs;
 import org.nutz.trans.Atom;
 import org.nutz.trans.Trans;
 
@@ -278,15 +279,17 @@ public abstract class WebFrameServlet extends CheckAdminTokenServlet implements 
             systemLog(user, Actions.CREATE, content);
 
         } else {
+            Logs.get().info(Json.toJson(user));
             // 名字不允许修改
             if (!Strings.isEmpty(user.getPwd())) {
                 // 需要修改密码
                 user.setPwd(Lang.md5(user.getPwd()));
-                Daos.ext(getDao(), FieldFilter.locked(S_USERObj.class, "^real_name|update_time|token$"))
+                // locked  field is not updated
+                Daos.ext(getDao(), FieldFilter.locked(S_USERObj.class, "^name|update_time|token$"))
                         .update(user);
             } else {
                 // 不许要修改密码
-                Daos.ext(getDao(), FieldFilter.locked(S_USERObj.class, "^real_name|update_time|pwd|token$"))
+                Daos.ext(getDao(), FieldFilter.locked(S_USERObj.class, "^name|update_time|pwd|token$"))
                         .update(user);
             }
         }
