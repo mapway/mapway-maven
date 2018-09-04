@@ -86,6 +86,7 @@ public class EntryPanel extends Composite {
      */
     private String toJavaMethod(Entry e) {
         String html = "<p>调用方法:" + e.methodName() + "</p>";
+        html += "<p>所属控制器:" + e.parentClassName() + "</p>";
         return html;
     }
 

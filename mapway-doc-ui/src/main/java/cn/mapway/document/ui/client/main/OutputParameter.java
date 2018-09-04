@@ -74,6 +74,8 @@ public class OutputParameter extends Composite implements
      * @param output the output
      */
     public void parse(ObjectInfo output) {
+        GWT.log("输出参数"+output.name());
+
         gens = new ArrayList<GenInfo>();
         mapper = new HashMap<String, Anchor>();
         lbType.setText(output.type());

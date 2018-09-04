@@ -158,6 +158,7 @@ public class ObjectInfoPanel extends Grid implements HasSelectionHandlers<Object
             setWidget(row, col++, l);
 
             String type = o.type();
+            GWT.log(obj.type() + "'s field " + o.name() + " ==> " + type);
             if (isPrimitive(type)) {
                 l = new Label(simple(type));
                 l.setStyleName(SysResource.INSTANCE.getCss().type());
@@ -173,6 +174,7 @@ public class ObjectInfoPanel extends Grid implements HasSelectionHandlers<Object
 
                 boolean hasFind = findObj(type, objList);
                 if (!hasFind) {
+                    GWT.log("need process type " + type);
                     GenInfo info = new GenInfo();
                     info.type = type;
                     info.obj = o;
@@ -343,6 +345,7 @@ public class ObjectInfoPanel extends Grid implements HasSelectionHandlers<Object
      */
     private boolean findObj(String type, List<GenInfo> objList) {
         for (GenInfo info : objList) {
+            GWT.log("compare gen clazz " + info.type + "," + type);
             if (info.type.equals(type)) {
                 return true;
             }
@@ -362,7 +365,7 @@ public class ObjectInfoPanel extends Grid implements HasSelectionHandlers<Object
     /**
      * The ps.
      */
-    private static String[] ps = {"int", "Integer", "float", "FLoat", "Double", "double", "long", "Long", "Date",
+    private static String[] ps = {"int", "Integer", "float", "Float", "Double", "double", "long", "Long", "Date",
             "DateTime", "String", "boolean", "Boolean", "char", "short", "byte", "Timestamp"};
 
     /**
@@ -373,8 +376,12 @@ public class ObjectInfoPanel extends Grid implements HasSelectionHandlers<Object
      */
     public boolean isPrimitive(String type) {
 
+        if (type.startsWith("List<") || type.startsWith("Map<")) {
+            return false;
+        }
+
         for (String s : ps) {
-            if (type.contains(s)) {
+            if (type.equals(s)) {
                 return true;
             }
         }

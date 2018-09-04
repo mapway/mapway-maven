@@ -567,7 +567,6 @@ public class SpringParser {
             fi.name = f.getName();
             fi.type = f.getType().getName();
 
-            log.info("Field example=" + fi.name + "-->" + fi.example);
             // 处理返回代码
             Codes codes = f.getAnnotation(Codes.class);
             if (codes != null) {
@@ -623,6 +622,8 @@ public class SpringParser {
                 // List<Object> List<String>
                 ArrayList list = new ArrayList();
                 Type type = getGenericType(f);
+
+                Logs.get().info("handle list field " + f.getName() + " with type " + type.getTypeName());
 
                 Class<?> c = null;
                 if (type instanceof ParameterizedType) {
@@ -805,6 +806,7 @@ public class SpringParser {
             throws IllegalAccessException, InstantiationException {
 
         Object cinstance = newInstance(c);
+        Logs.get().info("create instance " + c.getName() + " is " + Json.toJson(cinstance));
         // 处理 DOc fi.summary;
 
         // 读取List数组中对象的Doc注解
@@ -931,11 +933,14 @@ public class SpringParser {
      */
     private boolean isPrimitive(Class<?> c) {
         String name = c.getName();
-
-        String[] ps = {"int", "Integer", "float", "FLoat", "Double", "double", "long", "Long", "Date", "DateTime",
+        int pos = name.lastIndexOf('.');
+        if (pos >= 0) {
+            name = name.substring(pos + 1);
+        }
+        String[] ps = {"int", "Integer", "float", "Float", "Double", "double", "long", "Long", "Date", "DateTime",
                 "String", "boolean", "Boolean", "char", "short", "byte", "Timestamp"};
         for (String s : ps) {
-            if (name.contains(s)) {
+            if (name.equals(s)) {
                 return true;
             }
         }
