@@ -198,12 +198,11 @@ public class SpringParser {
             Method m = list.get(i);
 
             Entry entry = handleMethod(c, document, group_base_path, m);
-            entry.parentClassName = c.getName();
 
             if (entry != null) {
+                entry.parentClassName = c.getName();
                 entry.relativePath = basepath + entry.relativePath;
                 entry.url = mContext.getBasepath() + entry.relativePath;
-
             }
         }
     }
@@ -221,6 +220,12 @@ public class SpringParser {
      */
     private Entry handleMethod(Class<?> clsType, ApiDoc document, String group_base_path, Method m)
             throws IllegalArgumentException, IllegalAccessException, InstantiationException {
+        // 如果没有添加注解 就不输出这个接口的文档
+        Doc summary = m.getAnnotation(Doc.class);
+        if(null==summary)
+        {
+            return null;
+        }
         Entry e = new Entry();
 
         RequestMapping rm = m.getAnnotation(RequestMapping.class);
@@ -256,7 +261,7 @@ public class SpringParser {
 
         Class retClz = null;
 
-        Doc summary = m.getAnnotation(Doc.class);
+
         if (summary != null) {
             e.title = summary.value();
             e.summary = summary.desc() == null ? "" : summary.desc();
