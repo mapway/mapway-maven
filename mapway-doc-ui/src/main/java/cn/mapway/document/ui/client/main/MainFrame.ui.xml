@@ -3,41 +3,50 @@
              xmlns:g="urn:import:com.google.gwt.user.client.ui" xmlns:m="urn:import:cn.mapway.document.ui.client.main">
     <ui:style>
         .top {
-        background-color: #404040;
-        color: white;
+            background-color: #404040;
+            color: white;
+        }
+
+        .login {
+            cursor: pointer;
+            color: lemonchiffon;
+        }
+
+        .login:HOVER {
+            text-decoration: underline;
         }
 
         .left {
-        background-color: #f0f0f0;
+            background-color: #f0f0f0;
         }
 
         .title {
-        font-size: 22px;
-        padding-left: 10px;
+            font-size: 22px;
+            padding-left: 10px;
         }
 
         .logo {
-        margin-left: 15px;
+            margin-left: 15px;
         }
 
         .content {
-        padding-bottom: 50px;
+            padding-bottom: 50px;
         }
 
         .subtitle {
-        color: skyblue;
-        font-size: 12px;
-        padding-left: 10px;
+            color: skyblue;
+            font-size: 12px;
+            padding-left: 10px;
         }
 
         .bottom {
-        background-color: #606060;
-        color: #f0f0f0;
+            background-color: #606060;
+            color: #f0f0f0;
         }
 
         .version {
-        font-size: 22px;
-        padding-left: 10px;
+            font-size: 22px;
+            padding-left: 10px;
         }
     </ui:style>
     <g:DockLayoutPanel ui:field="root">
@@ -60,6 +69,8 @@
                 <g:cell horizontalAlignment="right">
                     <g:HorizontalPanel ui:field="tools"
                                        verticalAlignment="middle" spacing="5">
+                        <g:Image width="30px" height="30px" ui:field="avatar" visible="false"></g:Image>
+                        <g:Label ui:field="btnLogin" visible="false" styleName="{style.login}">登录Github账号</g:Label>
                         <g:Label ui:field="apiVersion" styleName="{style.version}"></g:Label>
                     </g:HorizontalPanel>
                 </g:cell>

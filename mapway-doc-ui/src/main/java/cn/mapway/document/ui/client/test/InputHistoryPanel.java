@@ -1,32 +1,53 @@
 package cn.mapway.document.ui.client.test;
 
+import cn.mapway.document.ui.client.main.storage.LocalStorage;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
-import com.google.gwt.event.logical.shared.CloseEvent;
-import com.google.gwt.event.logical.shared.CloseHandler;
-import com.google.gwt.event.logical.shared.HasCloseHandlers;
+import com.google.gwt.event.logical.shared.*;
 import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.HTMLPanel;
 import com.google.gwt.user.client.ui.Widget;
-import cn.mapway.document.ui.client.main.storage.LocalStorage;
-
-// TODO: Auto-generated Javadoc
 
 /**
  * The Class InputHistoryPanel.
  */
 public class InputHistoryPanel extends Composite implements
-        HasCloseHandlers<HistoryData> {
+        HasSelectionHandlers<HistoryData>, HasValueChangeHandlers<Integer> {
 
     /**
      * The ui binder.
      */
     private static InputHistoryPanelUiBinder uiBinder = GWT
             .create(InputHistoryPanelUiBinder.class);
+
+
+    @Override
+    public HandlerRegistration addSelectionHandler(SelectionHandler<HistoryData> selectionHandler) {
+        return addHandler(selectionHandler, SelectionEvent.getType());
+    }
+
+    /**
+     * 获取历史
+     *
+     * @param i
+     * @return
+     */
+    public String get(int i) {
+        if (i >= 0 && i < getHistoryCount()) {
+            HistoryItem item = (HistoryItem) content.getWidget(i);
+            return item.mData.value;
+        }
+        return "";
+    }
+
+    @Override
+    public HandlerRegistration addValueChangeHandler(ValueChangeHandler<Integer> valueChangeHandler) {
+        return addHandler(valueChangeHandler, ValueChangeEvent.getType());
+    }
 
     /**
      * The Interface InputHistoryPanelUiBinder.
@@ -61,9 +82,36 @@ public class InputHistoryPanel extends Composite implements
         @Override
         public void onClick(ClickEvent event) {
             HistoryItem item = (HistoryItem) event.getSource();
-            CloseEvent.fire(InputHistoryPanel.this, item.getData());
+            SelectionEvent.fire(InputHistoryPanel.this, item.getData());
         }
     };
+    private CloseHandler<HistoryData> itemDelete = new CloseHandler<HistoryData>() {
+        @Override
+        public void onClose(CloseEvent<HistoryData> closeEvent) {
+            saveCurrentHistory();
+        }
+    };
+
+    /**
+     * 保存当前的历史纪录
+     */
+    private void saveCurrentHistory() {
+
+        String fullData = "";
+
+        for (int i = 0; i < this.getHistoryCount(); i++) {
+            HistoryItem item = (HistoryItem) this.content.getWidget(i);
+            if (i == 0) {
+                fullData = item.mData.title + "`" + item.mData.value;
+            } else {
+                fullData = "|" + item.mData.title + "`" + item.mData.value;
+            }
+        }
+
+        LocalStorage.save(mRelativePath, fullData);
+
+        ValueChangeEvent.fire(this, this.getHistoryCount());
+    }
 
     /**
      * Cleat content.
@@ -84,16 +132,20 @@ public class InputHistoryPanel extends Composite implements
 
         item.render(hd);
         item.addClickHandler(itemClick);
+        item.addCloseHandler(itemDelete);
         content.add(item);
     }
 
-    /* (non-Javadoc)
-     * @see com.google.gwt.event.logical.shared.HasCloseHandlers#addCloseHandler(com.google.gwt.event.logical.shared.CloseHandler)
+    /**
+     * 历史纪录的个数
+     *
+     * @return
      */
-    @Override
-    public HandlerRegistration addCloseHandler(CloseHandler<HistoryData> handler) {
-        return addHandler(handler, CloseEvent.getType());
+    public int getHistoryCount() {
+        return content.getWidgetCount();
     }
+
+    private String mRelativePath = "";
 
     /**
      * Render.
@@ -102,8 +154,10 @@ public class InputHistoryPanel extends Composite implements
      */
     public void render(String relativePath) {
         content.clear();
+        mRelativePath = relativePath;
         String v = LocalStorage.val(relativePath);
         if (v == null || v.length() == 0) {
+            ValueChangeEvent.fire(this, 0);
             return;
         }
 
@@ -111,8 +165,11 @@ public class InputHistoryPanel extends Composite implements
 
         for (int index = 0; index < vs.length; index++) {
             String[] itemdata = vs[index].split("`");
-            addItem(itemdata[0], itemdata[1]);
-
+            if (itemdata.length > 1) {
+                addItem(itemdata[0], itemdata[1]);
+            } else {
+                addItem(itemdata[0], "");
+            }
         }
         // 保留最后的10个记录
         if (vs.length > 10) {
@@ -127,5 +184,6 @@ public class InputHistoryPanel extends Composite implements
             LocalStorage.save(relativePath, fulldata);
         }
 
+        ValueChangeEvent.fire(this, this.getHistoryCount());
     }
 }

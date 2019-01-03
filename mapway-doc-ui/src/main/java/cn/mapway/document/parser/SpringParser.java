@@ -228,8 +228,9 @@ public class SpringParser {
         }
         Entry e = new Entry();
 
-        RequestMapping rm = m.getAnnotation(RequestMapping.class);
 
+
+        RequestMapping rm = m.getAnnotation(RequestMapping.class);
         if (rm != null) {
             // TODO 增加对多路径的支持
             String[] paths = rm.value();
@@ -247,8 +248,10 @@ public class SpringParser {
                     e.invokeMethods.add(rm0.name());
                 }
             }
-
         }
+
+
+
         if (e.invokeMethods.size() == 0) {
             e.invokeMethods.add("GET");
         }

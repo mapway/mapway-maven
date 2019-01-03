@@ -189,7 +189,6 @@ public class EntryPanel extends Composite {
             dlg.setAutoHideEnabled(false);
             dlg.setStyleName(SysResource.INSTANCE.getCss().dlg());
         }
-        dlg.show();
         dlg.center();
         dlg.setText("接口测试-" + mEntry.title());
         dlg.setSummary(Clients.getHostPort() + mEntry.url());

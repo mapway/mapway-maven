@@ -57,6 +57,11 @@ public class ApiDocProperties {
     public String style = "";
 
     /**
+     * git information
+     */
+    private GitInfo git;
+
+    /**
      * Gets url.
      *
      * @return the url
@@ -270,5 +275,13 @@ public class ApiDocProperties {
      */
     public void setStyle(String style) {
         this.style = style;
+    }
+
+    public GitInfo getGit() {
+        return git;
+    }
+
+    public void setGit(GitInfo git) {
+        this.git = git;
     }
 }

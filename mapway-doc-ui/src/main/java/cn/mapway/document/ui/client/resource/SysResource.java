@@ -99,13 +99,6 @@ public interface SysResource extends ClientBundle {
     @Source("image/treeClose.png")
     ImageResource treeClose();
 
-    /**
-     * History.
-     *
-     * @return the image resource
-     */
-    @Source("image/history.png")
-    ImageResource history();
 
 
     /**

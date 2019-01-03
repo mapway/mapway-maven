@@ -1,5 +1,7 @@
 package cn.mapway.document.ui.client.main;
 
+import cn.mapway.document.ui.client.rpc.Github;
+import cn.mapway.document.ui.client.rpc.github.GithubUser;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.core.client.JsArray;
 import com.google.gwt.dom.client.Style;
@@ -9,6 +11,7 @@ import com.google.gwt.event.logical.shared.SelectionEvent;
 import com.google.gwt.event.logical.shared.SelectionHandler;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
+import com.google.gwt.uibinder.client.UiHandler;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.*;
 import cn.mapway.document.ui.client.component.CustomButton;
@@ -123,6 +126,8 @@ public class MainFrame extends Composite {
         content.scrollToTop();
     }
 
+
+
     /**
      * Instantiates a new main frame.
      */
@@ -183,11 +188,11 @@ public class MainFrame extends Composite {
      * @return the api doc
      */
     private final native ApiDoc findDocData()/*-{
-		if ($wnd.g_data != undefined) {
-			return $wnd.g_data;
-		}
-		return null;
-  }-*/;
+        if ($wnd.g_data != undefined) {
+            return $wnd.g_data;
+        }
+        return null;
+    }-*/;
 
     /**
      * Inits the.
@@ -266,6 +271,30 @@ public class MainFrame extends Composite {
 
     }
 
+    @UiHandler("btnLogin")
+    public void btnLoginClick(ClickEvent event) {
+        if (btnLogin.getText().startsWith("登录")) {
+            Github github = new Github();
+            github.login("zhangjianshe", "wangmingli06", new IOnData<GithubUser>() {
+                @Override
+                public void onError(String url, String error) {
+                    avatar.setVisible(false);
+                    btnLogin.setText("登录Github账号");
+                }
+
+                @Override
+                public void onSuccess(String url, GithubUser data) {
+                    avatar.setVisible(true);
+                    avatar.setUrl(data.avatar());
+                    btnLogin.setText("退出 " + data.name() + "");
+                }
+            });
+        } else {
+            avatar.setVisible(false);
+            btnLogin.setText("登录Github账号");
+        }
+    }
+
     /**
      * The Api version.
      */
@@ -331,5 +360,9 @@ public class MainFrame extends Composite {
      */
     @UiField
     DockLayoutPanel root;
+    @UiField
+    Image avatar;
+    @UiField
+    Label btnLogin;
 
 }

@@ -3,7 +3,7 @@
   <component name="FacetManager">
     <facet type="gwt" name="GWT">
       <configuration>
-        <setting name="gwtSdkUrl" value="file://E:/repository/com/google/gwt/gwt-dev/2.8.0/" />
+        <setting name="gwtSdkUrl" value="file://$MAVEN_REPOSITORY$/com/google/gwt/gwt-dev/2.8.0/" />
         <setting name="gwtSdkType" value="maven" />
       </configuration>
     </facet>
@@ -23,8 +23,8 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: javax.servlet:javax.servlet-api:3.1.0" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: com.google.gwt:gwt-servlet:2.8.0" level="project" />
-    <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-autoconfigure:1.5.1.RELEASE" level="project" />
-    <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot:1.5.1.RELEASE" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-autoconfigure:2.1.0.RELEASE" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot:2.1.0.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: com.atlassian.commonmark:commonmark:0.10.0" level="project" />
     <orderEntry type="library" name="Maven: com.atlassian.commonmark:commonmark-ext-gfm-tables:0.9.0" level="project" />
     <orderEntry type="module" module-name="mapway-annotation" />

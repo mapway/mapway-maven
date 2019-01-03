@@ -3,12 +3,11 @@
              xmlns:g="urn:import:com.google.gwt.user.client.ui">
     <ui:style>
         .box {
-        border: solid 1px #404040;
-        padding: 0px;
-        background-color: infobackground;
+
+            background-color:lightcyan;
         }
     </ui:style>
-    <g:ScrollPanel width="300px" height="300px" styleName="{style.box}">
+    <g:ScrollPanel styleName="{style.box}">
         <g:HTMLPanel ui:field="content"></g:HTMLPanel>
     </g:ScrollPanel>
 </ui:UiBinder> 

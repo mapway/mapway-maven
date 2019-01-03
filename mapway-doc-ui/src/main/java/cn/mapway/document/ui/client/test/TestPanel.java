@@ -12,14 +12,13 @@ import com.google.gwt.core.client.GWT;
 import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.core.client.JsonUtils;
 import com.google.gwt.event.dom.client.ClickEvent;
-import com.google.gwt.event.logical.shared.CloseEvent;
-import com.google.gwt.event.logical.shared.CloseHandler;
-import com.google.gwt.event.logical.shared.HasCloseHandlers;
+import com.google.gwt.event.logical.shared.*;
 import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.http.client.RequestException;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.uibinder.client.UiHandler;
+import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.*;
 
 import java.util.Date;
@@ -41,6 +40,18 @@ public class TestPanel extends Composite implements HasCloseHandlers<Void> {
      * The ui binder.
      */
     private static TestPanelUiBinder uiBinder = GWT.create(TestPanelUiBinder.class);
+    private final SelectionHandler<HistoryData> historySelectedHandler = new SelectionHandler<HistoryData>() {
+        @Override
+        public void onSelection(SelectionEvent<HistoryData> selectionEvent) {
+            editor.setValue(selectionEvent.getSelectedItem().value);
+        }
+    };
+    private final ValueChangeHandler<Integer> historyValueChangedHandler = new ValueChangeHandler<Integer>() {
+        @Override
+        public void onValueChange(ValueChangeEvent<Integer> valueChangeEvent) {
+            changeLayout(valueChangeEvent.getValue());
+        }
+    };
     private CloseHandler<String> itemDeleted = new CloseHandler<String>() {
         @Override
         public void onClose(CloseEvent<String> closeEvent) {
@@ -52,6 +63,32 @@ public class TestPanel extends Composite implements HasCloseHandlers<Void> {
             saveHeader();
         }
     };
+    private SelectionHandler<String> historyNameEditorHandler = new SelectionHandler<String>() {
+        @Override
+        public void onSelection(SelectionEvent<String> selectionEvent) {
+            String name = selectionEvent.getSelectedItem();
+            if (name == null || name.length() == 0) {
+                return;
+            } else {
+                saveHistory(name);
+            }
+            sureEditor().hide();
+            history.render(mEntry.relativePath());
+        }
+    };
+
+    /**
+     * 保存请求数据为历史纪录
+     */
+    private void saveHistory(String name) {
+        String v = LocalStorage.val(mEntry.relativePath());
+        String key = name;
+        if (v == null || v.length() == 0) {
+            LocalStorage.save(mEntry.relativePath(), key + "`" + editor.getValue());
+        } else {
+            LocalStorage.save(mEntry.relativePath(), key + "`" + editor.getValue() + "|" + v);
+        }
+    }
 
     /**
      * The Interface TestPanelUiBinder.
@@ -71,6 +108,8 @@ public class TestPanel extends Composite implements HasCloseHandlers<Void> {
         btnFormat.setStyleName(css);
         btnClearCache.setStyleName(css);
         imgLoadding.setUrl(SysResource.INSTANCE.loading().getSafeUri());
+        history.addSelectionHandler(historySelectedHandler);
+        history.addValueChangeHandler(historyValueChangedHandler);
     }
 
 
@@ -122,6 +161,11 @@ public class TestPanel extends Composite implements HasCloseHandlers<Void> {
     protected void onLoad() {
         super.onLoad();
         initJsonEditor();
+        int width = Window.getClientWidth() - 200;
+        int height = Window.getClientHeight() - 200;
+        this.setHeight(height + "px");
+        this.setWidth(width + "px");
+
     }
 
     boolean initialize = false;
@@ -151,38 +195,35 @@ public class TestPanel extends Composite implements HasCloseHandlers<Void> {
     public void invoke(Entry entry) {
         loadHeader();
         mEntry = entry;
-
-        String his = readHistory();
-        if (his.length() == 0) {
-            his = entry.input().get(0).json();
+        history.render(entry.relativePath());
+        int historyCount = history.getHistoryCount();
+        String his = "";
+        if (historyCount > 0) {
+            his = history.get(0);
+        }
+        if (his == null || his.length() == 0) {
+            if (entry.input().length() > 0) {
+                his = entry.input().get(0).json();
+            } else {
+                his = "";
+            }
         }
         editor.setValue(his);
         editor.redisplay();
         result.setValue("");
     }
 
-    /**
-     * Read history.
-     *
-     * @return the string
-     */
-    private String readHistory() {
-        String r = "";
-        String v = LocalStorage.val(mEntry.relativePath());
-        if (v == null || v.length() == 0) {
-            return "";
+    private void changeLayout(int historyCount) {
+        if (historyCount > 0) {
+
+            hor.setWidgetHidden(history, false);
+            hor.setWidgetSize(editor, (this.getOffsetWidth() - hor.getWidgetSize(history)) / 2);
+        } else {
+            hor.setWidgetHidden(history, true);
+            hor.setWidgetSize(editor, this.getOffsetWidth() / 2);
         }
-
-        String[] vs = v.split("\\|");
-
-        if (vs.length > 0) {
-            String[] itemdata = vs[0].split("`");
-            r = itemdata[1];
-            return r;
-        }
-
-        return r;
     }
+
 
     /**
      * The btn execute.
@@ -207,6 +248,10 @@ public class TestPanel extends Composite implements HasCloseHandlers<Void> {
     Button btnFormat;
     @UiField
     Button btnClearCache;
+    @UiField
+    SplitLayoutPanel hor;
+    @UiField
+    InputHistoryPanel history;
 
     /**
      * On execute.
@@ -218,21 +263,9 @@ public class TestPanel extends Composite implements HasCloseHandlers<Void> {
 
         imgLoadding.setVisible(true);
         result.setValue("");
-        // 保存到本地
-        String v = LocalStorage.val(mEntry.relativePath());
-        Date d = new Date();
-        String key =
-                (d.getYear() + 1900) + "-" + (d.getMonth() + 1) + "-" + d.getDate() + " " + d.getHours()
-                        + ":" + d.getMinutes() + ":" + d.getSeconds();
-        String va = editor.getValue();
 
-        if (v == null || v.length() == 0) {
-            LocalStorage.save(mEntry.relativePath(), key + "`" + va);
-        } else {
-            LocalStorage.save(mEntry.relativePath(), key + "`" + va + "|" + v);
-        }
         try {
-            ApiDocProxy.fetchString(mEntry.url(), va, "", mEntry.invokeMethods().get(0),
+            ApiDocProxy.fetchString(mEntry.url(), editor.getValue(), "", mEntry.invokeMethods().get(0),
                     new IOnData<String>() {
                         @Override
                         public void onError(String url, String error) {
@@ -278,43 +311,26 @@ public class TestPanel extends Composite implements HasCloseHandlers<Void> {
         return addHandler(handler, CloseEvent.getType());
     }
 
-    /**
-     * The pop.
-     */
-    PopupPanel pop = null;
 
-    /**
-     * The history panel.
-     */
-    InputHistoryPanel historyPanel;
+    TextEditor historyNameEditor;
 
-    /**
-     * The item selected.
-     */
-    private CloseHandler<HistoryData> itemSelected = new CloseHandler<HistoryData>() {
-
-        @Override
-        public void onClose(CloseEvent<HistoryData> event) {
-            editor.setValue(event.getTarget().value);
-            pop.hide();
+    TextEditor sureEditor() {
+        if (historyNameEditor == null) {
+            historyNameEditor = new TextEditor();
+            historyNameEditor.getElement().getStyle().setZIndex(10001);
+            historyNameEditor.addSelectionHandler(historyNameEditorHandler);
         }
-    };
+        return historyNameEditor;
+    }
 
     /**
-     * 显示历史记录.
+     * 保存当前的请求为历史记录
      *
      * @param e the e
      */
     @UiHandler("btnHistory")
     void onHistory(ClickEvent e) {
-        if (pop == null) {
-            pop = new PopupPanel(true, true);
-            historyPanel = new InputHistoryPanel();
-            historyPanel.addCloseHandler(itemSelected);
-            pop.add(historyPanel);
-        }
-        pop.showRelativeTo(btnHistory);
-        historyPanel.render(mEntry.relativePath());
+        sureEditor().edit("输入历史记录名称", "名称", "").center();
     }
 
     /**

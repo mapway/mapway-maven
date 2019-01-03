@@ -19,7 +19,7 @@
     <parent>
         <groupId>cn.mapway</groupId>
         <artifactId>mapway-maven</artifactId>
-        <version>2.2.0</version>
+        <version>2.2.3</version>
     </parent>
 
     <name>mapway-doc-ui</name>
@@ -57,7 +57,7 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-autoconfigure</artifactId>
-            <version>1.5.1.RELEASE</version>
+            <version>2.1.0.RELEASE</version>
             <optional>true</optional>
         </dependency>
         <!-- markdown support-->
@@ -74,7 +74,7 @@
         <dependency>
             <groupId>cn.mapway</groupId>
             <artifactId>mapway-annotation</artifactId>
-            <version>2.2.0</version>
+            <version>2.2.3</version>
         </dependency>
         <!-- end markdown support -->
         <dependency>
