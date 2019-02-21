@@ -5,10 +5,13 @@ import java.util.List;
 import cn.mapway.document.annotation.ApiField;
 import cn.mapway.document.annotation.Doc;
 
-// TODO: Auto-generated Javadoc
 
 /**
- * The Class Req.
+ * The Class Req.Spring is here to generator a document for use in api.
+ * </p>safsad.
+ *
+ * @author zhangjianshe@163.com
+ * @doc.refs /isadsad
  */
 @Doc(value = "触发条件", desc = "<p>触发条件分为两类:设备属性条件 和定时器触发条件，"
         + "<p>定时器(虚拟设备,deviceId=0)有两个属性 1000为定时属性 1001为倒计时属性，"
@@ -22,13 +25,25 @@ import cn.mapway.document.annotation.Doc;
         + "<p>当C为 M为天的时候 [1-59]."
 
 )
-public class Req {
+public class Req<T> {
 
     /**
-     * The f 1.
+     *  donot know data type.
+     */
+    public  T tdata;
+    /**
+     * custom Special name for init field
+     *
+     * @doc.example 34.5534
      */
     @ApiField("int field")
     public int f1;
+
+    /**
+     * INteger field.
+     */
+    @ApiField("Integer field")
+    public Integer f2;
 
     /**
      * The boolea field.
@@ -36,17 +51,33 @@ public class Req {
     @ApiField("booelan field")
     public Boolean booleaField;
 
+
+    /**
+     * 字符串数组
+     */
+    public String[] stringArray;
+
+    /**
+     * 模板类 温度数据信息.
+     *
+     * @author zhangkaiwen.
+     */
+    public Temp<Float> templateField;
+
+
+    /**
+     * 模板类数组 温度数据信息.
+     *
+     * @author xiaodamo
+     */
+    public Temp<Integer>[] tempeture;
     /**
      * The names.
+     * @doc.example abd,hello
      */
     @ApiField("List test")
     public List<String> names;
 
-    /**
-     * The rets.
-     */
-    @ApiField("RET数组")
-    public List<Ret> rets;
 
     /**
      * The test obj.

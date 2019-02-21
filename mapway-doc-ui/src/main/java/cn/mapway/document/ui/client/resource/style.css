@@ -22,7 +22,10 @@
     font-weight: bold;
     color: darkblue;
 }
-
+.summary {
+    padding-top: 5px;
+    color: green;
+}
 .entry {
     color: #3d73d5;
     font-weight: normal;
@@ -73,10 +76,7 @@
     cursor: pointer;
 }
 
-.summary {
-    padding-top: 5px;
-    color: green;
-}
+
 
 .dlgSummary{
     color: green;
@@ -95,9 +95,6 @@
     background-color: #f8f8f8;
 }
 
-.rowh {
-    background-color: skyblue;
-}
 
 .cssString {
     color: green;
@@ -143,6 +140,10 @@
 .rowTitle {
     background-color: #f0f0f0;
 }
+.rowh {
+    background-color: skyblue;
+}
+
 
 .desc {
     color: green;

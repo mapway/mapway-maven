@@ -1,5 +1,5 @@
 package cn.mapway.document.parser;
 public class CompileVersion {
 public final static String VERSION =
-                                                    "[2.2.3]@2019年01月03日 12:32:33";
+                                                    "[2.2.4]@2019年02月16日 00:44:34";
 }

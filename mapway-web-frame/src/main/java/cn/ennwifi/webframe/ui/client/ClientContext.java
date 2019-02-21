@@ -480,4 +480,16 @@ public class ClientContext implements IEventHandler, IOnPostMessage {
             mqttJsClient.pub(msg);
         }
     }
+
+    /**
+     * 订阅 MQTT TOPIC
+     *
+     * @param topic 消息主题
+     */
+    public void sub(String topic) {
+        if (mqttJsClient != null) {
+            mqttJsClient.sub(topic);
+        }
+    }
+
 }
