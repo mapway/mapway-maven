@@ -1,6 +1,7 @@
 package cn.ennwifi.webframe.ui.client.main;
 
 import cn.ennwifi.webframe.ui.client.ClientContext;
+import cn.ennwifi.webframe.ui.client.common.JsonParseError;
 import cn.ennwifi.webframe.ui.client.common.Links;
 import cn.ennwifi.webframe.ui.client.event.EventTopics;
 import cn.ennwifi.webframe.ui.client.main.menu.MainMenu;
@@ -32,6 +33,7 @@ import com.google.gwt.json.client.JSONParser;
 import com.google.gwt.json.client.JSONValue;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
+import com.google.gwt.user.client.Timer;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.DockLayoutPanel;
@@ -63,6 +65,7 @@ public class MainFrame extends BaseAbstractModuleWithEvent implements IMqttHandl
      * mqtt 连接失败
      */
     public static final String MQTT_CONNECTION_LOST = "__MQTT_CONNECTION_LOST__";
+    public static final String MQTT_JSON_PARSE_ERROR = "__MQTT_JSON_PARSE_ERROR__";
 
 
     @Override
@@ -365,7 +368,6 @@ public class MainFrame extends BaseAbstractModuleWithEvent implements IMqttHandl
                 mEditor.addMessageHandler(editorHandler);
                 mEditor.setGlassEnabled(true);
             } else {
-                // TODO 将对话框内所有内容设为不可编辑
                 mEditor.setGlassEnabled(false);
 
                 // mEditor.editEnable();
@@ -432,6 +434,7 @@ public class MainFrame extends BaseAbstractModuleWithEvent implements IMqttHandl
      */
     @Override
     public void onConnectionLost(MqttJsClient client, ConnectionLostEvent event) {
+        GWT.log("mqtt disconnected:");
         ClientContext.getContext().initMqtt();
     }
 
@@ -445,16 +448,32 @@ public class MainFrame extends BaseAbstractModuleWithEvent implements IMqttHandl
      */
     @Override
     public void onMessageArrived(MqttJsClient client, MessageArriveEvent event) {
-        GWT.log("msg arrived:" + event.topic() + "-" + event.msg());
-        String payload = event.msg();
-        JSONValue v = JSONParser.parseStrict(payload);
-        JSONObject obj = v.isObject();
+        final String payload = event.msg();
+        final String topic = event.topic();
+        GWT.log("msg arrived:" + topic + "-" + payload);
+
         try {
-            ClientContext.getContext().postTopic(event.topic(), 0, obj);
+            JSONValue v = JSONParser.parseStrict(payload);
+            JSONObject obj = v.isObject();
+            ClientContext.getContext().postTopic(topic, 0, obj);
         } catch (Throwable e) {
             GWT.log(e.getMessage());
+            JsonParseError error = new JsonParseError();
+            error.error = e.getMessage();
+            error.source = payload;
+            error.topic = topic;
+            ClientContext.getContext().postTopic(MQTT_JSON_PARSE_ERROR, 0, error);
         }
     }
+
+    /**
+     * 解析JSON错误
+     *
+     * @param error
+     */
+    public void onJsonParseError(JsonParseError error) {
+    }
+
 
     /**
      * The Client.
@@ -469,13 +488,16 @@ public class MainFrame extends BaseAbstractModuleWithEvent implements IMqttHandl
      * monitor.ui.client.mqtt.MqttJsClient)
      */
     @Override
-    public void onConnect(MqttJsClient client) {
+    public void onConnect(final MqttJsClient client) {
         GWT.log("connected");
         this.client = client;
-        //client.sub("iot/monitor/#");
+        // client.sub("iot/monitor/#");
         // ClientContext.getContext().setMqttTopicPrefix("iot/monitor/");
 
+
         postTopic(MQTT_CONNECTION_ARRIVED, 0, client);
+
+
     }
 
     /*
@@ -485,12 +507,14 @@ public class MainFrame extends BaseAbstractModuleWithEvent implements IMqttHandl
      * datahub.monitor.ui.client.mqtt.MqttJsClient, java.lang.String)
      */
     @Override
-    public void onConnetFailed(MqttJsClient client, String message) {
+    public void onConnetFailed(final MqttJsClient client, String message) {
         GWT.log("connection Failed,reconnect>" + message);
         // 连接失败
         //ClientContext.getContext().initMqtt();
 
+
         postTopic(MQTT_CONNECTION_LOST, 0, client);
+
     }
 
 }

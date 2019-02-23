@@ -3,7 +3,7 @@
   <component name="FacetManager">
     <facet type="gwt" name="GWT">
       <configuration>
-        <setting name="gwtSdkUrl" value="file://E:/repository/com/google/gwt/gwt-dev/2.8.0/" />
+        <setting name="gwtSdkUrl" value="file://D:/respository/com/google/gwt/gwt-dev/2.8.0/" />
         <setting name="gwtSdkType" value="maven" />
         <packaging>
           <module name="cn.mapway.ui.Test" enabled="false" />

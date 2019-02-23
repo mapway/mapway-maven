@@ -31,12 +31,12 @@ public class MqttJsClient extends JavaScriptObject {
      * @return the mqtt js client
      */
     public static final native MqttJsClient create(String host, int port, String id, String path)/*-{
-		console.log("init mqtt client" + host + ":" + port + "@" + id);
-		client = new Paho.MQTT.Client(host, Number(port), path, id);
-		console.log(client);
-		client.isConnected = false;
-		return client;
-  }-*/;
+        console.log("init mqtt client" + host + ":" + port + "@" + id);
+        client = new Paho.MQTT.Client(host, Number(port), path, id);
+        console.log(client);
+        client.isConnected = false;
+        return client;
+    }-*/;
 
     /**
      * 添加事件处理器.
@@ -47,16 +47,16 @@ public class MqttJsClient extends JavaScriptObject {
         this.handler = h;
         var _this = this;
         if (this.handler != null) {
-            this.onConnectionLost = function(e) {
+            this.onConnectionLost = function (e) {
                 _this.handler.@cn.mapway.ui.client.mqtt.IMqttHandler::onConnectionLost(Lcn/mapway/ui/client/mqtt/MqttJsClient;Lcn/mapway/ui/client/mqtt/event/ConnectionLostEvent;)
-                (_this,e);
+                (_this, e);
             }
-            this.onMessageArrived = function(e) {
+            this.onMessageArrived = function (e) {
                 _this.handler.@cn.mapway.ui.client.mqtt.IMqttHandler::onMessageArrived(Lcn/mapway/ui/client/mqtt/MqttJsClient;Lcn/mapway/ui/client/mqtt/event/MessageArriveEvent;)
-                (_this,e);
+                (_this, e);
             }
         }
-  }-*/;
+    }-*/;
 
 
     /**
@@ -74,35 +74,33 @@ public class MqttJsClient extends JavaScriptObject {
      * Innerconnect.
      */
     private final native void innerconnect(String userId, String token)/*-{
-		var _this = this;
-		if (_this.handler == null) {
-			this.connect({
+        var _this = this;
+        if (_this.handler == null) {
+            this.connect({});
+        } else {
+            this
+                .connect({
 
-			});
-		} else {
-			this
-					.connect({
-
-						onSuccess : function(e) {
-							_this.isConnected = true;
-							_this.handler.@cn.mapway.ui.client.mqtt.IMqttHandler::onConnect(Lcn/mapway/ui/client/mqtt/MqttJsClient;)(_this);
-						},
-						onFailure : function(e) {
-							_this.isConnected = false;
-							_this.handler
-									.@cn.mapway.ui.client.mqtt.IMqttHandler::onConnetFailed(Lcn/mapway/ui/client/mqtt/MqttJsClient;Ljava/lang/String;)(
-											_this, e.errorMessage);
-						}
-					});
-		}
-  }-*/;
+                    onSuccess: function (e) {
+                        _this.isConnected = true;
+                        _this.handler.@cn.mapway.ui.client.mqtt.IMqttHandler::onConnect(Lcn/mapway/ui/client/mqtt/MqttJsClient;)(_this);
+                    },
+                    onFailure: function (e) {
+                        _this.isConnected = false;
+                        _this.handler
+                            .@cn.mapway.ui.client.mqtt.IMqttHandler::onConnetFailed(Lcn/mapway/ui/client/mqtt/MqttJsClient;Ljava/lang/String;)(
+                                _this, e.errorMessage);
+                    }
+                });
+        }
+    }-*/;
 
     /**
      * Close.
      */
     public final native void close()/*-{
-		this.disconnect();
-  }-*/;
+        this.disconnect();
+    }-*/;
 
     /**
      * Sets the id.
@@ -110,8 +108,8 @@ public class MqttJsClient extends JavaScriptObject {
      * @param id the new id
      */
     public final native void setId(String id)/*-{
-		this.clientId = id;
-  }-*/;
+        this.clientId = id;
+    }-*/;
 
     /**
      * Gets the id.
@@ -119,8 +117,8 @@ public class MqttJsClient extends JavaScriptObject {
      * @return the id
      */
     public final native String getId()/*-{
-		return this.clientId;
-  }-*/;
+        return this.clientId;
+    }-*/;
 
     /**
      * Sub.
@@ -128,10 +126,15 @@ public class MqttJsClient extends JavaScriptObject {
      * @param topic the topic
      */
     public final native void sub(String topic)
-  /*-{
-		this.subscribe(topic);
-		console.log("subscribe to " + topic);
-  }-*/;
+    /*-{
+        if(topic == null || topic.length ==0)
+    {
+        console.log("sub empty topic");
+        return;
+    }
+    this.subscribe(topic);
+    console.log("subscribe to " + topic);
+    }-*/;
 
     /**
      * Unsub.
@@ -139,10 +142,16 @@ public class MqttJsClient extends JavaScriptObject {
      * @param topic the topic
      */
     public final native void unsub(String topic)
-  /*-{
-		this.unsubscribe(topic);
-		console.log("unsubscribe to " + topic);
-  }-*/;
+    /*-{
+
+        if( topic == null || topic.length ==0)
+    {
+        console.log("unsub empty topic");
+        return;
+    }
+    this.unsubscribe(topic);
+    console.log("unsubscribe to " + topic);
+    }-*/;
 
     /**
      * Pub.
@@ -150,8 +159,8 @@ public class MqttJsClient extends JavaScriptObject {
      * @param msg the msg
      */
     public final native void pub(MqttMessage msg)/*-{
-		this.send(msg);
-  }-*/;
+        this.send(msg);
+    }-*/;
 
     /**
      * Checks if is connect.
@@ -159,7 +168,7 @@ public class MqttJsClient extends JavaScriptObject {
      * @return true, if is connect
      */
     public final native boolean isConnect()/*-{
-		return this.isConnected;
-  }-*/;
+        return this.isConnected;
+    }-*/;
 
 }
