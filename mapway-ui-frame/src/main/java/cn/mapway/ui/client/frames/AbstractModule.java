@@ -1,35 +1,23 @@
 package cn.mapway.ui.client.frames;
 
 
-import java.util.ArrayList;
-import java.util.List;
-
 import cn.mapway.ui.client.history.HistoryManager;
 import cn.mapway.ui.client.modules.common.UnAuthorityModule;
-import cn.mapway.ui.client.mvc.BaseAbstractModule;
-import cn.mapway.ui.client.mvc.IModule;
-import cn.mapway.ui.client.mvc.IModuleDispatcher;
-import cn.mapway.ui.client.mvc.ModuleInfo;
-import cn.mapway.ui.client.mvc.ModuleParameter;
+import cn.mapway.ui.client.mvc.*;
 import cn.mapway.ui.client.widget.common.DataHolder;
 import cn.mapway.ui.client.widget.common.ItemList;
-
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.uibinder.client.UiHandler;
-import com.google.gwt.user.client.ui.Anchor;
-import com.google.gwt.user.client.ui.DockLayoutPanel;
-import com.google.gwt.user.client.ui.HTML;
-import com.google.gwt.user.client.ui.HorizontalPanel;
-import com.google.gwt.user.client.ui.Image;
-import com.google.gwt.user.client.ui.Label;
-import com.google.gwt.user.client.ui.ScrollPanel;
-import com.google.gwt.user.client.ui.Widget;
+import com.google.gwt.user.client.ui.*;
 import com.ksyzt.gwt.client.event.MessageEvent;
 import com.ksyzt.gwt.client.event.MessageHandler;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * 简单的模块调度器.
@@ -233,8 +221,8 @@ public abstract class AbstractModule extends BaseAbstractModule implements IModu
 
 
     @Override
-    public IModuleDispatcher switchModule(String code, ModuleParameter parameter,
-                                          boolean saveToHistory) {
+    public void switchModule(String code, ModuleParameter parameter,
+                             boolean saveToHistory) {
 
         IModuleDispatcher d = null;
 
@@ -242,10 +230,11 @@ public abstract class AbstractModule extends BaseAbstractModule implements IModu
             parameter = new ModuleParameter();
         }
 
+        final ModuleParameter mp = parameter;
         // 两种情况 本模块 或者 子模块
 
         boolean isThisModule = false;
-        ModuleInfo thisModule = getModuleInfo();
+        final ModuleInfo thisModule = getModuleInfo();
         if (thisModule.code.equals(code)) {
             isThisModule = true;
         }
@@ -278,47 +267,82 @@ public abstract class AbstractModule extends BaseAbstractModule implements IModu
                     break;
                 }
             }
-
-            IModule module = null;
+            mp.put(UnAuthorityModule.PARA_MODULE_NAME, code);
+            final IModule _this = this;
             if (mi == null) {
                 // 没有找到子模块
-                mi = getModuleFactory().findModuleInfo(UnAuthorityModule.MODULE_CODE);
-                parameter.put(UnAuthorityModule.PARA_MODULE_NAME, code);
-                module = getModuleFactory().createModule(UnAuthorityModule.MODULE_CODE, true);
+                final ModuleInfo _mi = getModuleFactory().findModuleInfo(UnAuthorityModule.MODULE_CODE);
+
+                getModuleFactory().asyncCreateModule(UnAuthorityModule.MODULE_CODE, true, new AsyncCreateModuleHandler() {
+                    @Override
+                    public void onSuccess(IModule module) {
+                        // 处理导航
+                        holder.tblNavi.clear();
+                        linkHome.setText(thisModule.name);
+
+                        holder.tblNavi.add(linkHome);
+
+                        holder.tblNavi.add(new HTML("&nbsp;&gt;&nbsp;"));
+
+
+                        holder.tblNavi.add(new Label(_mi.name));
+                        holder.icon.setUrl(_mi.icon);
+
+                        // 处理模块内容
+                        removeCurrent();
+                        currentWidget = module.getRootWidget();
+
+                        holder.root.add(currentWidget);
+                        module.initialize(_this, mp);
+
+                        // 保存历史记录
+                        HistoryManager.push(getModulePath(module));
+
+                        handleSubModule();
+                    }
+
+                    @Override
+                    public void onFail(String message) {
+                        GWT.log("create module " + message);
+                    }
+                });
             } else {
-                module = getModuleFactory().createModule(mi.code, true);
-                syncSubModuleList(mi.code);
-                if (module instanceof IModuleDispatcher) {
-                    d = (IModuleDispatcher) module;
-                }
+                final ModuleInfo _mi = mi;
+                getModuleFactory().asyncCreateModule(UnAuthorityModule.MODULE_CODE, true, new AsyncCreateModuleHandler() {
+                    @Override
+                    public void onSuccess(IModule module) {
+                        // 处理导航
+                        holder.tblNavi.clear();
+                        linkHome.setText(thisModule.name);
 
+                        holder.tblNavi.add(linkHome);
+
+                        holder.tblNavi.add(new HTML("&nbsp;&gt;&nbsp;"));
+
+
+                        holder.tblNavi.add(new Label(_mi.name));
+                        holder.icon.setUrl(_mi.icon);
+
+                        // 处理模块内容
+                        removeCurrent();
+                        currentWidget = module.getRootWidget();
+
+                        holder.root.add(currentWidget);
+                        module.initialize(_this, mp);
+
+                        // 保存历史记录
+                        HistoryManager.push(getModulePath(module));
+                        handleSubModule();
+                        syncSubModuleList(_mi.code);
+                    }
+
+                    @Override
+                    public void onFail(String message) {
+                        GWT.log("create module " + message);
+                    }
+                });
             }
-
-            // 处理导航
-            holder.tblNavi.clear();
-            linkHome.setText(thisModule.name);
-
-            holder.tblNavi.add(linkHome);
-
-            holder.tblNavi.add(new HTML("&nbsp;&gt;&nbsp;"));
-            holder.tblNavi.add(new Label(mi.name));
-            holder.icon.setUrl(mi.icon);
-
-            // 处理模块内容
-            removeCurrent();
-            currentWidget = module.getRootWidget();
-
-            holder.root.add(currentWidget);
-            module.initialize(this, parameter);
-
-            // 保存历史记录
-            HistoryManager.push(getModulePath(module));
-
-            handleSubModule();
-
         }
-
-        return d;
     }
 
 

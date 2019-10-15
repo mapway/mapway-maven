@@ -1,7 +1,6 @@
 package cn.mapway.document.servlet;
 
-import cn.mapway.doc2.parser.module.ApiDoc2;
-import cn.mapway.doc2.util.Doc2Helper;
+
 import cn.mapway.document.helper.DocHelper;
 import cn.mapway.document.helper.ParseType;
 import cn.mapway.document.helper.Scans;
@@ -130,9 +129,9 @@ public class MapwayDocServlet extends HttpServlet {
             ApiDoc api = helper.toDoc(ParseType.PT_SPRING, context, packageNames);
             json(response, api);
         } else if (path.equals("/data2")) {
-            Doc2Helper helper = new Doc2Helper();
-            ApiDoc2 apiDoc2 = helper.toDoc(context, packageNames);
-            json(response, apiDoc2);
+            //Doc2Helper helper = new Doc2Helper();
+            //ApiDoc2 apiDoc2 = helper.toDoc(context, packageNames);
+           // json(response, apiDoc2);
             //json(response, Files.read("d:\\api.data"));
         } else if (path.startsWith("/javascript")) {
             String exportName = request.getParameter("apiName");

@@ -1,6 +1,8 @@
 package cn.mapway.ui.client.mvc;
 
 
+import cn.mapway.ui.client.frames.AsyncCreateModuleHandler;
+
 /**
  * 表明某个类是可以动态生成的.
  *
@@ -16,6 +18,16 @@ public interface ModuleFactory {
      * @return the i frame module
      */
     public IModule createModule(String moduleCode, boolean single);
+
+
+    /**
+     * 异步创建模块
+     *
+     * @param moduleCode the module code
+     * @param single     the single
+     * @param handler    handler
+     */
+    public void asyncCreateModule(final String moduleCode, final boolean single, final AsyncCreateModuleHandler handler);
 
     /**
      * 获取系统中的所有可用模块.

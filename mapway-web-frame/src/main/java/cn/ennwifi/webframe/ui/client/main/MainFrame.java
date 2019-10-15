@@ -13,6 +13,7 @@ import cn.ennwifi.webframe.ui.shared.module.ClientConfigure;
 import cn.ennwifi.webframe.ui.shared.module.PagerData;
 import cn.ennwifi.webframe.ui.shared.repository.S_RESOURCEObj;
 import cn.ennwifi.webframe.ui.shared.repository.S_USERObj;
+import cn.mapway.ui.client.frames.AsyncCreateModuleHandler;
 import cn.mapway.ui.client.history.HistoryManager;
 import cn.mapway.ui.client.modules.web.WebPageModule;
 import cn.mapway.ui.client.mqtt.IMqttHandler;
@@ -379,7 +380,7 @@ public class MainFrame extends BaseAbstractModuleWithEvent implements IMqttHandl
      * 切换模块
      */
     @Override
-    public IModuleDispatcher switchModule(String code, ModuleParameter parameters,
+    public void switchModule(String code, ModuleParameter parameters,
                                           boolean saveToHistory) {
 
         if (parameters == null) {
@@ -388,27 +389,37 @@ public class MainFrame extends BaseAbstractModuleWithEvent implements IMqttHandl
         // 如果是主模块则不处理，直接返回主模块的调度接口
         if (getModuleInfo().code.equals(code)) {
             GWT.log("switch mainframe self>" + code);
-            return this;
+            //return this;
         }
 
-        IModuleDispatcher d = null;
 
-        IModule module = getModuleFactory().createModule(code, true);
+        final ModuleParameter mp=parameters;
+        final IModule _this=this;
+        getModuleFactory().asyncCreateModule(code, true, new AsyncCreateModuleHandler() {
+            @Override
+            public void onSuccess(IModule module) {
+                if (module != current) {
+                    removeCurrent();
+                    current = module;
+                    root.add(current.getRootWidget());
+                }
 
-        if (module != current) {
-            removeCurrent();
-            current = module;
-            root.add(current.getRootWidget());
-        }
-        GWT.log("module parameter size" + parameters.size());
-        current.initialize(this, parameters);
-        GWT.log("switch mainframe sub module >" + code);
+                GWT.log("module parameter size" + mp.size());
 
-        if (module instanceof IModuleDispatcher) {
-            d = (IModuleDispatcher) module;
-        }
+                current.initialize(_this, mp);
 
-        return d;
+
+            }
+
+            @Override
+            public void onFail(String message) {
+                GWT.log("create module "+message);
+            }
+        });
+
+
+
+
     }
 
     /**

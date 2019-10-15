@@ -106,15 +106,14 @@ public class HistoryManager implements ValueChangeHandler<String> {
 
         if (modules.size() > 0) {
             int index = 0;
-            while (d != null) {
+            if (d != null) {
                 if (index >= modules.size()) {
-                    break;
                 }
                 SwitchModuleData moduelData = modules.get(index++);
 
                 GWT.log("popup hash > " + moduelData.getModuleCode() + "  "
                         + moduelData.getParameters().toString());
-                d = d.switchModule(moduelData.getModuleCode(), moduelData.getParameters(), false);
+                d.switchModule(moduelData.getModuleCode(), moduelData.getParameters(), false);
             }
         } else {
             if (mEmptyHander != null) {

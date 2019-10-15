@@ -185,12 +185,48 @@ public class ModuleFactoryGenerator extends Generator {
         sourceWriter.println("\r\n    return null;\r\n");
         sourceWriter.println("\r\n}");
 
+        //输出异步创建模块接口代码
+
+        sourceWriter.println("public void asyncCreateModule(final String moduleCode, final boolean single, final AsyncCreateModuleHandler handler){");
+
+        sourceWriter.println();
+        sourceWriter.indent();
+        for (JClassType classType : clazzes) {
+            if (classType.isAbstract()) {
+                continue;
+            }
+            ModuleInfo item = findModuleName(classType);
+            if (item == null) {
+                continue;
+            }
+            sourceWriter.println("if(\"" + item.code + "\".equals(code)) {\r\n");
+
+            sourceWriter.println("GWT.runAsync(new RunAsyncCallback() {");
+            sourceWriter.println("public void onFailure(Throwable reason) {");
+            sourceWriter.println("\thandler.onFail(reason.getMessage());");
+            sourceWriter.println("}");
+
+            sourceWriter.println("    public void onSuccess(boolean single) {");
+            sourceWriter.println("         if(single==false) {");
+            sourceWriter.println("      handler.onSuccess( new " + classType.getQualifiedSourceName() + "());}else{");
+            sourceWriter.println("if (" + item.code + " == null) {\r\n");
+            sourceWriter.println("     " + item.code + "=new " + classType.getQualifiedSourceName()
+                    + "();}");
+            sourceWriter.println("handler.onSuccess(" + item.code + ");");
+            sourceWriter.println("}");
+        }
+        sourceWriter.outdent();
+        sourceWriter.println("\r\n}");
+
         // 实例化签名
         sourceWriter.println("public  IModule createModule( String code ,boolean single) {");
 
         sourceWriter.println();
         sourceWriter.indent();
-        for (JClassType classType : clazzes) {
+        for (
+                JClassType classType : clazzes)
+
+        {
             if (classType.isAbstract()) {
                 continue;
             }

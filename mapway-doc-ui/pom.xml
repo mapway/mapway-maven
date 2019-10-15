@@ -19,7 +19,7 @@
     <parent>
         <groupId>cn.mapway</groupId>
         <artifactId>mapway-maven</artifactId>
-        <version>2.2.4</version>
+        <version>3.0.0</version>
     </parent>
 
     <name>mapway-doc-ui</name>
@@ -74,7 +74,7 @@
         <dependency>
             <groupId>cn.mapway</groupId>
             <artifactId>mapway-annotation</artifactId>
-            <version>2.2.4</version>
+            <version>3.0.0</version>
         </dependency>
         <!-- end markdown support -->
         <dependency>
